@@ -11,7 +11,7 @@ La base di dati è stata realizata e testata con l'utilizzo del software "postgr
 - Popolazione della base di dati, presente in Progetto-OOBD_T1G22/Basi Dati/SQL/PopolazioneBD.sql.
 ### Spiegazione delle Funzioni / Procedure e i loro Trigger: 
 - create function ADD_Disponibile_S_funz()
-- - Descrizione :
+ - Descrizione :
 Funzione che controlla la disponibilita della serie di un libro reso acquistabile
 in una piattaforma.
 Nel caso in cui non sia segnata come acquistabile la serie nella piattaforma
