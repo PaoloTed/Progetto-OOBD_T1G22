@@ -1,5 +1,5 @@
 # Progetto-OOBD_T1G22
-Progetto di Basi di Dati e Object Orentation a.a. 2022-2023, traccia A : "Biblioteca Digitale".
+Progetto di Basi di Dati e Object Orentation a.a. 2022-2023, "Biblioteca Digitale".
 ## Autori:
 - Paolo Tedesco / N86004408;
 - Giulio Ruopolo / N86004285;
@@ -7,4 +7,5 @@ Progetto di Basi di Dati e Object Orentation a.a. 2022-2023, traccia A : "Biblio
 
 
 ## Info Gruppo: 
-- Id Gruppo: OOBD_T1G22.
+- Id Gruppo: OOBD_T1G22;
+- Traccia : A;
