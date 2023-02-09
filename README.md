@@ -1,4 +1,4 @@
-# Progetto-OOBD_T1G22
+# Progetto-OOBD_T1G22 Biblioteca Digitale.
 Progetto di Basi di Dati e Object Orentation a.a. 2022-2023, "Biblioteca Digitale".
 ## Autori:
 -  
