@@ -11,7 +11,7 @@ La base di dati è stata realizata e testata con l'utilizzo del software "postgr
 - Popolazione della base di dati, presente in Progetto-OOBD_T1G22/Basi Dati/SQL/PopolazioneBD.sql.
 ### Spiegazione delle Funzioni / Procedure e i loro Trigger: 
 - create function ADD_Disponibile_S_funz()
-Descrizione :
+- Descrizione :
 Funzione che controlla la disponibilita della serie di un libro reso acquistabile
 in una piattaforma.
 Nel caso in cui non sia segnata come acquistabile la serie nella piattaforma
@@ -20,12 +20,12 @@ coincide al numero di libri della serie, verra aggiunta la disponibilita della s
 ad essere acquista nella specifica piattaforma.
 
 - Create Trigger ADD_Disponibile_S after insert on Disponibile_L
--- Descrizione :
+Descrizione :
 Trigger attivato all’atto dell’inserimento di un libro disponibile in una piatta-
 forma, esso manda in esecuzione la funzione ”ADD Disponibile S funz()”;
 
 - create function Controllo_Succ_funz() returns trigger as
--- Descrizione :
+Descrizione :
 Funzione che all’aggiunta di un libro, appartenete ad una Serie, cerca nella serie
 un libro senza il successore ad eccezione del libro stesso, il quale diventera il
 predecessore del libro inserito. Di conseguenza saranno eliminate le disponibilita
@@ -37,7 +37,7 @@ Trigger attivato all’atto dell’inserimento di un libro e manda in esecuzione
 funzione Controllo Succ funz() per effettuare il possibile collegamento al prece-
 dente;
 
-- create function Remove_Disponibile_S_funz() returns trigger as
+- create function Remove_Disponibile_S_funz() returns trigger 
 Descrizione : Funzione che elimina la disponibilita di una serie da una piatta-
 forma nell’eventualita che il libro appartenete alla serie non sia piu disponibile
 sulla stessa piattaforma.
@@ -69,7 +69,7 @@ ga composta da codici di Acquisti, separati da un ’+’, estrapola dalla strin
 gli acquisti e elimina la disponibilita di un Articolo scientifico dagli Acquisti
 indicati.
 
-- create function ADD_view_procedure() returns trigger as
+- create function ADD_view_procedure() returns trigger 
 Descrizione : Funzione che dato un libro genera le collane riguardanti i suoi
 attributi: specificamente gli attributi di genere, autore e editore.
 
