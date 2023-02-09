@@ -5,4 +5,7 @@ Per quanto riguarda i diagrammi del progetto, per visualizzarli singolarmente, a
 
 La base di dati è stata realizata e testata con l'utilizzo del software "postgresql" versione "6.14".
 ### Funzionamento Progetto :
-- Creazione del database, create database bibliotecaDigitale;
+- Creazione del database, tramite il comando : "create database bibliotecaDigitale";
+- Definizione del modello fisico, presente in Progetto-OOBD_T1G22/Basi Dati/SQL/ModelloFisico.sql;
+- Definizione delle funzioni, presente in Progetto-OOBD_T1G22/Basi Dati/SQL/Funzioni_Procedure.sql;
+- Popolazione della base di dati, presente in Progetto-OOBD_T1G22/Basi Dati/SQL/PopolazioneBD.sql.
