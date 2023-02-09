@@ -2,6 +2,7 @@
 Progetto di Basi di Dati a.a. 2022-2023 Paolo Tedesco Giulio Ruopolo Fabrizio Quaranta N86004408 N86004285 N86004300 Id Gruppo: OOBD_T1G22 Data: 23/01/2023.
 La cartella "Sql" contiene la creazione delle tabelle, procedure/funzioni e l'apposita popolazione.
 Per quanto riguarda i diagrammi del progetto, per visualizzarli singolarmente, abbiamo provveduto con l'aggiunta delle cartella"Diagrammi".
+
 La base di dati è stata realizata e testata con l'utilizzo del software "postgresql" versione "6.14".
 ### Funzionamento Progetto :
 - Creazione del database, create database bibliotecaDigitale;
