@@ -1,1 +1,1 @@
-## Codice dell'latex
+## Codice latex
