@@ -1,1 +1,0 @@
-## Qui e presente il codice latex 
