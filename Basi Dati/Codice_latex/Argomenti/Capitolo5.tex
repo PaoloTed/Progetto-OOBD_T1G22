@@ -1,0 +1,396 @@
+
+\chapter {Descrizione Funzioni e trigger}
+
+\begin{itemize}
+
+\item\begin{verbatim} 
+create function ADD_Disponibile_S_funz() returns trigger as
+$$
+declare
+        f_codSerie libro.serie%type;
+        f_numLibriS serie.numLibri%type;
+        f_codSerieApp libro.serie%type;
+        f_numLibriAcq serie.numLibri%type;
+
+begin
+        select serie into f_codSerie
+        from libro 
+        where isbn = new.isbn;
+
+        select numLibri  into  f_numLibriS
+        from serie 
+        where codS = f_codSerie;
+
+        select codS into f_codSerieApp       
+        from disponibile_S
+        where codS = f_codSerie and codA = new.codA;
+
+        if f_codSerieApp is null then 
+            select count(*) into f_numLibriAcq
+            from disponibile_L
+            where codA = new.codA and isbn in 
+            (select isbn from libro where serie = f_codSerie);
+
+             if f_numLibriAcq = f_numLibriS then
+                     insert into disponibile_S(CodA,CodS) values 
+                     (new.codA, f_codSerie);
+        end if;
+        end if;
+return new;
+end;
+$$   
+language plpgsql;
+\end{verbatim} 
+{\bf Descrizione} :\\ 
+Funzione che controlla la disponibilità della serie di un libro reso acquistabile in una piattaforma.\\
+Nel caso in cui non sia segnata come acquistabile la serie nella piattaforma indicata, ma il numero dei libri di quella serie acquistabili sulla piattaforma coincide al numero di libri della serie, verrà aggiunta la disponibilità della serie ad essere acquista nella specifica piattaforma.
+
+\item\begin{verbatim}
+Create Trigger ADD_Disponibile_S after insert on Disponibile_L
+for each row
+    execute function ADD_Disponibile_S_funz();
+\end{verbatim}
+{\bf Descrizione} : \\
+Trigger  attivato all'atto dell'inserimento di un libro disponibile in una piattaforma, esso manda in esecuzione la funzione "ADD\_Disponibile\_S\_funz()";
+
+\item\begin{verbatim}
+create function Controllo_Succ_funz() returns trigger as
+$$
+declare
+f_codSerie libro.serie%type;
+f_libro_noSucc libro.isbn%type;
+f_numLibri serie.NumLibri%type;
+begin
+        f_codSerie := new.serie;
+        select isbn into f_libro_noSucc
+        from libro where successivo is null and serie = f_codSerie and isbn <>
+        new.isbn;
+ 	
+        if new.Serie is not null then 
+            delete from disponibile_S  
+            where codS =  new.Serie;    
+        select numLibri into f_numLibri    
+        from serie
+        where codS = new.Serie;
+
+        f_numLibri := f_numLibri +1;
+        update serie set numLibri = f_numLibri 
+        where codS = new.Serie;
+        if f_libro_noSucc is not null then 
+            update libro set successivo = new.isbn   
+            where isbn = f_libro_noSucc;
+        end if;
+        end if;
+return new;
+end;
+$$
+language plpgsql;
+\end{verbatim} 
+{\bf Descrizione} : \\
+Funzione che all'aggiunta di un libro, appartenete ad una Serie, cerca nella serie un libro senza il successore ad eccezione del libro stesso, il quale  diventerà il predecessore del libro inserito. Di conseguenza saranno eliminate le disponibilità della serie ad essere acquistate in ogni piattaforma.
+\item\begin{verbatim}
+create trigger Controllo_Succ after insert on Libro 
+for each row
+    execute function Controllo_Succ_funz();
+\end{verbatim}
+{\bf Descrizione} :  \\
+Trigger  attivato all'atto dell'inserimento di un libro e manda in esecuzione la funzione Controllo\_Succ\_funz() per effettuare il possibile collegamento al precedente;
+
+
+\item\begin{verbatim}
+create function Remove_Disponibile_S_funz() returns trigger as
+$$
+declare
+        f_codSerie libro.serie%type; 	
+begin
+        select serie into f_codSerie
+        from libro 
+        where isbn = old.isbn;
+        if f_codSerie is not null then 
+            Delete from Disponibile_S
+            Where codA = old.codA AND codS = f_codSerie;			
+        end if;
+return new;
+end;
+$$
+language plpgsql;
+\end{verbatim}
+{\bf Descrizione} : Funzione che elimina la disponibilità di una serie da una piattaforma nell'eventualità che il libro appartenete alla serie non sia più disponibile sulla stessa piattaforma.
+
+\item\begin{verbatim}
+Create Trigger InDisponibile_S after delete on Disponibile_L
+for each row
+    execute function Remove_Disponibile_S_funz();
+\end{verbatim}
+{\bf Descrizione} : Trigger che al momento di una indisponibilità di un libro, manda in esecuzione Remove\_Disponibile\_S\_funz() per vedere se il libro appartiene a una serie.
+
+
+
+
+\item\begin{verbatim}
+create procedure ADD_Disponibile_L
+(in f_ISBN_in libro.ISBN%type, in f_acqStrng_in varchar(255)) as
+$$
+declare   /*f_acqStrng_in e una stringa che contine più codA*/
+        f_acqStrngAppo VARCHAR(255);
+        f_pos INTEGER;
+        f_codACntrl disponibile_l.codA%type;
+        f_codA disponibile_l.codA%type;
+        f_acqStrngAppoINT INTEGER;
+	
+begin
+        f_acqStrngAppo := f_acqStrng_in;
+        while f_acqStrngAppo is not null loop
+		
+            f_pos := position('+' in f_acqStrngAppo);
+            if f_pos <> 0 then 
+		
+            f_codA := cast(substring(f_acqStrngAppo, 1, f_pos - 1) as INTEGER);
+            f_acqStrngAppo := replace(f_acqStrngAppo, concat(f_codA,'+'),'');
+			
+                select codA into f_codACntrl
+                from disponibile_L 
+                where ISBN = f_ISBN_in and codA = f_codA;
+
+                if f_codACntrl is null then 
+                    insert into disponibile_L(codA,ISBN) values 
+                    (f_codA,f_ISBN_in);
+                end if;
+            else
+			
+                f_acqStrngAppoINT := cast(f_acqStrngAppo as INTEGER);
+			
+                select codA into f_codACntrl
+                from disponibile_L 
+                where ISBN = f_ISBN_in and codA = f_acqStrngAppoINT;
+			
+                if f_codACntrl is null then 
+                    insert into disponibile_L(codA,ISBN) values 
+                    (f_acqStrngAppoINT,f_ISBN_in);
+                end if;
+                f_acqStrngAppo := NULL;
+            end if;
+        end loop;
+end;
+$$
+language plpgsql;
+\end{verbatim}
+{\bf Descrizione} : Funzione che dato in ingresso un libro e una stringa composta da codici di Acquisti, separati da un '+', estrapola dalla stringa gli acquisti e crea la disponibilità del libro negli Acquisti indicati.
+
+
+\item\begin{verbatim}
+create procedure ADD_Disponibile_A
+(in f_DOI_in  Articolo_Scientifico.DOI%type, in f_acqStrng_in varchar(255)) as
+$$
+declare
+        f_acqStrngAppo VARCHAR(255);
+        f_pos INTEGER;
+        f_codACntrl disponibile_l.codA%type;
+        f_codA disponibile_l.codA%type;
+        f_acqStrngAppoINT INTEGER;
+	
+begin
+        f_acqStrngAppo := f_acqStrng_in;
+        while f_acqStrngAppo is not null loop
+		
+            f_pos := position('+' in f_acqStrngAppo);
+            if f_pos <> 0 then 
+		
+              f_codA := cast(substring(f_acqStrngAppo, 1, f_pos - 1) as INTEGER);
+              f_acqStrngAppo := replace(f_acqStrngAppo, concat(f_codA,'+'),'');
+			
+             select codA into f_codACntrl
+             from disponibile_A 
+             where DOI = f_DOI_in and codA = f_codA;
+
+              if f_codACntrl is null then 
+                    insert into disponibile_A(codA,DOI) values 
+                    (f_codA,f_DOI_in);
+              end if;
+            else
+			
+                f_acqStrngAppoINT := cast(f_acqStrngAppo as INTEGER);
+			
+                select codA into f_codACntrl
+                from disponibile_A 
+                where DOI = f_DOI_in and codA = f_acqStrngAppoINT;
+			
+                if f_codACntrl is null then 
+                    insert into disponibile_A(codA,DOI) values 
+                    (f_acqStrngAppoINT,f_DOI_in);
+                end if;
+                f_acqStrngAppo := NULL;
+            end if;
+        end loop;
+end;
+$$
+language plpgsql;
+
+\end{verbatim}
+{\bf Descrizione} : Funzione che dato in ingresso un Articolo scientifico e una stringa composta da codici di Acquisti, separati da un '+', estrapola dalla stringa gli acquisti e crea la disponibilità di un Articolo scientifico per gli Acquisti indicati.
+
+
+\item\begin{verbatim}
+create procedure DEL_Disponibile_L
+(in f_ISBN_in libro.ISBN%type, in f_acqStrng_in varchar(255)) as
+$$
+declare
+        f_acqStrngAppo VARCHAR(255);
+        f_pos INTEGER;
+        f_codACntrl disponibile_l.codA%type;
+        f_codA disponibile_l.codA%type;
+        f_acqStrngAppoINT INTEGER;
+	
+begin
+        f_acqStrngAppo := f_acqStrng_in;
+        while f_acqStrngAppo is not null loop
+		
+            f_pos := position('+' in f_acqStrngAppo);
+            if f_pos <> 0 then 
+		
+             f_codA := cast(substring(f_acqStrngAppo, 1, f_pos - 1) as INTEGER);
+             f_acqStrngAppo := replace(f_acqStrngAppo, concat(f_codA,'+'),'');
+			
+                select codA into f_codACntrl
+                from disponibile_L 
+                where ISBN = f_ISBN_in and codA = f_codA;
+
+                if f_codACntrl is not null then 
+                    Delete from disponibile_L
+                    Where (CodA=f_codA AND  ISBN=f_ISBN_in);
+                end if;
+            else
+			
+                f_acqStrngAppoINT := cast(f_acqStrngAppo as INTEGER);
+			
+                select codA into f_codACntrl
+                from disponibile_L 
+                where ISBN = f_ISBN_in and codA = f_acqStrngAppoINT;
+			
+                if f_codACntrl is not null then 
+                    Delete from disponibile_L
+                    Where (CodA=f_acqStrngAppoINT AND  ISBN=f_ISBN_in);
+                end if;
+            f_acqStrngAppo := NULL;
+            end if;
+        end loop;
+end;
+$$
+language plpgsql;
+\end{verbatim}
+{\bf Descrizione} : Funzione che data in ingresso un libro e una stringa composta da codici di Acquisti, separati da un '+', estrapola dalla stringa  gli acquisti e elimina la disponibilità del libro per gli Acquisti specificati.
+
+
+\item\begin{verbatim}
+create procedure DEL_Disponibile_A
+(in f_DOI_in articolo_scientifico.DOI%type, in f_acqStrng_in varchar(255)) as
+$$
+declare
+        f_acqStrngAppo VARCHAR(255);
+        f_pos INTEGER;
+        f_codACntrl disponibile_A.codA%type;
+        f_codA disponibile_A.codA%type;
+        f_acqStrngAppoINT INTEGER;
+	
+begin
+        f_acqStrngAppo := f_acqStrng_in;
+        while f_acqStrngAppo is not null loop
+            f_pos := position('+' in f_acqStrngAppo);
+            if f_pos <> 0 then 
+		
+              f_codA := cast(substring(f_acqStrngAppo, 1, f_pos - 1) as INTEGER);
+              f_acqStrngAppo := replace(f_acqStrngAppo, concat(f_codA,'+'),'');
+			
+              select codA into f_codACntrl
+              from disponibile_A
+              where DOI = f_DOI_in and codA = f_codA;
+
+              if f_codACntrl is not null then 
+                    Delete from disponibile_A
+                    Where (CodA=f_codA AND  DOI=f_DOI_in);
+               end if;
+            else
+			
+                f_acqStrngAppoINT := cast(f_acqStrngAppo as INTEGER);
+			
+                select codA into f_codACntrl
+                from disponibile_A
+                where DOI = f_DOI_in and codA = f_acqStrngAppoINT;
+			
+                if f_codACntrl is not null then 
+                    Delete from disponibile_A
+                    Where (CodA=f_acqStrngAppoINT AND  DOI=f_DOI_in);
+                end if;
+                f_acqStrngAppo := NULL;
+            end if;
+        end loop;
+end;
+$$
+language plpgsql;
+\end{verbatim}
+{\bf Descrizione} : Funzione che data in ingresso un Articolo scientifico e una stringa composta da codici di Acquisti, separati da un '+', estrapola dalla stringa gli acquisti e elimina la disponibilità di un Articolo scientifico dagli Acquisti indicati.
+
+
+
+\item\begin{verbatim}
+create function ADD_view_procedure() returns trigger as
+$$
+declare
+        querySqlGenere varchar(1000) := '_collana as select * from libro
+        where genere =';
+        querySqlAutore varchar(1000) := '_collana as select * from libro
+        where autore =';
+        querySqlEditore varchar(1000) := '_collana as select * from libro 
+        where editore =';
+begin
+        execute 'create or replace view ' || 
+        replace(replace(new.genere,' ','_'),'.','_')
+        || querySqlGenere || '''' || new.genere || '''';
+
+
+        execute 'create or replace view '
+        || replace(replace(new.autore,' ','_'),'.','_')
+        || querySqlAutore || '''' || new.autore || '''';
+
+        
+        execute 'create or replace view ' || 
+        replace(replace(new.editore,' ','_'),'.','_') 
+        || querySqlEditore || '''' || new.editore || '''';
+return new;
+end;
+$$
+language plpgsql;
+
+\end{verbatim}
+{\bf Descrizione} : Funzione che dato un libro  genera le collane riguardanti i suoi attributi: specificamente gli attributi di genere, autore e editore.
+
+
+
+\item\begin{verbatim}
+create trigger ADD_view  after insert on libro
+for each row
+        execute function ADD_view_procedure();
+\end{verbatim}
+{\bf Descrizione} : Trigger che al momento di una inserimento di un libro, manda in esecuzione ADD\_view\_procedure(),che genera le collane relative agli attributi di quel libro.
+
+
+
+\item\begin{verbatim}
+create function show_Preferiti(in f_email_in utente.email%type)  
+returns table ( NomeSerie varchar(1000),
+NomeLuogoAcq varchar(1000)) 
+as 
+$$
+begin
+return query select se.nome,ac.Nome
+from preferiti as pr
+join serie as se on pr.codS = se.codS 
+join disponibile_S as ds on se.codS = ds.codS 
+join acquisto as ac on ds.codA = ac.codA
+where pr.email = f_email_in;
+end;
+$$
+language plpgsql;
+\end{verbatim}
+{\bf Descrizione} : Funzione che data un' email di un utente mostra i suoi libri preferiti che sono disponibili indicandone il luogo dove è possibile acquistarli.
+\end{itemize}
