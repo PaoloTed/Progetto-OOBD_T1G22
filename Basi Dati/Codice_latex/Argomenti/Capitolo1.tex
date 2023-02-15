@@ -1,0 +1,66 @@
+\chapter{Requisiti identificati}
+
+    \section{Analisi della realtà di interesse}
+    \Large 
+        Per la creazione e gestione del database relativo alla realtà di interesse proposta, iniziamo con la
+        prima fase:\\
+        {\bf L'analisi dei requisiti}, ossia l'individuazione delle entità e le associazioni presenti tra esse.\\ \\
+    \large
+        \guillemotleft 
+            Gli elementi che possono essere inclusi nella biblioteca digitali sono di due tipi: articoli
+            scientifici (o pubblicazioni) e libri (didattici o romanzi).
+        \guillemotright
+     \Large \\
+    Gli elementi cardine riscontrati nella base di dati sono le Entità "pubblicazioni", le quali derivazioni rappresentano le entità "libri" e "articoli scientifici" della biblioteca digitale. \\ \\
+    \large
+         \guillemotleft
+               Per le pubblicazioni, andare a definire in quale rivista (nome, argomento, anno di pubblicazione, responsabile della rivista) o in quale conferenza (luogo della conferenza, data di inizio e data fine conferenza, struttura organizzatrice e responsabile) è stato pubblicato.
+          \guillemotright\\
+    \Large
+    Per gli "articoli scientifici" andrà ad essere indicata tramite le entità "piattaforma" la modalità in cui essi sono stati presentati, da cui derivano le due uniche modalità, rappresentate con le entità "conferenza" o "rivista".
+    \\\\
+    \large
+        \guillemotleft 
+            libri (didattici o romanzi)
+        \guillemotright
+    \Large \\ 
+    A loro volta i libri possono essere di due tipologie: didattico o romanzo che verranno indicate come entità specializzanti di libro.\\
+   Per i "libri didattici" viene indicato il loro argomento tramite l'attributo "materia" oltre a gli altri attributi che saranno presenti anche per un romanzo.\\ \\
+   \large
+        \guillemotleft 
+            Un romanzo può avere anche uno o più seguiti.
+        \guillemotright
+    \Large \\ 
+    La gestione dell'appartenenza di un libro ad una serie è effettuata tramite l'entità "serie", inoltre per indicare la successione dei libri è presente un associazione ricorsiva "seguito" sull'entità libro.
+    \\ \\
+    \large
+        \guillemotleft 
+            Non appena una serie sarà disponibile per l’acquisto da almeno una libreria, il sistema notificherà la disponibilità all’utente.
+        \guillemotright
+    \Large \\ 
+    Il concetto di utente e la preferenza di una serie da parte di esso viene indicata tramite l'introduzione dell'entità "utente" la quale attraverso l'associazione "preferiti" con l'entità serie, permetterà la gestione della  notifica.
+    \\\\
+     \large
+        \guillemotleft 
+             Per i libri è importante definire la data di uscita del libro e la sala/libreria in cui è fatta una eventuale presentazione
+        \guillemotright
+    \Large \\ 
+     L'entità "libro" sarà supportata dall'entità "presentazione" per indicare l'uscita di esso in una "sala" o in una "libreria" le quali saranno entità derivate dall'Entità "presentazione".
+    \\ \\
+     \large
+        \guillemotleft 
+             Un libro può anche far parte di una collana, la quale può raggruppare tutte le pubblicazioni che condividono una determinata caratteristica 
+        \guillemotright
+    \Large \\
+    Il raggruppamento di libri simili ma non appartenenti alla stessa serie, è tracciato dall'entità "collana"
+    \\ \\
+    \large
+        \guillemotleft 
+        per ogni libro, è necessario specificare dove può essere acquistato (libreria, online).
+        \guillemotright
+    \Large \\  
+    In fine per ogni libro presente nella base di dati  per mostrare le modalità di acquisto 
+    disponibili viene introdotta l'entità "acquisto", la quale specifica se acquistabile da un sito online
+    indicato dall'entità "online" e/o da una libreria fisica rappresentato dall'entità "libreria".\\
+    Tale processo è stato applicato anche per gli "articoli scientifici", anche se non espressamente indicato, dato che anche un "articolo scientifico" può essere acquistato negli stessi modi di un "libro".
+    \\

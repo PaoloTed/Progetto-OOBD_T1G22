@@ -1,0 +1,67 @@
+
+\chapter{Mapping relazionale nel modello logico}
+\label{sec:Mapping}
+    \large
+    Dopo la fase di ristrutturazione possiamo passare alla fase di mapping delle entità e delle associazioni in relazioni.\\
+    Le entità verranno trasformate in relazioni aventi  stesso nome, attributi e chiave primaria.
+    Le associazioni invece verranno gestite in base alla loro molteplicità portando alla sostituzione di esse con nuove relazioni o aggiungendo alle relazioni eventuali chiavi esterne.
+    
+    \begin{itemize}
+        \item {\bf CONFERENZA} (\underline{CodC}, Nome, Struttura, Indirizzo, DataI, DataF, Responsabile)
+        
+        \item {\bf RIVISTA} (\underline{Nome}, \underline{Data}, Responsabile, Argomento);
+        
+        \item {\bf ARTICOLO\_SCIENTIFICO} (\underline{Doi}, Titolo, Genere, NumPagine, DataUscita, Descrizione, Fruizione, Editore, Autore,Lingua, Conferenza↑, NomeR↑, DataR↑);
+        \begin{itemize}
+            \item L'Attributo "Conferenza" è chiave esterna sull'attributo "Conferenza.CodC", data l'associazione "DIVULGATO\_C" tra "Articolo\_Scientifico" e "Conferenza" di molteplicità N a 1.
+            \item L'Attributo "NomeR" è chiave esterna sull'attributo "Rivista.Nome", data l'associazione "DIVULGATO\_R" tra "Articolo\_Scientifico" e "Rivista" di molteplicità N a 1.
+            \item L'Attributo "DataR" è chiave esterna sull'attributo "Rivista.Data", data l'associazione "DIVULGATO\_R" tra "Articolo\_Scientifico" e "Rivista" di molteplicità N a 1.
+        \end{itemize}
+               
+        \item {\bf ACQUISTO} (\underline{CodA}, Nome, Tipo, Url, Indirizzo);
+        
+        \item {\bf PRESENTAZIONE} (\underline{CodP}, Nome, Indirizzo, DataPresentazione, Tipo);
+        
+        \item {\bf SERIE} (\underline{CodS}, Nome, NumLibri, Completata); 
+        
+        \item {\bf LIBRO} (\underline{ISBN}, Titolo, Genere, NumPagine, Tipo, Materia, Descrizione, Fruizione, Editore, Autore, DataUscita,  Lingua, Successivo↑, Serie↑, Presentazione↑);
+            \begin{itemize}
+            \item L'Attributo "Successivo" è chiave esterna sull'attributo "Libro.ISBN", data l'associazione ricorsiva "SEGUITO" con "Libro" di molteplicità 1 a 1. 
+            \item L'Attributo "Serie" è chiave esterna sull'attributo "Serie.CodS", data l'associazione "APPARTENENZA" tra "Libro" e "Serie" di molteplicità N a 1.
+            \item L'Attributo "Presentazione" è chiave esterna sull'attributo "Presentazione.CodP",data l'associazione "ESPOSTO" tra "Libro" e "Presentazione" di molteplicità N a 1.
+        \end{itemize}
+
+        \item {\bf UTENTE} (\underline{Email}, Password, DataIscrizone);
+        
+        \item {\bf DISPONIBILE\_L} (\underline{CodA}, \underline{ISBN});
+        \begin{itemize}
+            \textit{Relazione derivata dalla associazione "DISPONIBILE\_L" di molteplicità N a N, tra "Libro" e "Acquisto".}
+            \item L'Attributo "CodA" è chiave esterna sull'attributo "Acquisto.CodA"
+            \item L'Attributo "ISBN" è chiave esterna sull'attributo "Libro.ISBN"
+        \end{itemize}
+        
+        \item {\bf DISPONIBILE\_S} (\underline{CodaA↑}, \underline{CodS↑});
+        \begin{itemize}
+            \textit{Relazione derivata dalla associazione "DISPONIBILE\_S" di molteplicità N a N, tra "Serie" e "Acquisto".}
+            \item L'Attributo "CodA" è chiave esterna sull'attributo "Acquisto.CodA",
+            \item L'Attributo "CodS" è chiave esterna sull'attributo "Serie.CodS"
+        \end{itemize}
+        
+       \item {\bf DISPONIBILE\_A} (\underline{CodA↑}, \underline{Doi↑});
+        \begin{itemize}
+            \textit{Relazione derivata dalla associazione "DISPONIBILE\_A" di molteplicità N a N, tra "Articolo\_Scientifico" e "Acquisto".}
+            \item L'Attributo "CodA" è chiave esterna sull'attributo "Acquisto.CodA",
+            \item L'Attributo "Doi" è chiave esterna sull'attributo "Articolo\_Scientifico.Doi"
+        \end{itemize}
+        
+        \item {\bf PREFERITI} (\underline{Email↑}, \underline{CodS↑});
+            \begin{itemize}
+              \textit{Relazione derivata dalla associazione "PREFERITI" di molteplicità N a N, tra "Utente" e "Serie".}   
+                \item L'Attributo "Email" è chiave esterna sull'attributo "Utente.Email"
+                \item L'Attributo "CodS" è chiave esterna sull'attributo "Serie.CodS".
+            \end{itemize}
+        
+    \end{itemize}
+
+    
+    
