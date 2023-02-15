@@ -78,6 +78,6 @@ attributi: specificamente gli attributi di genere, autore e editore.
 in esecuzione ADD view procedure(),che genera le collane relative agli attributi
 di quel libro.
 
-- create function show_Preferiti(in f_email_in utente.email%type)
+- create function show_Preferiti()
   - Descrizione : Funzione che data un’ email di un utente mostra i suoi libri
 preferiti che sono disponibili indicandone il luogo dove e possibile acquistarli.
