@@ -22,7 +22,7 @@ ad essere acquista nella specifica piattaforma.
 - Create Trigger ADD_Disponibile_S after insert on Disponibile_L
   - Descrizione :
 Trigger attivato all’atto dell’inserimento di un libro disponibile in una piatta-
-forma, esso manda in esecuzione la funzione ”ADD Disponibile S funz()”;
+forma, esso manda in esecuzione la funzione ”ADD_Disponibile_S_funz()”;
 
 - create function Controllo_Succ_funz() 
   - Descrizione :
@@ -34,7 +34,7 @@ della serie ad essere acquistate in ogni piattaforma.
 - create trigger Controllo_Succ after insert on Libro
   - Descrizione :
 Trigger attivato all’atto dell’inserimento di un libro e manda in esecuzione la
-funzione Controllo Succ funz() per effettuare il possibile collegamento al prece-
+funzione Controllo_Succ_funz() per effettuare il possibile collegamento al prece-
 dente;
 
 - create function Remove_Disponibile_S_funz() 
@@ -44,7 +44,7 @@ sulla stessa piattaforma.
 
 - Create Trigger InDisponibile_S after delete on Disponibile_L
   - Descrizione : Trigger che al momento di una indisponibilita di un libro, manda
-in esecuzione Remove Disponibile S funz() per vedere se il libro appartiene a
+in esecuzione Remove_Disponibile_S_funz() per vedere se il libro appartiene a
 una serie.
 
 - create procedure ADD_Disponibile_L
@@ -75,7 +75,7 @@ attributi: specificamente gli attributi di genere, autore e editore.
 
 - create trigger ADD_view after insert on libro
   - Descrizione : Trigger che al momento di una inserimento di un libro, manda
-in esecuzione ADD view procedure(),che genera le collane relative agli attributi
+in esecuzione ADD_view_procedure(),che genera le collane relative agli attributi
 di quel libro.
 
 - create function show_Preferiti()
