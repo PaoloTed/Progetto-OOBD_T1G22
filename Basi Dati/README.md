@@ -14,9 +14,9 @@ La base di dati è stata realizata e testata con l'utilizzo del software "postgr
 - Esecuzione del file sql contente la popolazione del DB "\i .../PopolazioneBD.sql";
 
 
-Definizione del modello fisico, presente in Progetto-OOBD_T1G22/Basi Dati/SQL/ModelloFisico.sql;
-Definizione delle funzioni, presente in Progetto-OOBD_T1G22/Basi Dati/SQL/Funzioni_Procedure.sql;
-Popolazione della base di dati, presente in Progetto-OOBD_T1G22/Basi Dati/SQL/PopolazioneBD.sql.
+### Definizione del modello fisico, presente in Progetto-OOBD_T1G22/Basi Dati/SQL/ModelloFisico.sql;
+### Definizione delle funzioni, presente in Progetto-OOBD_T1G22/Basi Dati/SQL/Funzioni_Procedure.sql;
+### Popolazione della base di dati, presente in Progetto-OOBD_T1G22/Basi Dati/SQL/PopolazioneBD.sql.
 ### Spiegazione delle Funzioni / Procedure e i loro Trigger: 
 
 - create function ADD_Disponibile_S_funz()
