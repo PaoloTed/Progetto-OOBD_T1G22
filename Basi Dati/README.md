@@ -4,12 +4,21 @@ La cartella "Sql" contiene la creazione delle tabelle, procedure/funzioni e l'ap
 Per quanto riguarda i diagrammi del progetto, per visualizzarli singolarmente, abbiamo provveduto con l'aggiunta delle cartella"Diagrammi".
 
 La base di dati è stata realizata e testata con l'utilizzo del software "postgresql" versione "6.14".
-### Funzionamento Progetto :
+### Funzionamento Progetto (Windows) :
+- Apertura della shell "SQL Shell (psql)";
+- Connessione alla base di dati postgres, risiedente sul localhost.
 - Creazione del database, tramite il comando : "create database bibliotecaDigitale";
-- Definizione del modello fisico, presente in Progetto-OOBD_T1G22/Basi Dati/SQL/ModelloFisico.sql;
-- Definizione delle funzioni, presente in Progetto-OOBD_T1G22/Basi Dati/SQL/Funzioni_Procedure.sql;
-- Popolazione della base di dati, presente in Progetto-OOBD_T1G22/Basi Dati/SQL/PopolazioneBD.sql.
+- Accesso alla base di dati con "\c bibliotecaDigitale";
+- Esecuzione del file sql contente il modello fisico "\i .../ModelloFisico.sql";
+- Esecuzione del file sql contente i vincoli "\i .../Funzioni_Procedure.sql";
+- Esecuzione del file sql contente la popolazione del DB "\i .../PopolazioneBD.sql";
+
+
+Definizione del modello fisico, presente in Progetto-OOBD_T1G22/Basi Dati/SQL/ModelloFisico.sql;
+Definizione delle funzioni, presente in Progetto-OOBD_T1G22/Basi Dati/SQL/Funzioni_Procedure.sql;
+Popolazione della base di dati, presente in Progetto-OOBD_T1G22/Basi Dati/SQL/PopolazioneBD.sql.
 ### Spiegazione delle Funzioni / Procedure e i loro Trigger: 
+
 - create function ADD_Disponibile_S_funz()
   - Descrizione :
 Funzione che controlla la disponibilita della serie di un libro reso acquistabile
