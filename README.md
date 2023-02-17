@@ -8,5 +8,5 @@ Progetto di Basi di Dati e Object Orentation a.a. 2022-2023, "Biblioteca Digital
 
 ## Info Gruppo: 
 - Id Gruppo: OOBD_T1G22;
-- Traccia : A;
+- Traccia : 1 ;
 - Capogruppo : Paolo Tedesco / N86004408;
