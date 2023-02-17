@@ -31,7 +31,7 @@ VALUES ('Harry Potter',0,FALSE);
 
 INSERT INTO Libro (ISBN, Titolo, Genere, NumPagine, Tipo, Materia, Descrizione, Fruizione, Editore, Autore, DataUscita, Lingua, Successivo, Serie, Presentazione)
 VALUES
-('9788831004169',' Harry Potter e la pietra filosofale','Fantasy',368,'Romanzo',NULL,'Il primo libro della saga di Harry Potter, riccamente illustrato a colori e con otto inediti elementi interattivi, tra cui la vera lettera di Hogwarts da aprire! Questa edizione vi farà vivere la storia di Harry Potter e la Pietra Filosofale come mai 
+('9788831004169','Harry Potter e la pietra filosofale','Fantasy',368,'Romanzo',NULL,'Il primo libro della saga di Harry Potter, riccamente illustrato a colori e con otto inediti elementi interattivi, tra cui la vera lettera di Hogwarts da aprire! Questa edizione vi farà vivere la storia di Harry Potter e la Pietra Filosofale come mai 
 prima d ora: la versione integrale del romanzo di J.K. Rowling è accompagnata in ogni pagina da splendide illustrazioni a colori e da otto elementi interattivi. Il lettore potrà aprire la lettera di Hogwarts come se fosse Harry, scoprire cosa si cela oltre il magico ingresso di Diagon Alley, far comparire un sontuoso banchetto nella Sala Grande e tanto altro.','Cartaceo,Digitale,AudioLibro ','Salani ','J.K. Rowling ','2020-11-26','Italiano',NULL,1,3);
 
 INSERT INTO Libro VALUES
