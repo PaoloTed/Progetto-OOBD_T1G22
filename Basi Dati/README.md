@@ -28,7 +28,7 @@ indicata, ma il numero dei libri di quella serie acquistabili sulla piattaforma
 coincide al numero di libri della serie, verra aggiunta la disponibilita della serie
 ad essere acquista nella specifica piattaforma.
 
-- Create Trigger ADD_Disponibile_S after insert on Disponibile_L
+- create Trigger ADD_Disponibile_S after insert on Disponibile_L
   - Descrizione :
 Trigger attivato all’atto dell’inserimento di un libro disponibile in una piatta-
 forma, esso manda in esecuzione la funzione ”ADD_Disponibile_S_funz()”;
