@@ -47,9 +47,9 @@ funzione Controllo_Succ_funz() per effettuare il possibile collegamento al prece
 dente;
 
 - create function Remove_Disponibile_S_funz() 
-  - Descrizione : Funzione che elimina la disponibilita di una serie da una piatta-
-forma nell’eventualita che il libro appartenete alla serie non sia piu disponibile
-sulla stessa piattaforma.
+  - Descrizione : Funzione che elimina la disponibilita di una serie da una piattaforma 
+  nell’eventualita che il libro appartenete alla serie non sia piu disponibile
+  sulla stessa piattaforma.
 
 - Create Trigger InDisponibile_S after delete on Disponibile_L
   - Descrizione : Trigger che al momento di una indisponibilita di un libro, manda
