@@ -43,8 +43,7 @@ della serie ad essere acquistate in ogni piattaforma.
 - create trigger Controllo_Succ after insert on Libro
   - Descrizione :
 Trigger attivato all’atto dell’inserimento di un libro e manda in esecuzione la
-funzione Controllo_Succ_funz() per effettuare il possibile collegamento al prece-
-dente;
+funzione Controllo_Succ_funz() per effettuare il possibile collegamento al precedente;
 
 - create function Remove_Disponibile_S_funz() 
   - Descrizione : Funzione che elimina la disponibilita di una serie da una piattaforma 
