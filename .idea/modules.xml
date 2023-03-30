@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Object-Orentation/JDBCv1/JDBCv1.iml" filepath="$PROJECT_DIR$/Object-Orentation/JDBCv1/JDBCv1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Progetto-OOBD_T1G22.iml" filepath="$PROJECT_DIR$/.idea/Progetto-OOBD_T1G22.iml" />
+    </modules>
+  </component>
+</project>

@@ -11,6 +11,7 @@ public class Main {
             Connection conn = Connessione.getConnection();
             Statement st = conn.createStatement();
             /*weewe*/
+            /*cviao*/
 
             /* Pericolo di SQL Injection
             String sqlps = "Select * from $table";
