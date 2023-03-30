@@ -12,6 +12,7 @@ public class Main {
             Statement st = conn.createStatement();
             /*weewe*/
             /*cviao*/
+            /*ciaogiulio*/
 
             /* Pericolo di SQL Injection
             String sqlps = "Select * from $table";
