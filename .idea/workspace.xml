@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0f3062c-e759-49ff-9312-578ab6d64d8e" name="Changes" comment="importazione">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="f0f3062c-e759-49ff-9312-578ab6d64d8e" name="Changes" comment="importazione" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,6 +55,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Universita\OO\progeto\Object-Orentation\LibreriaOnlineJava\src\main\java\com\example" />
       <recent name="D:\Universita\OO\progeto\Object-Orentation\LibreriaOnlineJava\src\main\java\Lib" />
       <recent name="D:\Universita\OO\progeto\Object-Orentation\LibreriaOnlineJava" />
     </key>
@@ -94,6 +93,7 @@
       <workItem from="1698769431685" duration="762000" />
       <workItem from="1698770419527" duration="347000" />
       <workItem from="1698772818453" duration="1349000" />
+      <workItem from="1698774538741" duration="193000" />
     </task>
     <task id="LOCAL-00001" summary="importazione">
       <created>1698773198524</created>
