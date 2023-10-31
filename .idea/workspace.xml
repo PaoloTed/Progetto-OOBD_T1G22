@@ -11,6 +11,13 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="PREVIEW_PUSH_PROTECTED_ONLY" value="true" />
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -81,7 +88,7 @@
       <workItem from="1697194664798" duration="5000" />
       <workItem from="1698769431685" duration="762000" />
       <workItem from="1698770419527" duration="347000" />
-      <workItem from="1698772818453" duration="647000" />
+      <workItem from="1698772818453" duration="976000" />
     </task>
     <task id="LOCAL-00001" summary="importazione">
       <created>1698773198524</created>
@@ -97,7 +104,21 @@
       <option name="project" value="LOCAL" />
       <updated>1698773354174</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="importazione">
+      <created>1698773479690</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1698773479690</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Bhooooooooooooooo">
+      <created>1698773757751</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1698773757751</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -116,6 +137,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="importazione" />
-    <option name="LAST_COMMIT_MESSAGE" value="importazione" />
+    <MESSAGE value="Bhooooooooooooooo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bhooooooooooooooo" />
   </component>
 </project>
