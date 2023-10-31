@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0f3062c-e759-49ff-9312-578ab6d64d8e" name="Changes" comment="importazione" />
+    <list default="true" id="f0f3062c-e759-49ff-9312-578ab6d64d8e" name="Changes" comment="importazione">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,6 +31,9 @@
         <option name="useMavenConfig" value="true" />
       </MavenGeneralSettings>
     </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2OQZA9W7uqgd00ZLt1gFSFwNGG9" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -88,7 +93,7 @@
       <workItem from="1697194664798" duration="5000" />
       <workItem from="1698769431685" duration="762000" />
       <workItem from="1698770419527" duration="347000" />
-      <workItem from="1698772818453" duration="976000" />
+      <workItem from="1698772818453" duration="1349000" />
     </task>
     <task id="LOCAL-00001" summary="importazione">
       <created>1698773198524</created>
@@ -118,7 +123,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698773757751</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="importazione">
+      <created>1698773982120</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1698773982120</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -129,15 +141,32 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="importazione" />
     <MESSAGE value="Bhooooooooooooooo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bhooooooooooooooo" />
+    <MESSAGE value="importazione" />
+    <option name="LAST_COMMIT_MESSAGE" value="importazione" />
   </component>
 </project>
