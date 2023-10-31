@@ -9,6 +9,7 @@ import java.io.IOException;
 
 public class HelloApplication extends Application {
     @Override
+    //ciao fabrizzios
     public void start(Stage stage) throws IOException {
         int a; // pippoASDADA
         int fabrizio;
