@@ -1,16 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.libreriaonlinejava.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </left>
+   <center>
+      <AnchorPane mouseTransparent="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #43b5dd; -fx-border-color: #efb078; -fx-border-width: 3;" BorderPane.alignment="CENTER">
+         <children>
+            <Text fill="WHITE" layoutX="3.0" layoutY="156.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" text="Username">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="3.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Button layoutX="174.0" layoutY="252.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="59.0" text="Log In" />
+            <Button layoutX="174.0" layoutY="316.0" mnemonicParsing="false" text="Sign Up" />
+            <TextField layoutX="98.0" layoutY="135.0" />
+            <TextField layoutX="98.0" layoutY="166.0" />
+            <Button layoutX="332.0" layoutY="355.0" mnemonicParsing="false" text="GUEST" />
+            <Text fill="WHITE" layoutX="143.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Non sei registrato ?" wrappingWidth="121.75131225585938" />
+            <ImageView fitHeight="85.0" fitWidth="106.0" layoutX="158.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../Users/Paolo%20Tedesco/Downloads/libro.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
