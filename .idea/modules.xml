@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-<<<<<<< HEAD
-      <module fileurl="file://$PROJECT_DIR$/Object-Orentation/JDBCv1/JDBCv1.iml" filepath="$PROJECT_DIR$/Object-Orentation/JDBCv1/JDBCv1.iml" />
-=======
->>>>>>> 5714965 (peppe)
-      <module fileurl="file://$PROJECT_DIR$/.idea/Progetto-OOBD_T1G22.iml" filepath="$PROJECT_DIR$/.idea/Progetto-OOBD_T1G22.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Object-Orentation/LibreriaOnlineJava/LibreriaOnlineJava.iml" filepath="$PROJECT_DIR$/Object-Orentation/LibreriaOnlineJava/LibreriaOnlineJava.iml" />
     </modules>
   </component>
 </project>

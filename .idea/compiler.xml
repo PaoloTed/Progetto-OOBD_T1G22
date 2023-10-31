@@ -6,11 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="LibreriaOnlineJava" />
         <module name="JDBCv1" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="JDBCv1" target="18" />
+      <module name="LibreriaOnlineJava" target="19" />
     </bytecodeTargetLevel>
   </component>
 </project>
