@@ -1,15 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" prefHeight="271.0" prefWidth="427.0" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/20.0.1" fx:controller="com.example.bibliotecadigitale.Controller.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
-
-    <Label fx:id="welcomeText" />
-    <Button onAction="#onHelloButtonClick" text="Hello!" />
-</VBox>
+<HBox maxHeight="500.0" maxWidth="500.0" minHeight="500.0" minWidth="500.0" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane maxHeight="500.0" maxWidth="200.0" minHeight="500.0" minWidth="200.0" prefHeight="500.0" prefWidth="200.0" style="-fx-border-color: brown;">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="22.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../photo/biblioteca.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+      <AnchorPane maxHeight="500.0" maxWidth="300.0" minHeight="500.0" minWidth="300.0" prefHeight="500.0" prefWidth="300.0" style="-fx-border-color: brown;">
+         <children>
+            <Text layoutX="39.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </Text>
+            <Text layoutX="39.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <ButtonBar layoutX="39.0" layoutY="241.0" prefHeight="40.0" prefWidth="200.0" />
+            <Button layoutX="92.0" layoutY="267.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="183.0" style="-fx-background-color: grey;" text="Log In">
+               <font>
+                  <Font name="Arial" size="15.0" />
+               </font>
+            </Button>
+            <TextField layoutX="149.0" layoutY="131.0" promptText="Username" />
+            <TextField layoutX="149.0" layoutY="173.0" promptText="Password" />
+            <Text layoutX="32.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Non sei un Utente ?">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </Text>
+            <Button layoutX="224.0" layoutY="321.0" mnemonicParsing="false" style="-fx-background-color: trasperent; -fx-cursor: hand;" text="Sign Up" textFill="#0800f8" underline="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children></AnchorPane>
+   </children>
+</HBox>
