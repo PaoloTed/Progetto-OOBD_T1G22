@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="857092c0-50cd-4a26-910e-af5d0e3d163b" name="Changes" comment="Interfaccia grafica">
-      <change afterPath="$PROJECT_DIR$/../LibreriaOnline/LibreriaOnlineJava/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LibreriaOnline/LibreriaOnlineJava/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LibreriaOnline/LibreriaOnlineJava/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LibreriaOnline/LibreriaOnlineJava/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LibreriaOnline/LibreriaOnlineJava/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LibreriaOnline/LibreriaOnlineJava/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/libreriaonlinejava/HelloController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/libreriaonlinejava/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LibreriaOnline/LibreriaOnlineJava/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/libreriaonlinejava/welcome.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="857092c0-50cd-4a26-910e-af5d0e3d163b" name="Changes" comment="Interfaccia grafica" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,7 +70,7 @@
       <workItem from="1697131269287" duration="734000" />
       <workItem from="1698772809799" duration="2629000" />
       <workItem from="1698849547527" duration="5905000" />
-      <workItem from="1698855523544" duration="327000" />
+      <workItem from="1698855523544" duration="696000" />
     </task>
     <task id="LOCAL-00001" summary="Inizio.">
       <created>1697131326964</created>
