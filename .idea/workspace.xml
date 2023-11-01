@@ -4,22 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0f3062c-e759-49ff-9312-578ab6d64d8e" name="Changes" comment="forse va">
-      <change afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnlineJava/src/main/java/Model/Acquisto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnlineJava/src/main/java/Model/ArticoloScientifico.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnlineJava/src/main/java/Model/Conferenza.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnlineJava/src/main/java/Model/Libreria.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnlineJava/src/main/java/Model/Libro.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnlineJava/src/main/java/Model/Online.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnlineJava/src/main/java/Model/Piattaforma.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnlineJava/src/main/java/Model/Presentazione.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnlineJava/src/main/java/Model/Pubblicazioni.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnlineJava/src/main/java/Model/Rivista.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnlineJava/src/main/java/Model/Serie.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnlineJava/src/main/java/Model/Utente.java" afterDir="false" />
+    <list default="true" id="f0f3062c-e759-49ff-9312-578ab6d64d8e" name="Changes" comment="Inizializzazione Conesiione e model">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnlineJava/src/main/java/Prova.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnlineJava/src/main/java/com/example/libreriaonlinejava/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnlineJava/src/main/java/com/example/libreriaonlinejava/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnlineJava/src/main/java/com/example/libreriaonlinejava/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnlineJava/src/main/java/Controller/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnlineJava/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnlineJava/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -119,7 +106,7 @@
       <workItem from="1698770419527" duration="347000" />
       <workItem from="1698772818453" duration="1349000" />
       <workItem from="1698774538741" duration="347000" />
-      <workItem from="1698846802899" duration="1747000" />
+      <workItem from="1698846802899" duration="2693000" />
     </task>
     <task id="LOCAL-00001" summary="importazione">
       <created>1698773198524</created>
@@ -170,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698774784939</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Inizializzazione Conesiione e model">
+      <created>1698848803358</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1698848803358</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,6 +202,7 @@
     <MESSAGE value="Bhooooooooooooooo" />
     <MESSAGE value="importazione" />
     <MESSAGE value="prova int a" />
-    <option name="LAST_COMMIT_MESSAGE" value="prova int a" />
+    <MESSAGE value="Inizializzazione Conesiione e model" />
+    <option name="LAST_COMMIT_MESSAGE" value="Inizializzazione Conesiione e model" />
   </component>
 </project>

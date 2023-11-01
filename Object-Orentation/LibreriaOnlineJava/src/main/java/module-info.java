@@ -6,4 +6,5 @@ module com.example.libreriaonlinejava {
 
     opens com.example.libreriaonlinejava to javafx.fxml;
     opens com.example.libreriaonlinejava.Model to javafx.fxml;
+    opens Controller to javafx.fxml;
 }
