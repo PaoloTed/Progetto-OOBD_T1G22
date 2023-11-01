@@ -1,8 +1,9 @@
 module com.example.libreriaonlinejava {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.sql;
 
 
     opens com.example.libreriaonlinejava to javafx.fxml;
-    exports com.example.libreriaonlinejava;
+    opens com.example.libreriaonlinejava.Model to javafx.fxml;
 }
