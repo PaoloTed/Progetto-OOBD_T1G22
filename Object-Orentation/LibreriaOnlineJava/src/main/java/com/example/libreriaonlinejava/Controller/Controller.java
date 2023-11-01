@@ -1,4 +1,4 @@
-package Controller;
+package com.example.libreriaonlinejava.Controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

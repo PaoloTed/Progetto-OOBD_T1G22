@@ -1,4 +1,4 @@
-package Model;
+package com.example.libreriaonlinejava.Model;
 
 public class Piattaforma {
     private String responsabile;

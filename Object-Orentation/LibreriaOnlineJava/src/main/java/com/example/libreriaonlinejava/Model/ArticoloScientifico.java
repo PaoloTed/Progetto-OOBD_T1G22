@@ -1,6 +1,4 @@
-package Model;
-
-import java.util.Date;
+package com.example.libreriaonlinejava.Model;
 
 public class ArticoloScientifico extends Pubblicazioni{
 

@@ -1,4 +1,4 @@
-package Connection;
+package com.example.libreriaonlinejava.Connection;
 import java.sql.*;
 
 public class Connessione {

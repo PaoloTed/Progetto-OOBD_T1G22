@@ -1,4 +1,4 @@
-package Model;
+package com.example.libreriaonlinejava.Model;
 
 import java.util.Date;
 
