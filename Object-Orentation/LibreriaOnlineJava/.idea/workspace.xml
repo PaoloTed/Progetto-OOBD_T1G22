@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="857092c0-50cd-4a26-910e-af5d0e3d163b" name="Changes" comment="Interfaccia grafica" />
+    <list default="true" id="857092c0-50cd-4a26-910e-af5d0e3d163b" name="Changes" comment="Interfaccia grafica">
+      <change beforePath="$PROJECT_DIR$/../LibreriaOnline/LibreriaOnlineJava/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LibreriaOnline/LibreriaOnlineJava/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,7 +73,7 @@
       <workItem from="1697131269287" duration="734000" />
       <workItem from="1698772809799" duration="2629000" />
       <workItem from="1698849547527" duration="5905000" />
-      <workItem from="1698855523544" duration="696000" />
+      <workItem from="1698855523544" duration="704000" />
     </task>
     <task id="LOCAL-00001" summary="Inizio.">
       <created>1697131326964</created>

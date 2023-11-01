@@ -1,10 +1,8 @@
-package com.example.libreriaonlinejava;
+package com.example.bibliotecadigitale;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.FocusModel;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;

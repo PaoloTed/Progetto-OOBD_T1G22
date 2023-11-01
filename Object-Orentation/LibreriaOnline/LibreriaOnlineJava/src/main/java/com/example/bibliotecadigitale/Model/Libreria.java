@@ -1,4 +1,4 @@
-package com.example.libreriaonlinejava.Model;
+package com.example.bibliotecadigitale.Model;
 
 public class Libreria extends Acquisto{
 
