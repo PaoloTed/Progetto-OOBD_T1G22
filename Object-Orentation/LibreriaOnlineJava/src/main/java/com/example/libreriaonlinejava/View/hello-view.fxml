@@ -10,6 +10,7 @@
 <?import javafx.scene.text.Text?>
 
 <fx:root type="AnchorPane" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   controller="com.example.libreriaonlinejava.Controller.Controller"
    <children>
       <BorderPane layoutX="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
          <left>
@@ -36,7 +37,7 @@
                   <Text fill="WHITE" layoutX="143.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Non sei registrato ?" wrappingWidth="121.75131225585938" />
                   <ImageView fitHeight="85.0" fitWidth="106.0" layoutX="158.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../Paolo%20Tedesco/Downloads/libro.png" />
+
                      </image>
                   </ImageView>
                </children>
