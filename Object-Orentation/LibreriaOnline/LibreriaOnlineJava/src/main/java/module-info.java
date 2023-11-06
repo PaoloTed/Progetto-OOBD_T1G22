@@ -4,8 +4,8 @@ module com.example.libreriaonlinejava {
     requires java.sql;
 
 
-    opens com.example.bibliotecadigitale to javafx.fxml;
-    exports com.example.bibliotecadigitale;
     exports com.example.bibliotecadigitale.Controller;
     opens com.example.bibliotecadigitale.Controller to javafx.fxml;
+    exports com.example.bibliotecadigitale;
+    opens com.example.bibliotecadigitale to javafx.fxml;
 }
