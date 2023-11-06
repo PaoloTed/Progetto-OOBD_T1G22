@@ -18,7 +18,7 @@ public class Main extends Application {
         double h = Screen.getPrimary().getVisualBounds().getHeight();
         */
         Scene scene = new Scene(fxmlLoader.load(), 500, 500);
-        //Impostare la finestra non ridimensionabile
+        //Impostare la finestra non ridimensionabile.
         stage.setResizable(false);
 
         stage.setTitle("Benvenuto nella libreria online!");
