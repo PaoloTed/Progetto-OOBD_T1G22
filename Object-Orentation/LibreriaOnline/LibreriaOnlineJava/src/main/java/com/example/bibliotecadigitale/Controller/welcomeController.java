@@ -13,9 +13,7 @@ public class welcomeController {
     private Button ButtonLoginIn;
     @FXML
     public Utente LoginUtente(ActionEvent PressLogin) {
-        Utente UtenteLogin= new Utente();
-
-
-        return UtenteLogin;
+        System.out.println("Login");
+        return null;
     }
 }
