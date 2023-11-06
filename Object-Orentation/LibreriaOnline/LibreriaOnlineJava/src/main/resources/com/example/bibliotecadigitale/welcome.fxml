@@ -50,7 +50,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <PasswordField layoutX="149.0" layoutY="173.0" />
+            <PasswordField layoutX="149.0" layoutY="173.0" promptText="Password" />
          </children></AnchorPane>
    </children>
 </HBox>
