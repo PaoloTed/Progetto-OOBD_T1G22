@@ -29,7 +29,7 @@ public class InfoStage
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(scenaFxml)));
         stage = new Stage();
         stage.setScene(new Scene(root, 300, 100));
-        stage.setTitle("ErroreControllore in Libreria digitale");
+        stage.setTitle("ErrorController in Libreria digitale");
         stage.setResizable(false);
         stage.show();
     }

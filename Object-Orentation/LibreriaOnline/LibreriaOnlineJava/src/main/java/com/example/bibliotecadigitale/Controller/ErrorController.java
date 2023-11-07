@@ -6,7 +6,7 @@ import javafx.stage.Stage;
 
 
 
-public class ErroreControllore
+public class ErrorController
 {
     public void ok(ActionEvent buttonOk) {
 

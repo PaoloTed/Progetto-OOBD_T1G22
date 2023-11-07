@@ -47,7 +47,7 @@ public class WelcomeController {
             }
 
         }catch (Exception e){
-            System.out.println("ErroreControllore query test");
+            System.out.println("ErrorController query test");
         }
     }
 

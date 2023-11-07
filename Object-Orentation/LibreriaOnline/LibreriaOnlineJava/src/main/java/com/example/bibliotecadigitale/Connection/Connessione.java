@@ -12,7 +12,7 @@ public class Connessione {
         try{
             Class.forName(className);
         }catch(ClassNotFoundException e1){}
-        //connessione alla base di dati
+        //connessione alla base di dati libreriaOnline
         try {
             con = DriverManager.getConnection(url,user,password);
         } catch (SQLException e) {
