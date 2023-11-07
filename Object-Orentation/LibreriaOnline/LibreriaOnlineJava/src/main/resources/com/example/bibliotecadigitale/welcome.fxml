@@ -45,7 +45,7 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </Text>
-            <Button fx:id="ButtonSingUp" layoutX="224.0" layoutY="321.0" mnemonicParsing="false" onAction="#SingUpUtente" style="-fx-background-color: trasperent; -fx-cursor: hand;" text="Sign Up" textFill="#0800f8" underline="true">
+            <Button fx:id="ButtonSingUp" defaultButton="true" layoutX="224.0" layoutY="321.0" mnemonicParsing="false" onAction="#SingUpUtente" style="-fx-background-color: trasperent; -fx-cursor: hand;" text="Sign Up" textFill="#0800f8" underline="true">
                <font>
                   <Font size="14.0" />
                </font>
