@@ -3,6 +3,7 @@ package com.example.bibliotecadigitale.Controller;
 
 import com.example.bibliotecadigitale.Connection.Connessione;
 import com.example.bibliotecadigitale.Model.Utente;
+import com.example.bibliotecadigitale.MyStage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +20,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Objects;
 
 public class welcomeController {
 
@@ -59,13 +61,24 @@ public class welcomeController {
     private Scene scene;
     private Parent root;
 
-    public void SingUpUtente(ActionEvent PressSingUp) throws IOException {
-        root= FXMLLoader.load(getClass().getResource("singUp.fxml"));
-        stage = (Stage)((Node)PressSingUp.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    public void SingUpUtente(ActionEvent PressSingUp) throws IOException
+    {
+        //root = FXMLLoader.load(getClass().getResource("singUp.fxml"));
+        //stage = (Stage)((Node)PressSingUp.getSource()).getScene().getWindow();
+        //scene = new Scene(root);
+        //stage.setScene(scene);
+        //stage.show();
+
+        Stage stage= (Stage) ((Node) PressSingUp.getSource()).getScene().getWindow();
+        stage.close();
+
+        MyStage myStage = new MyStage();
+
+        myStage.CreateStage("singUP.fxml");
+
     }
+
+
 
 
 
