@@ -7,7 +7,6 @@
     <list default="true" id="f0f3062c-e759-49ff-9312-578ab6d64d8e" name="Changes" comment="Identificatori bottoni e text">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/welcomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/welcomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/welcome.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/welcome.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,11 +65,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Universita\OO\Progetto-OOBD_T1G22\Object-Orentation\LibreriaOnline\LibreriaOnlineJava\src\main\java\com\example\bibliotecadigitale\Model" />
       <recent name="D:\Universita\OO\Progetto-OOBD_T1G22\Object-Orentation\LibreriaOnline\LibreriaOnlineJava\src\main\java" />
       <recent name="D:\Universita\OO\progeto\Object-Orentation\LibreriaOnlineJava\src\main\java\com\example\libreriaonlinejava" />
       <recent name="D:\Universita\OO\progeto\Object-Orentation\LibreriaOnlineJava\src\main\java\com\example" />
       <recent name="D:\Universita\OO\progeto\Object-Orentation\LibreriaOnlineJava\src\main\java\Lib" />
-      <recent name="D:\Universita\OO\progeto\Object-Orentation\LibreriaOnlineJava" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.example.libreriaonlinejava" />
@@ -98,6 +97,9 @@
       <workItem from="1698855628919" duration="98000" />
       <workItem from="1699292671092" duration="110000" />
       <workItem from="1699292784379" duration="2553000" />
+      <workItem from="1699298423657" duration="1112000" />
+      <workItem from="1699299643326" duration="1280000" />
+      <workItem from="1699369636522" duration="313000" />
     </task>
     <task id="LOCAL-00001" summary="importazione">
       <created>1698773198524</created>
