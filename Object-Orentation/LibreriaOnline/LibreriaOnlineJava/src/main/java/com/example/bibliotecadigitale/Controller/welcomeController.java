@@ -15,6 +15,9 @@ import java.sql.Statement;
 
 public class welcomeController {
 
+
+    @FXML
+    public Button ButtonSingUp;
     @FXML
     public Button ButtonLoginIn;
     //txtUsernameField è il fxid,(dentro code in scene builder) del campo di testo dove l'utente inserisce il suo username sadasd
@@ -49,4 +52,22 @@ public class welcomeController {
         }
 
     }
+
+
+    public Utente SingUpUtente(ActionEvent PressSingUp) {
+
+
+
+        return null;
+    }
+
+
+
+
+
+
+
+
+
+
 }
