@@ -13,16 +13,11 @@ public class welcomeController {
     @FXML
     public Button ButtonLoginIn;
     //txtUsernameField è il fxid,(dentro code in scene builder) del campo di testo dove l'utente inserisce il suo username
-    @FXML
     public TextField txtUsernameField;
-
-    @FXML
-    public TextField txtPasswordField;
 
     @FXML
     public Utente LoginUtente(ActionEvent PressLogin) {
         txtUsernameField.setText("ciao");
-
         System.out.println("Login");
         return null;
     }
