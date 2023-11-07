@@ -45,16 +45,25 @@ public class SignUpController
             String query = "INSERT INTO Utente VALUES('"+ emailUser +"','"+ passwordUser +"','"+date+"');" ;
             Statement stat = conn.createStatement();
             ResultSet rs = stat.executeQuery(query);
+            int size = rs.getInt(1);
+            if (size == 1 )
+            {
+                Stage stage= (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.close();
+                InfoStage myStage = new InfoStage();
+                myStage.SwitchStage("welcome.fxml");
 
+            }
+            else
+            {
+                //segnale di errore
+            }
 
         }catch (Exception e){
             System.out.println("Errore query test");
         }
 
-        Stage stage= (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.close();
-        InfoStage myStage = new InfoStage();
-        myStage.SwitchStage("welcome.fxml");
+
 
     }
 }

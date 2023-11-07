@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0f3062c-e759-49ff-9312-578ab6d64d8e" name="Changes" comment="Reggister quasi fatto, dimenticata una cosa">
+    <list default="true" id="f0f3062c-e759-49ff-9312-578ab6d64d8e" name="Changes" comment="provando a fare la reggistrazione">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/SignUpController.java" afterDir="false" />
     </list>
@@ -120,7 +120,7 @@
       <workItem from="1698855628919" duration="98000" />
       <workItem from="1699292671092" duration="110000" />
       <workItem from="1699292784379" duration="2553000" />
-      <workItem from="1699379801866" duration="1604000" />
+      <workItem from="1699379801866" duration="2227000" />
     </task>
     <task id="LOCAL-00001" summary="importazione">
       <created>1698773198524</created>
@@ -248,7 +248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699380804787</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="provando a fare la reggistrazione">
+      <created>1699381498159</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1699381498159</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -297,6 +304,7 @@
     <MESSAGE value="Classe stage" />
     <MESSAGE value="Reggister quasi fatto" />
     <MESSAGE value="Reggister quasi fatto, dimenticata una cosa" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reggister quasi fatto, dimenticata una cosa" />
+    <MESSAGE value="provando a fare la reggistrazione" />
+    <option name="LAST_COMMIT_MESSAGE" value="provando a fare la reggistrazione" />
   </component>
 </project>
