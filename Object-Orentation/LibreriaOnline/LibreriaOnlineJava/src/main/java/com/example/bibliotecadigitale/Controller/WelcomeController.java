@@ -6,8 +6,6 @@ import com.example.bibliotecadigitale.InfoStage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -18,7 +16,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 
-public class welcomeController {
+public class WelcomeController {
 
 
     @FXML
@@ -49,7 +47,7 @@ public class welcomeController {
             }
 
         }catch (Exception e){
-            System.out.println("Errore query test");
+            System.out.println("ErroreControllore query test");
         }
     }
 
@@ -57,6 +55,8 @@ public class welcomeController {
 
     public void SingUpUtente(ActionEvent PressSingUp) throws IOException
     {
+
+
         Stage stage= (Stage) ((Node) PressSingUp.getSource()).getScene().getWindow();
         stage.close();
         InfoStage myStage = new InfoStage();

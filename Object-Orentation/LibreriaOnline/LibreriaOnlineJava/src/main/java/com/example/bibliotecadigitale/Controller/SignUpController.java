@@ -56,11 +56,12 @@ public class SignUpController
             }
             else
             {
-                //segnale di errore
+                InfoStage myStage = new InfoStage();
+                myStage.errorStage("erroreReggister.fxml");
             }
 
         }catch (Exception e){
-            System.out.println("Errore query test");
+            System.out.println("ErroreControllore query test");
         }
 
 
