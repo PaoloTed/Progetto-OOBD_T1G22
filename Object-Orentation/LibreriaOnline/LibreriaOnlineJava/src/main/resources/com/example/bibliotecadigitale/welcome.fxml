@@ -23,7 +23,7 @@
          </children></AnchorPane>
       <AnchorPane maxHeight="500.0" maxWidth="300.0" minHeight="500.0" minWidth="300.0" prefHeight="500.0" prefWidth="300.0" style="-fx-border-color: brown;">
          <children>
-            <Text layoutX="39.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
+            <Text layoutX="39.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>

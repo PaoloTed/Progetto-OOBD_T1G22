@@ -16,7 +16,7 @@ public class welcomeController {
     public TextField txtUsernameField;
 
     @FXML
-    public Utente LoginUtente(ActionEvent PressLogin) {
+    public Utente LoginUtente() {
         txtUsernameField.setText("ciao");
         System.out.println("Login");
         return null;
