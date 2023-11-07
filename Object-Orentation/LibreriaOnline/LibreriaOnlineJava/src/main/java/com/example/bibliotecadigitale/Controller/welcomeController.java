@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class welcomeController {
@@ -20,19 +21,14 @@ public class welcomeController {
     public Button ButtonSingUp;
     @FXML
     public Button ButtonLoginIn;
-    //txtUsernameField è il fxid,(dentro code in scene builder) del campo di testo dove l'utente inserisce il suo username sadasd
+    //txtEmailField è il fxid,(dentro code in scene builder) del campo di testo dove l'utente inserisce il suo username sadasd
     @FXML
     public TextField txtEmailField;
 
     @FXML
     public TextField txtPasswordField;
 
-    @FXML
-    public Utente LoginUtente(ActionEvent PressLogin) {
-        txtEmailField.setText("ciao");
-        System.out.println("Login");
-        return null;
-    }
+
     @FXML
     public void TestConn(ActionEvent PressLogin) {
         Connection conn = Connessione.getConnection();
@@ -47,10 +43,10 @@ public class welcomeController {
                 System.out.println("Email: " + rs.getString("email"));
                 System.out.println("Password: " + rs.getString("password"));
             }
+
         }catch (Exception e){
             System.out.println("Errore query test");
         }
-
     }
 
 
