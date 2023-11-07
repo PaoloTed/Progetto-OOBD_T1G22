@@ -39,7 +39,7 @@
                   <Font name="Arial" size="15.0" />
                </font>
             </Button>
-            <TextField layoutX="149.0" layoutY="131.0" promptText="Username" />
+            <TextField id="txtUsername" fx:id="txtUsernameField" layoutX="149.0" layoutY="131.0" promptText="Username" />
             <Text layoutX="32.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Non sei un Utente ?">
                <font>
                   <Font name="Arial" size="20.0" />
