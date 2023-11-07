@@ -12,7 +12,7 @@ public class welcomeController {
 
     @FXML
     public Button ButtonLoginIn;
-    //txtUsernameField è il fxid,(dentro code in scene builder) del campo di testo dove l'utente inserisce il suo username
+    //txtUsernameField è il fxid,(dentro code in scene builder) del campo di testo dove l'utente inserisce il suo username sadasd
     public TextField txtUsernameField;
 
     @FXML
