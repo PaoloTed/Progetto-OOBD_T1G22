@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.SignUpController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.SignUpController">
    <children>
-      <ButtonBar layoutX="224.0" layoutY="160.0" prefHeight="40.0" prefWidth="200.0" />
-      <Button layoutX="274.0" layoutY="264.0" mnemonicParsing="false" text="Dietro" />
+      <Button layoutX="27.0" layoutY="312.0" minWidth="100.0" mnemonicParsing="false" onAction="#back" text="Back" />
+      <Button layoutX="383.0" layoutY="312.0" minWidth="100.0" mnemonicParsing="false" text="Reggister" />
+      <Text layoutX="98.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
+      <Text layoutX="88.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
+      <TextField layoutX="234.0" layoutY="113.0" />
+      <TextField layoutX="234.0" layoutY="173.0" />
    </children>
 </AnchorPane>

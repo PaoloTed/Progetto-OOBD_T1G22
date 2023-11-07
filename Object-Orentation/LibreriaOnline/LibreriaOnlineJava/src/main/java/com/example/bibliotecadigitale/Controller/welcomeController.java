@@ -53,17 +53,13 @@ public class welcomeController {
         }
     }
 
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
+
 
     public void SingUpUtente(ActionEvent PressSingUp) throws IOException
     {
         Stage stage= (Stage) ((Node) PressSingUp.getSource()).getScene().getWindow();
         stage.close();
-
         InfoStage myStage = new InfoStage();
-
         myStage.SwitchStage("singUP.fxml");
 
     }
