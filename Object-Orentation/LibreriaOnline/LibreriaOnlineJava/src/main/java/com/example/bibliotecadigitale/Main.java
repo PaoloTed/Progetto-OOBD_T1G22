@@ -11,7 +11,7 @@ import java.io.IOException;
 public class Main extends Application {
     @Override
     public void start(Stage welcomeStage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("welcome2.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("welcome.fxml"));
         //Prova per prendere la risoluzione dello schermo e settare la finestra di conseguenza
         /*
         double w = Screen.getPrimary().getVisualBounds().getWidth();

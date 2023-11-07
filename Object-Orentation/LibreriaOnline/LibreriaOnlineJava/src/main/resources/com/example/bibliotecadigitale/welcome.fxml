@@ -4,14 +4,13 @@
 <?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
+<AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.welcomeController">
 <HBox fillHeight="false" maxHeight="500.0" maxWidth="500.0" minHeight="500.0" minWidth="500.0" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane maxHeight="500.0" maxWidth="200.0" minHeight="500.0" minWidth="200.0" prefHeight="500.0" prefWidth="200.0" style="-fx-border-color: brown;">
@@ -35,12 +34,12 @@
                </font>
             </Text>
             <ButtonBar layoutX="39.0" layoutY="241.0" prefHeight="40.0" prefWidth="200.0" />
-            <Button layoutX="92.0" layoutY="267.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="183.0" style="-fx-background-color: grey;" text="Log In">
+            <Button defaultButton="true" layoutX="92.0" layoutY="267.0" mnemonicParsing="false" onAction="#LoginUtente" prefHeight="25.0" prefWidth="183.0" style="-fx-background-color: grey;" text="Log In">
                <font>
                   <Font name="Arial" size="15.0" />
                </font>
             </Button>
-            <TextField layoutX="149.0" layoutY="131.0" promptText="Username" />
+            <TextField id="txtUsername" fx:id="txtUsernameField" layoutX="149.0" layoutY="131.0" promptText="Username" />
             <Text layoutX="32.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Non sei un Utente ?">
                <font>
                   <Font name="Arial" size="20.0" />
@@ -55,3 +54,4 @@
          </children></AnchorPane>
    </children>
 </HBox>
+</AnchorPane>
