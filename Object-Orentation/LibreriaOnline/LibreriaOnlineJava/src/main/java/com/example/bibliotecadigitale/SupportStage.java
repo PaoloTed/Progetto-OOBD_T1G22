@@ -26,6 +26,16 @@ public class SupportStage
         stage.setTitle("Libreria digitale");
         stage.setResizable(false);
         stage.show();
+        textErrore.setText("ciao");//fixare
+    }
+
+    public String checkEmilPassword(String EmailOPassword)
+    {
+        if( !EmailOPassword.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$") || EmailOPassword.isEmpty())
+        {
+            return null;
+        }
+        return EmailOPassword;
     }
 
     @FXML
