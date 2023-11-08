@@ -38,8 +38,17 @@ public class SignUpController
     {
         String date = Instant.now().atZone(ZoneOffset.UTC).format(DateTimeFormatter.ISO_LOCAL_DATE);
         Connection conn = Connessione.getConnection();
+
         String emailUser = txtSignUpEmailField.getText();
         String passwordUser = txtSignUpPasswordField.getText();
+        /*
+        //regex se il campo email è vuoto o non è una email e se la password è vuota
+        if(txtSignUpEmailField.getText().isEmpty() || !txtSignUpEmailField.getText().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$") || txtSignUpPasswordField.getText().isEmpty())
+        {
+            System.out.println("Inserire una email valida e/o una password valida");
+        }
+        */
+
         System.out.println("Connessione effettuata");
 
         try {
