@@ -33,18 +33,14 @@ public class WelcomeController {
 
     @FXML
     public void LogIn(ActionEvent PressLogin) {
-        String emailUser;
-        String passwordUser;
         Connection conn = Connessione.getConnection();
         if(conn != null) {
-            System.out.println("Connessione  effettuata");
-            if(txtEmailField.getText().isEmpty() || txtPasswordField.getText().isEmpty()) {
-                System.out.println("I campi Email e Password non possono essere vuoti");
-            }
-            else {
-                emailUser = txtEmailField.getText();
-                passwordUser = txtPasswordField.getText();
-                System.out.println("Email e password inserite");
+            SupportStage support = new SupportStage();
+            String emailUser = txtEmailField.getText();
+            String passwordUser = txtPasswordField.getText();
+            if(support.checkEmailPassword(emailUser, passwordUser))
+            {
+
                 try {
                     String query = "SELECT * FROM utente WHERE email = '" + emailUser + "' AND password = '" + passwordUser + "'";
                     Statement stat = conn.createStatement();
@@ -57,9 +53,19 @@ public class WelcomeController {
                     System.out.println("ErrorController query test");
                 }
             }
+            else
+            {
+                Stage stage = (Stage) ((Node) PressLogin.getSource()).getScene().getWindow();
+                stage.close();
+                try {
+                    support.switchStage("errorSignUp.fxml");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         }
         else {
-            System.out.println("Connessione effettuata");
+            System.out.println("Connessione non effettuata con successo");
         }
     }
 
