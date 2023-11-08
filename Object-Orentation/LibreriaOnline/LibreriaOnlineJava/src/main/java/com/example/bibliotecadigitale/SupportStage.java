@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -17,7 +18,7 @@ public class SupportStage
 
     private Stage stage;
 
-    public void SwitchStage(String scenaNew) throws IOException
+    public void switchStage(String scenaNew) throws IOException
     {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(scenaNew)));
         stage = new Stage();
@@ -28,7 +29,7 @@ public class SupportStage
     }
 
     @FXML
-    public TextField textField;
+    public Text textErrore;
 
     public void errorStage(String scenaFxml, String tipoErrore) throws IOException
     {
@@ -37,7 +38,6 @@ public class SupportStage
         stage.setScene(new Scene(root, 300, 100));
         stage.setTitle("Libreria digitale");
         stage.setResizable(false);
-        textField.setText(textField.getText()+":"+tipoErrore);
         stage.show();
     }
 

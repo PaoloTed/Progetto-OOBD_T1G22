@@ -70,7 +70,7 @@ public class WelcomeController {
         Stage stage= (Stage) ((Node) PressSingUp.getSource()).getScene().getWindow();
         stage.close();
         SupportStage myStage = new SupportStage();
-        myStage.SwitchStage("singUP.fxml");
+        myStage.switchStage("singUP.fxml");
     }
 
 

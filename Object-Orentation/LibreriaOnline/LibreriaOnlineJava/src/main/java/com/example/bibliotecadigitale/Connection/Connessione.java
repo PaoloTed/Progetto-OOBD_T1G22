@@ -14,7 +14,7 @@ public class Connessione {
         }catch(ClassNotFoundException e1){}
         //connessione alla base di dati libreriaOnline
         try {
-            con = DriverManager.getConnection(url,user,password);
+            con = DriverManager.getConnection(url,user,password);//forse segalare al prof di aggiungere il drive al proggetto
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

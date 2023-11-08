@@ -30,7 +30,7 @@ public class SignUpController
         Stage stage= (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
         SupportStage myStage = new SupportStage();
-        myStage.SwitchStage("welcome.fxml");
+        myStage.switchStage("welcome.fxml");
 
     }
 
@@ -60,7 +60,8 @@ public class SignUpController
                 int sizeTest = rsTest.getInt(1);
 
                 //Se nessun utente ha la stessa email, inserire l'utente nel database
-                if (sizeTest == 0) {
+                if (sizeTest == 0)
+                {
                     String query = "INSERT INTO Utente VALUES('" + emailUser + "','" + passwordUser + "','" + date + "');";
 
                     try {
@@ -72,9 +73,10 @@ public class SignUpController
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     stage.close();
                     SupportStage myStage = new SupportStage();
-                    myStage.SwitchStage("welcome.fxml");
-                //Se esiste già un utente con la stessa email, mostrare un messaggio di errore
-                } else {
+                    myStage.switchStage("welcome.fxml");
+                }
+                else //Se esiste già un utente con la stessa email, mostrare un messaggio di errore
+                {
                     SupportStage myStage = new SupportStage();
                     myStage.errorStage("errorSignUp.fxml","Email gia in uso");
                 }
