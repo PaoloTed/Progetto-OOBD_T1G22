@@ -12,7 +12,6 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="JDBCv1" target="18" />
-      <module name="LibreriaOnlineJava" target="19" />
     </bytecodeTargetLevel>
   </component>
 </project>

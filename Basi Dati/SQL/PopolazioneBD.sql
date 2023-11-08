@@ -1,11 +1,11 @@
 INSERT INTO Presentazione (Nome, Indirizzo, DataPresentazione, Tipo)
-VALUES ('Il primo Libro di Cicciogamer', 'Via Luca Giordano, 5, 00197 Roma','16-6-2020','Libreria');
+VALUES ('Il primo Libro di Cicciogamer', 'Via Luca Giordano, 5, 00197 Roma','2020-6-16','Libreria');
 
 INSERT INTO Presentazione (Nome, Indirizzo, DataPresentazione, Tipo)
-VALUES ('Il primo Libro del trono di spade','Via tre spade, 3, 33333 Genova', '31-10-2013','Sala');
+VALUES ('Il primo Libro del trono di spade','Via tre spade, 3, 33333 Genova', '2013-10-31','Sala');
 
 INSERT INTO Presentazione (Nome, Indirizzo, DataPresentazione, Tipo)
-VALUES ('Il primo libro di harry potter','Via Pavone, 100, 72891 Torino', '26-11-2020','Libreria');
+VALUES ('Il primo libro di harry potter','Via Pavone, 100, 72891 Torino', '2020-11-26','Libreria');
 
 INSERT INTO Presentazione (Nome, Indirizzo, DataPresentazione, Tipo)
 VALUES ('Il primo libro del diario di una schiappa','Via Messina, 30, 29471 Fiumicino', '2008-02-08','Sala');
@@ -20,10 +20,10 @@ INSERT INTO Presentazione (Nome, Indirizzo, DataPresentazione, Tipo)
 VALUES ('Il quarto libro di harry potter','Via Joao Felix, 9, 48290 Milano', '2021-01-23','Sala');
 
 INSERT INTO Presentazione (Nome, Indirizzo, DataPresentazione, Tipo)
-VALUES ('Il libro : In cucina con ciccio','Via Ochoa, 1, 84121 Salerno', '15-6-2020','Libreria');
+VALUES ('Il libro : In cucina con ciccio','Via Ochoa, 1, 84121 Salerno', '2020-6-15','Libreria');
 
 INSERT INTO Presentazione (Nome, Indirizzo, DataPresentazione, Tipo)
-VALUES ('Il Quarto libro del trono di spade','Via Mario Rui, 8, 88888 Napoli', '18-5-2020','Sala');
+VALUES ('Il Quarto libro del trono di spade','Via Mario Rui, 8, 88888 Napoli', '2020-5-18','Sala');
 
 
 INSERT INTO SERIE (Nome, NumLibri, Completata)
@@ -132,7 +132,7 @@ INSERT INTO Libro VALUES
 ('9788891808561','Io Me e Me Stesso', 'Psicologico',141,'Didattico','Psicologia','Siete pronti a esclamare babbabia leggendo le pagine di questo libro? Qui ho raccolto i miei pensieri, i miei segreti e i consigli da condividere con voi che mi supportate ogni giorno. Buona lettura e un abbraccio dal vostro CiccioGamer89.','Cartaceo','Mondadori','Mirko Alessandrini','2017-01-31','Italiano',NULL,NULL,1); 
 
 INSERT INTO Libro VALUES 
-('9788891808562','CiccioGamer89 Presenta Fortnite. Trucchi e Segreti', 'Psicologico',141,'Didattico','Psicologia', 'Vuoi iniziare a collezionare Vittorie Reali in Battaglia Reale di Fortnite? Ti svegli nel cuore della notte con l''incubo di una missione di Salvare il Mondo? Paracadute sulle spalle e Let''s Go! È il momento di aprire la guida firmata da CiccioGamer89 – uno dei gamer più famosi d''Italia e uno tra i migliori giocatori di Fortnite su YouTube. 144 pagine dedicate ai segreti del fenomeno videoludico del nostro tempo, con centinaia di consigli esplosivi per potenziare le tue abilità!.','Cartaceo', 'Magazzini Salani','Mirko Alessandrini', '27-09-2018','Italiano',NULL,NULL,NULL); 
+('9788891808562','CiccioGamer89 Presenta Fortnite. Trucchi e Segreti', 'Psicologico',141,'Didattico','Psicologia', 'Vuoi iniziare a collezionare Vittorie Reali in Battaglia Reale di Fortnite? Ti svegli nel cuore della notte con l''incubo di una missione di Salvare il Mondo? Paracadute sulle spalle e Let''s Go! È il momento di aprire la guida firmata da CiccioGamer89 – uno dei gamer più famosi d''Italia e uno tra i migliori giocatori di Fortnite su YouTube. 144 pagine dedicate ai segreti del fenomeno videoludico del nostro tempo, con centinaia di consigli esplosivi per potenziare le tue abilità!.','Cartaceo', 'Magazzini Salani','Mirko Alessandrini', '2018-09-27','Italiano',NULL,NULL,NULL);
 
 INSERT INTO Libro VALUES 
 ('9788891808563','In cucina con Ciccio', 'Ricettacolo',135 ,'Didattico', 'Cucina' , 'I burger più gustosi ma non solo: dai mini sandwich avocado e salmone alla pagnotta all''amatriciana, dai supplì con stracciata di bufala ai funghi ripieni, per finire con un bel maritozzo alla panna. Un viaggio tra i fornelli della mia cucina con tutte le mie ricette preferite, pronte a sorprenderci grazie allo speciale tocco alla Ciccio.
@@ -191,8 +191,8 @@ INSERT INTO Rivista VALUES('Le scienze','2022-06-10','Paola Tedesca','Observatio
 
 
 
-INSERT INTO Conferenza (Nome, Struttura, Indirizzo, DataI, DataF, Responsabile)
-VALUES ('Italian Technology Conference', 'Palazzo dei Congressi', 'Via Raffaello Sanzio, 5, 00197 Roma', '2022-10-01', '2022-10-03', 'Mario Rossi');
+INSERT INTO Conferenza (CodC, Nome, Struttura, Indirizzo, DataI, DataF, Responsabile)
+VALUES ('','Italian Technology Conference', 'Palazzo dei Congressi', 'Via Raffaello Sanzio, 5, 00197 Roma', '2022-10-01', '2022-10-03', 'Mario Rossi');
 
 INSERT INTO Conferenza (Nome, Struttura, Indirizzo, DataI, DataF, Responsabile)
 VALUES ('AI and Machine Learning Summit', 'Fiera Milano', 'Strada Statale del Sempione, 28, 20017 Milano', '2022-12-01', '2022-12-03', 'Stefano Bianchi');

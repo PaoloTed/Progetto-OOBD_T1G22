@@ -34,7 +34,7 @@
                </font>
             </Text>
             <ButtonBar layoutX="39.0" layoutY="241.0" prefHeight="40.0" prefWidth="200.0" />
-            <Button fx:id="ButtonLoginIn" defaultButton="true" layoutX="92.0" layoutY="267.0" mnemonicParsing="false" onAction="#TestConn" prefHeight="25.0" prefWidth="183.0" style="-fx-background-color: grey;" text="Log In">
+            <Button fx:id="ButtonLoginIn" defaultButton="true" layoutX="92.0" layoutY="267.0" mnemonicParsing="false" onAction="#LogIn" prefHeight="25.0" prefWidth="183.0" style="-fx-background-color: grey;" text="Log In">
                <font>
                   <Font name="Arial" size="15.0" />
                </font>

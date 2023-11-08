@@ -26,7 +26,6 @@ public class Main extends Application {
         welcomeStage.show();
 
     }
-        // A cosa serve questo metodo?
         public static void main (String[]args){
             launch();
         }
