@@ -1,6 +1,6 @@
 Create Table Conferenza
 (
-CodC VARCHAR(255) NOT NULL,
+CodC INTEGER NOT NULL,
 Nome VARCHAR(255) NOT NULL,
 Struttura VARCHAR(255) NOT NULL,
 Indirizzo VARCHAR(255) NOT NULL,
@@ -67,7 +67,7 @@ or
 
 Create Table Acquisto
 (
-CodA VARCHAR(255) NOT NULL,
+CodA INTEGER NOT NULL,
 Nome VARCHAR(255),
 Tipo VARCHAR(20) NOT NULL,
 URL VARCHAR(255),
@@ -84,7 +84,7 @@ PRIMARY KEY(CodA),
 
 Create Table Presentazione
 (
-	CodP VARCHAR(255) NOT NULL,
+	CodP INTEGER NOT NULL,
 	Nome VARCHAR(255) NOT NULL,
 	Indirizzo VARCHAR(255) NOT NULL,
 	DataPresentazione DATE NOT NULL,
@@ -97,7 +97,7 @@ CONSTRAINT Presentazione_pk
 	
 Create Table Serie
 (
-CodS VARCHAR(255) NOT NULL,
+CodS INTEGER NOT NULL,
 Nome VARCHAR NOT NULL,
 NumLibri INTEGER DEFAULT 0,
 Completata Boolean DEFAULT FALSE,
