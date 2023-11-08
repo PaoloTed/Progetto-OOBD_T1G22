@@ -56,11 +56,13 @@ public class WelcomeController {
                 }
             }
             else {
+
+
                 //Se l'email e/o la password non rispettano i requisiti, mostrare un messaggio di errore
                 Stage stage = (Stage) ((Node) PressLogin.getSource()).getScene().getWindow();
                 stage.close();
                 try {
-                    support.switchStage("errorStage.fxml");
+                    support.errorStage("errorStage.fxml","Inserire una email e/o password valida");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -78,7 +80,7 @@ public class WelcomeController {
     {
         Stage stage= (Stage) ((Node) PressSingUp.getSource()).getScene().getWindow();
         stage.close();
-        support.switchStage("singUP.fxml");
+        support.switchStage("signUp.fxml");
     }
 
 

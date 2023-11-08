@@ -68,7 +68,7 @@ public class SignUpController
                             //Se esiste già un utente con la stessa email, mostrare un messaggio di errore
                             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                             stage.close();
-                            support.switchStage("errorStage.fxml");
+                            support.errorStage("errorStage.fxml","Esiste gia un utente con la stessa email");
                         }
                     }
                 } catch (Exception e) {
@@ -82,7 +82,7 @@ public class SignUpController
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.close();
                 try {
-                    support.switchStage("errorStage.fxml");
+                    support.errorStage("errorStage.fxml","Inserisci una email valida e/o una password valida");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }

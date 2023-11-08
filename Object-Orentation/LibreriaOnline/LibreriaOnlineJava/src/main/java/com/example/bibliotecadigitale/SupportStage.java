@@ -1,15 +1,10 @@
 package com.example.bibliotecadigitale;
 
-import com.example.bibliotecadigitale.Controller.errorSignUpController;
-import javafx.fxml.FXML;
+import com.example.bibliotecadigitale.Controller.errorStageController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.SubScene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -46,13 +41,17 @@ public class SupportStage
 
     public void errorStage(String scenaFxml, String tipoErrore) throws IOException
     {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(scenaFxml)));
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaFxml)));
+        Parent root = loader.load();
         stage = new Stage();
-        stage.setScene(new Scene(root, 300, 100));
+        stage.setScene(new Scene(root, 500, 500));
         stage.setAlwaysOnTop(true);
         stage.setTitle("Libreria digitale");
         stage.setResizable(false);
         stage.show();
+
+        errorStageController controller = loader.getController();
+        controller.setText(tipoErrore);
 
     }
 

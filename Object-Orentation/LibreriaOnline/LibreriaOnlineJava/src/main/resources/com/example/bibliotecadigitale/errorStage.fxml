@@ -8,10 +8,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.errorSignUpController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.errorStageController">
    <children>
-      <Button fx:id="buttonOk" layoutX="124.0" layoutY="61.0" mnemonicParsing="false" onAction="#setText" text="OK" />
-      <Text fx:id="textErrore" layoutX="74.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qualcosa è andato storto" />
-      <Label fx:id="labelError" layoutX="96.0" layoutY="6.0" text="Label" />
+      <Button layoutX="90.0" layoutY="312.0" minWidth="100.0" mnemonicParsing="false"  text="Back" AnchorPane.leftAnchor="100.0" />
+      <Button layoutX="309.0" layoutY="312.0" minWidth="100.0" mnemonicParsing="false"  prefHeight="25.0" prefWidth="67.0" text="Register" AnchorPane.rightAnchor="100.0"  />
+      <Text layoutX="100.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" AnchorPane.leftAnchor="100.0" />
+      <Text layoutX="115.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" AnchorPane.leftAnchor="100.0" />
+      <TextField fx:id="txtSignUpEmailField" layoutX="260.0" layoutY="113.0" promptText="Email" AnchorPane.rightAnchor="100.0" />
+      <PasswordField fx:id="txtSignUpPasswordField" layoutX="260.0" layoutY="182.0" promptText="Password" AnchorPane.rightAnchor="100.0" />
    </children>
 </AnchorPane>
