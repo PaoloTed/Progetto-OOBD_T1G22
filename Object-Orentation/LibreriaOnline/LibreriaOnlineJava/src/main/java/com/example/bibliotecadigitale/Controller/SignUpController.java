@@ -34,34 +34,44 @@ public class SignUpController
 
     }
 
-    public void signUpDone(ActionEvent event) throws IOException
+    public void signUpDone(ActionEvent event)
     {
         String date = Instant.now().atZone(ZoneOffset.UTC).format(DateTimeFormatter.ISO_LOCAL_DATE);
         Connection conn = Connessione.getConnection();
         String emailUser = txtSignUpEmailField.getText();
         String passwordUser = txtSignUpPasswordField.getText();
         System.out.println("Connessione effettuata");
+
         try {
-            String query = "INSERT INTO Utente VALUES('"+ emailUser +"','"+ passwordUser +"','"+date+"');" ;
-            Statement stat = conn.createStatement();
-            ResultSet rs = stat.executeQuery(query);
-            int size = rs.getInt(1);
-            if (size == 1 )
-            {
-                Stage stage= (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.close();
-                InfoStage myStage = new InfoStage();
-                myStage.SwitchStage("welcome.fxml");
+            //Controllare prima che non esista già un utente con la stessa email
+            String queryTest = "SELECT COUNT(*) FROM Utente WHERE email = '"+ emailUser +"';";
+            Statement statTest = conn.createStatement();
+            ResultSet rsTest = statTest.executeQuery(queryTest);
+            while(rsTest.next()) {
+                int sizeTest = rsTest.getInt(1);
 
-            }
-            else
-            {
-                InfoStage myStage = new InfoStage();
-                myStage.errorStage("errorSignUp.fxml");
-            }
+                //Se nessun utente ha la stessa email, inserire l'utente nel database
+                if (sizeTest == 0) {
+                    String query = "INSERT INTO Utente VALUES('" + emailUser + "','" + passwordUser + "','" + date + "');";
 
+                    try {
+                        Statement stat = conn.createStatement();
+                        stat.executeQuery(query);
+                    } catch (Exception e) {
+                        System.out.println("Errore Controllore query insert");
+                    }
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    stage.close();
+                    InfoStage myStage = new InfoStage();
+                    myStage.SwitchStage("welcome.fxml");
+                //Se esiste già un utente con la stessa email, mostrare un messaggio di errore
+                } else {
+                    InfoStage myStage = new InfoStage();
+                    myStage.errorStage("errorSignUp.fxml");
+                }
+            }
         }catch (Exception e){
-            System.out.println("Errore Controllore query test");
+            System.out.println("Errore Controllore query select");
         }
 
 

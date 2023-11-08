@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.SignUpController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.SignUpController">
    <children>
       <Button layoutX="90.0" layoutY="312.0" minWidth="100.0" mnemonicParsing="false" onAction="#back" text="Back" AnchorPane.leftAnchor="100.0" />
       <Button layoutX="309.0" layoutY="312.0" minWidth="100.0" mnemonicParsing="false" onAction="#signUpDone" prefHeight="25.0" prefWidth="67.0" text="Register" AnchorPane.rightAnchor="100.0" />
       <Text layoutX="100.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" AnchorPane.leftAnchor="100.0" />
       <Text layoutX="115.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" AnchorPane.leftAnchor="100.0" />
-      <TextField layoutX="260.0" layoutY="113.0" promptText="Email" AnchorPane.rightAnchor="100.0" />
-      <PasswordField layoutX="260.0" layoutY="182.0" promptText="Password" AnchorPane.rightAnchor="100.0" />
+      <TextField fx:id="txtSignUpEmailField" layoutX="260.0" layoutY="113.0" promptText="Email" AnchorPane.rightAnchor="100.0" />
+      <PasswordField fx:id="txtSignUpPasswordField" layoutX="260.0" layoutY="182.0" promptText="Password" AnchorPane.rightAnchor="100.0" />
    </children>
 </AnchorPane>
