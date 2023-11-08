@@ -2,7 +2,7 @@ package com.example.bibliotecadigitale.Controller;
 
 
 import com.example.bibliotecadigitale.Connection.Connessione;
-import com.example.bibliotecadigitale.InfoStage;
+import com.example.bibliotecadigitale.SupportStage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -69,7 +69,7 @@ public class WelcomeController {
     {
         Stage stage= (Stage) ((Node) PressSingUp.getSource()).getScene().getWindow();
         stage.close();
-        InfoStage myStage = new InfoStage();
+        SupportStage myStage = new SupportStage();
         myStage.SwitchStage("singUP.fxml");
     }
 

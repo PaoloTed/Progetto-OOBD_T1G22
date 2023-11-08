@@ -1,7 +1,7 @@
 package com.example.bibliotecadigitale.Controller;
 
 import com.example.bibliotecadigitale.Connection.Connessione;
-import com.example.bibliotecadigitale.InfoStage;
+import com.example.bibliotecadigitale.SupportStage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -29,7 +29,7 @@ public class SignUpController
     {
         Stage stage= (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
-        InfoStage myStage = new InfoStage();
+        SupportStage myStage = new SupportStage();
         myStage.SwitchStage("welcome.fxml");
 
     }
@@ -71,12 +71,12 @@ public class SignUpController
                     }
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     stage.close();
-                    InfoStage myStage = new InfoStage();
+                    SupportStage myStage = new SupportStage();
                     myStage.SwitchStage("welcome.fxml");
                 //Se esiste già un utente con la stessa email, mostrare un messaggio di errore
                 } else {
-                    InfoStage myStage = new InfoStage();
-                    myStage.errorStage("errorSignUp.fxml");
+                    SupportStage myStage = new SupportStage();
+                    myStage.errorStage("errorSignUp.fxml","Email gia in uso");
                 }
             }
         }catch (Exception e){
