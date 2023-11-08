@@ -2,10 +2,10 @@ package com.example.bibliotecadigitale.Connection;
 import java.sql.*;
 
 public class Connessione {
-    public static String url ="jdbc:postgresql://localhost:5432/libreriaOnline";
+    public static String url ="jdbc:postgresql://bibliotecadigitaledb.ctxlqsbyivq2.eu-north-1.rds.amazonaws.com:5432/bibliotecadigitaledb";
     public static String className = "org.postgre.Driver";
-    public static String user = "paolo";
-    public static String password = "pippo";
+    public static String user = "postgres";
+    public static String password = "password chiedi a paolo";
     private static Connection con;
 
     static{
