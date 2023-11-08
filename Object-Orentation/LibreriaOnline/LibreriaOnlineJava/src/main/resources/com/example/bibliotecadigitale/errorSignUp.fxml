@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="100.0" minWidth="300.0" prefHeight="100.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.ErrorController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="100.0" minWidth="300.0" prefHeight="100.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.ErrorController">
    <children>
       <Button layoutX="124.0" layoutY="61.0" mnemonicParsing="false" onAction="#ok" text="OK" />
-      <Text layoutX="41.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La registrazione non e' andata a buon fine" />
+      <Text fx:id="textErrore" layoutX="74.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qualcosa è andato storto" />
    </children>
 </AnchorPane>
