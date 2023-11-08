@@ -1,33 +1,33 @@
-INSERT INTO Presentazione (Nome, Indirizzo, DataPresentazione, Tipo)
-VALUES ('Il primo Libro di Cicciogamer', 'Via Luca Giordano, 5, 00197 Roma','2020-6-16','Libreria');
+INSERT INTO Presentazione (CodP,Nome, Indirizzo, DataPresentazione, Tipo)
+VALUES (1,'Il primo Libro di Cicciogamer', 'Via Luca Giordano, 5, 00197 Roma','2020-6-16','Libreria');
 
-INSERT INTO Presentazione (Nome, Indirizzo, DataPresentazione, Tipo)
-VALUES ('Il primo Libro del trono di spade','Via tre spade, 3, 33333 Genova', '2013-10-31','Sala');
+INSERT INTO Presentazione (CodP,Nome, Indirizzo, DataPresentazione, Tipo)
+VALUES (2,'Il primo Libro del trono di spade','Via tre spade, 3, 33333 Genova', '2013-10-31','Sala');
 
-INSERT INTO Presentazione (Nome, Indirizzo, DataPresentazione, Tipo)
-VALUES ('Il primo libro di harry potter','Via Pavone, 100, 72891 Torino', '2020-11-26','Libreria');
+INSERT INTO Presentazione (CodP,Nome, Indirizzo, DataPresentazione, Tipo)
+VALUES (3,'Il primo libro di harry potter','Via Pavone, 100, 72891 Torino', '2020-11-26','Libreria');
 
-INSERT INTO Presentazione (Nome, Indirizzo, DataPresentazione, Tipo)
-VALUES ('Il primo libro del diario di una schiappa','Via Messina, 30, 29471 Fiumicino', '2008-02-08','Sala');
+INSERT INTO Presentazione (CodP,Nome, Indirizzo, DataPresentazione, Tipo)
+VALUES (4,'Il primo libro del diario di una schiappa','Via Messina, 30, 29471 Fiumicino', '2008-02-08','Sala');
 
-INSERT INTO Presentazione (Nome, Indirizzo, DataPresentazione, Tipo)
-VALUES ('Il secondo libro del diario di una schiappa','Via Beethoven, 0, 289503 Caltanissetta', '2014-01-10','Libreria');
+INSERT INTO Presentazione (CodP,Nome, Indirizzo, DataPresentazione, Tipo)
+VALUES (5,'Il secondo libro del diario di una schiappa','Via Beethoven, 0, 289503 Caltanissetta', '2014-01-10','Libreria');
 
-INSERT INTO Presentazione (Nome, Indirizzo, DataPresentazione, Tipo)
-VALUES ('Il terzo libro del diario di una schiappa','Via Luca Giordani, 10, 19700 Lazio', '2018-06-10','Libreria');
+INSERT INTO Presentazione (CodP,Nome, Indirizzo, DataPresentazione, Tipo)
+VALUES (6,'Il terzo libro del diario di una schiappa','Via Luca Giordani, 10, 19700 Lazio', '2018-06-10','Libreria');
 
-INSERT INTO Presentazione (Nome, Indirizzo, DataPresentazione, Tipo)
-VALUES ('Il quarto libro di harry potter','Via Joao Felix, 9, 48290 Milano', '2021-01-23','Sala');
+INSERT INTO Presentazione (CodP,Nome, Indirizzo, DataPresentazione, Tipo)
+VALUES (7,'Il quarto libro di harry potter','Via Joao Felix, 9, 48290 Milano', '2021-01-23','Sala');
 
-INSERT INTO Presentazione (Nome, Indirizzo, DataPresentazione, Tipo)
-VALUES ('Il libro : In cucina con ciccio','Via Ochoa, 1, 84121 Salerno', '2020-6-15','Libreria');
+INSERT INTO Presentazione (CodP,Nome, Indirizzo, DataPresentazione, Tipo)
+VALUES (8,'Il libro : In cucina con ciccio','Via Ochoa, 1, 84121 Salerno', '2020-6-15','Libreria');
 
-INSERT INTO Presentazione (Nome, Indirizzo, DataPresentazione, Tipo)
-VALUES ('Il Quarto libro del trono di spade','Via Mario Rui, 8, 88888 Napoli', '2020-5-18','Sala');
+INSERT INTO Presentazione (CodP,Nome, Indirizzo, DataPresentazione, Tipo)
+VALUES (9,'Il Quarto libro del trono di spade','Via Mario Rui, 8, 88888 Napoli', '2020-5-18','Sala');
 
 
-INSERT INTO SERIE (Nome, NumLibri, Completata)
-VALUES ('Harry Potter',0,FALSE);
+INSERT INTO SERIE (CodS,Nome, NumLibri, Completata)
+VALUES (1,'Harry Potter',0,FALSE);
 
 INSERT INTO Libro (ISBN, Titolo, Genere, NumPagine, Tipo, Materia, Descrizione, Fruizione, Editore, Autore, DataUscita, Lingua, Successivo, Serie, Presentazione)
 VALUES
@@ -54,8 +54,8 @@ INSERT INTO Libro VALUES
 UPDATE Serie set completata = TRUE  where nome = 'Harry Potter';
 
 
-INSERT INTO SERIE(Nome, NumLibri, Completata)
-VALUES ('Diario di una Schiappa',0,'False');
+INSERT INTO SERIE(CodS,Nome, NumLibri, Completata)
+VALUES (2,'Diario di una Schiappa',0,'False');
 
 INSERT INTO Libro VALUES
 ('9788880334392','Diario di una schiappa 1','Commedia',217,'Romanzo',NULL,'Essere un ragazzo è un mestiere complicato. Nessuno lo sa meglio di Greg, che ha iniziato la scuola media e si ritrova in mezzo a compagni ben più alti di lui, ragazze improvvisamente grandi, e amici con cui è così difficile andare d''accordo. Diario di una schiappa è la cronaca delle avventure quotidiane di un imprevedibile e simpaticissimo antieroe','Cartaceo,Digitale,AudioLibro','Il Castoro','Jeff Kinney','2008-02-05','Italiano',NULL,'2',4);
@@ -102,31 +102,28 @@ INSERT INTO Libro VALUES
 INSERT INTO Libro VALUES
 ('9788869668319','Diario di una schiappa 15. Colpito e Affondato!','Commedia',224,'Romanzo',NULL ,'Torna Greg, la Schiappa più amata del mondo. Quando Greg Heffley e la sua famiglia partono per un viaggio in camper attraverso il Paese, sono pronti a vivere la più grande delle avventure. Ma le cose non vanno secondo i piani e così si ritrovano bloccati in un campeggio che non è esattamente un paradiso estivo. Le cose peggiorano quando un violento nubifragio li scaraventa in un mare di guai... come faranno a salvare la loro vacanza?','Cartaceo,Digitale,AudioLibro','Il Castoro','Jeff Kinney','2021-10-15','Italiano',NULL,2,NULL);
 
-UPDATE Serie set completata =  'T' where nome = 'Diario di una Schiappa';
+UPDATE Serie set completata = TRUE where nome = 'Diario di una Schiappa';
 
 
 
 
-INSERT INTO SERIE(Nome, NumLibri, Completata)
-VALUES ('Il trono di spade',0,'False');
+INSERT INTO SERIE(CodS,Nome, NumLibri, Completata)
+VALUES (3,'Il trono di spade',0,'False');
 
 
-/*Libri*/
+/*Libri Il Trono di Spade*/
 INSERT INTO Libro VALUES ('9788804662136','Il trono di spade (Vol. 1)','Avventura',425,'Romanzo',NULL,' In una terra fuori dal mondo, dove le estati e gli inverni possono durare intere generazioni, sta per esplodere un immane conflitto. Sul Trono di Spade, nel Sud caldo e opulento, siede Robert Baratheon. L''ha conquistato dopo una guerra sanguinosa, togliendolo all''ultimo, folle re della dinastia Targaryen, i signori dei draghi. Ma il suo potere è ora minacciato: all''estremo Nord la Barriera – una muraglia eretta per difendere il regno da animali primordiali e, soprattutto, dagli Estranei – sembra vacillare. Si dice che gli Estranei siano scomparsi da secoli. Ma se è vero, chi sono quegli esseri con gli occhi così innaturalmente azzurri e gelidi, nascosti tra le ombre delle foreste, che rubano la vita o il sonno a chi ha la mala di incontrarli?', 'Cartaceo,Digitale,AudioLibro', 'Mondadori','George R. R. Martin', '2012-01-24','Italiano',NULL,3,2); 
 
 INSERT INTO Libro VALUES ('9788804662137','Il trono di spade (Vol. 2)','Avventura',425,'Romanzo',NULL,'Nel cielo dei Sette Regni, travolti da una guerra devastatrice, compare una cometa dal sinistro colore di sangue. È l ennesimo segno di immani catastrofi che si stanno preparando?  estate dell abbondanza sembra ormai definitivamente passata, e ben quattro condottieri si contendono ferocemente il Trono di Spade. Intanto al di là del mare caldo l orgogliosa principessa in esilio Daenerys Targaryen è pronta a rischiare tutto per la corona che le appartiene di diritto. Solo per lei, forse, la cometa di sangue non è un presagio di tragedia ma l araldo della riscossa Mentre lo scontro continua, qualcuno tesse un inesorabile tela di morte. All estremo Nord, oltre la Barriera di ghiaccio, forze oscure vanno facendosi sempre più minacciose... In una terra di sinistra magia e violenza, ma anche di eroismo e passione, è ambientato il secondo volume della saga Le cronache del ghiaccio e del Fuoco, l''attesissimo seguito de Il Trono di Spade e Il Grande Inverno.', 'Cartaceo,Digitale,AudioLibro', 'Mondadori','George R. R. Martin', '2013-01-24','Italiano',NULL,3,NULL); 
 
 INSERT INTO Libro VALUES ('9788804662138','Il trono di spade (Vol. 3)','Avventura',425,'Romanzo',NULL,'Dopo la morte di re Renly Baratheon gli avversari che si contendono il Trono di Spade sono ridotti a quattro. Il gioco di alleanze, inganni e tradimenti si fa sempre più spietato, sempre più labirintico, e l ambizione dei contendenti non ha limite. Sui quattro re e sui paesaggi già devastati dalla guerra incombe la più terribile delle minacce: dall''estremo nord un immane orda di barbari e giganti, mammut e metamorfi sta lentamente scendendo verso i Sette Regni. E con il popolo libero dei bruti, un pericolo ancora più spaventoso si avvicina: gli Estranei, guerrieri soprannaturali che non temono la morte. Perché alla morte già appartengono? Gli indeboliti, dilaniati guardiani della notte sanno che i loro giorni potrebbero essere contati. Spetterà a Jon Snow, il bastardo di Grande Inverno, ergersi per una disperata, eroica, ultima difesa. Forse, la guerra per il potere supremo è ancora tutta da giocare.', 'Cartaceo,Digitale,AudioLibro', 'Mondadori','George R. R. Martin', '2014-01-24','Italiano',NULL,3,NULL); 
 
-
-
 INSERT INTO Libro VALUES ('9788804662139','Il trono di spade (Vol. 4)','Avventura',425,'Romanzo',NULL, 'In spettrali campi di battaglia e tetre fortezze in rovina, fra città tramutate in cimiteri e terre ridotte a ossari, la spaventosa guerra dei cinque re volge ormai al termine. La Casa Lannister e i suoi alleati appaiono vincitori. Eppure, nei Sette Regni, qualcosa ancora si agita. Mentre corvi in forma umana si raccolgono per un festino di ceneri, nuovi, temerari complotti vengono orditi e nuove, pericolose alleanze prendono forma. In questa apparentemente consolidata pace del re  forze inattese sono pronte a sferrare attacchi cruenti. Guidati dal famigerato re Occhio-di-corvo, gli uomini di ferro, eredi di un culto guerriero dimenticato da secoli, si sono lanciati all''invasione del sudovest del reame, costringendo la regina Cersei e il Trono di Spade ad affrontare un''inedita prova di forza. E dalle brume di una memoria lasciata troppo a lungo sepolta, un antica, sinistra profezia potrebbe minacciare la stessa regina.' , 'Cartaceo,Digitale,AudioLibro', 'Mondadori','George R. R. Martin','2015-01-24', 'Italiano',NULL,3,9); 
 
-INSERT INTO Libro VALUES ('9788804662140','Il trono di spade (Vol. 5)','Avventura',425,'Romanzo',NULL, 'La vittoria del leone dei Lannister ha lasciato un''interminabile scia di sangue: sepolto l''infame lord Tywin, assassinato dal proprio figlio nano, finita in catene la regina Cersei, seduto il piccolo re Tommen su un trono di lame pronte a ucciderlo, il destino dell''intero continente occidentale è di nuovo in bilico. Sulla remota Barriera di ghiaccio il temerario Jon Snow è costretto a consolidare con le armi il suo rango di lord comandante dei guardiani della notte mentre, al di là del Mare Stretto, Daenerys Targaryen, l intrepida Regina dei Draghi, continua a difendere il proprio dominio contro orde di nemici antichi e nuovi. In fuga verso le città libere, il parricida Tyrion Lannister potrebbe essere la chiave di volta della restaurazione della mai realmente estinta dinastia del Drago. Tutto questo però potrebbe rivelarsi disperatamente inutile. Perché ora, veramente... l inverno sta arrivando.','Cartaceo,Digitale,AudioLibro', 'Mondadori','George R. R. Martin', '2016-01-24','Italiano',NULL,3,NULL); 
+INSERT INTO Libro VALUES ('9788804662140','Il trono di spade (Vol. 5)','Avventura',425,'Romanzo',NULL, 'La vittoria del leone dei Lannister ha lasciato un''interminabile scia di sangue: sepolto l''infame lord Tywin, assassinato dal proprio figlio nano, finita in catene la regina Cersei, seduto il piccolo re Tommen su un trono di lame pronte a ucciderlo, il destino dell''intero continente occidentale è di nuovo in bilico. Sulla remota Barriera di ghiaccio il temerario Jon Snow è costretto a consolidare con le armi il suo rango di lord comandante dei guardiani della notte mentre, al di là del Mare Stretto, Daenerys Targaryen, l intrepida Regina dei Draghi, continua a difendere il proprio dominio contro orde di nemici antichi e nuovi. In fuga verso le città libere, il parricida Tyrion Lannister potrebbe essere la chiave di volta della restaurazione della mai realmente estinta dinastia del Drago. Tutto questo però potrebbe rivelarsi disperatamente inutile. Perché ora, veramente... l inverno sta arrivando.','Cartaceo,Digitale,AudioLibro', 'Mondadori','George R. R. Martin', '2016-01-24','Italiano',NULL,3,NULL);
 
 
-
-
+/*Libri Vari*/
 
 INSERT INTO Libro VALUES 
 ('9788891808561','Io Me e Me Stesso', 'Psicologico',141,'Didattico','Psicologia','Siete pronti a esclamare babbabia leggendo le pagine di questo libro? Qui ho raccolto i miei pensieri, i miei segreti e i consigli da condividere con voi che mi supportate ogni giorno. Buona lettura e un abbraccio dal vostro CiccioGamer89.','Cartaceo','Mondadori','Mirko Alessandrini','2017-01-31','Italiano',NULL,NULL,1); 
@@ -141,29 +138,29 @@ E che fai te ne privi?','Cartaceo', 'Magazzini Salani','Mirko Alessandrini', '15
 
 
 
-INSERT INTO Acquisto (Nome, Tipo, Indirizzo)
-VALUES ('Biblioteca Nazionale Centrale di Firenze', 'Libreria', 'Piazza dei Cavalleggeri, 1, 34567 Firenze');
+INSERT INTO Acquisto (CodA, Nome, Tipo, Indirizzo)
+VALUES (1,'Biblioteca Nazionale Centrale di Firenze', 'Libreria', 'Piazza dei Cavalleggeri, 1, 34567 Firenze');
 
-INSERT INTO Acquisto (Nome, Tipo, Url)
-VALUES ( 'Amazon', 'Sito web', 'www.amazon.com');
+INSERT INTO Acquisto (CodA, Nome, Tipo, Url)
+VALUES (2, 'Amazon', 'Sito web', 'www.amazon.com');
 
-INSERT INTO Acquisto (Nome, Tipo, Indirizzo)
-VALUES ( 'Biblioteca Nazionale Centrale di Roma', 'Libreria',  'Viale Castro Pretorio, 105, 20121 Milano');
+INSERT INTO Acquisto (CodA, Nome, Tipo, Indirizzo)
+VALUES (3,'Biblioteca Nazionale Centrale di Roma', 'Libreria',  'Viale Castro Pretorio, 105, 20121 Milano');
 
-INSERT INTO Acquisto (Nome, Tipo, Url)
-VALUES ('IBS', 'Sito web', 'www.ibs.it');
+INSERT INTO Acquisto (CodA, Nome, Tipo, Url)
+VALUES (4,'IBS', 'Sito web', 'www.ibs.it');
 
-INSERT INTO Acquisto (Nome, Tipo, Indirizzo)
-VALUES ('Libreria Feltrinelli', 'Libreria', 'Piazza Piemonte, 6, 45678 Napoli');
+INSERT INTO Acquisto (CodA, Nome, Tipo, Indirizzo)
+VALUES (5,'Libreria Feltrinelli', 'Libreria', 'Piazza Piemonte, 6, 45678 Napoli');
 
-INSERT INTO Acquisto (Nome, Tipo, Url)
-VALUES ('eBay', 'Sito web', 'www.ebay.com');
+INSERT INTO Acquisto (CodA, Nome, Tipo, Url)
+VALUES (6,'eBay', 'Sito web', 'www.ebay.com');
 
-INSERT INTO Acquisto (Nome, Tipo, Indirizzo)
-VALUES ('Biblioteca Comunale', 'Libreria', 'Piazza XX Settembre, 15, 47812 Roma');
+INSERT INTO Acquisto (CodA, Nome, Tipo, Indirizzo)
+VALUES (7,'Biblioteca Comunale', 'Libreria', 'Piazza XX Settembre, 15, 47812 Roma');
 
-INSERT INTO Acquisto (Nome, Tipo, Url)
-VALUES ('Alibris', 'Sito web', 'www.alibris.com');
+INSERT INTO Acquisto (CodA, Nome, Tipo, Url)
+VALUES (8,'Alibris', 'Sito web', 'www.alibris.com');
 
 
 
@@ -192,19 +189,19 @@ INSERT INTO Rivista VALUES('Le scienze','2022-06-10','Paola Tedesca','Observatio
 
 
 INSERT INTO Conferenza (CodC, Nome, Struttura, Indirizzo, DataI, DataF, Responsabile)
-VALUES ('','Italian Technology Conference', 'Palazzo dei Congressi', 'Via Raffaello Sanzio, 5, 00197 Roma', '2022-10-01', '2022-10-03', 'Mario Rossi');
+VALUES (1,'Italian Technology Conference', 'Palazzo dei Congressi', 'Via Raffaello Sanzio, 5, 00197 Roma', '2022-10-01', '2022-10-03', 'Mario Rossi');
 
-INSERT INTO Conferenza (Nome, Struttura, Indirizzo, DataI, DataF, Responsabile)
-VALUES ('AI and Machine Learning Summit', 'Fiera Milano', 'Strada Statale del Sempione, 28, 20017 Milano', '2022-12-01', '2022-12-03', 'Stefano Bianchi');
+INSERT INTO Conferenza (CodC,Nome, Struttura, Indirizzo, DataI, DataF, Responsabile)
+VALUES (2,'AI and Machine Learning Summit', 'Fiera Milano', 'Strada Statale del Sempione, 28, 20017 Milano', '2022-12-01', '2022-12-03', 'Stefano Bianchi');
 
-INSERT INTO Conferenza (Nome, Struttura, Indirizzo, DataI, DataF, Responsabile)
-VALUES ('Blockchain Forum', 'Palazzo Mezzanotte', 'Piazza Affari, 6, 20121 Milano', '2022-11-01', '2022-11-03', 'Paolo Neri');
+INSERT INTO Conferenza (CodC,Nome, Struttura, Indirizzo, DataI, DataF, Responsabile)
+VALUES (3,'Blockchain Forum', 'Palazzo Mezzanotte', 'Piazza Affari, 6, 20121 Milano', '2022-11-01', '2022-11-03', 'Paolo Neri');
 
-INSERT INTO Conferenza (Nome, Struttura, Indirizzo, DataI, DataF, Responsabile)
-VALUES ('International Symposium on Green Energy', 'Palazzo delle Nazioni', 'Via della Conciliazione, 34, 00193 Roma', '2022-09-01', '2022-09-03', 'Luigi Verde');
+INSERT INTO Conferenza (CodC,Nome, Struttura, Indirizzo, DataI, DataF, Responsabile)
+VALUES (4,'International Symposium on Green Energy', 'Palazzo delle Nazioni', 'Via della Conciliazione, 34, 00193 Roma', '2022-09-01', '2022-09-03', 'Luigi Verde');
 
-INSERT INTO Conferenza (Nome, Struttura, Indirizzo, DataI, DataF, Responsabile)
-VALUES ('Smart Cities Conference', 'Palazzo della Borsa', 'Piazza Affari, 2, 20121 Milano', '2022-10-15', '2022-10-17', 'Roberta Neri');
+INSERT INTO Conferenza (CodC,Nome, Struttura, Indirizzo, DataI, DataF, Responsabile)
+VALUES (5,'Smart Cities Conference', 'Palazzo della Borsa', 'Piazza Affari, 2, 20121 Milano', '2022-10-15', '2022-10-17', 'Roberta Neri');
 
 
 
