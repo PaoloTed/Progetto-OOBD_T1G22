@@ -39,6 +39,7 @@ public class SupportStage
         stage.setTitle("Libreria digitale");
         stage.setResizable(false);
         stage.show();
+        textErrore.setText("ciao");
     }
 
     public Stage getStage() {return stage;}
