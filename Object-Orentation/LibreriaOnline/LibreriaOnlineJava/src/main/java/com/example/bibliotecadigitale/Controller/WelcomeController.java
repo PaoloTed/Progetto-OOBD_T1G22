@@ -30,17 +30,19 @@ public class WelcomeController {
     @FXML
     public TextField txtPasswordField;
 
+    private SupportStage support = new SupportStage();
+
 
     @FXML
     public void LogIn(ActionEvent PressLogin) {
+        //Connessione al database e controllo che la connessione sia avvenuta con successo
         Connection conn = Connessione.getConnection();
         if(conn != null) {
-            SupportStage support = new SupportStage();
+            //Se la connessione è avvenuta con successo, controllare che l'email rispetti la regex e che la password non sia vuota
             String emailUser = txtEmailField.getText();
             String passwordUser = txtPasswordField.getText();
-            if(support.checkEmailPassword(emailUser, passwordUser))
-            {
-
+            if(support.checkEmailPassword(emailUser, passwordUser)) {
+                //Se l'email e la password rispettano i requisiti, controllare che l'utente sia presente nel database
                 try {
                     String query = "SELECT * FROM utente WHERE email = '" + emailUser + "' AND password = '" + passwordUser + "'";
                     Statement stat = conn.createStatement();
@@ -53,30 +55,30 @@ public class WelcomeController {
                     System.out.println("ErrorController query test");
                 }
             }
-            else
-            {
+            else {
+                //Se l'email e/o la password non rispettano i requisiti, mostrare un messaggio di errore
                 Stage stage = (Stage) ((Node) PressLogin.getSource()).getScene().getWindow();
                 stage.close();
                 try {
-                    support.switchStage("errorSignUp.fxml");
+                    support.switchStage("errorStage.fxml");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
             }
         }
         else {
+            //Se la connessione non è avvenuta con successo, mostrare un messaggio di errore
             System.out.println("Connessione non effettuata con successo");
         }
     }
 
 
 
-    public void SingUpUtente(ActionEvent PressSingUp) throws IOException
+    public void goToSingUpUtente(ActionEvent PressSingUp) throws IOException
     {
         Stage stage= (Stage) ((Node) PressSingUp.getSource()).getScene().getWindow();
         stage.close();
-        SupportStage myStage = new SupportStage();
-        myStage.switchStage("singUP.fxml");
+        support.switchStage("singUP.fxml");
     }
 
 

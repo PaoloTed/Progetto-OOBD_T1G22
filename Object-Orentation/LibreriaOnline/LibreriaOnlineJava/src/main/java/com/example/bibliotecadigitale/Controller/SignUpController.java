@@ -24,22 +24,23 @@ public class SignUpController
     @FXML
     public TextField txtSignUpPasswordField;
 
+    private SupportStage support = new SupportStage();
+    //SupportStage è una classe che contiene metodi che possono essere utilizzati da più controller
+    // per gestire errori e cambiare scena
 
-    public void back(ActionEvent event) throws IOException
-    {
-        Stage stage= (Stage) ((Node) event.getSource()).getScene().getWindow();
+    public void back_goToWelcome(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
-        SupportStage myStage = new SupportStage();
-        myStage.switchStage("welcome.fxml");
+        support.switchStage("welcome.fxml");
 
     }
 
-    public void signUpDone(ActionEvent event) {
+    public void signUpTry(ActionEvent event) {
         String date = Instant.now().atZone(ZoneOffset.UTC).format(DateTimeFormatter.ISO_LOCAL_DATE);
+        //Connessione al database e controllo che la connessione sia avvenuta con successo
         Connection conn = Connessione.getConnection();
         if (conn != null) {
-
-            SupportStage support = new SupportStage();
+            //Se la connessione è avvenuta con successo, controllare che l'email rispetti la regex e che la password non sia vuota
             String emailUser = txtSignUpEmailField.getText();
             String passwordUser = txtSignUpPasswordField.getText();
             if (support.checkEmailPassword(emailUser, passwordUser)) {
@@ -61,15 +62,13 @@ public class SignUpController
                             } catch (Exception e) {
                                 System.out.println("Errore Controllore query insert");
                             }
+                            //Chiudere la finestra di registrazione e aprire la finestra di login
+                            back_goToWelcome(event);
+                        } else {
+                            //Se esiste già un utente con la stessa email, mostrare un messaggio di errore
                             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                             stage.close();
-
-                            support.switchStage("welcome.fxml");
-                        } else //Se esiste già un utente con la stessa email, mostrare un messaggio di errore
-                        {
-                            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                            stage.close();
-                            support.switchStage("errorSignUp.fxml");
+                            support.switchStage("errorStage.fxml");
                         }
                     }
                 } catch (Exception e) {
@@ -77,17 +76,20 @@ public class SignUpController
                     e.printStackTrace();
                     System.out.println(e.getMessage());
                 }
-            } else {
+            }
+            else {
+                //Se l'email non rispetta la regex e/o la password è vuota, mostrare un messaggio di errore
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.close();
                 try {
-                    support.switchStage("errorSignUp.fxml");
+                    support.switchStage("errorStage.fxml");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
             }
         }
         else {
+            //Se la connessione non è avvenuta con successo, mostrare un messaggio di errore
             System.out.println("Connessione non effettuata con successo");
         }
     }
