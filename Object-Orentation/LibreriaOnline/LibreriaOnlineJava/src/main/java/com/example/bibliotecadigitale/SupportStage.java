@@ -21,7 +21,7 @@ public class SupportStage
     {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(scenaNew)));
         stage = new Stage();
-        stage.setScene(new Scene(root, 500, 500));
+        stage.setScene(new Scene(root, 350, 100));
         stage.setTitle("Libreria digitale");
         stage.setResizable(false);
         stage.show();
