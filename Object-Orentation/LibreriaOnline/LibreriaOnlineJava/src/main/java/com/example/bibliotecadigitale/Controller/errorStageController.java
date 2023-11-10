@@ -4,15 +4,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class errorStageController {
     @FXML
-    public TextField txtSignUpEmailField;
+    public Text textError;
 
     @FXML
     public void setText( String errore) {
-        txtSignUpEmailField.setText(errore);
+        textError.setText(errore);
     }
 
     public void okButton(ActionEvent actionEvent) {
