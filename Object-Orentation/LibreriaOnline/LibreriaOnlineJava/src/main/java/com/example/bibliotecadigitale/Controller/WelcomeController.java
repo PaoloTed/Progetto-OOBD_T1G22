@@ -24,7 +24,7 @@ public class WelcomeController {
     public Button ButtonSingUp;
     @FXML
     public Button ButtonLoginIn;
-    //txtEmailField è il fxid,(dentro code in scene builder) del campo di testo dove l'utente inserisce il suo username sadasd
+    //txtEmailField è il fxid, (dentro code in scene builder) del campo di testo dove l'utente inserisce il suo username sadasd
     @FXML
     public TextField txtEmailField;
 
@@ -45,24 +45,27 @@ public class WelcomeController {
             if(support.checkEmailPassword(emailUser, passwordUser)) {
                 //Se l'email e la password rispettano i requisiti, controllare che l'utente sia presente nel database
                 try {
-                    String query = "SELECT * FROM utente WHERE email = '" + emailUser + "' AND password = '" + passwordUser + "'";
+                    String query = "SELECT COUNT(*) FROM Utente WHERE email = '" + emailUser + "';";
+                    //String query = "SELECT count(*) FROM utente WHERE email = '" + emailUser + "' AND password = '" + passwordUser  + "';";
                     try {
                         Statement stat = conn.createStatement();
                         ResultSet rs = stat.executeQuery(query);
-                        int sizeTest = rs.getInt(1);
-                        if (sizeTest == 1) {
-                            //Se l'utente è presente nel database, mostrare la sua home page
-                            //TODO: mostrare la home page dell'utente
-                            while (rs.next()) {
+                        while(rs.next()) {
+
+                            int sizeTest = rs.getInt(1);
+                            if (sizeTest != 0) {
+                                //Se l'utente è presente nel database, mostrare la sua home page
+                                //TODO: mostrare la home page dell'utente
                                 System.out.println("Email: " + rs.getString("email"));
                                 System.out.println("Password: " + rs.getString("password"));
-                            }
-                        } else {
-                            //Se l'utente non è presente nel database, mostrare un messaggio di errore
-                            try {
-                                support.errorStage("errorStage.fxml","Email e/o password errate");
-                            } catch (IOException e) {
-                                throw new RuntimeException(e);
+                            } else {
+                                //Se l'utente non è presente nel database, mostrare un messaggio di errore
+                                try {
+                                    support.errorStage("errorStage.fxml", "Email e/o password errate");
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+
                             }
                         }
                     } catch (SQLException e) {

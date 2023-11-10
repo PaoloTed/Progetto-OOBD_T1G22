@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.Instant;
 import java.time.ZoneOffset;
@@ -29,6 +30,14 @@ public class SignUpController
     // per gestire errori e cambiare scena
 
     public void back_goToWelcome(ActionEvent event) throws IOException {
+        /*Connection conn = Connessione.getConnection();
+        try {
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        */
+
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
 
@@ -63,6 +72,7 @@ public class SignUpController
                                 System.out.println("Errore Controllore query insert");
                             }
                             //Chiudere la finestra di registrazione e aprire la finestra di login
+                            //conn.close();
                             back_goToWelcome(event);
                         } else {
                             //Se esiste già un utente con la stessa email, mostrare un messaggio di errore
