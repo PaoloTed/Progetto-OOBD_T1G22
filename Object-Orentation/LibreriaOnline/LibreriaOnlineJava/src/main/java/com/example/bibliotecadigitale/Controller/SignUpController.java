@@ -1,6 +1,7 @@
 package com.example.bibliotecadigitale.Controller;
 
 import com.example.bibliotecadigitale.Connection.Connessione;
+import com.example.bibliotecadigitale.Connection.UtenteDAO;
 import com.example.bibliotecadigitale.SupportStage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,14 +12,12 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.Instant;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 
-public class SignUpController
-{
+public class SignUpController {
 
     @FXML
     public TextField txtSignUpEmailField;
@@ -29,15 +28,7 @@ public class SignUpController
     //SupportStage è una classe che contiene metodi che possono essere utilizzati da più controller
     // per gestire errori e cambiare scena
 
-    public void back_goToWelcome(ActionEvent event) throws IOException {
-        /*Connection conn = Connessione.getConnection();
-        try {
-            conn.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        */
-
+    public void back_goToWelcome(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
 
@@ -50,58 +41,27 @@ public class SignUpController
         Connection conn = Connessione.getConnection();
         if (conn != null) {
             //Se la connessione è avvenuta con successo, controllare che l'email rispetti la regex e che la password non sia vuota
+
+            UtenteDAO utenteDAO = new UtenteDAO();
             String emailUser = txtSignUpEmailField.getText();
             String passwordUser = txtSignUpPasswordField.getText();
             if (support.checkEmailPassword(emailUser, passwordUser)) {
-                try {
-                    //Controllare prima che non esista già un utente con la stessa email
-                    String queryTest = "SELECT COUNT(*) FROM Utente WHERE email = '" + emailUser + "';";
-                    Statement statTest = conn.createStatement();
-                    ResultSet rsTest = statTest.executeQuery(queryTest);
-                    while (rsTest.next()) {
-                        int sizeTest = rsTest.getInt(1);
-
-                        //Se nessun utente ha la stessa email, inserire l'utente nel database
-                        if (sizeTest == 0) {
-                            String query = "INSERT INTO Utente VALUES('" + emailUser + "','" + passwordUser + "','" + date + "');";
-                            try {
-                                Statement stat = conn.createStatement();
-                                stat.executeQuery(query);
-
-                            } catch (Exception e) {
-                                System.out.println("Errore Controllore query insert");
-                            }
-                            //Chiudere la finestra di registrazione e aprire la finestra di login
-                            conn.close();
-                            back_goToWelcome(event);
-                        } else {
-                            //Se esiste già un utente con la stessa email, mostrare un messaggio di errore
-                            support.errorStage("errorStage.fxml","Esiste gia un utente con la stessa email");
-                        }
-                    }
-                } catch (Exception e) {
-                    System.out.println("Errore Controllore query select");
-                    e.printStackTrace();
-                    System.out.println(e.getMessage());
+                //Controllare prima che non esista già un utente con la stessa email
+                int rowExists = utenteDAO.getRowsExsistUtenteEmail(emailUser);
+                //Se nessun utente ha la stessa email, inserire l'utente nel database
+                if (rowExists == 0) {
+                    utenteDAO.insertUsername(emailUser, passwordUser, date);
+                    support.errorStage("errorStage.fxml", "Registrazione effettuata con successo");
+                    support.switchStage("welcome.fxml");
+                } else {
+                    //Se esiste già un utente con la stessa email, setto a false la variabile controlloEmail
+                    support.errorStage("errorStage.fxml", "Esiste gia un utente con la stessa email");
                 }
             }
-            else {
-                //Se l'email non rispetta la regex e/o la password è vuota, mostrare un messaggio di errore
-                try {
-                    support.errorStage("errorStage.fxml","Inserisci una email valida e/o una password valida");
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }
-        else {
-            //Se la connessione non è avvenuta con successo, mostrare un messaggio di errore
-            try {
-                support.errorStage("errorStage.fxml","Connessione non effettuata con successo");
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            System.out.println("Connessione non effettuata con successo");
+        } else {
+            //Se l'email non rispetta la regex e/o la password è vuota, mostrare un messaggio di errore
+            support.errorStage("errorStage.fxml", "Connessione non effettuata con successo");
+
         }
     }
 }

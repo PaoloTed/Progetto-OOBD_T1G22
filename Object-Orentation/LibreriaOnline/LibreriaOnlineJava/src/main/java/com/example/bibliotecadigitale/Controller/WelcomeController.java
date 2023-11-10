@@ -13,9 +13,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 
 public class WelcomeController {
@@ -38,64 +35,40 @@ public class WelcomeController {
     @FXML
     public void LogIn(ActionEvent PressLogin) {
         //Connessione al database e controllo che la connessione sia avvenuta con successo
-        int rowsExsist = 0;
-        UtenteDAO utenteDAO = new UtenteDAO();
+
         Connection conn = Connessione.getConnection();
         if (conn != null) {
             //Se la connessione è avvenuta con successo, controllare che l'email rispetti la regex e che la password non sia vuota
+            UtenteDAO utenteDAO = new UtenteDAO();
             String emailUser = txtEmailField.getText();
             String passwordUser = txtPasswordField.getText();
+
             if (support.checkEmailPassword(emailUser, passwordUser)) {
                 //Se l'email e la password rispettano i requisiti, controllare che l'utente sia presente nel database
-                try {
-                    rowsExsist = utenteDAO.getRowsExsistUtente(emailUser, passwordUser);
-                    if (rowsExsist != 0) {
-                        //Se l'utente è presente nel database, mostrare la sua home page
-                        //TODO: mostrare la home page dell'utente
-                        System.out.println(utenteDAO.getEmail());
-                        System.out.println(utenteDAO.getPassword());
+                int rowsExsist = utenteDAO.getRowsExsistUtenteEmailPassword(emailUser, passwordUser);
+                if (rowsExsist != 0) {
+                    //Se l'utente è presente nel database, mostrare la sua home page
+                    //TODO: mostrare la home page dell'utente
+                    System.out.println(utenteDAO.getEmail());
+                    System.out.println(utenteDAO.getPassword());
+                    support.errorStage("errorStage.fxml", "Ciao " + utenteDAO.getEmail());
 
-                    } else {
-                        //Se l'utente non è presente nel database, mostrare un messaggio di errore
-                        try {
-                            support.errorStage("errorStage.fxml", "Email e/o password errate");
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-                    conn.close();
-                    //Se la query non è stata eseguita con successo, mostrare un messaggio di errore
-                } catch (Exception e) {
-                    try {
-                        support.errorStage("errorStage.fxml", "Query Select non eseguita con successo");
-                    } catch (IOException ee) {
-                        throw new RuntimeException(e);
-                    }
-                    System.out.println("ErrorController query test");
+                } else {
+                    //Se l'utente non è presente nel database, mostrare un messaggio di errore
+                    support.errorStage("errorStage.fxml", "Email e/o password errate");
                 }
+            } else {
+                //Se l'email e/o la password non rispettano i requisiti, mostrare un messaggio di errore
+                support.errorStage("errorStage.fxml", "Inserire una email e/o password valida");
             }
-            //Se l'email e/o la password non rispettano i requisiti, mostrare un messaggio di errore
-            else {
-                try {
-                    support.errorStage("errorStage.fxml", "Inserire una email e/o password valida");
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }
-        //Se la connessione non è avvenuta con successo, mostrare un messaggio di errore
-        else {
-            try {
-                support.errorStage("errorStage.fxml", "Connessione non effettuata con successo");
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        } else {
+            //Se la connessione non è avvenuta con successo, mostrare un messaggio di errore
+            support.errorStage("errorStage.fxml", "Connessione non effettuata con successo");
             System.out.println("Connessione non effettuata con successo");
         }
     }
 
-
-    public void goToSingUpUtente(ActionEvent PressSingUp) throws IOException {
+    public void goToSingUpUtente(ActionEvent PressSingUp) {
         Stage stage = (Stage) ((Node) PressSingUp.getSource()).getScene().getWindow();
         stage.close();
         support.switchStage("signUp.fxml");

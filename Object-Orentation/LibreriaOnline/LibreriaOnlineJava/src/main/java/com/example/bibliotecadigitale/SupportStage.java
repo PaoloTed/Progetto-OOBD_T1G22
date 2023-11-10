@@ -17,14 +17,20 @@ public class SupportStage
 
     private Stage stage;
 
-    public void switchStage(String scenaNew) throws IOException
+    public void switchStage(String scenaNew)
     {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(scenaNew)));
-        stage = new Stage();
-        stage.setScene(new Scene(root, 500, 500));
-        stage.setTitle("Libreria digitale");
-        stage.setResizable(false);
-        stage.show();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(scenaNew)));
+            stage = new Stage();
+            stage.setScene(new Scene(root, 500, 500));
+            stage.setTitle("Libreria digitale");
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     public boolean checkEmailPassword(String email, String password)
@@ -40,20 +46,24 @@ public class SupportStage
     }
 
 
-    public void errorStage(String scenaFxml, String tipoErrore) throws IOException
+    public void errorStage(String scenaFxml, String tipoErrore)
     {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaFxml)));
-        Parent root = loader.load();
-        stage = new Stage();
-        stage.setScene(new Scene(root, 300, 100));
-        stage.setAlwaysOnTop(true);
-        stage.setTitle("Libreria digitale");
-        stage.setResizable(false);
-        stage.show();
 
-        errorStageController controller = loader.getController();
-        controller.setText(tipoErrore);
+        try {
+            Parent root = loader.load();
+            stage = new Stage();
+            stage.setScene(new Scene(root, 300, 100));
+            stage.setAlwaysOnTop(true);
+            stage.setTitle("Libreria digitale");
+            stage.setResizable(false);
+            stage.show();
 
+            errorStageController controller = loader.getController();
+            controller.setText(tipoErrore);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public Stage getStage() {return stage;}
