@@ -45,14 +45,13 @@ public class WelcomeController {
             if(support.checkEmailPassword(emailUser, passwordUser)) {
                 //Se l'email e la password rispettano i requisiti, controllare che l'utente sia presente nel database
                 try {
-                    String query = "SELECT COUNT(*) FROM Utente WHERE email = '" + emailUser + "';";
-                    //String query = "SELECT count(*) FROM utente WHERE email = '" + emailUser + "' AND password = '" + passwordUser  + "';";
+
                     try {
+                        String query = "SELECT * FROM utente WHERE email = '" + emailUser + "' AND password = '" + passwordUser  + "';";
                         Statement stat = conn.createStatement();
                         ResultSet rs = stat.executeQuery(query);
                         while(rs.next()) {
-
-                            int sizeTest = rs.getInt(1);
+                            int sizeTest = rs.getRow();
                             if (sizeTest != 0) {
                                 //Se l'utente è presente nel database, mostrare la sua home page
                                 //TODO: mostrare la home page dell'utente
