@@ -22,4 +22,10 @@ public class Connessione {
     public static Connection getConnection() {
         return con;
     }
+
+    /*public  ResultSet query(String query){
+        Statement stat = conn.createStatement();
+        ResultSet rs = stat.executeQuery(query);
+        return rs;
+    }*/
 }
