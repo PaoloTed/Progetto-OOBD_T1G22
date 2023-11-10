@@ -31,8 +31,8 @@ public class SignUpController
     public void back_goToWelcome(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
-        support.switchStage("welcome.fxml");
 
+        support.switchStage("welcome.fxml");
     }
 
     public void signUpTry(ActionEvent event) {
