@@ -57,6 +57,7 @@ public class WelcomeController {
                                 //TODO: mostrare la home page dell'utente
                                 System.out.println("Email: " + rs.getString("email"));
                                 System.out.println("Password: " + rs.getString("password"));
+
                             } else {
                                 //Se l'utente non è presente nel database, mostrare un messaggio di errore
                                 try {
@@ -66,6 +67,7 @@ public class WelcomeController {
                                 }
 
                             }
+                            conn.close();
                         }
                     } catch (SQLException e) {
                         throw new RuntimeException(e);

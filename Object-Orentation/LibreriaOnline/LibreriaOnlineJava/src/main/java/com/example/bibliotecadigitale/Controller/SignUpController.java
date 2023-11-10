@@ -72,7 +72,7 @@ public class SignUpController
                                 System.out.println("Errore Controllore query insert");
                             }
                             //Chiudere la finestra di registrazione e aprire la finestra di login
-                            //conn.close();
+                            conn.close();
                             back_goToWelcome(event);
                         } else {
                             //Se esiste già un utente con la stessa email, mostrare un messaggio di errore
