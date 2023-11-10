@@ -2,6 +2,7 @@ package com.example.bibliotecadigitale.Controller;
 
 
 import com.example.bibliotecadigitale.Connection.Connessione;
+import com.example.bibliotecadigitale.Connection.UtenteDAO;
 import com.example.bibliotecadigitale.SupportStage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,45 +38,36 @@ public class WelcomeController {
     @FXML
     public void LogIn(ActionEvent PressLogin) {
         //Connessione al database e controllo che la connessione sia avvenuta con successo
+        int rowsExsist = 0;
+        UtenteDAO utenteDAO = new UtenteDAO();
         Connection conn = Connessione.getConnection();
-        if(conn != null) {
+        if (conn != null) {
             //Se la connessione è avvenuta con successo, controllare che l'email rispetti la regex e che la password non sia vuota
             String emailUser = txtEmailField.getText();
             String passwordUser = txtPasswordField.getText();
-            if(support.checkEmailPassword(emailUser, passwordUser)) {
+            if (support.checkEmailPassword(emailUser, passwordUser)) {
                 //Se l'email e la password rispettano i requisiti, controllare che l'utente sia presente nel database
                 try {
+                    rowsExsist = utenteDAO.getRowsExsistUtente(emailUser, passwordUser);
+                    if (rowsExsist != 0) {
+                        //Se l'utente è presente nel database, mostrare la sua home page
+                        //TODO: mostrare la home page dell'utente
+                        System.out.println(utenteDAO.getEmail());
+                        System.out.println(utenteDAO.getPassword());
 
-                    try {
-                        String query = "SELECT * FROM utente WHERE email = '" + emailUser + "' AND password = '" + passwordUser  + "';";
-                        Statement stat = conn.createStatement();
-                        ResultSet rs = stat.executeQuery(query);
-                        while(rs.next()) {
-                            int sizeTest = rs.getRow();
-                            if (sizeTest != 0) {
-                                //Se l'utente è presente nel database, mostrare la sua home page
-                                //TODO: mostrare la home page dell'utente
-                                System.out.println("Email: " + rs.getString("email"));
-                                System.out.println("Password: " + rs.getString("password"));
-
-                            } else {
-                                //Se l'utente non è presente nel database, mostrare un messaggio di errore
-                                try {
-                                    support.errorStage("errorStage.fxml", "Email e/o password errate");
-                                } catch (IOException e) {
-                                    throw new RuntimeException(e);
-                                }
-
-                            }
-                            conn.close();
+                    } else {
+                        //Se l'utente non è presente nel database, mostrare un messaggio di errore
+                        try {
+                            support.errorStage("errorStage.fxml", "Email e/o password errate");
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
                         }
-                    } catch (SQLException e) {
-                        throw new RuntimeException(e);
                     }
-                //Se la query non è stata eseguita con successo, mostrare un messaggio di errore
-                }catch (Exception e){
+                    conn.close();
+                    //Se la query non è stata eseguita con successo, mostrare un messaggio di errore
+                } catch (Exception e) {
                     try {
-                        support.errorStage("errorStage.fxml","Query Select non eseguita con successo");
+                        support.errorStage("errorStage.fxml", "Query Select non eseguita con successo");
                     } catch (IOException ee) {
                         throw new RuntimeException(e);
                     }
@@ -85,7 +77,7 @@ public class WelcomeController {
             //Se l'email e/o la password non rispettano i requisiti, mostrare un messaggio di errore
             else {
                 try {
-                    support.errorStage("errorStage.fxml","Inserire una email e/o password valida");
+                    support.errorStage("errorStage.fxml", "Inserire una email e/o password valida");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -94,7 +86,7 @@ public class WelcomeController {
         //Se la connessione non è avvenuta con successo, mostrare un messaggio di errore
         else {
             try {
-                support.errorStage("errorStage.fxml","Connessione non effettuata con successo");
+                support.errorStage("errorStage.fxml", "Connessione non effettuata con successo");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -103,23 +95,11 @@ public class WelcomeController {
     }
 
 
-
-    public void goToSingUpUtente(ActionEvent PressSingUp) throws IOException
-    {
-        Stage stage= (Stage) ((Node) PressSingUp.getSource()).getScene().getWindow();
+    public void goToSingUpUtente(ActionEvent PressSingUp) throws IOException {
+        Stage stage = (Stage) ((Node) PressSingUp.getSource()).getScene().getWindow();
         stage.close();
         support.switchStage("signUp.fxml");
     }
-
-
-
-
-
-
-
-
-
-
 
 
 }
