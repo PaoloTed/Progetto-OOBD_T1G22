@@ -39,6 +39,7 @@ public class UtenteDAO {
             Connection conn = Connessione.getConnection();
             String query = "SELECT count(*) FROM utente WHERE email = '" + emailUser + "';";//query deve essere fatta dalla connessione
             Statement stat = conn.createStatement();
+            //Si usa executeQuery per le query che restituiscono un resultset
             ResultSet rs = stat.executeQuery(query);
             while (rs.next()) {
                 sizeTest = rs.getInt(1);
@@ -56,6 +57,7 @@ public class UtenteDAO {
             //La data deve essere effettuata da connessione
             String query = "INSERT INTO Utente VALUES ('" + emailUser + "','" + passwordUser + "','" + date + "');";
             Statement stat = conn.createStatement();
+            //Si usa executeUpdate per le query che non restituiscono nulla, insert, update, delete
             stat.executeUpdate(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);
