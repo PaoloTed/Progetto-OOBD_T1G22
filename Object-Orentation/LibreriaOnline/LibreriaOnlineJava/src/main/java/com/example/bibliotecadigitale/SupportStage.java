@@ -29,7 +29,8 @@ public class SupportStage
 
     public boolean checkEmailPassword(String email, String password)
     {
-        if( !email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$") || password.isEmpty())
+        //Implementare controllo sql injection
+        if( !email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$") || password.isEmpty() || email.isEmpty())
         {
             System.out.println("Inserire una email valida e/o una password valida");
             return false;
@@ -44,7 +45,7 @@ public class SupportStage
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaFxml)));
         Parent root = loader.load();
         stage = new Stage();
-        stage.setScene(new Scene(root, 500, 500));
+        stage.setScene(new Scene(root, 100, 100));
         stage.setAlwaysOnTop(true);
         stage.setTitle("Libreria digitale");
         stage.setResizable(false);

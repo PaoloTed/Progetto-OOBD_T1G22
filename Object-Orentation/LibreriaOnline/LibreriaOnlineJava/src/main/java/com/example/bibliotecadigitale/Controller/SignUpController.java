@@ -55,10 +55,10 @@ public class SignUpController
                         //Se nessun utente ha la stessa email, inserire l'utente nel database
                         if (sizeTest == 0) {
                             String query = "INSERT INTO Utente VALUES('" + emailUser + "','" + passwordUser + "','" + date + "');";
-
                             try {
                                 Statement stat = conn.createStatement();
                                 stat.executeQuery(query);
+
                             } catch (Exception e) {
                                 System.out.println("Errore Controllore query insert");
                             }
@@ -66,8 +66,6 @@ public class SignUpController
                             back_goToWelcome(event);
                         } else {
                             //Se esiste già un utente con la stessa email, mostrare un messaggio di errore
-                            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                            stage.close();
                             support.errorStage("errorStage.fxml","Esiste gia un utente con la stessa email");
                         }
                     }
@@ -79,8 +77,6 @@ public class SignUpController
             }
             else {
                 //Se l'email non rispetta la regex e/o la password è vuota, mostrare un messaggio di errore
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.close();
                 try {
                     support.errorStage("errorStage.fxml","Inserisci una email valida e/o una password valida");
                 } catch (IOException e) {
@@ -90,6 +86,11 @@ public class SignUpController
         }
         else {
             //Se la connessione non è avvenuta con successo, mostrare un messaggio di errore
+            try {
+                support.errorStage("errorStage.fxml","Connessione non effettuata con successo");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
             System.out.println("Connessione non effettuata con successo");
         }
     }

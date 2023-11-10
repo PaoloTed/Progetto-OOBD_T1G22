@@ -9,7 +9,6 @@ public class errorStageController {
     public TextField txtSignUpEmailField;
 
     @FXML
-    //Perche non funziona? restituisce null pointer exception
     public void setText( String errore) {
         txtSignUpEmailField.setText(errore);
     }

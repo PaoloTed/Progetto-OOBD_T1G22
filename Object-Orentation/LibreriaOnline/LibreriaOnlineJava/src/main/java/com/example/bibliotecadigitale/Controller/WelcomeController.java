@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 
@@ -45,22 +46,40 @@ public class WelcomeController {
                 //Se l'email e la password rispettano i requisiti, controllare che l'utente sia presente nel database
                 try {
                     String query = "SELECT * FROM utente WHERE email = '" + emailUser + "' AND password = '" + passwordUser + "'";
-                    Statement stat = conn.createStatement();
-                    ResultSet rs = stat.executeQuery(query);
-                    while (rs.next()) {
-                        System.out.println("Email: " + rs.getString("email"));
-                        System.out.println("Password: " + rs.getString("password"));
+                    try {
+                        Statement stat = conn.createStatement();
+                        ResultSet rs = stat.executeQuery(query);
+                        int sizeTest = rs.getInt(1);
+                        if (sizeTest == 1) {
+                            //Se l'utente è presente nel database, mostrare la sua home page
+                            //TODO: mostrare la home page dell'utente
+                            while (rs.next()) {
+                                System.out.println("Email: " + rs.getString("email"));
+                                System.out.println("Password: " + rs.getString("password"));
+                            }
+                        } else {
+                            //Se l'utente non è presente nel database, mostrare un messaggio di errore
+                            try {
+                                support.errorStage("errorStage.fxml","Email e/o password errate");
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
                     }
+                //Se la query non è stata eseguita con successo, mostrare un messaggio di errore
                 }catch (Exception e){
+                    try {
+                        support.errorStage("errorStage.fxml","Query Select non eseguita con successo");
+                    } catch (IOException ee) {
+                        throw new RuntimeException(e);
+                    }
                     System.out.println("ErrorController query test");
                 }
             }
+            //Se l'email e/o la password non rispettano i requisiti, mostrare un messaggio di errore
             else {
-
-
-                //Se l'email e/o la password non rispettano i requisiti, mostrare un messaggio di errore
-                Stage stage = (Stage) ((Node) PressLogin.getSource()).getScene().getWindow();
-                stage.close();
                 try {
                     support.errorStage("errorStage.fxml","Inserire una email e/o password valida");
                 } catch (IOException e) {
@@ -68,8 +87,13 @@ public class WelcomeController {
                 }
             }
         }
+        //Se la connessione non è avvenuta con successo, mostrare un messaggio di errore
         else {
-            //Se la connessione non è avvenuta con successo, mostrare un messaggio di errore
+            try {
+                support.errorStage("errorStage.fxml","Connessione non effettuata con successo");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
             System.out.println("Connessione non effettuata con successo");
         }
     }
