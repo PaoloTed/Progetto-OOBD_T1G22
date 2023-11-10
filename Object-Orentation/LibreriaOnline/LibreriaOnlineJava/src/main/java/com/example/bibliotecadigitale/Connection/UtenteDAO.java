@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.Instant;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 
 public class UtenteDAO {
 
@@ -46,9 +49,11 @@ public class UtenteDAO {
         }
         return sizeTest;
     }
-    public void insertUsername(String emailUser, String passwordUser, String date) {
+    public void insertUsername(String emailUser, String passwordUser) {
         try {
             Connection conn = Connessione.getConnection();
+            String date = Instant.now().atZone(ZoneOffset.UTC).format(DateTimeFormatter.ISO_LOCAL_DATE);
+            //La data deve essere effettuata da connessione
             String query = "INSERT INTO Utente VALUES ('" + emailUser + "','" + passwordUser + "','" + date + "');";
             Statement stat = conn.createStatement();
             stat.executeUpdate(query);

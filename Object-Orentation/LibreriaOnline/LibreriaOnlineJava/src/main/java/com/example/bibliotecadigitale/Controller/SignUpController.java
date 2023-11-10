@@ -36,7 +36,6 @@ public class SignUpController {
     }
 
     public void signUpTry(ActionEvent event) {
-        String date = Instant.now().atZone(ZoneOffset.UTC).format(DateTimeFormatter.ISO_LOCAL_DATE);
         //Connessione al database e controllo che la connessione sia avvenuta con successo
         Connection conn = Connessione.getConnection();
         if (conn != null) {
@@ -50,7 +49,7 @@ public class SignUpController {
                 int rowExists = utenteDAO.getRowsExsistUtenteEmail(emailUser);
                 //Se nessun utente ha la stessa email, inserire l'utente nel database
                 if (rowExists == 0) {
-                    utenteDAO.insertUsername(emailUser, passwordUser, date);
+                    utenteDAO.insertUsername(emailUser, passwordUser);
                     support.errorStage("errorStage.fxml", "Registrazione effettuata con successo");
                     support.switchStage("welcome.fxml");
                 } else {
