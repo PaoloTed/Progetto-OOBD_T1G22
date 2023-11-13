@@ -36,41 +36,35 @@ public class WelcomeController {
 
     @FXML
     public void LogIn(ActionEvent PressLogin) {
-        //Connessione al database e controllo che la connessione sia avvenuta con successo
+        UtenteDAO utenteDAO = new UtenteDAO();
+        String emailUser = txtEmailField.getText();
+        String passwordUser = txtPasswordField.getText();
+        if (support.checkEmailPassword(emailUser, passwordUser)) {
+            //Se l'email e la password rispettano i requisiti, controllare che l'utente sia presente nel database
+            int rowsExsist = utenteDAO.getRowsExsistUtenteEmailPassword(emailUser, passwordUser);
+            if (rowsExsist != 0) {
+                //Se l'utente è presente nel database, mostrare la sua home page
+                //TODO: mostrare la home page dell'utente
+                //System.out.println(emailUser);
+                //System.out.println(passwordUser);
+                //support.messageStage( "Ciao " + emailUser + "!");
+                //Log in utente e setto i suoi dati nella classe Utente, istanza statica unica nel programma
+                Utente utenteNew = getUtente();
+                utenteNew.setUtente(emailUser, passwordUser, utenteDAO.searchData(emailUser));
 
-        Connection conn = Connessione.getConnection();
-        if (conn != null) {
-            //Se la connessione è avvenuta con successo, controllare che l'email rispetti la regex e che la password non sia vuota
-            UtenteDAO utenteDAO = new UtenteDAO();
-            String emailUser = txtEmailField.getText();
-            String passwordUser = txtPasswordField.getText();
+                Stage stage = (Stage) ((Node) PressLogin.getSource()).getScene().getWindow();
+                stage.close();
+                support.switchStage("home.fxml",900,900);
 
-            if (support.checkEmailPassword(emailUser, passwordUser)) {
-                //Se l'email e la password rispettano i requisiti, controllare che l'utente sia presente nel database
-                int rowsExsist = utenteDAO.getRowsExsistUtenteEmailPassword(emailUser, passwordUser);
-                if (rowsExsist != 0) {
-                    //Se l'utente è presente nel database, mostrare la sua home page
-                    //TODO: mostrare la home page dell'utente
-                    System.out.println(emailUser);
-                    System.out.println(passwordUser);
-                    support.messageStage( "Ciao " + emailUser + "!");
-
-                    //Log in utente e setto i suoi dati nella classe Utente, istanza statica unica nel programma
-                    Utente utenteNew = getUtente();
-                    utenteNew.setUtente(emailUser, passwordUser,utenteDAO.searchData(emailUser));
-                } else {
-                    //Se l'utente non è presente nel database, mostrare un messaggio di errore
-                    support.messageStage("Email e/o password errate");
-                }
             } else {
-                //Se l'email e/o la password non rispettano i requisiti, mostrare un messaggio di errore
-                support.messageStage("Inserire una email e/o password valida");
+                //Se l'utente non è presente nel database, mostrare un messaggio di errore
+                support.messageStage("Email e/o password errate");
             }
         } else {
-            //Se la connessione non è avvenuta con successo, mostrare un messaggio di errore
-            support.messageStage("Connessione non effettuata con successo");
-            System.out.println("Connessione non effettuata con successo");
+            //Se l'email e/o la password non rispettano i requisiti, mostrare un messaggio di errore
+            support.messageStage("Inserire una email e/o password valida");
         }
+
     }
 
     public void goToSingUpUtente(ActionEvent PressSingUp) {

@@ -31,6 +31,21 @@ public class SupportStage
         }
     }
 
+    public void switchStage(String scenaNew,int altezza,int larghezza)
+    {
+        try {
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
+            Parent root = loader.load();
+            stage = new Stage();
+            stage.setScene(new Scene(root, altezza, larghezza));
+            stage.setTitle("Libreria digitale");
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public boolean checkEmailPassword(String email, String password)
     {
         //Implementare controllo sql injection
