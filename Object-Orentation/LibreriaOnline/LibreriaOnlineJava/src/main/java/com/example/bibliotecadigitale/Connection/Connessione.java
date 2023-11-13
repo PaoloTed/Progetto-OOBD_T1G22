@@ -30,7 +30,7 @@ public class Connessione {
         return rs;
     }
 
-    public void executeInsert(String query) throws SQLException {
+    public void executeUpdate(String query) throws SQLException {
         Statement stat = con.createStatement();
         stat.executeUpdate(query);
     }
