@@ -8,21 +8,17 @@ import java.time.format.DateTimeFormatter;
 
 public class UtenteDAO {
 
-    private String email;
-    private String password;
-
     public int getRowsExsistUtenteEmailPassword(String emailUser, String passwordUser) {
+        //TODO: aggiustare metodo e prendere direttamente i numero di righe senza fare il while
         int sizeTest = 0;
         try {
             Connessione connessione = new Connessione();
             String query = "SELECT * FROM utente WHERE email = '" + emailUser + "' AND password = '" + passwordUser + "';";//query deve essere fatta dalla connessione
-            ResultSet rs = connessione.executeSerch(query);
+            ResultSet rs = connessione.executeSearch(query);
+
+
             while (rs.next()) {
                 sizeTest = rs.getRow();
-                if (sizeTest != 0) {
-                    email = rs.getString("email");
-                    password = rs.getString("password");
-                }
             }
             rs.close();
         } catch (SQLException e) {
@@ -35,7 +31,7 @@ public class UtenteDAO {
         try {
             Connessione connessione = new Connessione();
             String query = "SELECT count(*) FROM utente WHERE email = '" + emailUser + "';";//query deve essere fatta dalla connessione
-            ResultSet rs = connessione.executeSerch(query);
+            ResultSet rs = connessione.executeSearch(query);
             while (rs.next()) {
                 sizeTest = rs.getInt(1);
             }
@@ -45,11 +41,10 @@ public class UtenteDAO {
         }
         return sizeTest;
     }
-    public void insertUsername(String emailUser, String passwordUser) {
+    public void insertUser(String emailUser, String passwordUser) {
         try {
             Connessione connessione = new Connessione();
             String date = Instant.now().atZone(ZoneOffset.UTC).format(DateTimeFormatter.ISO_LOCAL_DATE);
-            //La data deve essere effettuata da connessione
             String query = "INSERT INTO Utente VALUES ('" + emailUser + "','" + passwordUser + "','" + date + "');";
             connessione.executeInsert(query);
         } catch (SQLException e) {
@@ -57,11 +52,19 @@ public class UtenteDAO {
         }
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPassword() {
-        return password;
+    public String searchData(String emailUser) {
+        String data = "";
+        try {
+            Connessione connessione = new Connessione();
+            String query = "SELECT dataiscrizone FROM utente WHERE email = '" + emailUser + "';";//query deve essere fatta dalla connessione
+            ResultSet rs = connessione.executeSearch(query);
+            while (rs.next()) {
+                data = rs.getString(1);
+            }
+            rs.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return data;
     }
 }
