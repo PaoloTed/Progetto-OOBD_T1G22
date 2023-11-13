@@ -11,7 +11,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.sql.Connection;
 
 
@@ -51,19 +50,25 @@ public class WelcomeController {
                     //TODO: mostrare la home page dell'utente
                     System.out.println(utenteDAO.getEmail());
                     System.out.println(utenteDAO.getPassword());
-                    support.errorStage("errorStage.fxml", "Ciao " + utenteDAO.getEmail());
+                    support.messageStage("errorStage.fxml", "Ciao " + utenteDAO.getEmail());
+                    /*
+                    Stage stage = (Stage) ((Node) PressLogin.getSource()).getScene().getWindow();
+                    stage.close();
+                    utenteDAO.
+
+                     */
 
                 } else {
                     //Se l'utente non è presente nel database, mostrare un messaggio di errore
-                    support.errorStage("errorStage.fxml", "Email e/o password errate");
+                    support.messageStage("errorStage.fxml", "Email e/o password errate");
                 }
             } else {
                 //Se l'email e/o la password non rispettano i requisiti, mostrare un messaggio di errore
-                support.errorStage("errorStage.fxml", "Inserire una email e/o password valida");
+                support.messageStage("errorStage.fxml", "Inserire una email e/o password valida");
             }
         } else {
             //Se la connessione non è avvenuta con successo, mostrare un messaggio di errore
-            support.errorStage("errorStage.fxml", "Connessione non effettuata con successo");
+            support.messageStage("errorStage.fxml", "Connessione non effettuata con successo");
             System.out.println("Connessione non effettuata con successo");
         }
     }

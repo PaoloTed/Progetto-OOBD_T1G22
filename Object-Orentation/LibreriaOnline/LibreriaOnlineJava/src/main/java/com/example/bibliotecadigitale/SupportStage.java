@@ -1,7 +1,6 @@
 package com.example.bibliotecadigitale;
 
 import com.example.bibliotecadigitale.Controller.errorStageController;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -19,9 +18,9 @@ public class SupportStage
 
     public void switchStage(String scenaNew)
     {
-        Parent root = null;
         try {
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(scenaNew)));
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
+            Parent root = loader.load();
             stage = new Stage();
             stage.setScene(new Scene(root, 500, 500));
             stage.setTitle("Libreria digitale");
@@ -30,7 +29,6 @@ public class SupportStage
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     public boolean checkEmailPassword(String email, String password)
@@ -46,11 +44,10 @@ public class SupportStage
     }
 
 
-    public void errorStage(String scenaFxml, String tipoErrore)
+    public void messageStage(String scenaFxml, String tipoErrore)
     {
-        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaFxml)));
-
         try {
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaFxml)));
             Parent root = loader.load();
             stage = new Stage();
             stage.setScene(new Scene(root, 300, 100));

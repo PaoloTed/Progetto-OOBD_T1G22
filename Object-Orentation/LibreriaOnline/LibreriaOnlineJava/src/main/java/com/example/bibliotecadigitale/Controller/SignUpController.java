@@ -9,13 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.time.Instant;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
 
 public class SignUpController {
 
@@ -50,16 +44,18 @@ public class SignUpController {
                 //Se nessun utente ha la stessa email, inserire l'utente nel database
                 if (rowExists == 0) {
                     utenteDAO.insertUsername(emailUser, passwordUser);
-                    support.errorStage("errorStage.fxml", "Registrazione effettuata con successo");
+                    support.messageStage("errorStage.fxml", "Registrazione effettuata con successo");
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    stage.close();
                     support.switchStage("welcome.fxml");
                 } else {
                     //Se esiste già un utente con la stessa email, setto a false la variabile controlloEmail
-                    support.errorStage("errorStage.fxml", "Esiste gia un utente con la stessa email");
+                    support.messageStage("errorStage.fxml", "Esiste gia un utente con la stessa email");
                 }
             }
         } else {
             //Se l'email non rispetta la regex e/o la password è vuota, mostrare un messaggio di errore
-            support.errorStage("errorStage.fxml", "Connessione non effettuata con successo");
+            support.messageStage("errorStage.fxml", "Connessione non effettuata con successo");
 
         }
     }

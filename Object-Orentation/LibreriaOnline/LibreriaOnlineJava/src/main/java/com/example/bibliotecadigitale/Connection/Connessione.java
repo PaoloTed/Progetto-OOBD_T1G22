@@ -11,7 +11,8 @@ public class Connessione {
     static{
         try{
             Class.forName(className);
-        }catch(ClassNotFoundException e1){}
+        }catch(ClassNotFoundException e1){
+        }
         //connessione alla base di dati libreriaOnline
         try {
             con = DriverManager.getConnection(url,user,password);//forse segalare al prof di aggiungere il drive al proggetto
