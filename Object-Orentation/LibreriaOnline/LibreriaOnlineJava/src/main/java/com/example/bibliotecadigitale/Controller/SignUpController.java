@@ -43,19 +43,19 @@ public class SignUpController {
                 int rowExists = utenteDAO.getRowsExsistUtenteEmail(emailUser);
                 //Se nessun utente ha la stessa email, inserire l'utente nel database
                 if (rowExists == 0) {
-                    utenteDAO.insertUsername(emailUser, passwordUser);
-                    support.messageStage("errorStage.fxml", "Registrazione effettuata con successo");
+                    utenteDAO.insertUser(emailUser, passwordUser);
+                    support.messageStage("Registrazione effettuata con successo");
                     Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                     stage.close();
                     support.switchStage("welcome.fxml");
                 } else {
                     //Se esiste già un utente con la stessa email, setto a false la variabile controlloEmail
-                    support.messageStage("errorStage.fxml", "Esiste gia un utente con la stessa email");
+                    support.messageStage("Esiste gia un utente con la stessa email");
                 }
             }
         } else {
             //Se l'email non rispetta la regex e/o la password è vuota, mostrare un messaggio di errore
-            support.messageStage("errorStage.fxml", "Connessione non effettuata con successo");
+            support.messageStage("Connessione non effettuata con successo");
 
         }
     }

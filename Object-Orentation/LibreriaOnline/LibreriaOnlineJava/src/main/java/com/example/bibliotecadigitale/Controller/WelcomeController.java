@@ -3,6 +3,7 @@ package com.example.bibliotecadigitale.Controller;
 
 import com.example.bibliotecadigitale.Connection.Connessione;
 import com.example.bibliotecadigitale.Connection.UtenteDAO;
+import com.example.bibliotecadigitale.Model.Utente;
 import com.example.bibliotecadigitale.SupportStage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,6 +13,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.sql.Connection;
+
+import static com.example.bibliotecadigitale.Model.Utente.getUtente;
 
 
 public class WelcomeController {
@@ -48,27 +51,24 @@ public class WelcomeController {
                 if (rowsExsist != 0) {
                     //Se l'utente è presente nel database, mostrare la sua home page
                     //TODO: mostrare la home page dell'utente
-                    System.out.println(utenteDAO.getEmail());
-                    System.out.println(utenteDAO.getPassword());
-                    support.messageStage("errorStage.fxml", "Ciao " + utenteDAO.getEmail());
-                    /*
-                    Stage stage = (Stage) ((Node) PressLogin.getSource()).getScene().getWindow();
-                    stage.close();
-                    utenteDAO.
+                    System.out.println(emailUser);
+                    System.out.println(passwordUser);
+                    support.messageStage( "Ciao " + emailUser + "!");
 
-                     */
-
+                    //Log in utente e setto i suoi dati nella classe Utente, istanza statica unica nel programma
+                    Utente utenteNew = getUtente();
+                    utenteNew.setUtente(emailUser, passwordUser,utenteDAO.searchData(emailUser));
                 } else {
                     //Se l'utente non è presente nel database, mostrare un messaggio di errore
-                    support.messageStage("errorStage.fxml", "Email e/o password errate");
+                    support.messageStage("Email e/o password errate");
                 }
             } else {
                 //Se l'email e/o la password non rispettano i requisiti, mostrare un messaggio di errore
-                support.messageStage("errorStage.fxml", "Inserire una email e/o password valida");
+                support.messageStage("Inserire una email e/o password valida");
             }
         } else {
             //Se la connessione non è avvenuta con successo, mostrare un messaggio di errore
-            support.messageStage("errorStage.fxml", "Connessione non effettuata con successo");
+            support.messageStage("Connessione non effettuata con successo");
             System.out.println("Connessione non effettuata con successo");
         }
     }

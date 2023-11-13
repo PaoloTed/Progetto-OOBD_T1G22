@@ -44,8 +44,9 @@ public class SupportStage
     }
 
 
-    public void messageStage(String scenaFxml, String tipoErrore)
+    public void messageStage( String tipoErrore)
     {
+        String scenaFxml = "messageStage.fxml";
         try {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaFxml)));
             Parent root = loader.load();
