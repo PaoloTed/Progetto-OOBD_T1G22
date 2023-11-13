@@ -24,9 +24,14 @@ public class Connessione {
         return con;
     }
 
-    /*public  ResultSet query(String query){
-        Statement stat = conn.createStatement();
+    public  ResultSet executeSerch(String query) throws SQLException {
+        Statement stat = con.createStatement();
         ResultSet rs = stat.executeQuery(query);
         return rs;
-    }*/
+    }
+
+    public  void executeInsert(String query) throws SQLException {
+        Statement stat = con.createStatement();
+        stat.executeUpdate(query);
+    }
 }
