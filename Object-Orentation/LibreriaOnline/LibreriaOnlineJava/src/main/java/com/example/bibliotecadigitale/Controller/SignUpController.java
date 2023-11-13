@@ -51,6 +51,8 @@ public class SignUpController {
                 } else {
                     //Se esiste già un utente con la stessa email, setto a false la variabile controlloEmail
                     support.messageStage("Esiste gia un utente con la stessa email");
+                    txtSignUpEmailField.clear();
+                    txtSignUpPasswordField.clear();
                 }
             }
         } else {
