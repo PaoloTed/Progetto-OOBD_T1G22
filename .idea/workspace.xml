@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0f3062c-e759-49ff-9312-578ab6d64d8e" name="Changes" comment="UtenteDAO">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/primapagina.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/primapagina.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="f0f3062c-e759-49ff-9312-578ab6d64d8e" name="Changes" comment="BUG GIULIO" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -145,7 +142,7 @@
       <workItem from="1699632611232" duration="2028000" />
       <workItem from="1699635508008" duration="43000" />
       <workItem from="1699635981811" duration="2153000" />
-      <workItem from="1699888135676" duration="3891000" />
+      <workItem from="1699888135676" duration="4771000" />
     </task>
     <task id="LOCAL-00001" summary="importazione">
       <created>1698773198524</created>
@@ -351,7 +348,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699890058759</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="BUG GIULIO">
+      <option name="closed" value="true" />
+      <created>1699892070636</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1699892070636</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -410,6 +415,7 @@
     <MESSAGE value="iniziando a fare le classi dao mancanti" />
     <MESSAGE value="provandao a fare una funzione per fare la query" />
     <MESSAGE value="UtenteDAO" />
-    <option name="LAST_COMMIT_MESSAGE" value="UtenteDAO" />
+    <MESSAGE value="BUG GIULIO" />
+    <option name="LAST_COMMIT_MESSAGE" value="BUG GIULIO" />
   </component>
 </project>
