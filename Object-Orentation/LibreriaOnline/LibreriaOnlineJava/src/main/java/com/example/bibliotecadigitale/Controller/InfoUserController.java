@@ -2,6 +2,7 @@ package com.example.bibliotecadigitale.Controller;
 
 import com.example.bibliotecadigitale.Connection.SerieDAO;
 import com.example.bibliotecadigitale.Connection.UtenteDAO;
+import com.example.bibliotecadigitale.Model.Serie;
 import com.example.bibliotecadigitale.Model.Utente;
 import com.example.bibliotecadigitale.SupportStage;
 import javafx.event.ActionEvent;
@@ -31,11 +32,26 @@ public class InfoUserController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        labelEmail.setText(Utente.getUtente().getEmail());
+        String email = Utente.getUtente().getEmail();
+        labelEmail.setText(email);
         SerieDAO serieDAO = new SerieDAO();
         UtenteDAO utenteDAO = new UtenteDAO();
-        ArrayList<String> serie = serieDAO.findSerieFromCode(utenteDAO.searchPreferiti(Utente.getUtente().getEmail()));
-        setContentView(serie);
+
+        ArrayList<Integer> codPreferiti = utenteDAO.searchPreferiti(email);
+        ArrayList<Serie> seriePreferite = new ArrayList<>();
+        ArrayList<String> serieArrayContentView = new ArrayList<>();
+        Serie serieAppoggio;
+        String serieNomeAppoggio;
+        int serieCodSAppoggio;
+
+        for(int i = 0; i < codPreferiti.size(); i++) {
+            serieAppoggio = serieDAO.findSerieFromCodev2(codPreferiti.get(i));
+            seriePreferite.add(serieAppoggio);
+            serieCodSAppoggio = serieAppoggio.getCodS();
+            serieNomeAppoggio = serieAppoggio.getNome();
+            serieArrayContentView.add(serieCodSAppoggio + " - " + serieNomeAppoggio );
+        }
+        setContentView(serieArrayContentView);
     }
 
     public void setContentView(ArrayList<String> serie) {
@@ -64,29 +80,32 @@ public class InfoUserController implements Initializable {
     }
     @FXML
     public void eliminaPreferito(ActionEvent event) {
-        String serie = listViewSerie.getSelectionModel().getSelectedItem();
+        Serie serie = getSerieFromListView();
         if (serie != null) {
             UtenteDAO utenteDAO = new UtenteDAO();
-            SerieDAO serieDAO = new SerieDAO();
-            ArrayList<String> serieCode = new ArrayList<>();
-            serieCode.add(serie);
-            utenteDAO.deletePreferiti(Utente.getUtente().getEmail(), serieDAO.findSerieFromName(serieCode).get(0));;
-            listViewSerie.getItems().remove(serie);
+            utenteDAO.deletePreferiti(Utente.getUtente().getEmail(), serie.getCodS());
+
+            deleteSerieFromListView(serie);
             support.messageStage("Preferito eliminato con successo");
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.close();
-            support.switchStage("infoUserStage.fxml");
+            support.switchStage("infoUserStage.fxml",event);
 
         } else {
             support.messageStage("Selezionare una serie");
         }
     }
+    public Serie getSerieFromListView() {
+        String serieCodS_Nome = listViewSerie.getSelectionModel().getSelectedItem();
+        Serie serieAppoggio = new Serie();
+        serieAppoggio.setCodS(Integer.parseInt(serieCodS_Nome.substring(0, serieCodS_Nome.indexOf(" - "))));
+        serieAppoggio.setNome(serieCodS_Nome.substring(serieCodS_Nome.indexOf(" - ")+3));
+        return serieAppoggio;
+    }
+    public void deleteSerieFromListView(Serie serie) {
+        listViewSerie.getItems().remove(serie.getCodS() + " - " + serie.getNome());
+    }
 
 
     public void back_goToHome(ActionEvent event) {
-        //Correggere che switch stage apre a 500 per 500 ma home è 900 per 900
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.close();
-        support.switchStage("home.fxml");
+        support.switchStage("home.fxml", event, 900, 900);
     }
 }

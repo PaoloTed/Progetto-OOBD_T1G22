@@ -1,7 +1,9 @@
 package com.example.bibliotecadigitale;
 
 import com.example.bibliotecadigitale.Controller.errorStageController;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -16,8 +18,10 @@ public class SupportStage
 
     private Stage stage;
 
-    public void switchStage(String scenaNew)
+    public void switchStage(String scenaNew,ActionEvent eventClose)
     {
+        stage = (Stage) ((Node) eventClose.getSource()).getScene().getWindow();
+        stage.close();
         try {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
             Parent root = loader.load();
@@ -31,8 +35,10 @@ public class SupportStage
         }
     }
 
-    public void switchStage(String scenaNew,int altezza,int larghezza)
+    public void switchStage(String scenaNew, ActionEvent eventClose, int altezza, int larghezza)
     {
+        stage = (Stage) ((Node) eventClose.getSource()).getScene().getWindow();
+        stage.close();
         try {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
             Parent root = loader.load();

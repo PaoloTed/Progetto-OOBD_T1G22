@@ -23,10 +23,7 @@ public class SignUpController {
     // per gestire errori e cambiare scena
 
     public void back_goToWelcome(ActionEvent event) {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.close();
-
-        support.switchStage("welcome.fxml");
+        support.switchStage("welcome.fxml", event);
     }
 
     public void signUpTry(ActionEvent event) {
@@ -45,9 +42,7 @@ public class SignUpController {
                 if (rowExists == 0) {
                     utenteDAO.insertUser(emailUser, passwordUser);
                     support.messageStage("Registrazione effettuata con successo");
-                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    stage.close();
-                    support.switchStage("welcome.fxml");
+                    support.switchStage("welcome.fxml", event);
                 } else {
                     //Se esiste già un utente con la stessa email, setto a false la variabile controlloEmail
                     support.messageStage("Esiste gia un utente con la stessa email");

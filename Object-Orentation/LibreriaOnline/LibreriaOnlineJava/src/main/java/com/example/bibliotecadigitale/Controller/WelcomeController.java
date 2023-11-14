@@ -51,10 +51,7 @@ public class WelcomeController {
                 //Log in utente e setto i suoi dati nella classe Utente, istanza statica unica nel programma
                 Utente utenteNew = getUtente();
                 utenteNew.setUtente(emailUser, passwordUser, utenteDAO.searchData(emailUser));
-
-                Stage stage = (Stage) ((Node) PressLogin.getSource()).getScene().getWindow();
-                stage.close();
-                support.switchStage("home.fxml",900,900);
+                support.switchStage("home.fxml",PressLogin,900,900);
 
             } else {
                 //Se l'utente non è presente nel database, mostrare un messaggio di errore
@@ -68,9 +65,7 @@ public class WelcomeController {
     }
 
     public void goToSingUpUtente(ActionEvent PressSingUp) {
-        Stage stage = (Stage) ((Node) PressSingUp.getSource()).getScene().getWindow();
-        stage.close();
-        support.switchStage("signUp.fxml");
+        support.switchStage("signUp.fxml",PressSingUp);
     }
 
 

@@ -29,9 +29,7 @@ public class PrimaPaginaController {
     }
     @FXML
     public void goToInfoUser(ActionEvent event) {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.close();
-        support.switchStage("infoUserStage.fxml");
+        support.switchStage("infoUserStage.fxml",event);
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
