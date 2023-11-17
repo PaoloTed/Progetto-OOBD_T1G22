@@ -3,6 +3,7 @@ package com.example.bibliotecadigitale;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 
@@ -11,6 +12,7 @@ import java.io.IOException;
 public class Main extends Application {
     @Override
     public void start(Stage welcomeStage) throws IOException {
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("welcome.fxml"));
         //Prova per prendere la risoluzione dello schermo e settare la finestra di conseguenza
         /*
@@ -23,6 +25,7 @@ public class Main extends Application {
 
         welcomeStage.setTitle("Benvenuto nella libreria online!");
         welcomeStage.setScene(scene);
+        welcomeStage.getIcons().add(new Image("file:src/main/resources/photo/biblioteca.png"));
         welcomeStage.show();
 
     }

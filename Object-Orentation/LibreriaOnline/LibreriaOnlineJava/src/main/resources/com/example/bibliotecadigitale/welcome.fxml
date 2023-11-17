@@ -51,6 +51,26 @@
                </font>
             </Button>
             <PasswordField fx:id="txtPasswordField" layoutX="149.0" layoutY="173.0" promptText="Password" />
+               <Text layoutX="14.0" layoutY="446.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero di utenti registrati">
+                  <font>
+                     <Font name="Arial" size="15.0" />
+                  </font>
+               </Text>
+               <Text layoutX="14.0" layoutY="474.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero di utenti Online">
+                  <font>
+                     <Font name="Arial" size="15.0" />
+                  </font>
+               </Text>
+               <Text fx:id="txtUserRegistrati" layoutX="200.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" text="99">
+                  <font>
+                     <Font name="Arial" size="15.0" />
+                  </font>
+               </Text>
+               <Text fx:id="txtUserOnline" layoutX="200.0" layoutY="473.0" strokeType="OUTSIDE" strokeWidth="0.0" text="99">
+                  <font>
+                     <Font name="Arial" size="15.0" />
+                  </font>
+               </Text>
          </children></AnchorPane>
    </children>
 </HBox>

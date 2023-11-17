@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -27,6 +28,7 @@ public class SupportStage
             Parent root = loader.load();
             stage = new Stage();
             stage.setScene(new Scene(root, 500, 500));
+            stage.getIcons().add(new Image("file:src/main/resources/photo/biblioteca.png"));
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
@@ -44,6 +46,7 @@ public class SupportStage
             Parent root = loader.load();
             stage = new Stage();
             stage.setScene(new Scene(root, altezza, larghezza));
+            stage.getIcons().add(new Image("file:src/main/resources/photo/biblioteca.png"));
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
@@ -57,6 +60,7 @@ public class SupportStage
         //Implementare controllo sql injection
         if( !email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$") || password.isEmpty() || email.isEmpty())
         {
+            messageStage("Inserire una email valida e/o una password valida");
             System.out.println("Inserire una email valida e/o una password valida");
             return false;
         }
@@ -74,6 +78,7 @@ public class SupportStage
             stage = new Stage();
             stage.setScene(new Scene(root, 300, 100));
             stage.setAlwaysOnTop(true);
+            stage.getIcons().add(new Image("file:src/main/resources/photo/biblioteca.png"));
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
