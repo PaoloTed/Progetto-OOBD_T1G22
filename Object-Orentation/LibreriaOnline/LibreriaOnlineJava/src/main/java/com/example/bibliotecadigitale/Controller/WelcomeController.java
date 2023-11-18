@@ -12,6 +12,8 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.shape.Box;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -45,7 +47,23 @@ public class WelcomeController implements Initializable {
 
     @FXML
     private Text txtUserOnline;
+    @FXML
+    private ImageView imageWelcome;
+    @FXML
+    private ImageView imageWelcome2;
+    private Box box1;
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        String numeroUtenti = String.valueOf(getUserRegistered());
+        String numeroUtentiOnline = String.valueOf(getUserOnline());
+        imageWelcome.setImage(new Image("file:src/main/resources/photo/We read to know we are not alone. (1).png"));
+        imageWelcome2.setImage(new Image("file:src/main/resources/photo/Progetto senza titolo (1).png"));
+
+
+        txtUserRegistrati.setText(numeroUtenti);
+        txtUserOnline.setText(numeroUtentiOnline);
+    }
 
     @FXML
     public void LogIn(ActionEvent PressLogin) {
@@ -74,23 +92,16 @@ public class WelcomeController implements Initializable {
     }
 
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        String numeroUtenti = String.valueOf(getUserRegistered());
-        String numeroUtentiOnline = String.valueOf(getUserOnline());
-
-        txtUserRegistrati.setText(numeroUtenti);
-        txtUserOnline.setText(numeroUtentiOnline);
-    }
     private int getUserRegistered() {
         String query = "SELECT COUNT(*) FROM utente";
         return executeQuerySearch(query);
     }
 
-    private int getUserOnline(){
+    private int getUserOnline() {
         String query = "SELECT count(*) FROM pg_stat_activity WHERE datname = 'bibliotecadigitaledb';";
         return executeQuerySearch(query);
     }
+
     private int executeQuerySearch(String query) {
         int numeroUtenti = 0;
         try {

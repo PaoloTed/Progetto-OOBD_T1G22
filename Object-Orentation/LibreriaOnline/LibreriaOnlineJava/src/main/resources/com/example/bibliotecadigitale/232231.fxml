@@ -26,12 +26,12 @@
          <children>
                <ImageView fx:id="imageWelcome2" fitHeight="498.0" fitWidth="298.0" layoutX="1.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
                <StackPane layoutX="16.0" layoutY="40.0" prefHeight="419.0" prefWidth="267.0" style="-fx-background-color: fdf3ea; -fx-border-color: de5f4f; -fx-border-radius: 20; -fx-border-width: 2;" />
-            <Text fill="#2b2d30" layoutX="24.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+            <Text layoutX="24.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
             </Text>
-            <Text fill="#2b2d30" layoutX="24.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+            <Text layoutX="24.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
@@ -46,7 +46,7 @@
                   </buttons>
                </ButtonBar>
             <TextField fx:id="txtEmailField" layoutX="128.0" layoutY="131.0" promptText="Email" />
-            <Text fill="#2b2d30" layoutX="32.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Non sei un Utente ?">
+            <Text layoutX="32.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Non sei un Utente ?">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
