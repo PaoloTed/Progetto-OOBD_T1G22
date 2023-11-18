@@ -33,6 +33,7 @@ public class SignUpController {
         txtSignUpPasswordField.clear();
 
         if (!support.checkEmailPassword(emailUser, passwordUser)) {
+            support.messageStage("Inserire una email valida e/o una password valida");
             return;
         }
         //Controllare prima che non esista già un utente con la stessa email

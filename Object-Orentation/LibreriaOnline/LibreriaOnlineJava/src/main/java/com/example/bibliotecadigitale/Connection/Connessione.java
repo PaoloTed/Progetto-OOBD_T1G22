@@ -15,7 +15,7 @@ public class Connessione {
         }
         //connessione alla base di dati libreriaOnline
         try {
-            con = DriverManager.getConnection(url,user,password);//forse segalare al prof di aggiungere il drive al proggetto
+            con = DriverManager.getConnection(url,user,password);//forse segnalare al prof di aggiungere il drive al progetto
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

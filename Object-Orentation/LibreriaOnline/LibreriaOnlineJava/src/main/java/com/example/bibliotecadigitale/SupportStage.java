@@ -60,11 +60,8 @@ public class SupportStage
         //Implementare controllo sql injection
         if( !email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$") || password.isEmpty() || email.isEmpty())
         {
-            messageStage("Inserire una email valida e/o una password valida");
-            System.out.println("Inserire una email valida e/o una password valida");
             return false;
         }
-        System.out.println("L'email rispetta la regex e password non è vuota");
         return true;
     }
 

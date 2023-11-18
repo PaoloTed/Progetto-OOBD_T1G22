@@ -52,7 +52,10 @@ public class WelcomeController implements Initializable {
         UtenteDAO utenteDAO = new UtenteDAO();
         String emailUser = txtEmailField.getText();
         String passwordUser = txtPasswordField.getText();
-        if (!(support.checkEmailPassword(emailUser, passwordUser))) {return;}
+        if (!(support.checkEmailPassword(emailUser, passwordUser))) {
+            support.messageStage("Inserire una email valida e/o una password valida");
+            return;
+        }
 
         //Se l'email e la password rispettano i requisiti, controllare che l'utente sia presente nel database
         int rowsExsist = utenteDAO.getRowsExsistUtenteEmailPassword(emailUser, passwordUser);
@@ -73,30 +76,33 @@ public class WelcomeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //Connessione al database e controllo che la connessione sia avvenuta con successo
-        Connessione connessione = new Connessione();
-        String queryNumeroUtenti = "SELECT COUNT(*) FROM utente";
-        String queryNumeroUtentiOnline = "SELECT count(*) FROM pg_stat_activity WHERE datname = 'bibliotecadigitaledb';";
+        String numeroUtenti = String.valueOf(getUserRegistered());
+        String numeroUtentiOnline = String.valueOf(getUserOnline());
+
+        txtUserRegistrati.setText(numeroUtenti);
+        txtUserOnline.setText(numeroUtentiOnline);
+    }
+    private int getUserRegistered() {
+        String query = "SELECT COUNT(*) FROM utente";
+        return executeQuerySearch(query);
+    }
+
+    private int getUserOnline(){
+        String query = "SELECT count(*) FROM pg_stat_activity WHERE datname = 'bibliotecadigitaledb';";
+        return executeQuerySearch(query);
+    }
+    private int executeQuerySearch(String query) {
         int numeroUtenti = 0;
         try {
-            ResultSet rs = null;
-            rs = connessione.executeSearch(queryNumeroUtentiOnline);
-            while (rs.next()){
-                numeroUtenti = rs.getInt(1) -1;
-            }
-            //TODO: capire bene perchè esce 2 utenti online quando sono solo io
-            txtUserOnline.setText("" + numeroUtenti);
-            rs.close();
-             rs = connessione.executeSearch(queryNumeroUtenti);
-            while (rs.next()){
+            Connessione connessione = new Connessione();
+            ResultSet rs = connessione.executeSearch(query);
+            while (rs.next()) {
                 numeroUtenti = rs.getInt(1);
             }
             rs.close();
-            txtUserRegistrati.setText("" + numeroUtenti);
-
         } catch (Exception e) {
-            support.messageStage("Errore nel caricamento del numero di utenti");
+            throw new RuntimeException(e);
         }
-
+        return numeroUtenti;
     }
 }
