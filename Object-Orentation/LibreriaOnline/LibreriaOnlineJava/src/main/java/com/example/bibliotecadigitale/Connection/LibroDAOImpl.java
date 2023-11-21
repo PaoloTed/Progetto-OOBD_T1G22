@@ -51,9 +51,38 @@ public class LibroDAOImpl implements LibroDAO {
     }
 
     @Override
-    public Libro get() throws SQLException {
-        return null;
+    public Libro get(String isbn) throws SQLException {
+        Libro libro;
+        try{
+            Connessione connessione = new Connessione();
+            String query = "SELECT * FROM libro WHERE isbn = '" + isbn + "';";
+            ResultSet rs = connessione.executeSearch(query);
+            libro = new Libro();
+            while (rs.next()){
+                libro.setISBN(rs.getString(1));
+                libro.setTitolo(rs.getString(2));
+                libro.setGenere(rs.getString(3));
+                libro.setNumeroPagine(rs.getInt(4));
+                libro.setTipo(rs.getString(5));
+                libro.setMateria(rs.getString(6));
+                libro.setDescrizione(rs.getString(7));
+                libro.setFruizione(rs.getString(8));
+                libro.setEditore(rs.getString(9));
+                libro.setAutore(rs.getString(10));
+                libro.setDatauscita(rs.getString(11));
+                libro.setLingua(rs.getString(12));
+                libro.setSuccessivo(rs.getString(13));
+                libro.setPresentazione(rs.getString(14));
+            }
+            rs.close();
+
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        return libro;
     }
+
+
 
     @Override
     public List<Libro> getAll() throws SQLException {
@@ -62,7 +91,27 @@ public class LibroDAOImpl implements LibroDAO {
 
     @Override
     public void save(Libro libro) throws SQLException {
-
+        try {
+            Connessione connessione = new Connessione();
+            String isbn = libro.getISBN();
+            String titolo = libro.getTitolo();
+            String genere = libro.getGenere();
+            String numeroPagine = String.valueOf(libro.getNumeroPagine());
+            String tipo = libro.getTipo();
+            String materia = libro.getMateria();
+            String descrizione = libro.getDescrizione();
+            String fruizione = libro.getFruizione();
+            String editore = libro.getEditore();
+            String autore = libro.getAutore();
+            String datauscita = libro.getDatauscita();
+            String lingua = libro.getLingua();
+            String successivo = libro.getSuccessivo();
+            String presentazione = libro.getPresentazione();
+            String query = "INSERT INTO libro VALUES ('" + isbn + "','" + titolo + "','" + genere + "','" + numeroPagine + "','" + tipo + "','" + materia + "','" + descrizione + "','" + fruizione + "','" + editore + "','" + autore + "','" + datauscita + "','" + lingua + "','" + successivo + "','" + presentazione + "');";
+            connessione.executeUpdate(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -72,6 +121,14 @@ public class LibroDAOImpl implements LibroDAO {
 
     @Override
     public void delete(Libro libro) throws SQLException {
+        try {
+            Connessione connessione = new Connessione();
+            String isbn = libro.getISBN();
+            String query = "DELETE FROM libro WHERE ISBN ='" + isbn + "';";
+            connessione.executeUpdate(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 }

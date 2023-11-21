@@ -14,7 +14,7 @@ public class SerieDAO {
             ResultSet rs = connessione.executeSearch(query);
             serieFinded = new Serie();
             while (rs.next()) {
-                serieFinded.setCodS(rs.getInt(1));
+                serieFinded.setCodS(rs.getString(1));
                 serieFinded.setNome(rs.getString(2));
             }
             rs.close();

@@ -112,7 +112,7 @@ public class UtenteDAOImpl implements UtenteDAO {
         }
     }
 
-    public void deletePreferiti(String emailUser, int codiceSerie) {
+    public void deletePreferiti(String emailUser, String codiceSerie) {
         try {
             Connessione connessione = new Connessione();
             String query = "DELETE FROM preferiti WHERE email = '" + emailUser + "' AND cods = '" + codiceSerie + "';";
@@ -123,9 +123,6 @@ public class UtenteDAOImpl implements UtenteDAO {
     }
 
     @Override
-    public Utente get() throws SQLException {
-        return null;
-    }
     public Utente get(String emailUser) {
         Utente Utente;
         try{
@@ -145,6 +142,8 @@ public class UtenteDAOImpl implements UtenteDAO {
         }
         return Utente;
     }
+
+
 
     @Override
     public List<Utente> getAll() throws SQLException {

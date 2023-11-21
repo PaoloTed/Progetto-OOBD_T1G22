@@ -46,7 +46,7 @@ public class InfoUserController implements Initializable {
         ArrayList<Integer> codPreferiti = utenteDAO.searchPreferiti(email);
         Serie serieAppoggio;
         String serieNomeAppoggio;
-        int serieCodSAppoggio;
+        String serieCodSAppoggio;
 
         //Mostro le serie preferite dell'utente nella listView
         for (int i = 0; i < codPreferiti.size(); i++) {
@@ -105,7 +105,7 @@ public class InfoUserController implements Initializable {
     public Serie getSerieFromListView() {
         String serieCodS_Nome = listViewSerie.getSelectionModel().getSelectedItem();
         Serie serieAppoggio = new Serie();
-        serieAppoggio.setCodS(Integer.parseInt(serieCodS_Nome.substring(0, serieCodS_Nome.indexOf(" - "))));
+        serieAppoggio.setCodS(serieCodS_Nome.substring(0, serieCodS_Nome.indexOf(" - ")));
         serieAppoggio.setNome(serieCodS_Nome.substring(serieCodS_Nome.indexOf(" - ") + 3));
         return serieAppoggio;
     }

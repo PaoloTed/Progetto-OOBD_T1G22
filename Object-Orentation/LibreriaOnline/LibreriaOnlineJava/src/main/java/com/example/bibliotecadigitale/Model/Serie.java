@@ -2,15 +2,15 @@ package com.example.bibliotecadigitale.Model;
 
 public class Serie {
 
-    private int codS;
+    private String codS;
     private String nome;
     private int numLibri;
     private boolean completata;
-    public int getCodS() {
+    public String getCodS() {
         return codS;
     }
 
-    public void setCodS(int codS) {
+    public void setCodS(String codS) {
         this.codS = codS;
     }
 
