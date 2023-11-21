@@ -51,7 +51,7 @@ public class InfoUserController implements Initializable {
 
         //Mostro le serie preferite dell'utente nella listView
         for (int i = 0; i < codPreferiti.size(); i++) {
-            serieAppoggio = serieDAO.get(String.valueOf(codPreferiti.get(i)));
+            serieAppoggio = serieDAO.get(""+codPreferiti.get(i));
             serieCodSAppoggio = serieAppoggio.getCodS();
             serieNomeAppoggio = serieAppoggio.getNome();
             //Viene inserito nella listView il codice della serie e il suo nome
@@ -66,7 +66,8 @@ public class InfoUserController implements Initializable {
         txtOldPassword.clear();
         txtNewPassword.clear();
         //Controllo che la vecchia password e la nuova password rispettino i requisiti
-        if (!support.checkEmailPassword(oldPassword, newPassword)) {
+        if (oldPassword.isEmpty() || newPassword.isEmpty()) {
+            support.messageStage("Inserire una password valida");
             return;
         }
         //Controllo che la vecchia password sia corretta

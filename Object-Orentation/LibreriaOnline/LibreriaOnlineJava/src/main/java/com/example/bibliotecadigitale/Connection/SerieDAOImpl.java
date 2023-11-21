@@ -16,13 +16,13 @@ import static com.example.bibliotecadigitale.Model.Utente.getUtente;
 public class SerieDAOImpl implements SerieDAO {
     @Override
     public Serie get(String cods) {
-        Serie serie;
+        Serie serie = null;
         try {
             Connessione connessione = new Connessione();
-            String query = "SELECT * FROM serie WHERE cos = '" + cods + "';";
+            String query = "SELECT * FROM serie WHERE cods = '" + cods + "';";
             ResultSet rs = connessione.executeSearch(query);
-            serie = new Serie();
             while (rs.next()) {
+                serie = new Serie();
                 serie.setCodS(rs.getString(1));
                 serie.setNome(rs.getString(2));
             }

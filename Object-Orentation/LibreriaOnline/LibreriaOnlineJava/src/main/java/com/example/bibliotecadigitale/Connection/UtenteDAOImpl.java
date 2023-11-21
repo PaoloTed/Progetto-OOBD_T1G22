@@ -15,6 +15,7 @@ import static com.example.bibliotecadigitale.Model.Utente.getUtente;
 
 public class UtenteDAOImpl implements UtenteDAO {
 
+    /*
     public int getRowsExsistUtenteEmailPassword(String emailUser, String passwordUser) {
         //TODO: aggiustare metodo e prendere direttamente i numero di righe senza fare il while
         int sizeTest = 0;
@@ -50,32 +51,8 @@ public class UtenteDAOImpl implements UtenteDAO {
         return sizeTest;
     }
 
-    public void insertUser(String emailUser, String passwordUser) {
-        try {
-            Connessione connessione = new Connessione();
-            String date = Instant.now().atZone(ZoneOffset.UTC).format(DateTimeFormatter.ISO_LOCAL_DATE);
-            String query = "INSERT INTO Utente VALUES ('" + emailUser + "','" + passwordUser + "','" + date + "');";
-            connessione.executeUpdate(query);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
+     */
 
-    public String searchData(String emailUser) {
-        String data = "";
-        try {
-            Connessione connessione = new Connessione();
-            String query = "SELECT dataiscrizone FROM utente WHERE email = '" + emailUser + "';";
-            ResultSet rs = connessione.executeSearch(query);
-            while (rs.next()) {
-                data = rs.getString(1);
-            }
-            rs.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return data;
-    }
 
     public void updatePassword(String emailUser, String passwordUser) {
         try {
@@ -124,19 +101,18 @@ public class UtenteDAOImpl implements UtenteDAO {
 
     @Override
     public Utente get(String emailUser) {
-        Utente utente;
+        Utente utente = null;
         try {
             Connessione connessione = new Connessione();
             String query = "SELECT * FROM utente WHERE email = '" + emailUser + "';";
             ResultSet rs = connessione.executeSearch(query);
-            utente = getUtente();
             while (rs.next()) {
+                utente = getUtente();
                 utente.setEmail(rs.getString(1));
                 utente.setPassword(rs.getString(2));
                 utente.setData(rs.getString(3));
             }
             rs.close();
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

@@ -7,6 +7,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
+import static com.example.bibliotecadigitale.Model.Utente.getUtente;
+
 public class SignUpController {
 
     @FXML
@@ -36,7 +38,8 @@ public class SignUpController {
         UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
         Utente utente = utenteDAO.get(emailUser);
         //Se nessun utente ha la stessa email, inserire l'utente nel database
-        if (utente != null) {
+        if (utente == null) {
+            utente = getUtente();
             utente.setEmail(emailUser);
             utente.setPassword(passwordUser);
             utenteDAO.save(utente);
