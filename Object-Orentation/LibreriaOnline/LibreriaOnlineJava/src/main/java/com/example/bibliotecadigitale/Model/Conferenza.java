@@ -2,7 +2,7 @@ package com.example.bibliotecadigitale.Model;
 
 import java.util.Date;
 
-public class Conferenza extends Piattaforma{
+public class Conferenza extends Piattaforma {
 
     private int codC;
     private String nome;
