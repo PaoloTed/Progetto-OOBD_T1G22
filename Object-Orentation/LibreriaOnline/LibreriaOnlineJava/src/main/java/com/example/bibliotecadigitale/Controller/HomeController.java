@@ -37,7 +37,6 @@ public class HomeController implements Initializable {
         String genere;
         String editore;
         String isbnAppoggio;
-
         for (int i = 0; i < libri.size(); i++) {
             titolo = libri.get(i).getTitolo();
             autore = libri.get(i).getAutore();
@@ -53,9 +52,8 @@ public class HomeController implements Initializable {
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
        idComboBox.setItems(FXCollections.observableArrayList("Titolo","Autore","Genere","Editore"));
-
+        idComboBox.getSelectionModel().selectFirst();
 
     }
 }
