@@ -10,37 +10,32 @@ import java.util.List;
 
 public class LibroDAOImpl implements LibroDAO {
 
-    public ArrayList<String> search(String tipoRicerca, String parolaChiave) {
-        ArrayList<String> isbn = new ArrayList<>();
-        ResultSet rs = null;
-        try {
-            Connessione connessione = new Connessione();
-            String query = "SELECT * FROM libro WHERE " + tipoRicerca + " LIKE '%" + parolaChiave + "%';";
-            rs = connessione.executeSearch(query);
-            while (rs.next()) {
-               isbn.add(rs.getString(1));
-            }
-            rs.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return isbn;
-    }
 
-    public  Libro findLibroFromCodev2(String s)
+
+    public  ArrayList<Libro> getRicerca(String tipoRicerca, String parolaChiave)
     {
-        Libro libroFinded = null;
+        ArrayList<Libro>  libroFinded = new ArrayList<>();
         try {
             Connessione connessione = new Connessione();
-            String query = "SELECT * FROM libro WHERE isbn = '" + s + "';";
+            String query = "SELECT * FROM libro WHERE LOWER(" + tipoRicerca + ") LIKE LOWER('%" + parolaChiave + "%');";
             ResultSet rs = connessione.executeSearch(query);
-            libroFinded = new Libro();
+            Libro libro = new Libro();
             while (rs.next()) {
-                libroFinded.setISBN(rs.getString(1));
-                libroFinded.setTitolo(rs.getString(2));
-                libroFinded.setGenere(rs.getString(3));
-                libroFinded.setAutore(rs.getString(10));
-                libroFinded.setEditore(rs.getString(9));
+                libro.setISBN(rs.getString(1));
+                libro.setTitolo(rs.getString(2));
+                libro.setGenere(rs.getString(3));
+                libro.setNumeroPagine(rs.getInt(4));
+                libro.setTipo(rs.getString(5));
+                libro.setMateria(rs.getString(6));
+                libro.setDescrizione(rs.getString(7));
+                libro.setFruizione(rs.getString(8));
+                libro.setEditore(rs.getString(9));
+                libro.setAutore(rs.getString(10));
+                libro.setDatauscita(rs.getString(11));
+                libro.setLingua(rs.getString(12));
+                libro.setSuccessivo(rs.getString(13));
+                libro.setPresentazione(rs.getString(14));
+                libroFinded.add(libro);
             }
             rs.close();
         } catch (

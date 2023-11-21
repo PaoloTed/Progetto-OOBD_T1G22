@@ -18,6 +18,8 @@ public class Libro extends Pubblicazioni{
     private String lingua;
     private String successivo;
 
+
+
     public String getPresentazione() {
         return presentazione;
     }
