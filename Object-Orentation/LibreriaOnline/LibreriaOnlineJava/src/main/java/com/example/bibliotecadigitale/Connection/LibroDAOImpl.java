@@ -1,12 +1,14 @@
 package com.example.bibliotecadigitale.Connection;
 
+import com.example.bibliotecadigitale.DAO.LibroDAO;
 import com.example.bibliotecadigitale.Model.Libro;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
-public class LibroDAO {
+public class LibroDAOImpl implements LibroDAO {
 
     public ArrayList<String> search(String tipoRicerca, String parolaChiave) {
         ArrayList<String> isbn = new ArrayList<>();
@@ -46,5 +48,30 @@ public class LibroDAO {
             throw new RuntimeException(e);
         }
         return libroFinded;
+    }
+
+    @Override
+    public Libro get() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public List<Libro> getAll() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public void save(Libro libro) throws SQLException {
+
+    }
+
+    @Override
+    public void update(Libro libro) throws SQLException {
+
+    }
+
+    @Override
+    public void delete(Libro libro) throws SQLException {
+
     }
 }

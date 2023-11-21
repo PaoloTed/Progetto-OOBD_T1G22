@@ -1,6 +1,6 @@
 package com.example.bibliotecadigitale.Controller;
 
-import com.example.bibliotecadigitale.Connection.LibroDAO;
+import com.example.bibliotecadigitale.Connection.LibroDAOImpl;
 import com.example.bibliotecadigitale.Model.Libro;
 import com.example.bibliotecadigitale.SupportStage;
 import javafx.collections.FXCollections;
@@ -12,7 +12,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -28,7 +27,7 @@ public class HomeController implements Initializable {
 
     @FXML
     void Select(ActionEvent event) {
-        LibroDAO libroDAO = new LibroDAO();
+        LibroDAOImpl libroDAO = new LibroDAOImpl();
         String scelta =idComboBox.getSelectionModel().getSelectedItem();
         System.out.println(scelta);
         ArrayList<String> isbn = libroDAO.search(scelta,idBarSearch.getText());
