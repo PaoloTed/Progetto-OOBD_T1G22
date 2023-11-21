@@ -1,15 +1,11 @@
 package com.example.bibliotecadigitale.Controller;
 
-import com.example.bibliotecadigitale.Connection.Connessione;
-import com.example.bibliotecadigitale.Connection.UtenteDAO;
+import com.example.bibliotecadigitale.Connection.UtenteDAOImpl;
+import com.example.bibliotecadigitale.Model.Utente;
 import com.example.bibliotecadigitale.SupportStage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-
-import java.sql.Connection;
 
 public class SignUpController {
 
@@ -37,11 +33,13 @@ public class SignUpController {
             return;
         }
         //Controllare prima che non esista già un utente con la stessa email
-        UtenteDAO utenteDAO = new UtenteDAO();
-        int rowExists = utenteDAO.getRowsExsistUtenteEmail(emailUser);
+        UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
+        Utente utente = utenteDAO.get(emailUser);
         //Se nessun utente ha la stessa email, inserire l'utente nel database
-        if (rowExists == 0) {
-            utenteDAO.insertUser(emailUser, passwordUser);
+        if (utente != null) {
+            utente.setEmail(emailUser);
+            utente.setPassword(passwordUser);
+            utenteDAO.save(utente);
             support.messageStage("Registrazione effettuata con successo");
             support.switchStage("welcome.fxml", event);
         } else {

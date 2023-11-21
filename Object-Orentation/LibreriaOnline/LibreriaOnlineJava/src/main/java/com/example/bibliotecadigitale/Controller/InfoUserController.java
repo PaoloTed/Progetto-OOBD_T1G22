@@ -1,18 +1,16 @@
 package com.example.bibliotecadigitale.Controller;
 
 import com.example.bibliotecadigitale.Connection.SerieDAO;
-import com.example.bibliotecadigitale.Connection.UtenteDAO;
+import com.example.bibliotecadigitale.Connection.UtenteDAOImpl;
 import com.example.bibliotecadigitale.Model.Serie;
 import com.example.bibliotecadigitale.Model.Utente;
 import com.example.bibliotecadigitale.SupportStage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
-import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -42,7 +40,7 @@ public class InfoUserController implements Initializable {
 
     public void setContentView(String email) {
         SerieDAO serieDAO = new SerieDAO();
-        UtenteDAO utenteDAO = new UtenteDAO();
+        UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
 
         //Recupero le serie preferite dell'utente
         ArrayList<Integer> codPreferiti = utenteDAO.searchPreferiti(email);
@@ -78,7 +76,7 @@ public class InfoUserController implements Initializable {
 
         //Se la vecchia password è corretta, cambio la password dell'utente nel database e nella variabile Utente
         Utente.getUtente().setPassword(newPassword);
-        UtenteDAO utenteDAO = new UtenteDAO();
+        UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
         utenteDAO.updatePassword(Utente.getUtente().getEmail(), newPassword);
         support.messageStage("Password cambiata con successo");
     }
@@ -90,7 +88,7 @@ public class InfoUserController implements Initializable {
         Serie serie = getSerieFromListView();
         if (serie != null) {
             //Elimino la serie selezionata dal database
-            UtenteDAO utenteDAO = new UtenteDAO();
+            UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
             utenteDAO.deletePreferiti(Utente.getUtente().getEmail(), serie.getCodS());
 
             //Elimino la serie selezionata dalla listView

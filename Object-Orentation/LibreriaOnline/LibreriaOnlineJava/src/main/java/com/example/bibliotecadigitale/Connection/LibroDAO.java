@@ -3,8 +3,7 @@ package com.example.bibliotecadigitale.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class LibroDAO
-{
+public class LibroDAO {
 
     public ResultSet searchData(String tipoRicerca, String ricerca) {
         ResultSet rs = null;

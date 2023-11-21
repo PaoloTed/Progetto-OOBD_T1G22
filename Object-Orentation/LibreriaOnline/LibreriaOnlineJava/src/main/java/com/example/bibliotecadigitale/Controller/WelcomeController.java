@@ -2,25 +2,22 @@ package com.example.bibliotecadigitale.Controller;
 
 
 import com.example.bibliotecadigitale.Connection.Connessione;
-import com.example.bibliotecadigitale.Connection.UtenteDAO;
+import com.example.bibliotecadigitale.Connection.UtenteDAOImpl;
 import com.example.bibliotecadigitale.Model.Utente;
 import com.example.bibliotecadigitale.SupportStage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Box;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 import java.net.URL;
-import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import static com.example.bibliotecadigitale.Model.Utente.getUtente;
@@ -66,8 +63,8 @@ public class WelcomeController implements Initializable {
     }
 
     @FXML
-    public void LogIn(ActionEvent PressLogin) {
-        UtenteDAO utenteDAO = new UtenteDAO();
+    public void LogIn(ActionEvent PressLogin) throws SQLException {
+        UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
         String emailUser = txtEmailField.getText();
         String passwordUser = txtPasswordField.getText();
         txtEmailField.clear();
@@ -78,8 +75,8 @@ public class WelcomeController implements Initializable {
         }
 
         //Se l'email e la password rispettano i requisiti, controllare che l'utente sia presente nel database
-        int rowsExsist = utenteDAO.getRowsExsistUtenteEmailPassword(emailUser, passwordUser);
-        if (rowsExsist != 1) {
+        Utente utente = utenteDAO.get(emailUser);
+        if (utente == null || !utente.getPassword().equals(passwordUser)) {
             support.messageStage("Email e/o password errate");
             return;
         }
