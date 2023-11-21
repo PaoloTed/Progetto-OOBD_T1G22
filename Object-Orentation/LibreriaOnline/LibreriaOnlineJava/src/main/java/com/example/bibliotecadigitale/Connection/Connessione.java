@@ -20,18 +20,15 @@ public class Connessione {
         }
         //connessione alla base di dati libreriaOnline
         try {
-            try {
-                //leggo le credenziali dal file credenzialiProgetto.txt
-                //il file deve essere nella cartella documenti
-                ArrayList<String> credenziali = leggiCredenziali();
-                url = credenziali.get(0);
-                className = credenziali.get(1);
-                user = credenziali.get(2);
-                password = credenziali.get(3);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            con = DriverManager.getConnection(url, user, password);//forse segnalare al prof di aggiungere il drive al progetto
+            //leggo le credenziali dal file credenzialiProgetto.txt
+            //il file deve essere nella cartella documenti
+            ArrayList<String> credenziali = leggiCredenziali();
+            url = credenziali.get(0);
+            className = credenziali.get(1);
+            user = credenziali.get(2);
+            password = credenziali.get(3);
+
+            con = DriverManager.getConnection(url, user, password);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -47,16 +44,21 @@ public class Connessione {
         return rs;
     }
 
-    public static ArrayList<String> leggiCredenziali() throws IOException {
-        String pathDocumenti = FileSystemView.getFileSystemView().getDefaultDirectory().getPath();
-        File file = new File(pathDocumenti + "\\credenzialiProgetto.txt");
-        BufferedReader br = new BufferedReader(new FileReader(file));
-        ArrayList<String> credenzialiAppoggio = new ArrayList<>();
-        String st;
-        while ((st = br.readLine()) != null) {
-            credenzialiAppoggio.add(st);
+    public static ArrayList<String> leggiCredenziali() {
+        try {
+            String pathDocumenti = FileSystemView.getFileSystemView().getDefaultDirectory().getPath();
+            File file = new File(pathDocumenti + "\\credenzialiProgetto.txt");
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            ArrayList<String> credenzialiAppoggio = new ArrayList<>();
+            String st;
+            while ((st = br.readLine()) != null) {
+                credenzialiAppoggio.add(st);
+            }
+            return credenzialiAppoggio;
+        } catch (IOException e) {
+            System.out.println("Errore nella lettura del file credenzialiProgetto.txt, inserire il file nella cartella documenti");
+            throw new RuntimeException(e);
         }
-        return credenzialiAppoggio;
 
     }
 
