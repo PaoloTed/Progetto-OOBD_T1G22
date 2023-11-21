@@ -70,6 +70,8 @@ public class WelcomeController implements Initializable {
         UtenteDAO utenteDAO = new UtenteDAO();
         String emailUser = txtEmailField.getText();
         String passwordUser = txtPasswordField.getText();
+        txtEmailField.clear();
+        txtPasswordField.clear();
         if (!(support.checkEmailPassword(emailUser, passwordUser))) {
             support.messageStage("Inserire una email valida e/o una password valida");
             return;
