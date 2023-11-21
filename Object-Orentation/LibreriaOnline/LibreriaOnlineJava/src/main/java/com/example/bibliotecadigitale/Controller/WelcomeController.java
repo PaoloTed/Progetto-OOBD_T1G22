@@ -57,8 +57,8 @@ public class WelcomeController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String numeroUtenti = String.valueOf(getUserRegistered());
         String numeroUtentiOnline = String.valueOf(getUserOnline());
-        imageWelcome.setImage(new Image("file:src/main/resources/photo/We read to know we are not alone. (1).png"));
-        imageWelcome2.setImage(new Image("file:src/main/resources/photo/Progetto senza titolo (1).png"));
+        imageWelcome.setImage(new Image("file:src/main/resources/photo/welcomeFoto1.png"));
+        imageWelcome2.setImage(new Image("file:src/main/resources/photo/welcomeFoto2.png"));
 
 
         txtUserRegistrati.setText(numeroUtenti);
