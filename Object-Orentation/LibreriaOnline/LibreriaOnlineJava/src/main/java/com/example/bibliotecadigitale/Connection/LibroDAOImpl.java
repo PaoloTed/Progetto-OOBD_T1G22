@@ -18,7 +18,7 @@ public class LibroDAOImpl implements LibroDAO {
             String query = "SELECT * FROM libro WHERE " + tipoRicerca + " LIKE '%" + parolaChiave + "%';";
             rs = connessione.executeSearch(query);
             while (rs.next()) {
-               isbn.add(rs.getString(1));
+                isbn.add(rs.getString(1));
             }
             rs.close();
         } catch (SQLException e) {
@@ -27,8 +27,7 @@ public class LibroDAOImpl implements LibroDAO {
         return isbn;
     }
 
-    public  Libro findLibroFromCodev2(String s)
-    {
+    public Libro findLibroFromCodev2(String s) {
         Libro libroFinded = null;
         try {
             Connessione connessione = new Connessione();
@@ -53,12 +52,12 @@ public class LibroDAOImpl implements LibroDAO {
     @Override
     public Libro get(String isbn) throws SQLException {
         Libro libro;
-        try{
+        try {
             Connessione connessione = new Connessione();
             String query = "SELECT * FROM libro WHERE isbn = '" + isbn + "';";
             ResultSet rs = connessione.executeSearch(query);
             libro = new Libro();
-            while (rs.next()){
+            while (rs.next()) {
                 libro.setISBN(rs.getString(1));
                 libro.setTitolo(rs.getString(2));
                 libro.setGenere(rs.getString(3));
@@ -76,12 +75,11 @@ public class LibroDAOImpl implements LibroDAO {
             }
             rs.close();
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return libro;
     }
-
 
 
     @Override
@@ -96,7 +94,7 @@ public class LibroDAOImpl implements LibroDAO {
             String isbn = libro.getISBN();
             String titolo = libro.getTitolo();
             String genere = libro.getGenere();
-            String numeroPagine = String.valueOf(libro.getNumeroPagine());
+            int numeroPagine = libro.getNumeroPagine();
             String tipo = libro.getTipo();
             String materia = libro.getMateria();
             String descrizione = libro.getDescrizione();

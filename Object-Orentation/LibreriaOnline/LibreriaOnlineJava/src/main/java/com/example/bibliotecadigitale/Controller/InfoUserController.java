@@ -1,6 +1,6 @@
 package com.example.bibliotecadigitale.Controller;
 
-import com.example.bibliotecadigitale.Connection.SerieDAO;
+import com.example.bibliotecadigitale.Connection.SerieDAOImpl;
 import com.example.bibliotecadigitale.Connection.UtenteDAOImpl;
 import com.example.bibliotecadigitale.Model.Serie;
 import com.example.bibliotecadigitale.Model.Utente;
@@ -13,6 +13,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -39,7 +40,7 @@ public class InfoUserController implements Initializable {
     }
 
     public void setContentView(String email) {
-        SerieDAO serieDAO = new SerieDAO();
+        SerieDAOImpl serieDAO = new SerieDAOImpl();
         UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
 
         //Recupero le serie preferite dell'utente
@@ -50,7 +51,7 @@ public class InfoUserController implements Initializable {
 
         //Mostro le serie preferite dell'utente nella listView
         for (int i = 0; i < codPreferiti.size(); i++) {
-            serieAppoggio = serieDAO.findSerieFromCodev2(codPreferiti.get(i));
+            serieAppoggio = serieDAO.get(String.valueOf(codPreferiti.get(i)));
             serieCodSAppoggio = serieAppoggio.getCodS();
             serieNomeAppoggio = serieAppoggio.getNome();
             //Viene inserito nella listView il codice della serie e il suo nome

@@ -124,25 +124,24 @@ public class UtenteDAOImpl implements UtenteDAO {
 
     @Override
     public Utente get(String emailUser) {
-        Utente Utente;
-        try{
+        Utente utente;
+        try {
             Connessione connessione = new Connessione();
             String query = "SELECT * FROM utente WHERE email = '" + emailUser + "';";
             ResultSet rs = connessione.executeSearch(query);
-            Utente = getUtente();
-            while (rs.next()){
-                Utente.setEmail(rs.getString(1));
-                Utente.setPassword(rs.getString(2));
-                Utente.setData(rs.getString(3));
+            utente = getUtente();
+            while (rs.next()) {
+                utente.setEmail(rs.getString(1));
+                utente.setPassword(rs.getString(2));
+                utente.setData(rs.getString(3));
             }
             rs.close();
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return Utente;
+        return utente;
     }
-
 
 
     @Override
