@@ -10,36 +10,16 @@ import java.util.List;
 
 public class LibroDAOImpl implements LibroDAO {
 
-    public ArrayList<String> search(String tipoRicerca, String parolaChiave) {
-        ArrayList<String> isbn = new ArrayList<>();
-        ResultSet rs = null;
+    public ArrayList<Libro> getRicerca(String tipoRicerca, String parolaChiave) {
+        ArrayList<Libro> libroFinded = new ArrayList<>();
         try {
             Connessione connessione = new Connessione();
-            String query = "SELECT * FROM libro WHERE " + tipoRicerca + " LIKE '%" + parolaChiave + "%';";
-            rs = connessione.executeSearch(query);
-            while (rs.next()) {
-                isbn.add(rs.getString(1));
-            }
-            rs.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return isbn;
-    }
-
-    public Libro findLibroFromCodev2(String s) {
-        Libro libroFinded = null;
-        try {
-            Connessione connessione = new Connessione();
-            String query = "SELECT * FROM libro WHERE isbn = '" + s + "';";
+            String query = "SELECT isbn FROM libro WHERE LOWER(" + tipoRicerca + ") LIKE LOWER('%" + parolaChiave + "%');";
             ResultSet rs = connessione.executeSearch(query);
-            libroFinded = new Libro();
+            Libro libro;
             while (rs.next()) {
-                libroFinded.setISBN(rs.getString(1));
-                libroFinded.setTitolo(rs.getString(2));
-                libroFinded.setGenere(rs.getString(3));
-                libroFinded.setAutore(rs.getString(10));
-                libroFinded.setEditore(rs.getString(9));
+                libro = get(rs.getString(1));
+                libroFinded.add(libro);
             }
             rs.close();
         } catch (
