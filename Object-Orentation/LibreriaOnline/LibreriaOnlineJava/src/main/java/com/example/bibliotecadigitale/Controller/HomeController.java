@@ -29,21 +29,21 @@ public class HomeController implements Initializable {
     void Select(ActionEvent event) {
         LibroDAOImpl libroDAO = new LibroDAOImpl();
         String scelta =idComboBox.getSelectionModel().getSelectedItem();
+        listViewLibri.getItems().clear();
         System.out.println(scelta);
-        ArrayList<String> isbn = libroDAO.search(scelta,idBarSearch.getText());
-        Libro libro = new Libro();
+        ArrayList<Libro> libri = libroDAO.getRicerca(scelta,idBarSearch.getText());
         String titolo;
         String autore;
         String genere;
         String editore;
         String isbnAppoggio;
-        for (int i = 0; i < isbn.size(); i++) {
-            libro = libroDAO.findLibroFromCodev2(isbn.get(i));
-            titolo = libro.getTitolo();
-            autore = libro.getAutore();
-            genere = libro.getGenere();
-            editore = libro.getEditore();
-            isbnAppoggio = libro.getISBN();
+
+        for (int i = 0; i < libri.size(); i++) {
+            titolo = libri.get(i).getTitolo();
+            autore = libri.get(i).getAutore();
+            genere = libri.get(i).getGenere();
+            editore = libri.get(i).getEditore();
+            isbnAppoggio = libri.get(i).getISBN();
             listViewLibri.getItems().add(isbnAppoggio + " - " + titolo + " - " + autore + " - " + genere + " - " + editore);
         }
     }
@@ -53,7 +53,9 @@ public class HomeController implements Initializable {
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
        idComboBox.setItems(FXCollections.observableArrayList("Titolo","Autore","Genere","Editore"));
+
 
     }
 }
