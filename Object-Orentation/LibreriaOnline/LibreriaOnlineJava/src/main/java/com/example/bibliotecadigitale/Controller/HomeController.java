@@ -2,20 +2,18 @@ package com.example.bibliotecadigitale.Controller;
 
 import com.example.bibliotecadigitale.SupportStage;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
+import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class PrimaPaginaController {
+public class HomeController implements Initializable {
     @FXML
-    private ComboBox idComboBox;
+    private ComboBox<String> idComboBox;
 
     @FXML
     private TextField idBarSearch;
@@ -23,8 +21,8 @@ public class PrimaPaginaController {
 
     @FXML
     void Select(ActionEvent event) {
-        String scelta =idComboBox.getSelectionModel().getSelectedItem().toString();
-
+        String scelta =idComboBox.getSelectionModel().getSelectedItem();
+        System.out.println(scelta);
 
     }
     @FXML
@@ -33,8 +31,7 @@ public class PrimaPaginaController {
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ObservableList<String> list= FXCollections.observableArrayList("Libri","Autori","Generi");
-        idComboBox.setItems(list);
+       idComboBox.setItems(FXCollections.observableArrayList("Titolo","Autore","Genere","Editore"));
 
     }
 }
