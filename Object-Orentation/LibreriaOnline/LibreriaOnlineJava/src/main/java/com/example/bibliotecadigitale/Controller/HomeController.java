@@ -2,16 +2,25 @@ package com.example.bibliotecadigitale.Controller;
 
 import com.example.bibliotecadigitale.Connection.LibroDAOImpl;
 import com.example.bibliotecadigitale.Model.Libro;
+import com.example.bibliotecadigitale.Model.Serie;
 import com.example.bibliotecadigitale.SupportStage;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -24,7 +33,8 @@ public class HomeController implements Initializable {
     public SupportStage support = new SupportStage();
     @FXML
     public ListView<String> listViewLibri;
-
+    @FXML
+    private Button buttonMostra;
     @FXML
     void Select(ActionEvent event) {
         LibroDAOImpl libroDAO = new LibroDAOImpl();
@@ -45,6 +55,13 @@ public class HomeController implements Initializable {
             isbnAppoggio = libri.get(i).getISBN();
             listViewLibri.getItems().add(isbnAppoggio + " - " + titolo + " - " + autore + " - " + genere + " - " + editore);
         }
+        if(libri.isEmpty()){
+            support.messageStage("Nessun match trovato");
+            idBarSearch.clear();
+        }
+        else {
+            buttonMostra.setDisable(false);
+        }
     }
     @FXML
     public void goToInfoUser(ActionEvent event) {
@@ -56,4 +73,34 @@ public class HomeController implements Initializable {
         idComboBox.getSelectionModel().selectFirst();
 
     }
+    public Libro getLibroFromListView() throws SQLException {
+        String libroSelezionato = listViewLibri.getSelectionModel().getSelectedItem();
+        String[] libroSelezionatoSplit = libroSelezionato.split(" - ");
+        String isbn = libroSelezionatoSplit[0];
+        LibroDAOImpl libroDAO = new LibroDAOImpl();
+        return libroDAO.get(isbn);
+
+    }
+     public void goToPaginaInformativaLibro(ActionEvent event) throws SQLException, IOException {
+         Parent root;
+         Stage stage ;
+         Scene scene ;
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.close();
+         try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("paginaInformativaLibro.fxml"));
+                root = loader.load();
+                PaginaInformativaLibroController paginaInformativaLibroController = loader.getController();
+                paginaInformativaLibroController.showInfoLibro(getLibroFromListView());
+                //SupportStage support = new SupportStage();
+                // support.switchStage("paginaInformativaLibroStage.fxml",event);
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+         }
+
+     }
 }

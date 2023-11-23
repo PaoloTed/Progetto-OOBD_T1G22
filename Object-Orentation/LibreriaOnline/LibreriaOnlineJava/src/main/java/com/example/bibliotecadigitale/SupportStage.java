@@ -55,6 +55,9 @@ public class SupportStage
         }
     }
 
+
+
+
     public boolean checkEmailPassword(String email, String password)
     {
         //Implementare controllo sql injection
