@@ -3,6 +3,7 @@ package com.example.bibliotecadigitale.Connection;
 import com.example.bibliotecadigitale.DAO.LibroDAO;
 import com.example.bibliotecadigitale.Model.Libro;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;

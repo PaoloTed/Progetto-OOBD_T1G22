@@ -1,5 +1,6 @@
 package com.example.bibliotecadigitale.Controller;
 
+import com.example.bibliotecadigitale.Connection.Connessione;
 import com.example.bibliotecadigitale.Connection.LibroDAOImpl;
 import com.example.bibliotecadigitale.Model.Libro;
 import com.example.bibliotecadigitale.Model.Serie;
@@ -35,13 +36,14 @@ public class HomeController implements Initializable {
     public ListView<String> listViewLibri;
     @FXML
     private Button buttonMostra;
+
     @FXML
     void Select(ActionEvent event) {
         LibroDAOImpl libroDAO = new LibroDAOImpl();
-        String scelta =idComboBox.getSelectionModel().getSelectedItem();
+        String scelta = idComboBox.getSelectionModel().getSelectedItem();
         listViewLibri.getItems().clear();
         System.out.println(scelta);
-        ArrayList<Libro> libri = libroDAO.getRicerca(scelta,idBarSearch.getText());
+        ArrayList<Libro> libri = libroDAO.getRicerca(scelta, idBarSearch.getText());
         String titolo;
         String autore;
         String genere;
@@ -55,25 +57,36 @@ public class HomeController implements Initializable {
             isbnAppoggio = libri.get(i).getISBN();
             listViewLibri.getItems().add(isbnAppoggio + " - " + titolo + " - " + autore + " - " + genere + " - " + editore);
         }
-        if(libri.isEmpty()){
+        if (libri.isEmpty()) {
             support.messageStage("Nessun match trovato");
             idBarSearch.clear();
             buttonMostra.setDisable(true);
-        }
-        else {
+        } else {
             buttonMostra.setDisable(false);
         }
     }
+
     @FXML
     public void goToInfoUser(ActionEvent event) {
-        support.switchStage("infoUserStage.fxml",event);
+        support.switchStage("infoUserStage.fxml", event);
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-       idComboBox.setItems(FXCollections.observableArrayList("Titolo","Autore","Genere","Editore"));
+        idComboBox.setItems(FXCollections.observableArrayList("Titolo", "Autore", "Genere", "Editore"));
         idComboBox.getSelectionModel().selectFirst();
 
+
     }
+
+    public void logout(Stage scene) {
+        System.out.println("Addio");
+        Connessione connessione = new Connessione();
+        connessione.closeConnection();
+        scene.close();
+    }
+
+
+
     public Libro getLibroFromListView() throws SQLException {
         String libroSelezionato = listViewLibri.getSelectionModel().getSelectedItem();
         String[] libroSelezionatoSplit = libroSelezionato.split(" - ");
@@ -82,10 +95,16 @@ public class HomeController implements Initializable {
         return libroDAO.get(isbn);
 
     }
-     public void goToPaginaInformativaLibro(ActionEvent event) throws SQLException, IOException {
+
+    public void goToNotifiche(ActionEvent event) {
+        support.switchStage("notificheStage.fxml", event,900,900);
+    }
+
+    public void goToPaginaInformativaLibro(ActionEvent event) throws SQLException, IOException {
         SupportStage support = new SupportStage();
         Libro libro = getLibroFromListView();
-        support.switchStage("paginaInformativaLibro.fxml",event,libro);
+        support.switchStage("paginaInformativaLibro.fxml", event, libro);
 
-     }
+    }
+
 }

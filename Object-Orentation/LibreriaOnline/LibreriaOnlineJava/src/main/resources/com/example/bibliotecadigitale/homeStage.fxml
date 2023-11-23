@@ -25,5 +25,6 @@
       <Button layoutX="373.0" layoutY="861.0" mnemonicParsing="false" onAction="#Select" text="Cerca" />
       <ComboBox fx:id="idComboBox" layoutX="450.0" layoutY="130.0" prefWidth="150.0" />
       <Button fx:id="buttonMostra" disable="true" layoutX="502.0" layoutY="861.0" mnemonicParsing="false" onAction="#goToPaginaInformativaLibro" text="Mostra" />
+      <Button layoutX="14.0" layoutY="36.0" mnemonicParsing="false" onAction="#goToNotifiche" text="Notifiche" />
    </children>
 </AnchorPane>

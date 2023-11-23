@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -31,7 +33,15 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <ListView fx:id="listViewSerie" editable="true" layoutX="71.0" layoutY="166.0" prefHeight="200.0" prefWidth="357.0" />
+      <ListView fx:id="listViewSerie" editable="true" layoutX="71.0" layoutY="166.0" prefHeight="200.0" prefWidth="357.0">
+         <contextMenu>
+            <ContextMenu>
+              <items>
+                <MenuItem mnemonicParsing="false" text="Vai Alla Pagina Informativa Serie" />
+                  <MenuItem mnemonicParsing="false" text="Elimina Dai preferiti" />
+              </items>
+            </ContextMenu>
+         </contextMenu></ListView>
       <Button fx:id="buttonBack" layoutX="64.0" layoutY="423.0" mnemonicParsing="false" onAction="#back_goToHome" text="Back" />
       <PasswordField fx:id="txtOldPassword" layoutX="81.0" layoutY="120.0" promptText="Vecchia Password" />
       <PasswordField fx:id="txtNewPassword" layoutX="232.0" layoutY="120.0" promptText="NuovaPassword" />

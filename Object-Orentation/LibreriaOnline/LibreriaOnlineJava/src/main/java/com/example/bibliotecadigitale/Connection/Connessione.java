@@ -66,4 +66,12 @@ public class Connessione {
         Statement stat = con.createStatement();
         stat.executeUpdate(query);
     }
+
+    public void closeConnection() {
+        try {
+            con.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

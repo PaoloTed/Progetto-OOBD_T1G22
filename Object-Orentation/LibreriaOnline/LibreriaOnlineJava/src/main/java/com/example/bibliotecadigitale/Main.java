@@ -1,5 +1,6 @@
 package com.example.bibliotecadigitale;
 
+import com.example.bibliotecadigitale.Connection.Connessione;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -27,10 +28,17 @@ public class Main extends Application {
         welcomeStage.setScene(scene);
         welcomeStage.getIcons().add(new Image("file:src/main/resources/photo/biblioteca.png"));
         welcomeStage.show();
-
     }
-        public static void main (String[]args){
-            launch();
-        }
 
+    public static void main(String[] args) {
+        launch();
     }
+    @Override
+    public void stop() {
+        System.out.println("Addio");
+        Connessione connessione = new Connessione();
+        connessione.closeConnection();
+        System.exit(0);
+    }
+
+}
