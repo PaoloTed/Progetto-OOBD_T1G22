@@ -58,6 +58,7 @@ public class HomeController implements Initializable {
         if(libri.isEmpty()){
             support.messageStage("Nessun match trovato");
             idBarSearch.clear();
+            buttonMostra.setDisable(true);
         }
         else {
             buttonMostra.setDisable(false);
