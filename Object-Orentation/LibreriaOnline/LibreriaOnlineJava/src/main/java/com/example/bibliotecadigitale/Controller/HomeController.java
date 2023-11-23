@@ -83,25 +83,9 @@ public class HomeController implements Initializable {
 
     }
      public void goToPaginaInformativaLibro(ActionEvent event) throws SQLException, IOException {
-         Parent root;
-         Stage stage ;
-         Scene scene ;
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.close();
-         try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("paginaInformativaLibro.fxml"));
-                root = loader.load();
-                PaginaInformativaLibroController paginaInformativaLibroController = loader.getController();
-                paginaInformativaLibroController.showInfoLibro(getLibroFromListView());
-                //SupportStage support = new SupportStage();
-                // support.switchStage("paginaInformativaLibroStage.fxml",event);
-                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-         }
+        SupportStage support = new SupportStage();
+        Libro libro = getLibroFromListView();
+        support.switchStage("paginaInformativaLibro.fxml",event,libro);
 
      }
 }

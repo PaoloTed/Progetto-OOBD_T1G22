@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f0f3062c-e759-49ff-9312-578ab6d64d8e" name="Changes" comment="mannac o buccacc">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/PaginaInformativaLibroController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/PaginaInformativaLibroController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/SupportStage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/SupportStage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/paginaInformativaLibro.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/paginaInformativaLibro.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +151,7 @@
       <workItem from="1699888135676" duration="5183000" />
       <workItem from="1699894151943" duration="4594000" />
       <workItem from="1700585484710" duration="8769000" />
-      <workItem from="1700754282992" duration="6246000" />
+      <workItem from="1700754282992" duration="7266000" />
     </task>
     <task id="LOCAL-00001" summary="importazione">
       <created>1698773198524</created>
@@ -441,7 +445,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700759910824</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="mannac o buccacc">
+      <option name="closed" value="true" />
+      <created>1700760766820</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1700760766820</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

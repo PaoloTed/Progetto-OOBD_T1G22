@@ -16,7 +16,7 @@ public class PaginaInformativaLibroController {
     }
 
     public void  showInfoLibro(Libro libroPassato) {
-        System.out.println(libro.getTitolo());
+        System.out.println(libroPassato.getTitolo());
         libro = libroPassato;
     }
 
