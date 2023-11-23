@@ -83,11 +83,11 @@ public class WelcomeController implements Initializable {
         //Se l'utente è presente nel database, mostrare la sua home page
         Utente utenteNew = getUtente();
         utenteNew.setUtente(emailUser, passwordUser, utenteDAO.get(emailUser).getData());
-        support.switchStage("home.fxml", PressLogin, 900, 900);
+        support.switchStage("homeStage.fxml", PressLogin, 900, 900);
     }
 
     public void goToSingUpUtente(ActionEvent PressSingUp) {
-        support.switchStage("signUp.fxml", PressSingUp);
+        support.switchStage("signUpStage.fxml", PressSingUp);
     }
 
 
@@ -114,5 +114,13 @@ public class WelcomeController implements Initializable {
             throw new RuntimeException(e);
         }
         return numeroUtenti;
+    }
+
+    public void skip(ActionEvent event) {
+        Utente utenteNew = getUtente();
+        utenteNew.setEmail("giulio@ruopolo.it");
+        utenteNew.setPassword("salernitana");
+        utenteNew.setData("2002-10-05");
+        support.switchStage("homeStage.fxml", event, 900, 900);
     }
 }
