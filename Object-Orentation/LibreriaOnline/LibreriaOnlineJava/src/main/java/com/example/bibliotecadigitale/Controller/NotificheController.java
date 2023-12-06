@@ -1,11 +1,14 @@
 package com.example.bibliotecadigitale.Controller;
 
 import com.example.bibliotecadigitale.Connection.Connessione;
+import com.example.bibliotecadigitale.Connection.UtenteDAOImpl;
+import com.example.bibliotecadigitale.Model.Serie;
 import com.example.bibliotecadigitale.Model.Utente;
 import com.example.bibliotecadigitale.SupportStage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
@@ -25,6 +28,9 @@ public class NotificheController implements Initializable {
     @FXML
     public MenuItem prova1;
 
+    @FXML
+    private Parent root ;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -35,7 +41,7 @@ public class NotificheController implements Initializable {
             String query = "select * from show_preferiti('" + email + "');";
             ResultSet rs =  connessione.executeSearch(query);
             while (rs.next()) {
-                listViewSerieAcquisto.getItems().add("SERIE: "+rs.getString(1)+" "+rs.getString(2)+" || DOVE ACQUISTARLA: "+rs.getString(3)+" "+rs.getString(4)+" || TIPO ACQUISTO: "+rs.getString(5));
+                listViewSerieAcquisto.getItems().add("SERIE: "+rs.getString(1)+" || "+rs.getString(2)+" || DOVE ACQUISTARLA: "+rs.getString(3)+" || "+rs.getString(4)+" || TIPO ACQUISTO: "+rs.getString(5));
             }
             rs.close();
         } catch (SQLException e) {
@@ -43,15 +49,35 @@ public class NotificheController implements Initializable {
         }
     }
 
-    public void goToHome(ActionEvent event) {
-        support.switchStage("homeStage.fxml",event,900,900);
-    }
 
     public void home(ActionEvent event) {
-        Stage stages = (Stage) prova1.getParentPopup().getOwnerWindow();
-        stages.close();
-        support.switchStage("homeStage.fxml",event,900,900);
-        //support.messageStage("Hai cliccato su home");
+        //Prendo la finestra corrente e la chiudo, non posso prendere la scena
+        //da menuitem perchè non è un nodo, la prendo da listViewSerieAcquisto
+        Stage stage = (Stage) listViewSerieAcquisto.getScene().getWindow();
+        stage.close();
+        support.switchStage("homeStage.fxml",900,900);
+    }
 
+    public void eliminaPreferito(ActionEvent event) {
+        Serie serie = getSerieFromListView();
+        UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
+        utenteDAO.deletePreferiti(Utente.getUtente().getEmail(), serie.getCodS());
+
+        //Elimino la serie selezionata dalla listView
+        deleteSerieFromListView(serie);
+        support.messageStage("Preferito eliminato con successo");
+    }
+
+    public Serie getSerieFromListView() {
+        String serieCodS_Nome = listViewSerieAcquisto.getSelectionModel().getSelectedItem();
+        Serie serieAppoggio = new Serie();
+        serieAppoggio.setCodS(serieCodS_Nome.substring(serieCodS_Nome.indexOf(": "), serieCodS_Nome.indexOf(" || ")));
+        serieAppoggio.setNome(serieCodS_Nome.substring(serieCodS_Nome.indexOf(" - ") + 3));
+        return serieAppoggio;
+    }
+
+    //Metodo che elimina la serie selezionata dalla listView
+    public void deleteSerieFromListView(Serie serie) {
+        listViewSerieAcquisto.getItems().remove(serie.getCodS() + " - " + serie.getNome());
     }
 }

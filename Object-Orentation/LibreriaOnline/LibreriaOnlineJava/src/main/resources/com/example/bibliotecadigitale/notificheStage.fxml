@@ -14,12 +14,12 @@
               <items>
                 <MenuItem mnemonicParsing="false" text="Vedi info Serie" />
                   <MenuItem mnemonicParsing="false" text="Vedi info acqusito" />
-                  <MenuItem fx:id="prova1" mnemonicParsing="false" onAction="#home" text="Vai ad acquisto" />
-                  <MenuItem mnemonicParsing="false" text="Elimina la serie dai preferiti" />
+                  <MenuItem mnemonicParsing="false" onAction="#home" text="Vai ad acquisto" />
+                  <MenuItem mnemonicParsing="false" text="Elimina la serie dai preferiti" onAction="#eliminaPreferito" />
               </items>
             </ContextMenu>
          </contextMenu></ListView>
-      <Button layoutX="67.0" layoutY="843.0" mnemonicParsing="false" onAction="#goToHome" text="Back" />
+      <Button layoutX="67.0" layoutY="843.0" mnemonicParsing="false"  text="Back" />
       <Button layoutX="223.0" layoutY="53.0" mnemonicParsing="false" text="Button" />
    </children>
 </AnchorPane>

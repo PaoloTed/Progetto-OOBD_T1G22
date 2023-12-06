@@ -96,7 +96,6 @@ public class InfoUserController implements Initializable {
             //Elimino la serie selezionata dalla listView
             deleteSerieFromListView(serie);
             support.messageStage("Preferito eliminato con successo");
-            support.switchStage("infoUserStage.fxml", event);
 
         } else {
             support.messageStage("Selezionare una serie");

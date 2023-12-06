@@ -13,12 +13,17 @@ import java.io.IOException;
 public class Main extends Application {
 
     //TODO :
-    // 1) Aggiungere la possibilità di aggiungere una serie alla lista dei preferiti
-    // 2) Visualizzare informazioni libro
+    // 1) Aggiungere la possibilità di aggiungere una serie alla lista dei preferiti e rimuovererla
+    // 2) Completare visualizzazione libro con informazioni
     // 3) Visualizzare informazioni serie
     // 4) Visualizzare informazioni autore
-    // 5) Visualizzare informazioni editore
-    // 6) Visualizzare informazioni genere
+    // 5) Visualizzare informazioni editore forse
+    // 6) Visualizzare informazioni genere forse
+    // 7) Visualizzare informazioni Acquisto
+    // 8) Visualizzare informazioni Collane (view) forse
+    // 9) risolvere problema di visualizzazione delle immagini
+    // 10) risolvere problema di avvio programma su di un altro computer
+
     // 7)
 
     @Override
