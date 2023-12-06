@@ -11,6 +11,15 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Main extends Application {
+
+    //TODO :
+    // 1) Aggiungere la possibilità di aggiungere una serie alla lista dei preferiti
+    // 2) Visualizzare informazioni libro
+    // 3) Visualizzare informazioni serie
+    // 4) Visualizzare informazioni autore
+    // 5) Visualizzare informazioni editore
+    // 6) Visualizzare informazioni genere
+    // 7)
     @Override
     public void start(Stage welcomeStage) throws IOException {
 
