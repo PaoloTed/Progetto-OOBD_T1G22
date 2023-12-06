@@ -20,6 +20,7 @@ public class Main extends Application {
     // 5) Visualizzare informazioni editore
     // 6) Visualizzare informazioni genere
     // 7)
+
     @Override
     public void start(Stage welcomeStage) throws IOException {
 

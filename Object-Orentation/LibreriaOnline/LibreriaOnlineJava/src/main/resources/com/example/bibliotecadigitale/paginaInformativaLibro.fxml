@@ -1,24 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gluonhq.charm.glisten.control.ToggleButtonGroup?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.PaginaInformativaLibroController">
    <children>
-      <Button layoutX="220.0" layoutY="461.0" mnemonicParsing="false" onAction="#goToHome" text="Go Back" />
-      <Text layoutX="40.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titolo" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="60.0" />
-      <Text layoutX="44.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" AnchorPane.topAnchor="80.0" />
-      <Text layoutX="44.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" AnchorPane.topAnchor="100.0" />
-      <Text layoutX="44.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" AnchorPane.topAnchor="120.0" />
-      <Text layoutX="44.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" AnchorPane.topAnchor="140.0" />
-      <Text layoutX="44.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" AnchorPane.topAnchor="160.0" />
-      <Text layoutX="44.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" AnchorPane.topAnchor="180.0" />
-      <Text layoutX="44.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" AnchorPane.topAnchor="220.0" />
-      <Text layoutX="44.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" AnchorPane.topAnchor="260.0" />
-      <Text layoutX="44.0" layoutY="373.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" AnchorPane.topAnchor="280.0" />
-      <Text layoutX="44.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" AnchorPane.topAnchor="240.0" />
-      <Text layoutX="44.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" AnchorPane.topAnchor="200.0" />
-      <Text layoutX="239.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Button layoutX="14.0" layoutY="462.0" mnemonicParsing="false" onAction="#goToHome" text="Go Back" />
+      <Text fx:id="textTitleIId" layoutX="40.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titolo" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="60.0" />
+      <Text fx:id="textIsbnId" layoutX="44.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" AnchorPane.topAnchor="80.0" />
+      <Text fx:id="textGenereId" layoutX="44.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" AnchorPane.topAnchor="100.0" />
+      <Text fx:id="textNumeroPagineId" layoutX="44.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" AnchorPane.topAnchor="120.0" />
+      <Text fx:id="textTipoId" layoutX="44.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" AnchorPane.topAnchor="140.0" />
+      <Text fx:id="textMsteriasbnId" layoutX="44.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" AnchorPane.topAnchor="160.0" />
+      <Text fx:id="textDescrizioneId" layoutX="44.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrizione" AnchorPane.topAnchor="269.0" />
+      <Text fx:id="textFruizioneId" layoutX="399.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ftuizione" AnchorPane.topAnchor="306.0" />
+      <Text fx:id="textDataUscitaId" layoutX="36.0" layoutY="357.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data Uscita" AnchorPane.topAnchor="344.0" />
+      <Text fx:id="textLinguianId" layoutX="423.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lingua" AnchorPane.topAnchor="242.0" />
+      <Text fx:id="textSucessivoId" layoutX="239.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+
+      <Button defaultButton="true" layoutX="360.0" layoutY="22.0" mnemonicParsing="false"  style="-fx-background-color: trasperent; -fx-cursor: hand;" text="Serie" textFill="#0800f8" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="buttonAutoreId" defaultButton="true" layoutX="423.0" layoutY="65.0" mnemonicParsing="false" style="-fx-background-color: trasperent; -fx-cursor: hand;" text="Autore" textFill="#0800f8" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="buttonEditoreId" defaultButton="true" layoutX="261.0" layoutY="22.0" mnemonicParsing="false" style="-fx-background-color: trasperent; -fx-cursor: hand;" text="Editore" textFill="#0800f8" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button defaultButton="true" layoutX="420.0" layoutY="460.0" mnemonicParsing="false"  style="-fx-background-color: trasperent; -fx-cursor: hand;" text="Aquisto" textFill="#0800f8" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

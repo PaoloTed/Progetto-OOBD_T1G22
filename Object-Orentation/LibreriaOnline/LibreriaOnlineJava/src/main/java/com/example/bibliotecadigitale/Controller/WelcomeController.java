@@ -104,7 +104,7 @@ public class WelcomeController implements Initializable {
     private int executeQuerySearch(String query) {
         int numeroUtenti = 0;
         try {
-            Connessione connessione = new Connessione();
+                Connessione connessione = new Connessione();
             ResultSet rs = connessione.executeSearch(query);
             while (rs.next()) {
                 numeroUtenti = rs.getInt(1);
