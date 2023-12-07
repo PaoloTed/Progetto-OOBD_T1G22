@@ -45,10 +45,10 @@
       <Button layoutX="224.0" layoutY="381.0" mnemonicParsing="false" onAction="#eliminaPreferito" text="Elimina" />
       <TableView fx:id="tableView" editable="true" layoutX="32.0" layoutY="166.0" prefHeight="200.0" prefWidth="437.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Codice Serie" />
-          <TableColumn editable="false" prefWidth="75.0" text="Nome Serie" />
-            <TableColumn prefWidth="75.0" text="Numero Di Libri" />
-            <TableColumn prefWidth="75.0" text="Termine Serie" />
+          <TableColumn fx:id="codsColumn" prefWidth="75.0" text="Codice Serie" />
+          <TableColumn fx:id="nomeSerieColumn" editable="false" prefWidth="75.0" text="Nome Serie" />
+            <TableColumn fx:id="numLibriColumn" prefWidth="75.0" text="Numero Di Libri" />
+            <TableColumn fx:id="termineColumn" prefWidth="75.0" text="Termine Serie" />
         </columns>
          <contextMenu>
             <ContextMenu>

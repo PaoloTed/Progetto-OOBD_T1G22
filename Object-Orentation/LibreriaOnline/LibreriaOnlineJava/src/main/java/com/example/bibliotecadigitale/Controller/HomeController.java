@@ -97,7 +97,7 @@ public class HomeController implements Initializable {
     }
 
     public void goToNotifiche(ActionEvent event) {
-        support.switchStage("notificheStageTest.fxml", event,900,900);
+        support.switchStage("notificheStage.fxml", event,900,900);
     }
 
     public void goToPaginaInformativaLibro(ActionEvent event) throws SQLException, IOException {
