@@ -68,7 +68,7 @@ public class HomeController implements Initializable {
 
     @FXML
     public void goToInfoUser(ActionEvent event) {
-        support.switchStage("infoUserStage.fxml", event);
+        support.switchStage("infoUserStageTest.fxml", event);
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -97,7 +97,7 @@ public class HomeController implements Initializable {
     }
 
     public void goToNotifiche(ActionEvent event) {
-        support.switchStage("notificheStage.fxml", event,900,900);
+        support.switchStage("notificheStageTest.fxml", event,900,900);
     }
 
     public void goToPaginaInformativaLibro(ActionEvent event) throws SQLException, IOException {

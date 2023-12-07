@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TableView;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -26,6 +27,9 @@ public class InfoUserController implements Initializable {
     public PasswordField txtNewPassword;
     @FXML
     public ListView<String> listViewSerie;
+
+    @FXML
+    public TableView<Serie> tableView;
 
     //Supporto per la gestione delle finestre
     private SupportStage support = new SupportStage();
@@ -52,10 +56,8 @@ public class InfoUserController implements Initializable {
         //Mostro le serie preferite dell'utente nella listView
         for (int i = 0; i < codPreferiti.size(); i++) {
             serieAppoggio = serieDAO.get(""+codPreferiti.get(i));
-            serieCodSAppoggio = serieAppoggio.getCodS();
-            serieNomeAppoggio = serieAppoggio.getNome();
             //Viene inserito nella listView il codice della serie e il suo nome
-            listViewSerie.getItems().add(serieCodSAppoggio + " - " + serieNomeAppoggio);
+            tableView.getItems().add(serieAppoggio);
         }
     }
 
