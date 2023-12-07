@@ -48,7 +48,7 @@ public class InfoUserController implements Initializable {
         UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
 
         //Recupero le serie preferite dell'utente
-        ArrayList<Integer> codPreferiti = utenteDAO.searchPreferiti(email);
+        ArrayList<String> codPreferiti = utenteDAO.searchPreferiti(email);
         Serie serieAppoggio;
         String serieNomeAppoggio;
         String serieCodSAppoggio;

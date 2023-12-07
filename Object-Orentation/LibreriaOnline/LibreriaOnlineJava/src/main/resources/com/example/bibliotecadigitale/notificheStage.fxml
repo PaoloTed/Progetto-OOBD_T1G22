@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ContextMenu?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="900.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.NotificheController">
+<AnchorPane prefHeight="900.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.NotificheController">
    <children>
       <ListView fx:id="listViewSerieAcquisto" layoutX="120.0" layoutY="265.0" prefHeight="563.0" prefWidth="659.0">
          <contextMenu>
@@ -15,11 +12,11 @@
                 <MenuItem mnemonicParsing="false" text="Vedi info Serie" />
                   <MenuItem mnemonicParsing="false" text="Vedi info acqusito" />
                   <MenuItem mnemonicParsing="false" onAction="#home" text="Vai ad acquisto" />
-                  <MenuItem mnemonicParsing="false" text="Elimina la serie dai preferiti" onAction="#eliminaPreferito" />
+                  <MenuItem mnemonicParsing="false" onAction="#eliminaPreferito" text="Elimina la serie dai preferiti" />
               </items>
             </ContextMenu>
          </contextMenu></ListView>
-      <Button layoutX="67.0" layoutY="843.0" mnemonicParsing="false"  text="Back" />
+      <Button layoutX="67.0" layoutY="843.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
       <Button layoutX="223.0" layoutY="53.0" mnemonicParsing="false" text="Button" />
    </children>
 </AnchorPane>

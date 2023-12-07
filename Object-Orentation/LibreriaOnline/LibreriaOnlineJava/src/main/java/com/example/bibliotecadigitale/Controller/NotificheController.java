@@ -80,4 +80,8 @@ public class NotificheController implements Initializable {
     public void deleteSerieFromListView(Serie serie) {
         listViewSerieAcquisto.getItems().remove(serie.getCodS() + " - " + serie.getNome());
     }
+
+    public void goBack(ActionEvent event) {
+        support.switchStage("homeStage.fxml",event,900,900);
+    }
 }

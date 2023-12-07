@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class HomeController implements Initializable {
@@ -77,7 +78,7 @@ public class HomeController implements Initializable {
 
 
     }
-
+    //todo log off
     public void logout(Stage scene) {
         System.out.println("Addio");
         Connessione connessione = new Connessione();
@@ -103,8 +104,10 @@ public class HomeController implements Initializable {
     public void goToPaginaInformativaLibro(ActionEvent event) throws SQLException, IOException {
         SupportStage support = new SupportStage();
         Libro libro = getLibroFromListView();
-        support.switchStage("paginaInformativaLibro.fxml", event, libro);
+        support.switchStage("paginaInformativaLibro.fxml", event,libro);
 
     }
+
+
 
 }

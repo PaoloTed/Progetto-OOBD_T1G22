@@ -64,14 +64,14 @@ public class UtenteDAOImpl implements UtenteDAO {
         }
     }
 
-    public ArrayList<Integer> searchPreferiti(String emailUser) {
-        ArrayList<Integer> codiciPreferiti = new ArrayList<>();
+    public ArrayList<String> searchPreferiti(String emailUser) {
+        ArrayList<String> codiciPreferiti = new ArrayList<>();
         try {
             Connessione connessione = new Connessione();
             String query = "SELECT cods FROM preferiti WHERE email = '" + emailUser + "';";
             ResultSet rs = connessione.executeSearch(query);
             while (rs.next()) {
-                codiciPreferiti.add(rs.getInt(1));
+                codiciPreferiti.add(String.valueOf(rs.getInt(1)));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -79,7 +79,7 @@ public class UtenteDAOImpl implements UtenteDAO {
         return codiciPreferiti;
     }
 
-    public void insertPreferiti(String emailUser, int codiceSerie) {
+    public void insertPreferiti(String emailUser, String codiceSerie) {
         try {
             Connessione connessione = new Connessione();
             String query = "INSERT INTO preferiti VALUES ('" + emailUser + "','" + codiceSerie + "');";

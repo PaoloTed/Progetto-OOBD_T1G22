@@ -18,6 +18,8 @@ public class Libro extends Pubblicazioni{
     private String lingua;
     private String successivo;
 
+    private String serie;
+
 
 
     public String getPresentazione() {
@@ -156,7 +158,7 @@ public class Libro extends Pubblicazioni{
         this.serie = serie;
     }
 
-    private String serie;
+
 
 
 }

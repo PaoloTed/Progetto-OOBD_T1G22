@@ -52,7 +52,8 @@ public class LibroDAOImpl implements LibroDAO {
                 libro.setDatauscita(rs.getString(11));
                 libro.setLingua(rs.getString(12));
                 libro.setSuccessivo(rs.getString(13));
-                libro.setPresentazione(rs.getString(14));
+                libro.setSerie(rs.getString(14));
+                libro.setPresentazione(rs.getString(15));
             }
             rs.close();
 

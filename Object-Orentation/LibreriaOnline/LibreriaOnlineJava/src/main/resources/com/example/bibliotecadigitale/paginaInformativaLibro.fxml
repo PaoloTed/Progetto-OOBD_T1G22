@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.PaginaInformativaLibroController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.PaginaInformativaLibroController">
    <children>
       <Button layoutX="14.0" layoutY="462.0" mnemonicParsing="false" onAction="#goToHome" text="Go Back" />
       <Text fx:id="textTitleIId" layoutX="11.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titolo" AnchorPane.leftAnchor="11.0" AnchorPane.topAnchor="14.0" />
@@ -18,7 +19,7 @@
       <Text fx:id="textDataUscitaId" layoutX="14.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data Uscita" AnchorPane.topAnchor="313.05078125" />
       <Text fx:id="textLinguianId" layoutX="437.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lingua" textAlignment="RIGHT" AnchorPane.topAnchor="289.0" />
 
-      <Button fx:id="buttonSerieId" defaultButton="true" layoutX="222.0" layoutY="403.0" mnemonicParsing="false" style="-fx-background-color: trasperent; -fx-cursor: hand;" text="Serie" textAlignment="JUSTIFY" textFill="#0800f8" underline="true" visible="false">
+      <Button fx:id="buttonSerieId" defaultButton="true" layoutX="222.0" layoutY="403.0" mnemonicParsing="false" onAction="#setPreferito" style="-fx-background-color: trasperent; -fx-cursor: hand;" text="Serie" textAlignment="JUSTIFY" textFill="#0800f8" underline="true" visible="false">
          <font>
             <Font size="14.0" />
          </font>
@@ -43,5 +44,6 @@
             <Font size="14.0" />
          </font>
       </Button>
+      <Text fx:id="textMessagioId" layoutX="112.0" layoutY="399.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Premi sull'id della sserie per aggingerla tra i preferiti" visible="false" />
    </children>
 </AnchorPane>
