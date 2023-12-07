@@ -6,6 +6,16 @@ public class Serie {
     private String nome;
     private int numLibri;
     private boolean completata;
+    public Serie(){}
+
+    public Serie(String codS, String nome, int numLibri, boolean completata) {
+        this.codS = codS;
+        this.nome = nome;
+        this.numLibri = numLibri;
+        this.completata = completata;
+    }
+
+
     public String getCodS() {
         return codS;
     }
@@ -30,14 +40,11 @@ public class Serie {
         this.numLibri = numLibri;
     }
 
-    public boolean isCompletata() {
+    public boolean getCompletata() {
         return completata;
     }
 
     public void setCompletata(boolean completata) {
         this.completata = completata;
     }
-
-
-
 }

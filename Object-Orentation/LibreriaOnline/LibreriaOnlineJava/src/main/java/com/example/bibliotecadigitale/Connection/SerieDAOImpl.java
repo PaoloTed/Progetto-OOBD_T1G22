@@ -25,6 +25,8 @@ public class SerieDAOImpl implements SerieDAO {
                 serie = new Serie();
                 serie.setCodS(rs.getString(1));
                 serie.setNome(rs.getString(2));
+                serie.setNumLibri(rs.getInt(3));
+                serie.setCompletata(rs.getBoolean(4));
             }
             rs.close();
         } catch (SQLException e) {

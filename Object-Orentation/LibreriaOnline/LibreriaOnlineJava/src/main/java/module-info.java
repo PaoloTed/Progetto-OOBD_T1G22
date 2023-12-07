@@ -7,6 +7,7 @@ module com.example.libreriaonlinejava {
 
     exports com.example.bibliotecadigitale.Controller;
     opens com.example.bibliotecadigitale.Controller to javafx.fxml;
+    opens com.example.bibliotecadigitale.Model to javafx.base;
     exports com.example.bibliotecadigitale;
     opens com.example.bibliotecadigitale to javafx.fxml;
     exports com.example.bibliotecadigitale.DAO;

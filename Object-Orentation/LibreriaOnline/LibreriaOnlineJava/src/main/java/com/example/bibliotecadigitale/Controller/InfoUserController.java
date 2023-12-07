@@ -8,13 +8,9 @@ import com.example.bibliotecadigitale.SupportStage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TableView;
-
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -31,6 +27,11 @@ public class InfoUserController implements Initializable {
     @FXML
     public TableView<Serie> tableView;
 
+    @FXML TableColumn<Serie, String> codSColumn;
+    @FXML TableColumn<Serie, String> nomeColumn;
+    @FXML TableColumn<Serie, Integer> numLibriColumn;
+    @FXML TableColumn<Serie, Boolean> completataColumn;
+
     //Supporto per la gestione delle finestre
     private SupportStage support = new SupportStage();
 
@@ -40,24 +41,25 @@ public class InfoUserController implements Initializable {
         //Mostro l'email dell'utente
         String email = Utente.getUtente().getEmail();
         labelEmail.setText(email);
-        setContentView(email);
+        codSColumn.setCellValueFactory(new PropertyValueFactory<Serie, String>("codS"));
+        nomeColumn.setCellValueFactory(new PropertyValueFactory<Serie, String>("nome"));
+        numLibriColumn.setCellValueFactory(new PropertyValueFactory<Serie, Integer>("numLibri"));
+        completataColumn.setCellValueFactory(new PropertyValueFactory<Serie, Boolean>("completata"));
+        setTableView(email);
     }
 
-    public void setContentView(String email) {
+    public void setTableView(String email) {
         SerieDAOImpl serieDAO = new SerieDAOImpl();
         UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
 
         //Recupero le serie preferite dell'utente
         ArrayList<String> codPreferiti = utenteDAO.searchPreferiti(email);
         Serie serieAppoggio;
-        String serieNomeAppoggio;
-        String serieCodSAppoggio;
 
         //Mostro le serie preferite dell'utente nella listView
         for (int i = 0; i < codPreferiti.size(); i++) {
-            serieAppoggio = serieDAO.get(""+codPreferiti.get(i));
             //Viene inserito nella listView il codice della serie e il suo nome
-            tableView.getItems().add(serieAppoggio);
+            tableView.getItems().add(serieDAO.get(codPreferiti.get(i).toString()));
         }
     }
 
@@ -89,35 +91,20 @@ public class InfoUserController implements Initializable {
     @FXML
     public void eliminaPreferito(ActionEvent event) {
         //Recupero la serie selezionata nella listView
-        Serie serie = getSerieFromListView();
+        Serie serie = tableView.getSelectionModel().getSelectedItem();
         if (serie != null) {
             //Elimino la serie selezionata dal database
             UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
             utenteDAO.deletePreferiti(Utente.getUtente().getEmail(), serie.getCodS());
 
             //Elimino la serie selezionata dalla listView
-            deleteSerieFromListView(serie);
+            tableView.getItems().remove(serie);
             support.messageStage("Preferito eliminato con successo");
 
         } else {
             support.messageStage("Selezionare una serie");
         }
     }
-
-    //Metodo che restituisce la serie selezionata nella listView
-    public Serie getSerieFromListView() {
-        String serieCodS_Nome = listViewSerie.getSelectionModel().getSelectedItem();
-        Serie serieAppoggio = new Serie();
-        serieAppoggio.setCodS(serieCodS_Nome.substring(0, serieCodS_Nome.indexOf(" - ")));
-        serieAppoggio.setNome(serieCodS_Nome.substring(serieCodS_Nome.indexOf(" - ") + 3));
-        return serieAppoggio;
-    }
-
-    //Metodo che elimina la serie selezionata dalla listView
-    public void deleteSerieFromListView(Serie serie) {
-        listViewSerie.getItems().remove(serie.getCodS() + " - " + serie.getNome());
-    }
-
 
     public void back_goToHome(ActionEvent event) {
         support.switchStage("homeStage.fxml", event, 900, 900);
