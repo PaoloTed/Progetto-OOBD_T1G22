@@ -13,10 +13,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -39,12 +38,28 @@ public class HomeController implements Initializable {
     private Button buttonMostra;
 
     @FXML
+    public TableView<Libro> tableView;
+
+    @FXML TableColumn<Libro, String> isbnColumn;
+    @FXML TableColumn<Libro, String> titoloColumn;
+    @FXML TableColumn<Libro, String> autoreColumn;
+    @FXML TableColumn<Libro, String> editoreColumn;
+    @FXML TableColumn<Libro, String> genereColumn;
+
+    @FXML
     void Select(ActionEvent event) {
         LibroDAOImpl libroDAO = new LibroDAOImpl();
-        String scelta = idComboBox.getSelectionModel().getSelectedItem();
-        listViewLibri.getItems().clear();
-        System.out.println(scelta);
-        ArrayList<Libro> libri = libroDAO.getRicerca(scelta, idBarSearch.getText());
+        String modRicerca = idComboBox.getSelectionModel().getSelectedItem();
+        //listViewLibri.getItems().clear();
+        System.out.println(modRicerca);
+        String titoloRicerce = idBarSearch.getText();
+        if (titoloRicerce.isEmpty()) {
+            support.messageStage("Inserire una ricerca non vuota");
+            return;
+        }
+        ArrayList<Libro> libri = libroDAO.getRicerca(modRicerca, titoloRicerce);
+        tableView.getItems().addAll(libri);
+        /*
         String titolo;
         String autore;
         String genere;
@@ -58,6 +73,8 @@ public class HomeController implements Initializable {
             isbnAppoggio = libri.get(i).getISBN();
             listViewLibri.getItems().add(isbnAppoggio + " - " + titolo + " - " + autore + " - " + genere + " - " + editore);
         }
+
+         */
         if (libri.isEmpty()) {
             support.messageStage("Nessun match trovato");
             idBarSearch.clear();
@@ -75,9 +92,13 @@ public class HomeController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         idComboBox.setItems(FXCollections.observableArrayList("Titolo", "Autore", "Genere", "Editore"));
         idComboBox.getSelectionModel().selectFirst();
-
-
+        isbnColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("ISBN"));
+        titoloColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("titolo"));
+        autoreColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("autore"));
+        editoreColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("editore"));
+        genereColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("genere"));
     }
+
     //todo log off
     public void logout(Stage scene) {
         System.out.println("Addio");
@@ -86,6 +107,13 @@ public class HomeController implements Initializable {
         scene.close();
     }
 
+    public void checkEnter(ActionEvent event) {
+        idComboBox.getScene().setOnKeyPressed(e -> {
+            if (e.getCode() == KeyCode.A) {
+                System.out.println("The 'A' key was pressed");
+            }
+        });
+    }
 
 
     public Libro getLibroFromListView() throws SQLException {
@@ -94,20 +122,17 @@ public class HomeController implements Initializable {
         String isbn = libroSelezionatoSplit[0];
         LibroDAOImpl libroDAO = new LibroDAOImpl();
         return libroDAO.get(isbn);
-
     }
 
     public void goToNotifiche(ActionEvent event) {
-        support.switchStage("notificheStage.fxml", event,900,900);
+        support.switchStage("notificheStage.fxml", event, 900, 900);
     }
 
     public void goToPaginaInformativaLibro(ActionEvent event) throws SQLException, IOException {
         SupportStage support = new SupportStage();
         Libro libro = getLibroFromListView();
-        support.switchStage("paginaInformativaLibro.fxml", event,libro);
-
+        support.switchStage("paginaInformativaLibro.fxml", event, libro);
     }
-
 
 
 }
