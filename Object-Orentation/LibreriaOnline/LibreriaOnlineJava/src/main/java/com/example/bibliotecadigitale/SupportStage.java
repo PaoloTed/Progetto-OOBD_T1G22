@@ -94,6 +94,25 @@ public class SupportStage
         }
     }
 
+    public void switchStage(String scenaNew, ActionEvent eventClose, String autore)    {
+        stage = (Stage) ((Node) eventClose.getSource()).getScene().getWindow();
+        stage.close();
+        try {
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
+            Parent root = loader.load();
+            stage = new Stage();
+            stage.setScene(new Scene(root, 500, 500));
+            stage.getIcons().add(new Image("file:src/main/resources/photo/biblioteca.png"));
+            stage.setTitle("Libreria digitale");
+            stage.setResizable(false);
+            stage.show();
+            //PaginaInformativaLibroController paginaInformativaLibroController = loader.getController();
+            //paginaInformativaLibroController.showInfoLibro(libro);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 
     public boolean checkEmailPassword(String email, String password)
