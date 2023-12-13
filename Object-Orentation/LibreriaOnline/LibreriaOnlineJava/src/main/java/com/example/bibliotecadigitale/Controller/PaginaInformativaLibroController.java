@@ -53,10 +53,11 @@ public class PaginaInformativaLibroController {
 
 
     public void goToHome(ActionEvent event) {
-        support.switchStage("homeStage.fxml",event,900,900);
+        support.switchStage("homeStage.fxml", event, 900, 900);
     }
+
     //todo  sistemata la grafica
-    public void  showInfoLibro(Libro libroPassato) {
+    public void showInfoLibro(Libro libroPassato) {
         UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
         libroMain = libroPassato;
         textTitleIId.setText(libroPassato.getTitolo());
@@ -69,40 +70,35 @@ public class PaginaInformativaLibroController {
         textDataUscitaId.setText(libroPassato.getDatauscita());
         textLinguianId.setText(libroPassato.getLingua());
 
-        if (libroPassato.getTipo()!=null){
+        if (libroPassato.getTipo() != null) {
             textMateriaId.setVisible(true);
             textMateriaId.setText(libroPassato.getMateria());
-        }
-        else {
+        } else {
             textMateriaId.setVisible(false);
         }
 
         System.out.println(libroPassato.getSerie());
-        if (libroPassato.getSerie()!=null){
+        if (libroPassato.getSerie() != null) {
             buttonSerieId.setVisible(true);
-            ArrayList<String> listaPreferiti= utenteDAO.searchPreferiti(Utente.getUtente().getEmail());
-            if(listaPreferiti.contains(libroPassato.getSerie()))
-            {
+            ArrayList<String> listaPreferiti = utenteDAO.searchPreferiti(Utente.getUtente().getEmail());
+            if (listaPreferiti.contains(libroPassato.getSerie())) {
                 buttonSerieId.disableProperty().setValue(true);
                 textMessagioId.setText("Serie già presente nei preferiti");
-            }
-            else{
+            } else {
                 buttonSerieId.disableProperty().setValue(false);
             }
             buttonSerieId.setText(libroPassato.getSerie());
             textMessagioId.setVisible(true);
-        }
-        else {
+        } else {
             buttonSerieId.setVisible(false);
             textMessagioId.setVisible(false);
         }
         buttonAutoreId.setText(libroPassato.getAutore());
         txtEditoreId.setText(libroPassato.getEditore());
-        if(libroPassato.getSuccessivo()!=null){
+        if (libroPassato.getSuccessivo() != null) {
             buttonSuccessivoId.setVisible(true);
             buttonSuccessivoId.disableProperty().setValue(false);
-        }
-        else {
+        } else {
             buttonSuccessivoId.setVisible(false);
             buttonSuccessivoId.disableProperty().setValue(true);
         }
@@ -117,7 +113,7 @@ public class PaginaInformativaLibroController {
 
 
     public void goToAutore(ActionEvent event) {
-        support.switchStage("libriAutore.fxml",event,900,900);
+        support.switchStage("libriAutore.fxml", event, 900, 900);
     }
 
     public void goToNext(ActionEvent event) throws SQLException {

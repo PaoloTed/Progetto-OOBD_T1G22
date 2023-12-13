@@ -74,10 +74,8 @@ public class SupportStage
 
     }
 
-    public void switchStage(String scenaNew, ActionEvent eventClose, Libro libro)
+    public void switchStage(String scenaNew, Libro libro)
     {
-        stage = (Stage) ((Node) eventClose.getSource()).getScene().getWindow();
-        stage.close();
         try {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
             Parent root = loader.load();

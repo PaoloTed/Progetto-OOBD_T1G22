@@ -1,10 +1,5 @@
 package com.example.bibliotecadigitale.Model;
 
-import java.time.Instant;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
-
 public  class Utente {
 
     private String email;
@@ -22,6 +17,9 @@ public  class Utente {
         return istanza;
     }
 
+    public void exitUtente() {
+        istanza=null;
+    }
     public void setUtente(String email, String password,String data) {
         this.email = email;
         this.password = password;
