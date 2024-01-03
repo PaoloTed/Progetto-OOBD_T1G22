@@ -37,6 +37,7 @@ public class NotificheController implements Initializable {
         Utente utente = Utente.getUtente();
         String email = utente.getEmail();
         try {
+            //Aggiustare non fare direttamente la query
             Connessione connessione = new Connessione();
             String query = "select * from show_preferiti('" + email + "');";
             ResultSet rs =  connessione.executeSearch(query);

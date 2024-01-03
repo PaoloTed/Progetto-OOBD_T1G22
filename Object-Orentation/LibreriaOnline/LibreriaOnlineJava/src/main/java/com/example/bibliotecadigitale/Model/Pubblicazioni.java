@@ -7,7 +7,7 @@ public class Pubblicazioni
     private String titolo;
     private String genere;
     private int numPagine;
-    private Date dataUscita;
+    private String dataUscita;
     private String descrizione;
     private String fruizione;
     private String editore;
@@ -38,11 +38,11 @@ public class Pubblicazioni
         this.numPagine = numPagine;
     }
 
-    public Date getDataUscita() {
+    public String getDataUscita() {
         return dataUscita;
     }
 
-    public void setDataUscita(Date dataUscita) {
+    public void setDataUscita(String dataUscita) {
         this.dataUscita = dataUscita;
     }
 

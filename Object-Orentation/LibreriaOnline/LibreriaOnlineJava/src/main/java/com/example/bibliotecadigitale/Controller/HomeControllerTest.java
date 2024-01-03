@@ -21,7 +21,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class HomeController implements Initializable {
+public class HomeControllerTest implements Initializable {
     private String scelta = null;
     @FXML
     private ComboBox<String> idComboBox;
@@ -31,6 +31,9 @@ public class HomeController implements Initializable {
     public SupportStage support = new SupportStage();
     @FXML
     private Button buttonMostra;
+
+    @FXML
+    private Button buttonLibro;
 
     @FXML
     private Button buttonArticolo;
@@ -49,19 +52,19 @@ public class HomeController implements Initializable {
     @FXML
     TableColumn<Libro, String> genereColumn;
 
-    @FXML
-    public TableView<ArticoloScientifico> articoloTableView;
-
-    @FXML
-    TableColumn<ArticoloScientifico, String> doiColumn;
-    @FXML
-    TableColumn<ArticoloScientifico, String> titoloAColumn;
-    @FXML
-    TableColumn<ArticoloScientifico, String> autoreAColumn;
-    @FXML
-    TableColumn<ArticoloScientifico, String> editoreAColumn;
-    @FXML
-    TableColumn<ArticoloScientifico, String> genereAColumn;
+//    @FXML
+//    public TableView<ArticoloScientifico> articoloTableView;
+//
+//    @FXML
+//    TableColumn<ArticoloScientifico, String> doiColumn;
+//    @FXML
+//    TableColumn<ArticoloScientifico, String> titoloAColumn;
+//    @FXML
+//    TableColumn<ArticoloScientifico, String> autoreAColumn;
+//    @FXML
+//    TableColumn<ArticoloScientifico, String> editoreAColumn;
+//    @FXML
+//    TableColumn<ArticoloScientifico, String> genereAColumn;
 
     @FXML
     void Select(ActionEvent event) {
@@ -131,13 +134,17 @@ public class HomeController implements Initializable {
 
     public void selezioneLibro(ActionEvent event) {
         scelta = "libro";
-        articoloTableView.setVisible(false);
-        libroTableView.setVisible(true);
+//        articoloTableView.setVisible(false);
+//        libroTableView.setVisible(true);
+        buttonArticolo.setStyle("-fx-border-color: grey;");
+        buttonLibro.setStyle("-fx-border-color: red;");
     }
     public void selezioneArticolo(ActionEvent event) {
         scelta = "articolo";
-        articoloTableView.setVisible(true);
-        libroTableView.setVisible(false);
+//        articoloTableView.setVisible(true);
+//        libroTableView.setVisible(false);
+        buttonLibro.setStyle("-fx-border-color: grey;");
+        buttonArticolo.setStyle("-fx-border-color: red;");
     }
 
 }
