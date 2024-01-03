@@ -5,26 +5,21 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.PaginaInformativaLibroController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.PaginaInformativaLibroController">
    <children>
       <Button layoutX="14.0" layoutY="462.0" mnemonicParsing="false" onAction="#goToHome" text="Go Back" />
       <Text fx:id="textTitleIId" layoutX="11.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titolo" AnchorPane.leftAnchor="11.0" AnchorPane.topAnchor="14.0" />
       <Text fx:id="textIsbnId" layoutX="15.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Isbn" AnchorPane.topAnchor="289.0" />
       <Text fx:id="textGenereId" layoutX="15.0" layoutY="352.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Genere" AnchorPane.topAnchor="339.0" />
       <Text fx:id="textNumeroPagineId" layoutX="402.0" layoutY="377.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero pagine" textAlignment="RIGHT" AnchorPane.topAnchor="364.0" />
-      <Text fx:id="textTIpoId" layoutX="453.0" layoutY="352.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo" textAlignment="RIGHT" AnchorPane.topAnchor="339.0" />
+      <Text fx:id="textTIpoId" layoutX="402.0" layoutY="351.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo" textAlignment="RIGHT" AnchorPane.topAnchor="338.0" />
       <Text fx:id="textMateriaId" layoutX="16.0" layoutY="377.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Materia" visible="false" wrappingWidth="40.40625" AnchorPane.topAnchor="364.0" />
       <Text fx:id="textDescrizioneId" layoutX="14.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrizione" textAlignment="JUSTIFY" wrappingWidth="465.0" AnchorPane.topAnchor="85.0" />
-      <Text fx:id="textFruizioneId" layoutX="429.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ftuizione" textAlignment="RIGHT" AnchorPane.topAnchor="313.0" />
+      <Text fx:id="textFruizioneId" layoutX="403.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ftuizione" textAlignment="RIGHT" AnchorPane.topAnchor="312.05078125" />
       <Text fx:id="textDataUscitaId" layoutX="14.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data Uscita" AnchorPane.topAnchor="313.05078125" />
-      <Text fx:id="textLinguianId" layoutX="437.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lingua" textAlignment="RIGHT" AnchorPane.topAnchor="289.0" />
+      <Text fx:id="textLinguianId" layoutX="405.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lingua" textAlignment="RIGHT" AnchorPane.topAnchor="288.05078125" />
 
       <Button fx:id="buttonSerieId" defaultButton="true" disable="true" layoutX="222.0" layoutY="403.0" mnemonicParsing="false" onAction="#setPreferito" style="-fx-background-color: trasperent; -fx-cursor: hand;" text="Serie" textAlignment="JUSTIFY" textFill="#0800f8" underline="true" visible="false">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
-      <Button fx:id="buttonAutoreId" defaultButton="true" layoutX="423.0" layoutY="403.0" mnemonicParsing="false" style="-fx-background-color: trasperent; -fx-cursor: hand;" text="Autore" textAlignment="RIGHT" textFill="#0800f8" underline="true">
          <font>
             <Font size="14.0" />
          </font>
@@ -34,12 +29,18 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="buttonSuccessivoId" defaultButton="true" disable="true" layoutX="197.0" layoutY="460.0" mnemonicParsing="false" onAction="#goToNext" style="-fx-background-color: trasperent; -fx-cursor: hand;" text="Successivo" textAlignment="JUSTIFY" textFill="#0800f8" underline="true" visible="false">
+      <Button fx:id="buttonSuccessivoId" defaultButton="true" disable="true" layoutX="132.0" layoutY="460.0" mnemonicParsing="false" onAction="#goToNext" style="-fx-background-color: trasperent; -fx-cursor: hand;" text="Successivo" textAlignment="JUSTIFY" textFill="#0800f8" underline="true" visible="false">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
       <Text fx:id="textMessagioId" layoutX="112.0" layoutY="399.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Premi sull'id della sserie per aggingerla tra i preferiti" visible="false" />
       <Text fx:id="txtEditoreId" layoutX="15.0" layoutY="422.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editore" />
+      <Text fx:id="textAutoreId" layoutX="402.0" layoutY="422.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autore" textAlignment="RIGHT" />
+      <Button fx:id="buttonPresentazioneid" defaultButton="true" disable="true" layoutX="272.0" layoutY="460.0" mnemonicParsing="false" onAction="#goToPresentazione" style="-fx-background-color: trasperent; -fx-cursor: hand;" text="Presentazione" textFill="#0800f8" underline="true" visible="false">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

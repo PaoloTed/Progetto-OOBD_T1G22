@@ -1,8 +1,10 @@
 package com.example.bibliotecadigitale;
 
 import com.example.bibliotecadigitale.Controller.PaginaInformativaLibroController;
+import com.example.bibliotecadigitale.Controller.PresentazioneStageController;
 import com.example.bibliotecadigitale.Controller.errorStageController;
 import com.example.bibliotecadigitale.Model.Libro;
+import com.example.bibliotecadigitale.Model.Presentazione;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -92,24 +94,24 @@ public class SupportStage
         }
     }
 
-    public void switchStage(String scenaNew, ActionEvent eventClose, String autore)    {
-        stage = (Stage) ((Node) eventClose.getSource()).getScene().getWindow();
-        stage.close();
+    public void switchStage(String scenaNew, String presentazione)
+    {
         try {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
             Parent root = loader.load();
             stage = new Stage();
-            stage.setScene(new Scene(root, 500, 500));
+            stage.setScene(new Scene(root, 250, 250));
             stage.getIcons().add(new Image("file:src/main/resources/photo/biblioteca.png"));
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
-            //PaginaInformativaLibroController paginaInformativaLibroController = loader.getController();
-            //paginaInformativaLibroController.showInfoLibro(libro);
+            PresentazioneStageController presentazioneStageController = loader.getController();
+            presentazioneStageController.showInfoPresentazione(presentazione);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
+
 
 
 

@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0f3062c-e759-49ff-9312-578ab6d64d8e" name="Changes" comment="iMPLEMENTATO PREFERITI E ALTRO">
-      <change afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/LibriAutoreController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/libriAutore.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="f0f3062c-e759-49ff-9312-578ab6d64d8e" name="Changes" comment="Presentazione">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Connection/PresentazioneDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Connection/PresentazioneDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/PaginaInformativaLibroController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/PaginaInformativaLibroController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/PresentazioneStageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/PresentazioneStageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/SupportStage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/SupportStage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/paginaInformativaLibro.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/paginaInformativaLibro.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/presentazioneStage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/presentazioneStage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +162,9 @@
       <workItem from="1701892116601" duration="1435000" />
       <workItem from="1701894881729" duration="2089000" />
       <workItem from="1701969983534" duration="4074000" />
-      <workItem from="1702488332119" duration="3110000" />
+      <workItem from="1702488332119" duration="3520000" />
+      <workItem from="1704296539424" duration="97000" />
+      <workItem from="1704297023951" duration="5329000" />
     </task>
     <task id="LOCAL-00001" summary="importazione">
       <created>1698773198524</created>
@@ -505,7 +506,23 @@
       <option name="project" value="LOCAL" />
       <updated>1701974049717</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="ALLORA INIZIO AUTORE e aggiunta funzione next e non ricordo altro">
+      <option name="closed" value="true" />
+      <created>1702491800825</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1702491800825</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Presentazione">
+      <option name="closed" value="true" />
+      <created>1704300003818</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1704300003818</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -540,8 +557,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="provando a fare la reggistrazione" />
-    <MESSAGE value="provando a fare la reggistrazione vers 0.1" />
     <MESSAGE value="aggiusto errore e cambio classe SupportStage" />
     <MESSAGE value="errore dell'errore" />
     <MESSAGE value="Check email e password" />
@@ -565,6 +580,8 @@
     <MESSAGE value="fix mio buf" />
     <MESSAGE value="vanno messe i bottoni e sistemata la grafica" />
     <MESSAGE value="iMPLEMENTATO PREFERITI E ALTRO" />
-    <option name="LAST_COMMIT_MESSAGE" value="iMPLEMENTATO PREFERITI E ALTRO" />
+    <MESSAGE value="ALLORA INIZIO AUTORE e aggiunta funzione next e non ricordo altro" />
+    <MESSAGE value="Presentazione" />
+    <option name="LAST_COMMIT_MESSAGE" value="Presentazione" />
   </component>
 </project>

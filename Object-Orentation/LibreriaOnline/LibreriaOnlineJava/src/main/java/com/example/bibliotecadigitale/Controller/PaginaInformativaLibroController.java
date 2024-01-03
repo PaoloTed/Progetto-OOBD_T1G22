@@ -21,7 +21,6 @@ public class PaginaInformativaLibroController {
     private Text textTitleIId;
     @FXML
     private Text textIsbnId;
-
     @FXML
     private Text textGenereId;
     @FXML
@@ -39,7 +38,7 @@ public class PaginaInformativaLibroController {
     @FXML
     private Text textLinguianId;
     @FXML
-    private Button buttonAutoreId;
+    private Text textAutoreId;
     @FXML
     private Text txtEditoreId;
     @FXML
@@ -50,6 +49,8 @@ public class PaginaInformativaLibroController {
     private Button buttonSerieId;
     @FXML
     private Text textMessagioId;
+    @FXML
+    private Button buttonPresentazioneid;
 
 
     public void goToHome(ActionEvent event) {
@@ -93,7 +94,7 @@ public class PaginaInformativaLibroController {
             buttonSerieId.setVisible(false);
             textMessagioId.setVisible(false);
         }
-        buttonAutoreId.setText(libroPassato.getAutore());
+        textAutoreId.setText(libroPassato.getAutore());
         txtEditoreId.setText(libroPassato.getEditore());
         if (libroPassato.getSuccessivo() != null) {
             buttonSuccessivoId.setVisible(true);
@@ -101,6 +102,13 @@ public class PaginaInformativaLibroController {
         } else {
             buttonSuccessivoId.setVisible(false);
             buttonSuccessivoId.disableProperty().setValue(true);
+        }
+        if (libroPassato.getPresentazione() != null) {
+            buttonPresentazioneid.setVisible(true);
+            buttonPresentazioneid.disableProperty().setValue(false);
+        } else {
+            buttonPresentazioneid.setVisible(false);
+            buttonPresentazioneid.disableProperty().setValue(true);
         }
     }
 
@@ -112,8 +120,9 @@ public class PaginaInformativaLibroController {
     }
 
 
-    public void goToAutore(ActionEvent event) {
-        support.switchStage("libriAutore.fxml", event, 900, 900);
+    public void goToPresentazione(ActionEvent event)
+    {
+        support.switchStage("presentazioneStage.fxml", libroMain.getPresentazione());
     }
 
     public void goToNext(ActionEvent event) throws SQLException {
