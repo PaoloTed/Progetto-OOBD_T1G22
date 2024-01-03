@@ -100,7 +100,7 @@ public class SupportStage
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
             Parent root = loader.load();
             stage = new Stage();
-            stage.setScene(new Scene(root, 500, 500));
+            stage.setScene(new Scene(root, 250, 250));
             stage.getIcons().add(new Image("file:src/main/resources/photo/biblioteca.png"));
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);

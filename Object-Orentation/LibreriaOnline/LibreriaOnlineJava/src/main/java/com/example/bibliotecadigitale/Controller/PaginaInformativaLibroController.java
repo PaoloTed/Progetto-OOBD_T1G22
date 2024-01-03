@@ -21,7 +21,6 @@ public class PaginaInformativaLibroController {
     private Text textTitleIId;
     @FXML
     private Text textIsbnId;
-
     @FXML
     private Text textGenereId;
     @FXML

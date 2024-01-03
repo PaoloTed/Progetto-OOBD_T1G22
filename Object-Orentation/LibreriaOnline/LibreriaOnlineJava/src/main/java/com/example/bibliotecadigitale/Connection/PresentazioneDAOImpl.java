@@ -6,8 +6,7 @@ import com.example.bibliotecadigitale.Model.Presentazione;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class PresentazioneDAOImpl
-{
+public class PresentazioneDAOImpl {
 
     public Presentazione get(String codsP) {
         Presentazione presentazione = null;
@@ -19,6 +18,9 @@ public class PresentazioneDAOImpl
                 presentazione = new Presentazione();
                 presentazione.setCodP(rs.getString(1));
                 presentazione.setNome(rs.getString(2));
+                presentazione.setIndirizzo(rs.getString(3));
+                presentazione.setDataPresentazione(rs.getDate(4));
+                presentazione.setTipo(rs.getString(5));
             }
             rs.close();
         } catch (SQLException e) {
