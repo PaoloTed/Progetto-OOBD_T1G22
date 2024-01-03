@@ -12,7 +12,7 @@ public class PresentazioneDAOImpl {
         Presentazione presentazione = null;
         try {
             Connessione connessione = new Connessione();
-            String query = "SELECT * FROM serie WHERE cods = '" + codsP + "';";
+            String query = "SELECT * FROM Presentazione WHERE codp = '" + codsP + "';";
             ResultSet rs = connessione.executeSearch(query);
             while (rs.next()) {
                 presentazione = new Presentazione();
