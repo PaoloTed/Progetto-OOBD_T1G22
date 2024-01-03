@@ -53,7 +53,7 @@ public class PaginaInformativaLibroController {
 
 
     public void goToHome(ActionEvent event) {
-        support.switchStage("homeStage.fxml", event, 900, 900);
+        support.switchStage("homeStageTest3.fxml", event, 900, 900);
     }
 
     //todo  sistemata la grafica
@@ -63,11 +63,11 @@ public class PaginaInformativaLibroController {
         textTitleIId.setText(libroPassato.getTitolo());
         textIsbnId.setText(libroPassato.getISBN());
         textGenereId.setText(libroPassato.getGenere());
-        textNumeroPagineId.setText(String.valueOf(libroPassato.getNumeroPagine()));
+        textNumeroPagineId.setText(String.valueOf(libroPassato.getNumPagine()));
         textTIpoId.setText(libroPassato.getTipo());
         textDescrizioneId.setText(libroPassato.getDescrizione());
         textFruizioneId.setText(libroPassato.getFruizione());
-        textDataUscitaId.setText(libroPassato.getDatauscita());
+        textDataUscitaId.setText(libroPassato.getDataUscita());
         textLinguianId.setText(libroPassato.getLingua());
 
         if (libroPassato.getTipo() != null) {

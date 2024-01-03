@@ -1,5 +1,6 @@
 package com.example.bibliotecadigitale.Controller;
 
+import com.example.bibliotecadigitale.Connection.ArticoloScientificoDAOImpl;
 import com.example.bibliotecadigitale.Connection.Connessione;
 import com.example.bibliotecadigitale.Connection.LibroDAOImpl;
 import com.example.bibliotecadigitale.Model.ArticoloScientifico;
@@ -12,17 +13,19 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class HomeController implements Initializable {
-    private String scelta = null;
+    @FXML
+    private Button buttonLibro;
+    @FXML
+    private Button buttonArticolo;
+    private String scelta = "libro";
     @FXML
     private ComboBox<String> idComboBox;
 
@@ -32,8 +35,6 @@ public class HomeController implements Initializable {
     @FXML
     private Button buttonMostra;
 
-    @FXML
-    private Button buttonArticolo;
 
     @FXML
     public TableView<Libro> libroTableView;
@@ -63,25 +64,63 @@ public class HomeController implements Initializable {
     @FXML
     TableColumn<ArticoloScientifico, String> genereAColumn;
 
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        isbnColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("ISBN"));
+        titoloColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("titolo"));
+        autoreColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("autore"));
+        editoreColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("editore"));
+        genereColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("genere"));
+
+        doiColumn.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("doi"));
+        titoloAColumn.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("titolo"));
+        autoreAColumn.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("autore"));
+        editoreAColumn.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("editore"));
+        genereAColumn.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("genere"));
+
+        articoloTableView.setVisible(false);
+        buttonLibro.setStyle("-fx-border-color: red;");
+        buttonLibro.setDisable(true);
+        buttonArticolo.setStyle("-fx-border-color: grey;");
+
+        idComboBox.setItems(FXCollections.observableArrayList("Isbn","Titolo", "Autore", "Genere", "Editore"));
+        idComboBox.getSelectionModel().selectFirst();
+    }
     @FXML
     void Select(ActionEvent event) {
-        LibroDAOImpl libroDAO = new LibroDAOImpl();
+        if (scelta == null) {
+            support.messageStage("Selezionare prima un tipo di ricerca");
+            return;
+        }
         String modRicerca = idComboBox.getSelectionModel().getSelectedItem();
         System.out.println(modRicerca);
-        String titoloRicerce = idBarSearch.getText();
+        String titoloRicerche = idBarSearch.getText();
         buttonMostra.setDisable(false);
-        if (titoloRicerce.isEmpty()) {
+        if (titoloRicerche.isEmpty()) {
             support.messageStage("Inserire una ricerca non vuota");
             return;
         }
-        ArrayList<Libro> libri = libroDAO.getRicerca(modRicerca, titoloRicerce);
-        if (libri.isEmpty()) {
-            support.messageStage("Nessun match trovato");
-            idBarSearch.clear();
-            return;
+        if(scelta.equals("libro")){
+            LibroDAOImpl libroDAO = new LibroDAOImpl();
+            ArrayList<Libro> libri = libroDAO.getRicerca(modRicerca, titoloRicerche);
+            if (libri.isEmpty()) {
+                support.messageStage("Nessun match trovato");
+                idBarSearch.clear();
+                return;
+            }
+            libroTableView.getItems().clear();
+            libroTableView.getItems().addAll(libri);
         }
-        libroTableView.getItems().clear();
-        libroTableView.getItems().addAll(libri);
+        else{
+            ArticoloScientificoDAOImpl articoloScientificoDAO = new ArticoloScientificoDAOImpl();
+            ArrayList<ArticoloScientifico> articoli = articoloScientificoDAO.getRicerca(modRicerca, titoloRicerche);
+            if (articoli.isEmpty()) {
+                support.messageStage("Nessun match trovato");
+                idBarSearch.clear();
+                return;
+            }
+            articoloTableView.getItems().clear();
+            articoloTableView.getItems().addAll(articoli);
+        }
     }
 
     @FXML
@@ -89,55 +128,70 @@ public class HomeController implements Initializable {
         support.switchStage("infoUserStageTest.fxml", event);
     }
 
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        idComboBox.setItems(FXCollections.observableArrayList("Titolo", "Autore", "Genere", "Editore"));
-        idComboBox.getSelectionModel().selectFirst();
-        isbnColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("ISBN"));
-        titoloColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("titolo"));
-        autoreColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("autore"));
-        editoreColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("editore"));
-        genereColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("genere"));
-    }
 
-    public void logOut(Stage scene) {
+
+    public void logOff(ActionEvent event) throws IOException {
         System.out.println("Addio");
         Connessione connessione = new Connessione();
-        connessione.closeConnection();
         Utente.getUtente().exitUtente();
-        scene.close();
-        support.switchStage("welcomeStage.fxml", 500,300);
+        support.switchStage("welcomeStage.fxml", event);
     }
 
-    public void checkEnter(ActionEvent event) {
-        idComboBox.getScene().setOnKeyPressed(e -> {
-            if (e.getCode() == KeyCode.A) {
-                System.out.println("The 'A' key was pressed");
-            }
-        });
-    }
+//    public void checkEnter(ActionEvent event) {
+//        idComboBox.getScene().setOnKeyPressed(e -> {
+//            if (e.getCode() == KeyCode.A) {
+//                System.out.println("The 'A' key was pressed");
+//            }
+//        });
+//    }
 
 
     public void goToNotifiche(ActionEvent event) {
         support.switchStage("notificheStage.fxml", event, 900, 900);
     }
 
-    public void goToPaginaInformativaLibro(ActionEvent event) throws SQLException, IOException {
+    public void goToPaginaInformativaLibro(ActionEvent event){
         SupportStage support = new SupportStage();
         Libro libro = libroTableView.getSelectionModel().getSelectedItem();
+        if(libro == null){
+            support.messageStage("Selezionare prima un libro");
+            return;
+        }
         Stage stage = (Stage) libroTableView.getScene().getWindow();
         stage.close();
         support.switchStage("paginaInformativaLibro.fxml", libro);
     }
+    public void goToPaginaInformativaArticolo(ActionEvent event){
+        SupportStage support = new SupportStage();
+        ArticoloScientifico articoloScientifico = articoloTableView.getSelectionModel().getSelectedItem();
+        if(articoloScientifico == null){
+            support.messageStage("Selezionare prima un articolo");
+            return;
+        }
+        Stage stage = (Stage) articoloTableView.getScene().getWindow();
+        stage.close();
+        //todo support.switchStage("paginaInformativaArticolo.fxml", articoloScientifico);
+    }
 
     public void selezioneLibro(ActionEvent event) {
+        idComboBox.setItems(FXCollections.observableArrayList("Isbn","Titolo", "Autore", "Genere", "Editore"));
         scelta = "libro";
         articoloTableView.setVisible(false);
         libroTableView.setVisible(true);
+        buttonLibro.setDisable(true);
+        buttonArticolo.setDisable(false);
+        buttonArticolo.setStyle("-fx-border-color: grey;");
+        buttonLibro.setStyle("-fx-border-color: red;");
     }
     public void selezioneArticolo(ActionEvent event) {
+        idComboBox.setItems(FXCollections.observableArrayList("Doi","Titolo", "Autore", "Genere", "Editore"));
         scelta = "articolo";
         articoloTableView.setVisible(true);
         libroTableView.setVisible(false);
+        buttonArticolo.setDisable(true);
+        buttonLibro.setDisable(false);
+        buttonLibro.setStyle("-fx-border-color: grey;");
+        buttonArticolo.setStyle("-fx-border-color: red;");
     }
 
 }

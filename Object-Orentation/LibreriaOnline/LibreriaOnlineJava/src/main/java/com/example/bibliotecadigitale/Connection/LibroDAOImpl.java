@@ -49,7 +49,7 @@ public class LibroDAOImpl implements LibroDAO {
                 libro.setFruizione(rs.getString(8));
                 libro.setEditore(rs.getString(9));
                 libro.setAutore(rs.getString(10));
-                libro.setDatauscita(rs.getString(11));
+                libro.setDataUscita(rs.getString(11));
                 libro.setLingua(rs.getString(12));
                 libro.setSuccessivo(rs.getString(13));
                 libro.setSerie(rs.getString(14));
@@ -76,14 +76,14 @@ public class LibroDAOImpl implements LibroDAO {
             String isbn = libro.getISBN();
             String titolo = libro.getTitolo();
             String genere = libro.getGenere();
-            int numeroPagine = libro.getNumeroPagine();
+            int numeroPagine = libro.getNumPagine();
             String tipo = libro.getTipo();
             String materia = libro.getMateria();
             String descrizione = libro.getDescrizione();
             String fruizione = libro.getFruizione();
             String editore = libro.getEditore();
             String autore = libro.getAutore();
-            String datauscita = libro.getDatauscita();
+            String datauscita = libro.getDataUscita();
             String lingua = libro.getLingua();
             String successivo = libro.getSuccessivo();
             String presentazione = libro.getPresentazione();
