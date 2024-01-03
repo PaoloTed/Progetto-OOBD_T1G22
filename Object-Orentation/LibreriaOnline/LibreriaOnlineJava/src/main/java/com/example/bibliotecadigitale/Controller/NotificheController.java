@@ -66,7 +66,7 @@ public class NotificheController implements Initializable {
 
         //Elimino la serie selezionata dalla listView
         deleteSerieFromListView(serie);
-        support.messageStage("Preferito eliminato con successo");
+        support.messageStage("Preferito eliminato con successo.");
     }
 
     public Serie getSerieFromListView() {
