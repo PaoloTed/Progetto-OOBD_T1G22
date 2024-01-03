@@ -1,5 +1,6 @@
 package com.example.bibliotecadigitale.Controller;
 
+import com.example.bibliotecadigitale.Connection.ArticoloScientificoDAOImpl;
 import com.example.bibliotecadigitale.Connection.Connessione;
 import com.example.bibliotecadigitale.Connection.LibroDAOImpl;
 import com.example.bibliotecadigitale.Model.ArticoloScientifico;
@@ -21,7 +22,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class HomeController implements Initializable {
+public class HomeControllerTest2 implements Initializable {
+    @FXML
+    private Button buttonLibro;
+    @FXML
+    private Button buttonArticolo;
     private String scelta = null;
     @FXML
     private ComboBox<String> idComboBox;
@@ -32,8 +37,6 @@ public class HomeController implements Initializable {
     @FXML
     private Button buttonMostra;
 
-    @FXML
-    private Button buttonArticolo;
 
     @FXML
     public TableView<Libro> libroTableView;
@@ -65,7 +68,10 @@ public class HomeController implements Initializable {
 
     @FXML
     void Select(ActionEvent event) {
-        LibroDAOImpl libroDAO = new LibroDAOImpl();
+        if (scelta == null) {
+            support.messageStage("Selezionare prima un tipo di ricerca");
+            return;
+        }
         String modRicerca = idComboBox.getSelectionModel().getSelectedItem();
         System.out.println(modRicerca);
         String titoloRicerce = idBarSearch.getText();
@@ -74,14 +80,29 @@ public class HomeController implements Initializable {
             support.messageStage("Inserire una ricerca non vuota");
             return;
         }
-        ArrayList<Libro> libri = libroDAO.getRicerca(modRicerca, titoloRicerce);
-        if (libri.isEmpty()) {
-            support.messageStage("Nessun match trovato");
-            idBarSearch.clear();
-            return;
+        if(scelta.equals("libro")){
+            LibroDAOImpl libroDAO = new LibroDAOImpl();
+            ArrayList<Libro> libri = libroDAO.getRicerca(modRicerca, titoloRicerce);
+            if (libri.isEmpty()) {
+                support.messageStage("Nessun match trovato");
+                idBarSearch.clear();
+                return;
+            }
+            libroTableView.getItems().clear();
+            libroTableView.getItems().addAll(libri);
         }
-        libroTableView.getItems().clear();
-        libroTableView.getItems().addAll(libri);
+        else{
+            ArticoloScientificoDAOImpl articoloScientificoDAO = new ArticoloScientificoDAOImpl();
+            ArrayList<ArticoloScientifico> articoli = articoloScientificoDAO.getRicerca(modRicerca, titoloRicerce);
+            if (articoli.isEmpty()) {
+                support.messageStage("Nessun match trovato");
+                idBarSearch.clear();
+                return;
+            }
+            articoloTableView.getItems().clear();
+            articoloTableView.getItems().addAll(articoli);
+        }
+
     }
 
     @FXML
@@ -97,6 +118,15 @@ public class HomeController implements Initializable {
         autoreColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("autore"));
         editoreColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("editore"));
         genereColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("genere"));
+
+        doiColumn.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("doi"));
+        titoloAColumn.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("titolo"));
+        autoreAColumn.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("autore"));
+        editoreAColumn.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("editore"));
+        genereAColumn.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("genere"));
+        articoloTableView.setVisible(false);
+        buttonLibro.setStyle("-fx-border-color: red;");
+        buttonArticolo.setStyle("-fx-border-color: grey;");
     }
 
     public void logOut(Stage scene) {
@@ -133,11 +163,15 @@ public class HomeController implements Initializable {
         scelta = "libro";
         articoloTableView.setVisible(false);
         libroTableView.setVisible(true);
+        buttonArticolo.setStyle("-fx-border-color: grey;");
+        buttonLibro.setStyle("-fx-border-color: red;");
     }
     public void selezioneArticolo(ActionEvent event) {
         scelta = "articolo";
         articoloTableView.setVisible(true);
         libroTableView.setVisible(false);
+        buttonLibro.setStyle("-fx-border-color: grey;");
+        buttonArticolo.setStyle("-fx-border-color: red;");
     }
 
 }

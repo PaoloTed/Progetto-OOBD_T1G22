@@ -42,7 +42,7 @@ public class LibroDAOImpl implements LibroDAO {
                 libro.setISBN(rs.getString(1));
                 libro.setTitolo(rs.getString(2));
                 libro.setGenere(rs.getString(3));
-                libro.setNumeroPagine(rs.getInt(4));
+                libro.setNumPagine(rs.getInt(4));
                 libro.setTipo(rs.getString(5));
                 libro.setMateria(rs.getString(6));
                 libro.setDescrizione(rs.getString(7));

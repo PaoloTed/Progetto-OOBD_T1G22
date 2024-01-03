@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="idSearchBar" prefHeight="900.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.HomeController">
+<AnchorPane fx:id="idSearchBar" prefHeight="900.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.HomeControllerTest">
    <children>
       <Hyperlink layoutX="687.0" layoutY="10.0" prefHeight="23.0" prefWidth="212.0" text="Email utente" AnchorPane.topAnchor="10.0" />
       <Button layoutX="831.0" layoutY="861.0" mnemonicParsing="false" text="Log off" />
@@ -28,7 +28,7 @@
       <ComboBox fx:id="idComboBox" layoutX="450.0" layoutY="130.0" prefWidth="150.0" />
       <Button fx:id="buttonMostra" disable="true" layoutX="660.0" layoutY="130.0" mnemonicParsing="false" onAction="#goToPaginaInformativaLibro" text="Mostra" />
       <Button layoutX="15.0" layoutY="36.0" mnemonicParsing="false" onAction="#goToNotifiche" text="Notifiche" />
-      <TableView fx:id="libroTableView" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0" prefHeight="535.0" prefWidth="700.0">
+      <TableView fx:id="tableView" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0" prefHeight="535.0" prefWidth="700.0">
         <columns>
           <TableColumn fx:id="isbnColumn" prefWidth="95.9999771118164" text="ISBN" />
           <TableColumn fx:id="titoloColumn" prefWidth="300.6666717529297" text="Titolo" />
@@ -45,5 +45,7 @@
             </ContextMenu>
          </contextMenu>
       </TableView>
+      <Button fx:id="buttonLibro" layoutX="119.0" layoutY="130.0" mnemonicParsing="false" onAction="#selezioneLibro" prefHeight="25.0" prefWidth="58.0" text="Libro" />
+      <Button fx:id="buttonArticolo" layoutX="197.0" layoutY="130.0" mnemonicParsing="false" onAction="#selezioneArticolo" text="Articolo" />
    </children>
 </AnchorPane>
