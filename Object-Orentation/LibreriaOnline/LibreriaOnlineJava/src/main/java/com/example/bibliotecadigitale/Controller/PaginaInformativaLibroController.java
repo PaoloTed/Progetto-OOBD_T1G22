@@ -54,7 +54,7 @@ public class PaginaInformativaLibroController {
 
 
     public void goToHome(ActionEvent event) {
-        support.switchStage("homeStageTest3.fxml", event, 900, 900);
+        support.switchStage("homeStage.fxml", event, 900, 900);
     }
 
     //todo  sistemata la grafica
