@@ -24,6 +24,7 @@ import static com.example.bibliotecadigitale.Model.Utente.getUtente;
 
 
 public class WelcomeController implements Initializable {
+    //todo levare i file di test
 
 
     @FXML

@@ -5,6 +5,7 @@ public  class Utente {
     private String email;
     private String password;
     private String data;
+    private Boolean isAdmin=false;
 
     private static Utente istanza= null;
 
@@ -24,6 +25,10 @@ public  class Utente {
         this.email = email;
         this.password = password;
         this.data = data;
+    }
+
+    public void setAdmin() {
+        this.isAdmin=true;
     }
 
     public String getEmail() {
