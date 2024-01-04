@@ -102,7 +102,6 @@ public class HomeController implements Initializable {
             return;
         }
         String titoloRicerche = idBarSearch.getText();
-        buttonMostra.setDisable(false);
         if (titoloRicerche.isEmpty()) {
             support.messageStage("Inserire una ricerca non vuota");
             return;
@@ -182,7 +181,7 @@ public class HomeController implements Initializable {
         }
         Stage stage = (Stage) articoloTableView.getScene().getWindow();
         stage.close();
-        //todo support.switchStage("paginaInformativaArticolo.fxml", articoloScientifico);
+        support.switchStage("paginaInformativaArticolo.fxml", articoloScientifico);
     }
 
     public void selezioneLibro(ActionEvent event) {
