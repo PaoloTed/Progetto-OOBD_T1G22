@@ -30,6 +30,12 @@ public  class Utente {
     public void setAdmin() {
         this.isAdmin=true;
     }
+    public void setNotAdmin() {
+        this.isAdmin=false;
+    }
+    public Boolean getAdmin() {
+        return isAdmin;
+    }
 
     public String getEmail() {
         return email;

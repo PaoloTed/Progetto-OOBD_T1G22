@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.time.Instant;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.bibliotecadigitale.Model.Utente.getUtente;
@@ -33,6 +34,24 @@ public class SerieDAOImpl implements SerieDAO {
             throw new RuntimeException(e);
         }
         return serie;
+    }
+
+    public ArrayList<Serie> getRicerca(String tipoRicerca, String parolaChiave){
+        ArrayList<Serie> serieFinded = new ArrayList<>();
+        try {
+            Connessione connessione = new Connessione();
+            String query = "SELECT cods FROM serie WHERE LOWER("+tipoRicerca+") LIKE LOWER('%"+parolaChiave+"%');";
+            ResultSet rs = connessione.executeSearch(query);
+            Serie serie;
+            while (rs.next()) {
+                serie = get(rs.getString(1));
+                serieFinded.add(serie);
+            }
+            rs.close();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return serieFinded;
     }
 
     @Override

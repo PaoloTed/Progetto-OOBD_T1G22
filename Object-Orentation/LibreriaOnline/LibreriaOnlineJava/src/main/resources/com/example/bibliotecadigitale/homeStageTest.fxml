@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="idSearchBar" prefHeight="900.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.HomeControllerTest">
+<AnchorPane fx:id="idSearchBar" prefHeight="900.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.HomeControllerTest">
    <children>
       <Hyperlink layoutX="687.0" layoutY="10.0" prefHeight="23.0" prefWidth="212.0" text="Email utente" AnchorPane.topAnchor="10.0" />
       <Button layoutX="831.0" layoutY="861.0" mnemonicParsing="false" text="Log off" />

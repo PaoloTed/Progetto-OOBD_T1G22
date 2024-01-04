@@ -211,5 +211,8 @@ public class HomeController implements Initializable {
         buttonLibro.setStyle("-fx-border-color: grey;");
 
     }
+//    public void goToAdmin(ActionEvent event) {
+//        support.switchStage("homeStageAdmin.fxml", event);
+//    }
 
 }

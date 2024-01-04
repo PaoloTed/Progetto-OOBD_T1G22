@@ -8,8 +8,10 @@ public class Conferenza extends Piattaforma {
     private String nome;
     private String struttura;
     private String indirizzo;
-    private Date dataI;
-    private Date dataF;
+    private String dataI;
+    private String dataF;
+
+    private String Responsabile;
 
     public int getCodC() {
         return codC;
@@ -43,20 +45,31 @@ public class Conferenza extends Piattaforma {
         this.indirizzo = indirizzo;
     }
 
-    public Date getDataI() {
+    public String getDataI() {
         return dataI;
     }
 
-    public void setDataI(Date dataI) {
+    public void setDataI(String dataI) {
         this.dataI = dataI;
     }
 
-    public Date getDataF() {
+    public void setDataF(String dataF) {
+        this.dataF = dataF;
+    }
+
+    @Override
+    public String getResponsabile() {
+        return Responsabile;
+    }
+
+    @Override
+    public void setResponsabile(String responsabile) {
+        Responsabile = responsabile;
+    }
+
+    public String getDataF() {
         return dataF;
     }
 
-    public void setDataF(Date dataF) {
-        this.dataF = dataF;
-    }
 
 }

@@ -1,4 +1,6 @@
 package com.example.bibliotecadigitale.DAO;
 
-public interface DisponibileSDAO {
+import com.example.bibliotecadigitale.Model.DisponibileS;
+
+public interface DisponibileSDAO extends DAO<DisponibileS>{
 }

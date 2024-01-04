@@ -18,8 +18,8 @@ public class ConferenzaDAOImpl
                 conferenza = new Conferenza();
                 conferenza.setCodC(Integer.parseInt(rs.getString("codC")));
                 conferenza.setNome(rs.getString("nome"));
-                conferenza.setDataI(rs.getDate("dataI"));
-                conferenza.setDataF(rs.getDate("dataF"));
+                conferenza.setDataI(rs.getString("dataI"));
+                conferenza.setDataF(rs.getString("dataF"));
                 conferenza.setIndirizzo(rs.getString("indirizzo"));
                 conferenza.setResponsabile(rs.getString("responsabile"));
                 conferenza.setStruttura(rs.getString("struttura"));

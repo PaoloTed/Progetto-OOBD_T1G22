@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="idSearchBar" prefHeight="900.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.HomeController">
+<AnchorPane fx:id="idSearchBar" prefHeight="900.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.HomeController">
    <children>
       <Hyperlink layoutX="687.0" layoutY="10.0" prefHeight="23.0" prefWidth="212.0" text="Email utente" AnchorPane.topAnchor="10.0" />
       <Button layoutX="831.0" layoutY="861.0" mnemonicParsing="false" onAction="#logOff" text="Log off" />
@@ -65,5 +65,6 @@
       </TableView>
       <Text layoutX="130.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cosa Vuoi ricercare ?" wrappingWidth="136.91082000732422" />
       <Text layoutX="308.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Premi Con Il Tasto Destro Del Mouse Per Le Azioni" wrappingWidth="277.5774459838867" />
+      <Button layoutX="424.0" layoutY="49.0" mnemonicParsing="false" onAction="#goToAdmin" text="Admin" />
    </children>
 </AnchorPane>

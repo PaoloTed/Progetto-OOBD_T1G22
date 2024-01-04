@@ -171,28 +171,28 @@ public class HomeControllerAdmin implements Initializable {
     TableColumn<Utente, String> isAdminUtente;
 
     //Table view disponibileA
-//    @FXML
-//    public TableView<DisponibileA> disponibileATableView;
-//    @FXML
-//    TableColumn<DisponibileA, String> codaDisponibileA;
-//    @FXML
-//    TableColumn<DisponibileA, String> doiDisponibileA;
-//
-//    //Table view disponibileL
-//    @FXML
-//    public TableView<DisponibileL> disponibileLTableView;
-//    @FXML
-//    TableColumn<DisponibileL, String> codaDisponibileL;
-//    @FXML
-//    TableColumn<DisponibileL, String> isbnDisponibileL;
-//
-//    //Table view disponibileS
-//    @FXML
-//    public TableView<DisponibileS> disponibileSTableView;
-//    @FXML
-//    TableColumn<DisponibileS, String> codaDisponibileS;
-//    @FXML
-//    TableColumn<DisponibileS, String> codsDisponibileS;
+    @FXML
+    public TableView<DisponibileA> disponibileATableView;
+    @FXML
+    TableColumn<DisponibileA, String> codaDisponibileA;
+    @FXML
+    TableColumn<DisponibileA, String> doiDisponibileA;
+
+    //Table view disponibileL
+    @FXML
+    public TableView<DisponibileL> disponibileLTableView;
+    @FXML
+    TableColumn<DisponibileL, String> codaDisponibileL;
+    @FXML
+    TableColumn<DisponibileL, String> isbnDisponibileL;
+
+    //Table view disponibileS
+    @FXML
+    public TableView<DisponibileS> disponibileSTableView;
+    @FXML
+    TableColumn<DisponibileS, String> codaDisponibileS;
+    @FXML
+    TableColumn<DisponibileS, String> codsDisponibileS;
 
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -227,14 +227,14 @@ public class HomeControllerAdmin implements Initializable {
         datarArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("datar"));
 
         //inizializzo le colonne della tabella acquisto
-        codaAcquisto.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("coda"));
+        codaAcquisto.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("codA"));
         nomeAcquisto.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("nome"));
         tipoAcquisto.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("tipo"));
         urlAcquisto.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("url"));
         indirizzoAcquisto.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("indirizzo"));
 
         //inizializzo le colonne della tabella conferenza
-        codcConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("codc"));
+        codcConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("codC"));
         nomeConfernza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("nome"));
         strutturaConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("struttura"));
         indirizzoConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("indirizzo"));
@@ -244,13 +244,11 @@ public class HomeControllerAdmin implements Initializable {
 
 
         //inizializzo le colonne della tabella presentazione
-        codcConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("codc"));
-        nomeConfernza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("nome"));
-        strutturaConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("struttura"));
-        indirizzoConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("indirizzo"));
-        dataiConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("datai"));
-        datafConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("dataf"));
-        responsabileConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("responsabile"));
+        codpPresentazione.setCellValueFactory(new PropertyValueFactory<Presentazione, String>("codP"));
+        nomePresentazione.setCellValueFactory(new PropertyValueFactory<Presentazione, String>("nome"));
+        indirizzoPresentazione.setCellValueFactory(new PropertyValueFactory<Presentazione, String>("indirizzo"));
+        dataPresentazione.setCellValueFactory(new PropertyValueFactory<Presentazione, String>("data"));
+        tipoPresentazione.setCellValueFactory(new PropertyValueFactory<Presentazione, String>("tipo"));
 
         //inizializzo le colonne della tabella rivista
         nomeRivista.setCellValueFactory(new PropertyValueFactory<Rivista, String>("nome"));
@@ -259,7 +257,7 @@ public class HomeControllerAdmin implements Initializable {
         argomentoRivista.setCellValueFactory(new PropertyValueFactory<Rivista, String>("argomento"));
 
         //inizializzo le colonne della tabella serie
-        codsSerie.setCellValueFactory(new PropertyValueFactory<Serie, String>("cods"));
+        codsSerie.setCellValueFactory(new PropertyValueFactory<Serie, String>("codS"));
         nomeSerie.setCellValueFactory(new PropertyValueFactory<Serie, String>("nome"));
         indirizzoSerie.setCellValueFactory(new PropertyValueFactory<Serie, String>("indirizzo"));
         dataSerie.setCellValueFactory(new PropertyValueFactory<Serie, String>("data"));
@@ -271,21 +269,21 @@ public class HomeControllerAdmin implements Initializable {
         dataIscrizioneUtente.setCellValueFactory(new PropertyValueFactory<Utente, String>("dataIscrizione"));
         isAdminUtente.setCellValueFactory(new PropertyValueFactory<Utente, String>("isAdmin"));
 
-//        //inizializzo le colonne della tabella disponibileA
-//        codaDisponibileA.setCellValueFactory(new PropertyValueFactory<DisponibileA, String>("coda"));
-//        doiDisponibileA.setCellValueFactory(new PropertyValueFactory<DisponibileA, String>("doi"));
-//
-//        //inizializzo le colonne della tabella disponibileL
-//        codaDisponibileL.setCellValueFactory(new PropertyValueFactory<DisponibileL, String>("coda"));
-//        isbnDisponibileL.setCellValueFactory(new PropertyValueFactory<DisponibileL, String>("isbn"));
-//
-//        //inizializzo le colonne della tabella disponibileS
-//        codaDisponibileS.setCellValueFactory(new PropertyValueFactory<DisponibileS, String>("coda"));
-//        codsDisponibileS.setCellValueFactory(new PropertyValueFactory<DisponibileS, String>("cods"));
+        //inizializzo le colonne della tabella disponibileA
+        codaDisponibileA.setCellValueFactory(new PropertyValueFactory<DisponibileA, String>("codA"));
+        doiDisponibileA.setCellValueFactory(new PropertyValueFactory<DisponibileA, String>("doi"));
+
+        //inizializzo le colonne della tabella disponibileL
+        codaDisponibileL.setCellValueFactory(new PropertyValueFactory<DisponibileL, String>("codA"));
+        isbnDisponibileL.setCellValueFactory(new PropertyValueFactory<DisponibileL, String>("isbn"));
+
+        //inizializzo le colonne della tabella disponibileS
+        codaDisponibileS.setCellValueFactory(new PropertyValueFactory<DisponibileS, String>("codA"));
+        codsDisponibileS.setCellValueFactory(new PropertyValueFactory<DisponibileS, String>("codS"));
 
         //Imposto la ricerca su libro come default e nascondo la tabella articolo
         setVisibleFalseAllTableView();
-
+        libroTableView.setVisible(true);
         comboBoxTableView.setItems(FXCollections.observableArrayList("Libro", "Articolo", "Acquisto", "Conferenza", "Presentazione", "Rivista", "Serie", "Utente", "DisponibileA", "DisponibileL", "DisponibileS"));
         comboBoxTableView.getSelectionModel().selectFirst();
         comboBoxRicerca.setItems(FXCollections.observableArrayList("Isbn", "Titolo", "Genere", "Autore", "Editore", "DataUscita", "NumPagine", "Materia", "Descrizione", "Fruizione", "Successivo", "Serie", "Presentazione", "Lingua"));
@@ -346,33 +344,33 @@ public class HomeControllerAdmin implements Initializable {
                     return;
                 }
                 break;
-            case "Conferenza":
-                ConferenzaDAOImpl conferenzaDAO = new ConferenzaDAOImpl();
-                ArrayList<Conferenza> conferenze = conferenzaDAO.getRicerca(modRicerca, titoloRicerche);
-                if (conferenze.isEmpty()) {
-                    support.messageStage("Nessun match trovato");
-                    idBarSearch.clear();
-                    return;
-                }
-                break;
-            case "Presentazione":
-                PresentazioneDAOImpl presentazioneDAO = new PresentazioneDAOImpl();
-                ArrayList<Presentazione> presentazioni = presentazioneDAO.getRicerca(modRicerca, titoloRicerche);
-                if (presentazioni.isEmpty()) {
-                    support.messageStage("Nessun match trovato");
-                    idBarSearch.clear();
-                    return;
-                }
-                break;
-            case "Rivista":
-                RivistaDAOImpl rivistaDAO = new RivistaDAOImpl();
-                ArrayList<Rivista> riviste = rivistaDAO.getRicerca(modRicerca, titoloRicerche);
-                if (riviste.isEmpty()) {
-                    support.messageStage("Nessun match trovato");
-                    idBarSearch.clear();
-                    return;
-                }
-                break;
+//            case "Conferenza":
+//                ConferenzaDAOImpl conferenzaDAO = new ConferenzaDAOImpl();
+//                ArrayList<Conferenza> conferenze = conferenzaDAO.getRicerca(modRicerca, titoloRicerche);
+//                if (conferenze.isEmpty()) {
+//                    support.messageStage("Nessun match trovato");
+//                    idBarSearch.clear();
+//                    return;
+//                }
+//                break;
+//            case "Presentazione":
+//                PresentazioneDAOImpl presentazioneDAO = new PresentazioneDAOImpl();
+//                ArrayList<Presentazione> presentazioni = presentazioneDAO.getRicerca(modRicerca, titoloRicerche);
+//                if (presentazioni.isEmpty()) {
+//                    support.messageStage("Nessun match trovato");
+//                    idBarSearch.clear();
+//                    return;
+//                }
+//                break;
+//            case "Rivista":
+//                RivistaDAOImpl rivistaDAO = new RivistaDAOImpl();
+//                ArrayList<Rivista> riviste = rivistaDAO.getRicerca(modRicerca, titoloRicerche);
+//                if (riviste.isEmpty()) {
+//                    support.messageStage("Nessun match trovato");
+//                    idBarSearch.clear();
+//                    return;
+//                }
+//                break;
             case "Serie":
                 SerieDAOImpl serieDAO = new SerieDAOImpl();
                 ArrayList<Serie> serie = serieDAO.getRicerca(modRicerca, titoloRicerche);
@@ -391,33 +389,33 @@ public class HomeControllerAdmin implements Initializable {
                     return;
                 }
                 break;
-//            case "DisponibileA":
-//                DisponibileADAOImpl disponibileADAO = new DisponibileADAOImpl();
-//                ArrayList<DisponibileA> disponibileA = disponibileADAO.getRicerca(modRicerca, titoloRicerche);
-//                if (disponibileA.isEmpty()) {
-//                    support.messageStage("Nessun match trovato");
-//                    idBarSearch.clear();
-//                    return;
-//                }
-//                break;
-//            case "DisponibileL":
-//                DisponibileLDAOImpl disponibileLDAO = new DisponibileLDAOImpl();
-//                ArrayList<DisponibileL> disponibileL = disponibileLDAO.getRicerca(modRicerca, titoloRicerche);
-//                if (disponibileL.isEmpty()) {
-//                    support.messageStage("Nessun match trovato");
-//                    idBarSearch.clear();
-//                    return;
-//                }
-//                break;
-//            case "DisponibileS":
-//                DisponibileSDAOImpl disponibileSDAO = new DisponibileSDAOImpl();
-//                ArrayList<DisponibileS> disponibileS = disponibileSDAO.getRicerca(modRicerca, titoloRicerche);
-//                if (disponibileS.isEmpty()) {
-//                    support.messageStage("Nessun match trovato");
-//                    idBarSearch.clear();
-//                    return;
-//                }
-//                break;
+            case "DisponibileA":
+                DisponibileADAOImpl disponibileADAO = new DisponibileADAOImpl();
+                ArrayList<DisponibileA> disponibileA = disponibileADAO.getRicerca(modRicerca, titoloRicerche);
+                if (disponibileA.isEmpty()) {
+                    support.messageStage("Nessun match trovato");
+                    idBarSearch.clear();
+                    return;
+                }
+                break;
+            case "DisponibileL":
+                DisponibileLDAOImpl disponibileLDAO = new DisponibileLDAOImpl();
+                ArrayList<DisponibileL> disponibileL = disponibileLDAO.getRicerca(modRicerca, titoloRicerche);
+                if (disponibileL.isEmpty()) {
+                    support.messageStage("Nessun match trovato");
+                    idBarSearch.clear();
+                    return;
+                }
+                break;
+            case "DisponibileS":
+                DisponibileSDAOImpl disponibileSDAO = new DisponibileSDAOImpl();
+                ArrayList<DisponibileS> disponibileS = disponibileSDAO.getRicerca(modRicerca, titoloRicerche);
+                if (disponibileS.isEmpty()) {
+                    support.messageStage("Nessun match trovato");
+                    idBarSearch.clear();
+                    return;
+                }
+                break;
         }
     }
 
@@ -432,44 +430,7 @@ public class HomeControllerAdmin implements Initializable {
         support.switchStage("welcomeStage.fxml", event);
     }
 
-//    public void checkEnter(ActionEvent event) {
-//        idComboBox.getScene().setOnKeyPressed(e -> {
-//            if (e.getCode() == KeyCode.A) {
-//                System.out.println("The 'A' key was pressed");
-//            }
-//        });
-//    }
-
-
-    public void goToNotifiche(ActionEvent event) {
-        support.switchStage("notificheStage.fxml", event, 900, 900);
-    }
-
-    public void goToPaginaInformativaLibro(ActionEvent event) {
-        SupportStage support = new SupportStage();
-        Libro libro = libroTableView.getSelectionModel().getSelectedItem();
-        if (libro == null) {
-            support.messageStage("Selezionare prima un libro");
-            return;
-        }
-        Stage stage = (Stage) libroTableView.getScene().getWindow();
-        stage.close();
-        support.switchStage("paginaInformativaLibro.fxml", libro);
-    }
-
-    public void goToPaginaInformativaArticolo(ActionEvent event) {
-        SupportStage support = new SupportStage();
-        ArticoloScientifico articoloScientifico = articoloTableView.getSelectionModel().getSelectedItem();
-        if (articoloScientifico == null) {
-            support.messageStage("Selezionare prima un articolo");
-            return;
-        }
-        Stage stage = (Stage) articoloTableView.getScene().getWindow();
-        stage.close();
-        //todo support.switchStage("paginaInformativaArticolo.fxml", articoloScientifico);
-    }
-
-    public void setVisibleFalseAllTableView () {
+    public void setVisibleFalseAllTableView() {
         libroTableView.setVisible(false);
         articoloTableView.setVisible(false);
         acquistoTableView.setVisible(false);
@@ -478,10 +439,11 @@ public class HomeControllerAdmin implements Initializable {
         rivistaTableView.setVisible(false);
         serieTableView.setVisible(false);
         utenteTableView.setVisible(false);
-//        disponibileATableView.setVisible(false);
-//        disponibileLTableView.setVisible(false);
-//        disponibileSTableView.setVisible(false);
+        disponibileATableView.setVisible(false);
+        disponibileLTableView.setVisible(false);
+        disponibileSTableView.setVisible(false);
     }
+
     public void selezioneSceltaTableView(ActionEvent event) {
         scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
         if (scelta == null) {
@@ -522,18 +484,18 @@ public class HomeControllerAdmin implements Initializable {
                 utenteTableView.setVisible(true);
                 comboBoxRicerca.setItems(FXCollections.observableArrayList("Email", "Password", "DataIscrizione", "IsAdmin"));
                 break;
-//            case "DisponibileA":
-//                disponibileATableView.setVisible(true);
-//                comboBoxRicerca.setItems(FXCollections.observableArrayList("Coda", "Doi"));
-//                break;
-//            case "DisponibileL":
-//                disponibileLTableView.setVisible(true);
-//                comboBoxRicerca.setItems(FXCollections.observableArrayList("Coda", "Isbn"));
-//                break;
-//            case "DisponibileS":
-//                disponibileSTableView.setVisible(true);
-//                comboBoxRicerca.setItems(FXCollections.observableArrayList("Coda", "Cods"));
-//                break;
+            case "DisponibileA":
+                disponibileATableView.setVisible(true);
+                comboBoxRicerca.setItems(FXCollections.observableArrayList("Coda", "Doi"));
+                break;
+            case "DisponibileL":
+                disponibileLTableView.setVisible(true);
+                comboBoxRicerca.setItems(FXCollections.observableArrayList("Coda", "Isbn"));
+                break;
+            case "DisponibileS":
+                disponibileSTableView.setVisible(true);
+                comboBoxRicerca.setItems(FXCollections.observableArrayList("Coda", "Cods"));
+                break;
 
         }
         comboBoxRicerca.getSelectionModel().selectFirst();
