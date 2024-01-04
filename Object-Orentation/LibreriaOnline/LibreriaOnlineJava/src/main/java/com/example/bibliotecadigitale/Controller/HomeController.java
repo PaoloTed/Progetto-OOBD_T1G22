@@ -65,41 +65,51 @@ public class HomeController implements Initializable {
     TableColumn<ArticoloScientifico, String> genereAColumn;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //inizializzo le colonne della tabella libro
         isbnColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("ISBN"));
         titoloColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("titolo"));
         autoreColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("autore"));
         editoreColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("editore"));
         genereColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("genere"));
 
+        //inizializzo le colonne della tabella articolo
         doiColumn.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("doi"));
         titoloAColumn.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("titolo"));
         autoreAColumn.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("autore"));
         editoreAColumn.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("editore"));
         genereAColumn.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("genere"));
 
+        //Imposto la ricerca su libro come default e nascondo la tabella articolo
         articoloTableView.setVisible(false);
         buttonLibro.setStyle("-fx-border-color: red;");
         buttonLibro.setDisable(true);
         buttonArticolo.setStyle("-fx-border-color: grey;");
 
-        idComboBox.setItems(FXCollections.observableArrayList("Isbn","Titolo", "Autore", "Genere", "Editore"));
+        idComboBox.setItems(FXCollections.observableArrayList("Isbn", "Titolo", "Autore", "Genere", "Editore"));
         idComboBox.getSelectionModel().selectFirst();
     }
+
     @FXML
     void Select(ActionEvent event) {
+        //Gestione errori per la ricerca
         if (scelta == null) {
             support.messageStage("Selezionare prima un tipo di ricerca");
             return;
         }
         String modRicerca = idComboBox.getSelectionModel().getSelectedItem();
-        System.out.println(modRicerca);
+        if (modRicerca == null) {
+            support.messageStage("Selezionare prima per cosa si vuole cercare");
+            return;
+        }
         String titoloRicerche = idBarSearch.getText();
         buttonMostra.setDisable(false);
         if (titoloRicerche.isEmpty()) {
             support.messageStage("Inserire una ricerca non vuota");
             return;
         }
-        if(scelta.equals("libro")){
+
+        //Ricerca e visualizzazione risultati libri
+        if (scelta.equals("libro")) {
             LibroDAOImpl libroDAO = new LibroDAOImpl();
             ArrayList<Libro> libri = libroDAO.getRicerca(modRicerca, titoloRicerche);
             if (libri.isEmpty()) {
@@ -107,10 +117,13 @@ public class HomeController implements Initializable {
                 idBarSearch.clear();
                 return;
             }
+
             libroTableView.getItems().clear();
             libroTableView.getItems().addAll(libri);
         }
-        else{
+
+        //Ricerca e visualizzazione risultati articoli
+        if (scelta.equals("articolo")) {
             ArticoloScientificoDAOImpl articoloScientificoDAO = new ArticoloScientificoDAOImpl();
             ArrayList<ArticoloScientifico> articoli = articoloScientificoDAO.getRicerca(modRicerca, titoloRicerche);
             if (articoli.isEmpty()) {
@@ -118,6 +131,7 @@ public class HomeController implements Initializable {
                 idBarSearch.clear();
                 return;
             }
+
             articoloTableView.getItems().clear();
             articoloTableView.getItems().addAll(articoli);
         }
@@ -125,14 +139,11 @@ public class HomeController implements Initializable {
 
     @FXML
     public void goToInfoUser(ActionEvent event) {
-        support.switchStage("infoUserStageTest.fxml", event);
+        support.switchStage("infoUserStage.fxml", event);
     }
 
 
-
     public void logOff(ActionEvent event) throws IOException {
-        System.out.println("Addio");
-        Connessione connessione = new Connessione();
         Utente.getUtente().exitUtente();
         support.switchStage("welcomeStage.fxml", event);
     }
@@ -150,10 +161,10 @@ public class HomeController implements Initializable {
         support.switchStage("notificheStage.fxml", event, 900, 900);
     }
 
-    public void goToPaginaInformativaLibro(ActionEvent event){
+    public void goToPaginaInformativaLibro(ActionEvent event) {
         SupportStage support = new SupportStage();
         Libro libro = libroTableView.getSelectionModel().getSelectedItem();
-        if(libro == null){
+        if (libro == null) {
             support.messageStage("Selezionare prima un libro");
             return;
         }
@@ -161,10 +172,11 @@ public class HomeController implements Initializable {
         stage.close();
         support.switchStage("paginaInformativaLibro.fxml", libro);
     }
-    public void goToPaginaInformativaArticolo(ActionEvent event){
+
+    public void goToPaginaInformativaArticolo(ActionEvent event) {
         SupportStage support = new SupportStage();
         ArticoloScientifico articoloScientifico = articoloTableView.getSelectionModel().getSelectedItem();
-        if(articoloScientifico == null){
+        if (articoloScientifico == null) {
             support.messageStage("Selezionare prima un articolo");
             return;
         }
@@ -174,24 +186,31 @@ public class HomeController implements Initializable {
     }
 
     public void selezioneLibro(ActionEvent event) {
-        idComboBox.setItems(FXCollections.observableArrayList("Isbn","Titolo", "Autore", "Genere", "Editore"));
+        idComboBox.setItems(FXCollections.observableArrayList("Isbn", "Titolo", "Autore", "Genere", "Editore"));
         scelta = "libro";
-        articoloTableView.setVisible(false);
+        idComboBox.getSelectionModel().selectFirst();
         libroTableView.setVisible(true);
         buttonLibro.setDisable(true);
+        buttonLibro.setStyle("-fx-border-color: red;");
+
+        articoloTableView.setVisible(false);
         buttonArticolo.setDisable(false);
         buttonArticolo.setStyle("-fx-border-color: grey;");
-        buttonLibro.setStyle("-fx-border-color: red;");
+
     }
+
     public void selezioneArticolo(ActionEvent event) {
-        idComboBox.setItems(FXCollections.observableArrayList("Doi","Titolo", "Autore", "Genere", "Editore"));
+        idComboBox.setItems(FXCollections.observableArrayList("Doi", "Titolo", "Autore", "Genere", "Editore"));
         scelta = "articolo";
+        idComboBox.getSelectionModel().selectFirst();
         articoloTableView.setVisible(true);
-        libroTableView.setVisible(false);
         buttonArticolo.setDisable(true);
+        buttonArticolo.setStyle("-fx-border-color: red;");
+
+        libroTableView.setVisible(false);
         buttonLibro.setDisable(false);
         buttonLibro.setStyle("-fx-border-color: grey;");
-        buttonArticolo.setStyle("-fx-border-color: red;");
+
     }
 
 }

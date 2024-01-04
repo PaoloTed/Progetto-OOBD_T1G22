@@ -4,13 +4,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.PresentazioneStageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.PresentazioneStageController">
    <children>
       <Text fx:id="textCodPId" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CodP" textAlignment="CENTER" wrappingWidth="250.0" />
       <Text fx:id="textNomeId" layoutX="4.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome" textAlignment="CENTER" wrappingWidth="241.248046875" />
       <Text fx:id="textIndizioId" layoutX="-1.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Indirizzo" textAlignment="CENTER" wrappingWidth="250.0" />
       <Text fx:id="textTipoId" layoutX="-1.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo" textAlignment="CENTER" wrappingWidth="250.0" />
-      <Text fx:id="textDataPresentazioneId" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DataPresentazioone" textAlignment="CENTER" wrappingWidth="250.0" />
+      <Text fx:id="textDataPresentazioneId" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DataPresentazione" textAlignment="CENTER" wrappingWidth="250.0" />
       <Button fx:id="buttonClose" layoutX="103.0" layoutY="211.0" mnemonicParsing="false" onAction="#close" text="Close" />
    </children>
 </AnchorPane>

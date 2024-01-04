@@ -86,7 +86,7 @@ public class HomeControllerTest3 implements Initializable {
 
     @FXML
     public void goToInfoUser(ActionEvent event) {
-        support.switchStage("infoUserStageTest.fxml", event);
+        support.switchStage("infoUserStage.fxml", event);
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {

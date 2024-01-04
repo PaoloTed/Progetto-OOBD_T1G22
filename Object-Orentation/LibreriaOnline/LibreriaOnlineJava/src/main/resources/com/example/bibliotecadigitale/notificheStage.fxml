@@ -3,14 +3,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="900.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.NotificheController">
+<AnchorPane prefHeight="900.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.NotificheController">
    <children>
       <ListView fx:id="listViewSerieAcquisto" layoutX="120.0" layoutY="265.0" prefHeight="563.0" prefWidth="659.0">
          <contextMenu>
             <ContextMenu>
               <items>
                 <MenuItem mnemonicParsing="false" text="Vedi info Serie" />
-                  <MenuItem mnemonicParsing="false" text="Vedi info acqusito" />
+                  <MenuItem mnemonicParsing="false" text="Vedi info acquisto" />
                   <MenuItem mnemonicParsing="false" onAction="#home" text="Vai ad acquisto" />
                   <MenuItem mnemonicParsing="false" onAction="#eliminaPreferito" text="Elimina la serie dai preferiti" />
               </items>
