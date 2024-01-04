@@ -1,10 +1,11 @@
 package com.example.bibliotecadigitale;
 
-import com.example.bibliotecadigitale.Controller.PaginaInformativaLibroController;
-import com.example.bibliotecadigitale.Controller.PresentazioneStageController;
-import com.example.bibliotecadigitale.Controller.errorStageController;
+
+import com.example.bibliotecadigitale.Controller.*;
+import com.example.bibliotecadigitale.Model.ArticoloScientifico;
 import com.example.bibliotecadigitale.Model.Libro;
-import com.example.bibliotecadigitale.Model.Presentazione;
+
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -112,6 +113,60 @@ public class SupportStage
         }
     }
 
+    public void switchStage(String scenaNew, ArticoloScientifico Articolo)
+    {
+        try {
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
+            Parent root = loader.load();
+            stage = new Stage();
+            stage.setScene(new Scene(root, 500, 500));
+            stage.getIcons().add(new Image("file:src/main/resources/photo/biblioteca.png"));
+            stage.setTitle("Libreria digitale");
+            stage.setResizable(false);
+            stage.show();
+            PaginaInformativaArticoloController paginaInformativaArticoloController = loader.getController();
+            paginaInformativaArticoloController.showInfoArticolo(Articolo);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public void switchStage(String scenaNew, int CodC)
+    {
+        try {
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
+            Parent root = loader.load();
+            stage = new Stage();
+            stage.setScene(new Scene(root, 250, 250));
+            stage.getIcons().add(new Image("file:src/main/resources/photo/biblioteca.png"));
+            stage.setTitle("Libreria digitale");
+            stage.setResizable(false);
+            stage.show();
+            ConferenzaStageController conferenzaStageController = loader.getController();
+            conferenzaStageController.showInfoConferenza(CodC);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void switchStage(String scenaNew, String Data, String Nome)
+    {
+        try {
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
+            Parent root = loader.load();
+            stage = new Stage();
+            stage.setScene(new Scene(root, 250, 250));
+            stage.getIcons().add(new Image("file:src/main/resources/photo/biblioteca.png"));
+            stage.setTitle("Libreria digitale");
+            stage.setResizable(false);
+            stage.show();
+            RivistaStageController rivistaStageController = loader.getController();
+            rivistaStageController.showInfoRivista(Data ,Nome );
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
 

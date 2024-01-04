@@ -5,7 +5,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.PaginaInformativaLibroController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.PaginaInformativaLibroController">
    <children>
       <Button layoutX="14.0" layoutY="462.0" mnemonicParsing="false" onAction="#goToHome" text="Go Back" />
       <Text fx:id="textTitleIId" layoutX="11.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titolo" AnchorPane.leftAnchor="11.0" AnchorPane.topAnchor="14.0" />
@@ -19,7 +19,7 @@
       <Text id="Data uscita" fx:id="textDataUscitaId" layoutX="-1.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data Uscita" wrappingWidth="500.0" AnchorPane.topAnchor="311.0" />
       <Text id="Lingua" fx:id="textLinguianId" layoutX="-1.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lingua" textAlignment="RIGHT" wrappingWidth="500.0" AnchorPane.topAnchor="288.05078125" />
 
-      <Button fx:id="buttonSerieId" defaultButton="true" disable="true" layoutX="231.0" layoutY="384.0" mnemonicParsing="false" onAction="#setPreferito" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Serie" textAlignment="JUSTIFY" textFill="#0800f8" underline="true">
+      <Button fx:id="buttonSerieId" defaultButton="true" disable="true" layoutX="231.0" layoutY="384.0" mnemonicParsing="false" onAction="#setPreferito" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Serie" textAlignment="JUSTIFY" textFill="#0800f8" underline="true" visible="false">
          <font>
             <Font size="14.0" />
          </font>
@@ -34,7 +34,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Text id="Frasee" fx:id="textMessagioId" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Premi sull'id della serie per aggiungerla tra i preferiti" textAlignment="CENTER" wrappingWidth="500.0" />
+      <Text id="Frasee" fx:id="textMessagioId" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Premi sull'id della serie per aggiungerla tra i preferiti" textAlignment="CENTER" visible="false" wrappingWidth="500.0" />
       <Text id="Editore" fx:id="txtEditoreId" layoutY="411.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editore" wrappingWidth="480.0" />
       <Text id="Autore" fx:id="textAutoreId" layoutY="412.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autore" textAlignment="RIGHT" wrappingWidth="500.0" />
       <Button fx:id="buttonPresentazioneid" defaultButton="true" disable="true" layoutX="272.0" layoutY="460.0" mnemonicParsing="false" onAction="#goToPresentazione" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Presentazione" textFill="#0800f8" underline="true" visible="false">
