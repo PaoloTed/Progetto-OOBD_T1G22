@@ -79,7 +79,7 @@ public class UtenteDAOImpl implements UtenteDAO {
         return codiciPreferiti;
     }
 
-    public void insertPreferiti(String emailUser, String codiceSerie) {
+    public void insertPreferiti(String emailUser, int codiceSerie) {
         try {
             Connessione connessione = new Connessione();
             String query = "INSERT INTO preferiti VALUES ('" + emailUser + "','" + codiceSerie + "');";
@@ -89,7 +89,7 @@ public class UtenteDAOImpl implements UtenteDAO {
         }
     }
 
-    public void deletePreferiti(String emailUser, String codiceSerie) {
+    public void deletePreferiti(String emailUser, int codiceSerie) {
         try {
             Connessione connessione = new Connessione();
             String query = "DELETE FROM preferiti WHERE email = '" + emailUser + "' AND cods = '" + codiceSerie + "';";
@@ -158,6 +158,15 @@ public class UtenteDAOImpl implements UtenteDAO {
 
     @Override
     public void update(Utente utente) throws SQLException {
+        try {
+            Connessione connessione = new Connessione();
+            String emailUser = utente.getEmail();
+            String passwordUser = utente.getPassword();
+            String query = "UPDATE Utente SET password = '" + passwordUser + "' WHERE email = '" + emailUser + "';";
+            connessione.executeUpdate(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

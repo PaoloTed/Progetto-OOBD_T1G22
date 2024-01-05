@@ -2,13 +2,13 @@ package com.example.bibliotecadigitale.Model;
 
 public class Serie {
 
-    private String codS;
+    private int codS;
     private String nome;
     private int numLibri;
     private boolean completata;
     public Serie(){}
 
-    public Serie(String codS, String nome, int numLibri, boolean completata) {
+    public Serie(int codS, String nome, int numLibri, boolean completata) {
         this.codS = codS;
         this.nome = nome;
         this.numLibri = numLibri;
@@ -16,11 +16,11 @@ public class Serie {
     }
 
 
-    public String getCodS() {
+    public int getCodS() {
         return codS;
     }
 
-    public void setCodS(String codS) {
+    public void setCodS(int codS) {
         this.codS = codS;
     }
 

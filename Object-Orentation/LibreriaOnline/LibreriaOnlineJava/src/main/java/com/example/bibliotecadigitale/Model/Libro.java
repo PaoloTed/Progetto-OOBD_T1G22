@@ -8,7 +8,7 @@ public class Libro extends Pubblicazioni{
 
     private String successivo;
 
-    private String serie;
+    private int serie;
 
 
 
@@ -54,11 +54,11 @@ public class Libro extends Pubblicazioni{
         this.successivo = successivo;
     }
 
-    public String getSerie() {
+    public int getSerie() {
         return serie;
     }
 
-    public void setSerie(String serie) {
+    public void setSerie(int serie) {
         this.serie = serie;
     }
 

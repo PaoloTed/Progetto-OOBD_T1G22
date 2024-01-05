@@ -72,7 +72,7 @@ public class NotificheController implements Initializable {
     public Serie getSerieFromListView() {
         String serieCodS_Nome = listViewSerieAcquisto.getSelectionModel().getSelectedItem();
         Serie serieAppoggio = new Serie();
-        serieAppoggio.setCodS(serieCodS_Nome.substring(serieCodS_Nome.indexOf(": "), serieCodS_Nome.indexOf(" || ")));
+        serieAppoggio.setCodS(Integer.parseInt(serieCodS_Nome.substring(serieCodS_Nome.indexOf(": "), serieCodS_Nome.indexOf(" || "))));
         serieAppoggio.setNome(serieCodS_Nome.substring(serieCodS_Nome.indexOf(" - ") + 3));
         return serieAppoggio;
     }

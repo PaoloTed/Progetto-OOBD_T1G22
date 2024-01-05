@@ -19,7 +19,7 @@ public class PresentazioneDAOImpl {
                 presentazione.setCodP(rs.getString(1));
                 presentazione.setNome(rs.getString(2));
                 presentazione.setIndirizzo(rs.getString(3));
-                presentazione.setDataPresentazione(rs.getDate(4));
+                presentazione.setDataPresentazione(rs.getString(4));
                 presentazione.setTipo(rs.getString(5));
             }
             rs.close();

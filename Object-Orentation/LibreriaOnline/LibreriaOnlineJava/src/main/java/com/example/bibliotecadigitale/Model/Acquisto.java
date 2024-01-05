@@ -4,7 +4,7 @@ public class Acquisto
 {
     private int codA;
     private String nome;
-    private String tipo;
+    private String tipoA;
     private String url;
 
     public int getCodA() {
@@ -24,8 +24,8 @@ public class Acquisto
     }
 
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setTipoA(String tipoA) {
+        this.tipoA = tipoA;
     }
 
     public String getUrl() {
@@ -46,4 +46,7 @@ public class Acquisto
 
     private String indirizzo;
 
+    public String getTipoA() {
+        return tipoA;
+    }
 }

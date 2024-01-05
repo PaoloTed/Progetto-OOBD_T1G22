@@ -122,6 +122,6 @@ public class WelcomeController implements Initializable {
         utenteNew.setEmail("giulio@ruopolo.it");
         utenteNew.setPassword("salernitana");
         utenteNew.setData("2002-10-05");
-        support.switchStage("homeStage.fxml", event, 900, 900);
+        support.switchStage("homeStageAdmin.fxml", event, 900, 900);
     }
 }

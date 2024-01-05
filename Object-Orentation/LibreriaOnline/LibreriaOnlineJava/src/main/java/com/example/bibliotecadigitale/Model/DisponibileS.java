@@ -1,22 +1,22 @@
 package com.example.bibliotecadigitale.Model;
 
 public class DisponibileS {
-    private String codA;
-    private String codS;
+    private int codA;
+    private int codS;
 
-    public String getCodA() {
+    public int getCodA() {
         return codA;
     }
 
-    public void setCodA(String codA) {
+    public void setCodA(int codA) {
         this.codA = codA;
     }
 
-    public String getCodS() {
+    public int getCodS() {
         return codS;
     }
 
-    public void setCodS(String codS) {
+    public void setCodS(int codS) {
         this.codS = codS;
     }
 }

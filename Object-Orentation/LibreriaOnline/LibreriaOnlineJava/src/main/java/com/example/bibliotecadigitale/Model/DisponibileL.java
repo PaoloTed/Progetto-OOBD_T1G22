@@ -1,15 +1,15 @@
 package com.example.bibliotecadigitale.Model;
 
 public class DisponibileL {
-    private String codA;
+    private int codA;
     private String isbn;
 
 
-    public String getCodA() {
+    public int getCodA() {
         return codA;
     }
 
-    public void setCodA(String coda) {
+    public void setCodA(int coda) {
         this.codA = coda;
     }
 

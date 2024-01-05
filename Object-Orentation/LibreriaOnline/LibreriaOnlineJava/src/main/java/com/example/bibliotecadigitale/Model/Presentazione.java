@@ -7,7 +7,7 @@ public class Presentazione {
     private String codP;
     private String nome;
     private String indirizzo;
-    private Date dataPresentazione;
+    private String dataPresentazione;
     private String tipo;
 
     public String getCodP() {
@@ -34,11 +34,11 @@ public class Presentazione {
         this.indirizzo = indirizzo;
     }
 
-    public Date getDataPresentazione() {
+    public String getDataPresentazione() {
         return dataPresentazione;
     }
 
-    public void setDataPresentazione(Date dataPresentazione) {
+    public void setDataPresentazione(String dataPresentazione) {
         this.dataPresentazione = dataPresentazione;
     }
 

@@ -9,7 +9,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.converter.BooleanStringConverter;
+import javafx.util.converter.IntegerStringConverter;
 
 import java.io.IOException;
 import java.net.URL;
@@ -17,7 +19,10 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class HomeControllerAdmin implements Initializable {
+    //todo se l'acquisto non ha una conferenza esce zero invece di null, risolvere
     private String scelta = "libro";
+    @FXML
+    private Button buttonCerca;
     @FXML
     private TextField idBarSearch;
     private SupportStage support = new SupportStage();
@@ -36,7 +41,7 @@ public class HomeControllerAdmin implements Initializable {
     @FXML
     TableColumn<Libro, String> genereLibro;
     @FXML
-    TableColumn<Libro, String> numPagineLibro;
+    TableColumn<Libro, Integer> numPagineLibro;
     @FXML
     TableColumn<Libro, String> materiaLibro;
     @FXML
@@ -52,7 +57,7 @@ public class HomeControllerAdmin implements Initializable {
     @FXML
     TableColumn<Libro, String> successivoLibro;
     @FXML
-    TableColumn<Libro, String> serieLibro;
+    TableColumn<Libro, Integer> serieLibro;
     @FXML
     TableColumn<Libro, String> presentazioneLibro;
 
@@ -66,7 +71,7 @@ public class HomeControllerAdmin implements Initializable {
     @FXML
     TableColumn<ArticoloScientifico, String> genereArticolo;
     @FXML
-    TableColumn<ArticoloScientifico, String> numPagineArticolo;
+    TableColumn<ArticoloScientifico, Integer> numPagineArticolo;
     @FXML
     TableColumn<ArticoloScientifico, String> dataUscitaArticolo;
     @FXML
@@ -80,7 +85,7 @@ public class HomeControllerAdmin implements Initializable {
     @FXML
     TableColumn<ArticoloScientifico, String> linguaArticolo;
     @FXML
-    TableColumn<ArticoloScientifico, String> conferenzaArticolo;
+    TableColumn<ArticoloScientifico, Integer> conferenzaArticolo;
     @FXML
     TableColumn<ArticoloScientifico, String> nomerArticolo;
     @FXML
@@ -104,7 +109,7 @@ public class HomeControllerAdmin implements Initializable {
     @FXML
     public TableView<Conferenza> conferenzaTableView;
     @FXML
-    TableColumn<Conferenza, String> codcConferenza;
+    TableColumn<Conferenza, Integer> codcConferenza;
     @FXML
     TableColumn<Conferenza, String> nomeConfernza;
     @FXML
@@ -122,7 +127,7 @@ public class HomeControllerAdmin implements Initializable {
     @FXML
     public TableView<Presentazione> presentazioneTableView;
     @FXML
-    TableColumn<Presentazione, String> codpPresentazione;
+    TableColumn<Presentazione, Integer> codpPresentazione;
     @FXML
     TableColumn<Presentazione, String> nomePresentazione;
     @FXML
@@ -152,11 +157,9 @@ public class HomeControllerAdmin implements Initializable {
     @FXML
     TableColumn<Serie, String> nomeSerie;
     @FXML
-    TableColumn<Serie, String> indirizzoSerie;
+    TableColumn<Serie, Integer> numLibriSerie;
     @FXML
-    TableColumn<Serie, String> dataSerie;
-    @FXML
-    TableColumn<Serie, String> tipoSerie;
+    TableColumn<Serie, Boolean> completataSerie;
 
     //Table view utente
     @FXML
@@ -174,7 +177,7 @@ public class HomeControllerAdmin implements Initializable {
     @FXML
     public TableView<DisponibileA> disponibileATableView;
     @FXML
-    TableColumn<DisponibileA, String> codaDisponibileA;
+    TableColumn<DisponibileA, Integer> codaDisponibileA;
     @FXML
     TableColumn<DisponibileA, String> doiDisponibileA;
 
@@ -182,7 +185,7 @@ public class HomeControllerAdmin implements Initializable {
     @FXML
     public TableView<DisponibileL> disponibileLTableView;
     @FXML
-    TableColumn<DisponibileL, String> codaDisponibileL;
+    TableColumn<DisponibileL, Integer> codaDisponibileL;
     @FXML
     TableColumn<DisponibileL, String> isbnDisponibileL;
 
@@ -190,96 +193,140 @@ public class HomeControllerAdmin implements Initializable {
     @FXML
     public TableView<DisponibileS> disponibileSTableView;
     @FXML
-    TableColumn<DisponibileS, String> codaDisponibileS;
+    TableColumn<DisponibileS, Integer> codaDisponibileS;
     @FXML
-    TableColumn<DisponibileS, String> codsDisponibileS;
+    TableColumn<DisponibileS, Integer> codsDisponibileS;
 
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //inizializzo le colonne della tabella libro
         isbnLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("ISBN"));
         titoloLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("titolo"));
+        titoloLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         genereLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("genere"));
-        numPagineLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("numPagine"));
+        genereLibro.setCellFactory(TextFieldTableCell.forTableColumn());
+        numPagineLibro.setCellValueFactory(new PropertyValueFactory<Libro, Integer>("numPagine"));
+        numPagineLibro.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         materiaLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("materia"));
+        materiaLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         descrizioneLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("descrizione"));
+        descrizioneLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         fruizioneLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("fruizione"));
+        fruizioneLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         editoreLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("editore"));
+        editoreLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         autoreLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("autore"));
+        autoreLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         dataUscitaLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("dataUscita"));
+        dataUscitaLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         successivoLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("successivo"));
-        serieLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("serie"));
+        successivoLibro.setCellFactory(TextFieldTableCell.forTableColumn());
+        serieLibro.setCellValueFactory(new PropertyValueFactory<Libro, Integer>("serie"));
+        serieLibro.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         presentazioneLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("presentazione"));
+        presentazioneLibro.setCellFactory(TextFieldTableCell.forTableColumn());
 
         //inizializzo le colonne della tabella articolo
         doiArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("doi"));
         titoloArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("titolo"));
+        titoloArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
         genereArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("genere"));
-        numPagineArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("numPagine"));
+        genereArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
+        numPagineArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, Integer>("numPagine"));
+        numPagineArticolo.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         dataUscitaArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("dataUscita"));
+        dataUscitaArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
         descrizioneArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("descrizione"));
+        descrizioneArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
         fruizioneArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("fruizione"));
+        fruizioneArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
         editoreArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("editore"));
+        editoreArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
         autoreArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("autore"));
+        autoreArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
         linguaArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("lingua"));
-        conferenzaArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("conferenza"));
+        linguaArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
+        conferenzaArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, Integer>("conferenza"));
+        conferenzaArticolo.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         nomerArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("nomer"));
         datarArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("datar"));
 
         //inizializzo le colonne della tabella acquisto
         codaAcquisto.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("codA"));
         nomeAcquisto.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("nome"));
-        tipoAcquisto.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("tipo"));
+        nomeAcquisto.setCellFactory(TextFieldTableCell.forTableColumn());
+        tipoAcquisto.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("tipoA"));
+        tipoAcquisto.setCellFactory(TextFieldTableCell.forTableColumn());
         urlAcquisto.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("url"));
+        urlAcquisto.setCellFactory(TextFieldTableCell.forTableColumn());
         indirizzoAcquisto.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("indirizzo"));
+        indirizzoAcquisto.setCellFactory(TextFieldTableCell.forTableColumn());
 
         //inizializzo le colonne della tabella conferenza
-        codcConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("codC"));
+        codcConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, Integer>("codC"));
         nomeConfernza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("nome"));
+        nomeConfernza.setCellFactory(TextFieldTableCell.forTableColumn());
         strutturaConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("struttura"));
+        strutturaConferenza.setCellFactory(TextFieldTableCell.forTableColumn());
         indirizzoConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("indirizzo"));
+        indirizzoConferenza.setCellFactory(TextFieldTableCell.forTableColumn());
         dataiConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("datai"));
+        dataiConferenza.setCellFactory(TextFieldTableCell.forTableColumn());
         datafConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("dataf"));
+        datafConferenza.setCellFactory(TextFieldTableCell.forTableColumn());
         responsabileConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("responsabile"));
+        responsabileConferenza.setCellFactory(TextFieldTableCell.forTableColumn());
 
 
         //inizializzo le colonne della tabella presentazione
-        codpPresentazione.setCellValueFactory(new PropertyValueFactory<Presentazione, String>("codP"));
+        codpPresentazione.setCellValueFactory(new PropertyValueFactory<Presentazione, Integer>("codP"));
         nomePresentazione.setCellValueFactory(new PropertyValueFactory<Presentazione, String>("nome"));
+        nomePresentazione.setCellFactory(TextFieldTableCell.forTableColumn());
         indirizzoPresentazione.setCellValueFactory(new PropertyValueFactory<Presentazione, String>("indirizzo"));
-        dataPresentazione.setCellValueFactory(new PropertyValueFactory<Presentazione, String>("data"));
+        indirizzoPresentazione.setCellFactory(TextFieldTableCell.forTableColumn());
+        dataPresentazione.setCellValueFactory(new PropertyValueFactory<Presentazione, String>("dataPresentazione"));
+        dataPresentazione.setCellFactory(TextFieldTableCell.forTableColumn());
         tipoPresentazione.setCellValueFactory(new PropertyValueFactory<Presentazione, String>("tipo"));
+        tipoPresentazione.setCellFactory(TextFieldTableCell.forTableColumn());
 
         //inizializzo le colonne della tabella rivista
         nomeRivista.setCellValueFactory(new PropertyValueFactory<Rivista, String>("nome"));
         dataRivista.setCellValueFactory(new PropertyValueFactory<Rivista, String>("data"));
+        dataRivista.setCellFactory(TextFieldTableCell.forTableColumn());
         responsabileRivista.setCellValueFactory(new PropertyValueFactory<Rivista, String>("responsabile"));
+        responsabileRivista.setCellFactory(TextFieldTableCell.forTableColumn());
         argomentoRivista.setCellValueFactory(new PropertyValueFactory<Rivista, String>("argomento"));
+        argomentoRivista.setCellFactory(TextFieldTableCell.forTableColumn());
 
         //inizializzo le colonne della tabella serie
         codsSerie.setCellValueFactory(new PropertyValueFactory<Serie, String>("codS"));
         nomeSerie.setCellValueFactory(new PropertyValueFactory<Serie, String>("nome"));
-        indirizzoSerie.setCellValueFactory(new PropertyValueFactory<Serie, String>("indirizzo"));
-        dataSerie.setCellValueFactory(new PropertyValueFactory<Serie, String>("data"));
-        tipoSerie.setCellValueFactory(new PropertyValueFactory<Serie, String>("tipo"));
+        nomeSerie.setCellFactory(TextFieldTableCell.forTableColumn());
+        numLibriSerie.setCellValueFactory(new PropertyValueFactory<Serie, Integer>("numLibri"));
+        completataSerie.setCellValueFactory(new PropertyValueFactory<Serie, Boolean>("completata"));
+        completataSerie.setCellFactory(TextFieldTableCell.forTableColumn(new BooleanStringConverter()));
+
 
         //inizializzo le colonne della tabella utente
         emailUtente.setCellValueFactory(new PropertyValueFactory<Utente, String>("email"));
         passwordUtente.setCellValueFactory(new PropertyValueFactory<Utente, String>("password"));
+        passwordUtente.setCellFactory(TextFieldTableCell.forTableColumn());
         dataIscrizioneUtente.setCellValueFactory(new PropertyValueFactory<Utente, String>("dataIscrizione"));
+        dataIscrizioneUtente.setCellFactory(TextFieldTableCell.forTableColumn());
         isAdminUtente.setCellValueFactory(new PropertyValueFactory<Utente, String>("isAdmin"));
+        isAdminUtente.setCellFactory(TextFieldTableCell.forTableColumn());
 
         //inizializzo le colonne della tabella disponibileA
-        codaDisponibileA.setCellValueFactory(new PropertyValueFactory<DisponibileA, String>("codA"));
+        codaDisponibileA.setCellValueFactory(new PropertyValueFactory<DisponibileA, Integer>("codA"));
         doiDisponibileA.setCellValueFactory(new PropertyValueFactory<DisponibileA, String>("doi"));
 
         //inizializzo le colonne della tabella disponibileL
-        codaDisponibileL.setCellValueFactory(new PropertyValueFactory<DisponibileL, String>("codA"));
+        codaDisponibileL.setCellValueFactory(new PropertyValueFactory<DisponibileL, Integer>("codA"));
         isbnDisponibileL.setCellValueFactory(new PropertyValueFactory<DisponibileL, String>("isbn"));
 
         //inizializzo le colonne della tabella disponibileS
-        codaDisponibileS.setCellValueFactory(new PropertyValueFactory<DisponibileS, String>("codA"));
-        codsDisponibileS.setCellValueFactory(new PropertyValueFactory<DisponibileS, String>("codS"));
+        codaDisponibileS.setCellValueFactory(new PropertyValueFactory<DisponibileS, Integer>("codA"));
+        codsDisponibileS.setCellValueFactory(new PropertyValueFactory<DisponibileS, Integer>("codS"));
 
         //Imposto la ricerca su libro come default e nascondo la tabella articolo
         setVisibleFalseAllTableView();
@@ -292,6 +339,8 @@ public class HomeControllerAdmin implements Initializable {
 
     @FXML
     void Select(ActionEvent event) {
+        if(!buttonCerca.isDisable()){
+        }
         scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
         if (scelta == null) {
             support.messageStage("Selezionare prima un tipo di ricerca");
@@ -308,115 +357,135 @@ public class HomeControllerAdmin implements Initializable {
             support.messageStage("Inserire una ricerca non vuota");
             return;
         }
+        buttonCerca.setDisable(true);
 
         //Ricerca e visualizzazione risultati libri
         switch (scelta) {
             case "Libro":
                 LibroDAOImpl libroDAO = new LibroDAOImpl();
                 ArrayList<Libro> libri = libroDAO.getRicerca(modRicerca, titoloRicerche);
+                libroTableView.getItems().clear();
+                libroTableView.setEditable(true);
+                idBarSearch.clear();
                 if (libri.isEmpty()) {
                     support.messageStage("Nessun match trovato");
-                    idBarSearch.clear();
                     return;
                 }
 
-                libroTableView.getItems().clear();
                 libroTableView.getItems().addAll(libri);
                 break;
             case "Articolo":
                 ArticoloScientificoDAOImpl articoloScientificoDAO = new ArticoloScientificoDAOImpl();
                 ArrayList<ArticoloScientifico> articoli = articoloScientificoDAO.getRicerca(modRicerca, titoloRicerche);
+                idBarSearch.clear();
+                articoloTableView.getItems().clear();
                 if (articoli.isEmpty()) {
                     support.messageStage("Nessun match trovato");
-                    idBarSearch.clear();
                     return;
                 }
-
-                articoloTableView.getItems().clear();
                 articoloTableView.getItems().addAll(articoli);
                 break;
             case "Acquisto":
                 AcquistoDAOImpl acquistoDAO = new AcquistoDAOImpl();
                 ArrayList<Acquisto> acquisti = acquistoDAO.getRicerca(modRicerca, titoloRicerche);
+                acquistoTableView.getItems().clear();
+                idBarSearch.clear();
                 if (acquisti.isEmpty()) {
                     support.messageStage("Nessun match trovato");
-                    idBarSearch.clear();
                     return;
                 }
+                acquistoTableView.getItems().addAll(acquisti);
                 break;
 //            case "Conferenza":
 //                ConferenzaDAOImpl conferenzaDAO = new ConferenzaDAOImpl();
 //                ArrayList<Conferenza> conferenze = conferenzaDAO.getRicerca(modRicerca, titoloRicerche);
+//                idBarSearch.clear();
+//                conferenzaTableView.getItems().clear();
 //                if (conferenze.isEmpty()) {
 //                    support.messageStage("Nessun match trovato");
-//                    idBarSearch.clear();
 //                    return;
 //                }
+//                conferenzaTableView.getItems().addAll(conferenze);
 //                break;
 //            case "Presentazione":
 //                PresentazioneDAOImpl presentazioneDAO = new PresentazioneDAOImpl();
 //                ArrayList<Presentazione> presentazioni = presentazioneDAO.getRicerca(modRicerca, titoloRicerche);
+//                presentazioneTableView.getItems().clear();
+//                idBarSearch.clear();
 //                if (presentazioni.isEmpty()) {
 //                    support.messageStage("Nessun match trovato");
-//                    idBarSearch.clear();
 //                    return;
 //                }
+//                presentazioneTableView.getItems().addAll(presentazioni);
 //                break;
 //            case "Rivista":
 //                RivistaDAOImpl rivistaDAO = new RivistaDAOImpl();
 //                ArrayList<Rivista> riviste = rivistaDAO.getRicerca(modRicerca, titoloRicerche);
+//                rivistaTableView.getItems().clear();
+//                idBarSearch.clear();
 //                if (riviste.isEmpty()) {
 //                    support.messageStage("Nessun match trovato");
-//                    idBarSearch.clear();
 //                    return;
 //                }
+//                rivistaTableView.getItems().addAll(riviste);
 //                break;
             case "Serie":
                 SerieDAOImpl serieDAO = new SerieDAOImpl();
                 ArrayList<Serie> serie = serieDAO.getRicerca(modRicerca, titoloRicerche);
+                serieTableView.getItems().clear();
+                idBarSearch.clear();
                 if (serie.isEmpty()) {
                     support.messageStage("Nessun match trovato");
-                    idBarSearch.clear();
                     return;
                 }
+                serieTableView.getItems().addAll(serie);
                 break;
             case "Utente":
                 UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
                 ArrayList<Utente> utenti = utenteDAO.getRicerca(modRicerca, titoloRicerche);
+                idBarSearch.clear();
+                utenteTableView.getItems().clear();
                 if (utenti.isEmpty()) {
                     support.messageStage("Nessun match trovato");
-                    idBarSearch.clear();
                     return;
                 }
+                utenteTableView.getItems().addAll(utenti);
                 break;
             case "DisponibileA":
                 DisponibileADAOImpl disponibileADAO = new DisponibileADAOImpl();
                 ArrayList<DisponibileA> disponibileA = disponibileADAO.getRicerca(modRicerca, titoloRicerche);
+                idBarSearch.clear();
+                disponibileATableView.getItems().clear();
                 if (disponibileA.isEmpty()) {
                     support.messageStage("Nessun match trovato");
-                    idBarSearch.clear();
                     return;
                 }
+                disponibileATableView.getItems().addAll(disponibileA);
                 break;
             case "DisponibileL":
                 DisponibileLDAOImpl disponibileLDAO = new DisponibileLDAOImpl();
                 ArrayList<DisponibileL> disponibileL = disponibileLDAO.getRicerca(modRicerca, titoloRicerche);
+                disponibileLTableView.getItems().clear();
+                idBarSearch.clear();
                 if (disponibileL.isEmpty()) {
                     support.messageStage("Nessun match trovato");
-                    idBarSearch.clear();
                     return;
                 }
+                disponibileLTableView.getItems().addAll(disponibileL);
                 break;
             case "DisponibileS":
                 DisponibileSDAOImpl disponibileSDAO = new DisponibileSDAOImpl();
                 ArrayList<DisponibileS> disponibileS = disponibileSDAO.getRicerca(modRicerca, titoloRicerche);
+                disponibileSTableView.getItems().clear();
+                idBarSearch.clear();
                 if (disponibileS.isEmpty()) {
                     support.messageStage("Nessun match trovato");
-                    idBarSearch.clear();
                     return;
                 }
+                disponibileSTableView.getItems().addAll(disponibileS);
                 break;
         }
+        buttonCerca.setDisable(false);
     }
 
     @FXML
@@ -478,7 +547,7 @@ public class HomeControllerAdmin implements Initializable {
                 break;
             case "Serie":
                 serieTableView.setVisible(true);
-                comboBoxRicerca.setItems(FXCollections.observableArrayList("Cods", "Nome", "Indirizzo", "Data", "Tipo"));
+                comboBoxRicerca.setItems(FXCollections.observableArrayList("Cods", "Nome", "NumLibri", "Completata"));
                 break;
             case "Utente":
                 utenteTableView.setVisible(true);
@@ -499,5 +568,8 @@ public class HomeControllerAdmin implements Initializable {
 
         }
         comboBoxRicerca.getSelectionModel().selectFirst();
+    }
+    private void cellFactoryInitialize(){
+
     }
 }

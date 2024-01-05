@@ -79,7 +79,7 @@ public class PaginaInformativaLibroController {
         }
 
         System.out.println(libroPassato.getSerie());
-        if (libroPassato.getSerie() != null) {
+        if (libroPassato.getSerie() != 0) {
             buttonSerieId.setVisible(true);
             ArrayList<String> listaPreferiti = utenteDAO.searchPreferiti(Utente.getUtente().getEmail());
             if (listaPreferiti.contains(libroPassato.getSerie())) {
@@ -88,7 +88,7 @@ public class PaginaInformativaLibroController {
             } else {
                 buttonSerieId.disableProperty().setValue(false);
             }
-            buttonSerieId.setText(libroPassato.getSerie());
+            buttonSerieId.setText(""+libroPassato.getSerie());
             textMessagioId.setVisible(true);
         } else {
             buttonSerieId.setVisible(false);

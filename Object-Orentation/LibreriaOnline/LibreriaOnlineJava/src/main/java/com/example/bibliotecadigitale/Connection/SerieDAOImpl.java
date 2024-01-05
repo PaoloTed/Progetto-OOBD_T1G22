@@ -24,7 +24,7 @@ public class SerieDAOImpl implements SerieDAO {
             ResultSet rs = connessione.executeSearch(query);
             while (rs.next()) {
                 serie = new Serie();
-                serie.setCodS(rs.getString(1));
+                serie.setCodS(rs.getInt(1));
                 serie.setNome(rs.getString(2));
                 serie.setNumLibri(rs.getInt(3));
                 serie.setCompletata(rs.getBoolean(4));
@@ -36,11 +36,16 @@ public class SerieDAOImpl implements SerieDAO {
         return serie;
     }
 
-    public ArrayList<Serie> getRicerca(String tipoRicerca, String parolaChiave){
+    public ArrayList<Serie> getRicerca(String tipoRicerca, String parolaChiave) {
         ArrayList<Serie> serieFinded = new ArrayList<>();
+        String query = "";
         try {
             Connessione connessione = new Connessione();
-            String query = "SELECT cods FROM serie WHERE LOWER("+tipoRicerca+") LIKE LOWER('%"+parolaChiave+"%');";
+            if (tipoRicerca.equalsIgnoreCase("numlibri") || tipoRicerca.equalsIgnoreCase("completata") || tipoRicerca.equalsIgnoreCase("cods")) {
+                query = "SELECT cods FROM serie WHERE " + tipoRicerca + " = " + parolaChiave + ";";
+            } else {
+                query = "SELECT cods FROM serie WHERE " + tipoRicerca + " LIKE LOWER('%" + parolaChiave + "%');";
+            }
             ResultSet rs = connessione.executeSearch(query);
             Serie serie;
             while (rs.next()) {
@@ -63,7 +68,7 @@ public class SerieDAOImpl implements SerieDAO {
     public void save(Serie serie) {
         try {
             Connessione connessione = new Connessione();
-            String cods = serie.getCodS();
+            int cods = serie.getCodS();
             String nome = serie.getNome();
             String query = "INSERT INTO Serie VALUES ('" + cods + "','" + nome + "');";
             connessione.executeUpdate(query);
@@ -75,6 +80,17 @@ public class SerieDAOImpl implements SerieDAO {
 
     @Override
     public void update(Serie serie) throws SQLException {
+        try {
+            Connessione connessione = new Connessione();
+            int cods = serie.getCodS();
+            String nome = serie.getNome();
+            boolean completata = serie.getCompletata();
+            String query = "UPDATE Serie SET nome = '" + nome + "',completata = " + completata + " WHERE cods = '" + cods + "';";
+            connessione.executeUpdate(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
 
@@ -82,7 +98,7 @@ public class SerieDAOImpl implements SerieDAO {
     public void delete(Serie serie) throws SQLException {
         try {
             Connessione connessione = new Connessione();
-            String cods = serie.getCodS();
+            int cods = serie.getCodS();
             String query = "DELETE FROM Serie WHERE cods = '" + cods + "';";
             connessione.executeUpdate(query);
         } catch (SQLException e) {

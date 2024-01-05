@@ -13,9 +13,14 @@ public class LibroDAOImpl implements LibroDAO {
 
     public ArrayList<Libro> getRicerca(String tipoRicerca, String parolaChiave) {
         ArrayList<Libro> libroFinded = new ArrayList<>();
+        String query = "";
         try {
             Connessione connessione = new Connessione();
-            String query = "SELECT isbn FROM libro WHERE LOWER(" + tipoRicerca + ") LIKE LOWER('%" + parolaChiave + "%');";
+            if (tipoRicerca.equalsIgnoreCase("numpagine") || tipoRicerca.equalsIgnoreCase("serie")) {
+                query = "SELECT isbn FROM libro WHERE " + tipoRicerca + " = " + parolaChiave + ";";
+            } else {
+                query = "SELECT isbn FROM libro WHERE " + tipoRicerca + " LIKE LOWER('%" + parolaChiave + "%');";
+            }
             ResultSet rs = connessione.executeSearch(query);
             Libro libro;
             while (rs.next()) {
@@ -52,7 +57,7 @@ public class LibroDAOImpl implements LibroDAO {
                 libro.setDataUscita(rs.getString(11));
                 libro.setLingua(rs.getString(12));
                 libro.setSuccessivo(rs.getString(13));
-                libro.setSerie(rs.getString(14));
+                libro.setSerie(rs.getInt(14));
                 libro.setPresentazione(rs.getString(15));
             }
             rs.close();
@@ -96,6 +101,13 @@ public class LibroDAOImpl implements LibroDAO {
 
     @Override
     public void update(Libro libro) throws SQLException {
+        try {
+            Connessione connessione = new Connessione();
+            String query = "UPDATE libro SET isbn = '" + libro.getISBN() + "', titolo = '" + libro.getTitolo() + "', genere = '" + libro.getGenere() + "', numpagine = '" + libro.getNumPagine() + "', tipo = '" + libro.getTipo() + "', materia = '" + libro.getMateria() + "', descrizione = '" + libro.getDescrizione() + "', fruizione = '" + libro.getFruizione() + "', editore = '" + libro.getEditore() + "', autore = '" + libro.getAutore() + "', datauscita = '" + libro.getDataUscita() + "', lingua = '" + libro.getLingua() + "', successivo = '" + libro.getSuccessivo() + "', serie = '" + libro.getSerie() + "', presentazione = '" + libro.getPresentazione() + "' WHERE isbn = '" + libro.getISBN() + "';";
+            connessione.executeUpdate(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
