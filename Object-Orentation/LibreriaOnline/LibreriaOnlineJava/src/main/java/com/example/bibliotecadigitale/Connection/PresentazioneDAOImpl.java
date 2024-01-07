@@ -16,7 +16,7 @@ public class PresentazioneDAOImpl {
             ResultSet rs = connessione.executeSearch(query);
             while (rs.next()) {
                 presentazione = new Presentazione();
-                presentazione.setCodP(rs.getString(1));
+                presentazione.setCodP(rs.getInt(1));
                 presentazione.setNome(rs.getString(2));
                 presentazione.setIndirizzo(rs.getString(3));
                 presentazione.setDataPresentazione(rs.getString(4));

@@ -34,7 +34,7 @@ public class PresentazioneStageController {
     {
         PresentazioneDAOImpl presentazioneDAO = new PresentazioneDAOImpl();
         Presentazione presentazione = presentazioneDAO.get(codP);
-        textCodPId.setText(presentazione.getCodP());
+        textCodPId.setText(""+presentazione.getCodP());
         textNomeId.setText(presentazione.getNome());
         textIndizioId.setText(presentazione.getIndirizzo());
         textDataPresentazioneId.setText(String.valueOf(presentazione.getDataPresentazione()));

@@ -10,6 +10,15 @@ public class Libro extends Pubblicazioni{
 
     private int serie;
 
+    public void prova(Libro libro) {
+        this.ISBN = libro.getISBN();
+        this.tipo = libro.getTipo();
+        this.materia = libro.getMateria();
+        this.successivo = libro.getSuccessivo();
+        this.serie = libro.getSerie();
+        this.presentazione = libro.getPresentazione();
+    }
+
 
 
     public String getPresentazione() {

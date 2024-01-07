@@ -21,8 +21,8 @@
         <Button fx:id="buttonMostra" disable="true" layoutX="660.0" layoutY="130.0" mnemonicParsing="false" text="Mostra" />
         <TableView fx:id="libroTableView" editable="true" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0" prefHeight="535.0" prefWidth="700.0">
             <columns>
-                <TableColumn fx:id="isbnLibro" prefWidth="95.9999771118164" text="ISBN" />
-                <TableColumn fx:id="titoloLibro" prefWidth="300.6666717529297" text="Titolo" />
+                <TableColumn fx:id="isbnLibro" onEditCommit="#onEditChangedLibro" prefWidth="95.9999771118164" text="ISBN" />
+                <TableColumn fx:id="titoloLibro" onEditCommit="#onEditChangedLibro" prefWidth="300.6666717529297" text="Titolo" />
                 <TableColumn fx:id="genereLibro" prefWidth="104.66671752929688" text="Genere" />
                 <TableColumn fx:id="numPagineLibro" prefWidth="104.66671752929688" text="NumeroPagine" />
                 <TableColumn fx:id="materiaLibro" prefWidth="104.66671752929688" text="Materia" />
@@ -39,7 +39,7 @@
             <contextMenu>
                 <ContextMenu>
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Update" />
+                        <MenuItem mnemonicParsing="false" onAction="#updateDao" text="Update" />
                         <MenuItem mnemonicParsing="false" text="Delete" />
                     </items>
                 </ContextMenu>
@@ -64,7 +64,7 @@
             <contextMenu>
                 <ContextMenu>
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Update" />
+                        <MenuItem mnemonicParsing="false" onAction="#updateDao" text="Update" />
                         <MenuItem mnemonicParsing="false" text="Delete" />
                     </items>
                 </ContextMenu>
@@ -81,7 +81,7 @@
             <contextMenu>
                 <ContextMenu>
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Update" />
+                        <MenuItem mnemonicParsing="false" onAction="#updateDao" text="Update" />
                         <MenuItem mnemonicParsing="false" text="Delete" />
                     </items>
                 </ContextMenu>
@@ -100,7 +100,7 @@
             <contextMenu>
                 <ContextMenu>
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Update" />
+                        <MenuItem mnemonicParsing="false" onAction="#updateDao" text="Update" />
                         <MenuItem mnemonicParsing="false" text="Delete" />
                     </items>
                 </ContextMenu>
@@ -117,7 +117,7 @@
             <contextMenu>
                 <ContextMenu>
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Update" />
+                        <MenuItem mnemonicParsing="false" onAction="#updateDao" text="Update" />
                         <MenuItem mnemonicParsing="false" text="Delete" />
                     </items>
                 </ContextMenu>
@@ -133,7 +133,7 @@
             <contextMenu>
                 <ContextMenu>
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Update" />
+                        <MenuItem mnemonicParsing="false" onAction="#updateDao" text="Update" />
                         <MenuItem mnemonicParsing="false" text="Delete" />
                     </items>
                 </ContextMenu>
@@ -149,7 +149,7 @@
             <contextMenu>
                 <ContextMenu>
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Update" />
+                        <MenuItem mnemonicParsing="false" onAction="#updateDao" text="Update" />
                         <MenuItem mnemonicParsing="false" text="Delete" />
                     </items>
                 </ContextMenu>
@@ -166,7 +166,7 @@
                 <ContextMenu>
                     <items>
                         <MenuItem mnemonicParsing="false" text="Rendi Admin" />
-                        <MenuItem mnemonicParsing="false" text="Update" />
+                        <MenuItem mnemonicParsing="false" onAction="#updateDao" text="Update" />
                         <MenuItem mnemonicParsing="false" text="Delete" />
                     </items>
                 </ContextMenu>
@@ -180,7 +180,7 @@
             <contextMenu>
                 <ContextMenu>
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Update" />
+                        <MenuItem mnemonicParsing="false" onAction="#updateDao" text="Update" />
                         <MenuItem mnemonicParsing="false" text="Delete" />
                     </items>
                 </ContextMenu>
@@ -194,7 +194,7 @@
             <contextMenu>
                 <ContextMenu>
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Update" />
+                        <MenuItem mnemonicParsing="false" onAction="#updateDao" text="Update" />
                         <MenuItem mnemonicParsing="false" text="Delete" />
                     </items>
                 </ContextMenu>
@@ -208,7 +208,7 @@
             <contextMenu>
                 <ContextMenu>
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Update" />
+                        <MenuItem mnemonicParsing="false" onAction="#updateDao" text="Update" />
                         <MenuItem mnemonicParsing="false" text="Delete" />
                     </items>
                 </ContextMenu>

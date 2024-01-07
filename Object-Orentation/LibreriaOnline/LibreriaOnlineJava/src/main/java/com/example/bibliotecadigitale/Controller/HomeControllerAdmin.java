@@ -5,6 +5,7 @@ import com.example.bibliotecadigitale.Model.*;
 import com.example.bibliotecadigitale.SupportStage;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -15,6 +16,7 @@ import javafx.util.converter.IntegerStringConverter;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -338,9 +340,7 @@ public class HomeControllerAdmin implements Initializable {
     }
 
     @FXML
-    void Select(ActionEvent event) {
-        if(!buttonCerca.isDisable()){
-        }
+    private void Select(ActionEvent event) {
         scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
         if (scelta == null) {
             support.messageStage("Selezionare prima un tipo di ricerca");
@@ -357,7 +357,6 @@ public class HomeControllerAdmin implements Initializable {
             support.messageStage("Inserire una ricerca non vuota");
             return;
         }
-        buttonCerca.setDisable(true);
 
         //Ricerca e visualizzazione risultati libri
         switch (scelta) {
@@ -485,21 +484,15 @@ public class HomeControllerAdmin implements Initializable {
                 disponibileSTableView.getItems().addAll(disponibileS);
                 break;
         }
-        buttonCerca.setDisable(false);
     }
 
     @FXML
-    public void goToInfoUser(ActionEvent event) {
-        support.switchStage("infoUserStage.fxml", event);
-    }
-
-
-    public void logOff(ActionEvent event) throws IOException {
+    private void logOff(ActionEvent event) throws IOException {
         Utente.getUtente().exitUtente();
         support.switchStage("welcomeStage.fxml", event);
     }
 
-    public void setVisibleFalseAllTableView() {
+    private void setVisibleFalseAllTableView() {
         libroTableView.setVisible(false);
         articoloTableView.setVisible(false);
         acquistoTableView.setVisible(false);
@@ -569,7 +562,71 @@ public class HomeControllerAdmin implements Initializable {
         }
         comboBoxRicerca.getSelectionModel().selectFirst();
     }
-    private void cellFactoryInitialize(){
 
+    @FXML
+    private void updateDao() {
+        try {
+            switch (scelta) {
+                case "Libro":
+                    LibroDAOImpl libroDAO = new LibroDAOImpl();
+                    libroDAO.update(libroTableView.getSelectionModel().getSelectedItem());
+                    break;
+                case "Articolo":
+                    ArticoloScientificoDAOImpl articoloScientificoDAO = new ArticoloScientificoDAOImpl();
+                    articoloScientificoDAO.update(articoloTableView.getSelectionModel().getSelectedItem());
+                    break;
+                case "Acquisto":
+                    AcquistoDAOImpl acquistoDAO = new AcquistoDAOImpl();
+                    acquistoDAO.update(acquistoTableView.getSelectionModel().getSelectedItem());
+                    break;
+//                case "Conferenza":
+//                    ConferenzaDAOImpl conferenzaDAO = new ConferenzaDAOImpl();
+//                    conferenzaDAO.update(conferenzaTableView.getSelectionModel().getSelectedItem());
+//                    break;
+//                case "Presentazione":
+//                    PresentazioneDAOImpl presentazioneDAO = new PresentazioneDAOImpl();
+//                    presentazioneDAO.update(presentazioneTableView.getSelectionModel().getSelectedItem());
+//                    break;
+//                case "Rivista":
+//                    RivistaDAOImpl rivistaDAO = new RivistaDAOImpl();
+//                    rivistaDAO.update(rivistaTableView.getSelectionModel().getSelectedItem());
+//                    break;
+                case "Serie":
+                    SerieDAOImpl serieDAO = new SerieDAOImpl();
+                    serieDAO.update(serieTableView.getSelectionModel().getSelectedItem());
+                    break;
+                case "Utente":
+                    UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
+                    utenteDAO.update(utenteTableView.getSelectionModel().getSelectedItem());
+                    break;
+                case "DisponibileA":
+                    DisponibileADAOImpl disponibileADAO = new DisponibileADAOImpl();
+                    disponibileADAO.update(disponibileATableView.getSelectionModel().getSelectedItem());
+                    break;
+                case "DisponibileL":
+                    DisponibileLDAOImpl disponibileLDAO = new DisponibileLDAOImpl();
+                    disponibileLDAO.update(disponibileLTableView.getSelectionModel().getSelectedItem());
+                    break;
+                case "DisponibileS":
+                    DisponibileSDAOImpl disponibileSDAO = new DisponibileSDAOImpl();
+                    disponibileSDAO.update(disponibileSTableView.getSelectionModel().getSelectedItem());
+                    break;
+            }
+            support.messageStage("Update effettuato");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    private void onEditChangedLibro(TableColumn.CellEditEvent<Libro, String> libroStringCellEditEvent) {
+        System.out.println("Modifica");
+        Libro libro = libroTableView.getSelectionModel().getSelectedItem();
+        libroTableView.getItems().remove(libro);
+        Libro provas = libroStringCellEditEvent.getRowValue();
+        System.out.println(provas.getTitolo());
+        libro.prova(provas);
+        libroTableView.getItems().add(libro);
+        libroTableView.refresh();
     }
 }

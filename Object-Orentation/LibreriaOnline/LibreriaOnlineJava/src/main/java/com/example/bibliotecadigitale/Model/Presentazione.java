@@ -4,17 +4,17 @@ import java.util.Date;
 
 public class Presentazione {
 
-    private String codP;
+    private int codP;
     private String nome;
     private String indirizzo;
     private String dataPresentazione;
     private String tipo;
 
-    public String getCodP() {
+    public int getCodP() {
         return codP;
     }
 
-    public void setCodP(String codP) {
+    public void setCodP(int codP) {
         this.codP = codP;
     }
 
