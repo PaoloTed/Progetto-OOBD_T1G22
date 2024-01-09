@@ -9,6 +9,7 @@ public class Libro extends Pubblicazioni{
     private String successivo;
 
     private int serie;
+    private int presentazione;
 
     public void prova(Libro libro) {
         this.ISBN = libro.getISBN();
@@ -21,15 +22,15 @@ public class Libro extends Pubblicazioni{
 
 
 
-    public String getPresentazione() {
+    public int getPresentazione() {
         return presentazione;
     }
 
-    public void setPresentazione(String presentazione) {
+    public void setPresentazione(int presentazione) {
         this.presentazione = presentazione;
     }
 
-    private String presentazione;
+
 
     public String getISBN() {
         return ISBN;

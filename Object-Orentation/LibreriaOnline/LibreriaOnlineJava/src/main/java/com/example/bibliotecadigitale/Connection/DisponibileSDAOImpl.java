@@ -65,7 +65,7 @@ public class DisponibileSDAOImpl implements DisponibileSDAO {
     public void update(DisponibileS disponibileS) throws SQLException {
         try {
             Connessione connessione = new Connessione();
-            String query = "UPDATE disponibile_s SET cods = '" + disponibileS.getCodS() + "' WHERE coda = '" + disponibileS.getCodA() + "';";
+            String query = "UPDATE disponibile_s SET cods = '" + disponibileS.getCodS() + "' WHERE coda = " + disponibileS.getCodA() + ";";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -77,7 +77,7 @@ public class DisponibileSDAOImpl implements DisponibileSDAO {
     public void delete(DisponibileS disponibileS) throws SQLException {
         try {
             Connessione connessione = new Connessione();
-            String query = "DELETE FROM disponibile_s WHERE coda = '" + disponibileS.getCodA() + "' AND cods = '" + disponibileS.getCodS() + "';";
+            String query = "DELETE FROM disponibile_s WHERE coda = " + disponibileS.getCodA() + " AND cods = '" + disponibileS.getCodS() + "';";
             connessione.executeUpdate(query);
         } catch (Exception e) {
             throw new RuntimeException(e);

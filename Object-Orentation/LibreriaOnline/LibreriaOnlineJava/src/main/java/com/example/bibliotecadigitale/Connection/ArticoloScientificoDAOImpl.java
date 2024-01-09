@@ -82,7 +82,34 @@ public class ArticoloScientificoDAOImpl implements ArticoloScientificoDAO {
     public void update(ArticoloScientifico articoloScientifico) throws SQLException {
         try {
             Connessione connessione = new Connessione();
-            String query = "UPDATE articolo_scientifico SET doi = '" + articoloScientifico.getDoi() + "', titolo = '" + articoloScientifico.getTitolo() + "', genere = '" + articoloScientifico.getGenere() + "', numpagine = '" + articoloScientifico.getNumPagine() + "', datauscita = '" + articoloScientifico.getDataUscita() + "', descrizione = '" + articoloScientifico.getDescrizione() + "', fruizione = '" + articoloScientifico.getFruizione() + "', editore = '" + articoloScientifico.getEditore() + "', autore = '" + articoloScientifico.getAutore() + "', lingua = '" + articoloScientifico.getLingua() + "', conferenza = '" + articoloScientifico.getConferenza() + "', nomer = '" + articoloScientifico.getNomer() + "', datar = '" + articoloScientifico.getDatar() + "' WHERE doi = '" + articoloScientifico.getDoi() + "';";
+
+            String numPagine = "NULL";
+            String conferenza = "NULL";
+            String dataUscita = "NULL";
+            String descrizione = articoloScientifico.getDescrizione().replace("'", "''");
+            if(articoloScientifico.getNumPagine() != 0) {
+                numPagine = Integer.toString(articoloScientifico.getNumPagine());
+            }
+            if(articoloScientifico.getConferenza() != 0) {
+                conferenza = Integer.toString(articoloScientifico.getConferenza());
+            }
+            if(articoloScientifico.getDataUscita() != null) {
+                dataUscita = "'" + articoloScientifico.getDataUscita() + "'";
+            }
+            String query = "UPDATE articolo_scientifico SET doi = " + articoloScientifico.getDoi() +
+                    ", titolo = '" + articoloScientifico.getTitolo() +
+                    "', genere = '" + articoloScientifico.getGenere() +
+                    "', numpagine = " + numPagine +
+                    ", datauscita = " + dataUscita +
+                    ", descrizione = '" + descrizione +
+                    "', fruizione = '" + articoloScientifico.getFruizione() +
+                    "', editore = '" + articoloScientifico.getEditore() +
+                    "', autore = '" + articoloScientifico.getAutore() +
+                    "', lingua = '" + articoloScientifico.getLingua() +
+                    "', conferenza = " + conferenza +
+                    ", nomer = '" + articoloScientifico.getNomer() +
+                    "', datar = '" + articoloScientifico.getDatar() +
+                    "' WHERE doi = " + articoloScientifico.getDoi() + ";";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);

@@ -58,7 +58,7 @@ public class LibroDAOImpl implements LibroDAO {
                 libro.setLingua(rs.getString(12));
                 libro.setSuccessivo(rs.getString(13));
                 libro.setSerie(rs.getInt(14));
-                libro.setPresentazione(rs.getString(15));
+                libro.setPresentazione(rs.getInt(15));
             }
             rs.close();
 
@@ -91,8 +91,8 @@ public class LibroDAOImpl implements LibroDAO {
             String datauscita = libro.getDataUscita();
             String lingua = libro.getLingua();
             String successivo = libro.getSuccessivo();
-            String presentazione = libro.getPresentazione();
-            String query = "INSERT INTO libro VALUES ('" + isbn + "','" + titolo + "','" + genere + "','" + numeroPagine + "','" + tipo + "','" + materia + "','" + descrizione + "','" + fruizione + "','" + editore + "','" + autore + "','" + datauscita + "','" + lingua + "','" + successivo + "','" + presentazione + "');";
+            int presentazione = libro.getPresentazione();
+            String query = "INSERT INTO libro VALUES ('" + isbn + "','" + titolo + "','" + genere + "','" + numeroPagine + "','" + tipo + "','" + materia + "','" + descrizione + "','" + fruizione + "','" + editore + "','" + autore + "','" + datauscita + "','" + lingua + "','" + successivo + "'," + presentazione + ");";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -104,19 +104,23 @@ public class LibroDAOImpl implements LibroDAO {
         try {
             Connessione connessione = new Connessione();
             String descrizione = libro.getDescrizione().replace("'", "''");
-            String successivo;
-            String serie;
-            if (libro.getSuccessivo() != null){
-                successivo  = "'" + libro.getSuccessivo() + "'";
-            }else{
-                successivo = "NULL";
+            String successivo = "NULL";
+            String serie = "NULL";
+            String presentazione = "NULL";
+            String materia = "NULL";
+            if (libro.getSuccessivo() != null) {
+                successivo = "'" + libro.getSuccessivo() + "'";
             }
-            if (libro.getSerie() == 0){
-                serie  = "NULL";
-            }else{
+            if (libro.getSerie() != 0) {
                 serie = libro.getSerie() + "";
             }
-            String query = "UPDATE libro SET isbn = '" + libro.getISBN() + "', titolo = '" + libro.getTitolo() + "', genere = '" + libro.getGenere() + "', numpagine = " + libro.getNumPagine() + " , tipo = '" + libro.getTipo() + "', materia = '" + libro.getMateria() + "', descrizione = '" + descrizione + "', fruizione = '" + libro.getFruizione() + "', editore = '" + libro.getEditore() + "', autore = '" + libro.getAutore() + "', datauscita = '" + libro.getDataUscita() + "', lingua = '" + libro.getLingua() + "', successivo = " + successivo + ", serie = " + serie + ", presentazione = " + libro.getPresentazione() + " WHERE isbn = '" + libro.getISBN() + "';";
+            if (libro.getPresentazione() != 0) {
+                presentazione = libro.getPresentazione() + "";
+            }
+            if (libro.getMateria() != null) {
+                materia = "'" + libro.getMateria() + "'";
+            }
+            String query = "UPDATE libro SET isbn = '" + libro.getISBN() + "', titolo = '" + libro.getTitolo() + "', genere = '" + libro.getGenere() + "', numpagine = " + libro.getNumPagine() + " , tipo = '" + libro.getTipo() + "', materia = " + materia + ", descrizione = '" + descrizione + "', fruizione = '" + libro.getFruizione() + "', editore = '" + libro.getEditore() + "', autore = '" + libro.getAutore() + "', datauscita = '" + libro.getDataUscita() + "', lingua = '" + libro.getLingua() + "', successivo = " + successivo + ", serie = " + serie + ", presentazione = " + presentazione + " WHERE isbn = '" + libro.getISBN() + "';";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);

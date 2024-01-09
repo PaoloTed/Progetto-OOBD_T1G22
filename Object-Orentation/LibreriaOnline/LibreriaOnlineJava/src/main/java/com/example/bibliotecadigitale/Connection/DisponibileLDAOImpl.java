@@ -70,7 +70,7 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
     public void update(DisponibileL disponibileL) throws SQLException {
         try {
             Connessione connessione = new Connessione();
-            String query = "UPDATE disponibile_l SET isbn = '" + disponibileL.getIsbn() + "' WHERE coda = '" + disponibileL.getCodA() + "';";
+            String query = "UPDATE disponibile_l SET isbn = '" + disponibileL.getIsbn() + "' WHERE coda = " + disponibileL.getCodA() + ";";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -82,7 +82,7 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
     public void delete(DisponibileL disponibileL) throws SQLException {
         try {
             Connessione connessione = new Connessione();
-            String query = "DELETE FROM disponibile_l WHERE coda = '" + disponibileL.getCodA() + "'AND isbn = '" + disponibileL.getIsbn() +"';";
+            String query = "DELETE FROM disponibile_l WHERE coda = " + disponibileL.getCodA() + " AND isbn = '" + disponibileL.getIsbn() +"';";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);

@@ -141,6 +141,16 @@ public class HomeController implements Initializable {
         support.switchStage("infoUserStage.fxml", event);
     }
 
+    @FXML
+    private void clearTableView(ActionEvent event) {
+        if (scelta.equals("libro")) {
+            libroTableView.getItems().clear();
+        }
+        if (scelta.equals("articolo")) {
+            articoloTableView.getItems().clear();
+        }
+    }
+
 
     public void logOff(ActionEvent event) throws IOException {
         Utente.getUtente().exitUtente();

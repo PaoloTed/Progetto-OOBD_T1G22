@@ -103,7 +103,7 @@ public class PaginaInformativaLibroController {
             buttonSuccessivoId.setVisible(false);
             buttonSuccessivoId.disableProperty().setValue(true);
         }
-        if (libroPassato.getPresentazione() != null) {
+        if (libroPassato.getPresentazione() != 0) {
             buttonPresentazioneid.setVisible(true);
             buttonPresentazioneid.disableProperty().setValue(false);
         } else {

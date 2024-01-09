@@ -72,7 +72,7 @@ public class DisponibileADAOImpl implements DisponibileADAO {
     public void update(DisponibileA disponibileA) throws SQLException {
         try {
             Connessione connessione = new Connessione();
-            String query = "UPDATE disponibile_a SET coda = '" + disponibileA.getCodA() + "', doi = '" + disponibileA.getDoi() + "' WHERE coda = '" + disponibileA.getCodA() + "'AND doi = '" + disponibileA.getDoi() +"';";
+            String query = "UPDATE disponibile_a SET coda = " + disponibileA.getCodA() + ", doi = '" + disponibileA.getDoi() + "' WHERE coda = " + disponibileA.getCodA() + " AND doi = '" + disponibileA.getDoi() +"';";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -84,7 +84,7 @@ public class DisponibileADAOImpl implements DisponibileADAO {
     public void delete(DisponibileA disponibileA) throws SQLException {
         try {
             Connessione connessione = new Connessione();
-            String query = "DELETE FROM disponibile_a WHERE coda = '" + disponibileA.getCodA() + "'AND doi = '" + disponibileA.getDoi() +"';";
+            String query = "DELETE FROM disponibile_a WHERE coda = " + disponibileA.getCodA() + " AND doi = '" + disponibileA.getDoi() +"';";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);

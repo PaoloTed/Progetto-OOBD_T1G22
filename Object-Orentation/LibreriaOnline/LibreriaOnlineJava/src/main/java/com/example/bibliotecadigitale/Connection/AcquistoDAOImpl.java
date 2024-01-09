@@ -85,7 +85,7 @@ public class AcquistoDAOImpl implements AcquistoDAO {
     public void update(Acquisto acquisto) throws SQLException {
         try {
             Connessione connessione = new Connessione();
-            String query = "UPDATE acquisto SET coda = '" + acquisto.getCodA() + "', nome = '" + acquisto.getNome() + "', tipoa = '" + acquisto.getTipoA() + "', url = '" + acquisto.getUrl() + "', indirizzo = '" + acquisto.getIndirizzo() + "' WHERE coda = '" + acquisto.getCodA() + "';";
+            String query = "UPDATE acquisto SET coda = " + acquisto.getCodA() + ", nome = '" + acquisto.getNome() + "', tipoa = '" + acquisto.getTipoA() + "', url = '" + acquisto.getUrl() + "', indirizzo = '" + acquisto.getIndirizzo() + "' WHERE coda = " + acquisto.getCodA() + ";";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);
