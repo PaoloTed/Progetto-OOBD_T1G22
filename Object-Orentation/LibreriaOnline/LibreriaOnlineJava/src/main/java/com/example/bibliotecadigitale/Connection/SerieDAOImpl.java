@@ -85,7 +85,7 @@ public class SerieDAOImpl implements SerieDAO {
             int cods = serie.getCodS();
             String nome = serie.getNome();
             boolean completata = serie.getCompletata();
-            String query = "UPDATE Serie SET nome = '" + nome + "',completata = " + completata + " WHERE cods = '" + cods + "';";
+            String query = "UPDATE Serie SET nome = " + nome + ", completata = " + completata + " WHERE cods = " + cods + ";";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -99,7 +99,7 @@ public class SerieDAOImpl implements SerieDAO {
         try {
             Connessione connessione = new Connessione();
             int cods = serie.getCodS();
-            String query = "DELETE FROM Serie WHERE cods = '" + cods + "';";
+            String query = "DELETE FROM Serie WHERE cods = " + cods + ";";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);

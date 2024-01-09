@@ -160,9 +160,7 @@ public class UtenteDAOImpl implements UtenteDAO {
     public void update(Utente utente) throws SQLException {
         try {
             Connessione connessione = new Connessione();
-            String emailUser = utente.getEmail();
-            String passwordUser = utente.getPassword();
-            String query = "UPDATE Utente SET password = '" + passwordUser + "' WHERE email = '" + emailUser + "';";
+            String query = "UPDATE Utente SET password = '" + utente.getPassword() + "' WHERE email = '" + utente.getEmail() + "';";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -174,8 +172,7 @@ public class UtenteDAOImpl implements UtenteDAO {
     public void delete(Utente utente) throws SQLException {
         try {
             Connessione connessione = new Connessione();
-            String emailUser = utente.getEmail();
-            String query = "DELETE FROM Utente WHERE EMAIL ='" + emailUser + "';";
+            String query = "DELETE FROM Utente WHERE EMAIL ='" + utente.getEmail() + "';";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);

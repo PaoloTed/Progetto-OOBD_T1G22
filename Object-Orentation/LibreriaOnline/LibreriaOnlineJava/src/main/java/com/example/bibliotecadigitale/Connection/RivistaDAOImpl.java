@@ -18,7 +18,7 @@ public class RivistaDAOImpl
             while (rs.next()) {
                 rivista = new Rivista();
                 rivista.setNome(rs.getString("nome"));
-                rivista.setData(rs.getDate("data"));
+                rivista.setData(rs.getString("data"));
                 rivista.setResponsabile(rs.getString("responsabile"));
                 rivista.setArgomento(rs.getString("argomento"));
             }

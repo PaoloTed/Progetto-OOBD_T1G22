@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class HomeControllerAdmin implements Initializable {
@@ -293,7 +294,6 @@ public class HomeControllerAdmin implements Initializable {
         //inizializzo le colonne della tabella rivista
         nomeRivista.setCellValueFactory(new PropertyValueFactory<Rivista, String>("nome"));
         dataRivista.setCellValueFactory(new PropertyValueFactory<Rivista, String>("data"));
-        dataRivista.setCellFactory(TextFieldTableCell.forTableColumn());
         responsabileRivista.setCellValueFactory(new PropertyValueFactory<Rivista, String>("responsabile"));
         responsabileRivista.setCellFactory(TextFieldTableCell.forTableColumn());
         argomentoRivista.setCellValueFactory(new PropertyValueFactory<Rivista, String>("argomento"));
@@ -823,6 +823,52 @@ public class HomeControllerAdmin implements Initializable {
         presentazioneTableView.refresh();
     }
 
+    @FXML
+    private void onEditChangedRivistaString(TableColumn.CellEditEvent<Rivista, String> rivistaStringCellEditEvent) {
+        Rivista rivista = rivistaTableView.getSelectionModel().getSelectedItem();
+        rivistaTableView.getItems().remove(rivista);
+        String tipoColumn = rivistaStringCellEditEvent.getTableColumn().getId();
+        String valoreColumnString = rivistaStringCellEditEvent.getNewValue();
+        switch (tipoColumn) {
+            case "responsabileRivista":
+                rivista.setResponsabile(valoreColumnString);
+                break;
+            case "argomentoRivista":
+                rivista.setArgomento(valoreColumnString);
+                break;
+        }
+        rivistaTableView.getItems().add(rivista);
+        rivistaTableView.refresh();
+    }
 
+    @FXML
+    private void onEditChangedSerieString(TableColumn.CellEditEvent<Serie, String> serieStringCellEditEvent) {
+        Serie serie = serieTableView.getSelectionModel().getSelectedItem();
+        serieTableView.getItems().remove(serie);
+        String valoreColumnString = serieStringCellEditEvent.getNewValue();
+        serie.setNome(valoreColumnString);
+        serieTableView.getItems().add(serie);
+        serieTableView.refresh();
+    }
 
+    @FXML
+    private void onEditChangedSerieBool(TableColumn.CellEditEvent<Serie, Boolean> serieStringCellEditEvent) {
+        Serie serie = serieTableView.getSelectionModel().getSelectedItem();
+        serieTableView.getItems().remove(serie);
+        boolean valoreColumnBool = serieStringCellEditEvent.getNewValue();
+        serie.setCompletata(valoreColumnBool);
+        serieTableView.getItems().add(serie);
+        serieTableView.refresh();
+    }
+
+    @FXML
+    private void onEditChangedUtenteString(TableColumn.CellEditEvent<Utente, String> utenteStringCellEditEvent) {
+        Utente utente = utenteTableView.getSelectionModel().getSelectedItem();
+        utenteTableView.getItems().remove(utente);
+        String valoreColumnString = utenteStringCellEditEvent.getNewValue();
+        utente.setPassword(valoreColumnString);
+        utenteTableView.getItems().add(utente);
+        utenteTableView.refresh();
+
+    }
 }

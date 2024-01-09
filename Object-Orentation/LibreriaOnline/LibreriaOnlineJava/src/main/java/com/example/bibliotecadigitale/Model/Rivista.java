@@ -5,7 +5,7 @@ import java.util.Date;
 public class Rivista extends Piattaforma{
 
     private String nome;
-    private Date data;
+    private String data;
     private String argomento;
 
     public String getNome() {
@@ -16,11 +16,11 @@ public class Rivista extends Piattaforma{
         this.nome = nome;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 

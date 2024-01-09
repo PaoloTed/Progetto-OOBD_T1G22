@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="idSearchBar" prefHeight="900.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.HomeControllerAdmin">
+<AnchorPane fx:id="idSearchBar" prefHeight="900.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.HomeControllerAdmin">
     <children>
         <Button layoutX="831.0" layoutY="861.0" mnemonicParsing="false" onAction="#logOff" text="Log off" />
         <TextField fx:id="idBarSearch" layoutX="298.0" layoutY="130.0" />
@@ -125,10 +125,10 @@
         </TableView>
         <TableView fx:id="rivistaTableView" editable="true" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0" prefHeight="535.0" prefWidth="700.0">
             <columns>
-                <TableColumn fx:id="nomeRivista" prefWidth="95.9999771118164" text="Nome" />
-                <TableColumn fx:id="dataRivista" prefWidth="300.6666717529297" text="Data" />
-                <TableColumn fx:id="responsabileRivista" prefWidth="104.66671752929688" text="Responsabile" />
-                <TableColumn fx:id="argomentoRivista" prefWidth="105.33331298828125" text="Argomento" />
+                <TableColumn fx:id="nomeRivista"  prefWidth="95.9999771118164" text="Nome" />
+                <TableColumn fx:id="dataRivista" onEditCommit="#onEditChangedRivistaString" prefWidth="300.6666717529297" text="Data" />
+                <TableColumn fx:id="responsabileRivista" onEditCommit="#onEditChangedRivistaString" prefWidth="104.66671752929688" text="Responsabile" />
+                <TableColumn fx:id="argomentoRivista" onEditCommit="#onEditChangedRivistaString" prefWidth="105.33331298828125" text="Argomento" />
             </columns>
             <contextMenu>
                 <ContextMenu>
@@ -142,9 +142,9 @@
         <TableView fx:id="serieTableView" editable="true" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0" prefHeight="535.0" prefWidth="700.0">
             <columns>
                 <TableColumn fx:id="codsSerie" prefWidth="95.9999771118164" text="CodS" />
-                <TableColumn fx:id="nomeSerie" prefWidth="300.6666717529297" text="Nome" />
+                <TableColumn fx:id="nomeSerie" onEditCommit="#onEditChangedSerieString" prefWidth="300.6666717529297" text="Nome" />
                 <TableColumn fx:id="numLibriSerie" prefWidth="104.66671752929688" text="NumeroLibri" />
-                <TableColumn fx:id="completataSerie" prefWidth="105.33331298828125" text="Completata" />
+                <TableColumn fx:id="completataSerie" onEditCommit="#onEditChangedSerieBool" prefWidth="105.33331298828125" text="Completata" />
             </columns>
             <contextMenu>
                 <ContextMenu>
@@ -158,7 +158,7 @@
         <TableView fx:id="utenteTableView" editable="true" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0" prefHeight="535.0" prefWidth="700.0">
             <columns>
                 <TableColumn fx:id="emailUtente" prefWidth="95.9999771118164" text="CodS" />
-                <TableColumn fx:id="passwordUtente" prefWidth="300.6666717529297" text="Password" />
+                <TableColumn fx:id="passwordUtente" onEditCommit="#onEditChangedUtenteString" prefWidth="300.6666717529297" text="Password" />
                 <TableColumn fx:id="dataIscrizioneUtente" prefWidth="104.66671752929688" text="Data" />
                 <TableColumn fx:id="isAdminUtente" prefWidth="105.33331298828125" text="isAdmin" />
             </columns>
