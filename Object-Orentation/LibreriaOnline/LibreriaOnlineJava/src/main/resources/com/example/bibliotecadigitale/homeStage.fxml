@@ -65,7 +65,7 @@
       </TableView>
       <Text layoutX="130.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cosa Vuoi ricercare ?" wrappingWidth="136.91082000732422" />
       <Text layoutX="308.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Premi Con Il Tasto Destro Del Mouse Per Le Azioni" wrappingWidth="277.5774459838867" />
-      <Button layoutX="424.0" layoutY="49.0" mnemonicParsing="false" text="Admin" />
+      <Button layoutX="424.0" layoutY="49.0" mnemonicParsing="false" onAction="#goToAdmin" text="Admin" />
       <Button layoutX="747.0" layoutY="130.0" mnemonicParsing="false" onAction="#clearTableView" text="Clear" />
    </children>
 </AnchorPane>
