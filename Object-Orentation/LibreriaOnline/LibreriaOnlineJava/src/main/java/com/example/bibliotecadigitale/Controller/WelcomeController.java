@@ -25,6 +25,13 @@ import static com.example.bibliotecadigitale.Model.Utente.getUtente;
 
 public class WelcomeController implements Initializable {
     //todo levare i file di test
+    //todo sistemare la grafica
+    //todo aggiungere informativa acquisto
+    //todo aggiungere informativa serie
+    //todo gestione admin login, insert, delete controllo generale update
+    //todo finire di fare impl di conferenza, presentazione, rivista
+    //todo aggiustare problema di immagini che le vedo solamente io
+    //todo fare test per prima apertura
 
 
     @FXML

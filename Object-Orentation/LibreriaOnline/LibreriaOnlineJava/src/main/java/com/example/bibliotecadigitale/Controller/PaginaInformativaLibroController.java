@@ -81,7 +81,7 @@ public class PaginaInformativaLibroController {
         System.out.println(libroPassato.getSerie());
         if (libroPassato.getSerie() != 0) {
             buttonSerieId.setVisible(true);
-            ArrayList<String> listaPreferiti = utenteDAO.searchPreferiti(Utente.getUtente().getEmail());
+            ArrayList<Integer> listaPreferiti = utenteDAO.searchPreferiti(Utente.getUtente().getEmail());
             if (listaPreferiti.contains(libroPassato.getSerie())) {
                 buttonSerieId.disableProperty().setValue(true);
                 textMessagioId.setText("Serie già presente nei preferiti");
