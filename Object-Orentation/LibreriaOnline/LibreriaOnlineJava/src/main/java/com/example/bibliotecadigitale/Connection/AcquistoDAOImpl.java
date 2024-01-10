@@ -97,7 +97,7 @@ public class AcquistoDAOImpl implements AcquistoDAO {
     public void delete(Acquisto acquisto) throws SQLException {
         try {
             Connessione connessione = new Connessione();
-            String query = "DELETE FROM acquisto WHERE coda = '" + acquisto.getCodA() + "';";
+            String query = "DELETE FROM acquisto WHERE coda = " + acquisto.getCodA() + ";";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);

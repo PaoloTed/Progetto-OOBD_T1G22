@@ -40,14 +40,14 @@
                 <ContextMenu>
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#updateDao" text="Update" />
-                        <MenuItem mnemonicParsing="false" text="Delete" />
+                        <MenuItem mnemonicParsing="false" onAction="#deleteDao" text="Delete" />
                     </items>
                 </ContextMenu>
             </contextMenu>
         </TableView>
         <TableView fx:id="articoloTableView" editable="true" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0" prefHeight="535.0" prefWidth="700.0">
             <columns>
-                <TableColumn fx:id="doiArticolo" prefWidth="300.6666717529297" text="doi" />
+                <TableColumn fx:id="doiArticolo" onEditCommit="#onEditChangedArticoloScientificoString" prefWidth="300.6666717529297" text="doi" />
                 <TableColumn fx:id="titoloArticolo" onEditCommit="#onEditChangedArticoloScientificoString" prefWidth="104.66671752929688" text="Titolo" />
                 <TableColumn fx:id="genereArticolo" onEditCommit="#onEditChangedArticoloScientificoString" prefWidth="104.66671752929688" text="genere" />
                 <TableColumn fx:id="numPagineArticolo" onEditCommit="#onEditChangedArticoloScientificoInt" prefWidth="104.66671752929688" text="NumeroPagine" />
@@ -65,14 +65,14 @@
                 <ContextMenu>
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#updateDao" text="Update" />
-                        <MenuItem mnemonicParsing="false" text="Delete" />
+                        <MenuItem mnemonicParsing="false" onAction="#deleteDao" text="Delete" />
                     </items>
                 </ContextMenu>
             </contextMenu>
         </TableView>
         <TableView fx:id="acquistoTableView" editable="true" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0" prefHeight="535.0" prefWidth="700.0">
             <columns>
-                <TableColumn fx:id="codaAcquisto" prefWidth="95.9999771118164" text="CodA" />
+                <TableColumn fx:id="codaAcquisto" onEditCommit="#onEditChangedAcquistoInt" prefWidth="95.9999771118164" text="CodA" />
                 <TableColumn fx:id="nomeAcquisto" onEditCommit="#onEditChangedAcquistoString" prefWidth="300.6666717529297" text="Nome" />
                 <TableColumn fx:id="tipoAcquisto" onEditCommit="#onEditChangedAcquistoString" prefWidth="104.66671752929688" text="Tipo" />
                 <TableColumn fx:id="urlAcquisto" onEditCommit="#onEditChangedAcquistoString" prefWidth="105.33331298828125" text="Url" />
@@ -82,14 +82,14 @@
                 <ContextMenu>
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#updateDao" text="Update" />
-                        <MenuItem mnemonicParsing="false" text="Delete" />
+                        <MenuItem mnemonicParsing="false" onAction="#deleteDao" text="Delete" />
                     </items>
                 </ContextMenu>
             </contextMenu>
         </TableView>
         <TableView fx:id="conferenzaTableView" editable="true" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0" prefHeight="535.0" prefWidth="700.0">
             <columns>
-                <TableColumn fx:id="codcConferenza" prefWidth="95.9999771118164" text="CodC" />
+                <TableColumn fx:id="codcConferenza" onEditCommit="#onEditChangedConferenzaInt" prefWidth="95.9999771118164" text="CodC" />
                 <TableColumn fx:id="nomeConfernza" onEditCommit="#onEditChangedConferenzaString" prefWidth="300.6666717529297" text="Nome" />
                 <TableColumn fx:id="strutturaConferenza" onEditCommit="#onEditChangedConferenzaString" prefWidth="104.66671752929688" text="Struttura" />
                 <TableColumn fx:id="indirizzoConferenza" onEditCommit="#onEditChangedConferenzaString" prefWidth="105.33331298828125" text="Indirizzo" />
@@ -101,14 +101,14 @@
                 <ContextMenu>
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#updateDao" text="Update" />
-                        <MenuItem mnemonicParsing="false" text="Delete" />
+                        <MenuItem mnemonicParsing="false" onAction="#deleteDao" text="Delete" />
                     </items>
                 </ContextMenu>
             </contextMenu>
         </TableView>
         <TableView fx:id="presentazioneTableView" editable="true" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0" prefHeight="535.0" prefWidth="700.0">
             <columns>
-                <TableColumn fx:id="codpPresentazione" prefWidth="95.9999771118164" text="CodP" />
+                <TableColumn fx:id="codpPresentazione" onEditCommit="#onEditChangedPresentazioneInt" prefWidth="95.9999771118164" text="CodP" />
                 <TableColumn fx:id="nomePresentazione" onEditCommit="#onEditChangedPresentazioneString" prefWidth="300.6666717529297" text="Nome" />
                 <TableColumn fx:id="indirizzoPresentazione" onEditCommit="#onEditChangedPresentazioneString" prefWidth="104.66671752929688" text="Indirizzo" />
                 <TableColumn fx:id="dataPresentazione" onEditCommit="#onEditChangedPresentazioneString" prefWidth="105.33331298828125" text="Data" />
@@ -118,14 +118,14 @@
                 <ContextMenu>
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#updateDao" text="Update" />
-                        <MenuItem mnemonicParsing="false" text="Delete" />
+                        <MenuItem mnemonicParsing="false" onAction="#deleteDao" text="Delete" />
                     </items>
                 </ContextMenu>
             </contextMenu>
         </TableView>
         <TableView fx:id="rivistaTableView" editable="true" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0" prefHeight="535.0" prefWidth="700.0">
             <columns>
-                <TableColumn fx:id="nomeRivista" prefWidth="95.9999771118164" text="Nome" />
+                <TableColumn fx:id="nomeRivista" onEditCommit="#onEditChangedRivistaString" prefWidth="95.9999771118164" text="Nome" />
                 <TableColumn fx:id="dataRivista" onEditCommit="#onEditChangedRivistaString" prefWidth="300.6666717529297" text="Data" />
                 <TableColumn fx:id="responsabileRivista" onEditCommit="#onEditChangedRivistaString" prefWidth="104.66671752929688" text="Responsabile" />
                 <TableColumn fx:id="argomentoRivista" onEditCommit="#onEditChangedRivistaString" prefWidth="105.33331298828125" text="Argomento" />
@@ -134,23 +134,23 @@
                 <ContextMenu>
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#updateDao" text="Update" />
-                        <MenuItem mnemonicParsing="false" text="Delete" />
+                        <MenuItem mnemonicParsing="false" onAction="#deleteDao" text="Delete" />
                     </items>
                 </ContextMenu>
             </contextMenu>
         </TableView>
         <TableView fx:id="serieTableView" editable="true" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0" prefHeight="535.0" prefWidth="700.0">
             <columns>
-                <TableColumn fx:id="codsSerie" prefWidth="95.9999771118164" text="CodS" />
+                <TableColumn fx:id="codsSerie" onEditCommit="#onEditChangedSerieInt" prefWidth="95.9999771118164" text="CodS" />
                 <TableColumn fx:id="nomeSerie" onEditCommit="#onEditChangedSerieString" prefWidth="300.6666717529297" text="Nome" />
-                <TableColumn fx:id="numLibriSerie" prefWidth="104.66671752929688" text="NumeroLibri" />
+                <TableColumn fx:id="numLibriSerie" onEditCommit="#onEditChangedSerieInt" prefWidth="104.66671752929688" text="NumeroLibri" />
                 <TableColumn fx:id="completataSerie" onEditCommit="#onEditChangedSerieBool" prefWidth="105.33331298828125" text="Completata" />
             </columns>
             <contextMenu>
                 <ContextMenu>
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#updateDao" text="Update" />
-                        <MenuItem mnemonicParsing="false" text="Delete" />
+                        <MenuItem mnemonicParsing="false" onAction="#deleteDao" text="Delete" />
                     </items>
                 </ContextMenu>
             </contextMenu>
@@ -165,9 +165,8 @@
             <contextMenu>
                 <ContextMenu>
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Rendi Admin" />
                         <MenuItem mnemonicParsing="false" onAction="#updateDao" text="Update" />
-                        <MenuItem mnemonicParsing="false" text="Delete" />
+                        <MenuItem mnemonicParsing="false" onAction="#deleteDao" text="Delete" />
                     </items>
                 </ContextMenu>
             </contextMenu>
@@ -181,7 +180,7 @@
                 <ContextMenu>
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#updateDao" text="Update" />
-                        <MenuItem mnemonicParsing="false" text="Delete" />
+                        <MenuItem mnemonicParsing="false" onAction="#deleteDao" text="Delete" />
                     </items>
                 </ContextMenu>
             </contextMenu>
@@ -195,7 +194,7 @@
                 <ContextMenu>
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#updateDao" text="Update" />
-                        <MenuItem mnemonicParsing="false" text="Delete" />
+                        <MenuItem mnemonicParsing="false" onAction="#deleteDao" text="Delete" />
                     </items>
                 </ContextMenu>
             </contextMenu>
@@ -209,7 +208,7 @@
                 <ContextMenu>
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#updateDao" text="Update" />
-                        <MenuItem mnemonicParsing="false" text="Delete" />
+                        <MenuItem mnemonicParsing="false" onAction="#deleteDao" text="Delete" />
                     </items>
                 </ContextMenu>
             </contextMenu>
@@ -217,6 +216,7 @@
         <Text layoutX="130.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cosa Vuoi ricercare ?" wrappingWidth="136.91082000732422" />
         <Text layoutX="308.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Premi Con Il Tasto Destro Del Mouse Per Le Azioni" wrappingWidth="277.5774459838867" />
         <ComboBox fx:id="comboBoxTableView" layoutX="117.0" layoutY="130.0" onAction="#selezioneSceltaTableView" prefWidth="150.0" />
-        <Button layoutX="397.0" layoutY="80.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="Inserisci Altro " />
+        <Button layoutX="397.0" layoutY="80.0" mnemonicParsing="false" onAction="#insertDao" prefHeight="25.0" prefWidth="105.0" text="Inserisci Altro " />
+      <Button fx:id="buttonInserisci" layoutX="805.0" layoutY="210.0" mnemonicParsing="false" text="Inserisci" visible="false" />
     </children>
 </AnchorPane>

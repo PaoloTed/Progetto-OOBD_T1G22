@@ -25,6 +25,9 @@ public class HomeControllerAdmin implements Initializable {
     private String scelta = "libro";
     @FXML
     private Button buttonCerca;
+
+    @FXML
+    private Button buttonInserisci;
     @FXML
     private TextField idBarSearch;
     private SupportStage support = new SupportStage();
@@ -201,8 +204,11 @@ public class HomeControllerAdmin implements Initializable {
 
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        buttonInserisci.setVisible(false);
         //inizializzo le colonne della tabella libro
         isbnLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("ISBN"));
+        isbnLibro.setCellFactory(TextFieldTableCell.forTableColumn());
+        isbnLibro.setEditable(false);
         titoloLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("titolo"));
         titoloLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         genereLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("genere"));
@@ -230,6 +236,8 @@ public class HomeControllerAdmin implements Initializable {
 
         //inizializzo le colonne della tabella articolo
         doiArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("doi"));
+        doiArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
+        doiArticolo.setEditable(false);
         titoloArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("titolo"));
         titoloArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
         genereArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("genere"));
@@ -251,10 +259,16 @@ public class HomeControllerAdmin implements Initializable {
         conferenzaArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, Integer>("conferenza"));
         conferenzaArticolo.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         nomerArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("nomer"));
+        nomerArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
+        nomerArticolo.setEditable(false);
         datarArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("datar"));
+        datarArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
+        datarArticolo.setEditable(false);
 
         //inizializzo le colonne della tabella acquisto
         codaAcquisto.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("codA"));
+        codaAcquisto.setCellFactory(TextFieldTableCell.forTableColumn());
+        codaAcquisto.setEditable(false);
         nomeAcquisto.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("nome"));
         nomeAcquisto.setCellFactory(TextFieldTableCell.forTableColumn());
         tipoAcquisto.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("tipoA"));
@@ -266,6 +280,8 @@ public class HomeControllerAdmin implements Initializable {
 
         //inizializzo le colonne della tabella conferenza
         codcConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, Integer>("codC"));
+        codcConferenza.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        codcConferenza.setEditable(false);
         nomeConfernza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("nome"));
         nomeConfernza.setCellFactory(TextFieldTableCell.forTableColumn());
         strutturaConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("struttura"));
@@ -282,6 +298,8 @@ public class HomeControllerAdmin implements Initializable {
 
         //inizializzo le colonne della tabella presentazione
         codpPresentazione.setCellValueFactory(new PropertyValueFactory<Presentazione, Integer>("codP"));
+        codpPresentazione.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        codpPresentazione.setEditable(false);
         nomePresentazione.setCellValueFactory(new PropertyValueFactory<Presentazione, String>("nome"));
         nomePresentazione.setCellFactory(TextFieldTableCell.forTableColumn());
         indirizzoPresentazione.setCellValueFactory(new PropertyValueFactory<Presentazione, String>("indirizzo"));
@@ -293,6 +311,8 @@ public class HomeControllerAdmin implements Initializable {
 
         //inizializzo le colonne della tabella rivista
         nomeRivista.setCellValueFactory(new PropertyValueFactory<Rivista, String>("nome"));
+        nomeRivista.setCellFactory(TextFieldTableCell.forTableColumn());
+        nomeRivista.setEditable(false);
         dataRivista.setCellValueFactory(new PropertyValueFactory<Rivista, String>("data"));
         responsabileRivista.setCellValueFactory(new PropertyValueFactory<Rivista, String>("responsabile"));
         responsabileRivista.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -301,6 +321,8 @@ public class HomeControllerAdmin implements Initializable {
 
         //inizializzo le colonne della tabella serie
         codsSerie.setCellValueFactory(new PropertyValueFactory<Serie, String>("codS"));
+        codsSerie.setCellFactory(TextFieldTableCell.forTableColumn());
+        codsSerie.setEditable(false);
         nomeSerie.setCellValueFactory(new PropertyValueFactory<Serie, String>("nome"));
         nomeSerie.setCellFactory(TextFieldTableCell.forTableColumn());
         numLibriSerie.setCellValueFactory(new PropertyValueFactory<Serie, Integer>("numLibri"));
@@ -310,6 +332,8 @@ public class HomeControllerAdmin implements Initializable {
 
         //inizializzo le colonne della tabella utente
         emailUtente.setCellValueFactory(new PropertyValueFactory<Utente, String>("email"));
+        emailUtente.setCellFactory(TextFieldTableCell.forTableColumn());
+        emailUtente.setEditable(false);
         passwordUtente.setCellValueFactory(new PropertyValueFactory<Utente, String>("password"));
         passwordUtente.setCellFactory(TextFieldTableCell.forTableColumn());
         dataIscrizioneUtente.setCellValueFactory(new PropertyValueFactory<Utente, String>("dataIscrizione"));
@@ -319,15 +343,27 @@ public class HomeControllerAdmin implements Initializable {
 
         //inizializzo le colonne della tabella disponibileA
         codaDisponibileA.setCellValueFactory(new PropertyValueFactory<DisponibileA, Integer>("codA"));
+        codaDisponibileA.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        codaDisponibileA.setEditable(false);
         doiDisponibileA.setCellValueFactory(new PropertyValueFactory<DisponibileA, String>("doi"));
+        doiDisponibileA.setCellFactory(TextFieldTableCell.forTableColumn());
+        doiDisponibileA.setEditable(false);
 
         //inizializzo le colonne della tabella disponibileL
         codaDisponibileL.setCellValueFactory(new PropertyValueFactory<DisponibileL, Integer>("codA"));
+        codaDisponibileL.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        codaDisponibileL.setEditable(false);
         isbnDisponibileL.setCellValueFactory(new PropertyValueFactory<DisponibileL, String>("isbn"));
+        isbnDisponibileL.setCellFactory(TextFieldTableCell.forTableColumn());
+        isbnDisponibileL.setEditable(false);
 
         //inizializzo le colonne della tabella disponibileS
         codaDisponibileS.setCellValueFactory(new PropertyValueFactory<DisponibileS, Integer>("codA"));
+        codaDisponibileS.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        codaDisponibileS.setEditable(false);
         codsDisponibileS.setCellValueFactory(new PropertyValueFactory<DisponibileS, Integer>("codS"));
+        codsDisponibileS.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        codsDisponibileS.setEditable(false);
 
         //Imposto la ricerca su libro come default e nascondo la tabella articolo
         setVisibleFalseAllTableView();
@@ -506,6 +542,7 @@ public class HomeControllerAdmin implements Initializable {
     }
 
     public void selezioneSceltaTableView(ActionEvent event) {
+        buttonInserisci.setVisible(false);
         scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
         if (scelta == null) {
             support.messageStage("Selezionare prima un tipo di ricerca");
@@ -563,6 +600,171 @@ public class HomeControllerAdmin implements Initializable {
     }
 
     @FXML
+    private void deleteDao() {
+        try {
+            switch (scelta) {
+                case "Libro":
+                    LibroDAOImpl libroDAO = new LibroDAOImpl();
+                    Libro libroDelete = libroTableView.getSelectionModel().getSelectedItem();
+                    libroTableView.getItems().remove(libroDelete);
+                    libroDAO.delete(libroDelete);
+                    break;
+                case "Articolo":
+                    ArticoloScientificoDAOImpl articoloScientificoDAO = new ArticoloScientificoDAOImpl();
+                    ArticoloScientifico articoloScientificoDelete = articoloTableView.getSelectionModel().getSelectedItem();
+                    articoloTableView.getItems().remove(articoloScientificoDelete);
+                    articoloScientificoDAO.delete(articoloScientificoDelete);
+                    break;
+                case "Acquisto":
+                    AcquistoDAOImpl acquistoDAO = new AcquistoDAOImpl();
+                    Acquisto acquistoDelete = acquistoTableView.getSelectionModel().getSelectedItem();
+                    acquistoTableView.getItems().remove(acquistoDelete);
+                    acquistoDAO.delete(acquistoDelete);
+                    break;
+//                case "Conferenza":
+//                    ConferenzaDAOImpl conferenzaDAO = new ConferenzaDAOImpl();
+//                    Conferenza conferenzaDelete = conferenzaTableView.getSelectionModel().getSelectedItem();
+//                    conferenzaTableView.getItems().remove(conferenzaDelete);
+//                    conferenzaDAO.delete(conferenzaDelete);
+//                    break;
+//                case "Presentazione":
+//                    PresentazioneDAOImpl presentazioneDAO = new PresentazioneDAOImpl();
+//                    Presentazione presentazioneDelete = presentazioneTableView.getSelectionModel().getSelectedItem();
+//                    presentazioneTableView.getItems().remove(presentazioneDelete);
+//                    presentazioneDAO.delete(presentazioneDelete);
+//                    break;
+//                case "Rivista":
+//                    RivistaDAOImpl rivistaDAO = new RivistaDAOImpl();
+//                    Rivista rivistaDelete = rivistaTableView.getSelectionModel().getSelectedItem();
+//                    rivistaTableView.getItems().remove(rivistaDelete);
+//                    rivistaDAO.delete(rivistaDelete);
+//                    break;
+                case "Serie":
+                    SerieDAOImpl serieDAO = new SerieDAOImpl();
+                    Serie serieDelete = serieTableView.getSelectionModel().getSelectedItem();
+                    serieTableView.getItems().remove(serieDelete);
+                    serieDAO.delete(serieDelete);
+                    break;
+                case "Utente":
+                    UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
+                    Utente utenteDelete = utenteTableView.getSelectionModel().getSelectedItem();
+                    utenteTableView.getItems().remove(utenteDelete);
+                    utenteDAO.delete(utenteDelete);
+                    break;
+                case "DisponibileA":
+                    DisponibileADAOImpl disponibileADAO = new DisponibileADAOImpl();
+                    DisponibileA disponibileADelete = disponibileATableView.getSelectionModel().getSelectedItem();
+                    disponibileATableView.getItems().remove(disponibileADelete);
+                    disponibileADAO.delete(disponibileADelete);
+                    break;
+                case "DisponibileL":
+                    DisponibileLDAOImpl disponibileLDAO = new DisponibileLDAOImpl();
+                    DisponibileL disponibileLDelete = disponibileLTableView.getSelectionModel().getSelectedItem();
+                    disponibileLTableView.getItems().remove(disponibileLDelete);
+                    disponibileLDAO.delete(disponibileLDelete);
+                    break;
+                case "DisponibileS":
+                    DisponibileSDAOImpl disponibileSDAO = new DisponibileSDAOImpl();
+                    DisponibileS disponibileSDelete = disponibileSTableView.getSelectionModel().getSelectedItem();
+                    disponibileSTableView.getItems().remove(disponibileSDelete);
+                    disponibileSDAO.delete(disponibileSDelete);
+                    break;
+            }
+            support.messageStage("Delete effettuato");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
+    private void insertDao() {
+        String scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
+        buttonInserisci.setVisible(true);
+        try {
+            switch (scelta) {
+                case "Libro":
+                    System.out.println("Libro");
+                    libroTableView.getItems().clear();
+                    libroTableView.setPrefHeight(70);
+                    libroTableView.getItems().add(new Libro());
+                    isbnLibro.setEditable(true);
+                    break;
+                case "Articolo":
+                    System.out.println("Articolo");
+                    articoloTableView.getItems().clear();
+                    articoloTableView.setPrefHeight(70);
+                    articoloTableView.getItems().add(new ArticoloScientifico());
+                    doiArticolo.setEditable(true);
+                    nomerArticolo.setEditable(true);
+                    datarArticolo.setEditable(true);
+                    break;
+                case "Acquisto":
+                    System.out.println("Acquisto");
+                    acquistoTableView.getItems().clear();
+                    acquistoTableView.setPrefHeight(70);
+                    acquistoTableView.getItems().add(new Acquisto());
+                    codaAcquisto.setEditable(true);
+                    break;
+                case "Conferenza":
+                    System.out.println("Conferenza");
+                    conferenzaTableView.getItems().clear();
+                    conferenzaTableView.setPrefHeight(70);
+                    conferenzaTableView.getItems().add(new Conferenza());
+                    codcConferenza.setEditable(true);
+                    break;
+                case "Presentazione":
+                    System.out.println("Presentazione");
+                    presentazioneTableView.getItems().clear();
+                    presentazioneTableView.setPrefHeight(70);
+                    presentazioneTableView.getItems().add(new Presentazione());
+                    codpPresentazione.setEditable(true);
+                    break;
+                case "Rivista":
+                    System.out.println("Rivista");
+                    rivistaTableView.getItems().clear();
+                    rivistaTableView.setPrefHeight(70);
+                    rivistaTableView.getItems().add(new Rivista());
+                    nomeRivista.setEditable(true);
+                    dataRivista.setEditable(true);
+                    break;
+                case "Serie":
+                    System.out.println("Serie");
+                    serieTableView.getItems().clear();
+                    serieTableView.setPrefHeight(70);
+                    serieTableView.getItems().add(new Serie());
+                    codsSerie.setEditable(true);
+                    break;
+                case "DisponibileA":
+                    System.out.println("DisponibileA");
+                    disponibileATableView.getItems().clear();
+                    disponibileATableView.setPrefHeight(70);
+                    disponibileATableView.getItems().add(new DisponibileA());
+                    codaDisponibileA.setEditable(true);
+                    doiDisponibileA.setEditable(true);
+                    break;
+                case "DisponibileL":
+                    System.out.println("DisponibileL");
+                    disponibileLTableView.getItems().clear();
+                    disponibileLTableView.setPrefHeight(70);
+                    disponibileLTableView.getItems().add(new DisponibileL());
+                    codaDisponibileL.setEditable(true);
+                    isbnDisponibileL.setEditable(true);
+                    break;
+                case "DisponibileS":
+                    System.out.println("DisponibileS");
+                    disponibileSTableView.getItems().clear();
+                    disponibileSTableView.setPrefHeight(70);
+                    disponibileSTableView.getItems().add(new DisponibileS());
+                    codaDisponibileS.setEditable(true);
+                    codsDisponibileS.setEditable(true);
+                    break;
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
     private void updateDao() {
         try {
             switch (scelta) {
@@ -598,18 +800,18 @@ public class HomeControllerAdmin implements Initializable {
                     UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
                     utenteDAO.update(utenteTableView.getSelectionModel().getSelectedItem());
                     break;
-//                case "DisponibileA":
-//                    DisponibileADAOImpl disponibileADAO = new DisponibileADAOImpl();
-//                    disponibileADAO.update(disponibileATableView.getSelectionModel().getSelectedItem());
-//                    break;
-//                case "DisponibileL":
-//                    DisponibileLDAOImpl disponibileLDAO = new DisponibileLDAOImpl();
-//                    disponibileLDAO.update(disponibileLTableView.getSelectionModel().getSelectedItem());
-//                    break;
-//                case "DisponibileS":
-//                    DisponibileSDAOImpl disponibileSDAO = new DisponibileSDAOImpl();
-//                    disponibileSDAO.update(disponibileSTableView.getSelectionModel().getSelectedItem());
-//                    break;
+                case "DisponibileA":
+                    DisponibileADAOImpl disponibileADAO = new DisponibileADAOImpl();
+                    disponibileADAO.update(disponibileATableView.getSelectionModel().getSelectedItem());
+                    break;
+                case "DisponibileL":
+                    DisponibileLDAOImpl disponibileLDAO = new DisponibileLDAOImpl();
+                    disponibileLDAO.update(disponibileLTableView.getSelectionModel().getSelectedItem());
+                    break;
+                case "DisponibileS":
+                    DisponibileSDAOImpl disponibileSDAO = new DisponibileSDAOImpl();
+                    disponibileSDAO.update(disponibileSTableView.getSelectionModel().getSelectedItem());
+                    break;
             }
             support.messageStage("Update effettuato");
         } catch (SQLException e) {
@@ -625,6 +827,9 @@ public class HomeControllerAdmin implements Initializable {
         String tipoColumn = libroStringCellEditEvent.getTableColumn().getId();
         String valoreColumnString = libroStringCellEditEvent.getNewValue();
         switch (tipoColumn) {
+            case "isbnLibro":
+                libro.setISBN(valoreColumnString);
+                break;
             case "titoloLibro":
                 libro.setTitolo(valoreColumnString);
                 break;
@@ -710,12 +915,25 @@ public class HomeControllerAdmin implements Initializable {
     }
 
     @FXML
+    private void onEditChangedAcquistoInt(TableColumn.CellEditEvent<Acquisto, Integer> acquistoIntegerCellEditEvent) {
+        Acquisto acquisto = acquistoTableView.getSelectionModel().getSelectedItem();
+        acquistoTableView.getItems().remove(acquisto);
+        Integer valoreColumnInt = acquistoIntegerCellEditEvent.getNewValue();
+        acquisto.setCodA(valoreColumnInt);
+        acquistoTableView.getItems().add(acquisto);
+        acquistoTableView.refresh();
+    }
+
+    @FXML
     private void onEditChangedArticoloScientificoString(TableColumn.CellEditEvent<ArticoloScientifico, String> articoloScientificoStringCellEditEvent) {
         ArticoloScientifico articoloScientifico = articoloTableView.getSelectionModel().getSelectedItem();
         articoloTableView.getItems().remove(articoloScientifico);
         String tipoColumn = articoloScientificoStringCellEditEvent.getTableColumn().getId();
         String valoreColumnString = articoloScientificoStringCellEditEvent.getNewValue();
         switch (tipoColumn) {
+            case "doiArticolo":
+                articoloScientifico.setDoi(valoreColumnString);
+                break;
             case "titoloArticolo":
                 articoloScientifico.setTitolo(valoreColumnString);
                 break;
@@ -800,6 +1018,17 @@ public class HomeControllerAdmin implements Initializable {
     }
 
     @FXML
+    private void onEditChangedConferenzaInt(TableColumn.CellEditEvent<Conferenza, Integer> conferenzaIntegerCellEditEvent) {
+        Conferenza conferenza = conferenzaTableView.getSelectionModel().getSelectedItem();
+        conferenzaTableView.getItems().remove(conferenza);
+        Integer valoreColumnInt = conferenzaIntegerCellEditEvent.getNewValue();
+        conferenza.setCodC(valoreColumnInt);
+        conferenzaTableView.getItems().add(conferenza);
+        conferenzaTableView.refresh();
+    }
+
+
+    @FXML
     private void onEditChangedPresentazioneString(TableColumn.CellEditEvent<Presentazione, String> presentazioneStringCellEditEvent) {
         Presentazione presentazione = presentazioneTableView.getSelectionModel().getSelectedItem();
         presentazioneTableView.getItems().remove(presentazione);
@@ -824,12 +1053,28 @@ public class HomeControllerAdmin implements Initializable {
     }
 
     @FXML
+    private void onEditChangedPresentazioneInt(TableColumn.CellEditEvent<Presentazione, Integer> presentazioneIntegerCellEditEvent) {
+        Presentazione presentazione = presentazioneTableView.getSelectionModel().getSelectedItem();
+        presentazioneTableView.getItems().remove(presentazione);
+        Integer valoreColumnInt = presentazioneIntegerCellEditEvent.getNewValue();
+        presentazione.setCodP(valoreColumnInt);
+        presentazioneTableView.getItems().add(presentazione);
+        presentazioneTableView.refresh();
+    }
+
+    @FXML
     private void onEditChangedRivistaString(TableColumn.CellEditEvent<Rivista, String> rivistaStringCellEditEvent) {
         Rivista rivista = rivistaTableView.getSelectionModel().getSelectedItem();
         rivistaTableView.getItems().remove(rivista);
         String tipoColumn = rivistaStringCellEditEvent.getTableColumn().getId();
         String valoreColumnString = rivistaStringCellEditEvent.getNewValue();
         switch (tipoColumn) {
+            case "nomeRivista":
+                rivista.setNome(valoreColumnString);
+                break;
+            case "dataRivista":
+                rivista.setData(valoreColumnString);
+                break;
             case "responsabileRivista":
                 rivista.setResponsabile(valoreColumnString);
                 break;
@@ -862,13 +1107,41 @@ public class HomeControllerAdmin implements Initializable {
     }
 
     @FXML
+    private void onEditChangedSerieInt(TableColumn.CellEditEvent<Serie, Integer> serieIntegerCellEditEvent) {
+        Serie serie = serieTableView.getSelectionModel().getSelectedItem();
+        serieTableView.getItems().remove(serie);
+        Integer valoreColumnInt = serieIntegerCellEditEvent.getNewValue();
+        String tipoColumn = serieIntegerCellEditEvent.getTableColumn().getId();
+        switch (tipoColumn) {
+            case "codsSerie":
+                serie.setCodS(valoreColumnInt);
+                break;
+            case "numLibriSerie":
+                serie.setNumLibri(valoreColumnInt);
+                break;
+        }
+        serieTableView.getItems().add(serie);
+        serieTableView.refresh();
+    }
+
+    @FXML
     private void onEditChangedUtenteString(TableColumn.CellEditEvent<Utente, String> utenteStringCellEditEvent) {
         Utente utente = utenteTableView.getSelectionModel().getSelectedItem();
         utenteTableView.getItems().remove(utente);
         String valoreColumnString = utenteStringCellEditEvent.getNewValue();
-        utente.setPassword(valoreColumnString);
+        String tipoColumn = utenteStringCellEditEvent.getTableColumn().getId();
+        switch (tipoColumn) {
+            case "emailUtente":
+                utente.setEmail(valoreColumnString);
+                break;
+            case "passwordUtente":
+                utente.setPassword(valoreColumnString);
+                break;
+            case "dataIscrizioneUtente":
+                utente.setData(valoreColumnString);
+                break;
+        }
         utenteTableView.getItems().add(utente);
         utenteTableView.refresh();
-
     }
 }
