@@ -22,7 +22,8 @@ import java.util.ResourceBundle;
 
 public class HomeControllerAdmin implements Initializable {
     //todo se l'acquisto non ha una conferenza esce zero invece di null, risolvere
-    private String scelta = "libro";
+    public String scelta = "libro";
+    public String sceltaInsertView = "insert";
     @FXML
     private Button buttonCerca;
 
@@ -35,6 +36,11 @@ public class HomeControllerAdmin implements Initializable {
     private ComboBox<String> comboBoxTableView;
     @FXML
     private ComboBox<String> comboBoxRicerca;
+
+    @FXML
+    private Button buttonInsert;
+    @FXML
+    private Button buttonView;
 
     //Table view libro
     @FXML
@@ -100,7 +106,7 @@ public class HomeControllerAdmin implements Initializable {
     @FXML
     public TableView<Acquisto> acquistoTableView;
     @FXML
-    TableColumn<Acquisto, String> codaAcquisto;
+    TableColumn<Acquisto, Integer> codaAcquisto;
     @FXML
     TableColumn<Acquisto, String> nomeAcquisto;
     @FXML
@@ -158,7 +164,7 @@ public class HomeControllerAdmin implements Initializable {
     @FXML
     public TableView<Serie> serieTableView;
     @FXML
-    TableColumn<Serie, String> codsSerie;
+    TableColumn<Serie, Integer> codsSerie;
     @FXML
     TableColumn<Serie, String> nomeSerie;
     @FXML
@@ -266,8 +272,8 @@ public class HomeControllerAdmin implements Initializable {
         datarArticolo.setEditable(false);
 
         //inizializzo le colonne della tabella acquisto
-        codaAcquisto.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("codA"));
-        codaAcquisto.setCellFactory(TextFieldTableCell.forTableColumn());
+        codaAcquisto.setCellValueFactory(new PropertyValueFactory<Acquisto, Integer>("codA"));
+        codaAcquisto.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         codaAcquisto.setEditable(false);
         nomeAcquisto.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("nome"));
         nomeAcquisto.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -288,9 +294,9 @@ public class HomeControllerAdmin implements Initializable {
         strutturaConferenza.setCellFactory(TextFieldTableCell.forTableColumn());
         indirizzoConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("indirizzo"));
         indirizzoConferenza.setCellFactory(TextFieldTableCell.forTableColumn());
-        dataiConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("datai"));
+        dataiConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("dataI"));
         dataiConferenza.setCellFactory(TextFieldTableCell.forTableColumn());
-        datafConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("dataf"));
+        datafConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("dataF"));
         datafConferenza.setCellFactory(TextFieldTableCell.forTableColumn());
         responsabileConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("responsabile"));
         responsabileConferenza.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -320,8 +326,8 @@ public class HomeControllerAdmin implements Initializable {
         argomentoRivista.setCellFactory(TextFieldTableCell.forTableColumn());
 
         //inizializzo le colonne della tabella serie
-        codsSerie.setCellValueFactory(new PropertyValueFactory<Serie, String>("codS"));
-        codsSerie.setCellFactory(TextFieldTableCell.forTableColumn());
+        codsSerie.setCellValueFactory(new PropertyValueFactory<Serie, Integer>("codS"));
+        codsSerie.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         codsSerie.setEditable(false);
         nomeSerie.setCellValueFactory(new PropertyValueFactory<Serie, String>("nome"));
         nomeSerie.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -540,64 +546,100 @@ public class HomeControllerAdmin implements Initializable {
         disponibileLTableView.setVisible(false);
         disponibileSTableView.setVisible(false);
     }
+    @FXML
+    private void sceltaInsert(){
+        sceltaInsertView = "insert";
+        buttonInserisci.setVisible(true);
+        buttonInsert.setDisable(true);
+        buttonInsert.setStyle("-fx-border-color: red;");
+        idBarSearch.setDisable(true);
+        comboBoxRicerca.setDisable(true);
+        buttonCerca.setDisable(true);
+
+        articoloTableView.setVisible(false);
+        buttonView.setDisable(false);
+        buttonView.setStyle("-fx-border-color: grey;");
+        insertDao();
+    }
+
+    @FXML
+    private void sceltaView(){
+        sceltaInsertView = "view";
+        buttonInserisci.setVisible(false);
+        buttonInsert.setDisable(false);
+        buttonInsert.setStyle("-fx-border-color: grey;");
+        idBarSearch.setDisable(false);
+        comboBoxRicerca.setDisable(false);
+        buttonCerca.setDisable(false);
+
+        articoloTableView.setVisible(true);
+        buttonView.setDisable(true);
+        buttonView.setStyle("-fx-border-color: red;");
+        viewDao();
+    }
 
     public void selezioneSceltaTableView(ActionEvent event) {
-        buttonInserisci.setVisible(false);
         scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
-        if (scelta == null) {
-            support.messageStage("Selezionare prima un tipo di ricerca");
-            return;
-        }
-        setVisibleFalseAllTableView();
-        switch (scelta) {
-            case "Libro":
-                libroTableView.setVisible(true);
-                comboBoxRicerca.setItems(FXCollections.observableArrayList("Isbn", "Titolo", "Genere", "Autore", "Editore", "DataUscita", "NumPagine", "Materia", "Descrizione", "Fruizione", "Successivo", "Serie", "Presentazione"));
-                break;
-            case "Articolo":
-                articoloTableView.setVisible(true);
-                comboBoxRicerca.setItems(FXCollections.observableArrayList("Doi", "Titolo", "Genere", "Autore", "Editore", "DataUscita", "NumPagine", "Lingua", "Conferenza", "Nomer", "Datar"));
-                break;
-            case "Acquisto":
-                acquistoTableView.setVisible(true);
-                comboBoxRicerca.setItems(FXCollections.observableArrayList("Coda", "Nome", "Tipo", "Url", "Indirizzo"));
-                break;
-            case "Conferenza":
-                conferenzaTableView.setVisible(true);
-                comboBoxRicerca.setItems(FXCollections.observableArrayList("Codc", "Nome", "Struttura", "Indirizzo", "Datai", "Dataf", "Responsabile"));
-                break;
-            case "Presentazione":
-                presentazioneTableView.setVisible(true);
-                comboBoxRicerca.setItems(FXCollections.observableArrayList("Codp", "Nome", "Indirizzo", "Data", "Tipo"));
-                break;
-            case "Rivista":
-                rivistaTableView.setVisible(true);
-                comboBoxRicerca.setItems(FXCollections.observableArrayList("Nome", "Data", "Responsabile", "Argomento"));
-                break;
-            case "Serie":
-                serieTableView.setVisible(true);
-                comboBoxRicerca.setItems(FXCollections.observableArrayList("Cods", "Nome", "NumLibri", "Completata"));
-                break;
-            case "Utente":
-                utenteTableView.setVisible(true);
-                comboBoxRicerca.setItems(FXCollections.observableArrayList("Email", "Password", "DataIscrizione", "IsAdmin"));
-                break;
-            case "DisponibileA":
-                disponibileATableView.setVisible(true);
-                comboBoxRicerca.setItems(FXCollections.observableArrayList("Coda", "Doi"));
-                break;
-            case "DisponibileL":
-                disponibileLTableView.setVisible(true);
-                comboBoxRicerca.setItems(FXCollections.observableArrayList("Coda", "Isbn"));
-                break;
-            case "DisponibileS":
-                disponibileSTableView.setVisible(true);
-                comboBoxRicerca.setItems(FXCollections.observableArrayList("Coda", "Cods"));
-                break;
+//        if (scelta == null) {
+//            support.messageStage("Selezionare prima un tipo di ricerca");
+//            return;
+//        }
+            setVisibleFalseAllTableView();
+            switch (scelta) {
+                case "Libro":
+                    libroTableView.setVisible(true);
+                    comboBoxRicerca.setItems(FXCollections.observableArrayList("Isbn", "Titolo", "Genere", "Autore", "Editore", "DataUscita", "NumPagine", "Materia", "Descrizione", "Fruizione", "Successivo", "Serie", "Presentazione"));
+                    break;
+                case "Articolo":
+                    articoloTableView.setVisible(true);
+                    comboBoxRicerca.setItems(FXCollections.observableArrayList("Doi", "Titolo", "Genere", "Autore", "Editore", "DataUscita", "NumPagine", "Lingua", "Conferenza", "Nomer", "Datar"));
+                    break;
+                case "Acquisto":
+                    acquistoTableView.setVisible(true);
+                    comboBoxRicerca.setItems(FXCollections.observableArrayList("Coda", "Nome", "Tipo", "Url", "Indirizzo"));
+                    break;
+                case "Conferenza":
+                    conferenzaTableView.setVisible(true);
+                    comboBoxRicerca.setItems(FXCollections.observableArrayList("Codc", "Nome", "Struttura", "Indirizzo", "Datai", "Dataf", "Responsabile"));
+                    break;
+                case "Presentazione":
+                    presentazioneTableView.setVisible(true);
+                    comboBoxRicerca.setItems(FXCollections.observableArrayList("Codp", "Nome", "Indirizzo", "Data", "Tipo"));
+                    break;
+                case "Rivista":
+                    rivistaTableView.setVisible(true);
+                    comboBoxRicerca.setItems(FXCollections.observableArrayList("Nome", "Data", "Responsabile", "Argomento"));
+                    break;
+                case "Serie":
+                    serieTableView.setVisible(true);
+                    comboBoxRicerca.setItems(FXCollections.observableArrayList("Cods", "Nome", "NumLibri", "Completata"));
+                    break;
+                case "Utente":
+                    utenteTableView.setVisible(true);
+                    comboBoxRicerca.setItems(FXCollections.observableArrayList("Email", "Password", "DataIscrizione", "IsAdmin"));
+                    break;
+                case "DisponibileA":
+                    disponibileATableView.setVisible(true);
+                    comboBoxRicerca.setItems(FXCollections.observableArrayList("Coda", "Doi"));
+                    break;
+                case "DisponibileL":
+                    disponibileLTableView.setVisible(true);
+                    comboBoxRicerca.setItems(FXCollections.observableArrayList("Coda", "Isbn"));
+                    break;
+                case "DisponibileS":
+                    disponibileSTableView.setVisible(true);
+                    comboBoxRicerca.setItems(FXCollections.observableArrayList("Coda", "Cods"));
+                    break;
 
-        }
-        comboBoxRicerca.getSelectionModel().selectFirst();
+            }
+            comboBoxRicerca.getSelectionModel().selectFirst();
+         if (sceltaInsertView.equals("insert")) {
+            insertDao();
+        } else if (sceltaInsertView.equals("view")) {
+            viewDao();
+         }
     }
+
 
     @FXML
     private void deleteDao() {
@@ -681,11 +723,13 @@ public class HomeControllerAdmin implements Initializable {
         //todo fix non si rimpiccilisce quando cambi di nuovo scelta ricerca
         String scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
         buttonInserisci.setVisible(true);
+        setVisibleFalseAllTableView();
         try {
             switch (scelta) {
                 case "Libro":
                     System.out.println("Libro");
                     libroTableView.getItems().clear();
+                    libroTableView.setVisible(true);
                     libroTableView.setPrefHeight(70);
                     libroTableView.getItems().add(new Libro());
                     isbnLibro.setEditable(true);
@@ -693,6 +737,7 @@ public class HomeControllerAdmin implements Initializable {
                 case "Articolo":
                     System.out.println("Articolo");
                     articoloTableView.getItems().clear();
+                    articoloTableView.setVisible(true);
                     articoloTableView.setPrefHeight(70);
                     articoloTableView.getItems().add(new ArticoloScientifico());
                     doiArticolo.setEditable(true);
@@ -702,6 +747,7 @@ public class HomeControllerAdmin implements Initializable {
                 case "Acquisto":
                     System.out.println("Acquisto");
                     acquistoTableView.getItems().clear();
+                    acquistoTableView.setVisible(true);
                     acquistoTableView.setPrefHeight(70);
                     acquistoTableView.getItems().add(new Acquisto());
                     codaAcquisto.setEditable(true);
@@ -709,6 +755,7 @@ public class HomeControllerAdmin implements Initializable {
                 case "Conferenza":
                     System.out.println("Conferenza");
                     conferenzaTableView.getItems().clear();
+                    conferenzaTableView.setVisible(true);
                     conferenzaTableView.setPrefHeight(70);
                     conferenzaTableView.getItems().add(new Conferenza());
                     codcConferenza.setEditable(true);
@@ -716,6 +763,7 @@ public class HomeControllerAdmin implements Initializable {
                 case "Presentazione":
                     System.out.println("Presentazione");
                     presentazioneTableView.getItems().clear();
+                    presentazioneTableView.setVisible(true);
                     presentazioneTableView.setPrefHeight(70);
                     presentazioneTableView.getItems().add(new Presentazione());
                     codpPresentazione.setEditable(true);
@@ -723,6 +771,7 @@ public class HomeControllerAdmin implements Initializable {
                 case "Rivista":
                     System.out.println("Rivista");
                     rivistaTableView.getItems().clear();
+                    rivistaTableView.setVisible(true);
                     rivistaTableView.setPrefHeight(70);
                     rivistaTableView.getItems().add(new Rivista());
                     nomeRivista.setEditable(true);
@@ -731,6 +780,7 @@ public class HomeControllerAdmin implements Initializable {
                 case "Serie":
                     System.out.println("Serie");
                     serieTableView.getItems().clear();
+                    serieTableView.setVisible(true);
                     serieTableView.setPrefHeight(70);
                     serieTableView.getItems().add(new Serie());
                     codsSerie.setEditable(true);
@@ -738,6 +788,7 @@ public class HomeControllerAdmin implements Initializable {
                 case "DisponibileA":
                     System.out.println("DisponibileA");
                     disponibileATableView.getItems().clear();
+                    disponibileATableView.setVisible(true);
                     disponibileATableView.setPrefHeight(70);
                     disponibileATableView.getItems().add(new DisponibileA());
                     codaDisponibileA.setEditable(true);
@@ -746,6 +797,7 @@ public class HomeControllerAdmin implements Initializable {
                 case "DisponibileL":
                     System.out.println("DisponibileL");
                     disponibileLTableView.getItems().clear();
+                    disponibileLTableView.setVisible(true);
                     disponibileLTableView.setPrefHeight(70);
                     disponibileLTableView.getItems().add(new DisponibileL());
                     codaDisponibileL.setEditable(true);
@@ -754,6 +806,7 @@ public class HomeControllerAdmin implements Initializable {
                 case "DisponibileS":
                     System.out.println("DisponibileS");
                     disponibileSTableView.getItems().clear();
+                    disponibileSTableView.setVisible(true);
                     disponibileSTableView.setPrefHeight(70);
                     disponibileSTableView.getItems().add(new DisponibileS());
                     codaDisponibileS.setEditable(true);
@@ -762,6 +815,68 @@ public class HomeControllerAdmin implements Initializable {
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    private void viewDao(){
+        scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
+        switch (scelta){
+            case "Libro":
+                libroTableView.getItems().clear();
+                libroTableView.setPrefHeight(535);
+                isbnLibro.setEditable(false);
+                break;
+            case "Articolo":
+                articoloTableView.getItems().clear();
+                articoloTableView.setPrefHeight(535);
+                doiArticolo.setEditable(false);
+                nomerArticolo.setEditable(false);
+                datarArticolo.setEditable(false);
+                break;
+            case "Acquisto":
+                acquistoTableView.getItems().clear();
+                acquistoTableView.setPrefHeight(535);
+                codaAcquisto.setEditable(false);
+                break;
+            case "Conferenza":
+                conferenzaTableView.getItems().clear();
+                conferenzaTableView.setPrefHeight(535);
+                codcConferenza.setEditable(false);
+                break;
+            case "Presentazione":
+                presentazioneTableView.getItems().clear();
+                presentazioneTableView.setPrefHeight(535);
+                codpPresentazione.setEditable(false);
+                break;
+            case "Rivista":
+                rivistaTableView.getItems().clear();
+                rivistaTableView.setPrefHeight(535);
+                nomeRivista.setEditable(false);
+                dataRivista.setEditable(false);
+                break;
+            case "Serie":
+                serieTableView.getItems().clear();
+                serieTableView.setPrefHeight(535);
+                codsSerie.setEditable(false);
+                break;
+            case "DisponibileA":
+                disponibileATableView.getItems().clear();
+                disponibileATableView.setPrefHeight(535);
+                codaDisponibileA.setEditable(false);
+                doiDisponibileA.setEditable(false);
+                break;
+            case "DisponibileL":
+                disponibileLTableView.getItems().clear();
+                disponibileLTableView.setPrefHeight(535);
+                codaDisponibileL.setEditable(false);
+                isbnDisponibileL.setEditable(false);
+                break;
+            case "DisponibileS":
+                disponibileSTableView.getItems().clear();
+                disponibileSTableView.setPrefHeight(535);
+                codaDisponibileS.setEditable(false);
+                codsDisponibileS.setEditable(false);
+                break;
         }
     }
 
