@@ -64,7 +64,7 @@ public class DisponibileADAOImpl implements DisponibileADAO {
     }
 
     @Override
-    public void save(DisponibileA disponibileA) throws SQLException {
+    public void insert(DisponibileA disponibileA) throws SQLException {
 
     }
 

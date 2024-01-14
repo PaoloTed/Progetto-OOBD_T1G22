@@ -74,7 +74,7 @@ public class ArticoloScientificoDAOImpl implements ArticoloScientificoDAO {
     }
 
     @Override
-    public void save(ArticoloScientifico articoloScientifico) throws SQLException {
+    public void insert(ArticoloScientifico articoloScientifico) throws SQLException {
 
     }
 

@@ -62,7 +62,7 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
     }
 
     @Override
-    public void save(DisponibileL disponibileL) throws SQLException {
+    public void insert(DisponibileL disponibileL) throws SQLException {
 
     }
 

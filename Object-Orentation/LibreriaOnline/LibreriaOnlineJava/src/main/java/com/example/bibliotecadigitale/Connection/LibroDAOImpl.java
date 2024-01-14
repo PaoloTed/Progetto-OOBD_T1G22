@@ -75,7 +75,7 @@ public class LibroDAOImpl implements LibroDAO {
     }
 
     @Override
-    public void save(Libro libro) throws SQLException {
+    public void insert(Libro libro) throws SQLException {
         try {
             Connessione connessione = new Connessione();
             String isbn = libro.getISBN();
@@ -92,7 +92,7 @@ public class LibroDAOImpl implements LibroDAO {
             String lingua = libro.getLingua();
             String successivo = libro.getSuccessivo();
             int presentazione = libro.getPresentazione();
-            String query = "INSERT INTO libro VALUES ('" + isbn + "','" + titolo + "','" + genere + "','" + numeroPagine + "','" + tipo + "','" + materia + "','" + descrizione + "','" + fruizione + "','" + editore + "','" + autore + "','" + datauscita + "','" + lingua + "','" + successivo + "'," + presentazione + ");";
+            String query = "INSERT INTO libro VALUES ('" + isbn + "','" + titolo + "','" + genere + "'," + numeroPagine + ",'" + tipo + "','" + materia + "','" + descrizione + "','" + fruizione + "','" + editore + "','" + autore + "','" + datauscita + "','" + lingua + "','" + successivo + "'," + presentazione + ");";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);

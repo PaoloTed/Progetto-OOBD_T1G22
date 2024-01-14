@@ -143,7 +143,7 @@ public class UtenteDAOImpl implements UtenteDAO {
     }
 
     @Override
-    public void save(Utente utente) {
+    public void insert(Utente utente) {
         try {
             Connessione connessione = new Connessione();
             String emailUser = utente.getEmail();

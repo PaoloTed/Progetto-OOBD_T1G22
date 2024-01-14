@@ -1,9 +1,12 @@
 package com.example.bibliotecadigitale.Controller;
 
 import com.example.bibliotecadigitale.Connection.*;
+import com.example.bibliotecadigitale.DAO.DAO;
 import com.example.bibliotecadigitale.Model.*;
 import com.example.bibliotecadigitale.SupportStage;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,7 +20,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 public class HomeControllerAdmin implements Initializable {
@@ -208,7 +211,6 @@ public class HomeControllerAdmin implements Initializable {
     @FXML
     TableColumn<DisponibileS, Integer> codsDisponibileS;
 
-
     public void initialize(URL url, ResourceBundle resourceBundle) {
         buttonInserisci.setVisible(false);
         //inizializzo le colonne della tabella libro
@@ -373,11 +375,17 @@ public class HomeControllerAdmin implements Initializable {
 
         //Imposto la ricerca su libro come default e nascondo la tabella articolo
         setVisibleFalseAllTableView();
+        buttonView.setStyle("-fx-border-color: red;");
+        buttonView.setDisable(true);
+        buttonInsert.setStyle("-fx-border-color: grey;");
+
+        setVisibleFalseAllTableView();
         libroTableView.setVisible(true);
         comboBoxTableView.setItems(FXCollections.observableArrayList("Libro", "Articolo", "Acquisto", "Conferenza", "Presentazione", "Rivista", "Serie", "Utente", "DisponibileA", "DisponibileL", "DisponibileS"));
         comboBoxTableView.getSelectionModel().selectFirst();
         comboBoxRicerca.setItems(FXCollections.observableArrayList("Isbn", "Titolo", "Genere", "Autore", "Editore", "DataUscita", "NumPagine", "Materia", "Descrizione", "Fruizione", "Successivo", "Serie", "Presentazione", "Lingua"));
         comboBoxRicerca.getSelectionModel().selectFirst();
+
     }
 
     @FXML
@@ -436,39 +444,39 @@ public class HomeControllerAdmin implements Initializable {
                 }
                 acquistoTableView.getItems().addAll(acquisti);
                 break;
-//            case "Conferenza":
-//                ConferenzaDAOImpl conferenzaDAO = new ConferenzaDAOImpl();
-//                ArrayList<Conferenza> conferenze = conferenzaDAO.getRicerca(modRicerca, titoloRicerche);
-//                idBarSearch.clear();
-//                conferenzaTableView.getItems().clear();
-//                if (conferenze.isEmpty()) {
-//                    support.messageStage("Nessun match trovato");
-//                    return;
-//                }
-//                conferenzaTableView.getItems().addAll(conferenze);
-//                break;
-//            case "Presentazione":
-//                PresentazioneDAOImpl presentazioneDAO = new PresentazioneDAOImpl();
-//                ArrayList<Presentazione> presentazioni = presentazioneDAO.getRicerca(modRicerca, titoloRicerche);
-//                presentazioneTableView.getItems().clear();
-//                idBarSearch.clear();
-//                if (presentazioni.isEmpty()) {
-//                    support.messageStage("Nessun match trovato");
-//                    return;
-//                }
-//                presentazioneTableView.getItems().addAll(presentazioni);
-//                break;
-//            case "Rivista":
-//                RivistaDAOImpl rivistaDAO = new RivistaDAOImpl();
-//                ArrayList<Rivista> riviste = rivistaDAO.getRicerca(modRicerca, titoloRicerche);
-//                rivistaTableView.getItems().clear();
-//                idBarSearch.clear();
-//                if (riviste.isEmpty()) {
-//                    support.messageStage("Nessun match trovato");
-//                    return;
-//                }
-//                rivistaTableView.getItems().addAll(riviste);
-//                break;
+            case "Conferenza":
+                ConferenzaDAOImpl conferenzaDAO = new ConferenzaDAOImpl();
+                ArrayList<Conferenza> conferenze = conferenzaDAO.getRicerca(modRicerca, titoloRicerche);
+                idBarSearch.clear();
+                conferenzaTableView.getItems().clear();
+                if (conferenze.isEmpty()) {
+                    support.messageStage("Nessun match trovato");
+                    return;
+                }
+                conferenzaTableView.getItems().addAll(conferenze);
+                break;
+            case "Presentazione":
+                PresentazioneDAOImpl presentazioneDAO = new PresentazioneDAOImpl();
+                ArrayList<Presentazione> presentazioni = presentazioneDAO.getRicerca(modRicerca, titoloRicerche);
+                presentazioneTableView.getItems().clear();
+                idBarSearch.clear();
+                if (presentazioni.isEmpty()) {
+                    support.messageStage("Nessun match trovato");
+                    return;
+                }
+                presentazioneTableView.getItems().addAll(presentazioni);
+                break;
+            case "Rivista":
+                RivistaDAOImpl rivistaDAO = new RivistaDAOImpl();
+                ArrayList<Rivista> riviste = rivistaDAO.getRicerca(modRicerca, titoloRicerche);
+                rivistaTableView.getItems().clear();
+                idBarSearch.clear();
+                if (riviste.isEmpty()) {
+                    support.messageStage("Nessun match trovato");
+                    return;
+                }
+                rivistaTableView.getItems().addAll(riviste);
+                break;
             case "Serie":
                 SerieDAOImpl serieDAO = new SerieDAOImpl();
                 ArrayList<Serie> serie = serieDAO.getRicerca(modRicerca, titoloRicerche);
@@ -525,6 +533,7 @@ public class HomeControllerAdmin implements Initializable {
                 disponibileSTableView.getItems().addAll(disponibileS);
                 break;
         }
+
     }
 
     @FXML
@@ -556,10 +565,9 @@ public class HomeControllerAdmin implements Initializable {
         comboBoxRicerca.setDisable(true);
         buttonCerca.setDisable(true);
 
-        articoloTableView.setVisible(false);
         buttonView.setDisable(false);
         buttonView.setStyle("-fx-border-color: grey;");
-        insertDao();
+        insertScelta();
     }
 
     @FXML
@@ -572,18 +580,17 @@ public class HomeControllerAdmin implements Initializable {
         comboBoxRicerca.setDisable(false);
         buttonCerca.setDisable(false);
 
-        articoloTableView.setVisible(true);
         buttonView.setDisable(true);
         buttonView.setStyle("-fx-border-color: red;");
-        viewDao();
+        viewScelta();
     }
 
     public void selezioneSceltaTableView(ActionEvent event) {
         scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
-//        if (scelta == null) {
-//            support.messageStage("Selezionare prima un tipo di ricerca");
-//            return;
-//        }
+        if (scelta == null) {
+            support.messageStage("Selezionare prima un tipo di ricerca");
+            return;
+        }
             setVisibleFalseAllTableView();
             switch (scelta) {
                 case "Libro":
@@ -634,9 +641,9 @@ public class HomeControllerAdmin implements Initializable {
             }
             comboBoxRicerca.getSelectionModel().selectFirst();
          if (sceltaInsertView.equals("insert")) {
-            insertDao();
+            insertScelta();
         } else if (sceltaInsertView.equals("view")) {
-            viewDao();
+            viewScelta();
          }
     }
 
@@ -644,6 +651,12 @@ public class HomeControllerAdmin implements Initializable {
     @FXML
     private void deleteDao() {
         try {
+            String scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
+            if (scelta == null) {
+                support.messageStage("Selezionare prima un tipo di ricerca");
+                return;
+            }
+
             switch (scelta) {
                 case "Libro":
                     LibroDAOImpl libroDAO = new LibroDAOImpl();
@@ -663,24 +676,24 @@ public class HomeControllerAdmin implements Initializable {
                     acquistoTableView.getItems().remove(acquistoDelete);
                     acquistoDAO.delete(acquistoDelete);
                     break;
-//                case "Conferenza":
-//                    ConferenzaDAOImpl conferenzaDAO = new ConferenzaDAOImpl();
-//                    Conferenza conferenzaDelete = conferenzaTableView.getSelectionModel().getSelectedItem();
-//                    conferenzaTableView.getItems().remove(conferenzaDelete);
-//                    conferenzaDAO.delete(conferenzaDelete);
-//                    break;
-//                case "Presentazione":
-//                    PresentazioneDAOImpl presentazioneDAO = new PresentazioneDAOImpl();
-//                    Presentazione presentazioneDelete = presentazioneTableView.getSelectionModel().getSelectedItem();
-//                    presentazioneTableView.getItems().remove(presentazioneDelete);
-//                    presentazioneDAO.delete(presentazioneDelete);
-//                    break;
-//                case "Rivista":
-//                    RivistaDAOImpl rivistaDAO = new RivistaDAOImpl();
-//                    Rivista rivistaDelete = rivistaTableView.getSelectionModel().getSelectedItem();
-//                    rivistaTableView.getItems().remove(rivistaDelete);
-//                    rivistaDAO.delete(rivistaDelete);
-//                    break;
+                case "Conferenza":
+                    ConferenzaDAOImpl conferenzaDAO = new ConferenzaDAOImpl();
+                    Conferenza conferenzaDelete = conferenzaTableView.getSelectionModel().getSelectedItem();
+                    conferenzaTableView.getItems().remove(conferenzaDelete);
+                    conferenzaDAO.delete(conferenzaDelete);
+                    break;
+                case "Presentazione":
+                    PresentazioneDAOImpl presentazioneDAO = new PresentazioneDAOImpl();
+                    Presentazione presentazioneDelete = presentazioneTableView.getSelectionModel().getSelectedItem();
+                    presentazioneTableView.getItems().remove(presentazioneDelete);
+                    presentazioneDAO.delete(presentazioneDelete);
+                    break;
+                case "Rivista":
+                    RivistaDAOImpl rivistaDAO = new RivistaDAOImpl();
+                    Rivista rivistaDelete = rivistaTableView.getSelectionModel().getSelectedItem();
+                    rivistaTableView.getItems().remove(rivistaDelete);
+                    rivistaDAO.delete(rivistaDelete);
+                    break;
                 case "Serie":
                     SerieDAOImpl serieDAO = new SerieDAOImpl();
                     Serie serieDelete = serieTableView.getSelectionModel().getSelectedItem();
@@ -719,7 +732,7 @@ public class HomeControllerAdmin implements Initializable {
     }
 
     @FXML
-    private void insertDao() {
+    private void insertScelta() {
         //todo fix non si rimpiccilisce quando cambi di nuovo scelta ricerca
         String scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
         buttonInserisci.setVisible(true);
@@ -818,7 +831,7 @@ public class HomeControllerAdmin implements Initializable {
         }
     }
 
-    private void viewDao(){
+    private void viewScelta(){
         scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
         switch (scelta){
             case "Libro":
@@ -881,6 +894,61 @@ public class HomeControllerAdmin implements Initializable {
     }
 
     @FXML
+    private void insertDao(){
+        try {
+            switch (scelta) {
+                case "Libro":
+                    LibroDAOImpl libroDAO = new LibroDAOImpl();
+                    libroDAO.insert(libroTableView.getSelectionModel().getSelectedItem());
+                    break;
+                case "Articolo":
+                    ArticoloScientificoDAOImpl articoloScientificoDAO = new ArticoloScientificoDAOImpl();
+                    articoloScientificoDAO.insert(articoloTableView.getSelectionModel().getSelectedItem());
+                    break;
+                case "Acquisto":
+                    AcquistoDAOImpl acquistoDAO = new AcquistoDAOImpl();
+                    acquistoDAO.insert(acquistoTableView.getSelectionModel().getSelectedItem());
+                    break;
+                case "Conferenza":
+                    ConferenzaDAOImpl conferenzaDAO = new ConferenzaDAOImpl();
+                    conferenzaDAO.insert(conferenzaTableView.getSelectionModel().getSelectedItem());
+                    break;
+                case "Presentazione":
+                    PresentazioneDAOImpl presentazioneDAO = new PresentazioneDAOImpl();
+                    presentazioneDAO.insert(presentazioneTableView.getSelectionModel().getSelectedItem());
+                    break;
+                case "Rivista":
+                    RivistaDAOImpl rivistaDAO = new RivistaDAOImpl();
+                    rivistaDAO.insert(rivistaTableView.getSelectionModel().getSelectedItem());
+                    break;
+                case "Serie":
+                    SerieDAOImpl serieDAO = new SerieDAOImpl();
+                    serieDAO.insert(serieTableView.getSelectionModel().getSelectedItem());
+                    break;
+                case "Utente":
+                    UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
+                    utenteDAO.insert(utenteTableView.getSelectionModel().getSelectedItem());
+                    break;
+                case "DisponibileA":
+                    DisponibileADAOImpl disponibileADAO = new DisponibileADAOImpl();
+                    disponibileADAO.insert(disponibileATableView.getSelectionModel().getSelectedItem());
+                    break;
+                case "DisponibileL":
+                    DisponibileLDAOImpl disponibileLDAO = new DisponibileLDAOImpl();
+                    disponibileLDAO.insert(disponibileLTableView.getSelectionModel().getSelectedItem());
+                    break;
+                case "DisponibileS":
+                    DisponibileSDAOImpl disponibileSDAO = new DisponibileSDAOImpl();
+                    disponibileSDAO.insert(disponibileSTableView.getSelectionModel().getSelectedItem());
+                    break;
+            }
+            support.messageStage("Insert effettuato");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
     private void updateDao() {
         try {
             switch (scelta) {
@@ -896,18 +964,18 @@ public class HomeControllerAdmin implements Initializable {
                     AcquistoDAOImpl acquistoDAO = new AcquistoDAOImpl();
                     acquistoDAO.update(acquistoTableView.getSelectionModel().getSelectedItem());
                     break;
-//                case "Conferenza":
-//                    ConferenzaDAOImpl conferenzaDAO = new ConferenzaDAOImpl();
-//                    conferenzaDAO.update(conferenzaTableView.getSelectionModel().getSelectedItem());
-//                    break;
-//                case "Presentazione":
-//                    PresentazioneDAOImpl presentazioneDAO = new PresentazioneDAOImpl();
-//                    presentazioneDAO.update(presentazioneTableView.getSelectionModel().getSelectedItem());
-//                    break;
-//                case "Rivista":
-//                    RivistaDAOImpl rivistaDAO = new RivistaDAOImpl();
-//                    rivistaDAO.update(rivistaTableView.getSelectionModel().getSelectedItem());
-//                    break;
+                case "Conferenza":
+                    ConferenzaDAOImpl conferenzaDAO = new ConferenzaDAOImpl();
+                    conferenzaDAO.update(conferenzaTableView.getSelectionModel().getSelectedItem());
+                    break;
+                case "Presentazione":
+                    PresentazioneDAOImpl presentazioneDAO = new PresentazioneDAOImpl();
+                    presentazioneDAO.update(presentazioneTableView.getSelectionModel().getSelectedItem());
+                    break;
+                case "Rivista":
+                    RivistaDAOImpl rivistaDAO = new RivistaDAOImpl();
+                    rivistaDAO.update(rivistaTableView.getSelectionModel().getSelectedItem());
+                    break;
                 case "Serie":
                     SerieDAOImpl serieDAO = new SerieDAOImpl();
                     serieDAO.update(serieTableView.getSelectionModel().getSelectedItem());

@@ -57,7 +57,7 @@ public class DisponibileSDAOImpl implements DisponibileSDAO {
     }
 
     @Override
-    public void save(DisponibileS disponibileS) throws SQLException {
+    public void insert(DisponibileS disponibileS) throws SQLException {
 
     }
 

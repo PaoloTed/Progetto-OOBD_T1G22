@@ -65,7 +65,7 @@ public class SerieDAOImpl implements SerieDAO {
     }
 
     @Override
-    public void save(Serie serie) {
+    public void insert(Serie serie) {
         try {
             Connessione connessione = new Connessione();
             int cods = serie.getCodS();

@@ -217,7 +217,7 @@
         <Text layoutX="308.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Premi Con Il Tasto Destro Del Mouse Per Le Azioni" wrappingWidth="277.5774459838867" />
         <ComboBox fx:id="comboBoxTableView" layoutX="117.0" layoutY="130.0" onAction="#selezioneSceltaTableView" prefWidth="150.0" />
         <Button fx:id="buttonView" layoutX="450.0" layoutY="80.0" mnemonicParsing="false" onAction="#sceltaView" prefHeight="25.0" prefWidth="54.0" text="View" />
-      <Button fx:id="buttonInserisci" layoutX="805.0" layoutY="210.0" mnemonicParsing="false" text="Inserisci" visible="false" />
+      <Button fx:id="buttonInserisci" layoutX="805.0" layoutY="210.0" mnemonicParsing="false" onAction="#insertDao" text="Inserisci" visible="false" />
       <Button fx:id="buttonInsert" layoutX="392.0" layoutY="80.0" mnemonicParsing="false" onAction="#sceltaInsert" prefHeight="25.0" prefWidth="54.0" text="Insert" />
     </children>
 </AnchorPane>

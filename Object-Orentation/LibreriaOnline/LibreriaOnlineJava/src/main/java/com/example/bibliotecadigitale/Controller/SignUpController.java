@@ -42,7 +42,7 @@ public class SignUpController {
             utente = getUtente();
             utente.setEmail(emailUser);
             utente.setPassword(passwordUser);
-            utenteDAO.save(utente);
+            utenteDAO.insert(utente);
             support.messageStage("Registrazione effettuata con successo");
             support.switchStage("welcomeStage.fxml", event);
         } else {

@@ -77,7 +77,7 @@ public class AcquistoDAOImpl implements AcquistoDAO {
     }
 
     @Override
-    public void save(Acquisto acquisto) throws SQLException {
+    public void insert(Acquisto acquisto) throws SQLException {
 
     }
 
