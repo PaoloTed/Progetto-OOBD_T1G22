@@ -205,6 +205,25 @@ public class SupportStage
         }
     }
 
+    public void switchStageSerieStage(String scenaNew, int CodS)
+    {
+        try {
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
+            Parent root = loader.load();
+            stage = new Stage();
+            stage.setScene(new Scene(root, 1000, 500));
+            stage.getIcons().add(new Image("file:src/main/resources/photo/biblioteca.png"));
+            stage.setTitle("Libreria digitale");
+            stage.setResizable(false);
+            stage.show();
+            SerieStageController serieStageController = loader.getController();
+            serieStageController.showSerie(CodS);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 
     public boolean checkEmailPassword(String email, String password)
     {

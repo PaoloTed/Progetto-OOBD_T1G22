@@ -181,6 +181,17 @@ public class HomeController implements Initializable {
         stage.close();
         support.switchStage("paginaInformativaLibro.fxml", libro);
     }
+    public void goToPaginaInformativaSerie(ActionEvent event) {
+        SupportStage support = new SupportStage();
+        Libro libro = libroTableView.getSelectionModel().getSelectedItem();
+        if (libro == null) {
+            support.messageStage("Selezionare prima un libro");
+            return;
+        }
+        Stage stage = (Stage) libroTableView.getScene().getWindow();
+        stage.close();
+        support.switchStageSerieStage("serieStage.fxml", libro.getSerie());
+    }
 
     public void goToPaginaInformativaArticolo(ActionEvent event) {
         SupportStage support = new SupportStage();

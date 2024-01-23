@@ -58,24 +58,28 @@ public class SerieStageController implements Initializable {
 
     }
 
-    public void showSerie(String CodS)
+    public void showSerie(int CodS)
     {
         SerieDAOImpl serieDAO = new SerieDAOImpl();
-        Serie serie = serieDAO.get(CodS);
-        codSTxtId.setText(String.valueOf(serie.getCodS()));
-        nomeTxtId.setText(serie.getNome());
-        numLibTxtId.setText(String.valueOf(serie.getNumLibri()));
+        Serie serie = serieDAO.get(String.valueOf(CodS));
+        codSTxtId.setText("codice serie: "+String.valueOf(serie.getCodS()));
+        nomeTxtId.setText("Nome serie: "+serie.getNome());
+        numLibTxtId.setText("numero libri: "+String.valueOf(serie.getNumLibri()));
         if (serie.getCompletata())
-            completaTxtId.setText("Completata");
+            completaTxtId.setText("stato serie:Completata");
         else
             completaTxtId.setText("No Terminata");
 
         LibroDAOImpl libroDAO = new LibroDAOImpl();
-        ArrayList<Libro> libri = libroDAO.getRicerca("serie", CodS);
+        ArrayList<Libro> libri = libroDAO.getRicerca("serie", String.valueOf(CodS));
         libroTableView.getItems().setAll(libri);
 
 
 
+
+    }
+
+    public void goToPaginaInformativaLibro(ActionEvent event)  {
 
     }
 
