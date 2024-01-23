@@ -6,6 +6,7 @@ public class Rivista extends Piattaforma{
 
     private String nome;
     private String data;
+
     private String argomento;
 
     public String getNome() {
