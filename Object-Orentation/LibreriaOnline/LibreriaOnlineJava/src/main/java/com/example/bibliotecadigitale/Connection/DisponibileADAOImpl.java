@@ -2,6 +2,7 @@ package com.example.bibliotecadigitale.Connection;
 
 import com.example.bibliotecadigitale.DAO.DisponibileADAO;
 import com.example.bibliotecadigitale.Model.DisponibileA;
+import com.example.bibliotecadigitale.Model.DisponibileL;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -28,6 +29,28 @@ public class DisponibileADAOImpl implements DisponibileADAO {
         }
         return null;
     }
+
+
+
+    public ArrayList<DisponibileA> getAquisti(String doi) throws SQLException {
+        ArrayList<DisponibileA> disponibileA;
+        try {
+            Connessione connessione = new Connessione();
+            String query = "SELECT * FROM disponibile_a WHERE coda = AND doi = '" + doi +"';";
+            ResultSet rs = connessione.executeSearch(query);
+            disponibileA = new ArrayList();
+            while (rs.next()) {
+                disponibileA.add(get(rs.getInt(1),rs.getString(2)));
+            }
+            rs.close();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return disponibileA;
+    }
+
+
     public ArrayList<DisponibileA> getRicerca(String tipoRicerca, String parolaChiave){
         ArrayList<DisponibileA> disponibileAFinded = new ArrayList<>();
         String query = "";

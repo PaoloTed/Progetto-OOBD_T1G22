@@ -22,7 +22,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="buttonAquistoId" defaultButton="true" layoutX="420.0" layoutY="460.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Aquisto" textFill="#0800f8" underline="true">
+      <Button fx:id="buttonAquistoId" defaultButton="true" layoutX="420.0" layoutY="460.0" mnemonicParsing="false" onAction="#goToAquisto" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Aquisto" textFill="#0800f8" underline="true">
          <font>
             <Font size="14.0" />
          </font>

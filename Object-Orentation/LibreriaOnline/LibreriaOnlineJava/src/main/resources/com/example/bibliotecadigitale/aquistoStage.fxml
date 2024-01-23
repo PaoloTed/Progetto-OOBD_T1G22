@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.AquistoStageController">
+   <children>
+      <Button fx:id="buttonClose" layoutX="228.0" layoutY="461.0" mnemonicParsing="false" onAction="#close" text="Close" />
+      <TableView fx:id="tableView" fixedCellSize="0.0" layoutX="14.0" layoutY="58.0" prefHeight="395.0" prefWidth="471.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">
+         <columns>
+            <TableColumn fx:id="codAColumn" prefWidth="54.0" text="CodA" />
+            <TableColumn fx:id="nomeColumn" prefWidth="241.0" text="Titolo" />
+            <TableColumn fx:id="urlColumn" prefWidth="361.0" text="URL" />
+            <TableColumn fx:id="IndirizzoColumn" prefWidth="315.0" text="Indirizzo" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

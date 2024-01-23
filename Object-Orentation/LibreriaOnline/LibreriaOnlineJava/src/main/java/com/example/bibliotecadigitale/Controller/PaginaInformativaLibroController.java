@@ -131,4 +131,9 @@ public class PaginaInformativaLibroController {
         showInfoLibro(libroSuccessivo);
         libroMain = libroSuccessivo;
     }
+
+    public void goToAquisto(ActionEvent event)
+   {
+     support.switchStageAquistiLibri("aquistoStage.fxml", libroMain.getISBN() );
+   }
 }

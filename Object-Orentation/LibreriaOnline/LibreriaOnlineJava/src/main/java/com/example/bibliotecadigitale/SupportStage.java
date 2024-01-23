@@ -169,6 +169,42 @@ public class SupportStage
     }
 
 
+    public void switchStageAquistiLibri(String scenaNew, String ISBN)
+    {
+        try {
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
+            Parent root = loader.load();
+            stage = new Stage();
+            stage.setScene(new Scene(root, 1000, 500));
+            stage.getIcons().add(new Image("file:src/main/resources/photo/biblioteca.png"));
+            stage.setTitle("Libreria digitale");
+            stage.setResizable(false);
+            stage.show();
+            AquistoStageController aquistoStageController = loader.getController();
+            aquistoStageController.showInfoAquisto(ISBN);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void switchStageAquistiArticoli(String scenaNew, String Doi)
+    {
+        try {
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
+            Parent root = loader.load();
+            stage = new Stage();
+            stage.setScene(new Scene(root, 1000, 500));
+            stage.getIcons().add(new Image("file:src/main/resources/photo/biblioteca.png"));
+            stage.setTitle("Libreria digitale");
+            stage.setResizable(false);
+            stage.show();
+            AquistoStageController aquistoStageController = loader.getController();
+            aquistoStageController.showInfoArtcolo(Doi);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     public boolean checkEmailPassword(String email, String password)
     {

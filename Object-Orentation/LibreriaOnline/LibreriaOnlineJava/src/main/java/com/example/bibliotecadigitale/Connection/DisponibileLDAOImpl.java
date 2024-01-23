@@ -27,6 +27,23 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
         return disponibileL;
     }
 
+
+    public ArrayList<DisponibileL> getAcquisti( String isbn ) throws SQLException {
+        ArrayList<DisponibileL>  disponibileL;
+        try {
+            Connessione connessione = new Connessione();
+            String query = "SELECT * FROM disponibile_l WHERE isbn = '" + isbn +"';";
+            disponibileL = new ArrayList();
+            ResultSet rs = connessione.executeSearch(query);
+            while (rs.next()) {
+                disponibileL.add(get(rs.getInt(1),rs.getString(2)));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return disponibileL;
+    }
+
     public ArrayList<DisponibileL> getRicerca(String tipoRicerca,String parolaChiave){
         ArrayList<DisponibileL> disponibileLFinded = new ArrayList<>();
         String query = "";

@@ -91,4 +91,9 @@ public class PaginaInformativaArticoloController
     {
         support.switchStage("rivistaStage.fxml", ArticoloMain.getDatar() , ArticoloMain.getNomer());
     }
+
+   public void goToAquisto(ActionEvent event)
+   {
+       support.switchStageAquistiArticoli("aquistoStage.fxml", ArticoloMain.getDoi());
+   }
 }
