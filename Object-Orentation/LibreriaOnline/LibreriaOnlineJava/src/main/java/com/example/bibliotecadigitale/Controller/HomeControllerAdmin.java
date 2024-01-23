@@ -212,6 +212,8 @@ public class HomeControllerAdmin implements Initializable {
     TableColumn<DisponibileS, Integer> codsDisponibileS;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //todo levare possibilita di aggiungere un utente forse anche visualizzarlo
+        //todo controllo admin
         buttonInserisci.setVisible(false);
         //inizializzo le colonne della tabella libro
         isbnLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("ISBN"));

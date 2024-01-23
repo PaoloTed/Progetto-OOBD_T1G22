@@ -240,6 +240,7 @@ public class HomeControllerAdminTest implements Initializable {
         }
 
         //Ricerca e visualizzazione risultati libri
+        //todo Non serve si puo levare arraylistHashMap
         arrayListHashMap.put(scelta, implDaoHashMap.get(scelta).getRicerca(modRicerca, titoloRicerche));
         tableViewHashMap.get(scelta).getItems().clear();
         tableViewHashMap.get(scelta).setVisible(true);
