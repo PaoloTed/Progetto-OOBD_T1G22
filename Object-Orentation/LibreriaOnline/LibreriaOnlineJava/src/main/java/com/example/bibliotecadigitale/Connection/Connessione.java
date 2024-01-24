@@ -74,4 +74,34 @@ public class Connessione {
             throw new RuntimeException(e);
         }
     }
+
+    public int getNumeroUtenti() {
+        int numeroUtenti = 0;
+        try {
+            Connessione connessione = new Connessione();
+            ResultSet rs = connessione.executeSearch("SELECT COUNT(*) FROM utente");
+            while (rs.next()) {
+                numeroUtenti = rs.getInt(1);
+            }
+            rs.close();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return numeroUtenti;
+    }
+
+    public int getNumeroOnline() {
+        int numeroOnline = 0;
+        try {
+            Connessione connessione = new Connessione();
+            ResultSet rs = connessione.executeSearch("SELECT count(*) FROM pg_stat_activity WHERE datname = 'bibliotecadigitaledb';");
+            while (rs.next()) {
+                numeroOnline = rs.getInt(1);
+            }
+            rs.close();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return numeroOnline;
+    }
 }

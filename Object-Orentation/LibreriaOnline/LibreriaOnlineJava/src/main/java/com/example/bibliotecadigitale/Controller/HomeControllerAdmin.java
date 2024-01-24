@@ -539,8 +539,7 @@ public class HomeControllerAdmin implements Initializable {
     }
 
     @FXML
-    private void logOff(ActionEvent event) throws IOException {
-        Utente.getUtente().exitUtente();
+    private void logOff(ActionEvent event) {
         support.switchStage("welcomeStage.fxml", event);
     }
 

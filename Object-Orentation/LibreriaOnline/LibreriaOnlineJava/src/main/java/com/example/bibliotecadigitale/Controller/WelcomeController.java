@@ -54,16 +54,20 @@ public class WelcomeController implements Initializable {
     @FXML
     private Text txtUserOnline;
     @FXML
-    private ImageView imageWelcome;
+    private ImageView sasa;
     @FXML
     private ImageView imageWelcome2;
+
+    @FXML
+    private TextField txtPasswordFieldAdmin;
     private Box box1;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String numeroUtenti = String.valueOf(getUserRegistered());
         String numeroUtentiOnline = String.valueOf(getUserOnline());
-        imageWelcome.setImage(new Image("https://github.com/PaoloTed/Progetto-OOBD_T1G22/blob/a532305a0f251c7ad8d1cf68e89f393929082a3c/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/Images/welcomeFoto1.png?raw=true"));
+        sasa.setImage(new Image("file:src/main/resources/Images/welcomeFoto1.png"));
+//        imageWelcome.setImage(new Image("https://github.com/PaoloTed/Progetto-OOBD_T1G22/blob/a532305a0f251c7ad8d1cf68e89f393929082a3c/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/Images/welcomeFoto1.png?raw=true"));
         imageWelcome2.setImage(new Image("https://raw.githubusercontent.com/PaoloTed/Progetto-OOBD_T1G22/a532305a0f251c7ad8d1cf68e89f393929082a3c/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/Images/welcomeFoto2.png"));
 
         txtUserRegistrati.setText(numeroUtenti);
@@ -100,35 +104,31 @@ public class WelcomeController implements Initializable {
 
 
     private int getUserRegistered() {
-        String query = "SELECT COUNT(*) FROM utente";
-        return executeQuerySearch(query);
+        Connessione connessione = new Connessione();
+        return connessione.getNumeroUtenti();
     }
 
     private int getUserOnline() {
-        String query = "SELECT count(*) FROM pg_stat_activity WHERE datname = 'bibliotecadigitaledb';";
-        return executeQuerySearch(query);
+        Connessione connessione = new Connessione();
+        return connessione.getNumeroOnline();
     }
 
-    private int executeQuerySearch(String query) {
-        int numeroUtenti = 0;
-        try {
-                Connessione connessione = new Connessione();
-            ResultSet rs = connessione.executeSearch(query);
-            while (rs.next()) {
-                numeroUtenti = rs.getInt(1);
-            }
-            rs.close();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        return numeroUtenti;
-    }
+
 
     public void skip(ActionEvent event) {
         Utente utenteNew = getUtente();
         utenteNew.setEmail("giulio@ruopolo.it");
         utenteNew.setPassword("salernitana");
         utenteNew.setData("2002-10-05");
-        support.switchStage("homeStage.fxml", event, 900, 800);
+
+    }
+
+    @FXML
+    private void goToAdmin(ActionEvent event) {
+        if (!txtPasswordFieldAdmin.getText().equals("1926")) {
+            support.messageStage("Password errata");
+            return;
+        }
+        support.switchStage("homeStageAdmin.fxml", event, 900, 800);
     }
 }

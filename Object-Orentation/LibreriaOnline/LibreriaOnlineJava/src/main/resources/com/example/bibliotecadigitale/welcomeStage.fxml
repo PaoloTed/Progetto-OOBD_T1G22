@@ -5,7 +5,6 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Glow?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -17,14 +16,13 @@
    <children>
       <AnchorPane maxHeight="500.0" maxWidth="200.0" minHeight="500.0" minWidth="200.0" prefHeight="500.0" prefWidth="200.0" style="-fx-border-color: #964B00;">
          <children>
-            <ImageView fx:id="imageWelcome" fitHeight="495.0" fitWidth="200.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="sasa" fitHeight="495.0" fitWidth="200.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                   <image>
                   </image></ImageView>
          </children></AnchorPane>
       <AnchorPane maxHeight="500.0" maxWidth="300.0" minHeight="500.0" minWidth="300.0" prefHeight="500.0" prefWidth="300.0" style="-fx-border-color: #964B00;">
          <children>
-            <ImageView fx:id="imageWelcome2" fitHeight="498.0" fitWidth="298.0" layoutY="2.0" pickOnBounds="true"
-                       preserveRatio="true">
+            <ImageView fx:id="imageWelcome2" fitHeight="498.0" fitWidth="298.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
 
             </ImageView>
                <StackPane layoutX="16.0" layoutY="40.0" prefHeight="419.0" prefWidth="267.0" style="-fx-background-color: #fdf3ea; -fx-border-color: #de5f4f; -fx-border-radius: 0; -fx-border-width: 4;" />
@@ -87,7 +85,9 @@
                      <Font name="Arial" size="20.0" />
                   </font>
                </Text>
-               <Button layoutX="123.0" layoutY="459.0" mnemonicParsing="false" onAction="#skip" text="Skip" />
+               <Button layoutX="20.0" layoutY="459.0" mnemonicParsing="false" onAction="#skip" text="Skip" />
+               <PasswordField fx:id="txtPasswordFieldAdmin" layoutX="84.0" layoutY="459.0" promptText="Password Admin" />
+               <Button layoutX="234.0" layoutY="459.0" mnemonicParsing="false" onAction="#goToAdmin" text="Enter" />
          </children></AnchorPane>
    </children>
 </HBox>
