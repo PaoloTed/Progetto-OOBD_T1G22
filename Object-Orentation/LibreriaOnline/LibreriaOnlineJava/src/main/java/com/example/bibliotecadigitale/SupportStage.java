@@ -42,7 +42,7 @@ public class SupportStage
         }
     }
 
-    public void switchStage(String scenaNew, ActionEvent eventClose, int altezza, int larghezza)
+    public void switchStage(String scenaNew, ActionEvent eventClose, int larghezza, int altezza)
     {
         stage = (Stage) ((Node) eventClose.getSource()).getScene().getWindow();
         stage.close();
@@ -50,7 +50,7 @@ public class SupportStage
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
             Parent root = loader.load();
             stage = new Stage();
-            stage.setScene(new Scene(root, altezza, larghezza));
+            stage.setScene(new Scene(root, larghezza, altezza));
             stage.getIcons().add(new Image("file:src/main/resources/photo/biblioteca.png"));
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);

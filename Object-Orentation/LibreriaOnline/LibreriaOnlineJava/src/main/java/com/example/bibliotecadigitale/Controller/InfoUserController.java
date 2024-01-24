@@ -107,7 +107,7 @@ public class InfoUserController implements Initializable {
     }
 
     public void back_goToHome(ActionEvent event) {
-        support.switchStage("homeStage.fxml", event, 900, 900);
+        support.switchStage("homeStage.fxml", event, 900, 800);
     }
 
 

@@ -167,7 +167,7 @@ public class HomeController implements Initializable {
 
 
     public void goToNotifiche(ActionEvent event) {
-        support.switchStage("notificheStage.fxml", event, 900, 900);
+        support.switchStage("notificheStage.fxml", event, 900, 800);
     }
 
     public void goToPaginaInformativaLibro(ActionEvent event) {
@@ -237,7 +237,7 @@ public class HomeController implements Initializable {
     public void goToAdmin(ActionEvent event) {
         Stage stage = (Stage) articoloTableView.getScene().getWindow();
         stage.close();
-        support.switchStage("homeStageAdmin.fxml", 900, 900);
+        support.switchStage("homeStageAdmin.fxml", 900, 800);
     }
 
 }
