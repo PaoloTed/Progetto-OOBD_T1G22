@@ -19,7 +19,6 @@
          <children>
             <ImageView fx:id="imageWelcome" fitHeight="495.0" fitWidth="200.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                   <image>
-                     <Image url="https://github.com/PaoloTed/Progetto-OOBD_T1G22/blob/6c72f305dcc28934cb580da451f5e9a84f220d32/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/photo/welcomeFoto1.png" />
                   </image></ImageView>
          </children></AnchorPane>
       <AnchorPane maxHeight="500.0" maxWidth="300.0" minHeight="500.0" minWidth="300.0" prefHeight="500.0" prefWidth="300.0" style="-fx-border-color: #964B00;">
