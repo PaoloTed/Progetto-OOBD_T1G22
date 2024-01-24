@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0f3062c-e759-49ff-9312-578ab6d64d8e" name="Changes" comment="Aquisto">
+    <list default="true" id="f0f3062c-e759-49ff-9312-578ab6d64d8e" name="Changes" comment="Serie, aggiungere legame con support stage e testare">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/SerieStageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/SerieStageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/SupportStage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/SupportStage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/homeStage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/homeStage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +170,8 @@
       <workItem from="1704297023951" duration="8314000" />
       <workItem from="1704382406170" duration="8505000" />
       <workItem from="1704909123629" duration="7092000" />
-      <workItem from="1706022492373" duration="793000" />
+      <workItem from="1706022492373" duration="3328000" />
+      <workItem from="1706033749679" duration="778000" />
     </task>
     <task id="LOCAL-00001" summary="importazione">
       <created>1698773198524</created>
@@ -307,22 +312,6 @@
       <option name="presentableId" value="LOCAL-00020" />
       <option name="project" value="LOCAL" />
       <updated>1699382050671</updated>
-    </task>
-    <task id="LOCAL-00023" summary="Check email e password">
-      <option name="closed" value="true" />
-      <created>1699460491699</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1699460491699</updated>
-    </task>
-    <task id="LOCAL-00024" summary="Check email e password, risolto bug">
-      <option name="closed" value="true" />
-      <created>1699460562999</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1699460562999</updated>
     </task>
     <task id="LOCAL-00025" summary="qualcsoa e andato a puttane">
       <option name="closed" value="true" />
@@ -540,7 +529,23 @@
       <option name="project" value="LOCAL" />
       <updated>1704916241526</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Aquisto">
+      <option name="closed" value="true" />
+      <created>1706024175883</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1706024175884</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Serie, aggiungere legame con support stage e testare">
+      <option name="closed" value="true" />
+      <created>1706028092469</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1706028092469</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -575,7 +580,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="iniziando a fare le classi dao mancanti" />
     <MESSAGE value="provandao a fare una funzione per fare la query" />
     <MESSAGE value="UtenteDAO" />
     <MESSAGE value="BUG GIULIO" />
@@ -600,7 +604,8 @@
     <MESSAGE value="Presentazione finito a pablo puzza il culetto" />
     <MESSAGE value="Forse  utente parte finito" />
     <MESSAGE value="Aquisto" />
-    <option name="LAST_COMMIT_MESSAGE" value="Aquisto" />
+    <MESSAGE value="Serie, aggiungere legame con support stage e testare" />
+    <option name="LAST_COMMIT_MESSAGE" value="Serie, aggiungere legame con support stage e testare" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

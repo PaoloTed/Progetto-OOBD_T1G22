@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.SerieStageController">
+   <children>
+      <Button fx:id="buttonClose" layoutX="14.0" layoutY="461.0" mnemonicParsing="false" onAction="#close" text="Close" />
+      <TableView fx:id="libroTableView" fixedCellSize="0.0" layoutX="129.0" layoutY="146.0" prefHeight="276.0" prefWidth="742.0" AnchorPane.leftAnchor="129.0" AnchorPane.rightAnchor="129.0">
+         <columns>
+            <TableColumn fx:id="isbnColumn" prefWidth="95.9999771118164" text="ISBN" />
+            <TableColumn fx:id="titoloColumn" prefWidth="300.6666717529297" text="Titolo" />
+            <TableColumn fx:id="autoreColumn" prefWidth="104.66671752929688" text="Autore" />
+            <TableColumn fx:id="editoreColumn" prefWidth="105.33331298828125" text="Editore" />
+            <TableColumn fx:id="genereColumn" prefWidth="75.3333740234375" text="Genere" />
+         </columns>
+         <contextMenu>
+            <ContextMenu>
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#goToPaginaInformativaLibro" text="Vai Alla Pagina Informativa Libro" />
+               </items>
+            </ContextMenu>
+         </contextMenu>
+      </TableView>
+      <Text fx:id="codSTxtId" layoutX="23.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CodS" />
+      <Text fx:id="nomeTxtId" layoutX="129.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome" />
+      <Text fx:id="numLibTxtId" layoutX="759.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero Libri" textAlignment="RIGHT" wrappingWidth="82.193359375" />
+      <Text fx:id="completaTxtId" layoutX="484.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Completa" />
+   </children>
+</AnchorPane>

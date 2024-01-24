@@ -40,7 +40,7 @@
             <ContextMenu>
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#goToPaginaInformativaLibro" text="Vai Alla Pagina Informativa Libro" />
-                  <MenuItem mnemonicParsing="false" onAction="#goToPaginaInformativaLibro" text="Vai Alla Pagina Informativa Serie" />
+                  <MenuItem mnemonicParsing="false" onAction="#goToPaginaInformativaSerie" text="Vai Alla Pagina Informativa Serie" />
                </items>
             </ContextMenu>
          </contextMenu>
