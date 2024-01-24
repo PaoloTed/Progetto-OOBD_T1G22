@@ -41,7 +41,7 @@ public class Main extends Application {
 
         welcomeStage.setTitle("Benvenuto nella libreria online!");
         welcomeStage.setScene(scene);
-        welcomeStage.getIcons().add(new Image("https://github.com/PaoloTed/Progetto-OOBD_T1G22/blob/61c7e928cf859e3182629a6f857ea2393c2a3e04/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/photo/biblioteca.png?raw=true"));
+        welcomeStage.getIcons().add(new Image("https://raw.githubusercontent.com/PaoloTed/Progetto-OOBD_T1G22/3388e4fb3e1e90d0792ee8abd540b0dbd3c50e91/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/Images/biblioteca.png"));
         welcomeStage.show();
     }
 
