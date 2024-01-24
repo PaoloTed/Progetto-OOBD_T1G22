@@ -53,8 +53,9 @@ public class WelcomeController implements Initializable {
 
     @FXML
     private Text txtUserOnline;
+
     @FXML
-    private ImageView sasa;
+    private ImageView imageWelcome;
     @FXML
     private ImageView imageWelcome2;
 
@@ -66,8 +67,7 @@ public class WelcomeController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String numeroUtenti = String.valueOf(getUserRegistered());
         String numeroUtentiOnline = String.valueOf(getUserOnline());
-        sasa.setImage(new Image("file:src/main/resources/Images/welcomeFoto1.png"));
-//        imageWelcome.setImage(new Image("https://github.com/PaoloTed/Progetto-OOBD_T1G22/blob/a532305a0f251c7ad8d1cf68e89f393929082a3c/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/Images/welcomeFoto1.png?raw=true"));
+        imageWelcome.setImage(new Image("https://raw.githubusercontent.com/PaoloTed/Progetto-OOBD_T1G22/a532305a0f251c7ad8d1cf68e89f393929082a3c/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/Images/welcomeFoto1.png"));
         imageWelcome2.setImage(new Image("https://raw.githubusercontent.com/PaoloTed/Progetto-OOBD_T1G22/a532305a0f251c7ad8d1cf68e89f393929082a3c/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/Images/welcomeFoto2.png"));
 
         txtUserRegistrati.setText(numeroUtenti);
@@ -114,13 +114,12 @@ public class WelcomeController implements Initializable {
     }
 
 
-
     public void skip(ActionEvent event) {
         Utente utenteNew = getUtente();
         utenteNew.setEmail("giulio@ruopolo.it");
         utenteNew.setPassword("salernitana");
         utenteNew.setData("2002-10-05");
-
+        support.switchStage("homeStage.fxml", event, 900, 800);
     }
 
     @FXML

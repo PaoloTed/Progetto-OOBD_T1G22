@@ -16,7 +16,7 @@
    <children>
       <AnchorPane maxHeight="500.0" maxWidth="200.0" minHeight="500.0" minWidth="200.0" prefHeight="500.0" prefWidth="200.0" style="-fx-border-color: #964B00;">
          <children>
-            <ImageView fx:id="sasa" fitHeight="495.0" fitWidth="200.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imageWelcome" fitHeight="495.0" fitWidth="200.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                   <image>
                   </image></ImageView>
          </children></AnchorPane>
