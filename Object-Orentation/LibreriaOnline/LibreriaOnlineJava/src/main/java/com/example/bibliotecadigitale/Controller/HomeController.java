@@ -82,9 +82,10 @@ public class HomeController implements Initializable {
 
         //Imposto la ricerca su libro come default e nascondo la tabella articolo
         articoloTableView.setVisible(false);
-        buttonLibro.setStyle("-fx-border-color: red;");
+        buttonLibro.setStyle("-fx-border-color: red;  -fx-text-fill: white; -fx-background-color: #2b2d30;");
         buttonLibro.setDisable(true);
-        buttonArticolo.setStyle("-fx-border-color: grey;");
+        buttonArticolo.setStyle("-fx-border-color: grey; -fx-text-fill: white; -fx-background-color: #2b2d30;");
+
 
         idComboBox.setItems(FXCollections.observableArrayList("Isbn", "Titolo", "Autore", "Genere", "Editore"));
         idComboBox.getSelectionModel().selectFirst();
@@ -182,6 +183,7 @@ public class HomeController implements Initializable {
         stage.close();
         support.switchStage("paginaInformativaLibro.fxml", libro);
     }
+
     public void goToPaginaInformativaSerie(ActionEvent event) {
         SupportStage support = new SupportStage();
         Libro libro = libroTableView.getSelectionModel().getSelectedItem();
@@ -212,11 +214,11 @@ public class HomeController implements Initializable {
         idComboBox.getSelectionModel().selectFirst();
         libroTableView.setVisible(true);
         buttonLibro.setDisable(true);
-        buttonLibro.setStyle("-fx-border-color: red;");
+        buttonLibro.setStyle("-fx-border-color: red; -fx-text-fill: white; -fx-background-color: #2b2d30;");
 
         articoloTableView.setVisible(false);
         buttonArticolo.setDisable(false);
-        buttonArticolo.setStyle("-fx-border-color: grey;");
+        buttonArticolo.setStyle("-fx-border-color: grey; -fx-text-fill: white; -fx-background-color: #2b2d30;");
 
     }
 
@@ -226,11 +228,11 @@ public class HomeController implements Initializable {
         idComboBox.getSelectionModel().selectFirst();
         articoloTableView.setVisible(true);
         buttonArticolo.setDisable(true);
-        buttonArticolo.setStyle("-fx-border-color: red;");
+        buttonArticolo.setStyle("-fx-border-color: red; -fx-text-fill: white; -fx-background-color: #2b2d30;");
 
         libroTableView.setVisible(false);
         buttonLibro.setDisable(false);
-        buttonLibro.setStyle("-fx-border-color: grey;");
+        buttonLibro.setStyle("-fx-border-color: grey; -fx-text-fill: white; -fx-background-color: #2b2d30;");
 
     }
 

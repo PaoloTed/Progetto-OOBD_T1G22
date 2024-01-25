@@ -4,14 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0f3062c-e759-49ff-9312-578ab6d64d8e" name="Changes" comment="interfaccia">
-      <change afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/Images/lirbi50x900.png" afterDir="false" />
+    <list default="true" id="f0f3062c-e759-49ff-9312-578ab6d64d8e" name="Changes" comment="interfaccia 2">
+      <change afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/Images/libri500x900.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/Images/libri800x900.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/HomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/NotificheController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/NotificheController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/SupportStage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/SupportStage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/homeStage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/homeStage.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/infoUserStage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/infoUserStage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/messageStage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/messageStage.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/notificheStage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/notificheStage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,7 +68,7 @@
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "19",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Paolo/Universita/Programmi/SceneBuilder/SceneBuilder.exe",
+    "last_opened_file_path": "C:/Users/Paolo/IdeaProjects/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/Images",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -87,6 +88,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Paolo\IdeaProjects\Object-Orentation\LibreriaOnline\LibreriaOnlineJava\src\main\resources\Images" />
       <recent name="D:\Universita\OO\Progetto-OOBD_T1G22\Object-Orentation\LibreriaOnline\LibreriaOnlineJava\src\main\resources\com\example\bibliotecadigitale" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -177,7 +179,7 @@
       <workItem from="1706022492373" duration="3328000" />
       <workItem from="1706033749679" duration="778000" />
       <workItem from="1706180287910" duration="895000" />
-      <workItem from="1706181204570" duration="5586000" />
+      <workItem from="1706181204570" duration="10121000" />
     </task>
     <task id="LOCAL-00001" summary="importazione">
       <created>1698773198524</created>
@@ -318,14 +320,6 @@
       <option name="presentableId" value="LOCAL-00020" />
       <option name="project" value="LOCAL" />
       <updated>1699382050671</updated>
-    </task>
-    <task id="LOCAL-00026" summary="iniziando a fare le classi dao mancanti">
-      <option name="closed" value="true" />
-      <created>1699641644759</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1699641644759</updated>
     </task>
     <task id="LOCAL-00027" summary="provandao a fare una funzione per fare la query">
       <option name="closed" value="true" />
@@ -551,7 +545,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706186483550</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="interfaccia 2">
+      <option name="closed" value="true" />
+      <created>1706190707802</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1706190707802</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -586,7 +588,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="UtenteDAO" />
     <MESSAGE value="BUG GIULIO" />
     <MESSAGE value="inizio PrimaPaggina" />
     <MESSAGE value="inizio PrimaPaggina vers 0.3" />
@@ -611,7 +612,8 @@
     <MESSAGE value="Aquisto" />
     <MESSAGE value="Serie, aggiungere legame con support stage e testare" />
     <MESSAGE value="interfaccia" />
-    <option name="LAST_COMMIT_MESSAGE" value="interfaccia" />
+    <MESSAGE value="interfaccia 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="interfaccia 2" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

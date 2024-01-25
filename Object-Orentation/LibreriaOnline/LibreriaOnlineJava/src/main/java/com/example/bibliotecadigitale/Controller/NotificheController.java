@@ -33,14 +33,14 @@ public class NotificheController implements Initializable {
     @FXML
     private Parent root ;
     @FXML
-    private ImageView imageLibri;
+    private ImageView imageLibro;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Utente utente = Utente.getUtente();
         String email = utente.getEmail();
-        imageLibri.setImage(new Image()
+        imageLibro.setImage(new Image("https://raw.githubusercontent.com/PaoloTed/Progetto-OOBD_T1G22/d8af073d667a71330a19a946541e7b897f06ceba/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/Images/lirbi50x900.png"));
         try {
             Connessione connessione = new Connessione();
             String query = "select * from show_preferiti('" + email + "');";
