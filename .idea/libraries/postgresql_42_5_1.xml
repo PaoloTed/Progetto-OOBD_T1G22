@@ -2,8 +2,10 @@
   <library name="postgresql-42.5.1">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/Lib/postgresql-42.5.1.jar!/" />
+      <root url="file://$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/Lib" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/Lib" recursive="false" />
   </library>
 </component>

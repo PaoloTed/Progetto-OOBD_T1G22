@@ -3,31 +3,28 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.ContextMenu?>
-<?import javafx.scene.control.DialogPane?>
-<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="idSearchBar" prefHeight="900.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.HomeController">
+<AnchorPane fx:id="idSearchBar" prefHeight="900.0" prefWidth="900.0" style="-fx-border-color: #de5f4f; -fx-border-width: 3; -fx-background-color: #fdf3ea;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.HomeController">
    <children>
-      <Hyperlink layoutX="687.0" layoutY="10.0" prefHeight="23.0" prefWidth="212.0" text="Email utente" AnchorPane.topAnchor="10.0" />
-      <Button layoutX="831.0" layoutY="861.0" mnemonicParsing="false" onAction="#logOff" text="Log off" />
-      <Hyperlink layoutX="14.0" layoutY="10.0" prefHeight="23.0" prefWidth="212.0" text="Notifica" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="625.0" layoutX="94.0" layoutY="93.0" stroke="#de5f4f" strokeWidth="2.0" width="704.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" height="57.0" layoutX="97.0" layoutY="25.0" stroke="#de5f4f" strokeWidth="2.0" width="700.0" />
+      <Button layoutX="437.0" layoutY="725.0" mnemonicParsing="false" onAction="#logOff" text="Log off" />
       <TextField fx:id="idBarSearch" layoutX="298.0" layoutY="130.0" />
-      <DialogPane layoutX="93.0" layoutY="177.0" prefHeight="654.0" prefWidth="700.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" />
-      <Button defaultButton="true" layoutX="687.0" layoutY="34.0" mnemonicParsing="false" onAction="#goToInfoUser" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Info Utente" textFill="#0800f8" underline="true">
+      <Button defaultButton="true" layoutX="799.0" layoutY="18.0" mnemonicParsing="false" onAction="#goToInfoUser" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Info Utente" textFill="#2b2d30" underline="true">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
       <Button layoutX="607.0" layoutY="130.0" mnemonicParsing="false" onAction="#Select" text="Cerca" />
       <ComboBox fx:id="idComboBox" layoutX="450.0" layoutY="130.0" prefWidth="150.0" />
-      <Button layoutX="15.0" layoutY="36.0" mnemonicParsing="false" onAction="#goToNotifiche" text="Notifiche" />
       <TableView fx:id="libroTableView" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0" prefHeight="535.0" prefWidth="700.0">
         <columns>
           <TableColumn fx:id="isbnColumn" prefWidth="95.9999771118164" text="ISBN" />
@@ -47,7 +44,7 @@
       </TableView>
       <Button fx:id="buttonLibro" layoutX="118.0" layoutY="130.0" mnemonicParsing="false" onAction="#selezioneLibro" prefHeight="25.0" prefWidth="58.0" text="Libro" />
       <Button fx:id="buttonArticolo" layoutX="198.0" layoutY="130.0" mnemonicParsing="false" onAction="#selezioneArticolo" text="Articolo" />
-      <TableView fx:id="articoloTableView" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0" prefHeight="535.0" prefWidth="700.0">
+      <TableView fx:id="articoloTableView" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0" prefHeight="535.0" prefWidth="700.0" style="-fx-background-insets: red;">
          <columns>
             <TableColumn fx:id="doiColumn" prefWidth="95.9999771118164" text="DOI" />
             <TableColumn fx:id="titoloAColumn" prefWidth="300.6666717529297" text="Titolo" />
@@ -65,7 +62,21 @@
       </TableView>
       <Text layoutX="130.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cosa Vuoi ricercare ?" wrappingWidth="136.91082000732422" />
       <Text layoutX="308.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Premi Con Il Tasto Destro Del Mouse Per Le Azioni" wrappingWidth="277.5774459838867" />
-      <Button layoutX="424.0" layoutY="49.0" mnemonicParsing="false" onAction="#goToAdmin" text="Admin" />
-      <Button layoutX="747.0" layoutY="130.0" mnemonicParsing="false" onAction="#clearTableView" text="Clear" />
+      <Button layoutX="669.0" layoutY="130.0" mnemonicParsing="false" onAction="#clearTableView" text="Clear" />
+      <Button defaultButton="true" layoutX="799.0" layoutY="45.0" mnemonicParsing="false" onAction="#goToNotifiche" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Notifiche Utente" textFill="#2b2d30" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Text fill="#2b2d30" layoutX="102.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pannello Ricerca " wrappingWidth="278.8033332824707">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Text>
+      <Text fill="#2b2d30" layoutX="102.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qui potrai effettuare ricerche per visualizzare Libri e Serie">
+         <font>
+            <Font name="Arial" size="17.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500" prefWidth="500" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.InfoUserController">
+<AnchorPane prefWidth="500" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.InfoUserController">
    <children>
       <Label layoutX="14.0" layoutY="14.0" prefHeight="47.0" prefWidth="293.0" text="Informazioni Utente">
          <font>
