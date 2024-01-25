@@ -12,6 +12,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -30,12 +32,15 @@ public class NotificheController implements Initializable {
 
     @FXML
     private Parent root ;
+    @FXML
+    private ImageView imageLibri;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Utente utente = Utente.getUtente();
         String email = utente.getEmail();
+        imageLibri.setImage(new Image()
         try {
             Connessione connessione = new Connessione();
             String query = "select * from show_preferiti('" + email + "');";
@@ -55,7 +60,7 @@ public class NotificheController implements Initializable {
         //da menuitem perchè non è un nodo, la prendo da listViewSerieAcquisto
         Stage stage = (Stage) listViewSerieAcquisto.getScene().getWindow();
         stage.close();
-        support.switchStage("homeStage.fxml",900,900);
+        support.switchStage("homeStage.fxml",800,900);
     }
 
     public void eliminaPreferito(ActionEvent event) {
@@ -82,6 +87,6 @@ public class NotificheController implements Initializable {
     }
 
     public void goBack(ActionEvent event) {
-        support.switchStage("homeStage.fxml",event,900,900);
+        support.switchStage("homeStage.fxml",event,900,800);
     }
 }

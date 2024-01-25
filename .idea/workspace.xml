@@ -5,14 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f0f3062c-e759-49ff-9312-578ab6d64d8e" name="Changes" comment="interfaccia">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/postgresql_42_5_11.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/welcomeFoto1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/postgresql_42_5_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/postgresql_42_5_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/Images/lirbi50x900.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/NotificheController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/NotificheController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/SupportStage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/SupportStage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/homeStage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/homeStage.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/infoUserStage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/infoUserStage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/messageStage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/messageStage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/notificheStage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/notificheStage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +76,7 @@
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.42643678",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
+    "settings.editor.selected.configurable": "vcs.Git",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -90,11 +90,11 @@
       <recent name="D:\Universita\OO\Progetto-OOBD_T1G22\Object-Orentation\LibreriaOnline\LibreriaOnlineJava\src\main\resources\com\example\bibliotecadigitale" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Paolo\IdeaProjects\Object-Orentation\LibreriaOnline\LibreriaOnlineJava\src\main\resources\Images" />
       <recent name="D:\Universita\OO\Progetto-OOBD_T1G22\Object-Orentation\LibreriaOnline\LibreriaOnlineJava\src\main\java" />
       <recent name="D:\Universita\OO\progeto\Object-Orentation\LibreriaOnlineJava\src\main\java\com\example\libreriaonlinejava" />
       <recent name="D:\Universita\OO\progeto\Object-Orentation\LibreriaOnlineJava\src\main\java\com\example" />
       <recent name="D:\Universita\OO\progeto\Object-Orentation\LibreriaOnlineJava\src\main\java\Lib" />
-      <recent name="D:\Universita\OO\progeto\Object-Orentation\LibreriaOnlineJava" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.example.libreriaonlinejava" />
@@ -177,7 +177,7 @@
       <workItem from="1706022492373" duration="3328000" />
       <workItem from="1706033749679" duration="778000" />
       <workItem from="1706180287910" duration="895000" />
-      <workItem from="1706181204570" duration="2741000" />
+      <workItem from="1706181204570" duration="5586000" />
     </task>
     <task id="LOCAL-00001" summary="importazione">
       <created>1698773198524</created>
@@ -318,14 +318,6 @@
       <option name="presentableId" value="LOCAL-00020" />
       <option name="project" value="LOCAL" />
       <updated>1699382050671</updated>
-    </task>
-    <task id="LOCAL-00025" summary="qualcsoa e andato a puttane">
-      <option name="closed" value="true" />
-      <created>1699634533065</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1699634533065</updated>
     </task>
     <task id="LOCAL-00026" summary="iniziando a fare le classi dao mancanti">
       <option name="closed" value="true" />
@@ -551,7 +543,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706028092469</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="interfaccia">
+      <option name="closed" value="true" />
+      <created>1706186483550</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1706186483550</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

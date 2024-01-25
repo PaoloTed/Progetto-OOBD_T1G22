@@ -8,42 +8,44 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefWidth="500" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.InfoUserController">
+<AnchorPane prefHeight="500.0" prefWidth="500" style="-fx-background-color: #fdf3ea; -fx-border-width: 3; -fx-border-color: #de5f4f;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.InfoUserController">
    <children>
-      <Label layoutX="14.0" layoutY="14.0" prefHeight="47.0" prefWidth="293.0" text="Informazioni Utente">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#de5f4f00" height="260.0" layoutX="28.0" layoutY="169.0" stroke="#de5f4f" strokeType="INSIDE" strokeWidth="2.0" width="445.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#de5f4f00" height="47.0" layoutX="28.0" layoutY="14.0" stroke="#de5f4f" strokeType="INSIDE" strokeWidth="2.0" width="445.0" />
+      <Label layoutX="34.0" layoutY="3.0" prefHeight="47.0" prefWidth="293.0" text="Pannello Informazioni Utente">
          <font>
-            <Font size="20.0" />
+            <Font name="Arial" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="64.0" layoutY="61.0" prefHeight="17.0" prefWidth="107.0" text="Email">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Label fx:id="labelEmail" layoutX="81.0" layoutY="82.0" prefHeight="17.0" prefWidth="255.0" text="emailUser" />
-      <Label layoutX="64.0" layoutY="99.0" prefHeight="21.0" prefWidth="183.0" text="Vuoi cambiare Password ?">
+      <Label layoutX="64.0" layoutY="88.0" prefHeight="17.0" prefWidth="107.0" text="Email">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Button layoutX="382.0" layoutY="120.0" mnemonicParsing="false" onAction="#changePassword" text="Cambia" />
-      <Label layoutX="64.0" layoutY="145.0" prefHeight="17.0" prefWidth="107.0" text="Preferiti Utente">
+      <Label fx:id="labelEmail" layoutX="108.0" layoutY="90.0" prefHeight="17.0" prefWidth="255.0" text="emailUser" />
+      <Label layoutX="64.0" layoutY="111.0" prefHeight="21.0" prefWidth="183.0" text="Vuoi cambiare Password ?" textFill="#2b2d30">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Button fx:id="buttonBack" layoutX="64.0" layoutY="423.0" mnemonicParsing="false" onAction="#back_goToHome" text="Back" />
-      <PasswordField fx:id="txtOldPassword" layoutX="81.0" layoutY="120.0" promptText="Vecchia Password" />
-      <PasswordField fx:id="txtNewPassword" layoutX="232.0" layoutY="120.0" promptText="NuovaPassword" />
-      <Label layoutX="63.0" layoutY="366.0" text="Per eliminare dai tuoi preferiti una serie selezionala e dopo clicca il bottone &quot;Elimina&quot;">
+      <Button layoutX="386.0" layoutY="133.0" mnemonicParsing="false" onAction="#changePassword" style="-fx-background-color: #2b2d30; -fx-text-fill: white;" text="Cambia" />
+      <Label layoutX="34.0" layoutY="171.0" prefHeight="22.0" prefWidth="128.0" text="Preferiti Utente">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="buttonBack" layoutX="28.0" layoutY="460.0" mnemonicParsing="false" onAction="#back_goToHome" style="-fx-background-color: #2b2d30; -fx-text-fill: white;" text="Back" />
+      <PasswordField fx:id="txtOldPassword" layoutX="87.0" layoutY="133.0" promptText="Vecchia Password" />
+      <PasswordField fx:id="txtNewPassword" layoutX="236.0" layoutY="133.0" promptText="NuovaPassword" />
+      <Label layoutX="85.0" layoutY="405.0" text="Per eliminare o vedere le informazioni della serie premici con il tasto destro">
          <font>
             <Font size="10.0" />
          </font>
       </Label>
-      <Button layoutX="224.0" layoutY="381.0" mnemonicParsing="false" onAction="#eliminaPreferito" text="Elimina" />
-      <TableView fx:id="tableView" editable="true" layoutX="32.0" layoutY="166.0" prefHeight="200.0" prefWidth="437.0">
+      <TableView fx:id="tableView" editable="true" layoutX="32.0" layoutY="199.0" prefHeight="200.0" prefWidth="437.0">
          <contextMenu>
             <ContextMenu>
               <items>
@@ -58,9 +60,14 @@
          <columns>
             <TableColumn fx:id="codSColumn" prefWidth="75.0" text="Codice Serie" />
             <TableColumn fx:id="nomeColumn" prefWidth="75.0" text="Nome Serie" />
-            <TableColumn fx:id="numLibriColumn" prefWidth="75.0" text="Numero Pagine" />
+            <TableColumn fx:id="numLibriColumn" prefWidth="75.0" text="Numero Libri" />
             <TableColumn fx:id="completataColumn" prefWidth="75.0" text="Completata" />
          </columns>
       </TableView>
+      <Label layoutX="34.0" layoutY="24.0" prefHeight="47.0" prefWidth="454.0" text="Qui puoi vederele tue informazioni e le tue serie preferite">
+         <font>
+            <Font name="Arial" size="17.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
