@@ -10,6 +10,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -32,6 +35,9 @@ public class InfoUserController implements Initializable {
     @FXML TableColumn<Serie, Integer> numLibriColumn;
     @FXML TableColumn<Serie, Boolean> completataColumn;
 
+    @FXML
+    private ImageView imageLibriSfondo;
+
     //Supporto per la gestione delle finestre
     private SupportStage support = new SupportStage();
 
@@ -45,6 +51,8 @@ public class InfoUserController implements Initializable {
         nomeColumn.setCellValueFactory(new PropertyValueFactory<Serie, String>("nome"));
         numLibriColumn.setCellValueFactory(new PropertyValueFactory<Serie, Integer>("numLibri"));
         completataColumn.setCellValueFactory(new PropertyValueFactory<Serie, Boolean>("completata"));
+        imageLibriSfondo.setImage(new Image("https://raw.githubusercontent.com/PaoloTed/Progetto-OOBD_T1G22/ac7be5ac469ac35571de4c86bbfd02eb9872b2be/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/Images/libri800x900.png"));
+
         setTableView(email);
     }
 
@@ -52,10 +60,8 @@ public class InfoUserController implements Initializable {
         SerieDAOImpl serieDAO = new SerieDAOImpl();
         UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
 
-        //Recupero le serie preferite dell'utente
         ArrayList<Integer> codPreferiti = utenteDAO.searchPreferiti(email);
-        Serie serieAppoggio;
-
+        //Recupero le serie preferite dell'utente
         //Mostro le serie preferite dell'utente nella listView
         for (int i = 0; i < codPreferiti.size(); i++) {
             //Viene inserito nella listView il codice della serie e il suo nome

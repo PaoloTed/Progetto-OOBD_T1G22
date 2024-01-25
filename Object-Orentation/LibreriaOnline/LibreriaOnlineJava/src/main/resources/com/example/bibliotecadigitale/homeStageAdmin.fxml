@@ -7,12 +7,22 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="idSearchBar" prefHeight="900.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.HomeControllerAdmin">
+<AnchorPane fx:id="idSearchBar" maxHeight="800.0" maxWidth="900.0" minHeight="800.0" minWidth="900.0" prefHeight="800.0" prefWidth="900.0" style="-fx-border-color: #de5f4f; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.HomeControllerAdmin">
     <children>
-        <Button layoutX="423.0" layoutY="727.0" mnemonicParsing="false" onAction="#logOff" text="Log off" />
+      <ImageView fx:id="imageLibriSfondo" fitHeight="800.0" fitWidth="895.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../../Downloads/libri800x900.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdf3ea" height="706.0" layoutX="92.0" layoutY="63.0" stroke="#de5f4f" strokeType="INSIDE" strokeWidth="3.0" width="707.0" />
+        <Button layoutX="423.0" layoutY="727.0" mnemonicParsing="false" onAction="#logOff" style="-fx-background-color: black;" text="Log off" textFill="#fafafa" />
         <TextField fx:id="idBarSearch" layoutX="298.0" layoutY="130.0" />
         <Button fx:id="buttonCerca" layoutX="607.0" layoutY="130.0" mnemonicParsing="false" onAction="#Select" text="Cerca" />
         <ComboBox fx:id="comboBoxRicerca" layoutX="450.0" layoutY="130.0" prefWidth="150.0" />
@@ -197,7 +207,7 @@
                 </ContextMenu>
             </contextMenu>
         </TableView>
-        <TableView fx:id="disponibileSTableView" editable="true" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0" prefHeight="535.0" prefWidth="700.0">
+        <TableView fx:id="disponibileSTableView" editable="true" fixedCellSize="0.0" layoutX="95.0" layoutY="182.0" prefHeight="535.0" prefWidth="700.0">
             <columns>
                 <TableColumn fx:id="codaDisponibileS" prefWidth="95.9999771118164" text="CodAcquisto" />
                 <TableColumn fx:id="codsDisponibileS" prefWidth="300.6666717529297" text="CodSerie" />
@@ -217,5 +227,11 @@
         <Button fx:id="buttonView" layoutX="450.0" layoutY="80.0" mnemonicParsing="false" onAction="#sceltaView" prefHeight="25.0" prefWidth="54.0" text="View" />
       <Button fx:id="buttonInserisci" layoutX="805.0" layoutY="210.0" mnemonicParsing="false" onAction="#insertDao" text="Inserisci" visible="false" />
       <Button fx:id="buttonInsert" layoutX="392.0" layoutY="80.0" mnemonicParsing="false" onAction="#sceltaInsert" prefHeight="25.0" prefWidth="54.0" text="Insert" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdf3ea" height="44.0" layoutX="92.0" layoutY="7.0" stroke="#de5f4f" strokeType="INSIDE" strokeWidth="3.0" width="707.0" />
+      <Text layoutX="102.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pannello gestione Admin" wrappingWidth="329.71080780029297">
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+      </Text>
     </children>
 </AnchorPane>

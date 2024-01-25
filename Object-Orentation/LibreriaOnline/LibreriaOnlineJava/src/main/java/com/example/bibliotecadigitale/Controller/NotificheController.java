@@ -31,16 +31,14 @@ public class NotificheController implements Initializable {
     public MenuItem prova1;
 
     @FXML
-    private Parent root ;
-    @FXML
-    private ImageView imageLibro;
+    private ImageView imageLibriSfondo;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Utente utente = Utente.getUtente();
         String email = utente.getEmail();
-        imageLibro.setImage(new Image("https://raw.githubusercontent.com/PaoloTed/Progetto-OOBD_T1G22/d8af073d667a71330a19a946541e7b897f06ceba/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/Images/lirbi50x900.png"));
+        imageLibriSfondo.setImage(new Image("https://github.com/PaoloTed/Progetto-OOBD_T1G22/blob/ac7be5ac469ac35571de4c86bbfd02eb9872b2be/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/Images/libri800x900.png?raw=true"));
         try {
             Connessione connessione = new Connessione();
             String query = "select * from show_preferiti('" + email + "');";

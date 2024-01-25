@@ -13,6 +13,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.util.converter.BooleanStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 
@@ -211,7 +213,11 @@ public class HomeControllerAdmin implements Initializable {
     @FXML
     TableColumn<DisponibileS, Integer> codsDisponibileS;
 
+    @FXML
+    private ImageView imageLibriSfondo;
+
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        imageLibriSfondo.setImage(new Image("https://raw.githubusercontent.com/PaoloTed/Progetto-OOBD_T1G22/ac7be5ac469ac35571de4c86bbfd02eb9872b2be/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/Images/libri800x900.png"));
         //todo levare possibilita di aggiungere un utente forse anche visualizzarlo
         //todo controllo admin
         buttonInserisci.setVisible(false);
