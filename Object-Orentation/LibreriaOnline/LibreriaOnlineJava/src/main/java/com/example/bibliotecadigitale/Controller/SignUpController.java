@@ -5,16 +5,25 @@ import com.example.bibliotecadigitale.Model.Utente;
 import com.example.bibliotecadigitale.SupportStage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import static com.example.bibliotecadigitale.Model.Utente.getUtente;
 
-public class SignUpController {
+public class SignUpController implements Initializable {
 
     @FXML
     public TextField txtSignUpEmailField;
     @FXML
     public TextField txtSignUpPasswordField;
+
+    @FXML
+    private ImageView imageLibriSfondo;
 
     private SupportStage support = new SupportStage();
     //SupportStage è una classe che contiene metodi che possono essere utilizzati da più controller
@@ -49,6 +58,11 @@ public class SignUpController {
             //Se esiste già un utente con la stessa email, setto a false la variabile controlloEmail
             support.messageStage("Esiste gia un utente con la stessa email");
         }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        imageLibriSfondo.setImage(new Image("https://raw.githubusercontent.com/PaoloTed/Progetto-OOBD_T1G22/ac7be5ac469ac35571de4c86bbfd02eb9872b2be/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/Images/libri800x900.png"));
     }
 }
 

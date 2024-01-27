@@ -32,7 +32,7 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdf3ea" height="47.0" layoutX="28.0" layoutY="14.0" stroke="#de5f4f" strokeType="INSIDE" strokeWidth="2.0" width="445.0" />
       <Label layoutX="34.0" layoutY="3.0" prefHeight="47.0" prefWidth="293.0" text="Pannello Informazioni Utente">
          <font>
-            <Font name="Arial" size="20.0" />
+            <Font name="Arial Bold" size="20.0" />
          </font>
       </Label>
       <Label layoutX="64.0" layoutY="88.0" prefHeight="17.0" prefWidth="107.0" text="Email">
