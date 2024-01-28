@@ -12,6 +12,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.util.converter.BooleanStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 
@@ -174,18 +176,6 @@ public class HomeControllerAdminTest implements Initializable {
     @FXML
     TableColumn<Serie, Boolean> completataSerie;
 
-    //Table view utente
-    @FXML
-    public TableView<Utente> utenteTableView;
-    @FXML
-    TableColumn<Utente, String> emailUtente;
-    @FXML
-    TableColumn<Utente, String> passwordUtente;
-    @FXML
-    TableColumn<Utente, String> dataIscrizioneUtente;
-    @FXML
-    TableColumn<Utente, String> isAdminUtente;
-
     //Table view disponibileA
     @FXML
     public TableView<DisponibileA> disponibileATableView;
@@ -216,9 +206,222 @@ public class HomeControllerAdminTest implements Initializable {
 
     private HashMap<String, Object> objectHashMap = new HashMap<String, Object>();
 
-    private HashMap<String, ArrayList> arrayListHashMap = new HashMap<String, ArrayList>();
+    @FXML
+    private ImageView imageLibriSfondo;
 
-//    private HashMap<String, TableColumn.CellEditEvent> cellEditEventHashMap = new HashMap<String, TableColumn.CellEditEvent>();
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        imageLibriSfondo.setImage(new Image(getClass().getResourceAsStream("/Images/libri800x900.png")));
+        buttonInserisci.setVisible(false);
+        //inizializzo le colonne della tabella libro
+        isbnLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("ISBN"));
+        isbnLibro.setCellFactory(TextFieldTableCell.forTableColumn());
+        isbnLibro.setEditable(false);
+        titoloLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("titolo"));
+        titoloLibro.setCellFactory(TextFieldTableCell.forTableColumn());
+        genereLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("genere"));
+        genereLibro.setCellFactory(TextFieldTableCell.forTableColumn());
+        numPagineLibro.setCellValueFactory(new PropertyValueFactory<Libro, Integer>("numPagine"));
+        numPagineLibro.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        materiaLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("materia"));
+        materiaLibro.setCellFactory(TextFieldTableCell.forTableColumn());
+        descrizioneLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("descrizione"));
+        descrizioneLibro.setCellFactory(TextFieldTableCell.forTableColumn());
+        fruizioneLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("fruizione"));
+        fruizioneLibro.setCellFactory(TextFieldTableCell.forTableColumn());
+        editoreLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("editore"));
+        editoreLibro.setCellFactory(TextFieldTableCell.forTableColumn());
+        autoreLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("autore"));
+        autoreLibro.setCellFactory(TextFieldTableCell.forTableColumn());
+        dataUscitaLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("dataUscita"));
+        dataUscitaLibro.setCellFactory(TextFieldTableCell.forTableColumn());
+        successivoLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("successivo"));
+        successivoLibro.setCellFactory(TextFieldTableCell.forTableColumn());
+        serieLibro.setCellValueFactory(new PropertyValueFactory<Libro, Integer>("serie"));
+        serieLibro.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        presentazioneLibro.setCellValueFactory(new PropertyValueFactory<Libro, Integer>("presentazione"));
+        presentazioneLibro.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+
+        //inizializzo le colonne della tabella articolo
+        doiArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("doi"));
+        doiArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
+        doiArticolo.setEditable(false);
+        titoloArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("titolo"));
+        titoloArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
+        genereArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("genere"));
+        genereArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
+        numPagineArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, Integer>("numPagine"));
+        numPagineArticolo.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        dataUscitaArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("dataUscita"));
+        dataUscitaArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
+        descrizioneArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("descrizione"));
+        descrizioneArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
+        fruizioneArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("fruizione"));
+        fruizioneArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
+        editoreArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("editore"));
+        editoreArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
+        autoreArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("autore"));
+        autoreArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
+        linguaArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("lingua"));
+        linguaArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
+        conferenzaArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, Integer>("conferenza"));
+        conferenzaArticolo.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        nomerArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("nomer"));
+        nomerArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
+        nomerArticolo.setEditable(false);
+        datarArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("datar"));
+        datarArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
+        datarArticolo.setEditable(false);
+
+        //inizializzo le colonne della tabella acquisto
+        codaAcquisto.setCellValueFactory(new PropertyValueFactory<Acquisto, Integer>("codA"));
+        codaAcquisto.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        codaAcquisto.setEditable(false);
+        nomeAcquisto.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("nome"));
+        nomeAcquisto.setCellFactory(TextFieldTableCell.forTableColumn());
+        tipoAcquisto.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("tipoA"));
+        tipoAcquisto.setCellFactory(TextFieldTableCell.forTableColumn());
+        urlAcquisto.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("url"));
+        urlAcquisto.setCellFactory(TextFieldTableCell.forTableColumn());
+        indirizzoAcquisto.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("indirizzo"));
+        indirizzoAcquisto.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        //inizializzo le colonne della tabella conferenza
+        codcConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, Integer>("codC"));
+        codcConferenza.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        codcConferenza.setEditable(false);
+        nomeConfernza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("nome"));
+        nomeConfernza.setCellFactory(TextFieldTableCell.forTableColumn());
+        strutturaConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("struttura"));
+        strutturaConferenza.setCellFactory(TextFieldTableCell.forTableColumn());
+        indirizzoConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("indirizzo"));
+        indirizzoConferenza.setCellFactory(TextFieldTableCell.forTableColumn());
+        dataiConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("dataI"));
+        dataiConferenza.setCellFactory(TextFieldTableCell.forTableColumn());
+        datafConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("dataF"));
+        datafConferenza.setCellFactory(TextFieldTableCell.forTableColumn());
+        responsabileConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("responsabile"));
+        responsabileConferenza.setCellFactory(TextFieldTableCell.forTableColumn());
+
+
+        //inizializzo le colonne della tabella presentazione
+        codpPresentazione.setCellValueFactory(new PropertyValueFactory<Presentazione, Integer>("codP"));
+        codpPresentazione.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        codpPresentazione.setEditable(false);
+        nomePresentazione.setCellValueFactory(new PropertyValueFactory<Presentazione, String>("nome"));
+        nomePresentazione.setCellFactory(TextFieldTableCell.forTableColumn());
+        indirizzoPresentazione.setCellValueFactory(new PropertyValueFactory<Presentazione, String>("indirizzo"));
+        indirizzoPresentazione.setCellFactory(TextFieldTableCell.forTableColumn());
+        dataPresentazione.setCellValueFactory(new PropertyValueFactory<Presentazione, String>("dataPresentazione"));
+        dataPresentazione.setCellFactory(TextFieldTableCell.forTableColumn());
+        tipoPresentazione.setCellValueFactory(new PropertyValueFactory<Presentazione, String>("tipo"));
+        tipoPresentazione.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        //inizializzo le colonne della tabella rivista
+        nomeRivista.setCellValueFactory(new PropertyValueFactory<Rivista, String>("nome"));
+        nomeRivista.setCellFactory(TextFieldTableCell.forTableColumn());
+        nomeRivista.setEditable(false);
+        dataRivista.setCellValueFactory(new PropertyValueFactory<Rivista, String>("data"));
+        responsabileRivista.setCellValueFactory(new PropertyValueFactory<Rivista, String>("responsabile"));
+        responsabileRivista.setCellFactory(TextFieldTableCell.forTableColumn());
+        argomentoRivista.setCellValueFactory(new PropertyValueFactory<Rivista, String>("argomento"));
+        argomentoRivista.setCellFactory(TextFieldTableCell.forTableColumn());
+
+        //inizializzo le colonne della tabella serie
+        codsSerie.setCellValueFactory(new PropertyValueFactory<Serie, Integer>("codS"));
+        codsSerie.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        codsSerie.setEditable(false);
+        nomeSerie.setCellValueFactory(new PropertyValueFactory<Serie, String>("nome"));
+        nomeSerie.setCellFactory(TextFieldTableCell.forTableColumn());
+        numLibriSerie.setCellValueFactory(new PropertyValueFactory<Serie, Integer>("numLibri"));
+        completataSerie.setCellValueFactory(new PropertyValueFactory<Serie, Boolean>("completata"));
+        completataSerie.setCellFactory(TextFieldTableCell.forTableColumn(new BooleanStringConverter()));
+
+        //inizializzo le colonne della tabella disponibileA
+        codaDisponibileA.setCellValueFactory(new PropertyValueFactory<DisponibileA, Integer>("codA"));
+        codaDisponibileA.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        codaDisponibileA.setEditable(false);
+        doiDisponibileA.setCellValueFactory(new PropertyValueFactory<DisponibileA, String>("doi"));
+        doiDisponibileA.setCellFactory(TextFieldTableCell.forTableColumn());
+        doiDisponibileA.setEditable(false);
+
+        //inizializzo le colonne della tabella disponibileL
+        codaDisponibileL.setCellValueFactory(new PropertyValueFactory<DisponibileL, Integer>("codA"));
+        codaDisponibileL.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        codaDisponibileL.setEditable(false);
+        isbnDisponibileL.setCellValueFactory(new PropertyValueFactory<DisponibileL, String>("isbn"));
+        isbnDisponibileL.setCellFactory(TextFieldTableCell.forTableColumn());
+        isbnDisponibileL.setEditable(false);
+
+        //inizializzo le colonne della tabella disponibileS
+        codaDisponibileS.setCellValueFactory(new PropertyValueFactory<DisponibileS, Integer>("codA"));
+        codaDisponibileS.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        codaDisponibileS.setEditable(false);
+        codsDisponibileS.setCellValueFactory(new PropertyValueFactory<DisponibileS, Integer>("codS"));
+        codsDisponibileS.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        codsDisponibileS.setEditable(false);
+
+        //Imposto la ricerca su libro come default e nascondo la tabella articolo
+        buttonView.setStyle("-fx-border-color: red;");
+        buttonView.setDisable(true);
+        buttonInsert.setStyle("-fx-border-color: grey;");
+
+        setVisibleFalseAllTableView();
+        libroTableView.setVisible(true);
+        disponibileSTableView.setVisible(false);
+        comboBoxTableView.setItems(FXCollections.observableArrayList("Libro", "Articolo", "Acquisto", "Conferenza", "Presentazione", "Rivista", "Serie", "DisponibileA", "DisponibileL", "DisponibileS"));
+        comboBoxTableView.getSelectionModel().selectFirst();
+        comboBoxRicerca.setItems(FXCollections.observableArrayList("Isbn", "Titolo", "Genere", "Autore", "Editore", "DataUscita", "NumPagine", "Materia", "Descrizione", "Fruizione", "Successivo", "Serie", "Presentazione", "Lingua"));
+        comboBoxRicerca.getSelectionModel().selectFirst();
+
+
+        objectHashMap.put("Libro", new Libro());
+        objectHashMap.put("Articolo", new ArticoloScientifico());
+        objectHashMap.put("Acquisto", new Acquisto());
+        objectHashMap.put("Conferenza", new Conferenza());
+        objectHashMap.put("Presentazione", new Presentazione());
+        objectHashMap.put("Rivista", new Rivista());
+        objectHashMap.put("Serie", new Serie());
+        objectHashMap.put("DisponibileA", new DisponibileA());
+        objectHashMap.put("DisponibileL", new DisponibileL());
+        objectHashMap.put("DisponibileS", new DisponibileS());
+
+        implDaoHashMap.put("Libro", new LibroDAOImpl());
+        implDaoHashMap.put("Articolo", new ArticoloScientificoDAOImpl());
+        implDaoHashMap.put("Acquisto", new AcquistoDAOImpl());
+        implDaoHashMap.put("Conferenza", new ConferenzaDAOImpl());
+        implDaoHashMap.put("Presentazione", new PresentazioneDAOImpl());
+        implDaoHashMap.put("Rivista", new RivistaDAOImpl());
+        implDaoHashMap.put("Serie", new SerieDAOImpl());
+        implDaoHashMap.put("DisponibileA", new DisponibileADAOImpl());
+        implDaoHashMap.put("DisponibileL", new DisponibileLDAOImpl());
+        implDaoHashMap.put("DisponibileS", new DisponibileSDAOImpl());
+
+        tableViewHashMap.put("Libro", libroTableView);
+        tableViewHashMap.put("Articolo", articoloTableView);
+        tableViewHashMap.put("Acquisto", acquistoTableView);
+        tableViewHashMap.put("Conferenza", conferenzaTableView);
+        tableViewHashMap.put("Presentazione", presentazioneTableView);
+        tableViewHashMap.put("Rivista", rivistaTableView);
+        tableViewHashMap.put("Serie", serieTableView);
+        tableViewHashMap.put("DisponibileA", disponibileATableView);
+        tableViewHashMap.put("DisponibileL", disponibileLTableView);
+        tableViewHashMap.put("DisponibileS", disponibileSTableView);
+
+        ricercaHashMap.put("Libro", (FXCollections.observableArrayList("Isbn", "Titolo", "Genere", "Autore", "Editore", "DataUscita", "NumPagine", "Materia", "Descrizione", "Fruizione", "Successivo", "Serie", "Presentazione")));
+        ricercaHashMap.put("Articolo", (FXCollections.observableArrayList("Doi", "Titolo", "Genere", "Autore", "Editore", "DataUscita", "NumPagine", "Lingua", "Conferenza", "Nomer", "Datar")));
+        ricercaHashMap.put("Acquisto", (FXCollections.observableArrayList("Coda", "Nome", "Tipo", "Url", "Indirizzo")));
+        ricercaHashMap.put("Conferenza", (FXCollections.observableArrayList("Codc", "Nome", "Struttura", "Indirizzo", "Datai", "Dataf", "Responsabile")));
+        ricercaHashMap.put("Presentazione", (FXCollections.observableArrayList("Codp", "Nome", "Indirizzo", "Data", "Tipo")));
+        ricercaHashMap.put("Rivista", (FXCollections.observableArrayList("Nome", "Data", "Responsabile", "Argomento")));
+        ricercaHashMap.put("Serie", (FXCollections.observableArrayList("Cods", "Nome", "NumLibri", "Completata")));
+        ricercaHashMap.put("DisponibileA", FXCollections.observableArrayList("Coda", "Doi"));
+        ricercaHashMap.put("DisponibileL", FXCollections.observableArrayList("Coda", "Isbn"));
+        ricercaHashMap.put("DisponibileS", FXCollections.observableArrayList("Coda", "Cods"));
+
+        sceltaSetter("insert");
+//        cellEditEventHashMap = new HashMap<String, TableColumn.CellEditEvent>();
+//        cellEditEventHashMap.put("Libro", new TableColumn.CellEditEvent<Libro,String>(libroTableView,);
+    }
 
     @FXML
     private void Select(ActionEvent event) {
@@ -261,9 +464,16 @@ public class HomeControllerAdminTest implements Initializable {
     }
 
     private void setVisibleFalseAllTableView() {
-        for (TableView tableView : tableViewHashMap.values()) {
-            tableView.setVisible(false);
-        }
+        libroTableView.setVisible(false);
+        articoloTableView.setVisible(false);
+        acquistoTableView.setVisible(false);
+        conferenzaTableView.setVisible(false);
+        presentazioneTableView.setVisible(false);
+        rivistaTableView.setVisible(false);
+        serieTableView.setVisible(false);
+        disponibileATableView.setVisible(false);
+        disponibileLTableView.setVisible(false);
+        disponibileSTableView.setVisible(false);
     }
 
     @FXML
@@ -279,8 +489,10 @@ public class HomeControllerAdminTest implements Initializable {
     }
 
     private void sceltaSetter(String sceltaMode) {
+
         Boolean sceltaBool;
         int dimTable;
+        scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
 
         if (sceltaMode.equals("insert")) {
             sceltaBool = true;
@@ -301,6 +513,7 @@ public class HomeControllerAdminTest implements Initializable {
                 tableView.getItems().add(objectHashMap.get(scelta));
             }
         }
+        tableViewHashMap.get(scelta).setVisible(true);
         buttonView.setDisable(!sceltaBool);
 
         buttonInserisci.setVisible(sceltaBool);
@@ -682,251 +895,5 @@ public class HomeControllerAdminTest implements Initializable {
         serieTableView.refresh();
     }
 
-    @FXML
-    private void onEditChangedUtenteString(TableColumn.CellEditEvent<Utente, String> utenteStringCellEditEvent) {
-        Utente utente = utenteTableView.getSelectionModel().getSelectedItem();
-        utenteTableView.getItems().remove(utente);
-        String valoreColumnString = utenteStringCellEditEvent.getNewValue();
-        String tipoColumn = utenteStringCellEditEvent.getTableColumn().getId();
-        switch (tipoColumn) {
-            case "emailUtente":
-                utente.setEmail(valoreColumnString);
-                break;
-            case "passwordUtente":
-                utente.setPassword(valoreColumnString);
-                break;
-            case "dataIscrizioneUtente":
-                utente.setData(valoreColumnString);
-                break;
-        }
-        utenteTableView.getItems().add(utente);
-        utenteTableView.refresh();
-    }
 
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        buttonInserisci.setVisible(false);
-        //inizializzo le colonne della tabella libro
-        isbnLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("ISBN"));
-        isbnLibro.setCellFactory(TextFieldTableCell.forTableColumn());
-        isbnLibro.setEditable(false);
-        titoloLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("titolo"));
-        titoloLibro.setCellFactory(TextFieldTableCell.forTableColumn());
-        genereLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("genere"));
-        genereLibro.setCellFactory(TextFieldTableCell.forTableColumn());
-        numPagineLibro.setCellValueFactory(new PropertyValueFactory<Libro, Integer>("numPagine"));
-        numPagineLibro.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        materiaLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("materia"));
-        materiaLibro.setCellFactory(TextFieldTableCell.forTableColumn());
-        descrizioneLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("descrizione"));
-        descrizioneLibro.setCellFactory(TextFieldTableCell.forTableColumn());
-        fruizioneLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("fruizione"));
-        fruizioneLibro.setCellFactory(TextFieldTableCell.forTableColumn());
-        editoreLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("editore"));
-        editoreLibro.setCellFactory(TextFieldTableCell.forTableColumn());
-        autoreLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("autore"));
-        autoreLibro.setCellFactory(TextFieldTableCell.forTableColumn());
-        dataUscitaLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("dataUscita"));
-        dataUscitaLibro.setCellFactory(TextFieldTableCell.forTableColumn());
-        successivoLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("successivo"));
-        successivoLibro.setCellFactory(TextFieldTableCell.forTableColumn());
-        serieLibro.setCellValueFactory(new PropertyValueFactory<Libro, Integer>("serie"));
-        serieLibro.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        presentazioneLibro.setCellValueFactory(new PropertyValueFactory<Libro, Integer>("presentazione"));
-        presentazioneLibro.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-
-        //inizializzo le colonne della tabella articolo
-        doiArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("doi"));
-        doiArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
-        doiArticolo.setEditable(false);
-        titoloArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("titolo"));
-        titoloArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
-        genereArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("genere"));
-        genereArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
-        numPagineArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, Integer>("numPagine"));
-        numPagineArticolo.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        dataUscitaArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("dataUscita"));
-        dataUscitaArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
-        descrizioneArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("descrizione"));
-        descrizioneArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
-        fruizioneArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("fruizione"));
-        fruizioneArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
-        editoreArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("editore"));
-        editoreArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
-        autoreArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("autore"));
-        autoreArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
-        linguaArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("lingua"));
-        linguaArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
-        conferenzaArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, Integer>("conferenza"));
-        conferenzaArticolo.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        nomerArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("nomer"));
-        nomerArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
-        nomerArticolo.setEditable(false);
-        datarArticolo.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("datar"));
-        datarArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
-        datarArticolo.setEditable(false);
-
-        //inizializzo le colonne della tabella acquisto
-        codaAcquisto.setCellValueFactory(new PropertyValueFactory<Acquisto, Integer>("codA"));
-        codaAcquisto.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        codaAcquisto.setEditable(false);
-        nomeAcquisto.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("nome"));
-        nomeAcquisto.setCellFactory(TextFieldTableCell.forTableColumn());
-        tipoAcquisto.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("tipoA"));
-        tipoAcquisto.setCellFactory(TextFieldTableCell.forTableColumn());
-        urlAcquisto.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("url"));
-        urlAcquisto.setCellFactory(TextFieldTableCell.forTableColumn());
-        indirizzoAcquisto.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("indirizzo"));
-        indirizzoAcquisto.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        //inizializzo le colonne della tabella conferenza
-        codcConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, Integer>("codC"));
-        codcConferenza.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        codcConferenza.setEditable(false);
-        nomeConfernza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("nome"));
-        nomeConfernza.setCellFactory(TextFieldTableCell.forTableColumn());
-        strutturaConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("struttura"));
-        strutturaConferenza.setCellFactory(TextFieldTableCell.forTableColumn());
-        indirizzoConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("indirizzo"));
-        indirizzoConferenza.setCellFactory(TextFieldTableCell.forTableColumn());
-        dataiConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("dataI"));
-        dataiConferenza.setCellFactory(TextFieldTableCell.forTableColumn());
-        datafConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("dataF"));
-        datafConferenza.setCellFactory(TextFieldTableCell.forTableColumn());
-        responsabileConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("responsabile"));
-        responsabileConferenza.setCellFactory(TextFieldTableCell.forTableColumn());
-
-
-        //inizializzo le colonne della tabella presentazione
-        codpPresentazione.setCellValueFactory(new PropertyValueFactory<Presentazione, Integer>("codP"));
-        codpPresentazione.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        codpPresentazione.setEditable(false);
-        nomePresentazione.setCellValueFactory(new PropertyValueFactory<Presentazione, String>("nome"));
-        nomePresentazione.setCellFactory(TextFieldTableCell.forTableColumn());
-        indirizzoPresentazione.setCellValueFactory(new PropertyValueFactory<Presentazione, String>("indirizzo"));
-        indirizzoPresentazione.setCellFactory(TextFieldTableCell.forTableColumn());
-        dataPresentazione.setCellValueFactory(new PropertyValueFactory<Presentazione, String>("dataPresentazione"));
-        dataPresentazione.setCellFactory(TextFieldTableCell.forTableColumn());
-        tipoPresentazione.setCellValueFactory(new PropertyValueFactory<Presentazione, String>("tipo"));
-        tipoPresentazione.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        //inizializzo le colonne della tabella rivista
-        nomeRivista.setCellValueFactory(new PropertyValueFactory<Rivista, String>("nome"));
-        nomeRivista.setCellFactory(TextFieldTableCell.forTableColumn());
-        nomeRivista.setEditable(false);
-        dataRivista.setCellValueFactory(new PropertyValueFactory<Rivista, String>("data"));
-        responsabileRivista.setCellValueFactory(new PropertyValueFactory<Rivista, String>("responsabile"));
-        responsabileRivista.setCellFactory(TextFieldTableCell.forTableColumn());
-        argomentoRivista.setCellValueFactory(new PropertyValueFactory<Rivista, String>("argomento"));
-        argomentoRivista.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        //inizializzo le colonne della tabella serie
-        codsSerie.setCellValueFactory(new PropertyValueFactory<Serie, Integer>("codS"));
-        codsSerie.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        codsSerie.setEditable(false);
-        nomeSerie.setCellValueFactory(new PropertyValueFactory<Serie, String>("nome"));
-        nomeSerie.setCellFactory(TextFieldTableCell.forTableColumn());
-        numLibriSerie.setCellValueFactory(new PropertyValueFactory<Serie, Integer>("numLibri"));
-        completataSerie.setCellValueFactory(new PropertyValueFactory<Serie, Boolean>("completata"));
-        completataSerie.setCellFactory(TextFieldTableCell.forTableColumn(new BooleanStringConverter()));
-
-
-        //inizializzo le colonne della tabella utente
-        emailUtente.setCellValueFactory(new PropertyValueFactory<Utente, String>("email"));
-        emailUtente.setCellFactory(TextFieldTableCell.forTableColumn());
-        emailUtente.setEditable(false);
-        passwordUtente.setCellValueFactory(new PropertyValueFactory<Utente, String>("password"));
-        passwordUtente.setCellFactory(TextFieldTableCell.forTableColumn());
-        dataIscrizioneUtente.setCellValueFactory(new PropertyValueFactory<Utente, String>("dataIscrizione"));
-        dataIscrizioneUtente.setCellFactory(TextFieldTableCell.forTableColumn());
-        isAdminUtente.setCellValueFactory(new PropertyValueFactory<Utente, String>("isAdmin"));
-        isAdminUtente.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        //inizializzo le colonne della tabella disponibileA
-        codaDisponibileA.setCellValueFactory(new PropertyValueFactory<DisponibileA, Integer>("codA"));
-        codaDisponibileA.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        codaDisponibileA.setEditable(false);
-        doiDisponibileA.setCellValueFactory(new PropertyValueFactory<DisponibileA, String>("doi"));
-        doiDisponibileA.setCellFactory(TextFieldTableCell.forTableColumn());
-        doiDisponibileA.setEditable(false);
-
-        //inizializzo le colonne della tabella disponibileL
-        codaDisponibileL.setCellValueFactory(new PropertyValueFactory<DisponibileL, Integer>("codA"));
-        codaDisponibileL.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        codaDisponibileL.setEditable(false);
-        isbnDisponibileL.setCellValueFactory(new PropertyValueFactory<DisponibileL, String>("isbn"));
-        isbnDisponibileL.setCellFactory(TextFieldTableCell.forTableColumn());
-        isbnDisponibileL.setEditable(false);
-
-        //inizializzo le colonne della tabella disponibileS
-        codaDisponibileS.setCellValueFactory(new PropertyValueFactory<DisponibileS, Integer>("codA"));
-        codaDisponibileS.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        codaDisponibileS.setEditable(false);
-        codsDisponibileS.setCellValueFactory(new PropertyValueFactory<DisponibileS, Integer>("codS"));
-        codsDisponibileS.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
-        codsDisponibileS.setEditable(false);
-
-        //Imposto la ricerca su libro come default e nascondo la tabella articolo
-        setVisibleFalseAllTableView();
-        buttonView.setStyle("-fx-border-color: red;");
-        buttonView.setDisable(true);
-        buttonInsert.setStyle("-fx-border-color: grey;");
-
-        setVisibleFalseAllTableView();
-        libroTableView.setVisible(true);
-        comboBoxTableView.setItems(FXCollections.observableArrayList("Libro", "Articolo", "Acquisto", "Conferenza", "Presentazione", "Rivista", "Serie", "Utente", "DisponibileA", "DisponibileL", "DisponibileS"));
-        comboBoxTableView.getSelectionModel().selectFirst();
-        comboBoxRicerca.setItems(FXCollections.observableArrayList("Isbn", "Titolo", "Genere", "Autore", "Editore", "DataUscita", "NumPagine", "Materia", "Descrizione", "Fruizione", "Successivo", "Serie", "Presentazione", "Lingua"));
-        comboBoxRicerca.getSelectionModel().selectFirst();
-
-
-        objectHashMap.put("Libro", new Libro());
-        objectHashMap.put("Articolo", new ArticoloScientifico());
-        objectHashMap.put("Acquisto", new Acquisto());
-        objectHashMap.put("Conferenza", new Conferenza());
-        objectHashMap.put("Presentazione", new Presentazione());
-        objectHashMap.put("Rivista", new Rivista());
-        objectHashMap.put("Serie", new Serie());
-        objectHashMap.put("DisponibileA", new DisponibileA());
-        objectHashMap.put("DisponibileL", new DisponibileL());
-        objectHashMap.put("DisponibileS", new DisponibileS());
-
-        implDaoHashMap.put("Libro", new LibroDAOImpl());
-        implDaoHashMap.put("Articolo", new ArticoloScientificoDAOImpl());
-        implDaoHashMap.put("Acquisto", new AcquistoDAOImpl());
-        implDaoHashMap.put("Conferenza", new ConferenzaDAOImpl());
-        implDaoHashMap.put("Presentazione", new PresentazioneDAOImpl());
-        implDaoHashMap.put("Rivista", new RivistaDAOImpl());
-        implDaoHashMap.put("Serie", new SerieDAOImpl());
-        implDaoHashMap.put("Utente", new UtenteDAOImpl());
-        implDaoHashMap.put("DisponibileA", new DisponibileADAOImpl());
-        implDaoHashMap.put("DisponibileL", new DisponibileLDAOImpl());
-        implDaoHashMap.put("DisponibileS", new DisponibileSDAOImpl());
-
-        tableViewHashMap.put("Libro", libroTableView);
-        tableViewHashMap.put("Articolo", articoloTableView);
-        tableViewHashMap.put("Acquisto", acquistoTableView);
-        tableViewHashMap.put("Conferenza", conferenzaTableView);
-        tableViewHashMap.put("Presentazione", presentazioneTableView);
-        tableViewHashMap.put("Rivista", rivistaTableView);
-        tableViewHashMap.put("Serie", serieTableView);
-        tableViewHashMap.put("Utente", utenteTableView);
-        tableViewHashMap.put("DisponibileA", disponibileATableView);
-        tableViewHashMap.put("DisponibileL", disponibileLTableView);
-        tableViewHashMap.put("DisponibileS", disponibileSTableView);
-
-        ricercaHashMap.put("Libro", (FXCollections.observableArrayList("Isbn", "Titolo", "Genere", "Autore", "Editore", "DataUscita", "NumPagine", "Materia", "Descrizione", "Fruizione", "Successivo", "Serie", "Presentazione")));
-        ricercaHashMap.put("Articolo", (FXCollections.observableArrayList("Doi", "Titolo", "Genere", "Autore", "Editore", "DataUscita", "NumPagine", "Lingua", "Conferenza", "Nomer", "Datar")));
-        ricercaHashMap.put("Acquisto", (FXCollections.observableArrayList("Coda", "Nome", "Tipo", "Url", "Indirizzo")));
-        ricercaHashMap.put("Conferenza", (FXCollections.observableArrayList("Codc", "Nome", "Struttura", "Indirizzo", "Datai", "Dataf", "Responsabile")));
-        ricercaHashMap.put("Presentazione", (FXCollections.observableArrayList("Codp", "Nome", "Indirizzo", "Data", "Tipo")));
-        ricercaHashMap.put("Rivista", (FXCollections.observableArrayList("Nome", "Data", "Responsabile", "Argomento")));
-        ricercaHashMap.put("Serie", (FXCollections.observableArrayList("Cods", "Nome", "NumLibri", "Completata")));
-        ricercaHashMap.put("Utente", (FXCollections.observableArrayList("Email", "Password", "DataIscrizione", "IsAdmin")));
-        ricercaHashMap.put("DisponibileA", FXCollections.observableArrayList("Coda", "Doi"));
-        ricercaHashMap.put("DisponibileL", FXCollections.observableArrayList("Coda", "Isbn"));
-        ricercaHashMap.put("DisponibileS", FXCollections.observableArrayList("Coda", "Cods"));
-
-//        cellEditEventHashMap = new HashMap<String, TableColumn.CellEditEvent>();
-//        cellEditEventHashMap.put("Libro", new TableColumn.CellEditEvent<Libro,String>(libroTableView,);
-    }
 }

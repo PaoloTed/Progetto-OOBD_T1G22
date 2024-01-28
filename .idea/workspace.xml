@@ -4,15 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0f3062c-e759-49ff-9312-578ab6d64d8e" name="Changes" comment="interfaccia 3">
+    <list default="true" id="f0f3062c-e759-49ff-9312-578ab6d64d8e" name="Changes" comment="interfaccia 4">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/HomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/HomeControllerAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/HomeControllerAdmin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/HomeControllerAdminTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/HomeControllerAdminTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/InfoUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/InfoUserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/NotificheController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/NotificheController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/WelcomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/WelcomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/welcomeFoto1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/SupportStage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/SupportStage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/homeStage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/homeStage.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/homeStageAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/homeStageAdmin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/infoUserStage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/infoUserStage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/notificheStage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/notificheStage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,39 +55,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "jdk.selected.JAVA_MODULE": "19",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Paolo/IdeaProjects/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/Images",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.42643678",
-    "settings.editor.selected.configurable": "vcs.Git",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;19&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Paolo/IdeaProjects/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/Images&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.42643678&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Paolo\IdeaProjects\Object-Orentation\LibreriaOnline\LibreriaOnlineJava\src\main\resources\Images" />
@@ -178,7 +181,8 @@
       <workItem from="1706022492373" duration="3328000" />
       <workItem from="1706033749679" duration="778000" />
       <workItem from="1706180287910" duration="895000" />
-      <workItem from="1706181204570" duration="12212000" />
+      <workItem from="1706181204570" duration="12485000" />
+      <workItem from="1706463344681" duration="7819000" />
     </task>
     <task id="LOCAL-00001" summary="importazione">
       <created>1698773198524</created>
@@ -319,14 +323,6 @@
       <option name="presentableId" value="LOCAL-00020" />
       <option name="project" value="LOCAL" />
       <updated>1699382050671</updated>
-    </task>
-    <task id="LOCAL-00029" summary="BUG GIULIO">
-      <option name="closed" value="true" />
-      <created>1699892070636</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1699892070636</updated>
     </task>
     <task id="LOCAL-00030" summary="inizio PrimaPaggina">
       <option name="closed" value="true" />
@@ -552,7 +548,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706198758845</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="interfaccia 4">
+      <option name="closed" value="true" />
+      <created>1706201151057</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1706201151057</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -587,7 +591,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="inizio PrimaPaggina" />
     <MESSAGE value="inizio PrimaPaggina vers 0.3" />
     <MESSAGE value="inizio PrimaPaggina vers 0.31" />
     <MESSAGE value="PICCOLA CORREZIONR" />
@@ -612,7 +615,8 @@
     <MESSAGE value="interfaccia" />
     <MESSAGE value="interfaccia 2" />
     <MESSAGE value="interfaccia 3" />
-    <option name="LAST_COMMIT_MESSAGE" value="interfaccia 3" />
+    <MESSAGE value="interfaccia 4" />
+    <option name="LAST_COMMIT_MESSAGE" value="interfaccia 4" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

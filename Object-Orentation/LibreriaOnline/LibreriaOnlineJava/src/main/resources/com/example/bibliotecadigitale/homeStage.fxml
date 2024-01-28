@@ -84,7 +84,7 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Text>
-      <Text fill="#2b2d30" layoutX="102.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qui potrai effettuare ricerche per visualizzare Libri e Serie">
+      <Text fill="#2b2d30" layoutX="102.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qui potrai effettuare ricerche per visualizzare Libri e Articoli Scientifici">
          <font>
             <Font name="Arial" size="17.0" />
          </font>

@@ -33,7 +33,7 @@ public class SupportStage
             Parent root = loader.load();
             stage = new Stage();
             stage.setScene(new Scene(root, 500, 500));
-            stage.getIcons().add(new Image("https://raw.githubusercontent.com/PaoloTed/Progetto-OOBD_T1G22/3388e4fb3e1e90d0792ee8abd540b0dbd3c50e91/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/Images/biblioteca.png"));
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/biblioteca.png")));
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
@@ -51,7 +51,7 @@ public class SupportStage
             Parent root = loader.load();
             stage = new Stage();
             stage.setScene(new Scene(root, larghezza, altezza));
-            stage.getIcons().add(new Image("https://raw.githubusercontent.com/PaoloTed/Progetto-OOBD_T1G22/3388e4fb3e1e90d0792ee8abd540b0dbd3c50e91/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/Images/biblioteca.png"));
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/biblioteca.png")));
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
@@ -67,7 +67,7 @@ public class SupportStage
             Parent root = loader.load();
             stage = new Stage();
             stage.setScene(new Scene(root, altezza, larghezza));
-            stage.getIcons().add(new Image("https://raw.githubusercontent.com/PaoloTed/Progetto-OOBD_T1G22/3388e4fb3e1e90d0792ee8abd540b0dbd3c50e91/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/Images/biblioteca.png"));
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/biblioteca.png")));
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
@@ -84,7 +84,7 @@ public class SupportStage
             Parent root = loader.load();
             stage = new Stage();
             stage.setScene(new Scene(root, 500, 500));
-            stage.getIcons().add(new Image("https://raw.githubusercontent.com/PaoloTed/Progetto-OOBD_T1G22/3388e4fb3e1e90d0792ee8abd540b0dbd3c50e91/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/Images/biblioteca.png"));
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/biblioteca.png")));
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
@@ -102,7 +102,7 @@ public class SupportStage
             Parent root = loader.load();
             stage = new Stage();
             stage.setScene(new Scene(root, 250, 250));
-            stage.getIcons().add(new Image("https://raw.githubusercontent.com/PaoloTed/Progetto-OOBD_T1G22/3388e4fb3e1e90d0792ee8abd540b0dbd3c50e91/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/Images/biblioteca.png"));
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/biblioteca.png")));
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
@@ -120,7 +120,7 @@ public class SupportStage
             Parent root = loader.load();
             stage = new Stage();
             stage.setScene(new Scene(root, 500, 500));
-            stage.getIcons().add(new Image("https://raw.githubusercontent.com/PaoloTed/Progetto-OOBD_T1G22/3388e4fb3e1e90d0792ee8abd540b0dbd3c50e91/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/Images/biblioteca.png"));
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/biblioteca.png")));
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
@@ -139,7 +139,7 @@ public class SupportStage
             Parent root = loader.load();
             stage = new Stage();
             stage.setScene(new Scene(root, 250, 250));
-            stage.getIcons().add(new Image("https://raw.githubusercontent.com/PaoloTed/Progetto-OOBD_T1G22/3388e4fb3e1e90d0792ee8abd540b0dbd3c50e91/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/Images/biblioteca.png"));
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/biblioteca.png")));
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
@@ -157,7 +157,7 @@ public class SupportStage
             Parent root = loader.load();
             stage = new Stage();
             stage.setScene(new Scene(root, 250, 250));
-            stage.getIcons().add(new Image("https://raw.githubusercontent.com/PaoloTed/Progetto-OOBD_T1G22/3388e4fb3e1e90d0792ee8abd540b0dbd3c50e91/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/Images/biblioteca.png"));
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/biblioteca.png")));
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
@@ -176,7 +176,7 @@ public class SupportStage
             Parent root = loader.load();
             stage = new Stage();
             stage.setScene(new Scene(root, 1000, 500));
-            stage.getIcons().add(new Image("https://raw.githubusercontent.com/PaoloTed/Progetto-OOBD_T1G22/3388e4fb3e1e90d0792ee8abd540b0dbd3c50e91/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/Images/biblioteca.png"));
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/biblioteca.png")));
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
@@ -194,7 +194,7 @@ public class SupportStage
             Parent root = loader.load();
             stage = new Stage();
             stage.setScene(new Scene(root, 1000, 500));
-            stage.getIcons().add(new Image("https://raw.githubusercontent.com/PaoloTed/Progetto-OOBD_T1G22/3388e4fb3e1e90d0792ee8abd540b0dbd3c50e91/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/Images/biblioteca.png"));
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/biblioteca.png")));
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
@@ -212,7 +212,7 @@ public class SupportStage
             Parent root = loader.load();
             stage = new Stage();
             stage.setScene(new Scene(root, 1000, 500));
-            stage.getIcons().add(new Image("https://raw.githubusercontent.com/PaoloTed/Progetto-OOBD_T1G22/3388e4fb3e1e90d0792ee8abd540b0dbd3c50e91/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/Images/biblioteca.png"));
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/biblioteca.png")));
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
@@ -245,7 +245,7 @@ public class SupportStage
             stage = new Stage();
             stage.setScene(new Scene(root, 300, 100));
             stage.setAlwaysOnTop(true);
-            stage.getIcons().add(new Image("https://raw.githubusercontent.com/PaoloTed/Progetto-OOBD_T1G22/3388e4fb3e1e90d0792ee8abd540b0dbd3c50e91/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/Images/biblioteca.png"));
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/biblioteca.png")));
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();

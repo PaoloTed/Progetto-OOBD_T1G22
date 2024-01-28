@@ -38,7 +38,7 @@ public class NotificheController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Utente utente = Utente.getUtente();
         String email = utente.getEmail();
-        imageLibriSfondo.setImage(new Image("https://github.com/PaoloTed/Progetto-OOBD_T1G22/blob/ac7be5ac469ac35571de4c86bbfd02eb9872b2be/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/Images/libri800x900.png?raw=true"));
+        imageLibriSfondo.setImage(new Image(getClass().getResourceAsStream("/Images/libri800x900.png")));
         try {
             Connessione connessione = new Connessione();
             String query = "select * from show_preferiti('" + email + "');";
