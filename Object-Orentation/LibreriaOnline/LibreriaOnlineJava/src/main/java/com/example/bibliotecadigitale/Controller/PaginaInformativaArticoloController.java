@@ -47,7 +47,7 @@ public class PaginaInformativaArticoloController
     @FXML
     private Button buttonRivistaId;
     public void goToHome(ActionEvent event) {
-        support.switchStage("homeStage.fxml", event, 900, 900);
+        support.switchStage("homeStage.fxml", event, 900, 800);
     }
 
     public void showInfoArticolo(ArticoloScientifico articlopassato) {
