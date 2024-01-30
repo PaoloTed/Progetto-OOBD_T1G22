@@ -780,15 +780,17 @@ public class HomeControllerAdminTest implements Initializable {
     }
 
     @FXML
-    private void onEditChangedConferenzaString(TableColumn.CellEditEvent<Conferenza, String> conferenzaStringCellEditEvent) {
+    private void onEditChangedConferenzaString(TableColumn.CellEditEvent conferenzaStringCellEditEvent) throws NoSuchFieldException {
         Conferenza conferenza = conferenzaTableView.getSelectionModel().getSelectedItem();
+        System.out.println(tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem().getClass().getDeclaredField("codC"));
+        conferenzaStringCellEditEvent.toString();
         conferenzaTableView.getItems().remove(conferenza);
         String tipoColumn = conferenzaStringCellEditEvent.getTableColumn().getId();
-        String valoreColumnString = conferenzaStringCellEditEvent.getNewValue();
-        System.out.println("set" + tipoColumn.substring(0,1).toUpperCase() + tipoColumn.substring(1,tipoColumn.indexOf("C")));
+        String valoreColumnString = (String) conferenzaStringCellEditEvent.getNewValue();
+        String nomeMetodo = "set" + tipoColumn.substring(0, 1).toUpperCase() + tipoColumn.substring(1, tipoColumn.indexOf("C"));
         try {
-            conferenza.getClass().getMethod("set" + tipoColumn.substring(0,1).toUpperCase() + tipoColumn.substring(1,tipoColumn.indexOf("C")), String.class).invoke(conferenza, valoreColumnString);
-        } catch (Exception e){
+            conferenza.getClass().getMethod(nomeMetodo, String.class).invoke(conferenza, valoreColumnString);
+        } catch (Exception e) {
 
         }
 //        switch (tipoColumn) {
@@ -811,8 +813,8 @@ public class HomeControllerAdminTest implements Initializable {
 //                conferenza.setResponsabile(valoreColumnString);
 //                break;
 //        }
-            conferenzaTableView.getItems().add(conferenza);
-            conferenzaTableView.refresh();
+        conferenzaTableView.getItems().add(conferenza);
+        conferenzaTableView.refresh();
 
     }
 
@@ -921,5 +923,21 @@ public class HomeControllerAdminTest implements Initializable {
         }
         serieTableView.getItems().add(serie);
         serieTableView.refresh();
+    }
+
+    @FXML
+    private void onEditChangedString(TableColumn.CellEditEvent conferenzaStringCellEditEvent) throws NoSuchFieldException {
+        String scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
+        String className = tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem().getClass().toString();
+        tableViewHashMap.get(scelta).getItems().remove(tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem());
+        System.out.println(tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem().getClass().getField("codC"));
+        String tipoColumn = conferenzaStringCellEditEvent.getTableColumn().getId();
+        String valoreColumnString = (String) conferenzaStringCellEditEvent.getNewValue();
+        String nomeMetodo = "set" + tipoColumn.substring(0, 1).toUpperCase() + tipoColumn.substring(1, tipoColumn.indexOf(className));
+        try {
+            tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem().getClass().getMethod(nomeMetodo, String.class).invoke(tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem(), valoreColumnString);
+        } catch (Exception e) {
+        }
+
     }
 }
