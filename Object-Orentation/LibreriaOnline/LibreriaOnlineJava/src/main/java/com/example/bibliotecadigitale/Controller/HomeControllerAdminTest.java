@@ -18,6 +18,7 @@ import javafx.util.converter.BooleanStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -30,8 +31,6 @@ public class HomeControllerAdminTest implements Initializable {
     @FXML
     private Button buttonCerca;
 
-    @FXML
-    private Button buttonInserisci;
     @FXML
     private TextField idBarSearch;
     private SupportStage support = new SupportStage();
@@ -193,11 +192,32 @@ public class HomeControllerAdminTest implements Initializable {
 
     //Table view disponibileS
     @FXML
-    public TableView<DisponibileS> disponibileSTableView;
+    private TableView<DisponibileS> disponibileSTableView;
     @FXML
     private TableColumn<DisponibileS, Integer> codaDisponibileS;
     @FXML
     private TableColumn<DisponibileS, Integer> codsDisponibileS;
+
+    @FXML
+    private MenuItem itemInsert1;
+    @FXML
+    private MenuItem itemInsert2;
+    @FXML
+    private MenuItem itemInsert3;
+    @FXML
+    private MenuItem itemInsert4;
+    @FXML
+    private MenuItem itemInsert5;
+    @FXML
+    private MenuItem itemInsert6;
+    @FXML
+    private MenuItem itemInsert7;
+    @FXML
+    private MenuItem itemInsert8;
+    @FXML
+    private MenuItem itemInsert9;
+    @FXML
+    private MenuItem itemInsert10;
 
     private HashMap<String, TableView> tableViewHashMap = new HashMap<String, TableView>();
     private HashMap<String, ObservableList<String>> ricercaHashMap = new HashMap<String, ObservableList<String>>();
@@ -209,7 +229,6 @@ public class HomeControllerAdminTest implements Initializable {
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         imageLibriSfondo.setImage(new Image(getClass().getResourceAsStream("/Images/libri800x900.png")));
-        buttonInserisci.setVisible(false);
         //inizializzo le colonne della tabella libro
         isbnLibro.setCellValueFactory(new PropertyValueFactory<Libro, String>("ISBN"));
         isbnLibro.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -508,7 +527,6 @@ public class HomeControllerAdminTest implements Initializable {
         tableViewHashMap.get(scelta).setVisible(true);
         buttonView.setDisable(!sceltaBool);
 
-        buttonInserisci.setVisible(sceltaBool);
         buttonInsert.setDisable(sceltaBool);
         idBarSearch.setDisable(sceltaBool);
         comboBoxRicerca.setDisable(sceltaBool);
@@ -530,6 +548,17 @@ public class HomeControllerAdminTest implements Initializable {
         isbnDisponibileL.setEditable(sceltaBool);
         codaDisponibileS.setEditable(sceltaBool);
         codsDisponibileS.setEditable(sceltaBool);
+
+        itemInsert1.setVisible(sceltaBool);
+        itemInsert2.setVisible(sceltaBool);
+        itemInsert3.setVisible(sceltaBool);
+        itemInsert4.setVisible(sceltaBool);
+        itemInsert5.setVisible(sceltaBool);
+        itemInsert6.setVisible(sceltaBool);
+        itemInsert7.setVisible(sceltaBool);
+        itemInsert8.setVisible(sceltaBool);
+        itemInsert9.setVisible(sceltaBool);
+        itemInsert10.setVisible(sceltaBool);
     }
 
     @FXML
@@ -756,28 +785,35 @@ public class HomeControllerAdminTest implements Initializable {
         conferenzaTableView.getItems().remove(conferenza);
         String tipoColumn = conferenzaStringCellEditEvent.getTableColumn().getId();
         String valoreColumnString = conferenzaStringCellEditEvent.getNewValue();
-        switch (tipoColumn) {
-            case "nomeConfernza":
-                conferenza.setNome(valoreColumnString);
-                break;
-            case "strutturaConferenza":
-                conferenza.setStruttura(valoreColumnString);
-                break;
-            case "indirizzoConferenza":
-                conferenza.setIndirizzo(valoreColumnString);
-                break;
-            case "dataiConferenza":
-                conferenza.setDataI(valoreColumnString);
-                break;
-            case "datafConferenza":
-                conferenza.setDataF(valoreColumnString);
-                break;
-            case "responsabileConferenza":
-                conferenza.setResponsabile(valoreColumnString);
-                break;
+        System.out.println("set" + tipoColumn.substring(0,1).toUpperCase() + tipoColumn.substring(1,tipoColumn.indexOf("C")));
+        try {
+            conferenza.getClass().getMethod("set" + tipoColumn.substring(0,1).toUpperCase() + tipoColumn.substring(1,tipoColumn.indexOf("C")), String.class).invoke(conferenza, valoreColumnString);
+        } catch (Exception e){
+
         }
-        conferenzaTableView.getItems().add(conferenza);
-        conferenzaTableView.refresh();
+//        switch (tipoColumn) {
+//            case "nomeConfernza":
+//                conferenza.setNome(valoreColumnString);
+//                break;
+//            case "strutturaConferenza":
+//                conferenza.setStruttura(valoreColumnString);
+//                break;
+//            case "indirizzoConferenza":
+//                conferenza.setIndirizzo(valoreColumnString);
+//                break;
+//            case "dataiConferenza":
+//                conferenza.setDataI(valoreColumnString);
+//                break;
+//            case "datafConferenza":
+//                conferenza.setDataF(valoreColumnString);
+//                break;
+//            case "responsabileConferenza":
+//                conferenza.setResponsabile(valoreColumnString);
+//                break;
+//        }
+            conferenzaTableView.getItems().add(conferenza);
+            conferenzaTableView.refresh();
+
     }
 
     @FXML
