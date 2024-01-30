@@ -62,7 +62,7 @@ public class SignUpController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        imageLibriSfondo.setImage(new Image(getClass().getResourceAsStream("/images/libriSfondo.jpg")));
+        imageLibriSfondo.setImage(new Image(getClass().getResourceAsStream("/Images/libri500x900.png")));
     }
 }
 

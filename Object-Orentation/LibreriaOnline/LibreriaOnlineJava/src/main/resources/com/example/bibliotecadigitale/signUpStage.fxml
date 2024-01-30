@@ -14,7 +14,6 @@
    <children>
       <ImageView fx:id="imageLibriSfondo" fitHeight="497.0" fitWidth="497.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true">
          <image>
-            <Image url="@../../../../../../../../../../Users/Paolo%20Tedesco/Downloads/libri800x900.png" />
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcf3eb" height="288.0" layoutX="69.0" layoutY="122.0" stroke="#de5f4f" strokeType="INSIDE" strokeWidth="3.0" width="369.0" />

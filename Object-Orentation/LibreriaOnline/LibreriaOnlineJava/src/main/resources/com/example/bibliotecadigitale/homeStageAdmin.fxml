@@ -29,7 +29,7 @@
         <Button fx:id="buttonMostra" disable="true" layoutX="660.0" layoutY="130.0" mnemonicParsing="false" text="Mostra" />
         <TableView fx:id="libroTableView" editable="true" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0" prefHeight="535.0" prefWidth="700.0">
             <columns>
-                <TableColumn fx:id="isbnLibro" prefWidth="95.9999771118164" text="ISBN" />
+                <TableColumn fx:id="isbnLibro" onEditCommit="#onEditChangedLibroString" prefWidth="95.9999771118164" text="ISBN" />
                 <TableColumn fx:id="titoloLibro" onEditCommit="#onEditChangedLibroString" prefWidth="300.6666717529297" text="Titolo" />
                 <TableColumn fx:id="genereLibro" onEditCommit="#onEditChangedLibroString" prefWidth="104.66671752929688" text="Genere" />
                 <TableColumn fx:id="numPagineLibro" onEditCommit="#onEditChangedLibroInt" prefWidth="104.66671752929688" text="NumeroPagine" />
@@ -206,7 +206,7 @@
             </contextMenu>
         </TableView>
         <Text layoutX="130.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cosa Vuoi ricercare ?" wrappingWidth="136.91082000732422" />
-        <Text layoutX="308.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Premi Con Il Tasto Destro Del Mouse Per Le Azioni" wrappingWidth="277.5774459838867" />
+        <Text layoutX="199.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Premi Con Il Tasto Destro Del Mouse Per Le Azioni, premi Enter per confermare le modifiche" wrappingWidth="502.37743377685547" />
         <ComboBox fx:id="comboBoxTableView" layoutX="117.0" layoutY="130.0" onAction="#selezioneSceltaTableView" prefWidth="150.0" />
         <Button fx:id="buttonView" layoutX="450.0" layoutY="80.0" mnemonicParsing="false" onAction="#sceltaView" prefHeight="25.0" prefWidth="54.0" text="View" />
       <Button fx:id="buttonInserisci" layoutX="805.0" layoutY="210.0" mnemonicParsing="false" onAction="#insertDao" text="Inserisci" visible="false" />

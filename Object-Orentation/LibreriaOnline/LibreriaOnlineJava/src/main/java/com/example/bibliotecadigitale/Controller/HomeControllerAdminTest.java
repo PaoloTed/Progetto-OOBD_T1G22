@@ -25,9 +25,8 @@ import java.util.HashMap;
 import java.util.ResourceBundle;
 
 public class HomeControllerAdminTest implements Initializable {
-    //todo se l'acquisto non ha una conferenza esce zero invece di null, risolvere
-    public String scelta = "libro";
-    public String sceltaInsertView = "insert";
+    private String scelta = "libro";
+    private String sceltaInsertView = "insert";
     @FXML
     private Button buttonCerca;
 
@@ -48,164 +47,163 @@ public class HomeControllerAdminTest implements Initializable {
 
     //Table view libro
     @FXML
-    public TableView<Libro> libroTableView;
+    private TableView<Libro> libroTableView;
     @FXML
-    TableColumn<Libro, String> isbnLibro;
+    private TableColumn<Libro, String> isbnLibro;
     @FXML
-    TableColumn<Libro, String> titoloLibro;
+    private TableColumn<Libro, String> titoloLibro;
     @FXML
-    TableColumn<Libro, String> genereLibro;
+    private TableColumn<Libro, String> genereLibro;
     @FXML
-    TableColumn<Libro, Integer> numPagineLibro;
+    private TableColumn<Libro, Integer> numPagineLibro;
     @FXML
-    TableColumn<Libro, String> materiaLibro;
+    private TableColumn<Libro, String> materiaLibro;
     @FXML
-    TableColumn<Libro, String> descrizioneLibro;
+    private TableColumn<Libro, String> descrizioneLibro;
     @FXML
-    TableColumn<Libro, String> fruizioneLibro;
+    private TableColumn<Libro, String> fruizioneLibro;
     @FXML
-    TableColumn<Libro, String> editoreLibro;
+    private TableColumn<Libro, String> editoreLibro;
     @FXML
-    TableColumn<Libro, String> autoreLibro;
+    private TableColumn<Libro, String> autoreLibro;
     @FXML
-    TableColumn<Libro, String> dataUscitaLibro;
+    private TableColumn<Libro, String> dataUscitaLibro;
     @FXML
-    TableColumn<Libro, String> successivoLibro;
+    private TableColumn<Libro, String> successivoLibro;
     @FXML
-    TableColumn<Libro, Integer> serieLibro;
+    private TableColumn<Libro, Integer> serieLibro;
     @FXML
-    TableColumn<Libro, Integer> presentazioneLibro;
+    private TableColumn<Libro, Integer> presentazioneLibro;
 
     //Table view articolo
     @FXML
-    public TableView<ArticoloScientifico> articoloTableView;
+    private TableView<ArticoloScientifico> articoloTableView;
     @FXML
-    TableColumn<ArticoloScientifico, String> doiArticolo;
+    private TableColumn<ArticoloScientifico, String> doiArticolo;
     @FXML
-    TableColumn<ArticoloScientifico, String> titoloArticolo;
+    private TableColumn<ArticoloScientifico, String> titoloArticolo;
     @FXML
-    TableColumn<ArticoloScientifico, String> genereArticolo;
+    private TableColumn<ArticoloScientifico, String> genereArticolo;
     @FXML
-    TableColumn<ArticoloScientifico, Integer> numPagineArticolo;
+    private TableColumn<ArticoloScientifico, Integer> numPagineArticolo;
     @FXML
-    TableColumn<ArticoloScientifico, String> dataUscitaArticolo;
+    private TableColumn<ArticoloScientifico, String> dataUscitaArticolo;
     @FXML
-    TableColumn<ArticoloScientifico, String> descrizioneArticolo;
+    private TableColumn<ArticoloScientifico, String> descrizioneArticolo;
     @FXML
-    TableColumn<ArticoloScientifico, String> fruizioneArticolo;
+    private TableColumn<ArticoloScientifico, String> fruizioneArticolo;
     @FXML
-    TableColumn<ArticoloScientifico, String> editoreArticolo;
+    private TableColumn<ArticoloScientifico, String> editoreArticolo;
     @FXML
-    TableColumn<ArticoloScientifico, String> autoreArticolo;
+    private TableColumn<ArticoloScientifico, String> autoreArticolo;
     @FXML
-    TableColumn<ArticoloScientifico, String> linguaArticolo;
+    private TableColumn<ArticoloScientifico, String> linguaArticolo;
     @FXML
-    TableColumn<ArticoloScientifico, Integer> conferenzaArticolo;
+    private TableColumn<ArticoloScientifico, Integer> conferenzaArticolo;
     @FXML
-    TableColumn<ArticoloScientifico, String> nomerArticolo;
+    private TableColumn<ArticoloScientifico, String> nomerArticolo;
     @FXML
-    TableColumn<ArticoloScientifico, String> datarArticolo;
+    private TableColumn<ArticoloScientifico, String> datarArticolo;
 
     //Table view acquisto
     @FXML
     public TableView<Acquisto> acquistoTableView;
     @FXML
-    TableColumn<Acquisto, Integer> codaAcquisto;
+    private TableColumn<Acquisto, Integer> codaAcquisto;
     @FXML
-    TableColumn<Acquisto, String> nomeAcquisto;
+    private TableColumn<Acquisto, String> nomeAcquisto;
     @FXML
-    TableColumn<Acquisto, String> tipoAcquisto;
+    private TableColumn<Acquisto, String> tipoAcquisto;
     @FXML
-    TableColumn<Acquisto, String> urlAcquisto;
+    private TableColumn<Acquisto, String> urlAcquisto;
     @FXML
-    TableColumn<Acquisto, String> indirizzoAcquisto;
+    private TableColumn<Acquisto, String> indirizzoAcquisto;
 
     //Table view conferenza
     @FXML
     public TableView<Conferenza> conferenzaTableView;
     @FXML
-    TableColumn<Conferenza, Integer> codcConferenza;
+    private TableColumn<Conferenza, Integer> codcConferenza;
     @FXML
-    TableColumn<Conferenza, String> nomeConfernza;
+    private TableColumn<Conferenza, String> nomeConfernza;
     @FXML
-    TableColumn<Conferenza, String> strutturaConferenza;
+    private TableColumn<Conferenza, String> strutturaConferenza;
     @FXML
-    TableColumn<Conferenza, String> indirizzoConferenza;
+    private TableColumn<Conferenza, String> indirizzoConferenza;
     @FXML
-    TableColumn<Conferenza, String> dataiConferenza;
+    private TableColumn<Conferenza, String> dataiConferenza;
     @FXML
-    TableColumn<Conferenza, String> datafConferenza;
+    private TableColumn<Conferenza, String> datafConferenza;
     @FXML
-    TableColumn<Conferenza, String> responsabileConferenza;
+    private TableColumn<Conferenza, String> responsabileConferenza;
 
     //Table view presentazione
     @FXML
     public TableView<Presentazione> presentazioneTableView;
     @FXML
-    TableColumn<Presentazione, Integer> codpPresentazione;
+    private TableColumn<Presentazione, Integer> codpPresentazione;
     @FXML
-    TableColumn<Presentazione, String> nomePresentazione;
+    private TableColumn<Presentazione, String> nomePresentazione;
     @FXML
-    TableColumn<Presentazione, String> indirizzoPresentazione;
+    private TableColumn<Presentazione, String> indirizzoPresentazione;
     @FXML
-    TableColumn<Presentazione, String> dataPresentazione;
+    private TableColumn<Presentazione, String> dataPresentazione;
     @FXML
-    TableColumn<Presentazione, String> tipoPresentazione;
+    private TableColumn<Presentazione, String> tipoPresentazione;
 
     //Table view rivista
     @FXML
     public TableView<Rivista> rivistaTableView;
     @FXML
-    TableColumn<Rivista, String> nomeRivista;
+    private TableColumn<Rivista, String> nomeRivista;
     @FXML
-    TableColumn<Rivista, String> dataRivista;
+    private TableColumn<Rivista, String> dataRivista;
     @FXML
-    TableColumn<Rivista, String> responsabileRivista;
+    private TableColumn<Rivista, String> responsabileRivista;
     @FXML
-    TableColumn<Rivista, String> argomentoRivista;
+    private TableColumn<Rivista, String> argomentoRivista;
 
     //Table view serie
     @FXML
     public TableView<Serie> serieTableView;
     @FXML
-    TableColumn<Serie, Integer> codsSerie;
+    private TableColumn<Serie, Integer> codsSerie;
     @FXML
-    TableColumn<Serie, String> nomeSerie;
+    private TableColumn<Serie, String> nomeSerie;
     @FXML
-    TableColumn<Serie, Integer> numLibriSerie;
+    private TableColumn<Serie, Integer> numLibriSerie;
     @FXML
-    TableColumn<Serie, Boolean> completataSerie;
+    private TableColumn<Serie, Boolean> completataSerie;
 
     //Table view disponibileA
     @FXML
     public TableView<DisponibileA> disponibileATableView;
     @FXML
-    TableColumn<DisponibileA, Integer> codaDisponibileA;
+    private TableColumn<DisponibileA, Integer> codaDisponibileA;
     @FXML
-    TableColumn<DisponibileA, String> doiDisponibileA;
+    private TableColumn<DisponibileA, String> doiDisponibileA;
 
     //Table view disponibileL
     @FXML
     public TableView<DisponibileL> disponibileLTableView;
     @FXML
-    TableColumn<DisponibileL, Integer> codaDisponibileL;
+    private TableColumn<DisponibileL, Integer> codaDisponibileL;
     @FXML
-    TableColumn<DisponibileL, String> isbnDisponibileL;
+    private TableColumn<DisponibileL, String> isbnDisponibileL;
 
     //Table view disponibileS
     @FXML
     public TableView<DisponibileS> disponibileSTableView;
     @FXML
-    TableColumn<DisponibileS, Integer> codaDisponibileS;
+    private TableColumn<DisponibileS, Integer> codaDisponibileS;
     @FXML
-    TableColumn<DisponibileS, Integer> codsDisponibileS;
+    private TableColumn<DisponibileS, Integer> codsDisponibileS;
 
     private HashMap<String, TableView> tableViewHashMap = new HashMap<String, TableView>();
     private HashMap<String, ObservableList<String>> ricercaHashMap = new HashMap<String, ObservableList<String>>();
     private HashMap<String, DAO> implDaoHashMap = new HashMap<String, DAO>();
 
     private HashMap<String, Object> objectHashMap = new HashMap<String, Object>();
-
     @FXML
     private ImageView imageLibriSfondo;
 
@@ -302,7 +300,6 @@ public class HomeControllerAdminTest implements Initializable {
         responsabileConferenza.setCellValueFactory(new PropertyValueFactory<Conferenza, String>("responsabile"));
         responsabileConferenza.setCellFactory(TextFieldTableCell.forTableColumn());
 
-
         //inizializzo le colonne della tabella presentazione
         codpPresentazione.setCellValueFactory(new PropertyValueFactory<Presentazione, Integer>("codP"));
         codpPresentazione.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
@@ -373,7 +370,6 @@ public class HomeControllerAdminTest implements Initializable {
         comboBoxRicerca.setItems(FXCollections.observableArrayList("Isbn", "Titolo", "Genere", "Autore", "Editore", "DataUscita", "NumPagine", "Materia", "Descrizione", "Fruizione", "Successivo", "Serie", "Presentazione", "Lingua"));
         comboBoxRicerca.getSelectionModel().selectFirst();
 
-
         objectHashMap.put("Libro", new Libro());
         objectHashMap.put("Articolo", new ArticoloScientifico());
         objectHashMap.put("Acquisto", new Acquisto());
@@ -419,8 +415,6 @@ public class HomeControllerAdminTest implements Initializable {
         ricercaHashMap.put("DisponibileS", FXCollections.observableArrayList("Coda", "Cods"));
 
         sceltaSetter("insert");
-//        cellEditEventHashMap = new HashMap<String, TableColumn.CellEditEvent>();
-//        cellEditEventHashMap.put("Libro", new TableColumn.CellEditEvent<Libro,String>(libroTableView,);
     }
 
     @FXML
@@ -443,9 +437,7 @@ public class HomeControllerAdminTest implements Initializable {
         }
 
         //Ricerca e visualizzazione risultati libri
-        //todo Non serve si puo levare arraylistHashMap
         ArrayList arrayList = implDaoHashMap.get(scelta).getRicerca(modRicerca, titoloRicerche);
-        //arrayListHashMap.put(scelta, implDaoHashMap.get(scelta).getRicerca(modRicerca, titoloRicerche));
         tableViewHashMap.get(scelta).getItems().clear();
         tableViewHashMap.get(scelta).setVisible(true);
         idBarSearch.clear();
@@ -540,7 +532,8 @@ public class HomeControllerAdminTest implements Initializable {
         codsDisponibileS.setEditable(sceltaBool);
     }
 
-    public void selezioneSceltaTableView(ActionEvent event) {
+    @FXML
+    private void selezioneSceltaTableView(ActionEvent event) {
         scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
         if (scelta == null) {
             support.messageStage("Selezionare prima un tipo di ricerca");
@@ -552,7 +545,6 @@ public class HomeControllerAdminTest implements Initializable {
         comboBoxRicerca.setItems(ricercaHashMap.get(scelta));
         comboBoxRicerca.getSelectionModel().selectFirst();
     }
-
 
     @FXML
     private void deleteDao() {
@@ -894,6 +886,4 @@ public class HomeControllerAdminTest implements Initializable {
         serieTableView.getItems().add(serie);
         serieTableView.refresh();
     }
-
-
 }

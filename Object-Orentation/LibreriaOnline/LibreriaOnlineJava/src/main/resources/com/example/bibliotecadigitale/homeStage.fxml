@@ -55,7 +55,7 @@
       </TableView>
       <Button fx:id="buttonLibro" layoutX="118.0" layoutY="130.0" mnemonicParsing="false" onAction="#selezioneLibro" prefHeight="25.0" prefWidth="58.0" style="-fx-background-color: #2b2d30;" text="Libro" textFill="WHITE" />
       <Button fx:id="buttonArticolo" layoutX="198.0" layoutY="130.0" mnemonicParsing="false" onAction="#selezioneArticolo" style="-fx-background-color: #2b2d30;" text="Articolo" textFill="WHITE" />
-      <TableView fx:id="articoloTableView" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0" prefHeight="535.0" prefWidth="700.0" style="-fx-background-insets: red;">
+      <TableView fx:id="articoloTableView" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0" prefHeight="535.0" prefWidth="700.0">
          <columns>
             <TableColumn fx:id="doiColumn" prefWidth="95.9999771118164" text="DOI" />
             <TableColumn fx:id="titoloAColumn" prefWidth="300.6666717529297" text="Titolo" />
