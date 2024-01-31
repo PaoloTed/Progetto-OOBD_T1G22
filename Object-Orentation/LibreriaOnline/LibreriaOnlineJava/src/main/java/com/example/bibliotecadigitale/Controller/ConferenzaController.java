@@ -1,9 +1,7 @@
 package com.example.bibliotecadigitale.Controller;
 
 import com.example.bibliotecadigitale.Connection.ConferenzaDAOImpl;
-import com.example.bibliotecadigitale.Connection.PresentazioneDAOImpl;
 import com.example.bibliotecadigitale.Model.Conferenza;
-import com.example.bibliotecadigitale.Model.Presentazione;
 import com.example.bibliotecadigitale.SupportStage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,10 +10,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
-import java.awt.*;
-
-
-public class ConferenzaStageController {
+public class ConferenzaController {
     @FXML
     private Text textCodCId;
     @FXML

@@ -1,23 +1,14 @@
 package com.example.bibliotecadigitale.Controller;
 
 import com.example.bibliotecadigitale.Connection.PresentazioneDAOImpl;
-import com.example.bibliotecadigitale.Connection.UtenteDAOImpl;
-import com.example.bibliotecadigitale.DAO.PresentazioneDAO;
-import com.example.bibliotecadigitale.Model.Libro;
 import com.example.bibliotecadigitale.Model.Presentazione;
-import com.example.bibliotecadigitale.Model.Utente;
 import com.example.bibliotecadigitale.SupportStage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.concurrent.ForkJoinPool;
-
-public class PresentazioneStageController {
+public class PresentazioneController {
 
     @FXML
     private Text textCodPId;

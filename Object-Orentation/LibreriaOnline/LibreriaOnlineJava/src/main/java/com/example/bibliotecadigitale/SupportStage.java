@@ -88,8 +88,8 @@ public class SupportStage
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
-            PaginaInformativaLibroController paginaInformativaLibroController = loader.getController();
-            paginaInformativaLibroController.showInfoLibro(libro);
+            LibroInformativaController libroInformativaController = loader.getController();
+            libroInformativaController.showInfoLibro(libro);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -106,8 +106,8 @@ public class SupportStage
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
-            PresentazioneStageController presentazioneStageController = loader.getController();
-            presentazioneStageController.showInfoPresentazione(presentazione);
+            PresentazioneController presentazioneController = loader.getController();
+            presentazioneController.showInfoPresentazione(presentazione);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -124,8 +124,8 @@ public class SupportStage
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
-            PaginaInformativaArticoloController paginaInformativaArticoloController = loader.getController();
-            paginaInformativaArticoloController.showInfoArticolo(Articolo);
+            ArticoloInformativaController articoloInformativaController = loader.getController();
+            articoloInformativaController.showInfoArticolo(Articolo);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -143,8 +143,8 @@ public class SupportStage
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
-            ConferenzaStageController conferenzaStageController = loader.getController();
-            conferenzaStageController.showInfoConferenza(CodC);
+            ConferenzaController conferenzaController = loader.getController();
+            conferenzaController.showInfoConferenza(CodC);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -161,8 +161,8 @@ public class SupportStage
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
-            RivistaStageController rivistaStageController = loader.getController();
-            rivistaStageController.showInfoRivista(Data ,Nome );
+            RivistaController rivistaController = loader.getController();
+            rivistaController.showInfoRivista(Data ,Nome );
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -180,8 +180,8 @@ public class SupportStage
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
-            AquistoStageController aquistoStageController = loader.getController();
-            aquistoStageController.showInfoAquisto(ISBN);
+            AquistoController aquistoController = loader.getController();
+            aquistoController.showInfoAquisto(ISBN);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -198,8 +198,8 @@ public class SupportStage
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
-            AquistoStageController aquistoStageController = loader.getController();
-            aquistoStageController.showInfoArtcolo(Doi);
+            AquistoController aquistoController = loader.getController();
+            aquistoController.showInfoArtcolo(Doi);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -216,8 +216,8 @@ public class SupportStage
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
-            SerieStageController serieStageController = loader.getController();
-            serieStageController.showSerie(CodS);
+            SerieController serieController = loader.getController();
+            serieController.showSerie(CodS);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -250,7 +250,7 @@ public class SupportStage
             stage.setResizable(false);
             stage.show();
 
-            errorStageController controller = loader.getController();
+            MessageController controller = loader.getController();
             controller.setText(tipoErrore);
         } catch (IOException e) {
             throw new RuntimeException(e);

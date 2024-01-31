@@ -1,19 +1,14 @@
 package com.example.bibliotecadigitale.Controller;
 
-import com.example.bibliotecadigitale.Connection.UtenteDAOImpl;
 import com.example.bibliotecadigitale.Model.ArticoloScientifico;
 
-import com.example.bibliotecadigitale.Model.Libro;
-import com.example.bibliotecadigitale.Model.Utente;
 import com.example.bibliotecadigitale.SupportStage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 
-import java.util.ArrayList;
-
-public class PaginaInformativaArticoloController
+public class ArticoloInformativaController
 {
     private SupportStage support = new SupportStage();
     private ArticoloScientifico ArticoloMain;

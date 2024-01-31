@@ -3,14 +3,12 @@ package com.example.bibliotecadigitale.Controller;
 import com.example.bibliotecadigitale.Connection.*;
 import com.example.bibliotecadigitale.Model.*;
 import com.example.bibliotecadigitale.SupportStage;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -18,7 +16,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class AquistoStageController implements Initializable {
+public class AquistoController implements Initializable {
 
     public SupportStage support = new SupportStage();
     @FXML

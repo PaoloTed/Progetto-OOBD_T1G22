@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.AquistoStageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.AquistoController">
    <children>
       <Button fx:id="buttonClose" layoutX="228.0" layoutY="461.0" mnemonicParsing="false" onAction="#close" text="Close" />
       <TableView fx:id="tableView" fixedCellSize="0.0" layoutX="14.0" layoutY="58.0" prefHeight="395.0" prefWidth="471.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0">

@@ -17,7 +17,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class InfoUserController implements Initializable {
+public class UserInformativaController implements Initializable {
     @FXML
     public Label labelEmail;
     @FXML

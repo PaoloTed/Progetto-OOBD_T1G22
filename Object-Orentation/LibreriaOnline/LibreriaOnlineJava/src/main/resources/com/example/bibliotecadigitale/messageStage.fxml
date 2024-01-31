@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="100.0" maxWidth="100.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="350.0" style="-fx-border-color: #de5f4f; -fx-background-color: #fdf3ea; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.errorStageController">
+<AnchorPane maxHeight="100.0" maxWidth="100.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="350.0" style="-fx-border-color: #de5f4f; -fx-background-color: #fdf3ea; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.MessageController">
    <children>
       <Button layoutX="125.0" layoutY="61.0" minWidth="100.0" mnemonicParsing="false" onAction="#okButton" style="-fx-background-color: #2b2d30;" text="Ok" textFill="WHITE" AnchorPane.leftAnchor="125.0" />
       <Text fx:id="textError" layoutX="14.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Messaggio" textOrigin="CENTER" />

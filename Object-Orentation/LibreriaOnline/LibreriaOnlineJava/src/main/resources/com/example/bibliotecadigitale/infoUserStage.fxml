@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="500.0" maxWidth="500.0" minHeight="500.0" minWidth="500.0" prefHeight="500.0" prefWidth="500" style="-fx-background-color: #fdf3ea; -fx-border-width: 3; -fx-border-color: #de5f4f;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.InfoUserController">
+<AnchorPane maxHeight="500.0" maxWidth="500.0" minHeight="500.0" minWidth="500.0" prefHeight="500.0" prefWidth="500" style="-fx-background-color: #fdf3ea; -fx-border-width: 3; -fx-border-color: #de5f4f;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.UserInformativaController">
    <children>
       <ImageView fx:id="imageLibriSfondo" fitHeight="500.0" fitWidth="495.0" layoutX="2.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
          <image>

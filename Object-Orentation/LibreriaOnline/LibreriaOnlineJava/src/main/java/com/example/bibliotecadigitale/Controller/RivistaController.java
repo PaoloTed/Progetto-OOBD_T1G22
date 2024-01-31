@@ -1,8 +1,6 @@
 package com.example.bibliotecadigitale.Controller;
 
-import com.example.bibliotecadigitale.Connection.PresentazioneDAOImpl;
 import com.example.bibliotecadigitale.Connection.RivistaDAOImpl;
-import com.example.bibliotecadigitale.Model.Presentazione;
 import com.example.bibliotecadigitale.Model.Rivista;
 import com.example.bibliotecadigitale.SupportStage;
 import javafx.event.ActionEvent;
@@ -11,7 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class RivistaStageController {
+public class RivistaController {
 
     @FXML
     private Text textDataId;

@@ -38,9 +38,6 @@ public class HomeController implements Initializable {
     @FXML
     private ImageView imageLibriSfondo;
 
-
-
-
     @FXML
     public TableView<Libro> libroTableView;
 
@@ -90,7 +87,6 @@ public class HomeController implements Initializable {
         buttonLibro.setDisable(true);
         buttonArticolo.setStyle("-fx-border-color: grey; -fx-text-fill: white; -fx-background-color: #2b2d30;");
         imageLibriSfondo.setImage(new Image(getClass().getResourceAsStream("/Images/libri800x900.png")));
-
 
         idComboBox.setItems(FXCollections.observableArrayList("Isbn", "Titolo", "Autore", "Genere", "Editore"));
         idComboBox.getSelectionModel().selectFirst();
@@ -164,15 +160,6 @@ public class HomeController implements Initializable {
         support.switchStage("welcomeStage.fxml", event);
     }
 
-//    public void checkEnter(ActionEvent event) {
-//        idComboBox.getScene().setOnKeyPressed(e -> {
-//            if (e.getCode() == KeyCode.A) {
-//                System.out.println("The 'A' key was pressed");
-//            }
-//        });
-//    }
-
-
     public void goToNotifiche(ActionEvent event) {
         support.switchStage("notificheStage.fxml", event, 900, 800);
     }
@@ -238,7 +225,6 @@ public class HomeController implements Initializable {
         libroTableView.setVisible(false);
         buttonLibro.setDisable(false);
         buttonLibro.setStyle("-fx-border-color: grey; -fx-text-fill: white; -fx-background-color: #2b2d30;");
-
     }
 
     @FXML
@@ -247,5 +233,4 @@ public class HomeController implements Initializable {
         stage.close();
         support.switchStage("homeStageAdmin.fxml", 900, 800);
     }
-
 }

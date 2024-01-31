@@ -13,11 +13,10 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class SerieStageController implements Initializable {
+public class SerieController implements Initializable {
 
     public SupportStage support = new SupportStage();
 

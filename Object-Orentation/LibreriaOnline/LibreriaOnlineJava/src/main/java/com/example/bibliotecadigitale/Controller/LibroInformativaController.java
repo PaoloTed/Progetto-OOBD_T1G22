@@ -13,7 +13,7 @@ import javafx.scene.text.Text;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class PaginaInformativaLibroController {
+public class LibroInformativaController {
     private SupportStage support = new SupportStage();
     private Libro libroMain;
 

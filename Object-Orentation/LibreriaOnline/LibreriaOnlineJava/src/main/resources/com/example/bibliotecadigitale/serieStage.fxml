@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.SerieStageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.SerieController">
    <children>
       <Button fx:id="buttonClose" layoutX="14.0" layoutY="461.0" mnemonicParsing="false" onAction="#close" text="Close" />
       <TableView fx:id="libroTableView" fixedCellSize="0.0" layoutX="129.0" layoutY="146.0" prefHeight="276.0" prefWidth="742.0" AnchorPane.leftAnchor="129.0" AnchorPane.rightAnchor="129.0">
