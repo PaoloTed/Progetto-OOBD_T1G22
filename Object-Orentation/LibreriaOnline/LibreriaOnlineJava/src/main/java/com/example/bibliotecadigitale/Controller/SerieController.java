@@ -79,7 +79,15 @@ public class SerieController implements Initializable {
     }
 
     public void goToPaginaInformativaLibro(ActionEvent event)  {
-
+        SupportStage support = new SupportStage();
+        Libro libro = libroTableView.getSelectionModel().getSelectedItem();
+        if (libro == null) {
+            support.messageStage("Selezionare prima un libro");
+            return;
+        }
+        Stage stage = (Stage) libroTableView.getScene().getWindow();
+        stage.close();
+        support.switchStage("paginaInformativaLibro.fxml", libro);
     }
 
 
