@@ -14,7 +14,6 @@ public class MessageController {
     public void setText( String errore) {
         textError.setText(errore);
     }
-
     public void okButton(ActionEvent actionEvent) {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.close();

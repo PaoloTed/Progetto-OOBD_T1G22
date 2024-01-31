@@ -57,7 +57,6 @@ public class LibroInformativaController {
         support.switchStage("homeStage.fxml", event, 900, 800);
     }
 
-    //todo  sistemata la grafica
     public void showInfoLibro(Libro libroPassato) {
         UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
         libroMain = libroPassato;
@@ -88,7 +87,7 @@ public class LibroInformativaController {
             } else {
                 buttonSerieId.disableProperty().setValue(false);
             }
-            buttonSerieId.setText(""+libroPassato.getSerie());
+            buttonSerieId.setText("" + libroPassato.getSerie());
             textMessagioId.setVisible(true);
         } else {
             buttonSerieId.setVisible(false);
@@ -119,9 +118,7 @@ public class LibroInformativaController {
         buttonSerieId.disableProperty().setValue(true);
     }
 
-
-    public void goToPresentazione(ActionEvent event)
-    {
+    public void goToPresentazione(ActionEvent event) {
         support.switchStage("presentazioneStage.fxml", libroMain.getPresentazione());
     }
 
@@ -132,8 +129,7 @@ public class LibroInformativaController {
         libroMain = libroSuccessivo;
     }
 
-    public void goToAquisto(ActionEvent event)
-   {
-     support.switchStageAquistiLibri("aquistoStage.fxml", libroMain.getISBN() );
-   }
+    public void goToAquisto(ActionEvent event) {
+        support.switchStageAquistiLibri("aquistoStage.fxml", libroMain.getISBN());
+    }
 }

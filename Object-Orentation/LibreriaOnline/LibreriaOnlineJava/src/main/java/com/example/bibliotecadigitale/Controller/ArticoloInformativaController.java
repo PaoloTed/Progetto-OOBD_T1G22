@@ -8,8 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 
-public class ArticoloInformativaController
-{
+public class ArticoloInformativaController {
     private SupportStage support = new SupportStage();
     private ArticoloScientifico ArticoloMain;
 
@@ -41,6 +40,7 @@ public class ArticoloInformativaController
     private Text textMessagioId;
     @FXML
     private Button buttonRivistaId;
+
     public void goToHome(ActionEvent event) {
         support.switchStage("homeStage.fxml", event, 900, 800);
     }
@@ -59,36 +59,30 @@ public class ArticoloInformativaController
         txtEditoreId.setText(articlopassato.getEditore());
         if (articlopassato.getConferenza() != 0) {
             buttonConferenzaId.setVisible(true);
-        }
-        else
-        {
+        } else {
             buttonConferenzaId.setVisible(false);
         }
 
-        if ((articlopassato.getNomer() != null)&&(articlopassato.getDatar()!= null)) {
+        if ((articlopassato.getNomer() != null) && (articlopassato.getDatar() != null)) {
             textMessagioId.setVisible(true);
             buttonRivistaId.setVisible(true);
 
-        }
-        else
-        {
+        } else {
             textMessagioId.setVisible(false);
             buttonRivistaId.setVisible(false);
 
         }
     }
-    public void goToConferenza(ActionEvent event)
-    {
-       support.switchStage("conferenzaStage.fxml", ArticoloMain.getConferenza());
+
+    public void goToConferenza(ActionEvent event) {
+        support.switchStage("conferenzaStage.fxml", ArticoloMain.getConferenza());
     }
 
-    public void goToRivista(ActionEvent event)
-    {
-        support.switchStage("rivistaStage.fxml", ArticoloMain.getDatar() , ArticoloMain.getNomer());
+    public void goToRivista(ActionEvent event) {
+        support.switchStage("rivistaStage.fxml", ArticoloMain.getDatar(), ArticoloMain.getNomer());
     }
 
-   public void goToAquisto(ActionEvent event)
-   {
-       support.switchStageAquistiArticoli("aquistoStage.fxml", ArticoloMain.getDoi());
-   }
+    public void goToAquisto(ActionEvent event) {
+        support.switchStageAquistiArticoli("aquistoStage.fxml", ArticoloMain.getDoi());
+    }
 }

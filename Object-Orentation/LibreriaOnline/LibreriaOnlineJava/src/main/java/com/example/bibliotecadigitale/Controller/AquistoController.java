@@ -21,7 +21,6 @@ public class AquistoController implements Initializable {
     public SupportStage support = new SupportStage();
     @FXML
     public TableView<Acquisto> tableView;
-
     @FXML
     TableColumn<Acquisto, Integer> codAColumn;
     @FXML
@@ -32,10 +31,8 @@ public class AquistoController implements Initializable {
     TableColumn<Acquisto, String> IndirizzoColumn;
 
 
-
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //inizializzo le colonne della tabella libro
-
         codAColumn.setCellValueFactory(new PropertyValueFactory<Acquisto, Integer>("codA"));
         nomeColumn.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("nome"));
         urlColumn.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("url"));
@@ -43,22 +40,20 @@ public class AquistoController implements Initializable {
 
     }
 
-    public void showInfoAquisto(String ISBN)
-    {
+    public void showInfoAquisto(String ISBN) {
         DisponibileLDAOImpl disponibileLDAO = new DisponibileLDAOImpl();
 
-            ArrayList<DisponibileL> DisponibileLarrey;
+        ArrayList<DisponibileL> DisponibileLarrey;
         try {
-            DisponibileLarrey= disponibileLDAO.getAcquisti(ISBN);
+            DisponibileLarrey = disponibileLDAO.getAcquisti(ISBN);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        while (!DisponibileLarrey.isEmpty())
-        {
+        while (!DisponibileLarrey.isEmpty()) {
             AcquistoDAOImpl acquistoDAO = new AcquistoDAOImpl();
-            Acquisto acquisto ;
+            Acquisto acquisto;
             try {
-                acquisto =acquistoDAO.get(DisponibileLarrey.get(0).getCodA());
+                acquisto = acquistoDAO.get(DisponibileLarrey.get(0).getCodA());
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
@@ -69,22 +64,20 @@ public class AquistoController implements Initializable {
     }
 
     //non testao ops
-    public void showInfoArtcolo(String doi)
-    {
+    public void showInfoArtcolo(String doi) {
         DisponibileADAOImpl disponibileADAO = new DisponibileADAOImpl();
 
         ArrayList<DisponibileA> DisponibileLarrey;
         try {
-            DisponibileLarrey= disponibileADAO.getAquisti(doi);
+            DisponibileLarrey = disponibileADAO.getAquisti(doi);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        while (!DisponibileLarrey.isEmpty())
-        {
+        while (!DisponibileLarrey.isEmpty()) {
             AcquistoDAOImpl acquistoDAO = new AcquistoDAOImpl();
-            Acquisto acquisto ;
+            Acquisto acquisto;
             try {
-                acquisto =acquistoDAO.get(DisponibileLarrey.get(0).getCodA());
+                acquisto = acquistoDAO.get(DisponibileLarrey.get(0).getCodA());
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
@@ -102,6 +95,4 @@ public class AquistoController implements Initializable {
         stage.close();
 
     }
-
-
 }

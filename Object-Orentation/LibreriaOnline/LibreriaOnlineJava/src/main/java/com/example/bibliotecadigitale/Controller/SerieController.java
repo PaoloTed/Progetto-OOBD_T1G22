@@ -45,7 +45,6 @@ public class SerieController implements Initializable {
     TableColumn<Libro, String> genereColumn;
 
 
-
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //inizializzo le colonne della tabella libro
 
@@ -57,13 +56,12 @@ public class SerieController implements Initializable {
 
     }
 
-    public void showSerie(int CodS)
-    {
+    public void showSerie(int CodS) {
         SerieDAOImpl serieDAO = new SerieDAOImpl();
         Serie serie = serieDAO.get(String.valueOf(CodS));
-        codSTxtId.setText("codice serie: "+String.valueOf(serie.getCodS()));
-        nomeTxtId.setText("Nome serie: "+serie.getNome());
-        numLibTxtId.setText("numero libri: "+String.valueOf(serie.getNumLibri()));
+        codSTxtId.setText("codice serie: " + String.valueOf(serie.getCodS()));
+        nomeTxtId.setText("Nome serie: " + serie.getNome());
+        numLibTxtId.setText("numero libri: " + String.valueOf(serie.getNumLibri()));
         if (serie.getCompletata())
             completaTxtId.setText("stato serie:Completata");
         else
@@ -73,12 +71,9 @@ public class SerieController implements Initializable {
         ArrayList<Libro> libri = libroDAO.getRicerca("serie", String.valueOf(CodS));
         libroTableView.getItems().setAll(libri);
 
-
-
-
     }
 
-    public void goToPaginaInformativaLibro(ActionEvent event)  {
+    public void goToPaginaInformativaLibro(ActionEvent event) {
         SupportStage support = new SupportStage();
         Libro libro = libroTableView.getSelectionModel().getSelectedItem();
         if (libro == null) {
@@ -90,13 +85,10 @@ public class SerieController implements Initializable {
         support.switchStage("paginaInformativaLibro.fxml", libro);
     }
 
-
     public void close(ActionEvent event) {
         SupportStage support = new SupportStage();
         Stage stage = (Stage) codSTxtId.getScene().getWindow();
         stage.close();
 
     }
-
-
 }

@@ -44,7 +44,6 @@ public class ConferenzaController {
 
     }
 
-
     public void close(ActionEvent event) {
         SupportStage support = new SupportStage();
         Stage stage = (Stage)  textCodCId.getScene().getWindow();
