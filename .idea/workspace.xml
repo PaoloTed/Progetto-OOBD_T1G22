@@ -4,20 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0f3062c-e759-49ff-9312-578ab6d64d8e" name="Changes" comment="Aggiustamenti 6">
-      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/AquistoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/AquistoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/ArticoloInformativaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/ArticoloInformativaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/ConferenzaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/ConferenzaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/HomeControllerAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/HomeControllerAdmin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/HomeControllerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/HomeControllerTest3.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/LibriAutoreController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/LibroInformativaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/LibroInformativaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/MessageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/homeStageTest.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/homeStageTest3.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/infoUserStageTest2.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/libriAutore.fxml" beforeDir="false" />
+    <list default="true" id="f0f3062c-e759-49ff-9312-578ab6d64d8e" name="Changes" comment="Aggiustamenti 7">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/HomeControllerAdminTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/HomeControllerAdminTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,7 +177,7 @@
       <workItem from="1706607719404" duration="88000" />
       <workItem from="1706607929322" duration="3403000" />
       <workItem from="1706626647288" duration="7304000" />
-      <workItem from="1706714607332" duration="1449000" />
+      <workItem from="1706714607332" duration="3501000" />
     </task>
     <task id="LOCAL-00001" summary="importazione">
       <created>1698773198524</created>
@@ -329,14 +318,6 @@
       <option name="presentableId" value="LOCAL-00020" />
       <option name="project" value="LOCAL" />
       <updated>1699382050671</updated>
-    </task>
-    <task id="LOCAL-00035" summary="LibroDAO">
-      <option name="closed" value="true" />
-      <created>1700588093117</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1700588093117</updated>
     </task>
     <task id="LOCAL-00036" summary="LibroDAO Magari funzionasse">
       <option name="closed" value="true" />
@@ -562,7 +543,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706715568726</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="Aggiustamenti 7">
+      <option name="closed" value="true" />
+      <created>1706716336301</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1706716336301</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -597,7 +586,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Pippo baudo" />
     <MESSAGE value="PICCOLO fix" />
     <MESSAGE value="mannac o buccacc" />
     <MESSAGE value="yeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" />
@@ -622,7 +610,8 @@
     <MESSAGE value="Aggiustamenti 3" />
     <MESSAGE value="Aggiustamenti 5" />
     <MESSAGE value="Aggiustamenti 6" />
-    <option name="LAST_COMMIT_MESSAGE" value="Aggiustamenti 6" />
+    <MESSAGE value="Aggiustamenti 7" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aggiustamenti 7" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

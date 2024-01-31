@@ -926,18 +926,59 @@ public class HomeControllerAdminTest implements Initializable {
     }
 
     @FXML
-    private void onEditChangedString(TableColumn.CellEditEvent conferenzaStringCellEditEvent) throws NoSuchFieldException {
+    private void onEditChangedStrings(TableColumn.CellEditEvent conferenzaStringCellEditEvent) {
+        onEditChanged(conferenzaStringCellEditEvent, String.class);
+    }
+    @FXML
+    private void onEditChangedInt(TableColumn.CellEditEvent conferenzaStringCellEditEvent) {
+        onEditChanged(conferenzaStringCellEditEvent, int.class);
+    }
+    @FXML
+    private void onEditChangedBool(TableColumn.CellEditEvent conferenzaStringCellEditEvent) {
+        onEditChanged(conferenzaStringCellEditEvent, Boolean.class);
+    }
+
+    @FXML
+    private void onEditChanged(TableColumn.CellEditEvent conferenzaStringCellEditEvent, Class classe) {
         String scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
         String className = tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem().getClass().toString();
         tableViewHashMap.get(scelta).getItems().remove(tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem());
-        System.out.println(tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem().getClass().getField("codC"));
         String tipoColumn = conferenzaStringCellEditEvent.getTableColumn().getId();
         String valoreColumnString = (String) conferenzaStringCellEditEvent.getNewValue();
         String nomeMetodo = "set" + tipoColumn.substring(0, 1).toUpperCase() + tipoColumn.substring(1, tipoColumn.indexOf(className));
         try {
-            tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem().getClass().getMethod(nomeMetodo, String.class).invoke(tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem(), valoreColumnString);
+            tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem().getClass().getMethod(nomeMetodo, classe).invoke(tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem(), valoreColumnString);
         } catch (Exception e) {
         }
-
     }
+
+//    @FXML
+//    private void onEditChangedinteger(TableColumn.CellEditEvent conferenzaStringCellEditEvent) throws NoSuchFieldException {
+//        String scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
+//        String className = tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem().getClass().toString();
+//        tableViewHashMap.get(scelta).getItems().remove(tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem());
+////        System.out.println(tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem().getClass().getField("codC"));
+//        String tipoColumn = conferenzaStringCellEditEvent.getTableColumn().getId();
+//        int valoreColumnInt = (int) conferenzaStringCellEditEvent.getNewValue();
+//        String nomeMetodo = "set" + tipoColumn.substring(0, 1).toUpperCase() + tipoColumn.substring(1, tipoColumn.indexOf(className));
+//        try {
+//            tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem().getClass().getMethod(nomeMetodo, int.class).invoke(tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem(), valoreColumnInt);
+//        } catch (Exception e) {
+//        }
+//    }
+//
+//    @FXML
+//    private void onEditChangedBools(TableColumn.CellEditEvent conferenzaStringCellEditEvent) throws NoSuchFieldException {
+//        String scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
+//        String className = tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem().getClass().toString();
+//        tableViewHashMap.get(scelta).getItems().remove(tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem());
+////        System.out.println(tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem().getClass().getField("codC"));
+//        String tipoColumn = conferenzaStringCellEditEvent.getTableColumn().getId();
+//        Boolean valoreColumnBoolean = (Boolean) conferenzaStringCellEditEvent.getNewValue();
+//        String nomeMetodo = "set" + tipoColumn.substring(0, 1).toUpperCase() + tipoColumn.substring(1, tipoColumn.indexOf(className));
+//        try {
+//            tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem().getClass().getMethod(nomeMetodo, Boolean.class).invoke(tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem(), valoreColumnBoolean);
+//        } catch (Exception e) {
+//        }
+//    }
 }
