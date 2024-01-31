@@ -9,6 +9,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -19,6 +21,8 @@ import java.util.ResourceBundle;
 public class AquistoController implements Initializable {
 
     public SupportStage support = new SupportStage();
+    @FXML
+    private ImageView imageLibriSfondo;
     @FXML
     public TableView<Acquisto> tableView;
     @FXML
@@ -37,6 +41,9 @@ public class AquistoController implements Initializable {
         nomeColumn.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("nome"));
         urlColumn.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("url"));
         IndirizzoColumn.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("indirizzo"));
+
+        imageLibriSfondo.setImage(new Image(getClass().getResourceAsStream("/Images/libri800x900.png")));
+
 
     }
 

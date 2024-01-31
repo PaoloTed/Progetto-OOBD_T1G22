@@ -5,13 +5,23 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.SerieController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="900.0" style="-fx-border-color: #de5f4f; -fx-border-width: 7; -fx-background-color: #fdf3ea;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.SerieController">
    <children>
-      <Button fx:id="buttonClose" layoutX="14.0" layoutY="461.0" mnemonicParsing="false" onAction="#close" text="Close" />
-      <TableView fx:id="libroTableView" fixedCellSize="0.0" layoutX="129.0" layoutY="146.0" prefHeight="276.0" prefWidth="742.0" AnchorPane.leftAnchor="129.0" AnchorPane.rightAnchor="129.0">
+      <ImageView fx:id="imageLibriSfondo" fitHeight="795.0" fitWidth="900.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../../Downloads/libri800x900.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcf3eb" height="665.0" layoutX="93.0" layoutY="92.0" stroke="#de5f4f" strokeWidth="2.0" width="706.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcf3eb" height="59.0" layoutX="90.0" layoutY="24.0" stroke="#de5f4f" strokeWidth="2.0" width="708.0" />
+      <Button fx:id="buttonClose" layoutX="14.0" layoutY="749.0" mnemonicParsing="false" onAction="#close" style="-fx-background-color: #2b2d30;" text="Close" textFill="WHITE"/>
+      <TableView fx:id="libroTableView" fixedCellSize="0.0" layoutX="129.0" layoutY="146.0" prefHeight="600.0" prefWidth="642.0" AnchorPane.bottomAnchor="83.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="103.0" AnchorPane.topAnchor="175.0">
          <columns>
             <TableColumn fx:id="isbnColumn" prefWidth="95.9999771118164" text="ISBN" />
             <TableColumn fx:id="titoloColumn" prefWidth="300.6666717529297" text="Titolo" />
@@ -27,9 +37,9 @@
             </ContextMenu>
          </contextMenu>
       </TableView>
-      <Text fx:id="codSTxtId" layoutX="23.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CodS" />
-      <Text fx:id="nomeTxtId" layoutX="129.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome" />
-      <Text fx:id="numLibTxtId" layoutX="759.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero Libri" textAlignment="RIGHT" wrappingWidth="82.193359375" />
-      <Text fx:id="completaTxtId" layoutX="484.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Completa" />
+      <Text fx:id="codSTxtId" layoutX="97.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CodS" />
+      <Text fx:id="nomeTxtId" layoutX="427.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome" />
+      <Text fx:id="numLibTxtId" layoutX="709.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero Libri" textAlignment="RIGHT" wrappingWidth="82.193359375" />
+      <Text fx:id="completaTxtId" layoutX="417.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Completa" />
    </children>
 </AnchorPane>

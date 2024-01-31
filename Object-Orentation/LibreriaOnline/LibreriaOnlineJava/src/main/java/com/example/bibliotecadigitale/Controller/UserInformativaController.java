@@ -2,6 +2,7 @@ package com.example.bibliotecadigitale.Controller;
 
 import com.example.bibliotecadigitale.Connection.SerieDAOImpl;
 import com.example.bibliotecadigitale.Connection.UtenteDAOImpl;
+import com.example.bibliotecadigitale.Model.Libro;
 import com.example.bibliotecadigitale.Model.Serie;
 import com.example.bibliotecadigitale.Model.Utente;
 import com.example.bibliotecadigitale.SupportStage;
@@ -12,6 +13,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -111,9 +113,22 @@ public class UserInformativaController implements Initializable {
         }
     }
 
+    public void goToPaginaInformativaSerie(ActionEvent event) {
+        Serie serie = tableView.getSelectionModel().getSelectedItem();
+        if (serie == null) {
+            support.messageStage("Selezionare prima una serie");
+            return;
+        }
+        Stage stage = (Stage) labelEmail.getScene().getWindow();
+        stage.close();
+        support.switchStageSerieStage("serieStage.fxml", serie.getCodS());
+
+    }
+
     public void back_goToHome(ActionEvent event) {
         support.switchStage("homeStage.fxml", event, 900, 800);
     }
+
 
 
 }

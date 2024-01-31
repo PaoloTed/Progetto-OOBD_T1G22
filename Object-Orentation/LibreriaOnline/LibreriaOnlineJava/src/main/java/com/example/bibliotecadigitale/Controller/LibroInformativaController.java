@@ -77,7 +77,8 @@ public class LibroInformativaController {
             textMateriaId.setVisible(false);
         }
 
-        System.out.println(libroPassato.getSerie());
+
+
         if (libroPassato.getSerie() != 0) {
             buttonSerieId.setVisible(true);
             ArrayList<Integer> listaPreferiti = utenteDAO.searchPreferiti(Utente.getUtente().getEmail());
@@ -113,8 +114,8 @@ public class LibroInformativaController {
 
     public void setPreferito(ActionEvent event) {
         UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
-        utenteDAO.insertPreferiti(Utente.getUtente().getEmail(), libroMain.getSerie());
-        textMessagioId.setText("Libro aggiunto ai preferiti");
+        utenteDAO.insertPreferiti(Utente.getUtente().getEmail() , libroMain.getSerie());
+        textMessagioId.setText("Serie aggiunto ai preferiti");
         buttonSerieId.disableProperty().setValue(true);
     }
 

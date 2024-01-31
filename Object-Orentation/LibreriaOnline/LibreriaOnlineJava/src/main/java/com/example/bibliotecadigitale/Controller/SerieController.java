@@ -9,6 +9,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -29,6 +31,8 @@ public class SerieController implements Initializable {
     private Text numLibTxtId;
     @FXML
     private Text completaTxtId;
+    @FXML
+    private ImageView imageLibriSfondo;
 
     @FXML
     public TableView<Libro> libroTableView;
@@ -53,6 +57,7 @@ public class SerieController implements Initializable {
         autoreColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("autore"));
         editoreColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("editore"));
         genereColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("genere"));
+        imageLibriSfondo.setImage(new Image(getClass().getResourceAsStream("/Images/libri800x900.png")));
 
     }
 
@@ -86,9 +91,6 @@ public class SerieController implements Initializable {
     }
 
     public void close(ActionEvent event) {
-        SupportStage support = new SupportStage();
-        Stage stage = (Stage) codSTxtId.getScene().getWindow();
-        stage.close();
-
+        support.switchStage("homeStage.fxml", event, 900, 800);
     }
 }

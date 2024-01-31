@@ -175,7 +175,7 @@ public class SupportStage
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
             Parent root = loader.load();
             stage = new Stage();
-            stage.setScene(new Scene(root, 1000, 500));
+            stage.setScene(new Scene(root, 900, 800));
             stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/biblioteca.png")));
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
@@ -193,7 +193,7 @@ public class SupportStage
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
             Parent root = loader.load();
             stage = new Stage();
-            stage.setScene(new Scene(root, 1000, 500));
+            stage.setScene(new Scene(root, 900, 800));
             stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/biblioteca.png")));
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
@@ -211,7 +211,7 @@ public class SupportStage
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
             Parent root = loader.load();
             stage = new Stage();
-            stage.setScene(new Scene(root, 1000, 500));
+            stage.setScene(new Scene(root, 900, 800));
             stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/biblioteca.png")));
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
