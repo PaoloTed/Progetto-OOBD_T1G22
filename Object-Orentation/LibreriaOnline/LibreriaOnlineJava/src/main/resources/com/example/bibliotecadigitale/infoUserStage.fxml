@@ -28,7 +28,7 @@
             <Point3D />
          </rotationAxis>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdf3ea" height="344.0" layoutX="28.0" layoutY="85.0" stroke="#de5f4f" strokeType="INSIDE" strokeWidth="2.0" width="445.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdf3ea" height="380.0" layoutX="28.0" layoutY="85.0" stroke="#de5f4f" strokeType="INSIDE" strokeWidth="2.0" width="445.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdf3ea" height="47.0" layoutX="28.0" layoutY="14.0" stroke="#de5f4f" strokeType="INSIDE" strokeWidth="2.0" width="445.0" />
       <Label layoutX="34.0" layoutY="3.0" prefHeight="47.0" prefWidth="293.0" text="Pannello Informazioni Utente">
          <font>
@@ -52,7 +52,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Button fx:id="buttonBack" layoutX="28.0" layoutY="460.0" mnemonicParsing="false" onAction="#back_goToHome" style="-fx-background-color: #2b2d30; -fx-text-fill: white;" text="Back" />
+      <Button fx:id="buttonBack" layoutX="227.0" layoutY="428.0" mnemonicParsing="false" onAction="#back_goToHome" style="-fx-background-color: #2b2d30; -fx-text-fill: white;" text="Back" />
       <PasswordField fx:id="txtOldPassword" layoutX="87.0" layoutY="133.0" promptText="Vecchia Password" />
       <PasswordField fx:id="txtNewPassword" layoutX="236.0" layoutY="133.0" promptText="NuovaPassword" />
       <Label layoutX="85.0" layoutY="405.0" text="Per eliminare o vedere le informazioni della serie premici con il tasto destro">

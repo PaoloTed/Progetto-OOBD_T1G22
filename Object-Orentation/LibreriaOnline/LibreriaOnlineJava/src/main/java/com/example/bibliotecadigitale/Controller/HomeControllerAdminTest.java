@@ -619,8 +619,7 @@ public class HomeControllerAdminTest implements Initializable {
         String nomeMetodo = "set" + tipoColumn.substring(0, 1).toUpperCase() + tipoColumn.substring(1, tipoColumn.indexOf(scelta));
         try {
             tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem().getClass().getMethod(nomeMetodo, String.class).invoke(tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem(), valoreColumnInt);
-        } catch (Exception e) {
-        }
+        } catch (Exception e) {}
     }
 
     @FXML
@@ -631,8 +630,7 @@ public class HomeControllerAdminTest implements Initializable {
         String nomeMetodo = "set" + tipoColumn.substring(0, 1).toUpperCase() + tipoColumn.substring(1, tipoColumn.indexOf(scelta));
         try {
             tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem().getClass().getMethod(nomeMetodo, int.class).invoke(tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem(), valoreColumnInt);
-        } catch (Exception e) {
-        }
+        } catch (Exception e) {}
     }
 
     @FXML
@@ -643,8 +641,7 @@ public class HomeControllerAdminTest implements Initializable {
         String nomeMetodo = "set" + tipoColumn.substring(0, 1).toUpperCase() + tipoColumn.substring(1, tipoColumn.indexOf(scelta));
         try {
             tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem().getClass().getMethod(nomeMetodo, Boolean.class).invoke(tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem(), valoreColumnBoolean);
-        } catch (Exception e) {
-        }
+        } catch (Exception e) {}
     }
 
 //    @FXML
