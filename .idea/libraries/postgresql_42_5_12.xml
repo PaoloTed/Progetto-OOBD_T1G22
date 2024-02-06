@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="postgresql-42.5.11">
+  <library name="postgresql-42.5.12">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/Lib/postgresql-42.5.1.jar!/" />
     </CLASSES>

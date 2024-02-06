@@ -5,11 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f0f3062c-e759-49ff-9312-578ab6d64d8e" name="Changes" comment="Aggiustamenti 9">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/postgresql.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/postgresql_42_5_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/postgresql_42_5_11.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/postgresql_42_5_12.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Connection/ArticoloScientificoDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Connection/ArticoloScientificoDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Connection/Connessione.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Connection/Connessione.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/HomeControllerAdminTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/HomeControllerAdminTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/infoUserStage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/infoUserStage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/paginaInformativaLibro.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/paginaInformativaLibro.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/serieStage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/serieStage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/NotificheController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/NotificheController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/SupportStage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/SupportStage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/notificheStage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/notificheStage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +61,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.Main.executor": "Run",
-    "Downloaded.Files.Path.Enabled": "false",
+    "Downloaded.Files.Path.Enabled": "true",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
     "Repository.Attach.Sources": "false",
@@ -64,16 +73,16 @@
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "19",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Paolo/Universita/Programmi/SceneBuilder/SceneBuilder.exe",
+    "last_opened_file_path": "C:/Users/Paolo/Downloads/openjfx-21.0.2_windows-x64_bin-jmods.zip",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
+    "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.42643678",
-    "settings.editor.selected.configurable": "preferences.JavaFX",
+    "settings.editor.selected.configurable": "editor.preferences.appearance",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -128,6 +137,7 @@
     <attachedChunks>
       <set>
         <option value="jdk-19.0.2-corretto-19.0.2-3183f394aec4-f0552fc0" />
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
       </set>
     </attachedChunks>
   </component>
@@ -182,6 +192,8 @@
       <workItem from="1706626647288" duration="7304000" />
       <workItem from="1706714607332" duration="9461000" />
       <workItem from="1706781512979" duration="2451000" />
+      <workItem from="1707212332799" duration="511000" />
+      <workItem from="1707212861272" duration="6372000" />
     </task>
     <task id="LOCAL-00001" summary="importazione">
       <created>1698773198524</created>

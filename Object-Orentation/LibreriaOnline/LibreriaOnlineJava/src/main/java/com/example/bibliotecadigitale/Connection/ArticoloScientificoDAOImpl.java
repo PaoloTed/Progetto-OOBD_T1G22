@@ -2,8 +2,6 @@ package com.example.bibliotecadigitale.Connection;
 
 import com.example.bibliotecadigitale.DAO.ArticoloScientificoDAO;
 import com.example.bibliotecadigitale.Model.ArticoloScientifico;
-import com.example.bibliotecadigitale.Model.Libro;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,7 +10,7 @@ import java.util.List;
 public class ArticoloScientificoDAOImpl implements ArticoloScientificoDAO {
     public ArrayList<ArticoloScientifico> getRicerca(String tipoRicerca, String parolaChiave) {
         ArrayList<ArticoloScientifico> articoloScientificoFinded = new ArrayList<>();
-        String query = "";
+        String query;
         try {
             Connessione connessione = new Connessione();
             if(tipoRicerca.equalsIgnoreCase("numpagine")||tipoRicerca.equalsIgnoreCase("conferenza")){
@@ -56,7 +54,6 @@ public class ArticoloScientificoDAOImpl implements ArticoloScientificoDAO {
                 if(rs.getInt(11) > 0){
                     articolo.setConferenza(rs.getInt(11));
                 }
-                System.out.println(rs.getInt(11));
                 articolo.setNomer(rs.getString(12));
                 articolo.setDatar(rs.getString(13));
             }

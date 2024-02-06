@@ -20,9 +20,7 @@
          <contextMenu>
             <ContextMenu>
               <items>
-                <MenuItem mnemonicParsing="false" text="Vedi info Serie" />
-                  <MenuItem mnemonicParsing="false" text="Vedi info acquisto" />
-                  <MenuItem mnemonicParsing="false" onAction="#home" text="Vai ad acquisto" />
+                <MenuItem mnemonicParsing="false" onAction="#goToPaginaInformativaSerie" text="Vedi info Serie" />
                   <MenuItem mnemonicParsing="false" onAction="#eliminaPreferito" text="Elimina la serie dai preferiti" />
               </items>
             </ContextMenu>

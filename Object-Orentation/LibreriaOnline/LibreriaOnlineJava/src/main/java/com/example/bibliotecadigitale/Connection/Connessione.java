@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import javax.swing.filechooser.FileSystemView;
 
 public class Connessione {
-    public static String url = "";
-    public static String className = "";
-    public static String user = "";
-    public static String password = "";
+    private static String url = "";
+    private static String className = "";
+    private static String user = "";
+    private static String password = "";
     private static Connection con;
 
 

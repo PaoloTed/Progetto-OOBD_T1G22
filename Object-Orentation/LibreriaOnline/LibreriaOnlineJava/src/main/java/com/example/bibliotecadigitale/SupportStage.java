@@ -17,15 +17,14 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class SupportStage
-{
-    public SupportStage(){}
+public class SupportStage {
+    public SupportStage() {
+    }
 
 
     private Stage stage;
 
-    public void switchStage(String scenaNew,ActionEvent eventClose)
-    {
+    public void switchStage(String scenaNew, ActionEvent eventClose) {
         stage = (Stage) ((Node) eventClose.getSource()).getScene().getWindow();
         stage.close();
         try {
@@ -42,8 +41,7 @@ public class SupportStage
         }
     }
 
-    public void switchStage(String scenaNew, ActionEvent eventClose, int larghezza, int altezza)
-    {
+    public void switchStage(String scenaNew, ActionEvent eventClose, int larghezza, int altezza) {
         stage = (Stage) ((Node) eventClose.getSource()).getScene().getWindow();
         stage.close();
         try {
@@ -60,8 +58,8 @@ public class SupportStage
         }
 
     }
-    public void switchStage(String scenaNew, int altezza, int larghezza)
-    {
+
+    public void switchStage(String scenaNew, int altezza, int larghezza) {
         try {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
             Parent root = loader.load();
@@ -77,8 +75,7 @@ public class SupportStage
 
     }
 
-    public void switchStage(String scenaNew, Libro libro)
-    {
+    public void switchStage(String scenaNew, Libro libro) {
         try {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
             Parent root = loader.load();
@@ -95,8 +92,7 @@ public class SupportStage
         }
     }
 
-    public void switchStage(String scenaNew, String presentazione)
-    {
+    public void switchStage(String scenaNew, String presentazione) {
         try {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
             Parent root = loader.load();
@@ -113,8 +109,7 @@ public class SupportStage
         }
     }
 
-    public void switchStage(String scenaNew, ArticoloScientifico Articolo)
-    {
+    public void switchStage(String scenaNew, ArticoloScientifico Articolo) {
         try {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
             Parent root = loader.load();
@@ -132,8 +127,7 @@ public class SupportStage
     }
 
 
-    public void switchStage(String scenaNew, int CodC)
-    {
+    public void switchStage(String scenaNew, int CodC) {
         try {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
             Parent root = loader.load();
@@ -150,8 +144,7 @@ public class SupportStage
         }
     }
 
-    public void switchStage(String scenaNew, String Data, String Nome)
-    {
+    public void switchStage(String scenaNew, String Data, String Nome) {
         try {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
             Parent root = loader.load();
@@ -162,15 +155,14 @@ public class SupportStage
             stage.setResizable(false);
             stage.show();
             RivistaController rivistaController = loader.getController();
-            rivistaController.showInfoRivista(Data ,Nome );
+            rivistaController.showInfoRivista(Data, Nome);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
 
-    public void switchStageAquistiLibri(String scenaNew, String ISBN)
-    {
+    public void switchStageAquistiLibri(String scenaNew, String ISBN) {
         try {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
             Parent root = loader.load();
@@ -187,8 +179,7 @@ public class SupportStage
         }
     }
 
-    public void switchStageAquistiArticoli(String scenaNew, String Doi)
-    {
+    public void switchStageAquistiArticoli(String scenaNew, String Doi) {
         try {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
             Parent root = loader.load();
@@ -205,8 +196,7 @@ public class SupportStage
         }
     }
 
-    public void switchStageSerieStage(String scenaNew, int CodS)
-    {
+    public void switchStageSerieStage(String scenaNew, int CodS) {
         try {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
             Parent root = loader.load();
@@ -224,20 +214,16 @@ public class SupportStage
     }
 
 
-
-    public boolean checkEmailPassword(String email, String password)
-    {
+    public boolean checkEmailPassword(String email, String password) {
         //Implementare controllo sql injection
-        if( !email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$") || password.isEmpty() || email.isEmpty())
-        {
+        if (!email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$") || password.isEmpty() || email.isEmpty()) {
             return false;
         }
         return true;
     }
 
 
-    public void messageStage( String tipoErrore)
-    {
+    public void messageStage(String tipoErrore) {
         String scenaFxml = "messageStage.fxml";
         try {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaFxml)));
@@ -257,6 +243,8 @@ public class SupportStage
         }
     }
 
-    public Stage getStage() {return stage;}
+    public Stage getStage() {
+        return stage;
+    }
 
 }
