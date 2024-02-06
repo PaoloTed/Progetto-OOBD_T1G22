@@ -183,6 +183,10 @@ public class HomeController implements Initializable {
             support.messageStage("Selezionare prima un libro");
             return;
         }
+        if(libro.getSerie() == null){
+            support.messageStage("Il libro non fa parte di una serie");
+            return;
+        }
         Stage stage = (Stage) libroTableView.getScene().getWindow();
         stage.close();
         support.switchStageSerieStage("serieStage.fxml", libro.getSerie());

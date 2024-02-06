@@ -92,7 +92,7 @@ public class SupportStage {
         }
     }
 
-    public void switchStage(String scenaNew, String presentazione) {
+    public void switchStagePresentazione(String scenaNew, int presentazione) {
         try {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
             Parent root = loader.load();

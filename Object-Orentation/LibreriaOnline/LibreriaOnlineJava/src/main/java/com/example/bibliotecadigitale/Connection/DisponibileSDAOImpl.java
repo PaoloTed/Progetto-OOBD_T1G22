@@ -1,6 +1,7 @@
 package com.example.bibliotecadigitale.Connection;
 
 import com.example.bibliotecadigitale.DAO.DisponibileSDAO;
+import com.example.bibliotecadigitale.Model.DisponibileL;
 import com.example.bibliotecadigitale.Model.DisponibileS;
 
 import java.sql.ResultSet;
@@ -53,7 +54,21 @@ public class DisponibileSDAOImpl implements DisponibileSDAO {
 
     @Override
     public List<DisponibileS> getAll() throws SQLException {
-        return null;
+        ArrayList<DisponibileS> disponibileSFinded = new ArrayList<>();
+        try {
+            Connessione connessione = new Connessione();
+            String query = "SELECT coda,cods FROM disponibile_s;";
+            ResultSet rs = connessione.executeSearch(query);
+            DisponibileS disponibileS;
+            while (rs.next()) {
+                disponibileS = get(rs.getInt(1),rs.getInt(2));
+                disponibileSFinded.add(disponibileS);
+            }
+            rs.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return disponibileSFinded;
     }
 
     @Override

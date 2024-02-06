@@ -66,7 +66,7 @@ public class UserInformativaController implements Initializable {
         //Mostro le serie preferite dell'utente nella listView
         for (int i = 0; i < codPreferiti.size(); i++) {
             //Viene inserito nella listView il codice della serie e il suo nome
-            tableView.getItems().add(serieDAO.get(codPreferiti.get(i).toString()));
+            tableView.getItems().add(serieDAO.get(codPreferiti.get(i)));
         }
     }
 

@@ -15,7 +15,7 @@ public class DisponibileADAOImpl implements DisponibileADAO {
         DisponibileA disponibileA;
         try {
             Connessione connessione = new Connessione();
-            String query = "SELECT * FROM disponibile_a WHERE coda = '" + coda + "'AND doi = '" + doi +"';";
+            String query = "SELECT coda,doi FROM disponibile_a WHERE coda = " + coda + " AND doi = '" + doi +"';";
             ResultSet rs = connessione.executeSearch(query);
             disponibileA = new DisponibileA();
             while (rs.next()) {
@@ -83,7 +83,21 @@ public class DisponibileADAOImpl implements DisponibileADAO {
 
     @Override
     public List<DisponibileA> getAll() throws SQLException {
-        return null;
+        ArrayList<DisponibileA> disponibileAFinded = new ArrayList<>();
+        try {
+            Connessione connessione = new Connessione();
+            String query = "SELECT coda,doi FROM disponibile_a;";
+            ResultSet rs = connessione.executeSearch(query);
+            DisponibileA disponibileA;
+            while (rs.next()) {
+                disponibileA = get(rs.getInt(1),rs.getString(2));
+                disponibileAFinded.add(disponibileA);
+            }
+            rs.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return disponibileAFinded;
     }
 
     @Override

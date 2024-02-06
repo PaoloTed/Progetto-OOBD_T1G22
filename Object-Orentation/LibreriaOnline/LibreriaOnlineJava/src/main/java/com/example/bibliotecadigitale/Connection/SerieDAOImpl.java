@@ -2,21 +2,15 @@ package com.example.bibliotecadigitale.Connection;
 
 import com.example.bibliotecadigitale.DAO.SerieDAO;
 import com.example.bibliotecadigitale.Model.Serie;
-import com.example.bibliotecadigitale.Model.Utente;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.Instant;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.bibliotecadigitale.Model.Utente.getUtente;
-
 public class SerieDAOImpl implements SerieDAO {
     @Override
-    public Serie get(String cods) {
+    public Serie get(int cods) {
         Serie serie = null;
         try {
             Connessione connessione = new Connessione();
@@ -60,8 +54,27 @@ public class SerieDAOImpl implements SerieDAO {
     }
 
     @Override
-    public List<Serie> getAll() throws SQLException {
+    public Serie get(String cod) throws SQLException {
         return null;
+    }
+
+    @Override
+    public List<Serie> getAll() throws SQLException {
+        ArrayList<Serie> serieFinded = new ArrayList<>();
+        try {
+            Connessione connessione = new Connessione();
+            String query = "SELECT cods FROM serie;";
+            ResultSet rs = connessione.executeSearch(query);
+            Serie serie;
+            while (rs.next()) {
+                serie = get(rs.getInt(1));
+                serieFinded.add(serie);
+            }
+            rs.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return serieFinded;
     }
 
     @Override

@@ -67,7 +67,21 @@ public class ArticoloScientificoDAOImpl implements ArticoloScientificoDAO {
 
     @Override
     public List<ArticoloScientifico> getAll() throws SQLException {
-        return null;
+        ArrayList<ArticoloScientifico> articoloScientificoFinded = new ArrayList<>();
+        try {
+            Connessione connessione = new Connessione();
+            String query = "SELECT doi FROM articolo_scientifico;";
+            ResultSet rs = connessione.executeSearch(query);
+            ArticoloScientifico articolo;
+            while (rs.next()) {
+                articolo = get(rs.getString(1));
+                articoloScientificoFinded.add(articolo);
+            }
+            rs.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return articoloScientificoFinded;
     }
 
     @Override

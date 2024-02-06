@@ -57,8 +57,8 @@ public class LibroDAOImpl implements LibroDAO {
                 libro.setDataUscita(rs.getString(11));
                 libro.setLingua(rs.getString(12));
                 libro.setSuccessivo(rs.getString(13));
-                libro.setSerie(rs.getInt(14));
-                libro.setPresentazione(rs.getInt(15));
+                libro.setSerie(rs.getObject(14, Integer.class));
+                libro.setPresentazione(rs.getObject(15, Integer.class));
             }
             rs.close();
 
@@ -71,7 +71,21 @@ public class LibroDAOImpl implements LibroDAO {
 
     @Override
     public List<Libro> getAll() throws SQLException {
-        return null;
+        ArrayList<Libro> libroFinded = new ArrayList<>();
+        try {
+            Connessione connessione = new Connessione();
+            String query = "SELECT isbn FROM libro;";
+            ResultSet rs = connessione.executeSearch(query);
+            Libro libro;
+            while (rs.next()) {
+                libro = get(rs.getString(1));
+                libroFinded.add(libro);
+            }
+            rs.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return libroFinded;
     }
 
     @Override
@@ -91,8 +105,9 @@ public class LibroDAOImpl implements LibroDAO {
             String datauscita = libro.getDataUscita();
             String lingua = libro.getLingua();
             String successivo = libro.getSuccessivo();
-            int presentazione = libro.getPresentazione();
-            String query = "INSERT INTO libro VALUES ('" + isbn + "','" + titolo + "','" + genere + "'," + numeroPagine + ",'" + tipo + "','" + materia + "','" + descrizione + "','" + fruizione + "','" + editore + "','" + autore + "','" + datauscita + "','" + lingua + "','" + successivo + "'," + presentazione + ");";
+            Integer presentazione = libro.getPresentazione();
+            Integer serie = libro.getSerie();
+            String query = "INSERT INTO libro VALUES ('" + isbn + "','" + titolo + "','" + genere + "'," + numeroPagine + ",'" + tipo + "','" + materia + "','" + descrizione + "','" + fruizione + "','" + editore + "','" + autore + "','" + datauscita + "','" + lingua + "','" + successivo + "'," + serie +" , " + presentazione + ");";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -111,11 +126,11 @@ public class LibroDAOImpl implements LibroDAO {
             if (libro.getSuccessivo() != null) {
                 successivo = "'" + libro.getSuccessivo() + "'";
             }
-            if (libro.getSerie() != 0) {
-                serie = libro.getSerie() + "";
+            if (libro.getSerie() != null) {
+                serie = libro.getSerie().toString();
             }
-            if (libro.getPresentazione() != 0) {
-                presentazione = libro.getPresentazione() + "";
+            if (libro.getPresentazione() != null) {
+                presentazione = libro.getPresentazione().toString();
             }
             if (libro.getMateria() != null) {
                 materia = "'" + libro.getMateria() + "'";

@@ -13,7 +13,7 @@ public class AcquistoDAOImpl implements AcquistoDAO {
         Acquisto acquisto;
         try {
             Connessione connessione = new Connessione();
-            String query = "SELECT * FROM acquisto WHERE coda = '" + coda + "';";
+            String query = "SELECT * FROM acquisto WHERE coda = " + coda + ";";
             ResultSet rs = connessione.executeSearch(query);
             acquisto = new Acquisto();
             while (rs.next()) {
@@ -31,7 +31,7 @@ public class AcquistoDAOImpl implements AcquistoDAO {
     }
     public ArrayList<Acquisto> getRicerca(String tipoRicerca,String parolaChiave){
         ArrayList<Acquisto> acquistoFinded = new ArrayList<>();
-        String query = "";
+        String query;
         try {
             Connessione connessione = new Connessione();
             if(tipoRicerca.equalsIgnoreCase("coda")){
@@ -62,11 +62,11 @@ public class AcquistoDAOImpl implements AcquistoDAO {
         ArrayList<Acquisto> acquistoFinded = new ArrayList<>();
         try {
             Connessione connessione = new Connessione();
-            String query = "SELECT cod FROM acquisto;";
+            String query = "SELECT coda FROM acquisto;";
             ResultSet rs = connessione.executeSearch(query);
             Acquisto acquisto;
             while (rs.next()) {
-                acquisto = get(rs.getString(1));
+                acquisto = get(rs.getInt(1));
                 acquistoFinded.add(acquisto);
             }
             rs.close();

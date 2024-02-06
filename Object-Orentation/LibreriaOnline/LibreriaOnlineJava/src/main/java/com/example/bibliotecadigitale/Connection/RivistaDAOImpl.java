@@ -11,18 +11,19 @@ import java.util.List;
 
 public class RivistaDAOImpl  implements RivistaDAO {
 
-    public Rivista get(String data, String nome) {
-        Rivista rivista = null;
+    public Rivista get(String nome, String data) {
+        Rivista rivista;
         try {
             Connessione connessione = new Connessione();
             String query = "SELECT * FROM rivista WHERE nome = '" + nome + "' AND data = '" + data + "';";
             ResultSet rs = connessione.executeSearch(query);
+            rivista = new Rivista();
             while (rs.next()) {
                 rivista = new Rivista();
-                rivista.setNome(rs.getString("nome"));
-                rivista.setData(rs.getString("data"));
-                rivista.setResponsabile(rs.getString("responsabile"));
-                rivista.setArgomento(rs.getString("argomento"));
+                rivista.setNome(rs.getString(1));
+                rivista.setData(rs.getString(2));
+                rivista.setResponsabile(rs.getString(3));
+                rivista.setArgomento(rs.getString(4));
             }
             rs.close();
         } catch (SQLException e) {
@@ -62,7 +63,21 @@ public class RivistaDAOImpl  implements RivistaDAO {
 
     @Override
     public List<Rivista> getAll() throws SQLException {
-        return null;
+        ArrayList<Rivista> rivistaFinded = new ArrayList<>();
+        try {
+            Connessione connessione = new Connessione();
+            String query = "SELECT nome, data FROM rivista;";
+            ResultSet rs = connessione.executeSearch(query);
+            Rivista rivista;
+            while (rs.next()) {
+                rivista = get(rs.getString(1),rs.getString(2));
+                rivistaFinded.add(rivista);
+            }
+            rs.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return rivistaFinded;
     }
 
     @Override

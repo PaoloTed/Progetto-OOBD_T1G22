@@ -225,6 +225,9 @@ public class HomeControllerAdminTest implements Initializable {
     @FXML
     private ImageView imageLibriSfondo;
 
+    @FXML
+    private Button buttonViewAll;
+
     public void initialize(URL url, ResourceBundle resourceBundle) {
         imageLibriSfondo.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/libri800x900.png"))));
         //inizializzo le colonne della tabella libro
@@ -466,6 +469,21 @@ public class HomeControllerAdminTest implements Initializable {
     }
 
     @FXML
+    private void viewAll(ActionEvent event){
+        scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
+        if (scelta == null) {
+            support.messageStage("Selezionare prima un tipo di ricerca");
+            return;
+        }
+        try {
+            tableViewHashMap.get(scelta).getItems().clear();
+            tableViewHashMap.get(scelta).getItems().addAll(implDaoHashMap.get(scelta).getAll());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @FXML
     private void logOff(ActionEvent event){
         Utente.getUtente().exitUtente();
         support.switchStage("welcomeStage.fxml", event);
@@ -556,6 +574,8 @@ public class HomeControllerAdminTest implements Initializable {
         itemInsert8.setVisible(sceltaBool);
         itemInsert9.setVisible(sceltaBool);
         itemInsert10.setVisible(sceltaBool);
+
+        buttonViewAll.setVisible(!sceltaBool);
     }
 
     @FXML

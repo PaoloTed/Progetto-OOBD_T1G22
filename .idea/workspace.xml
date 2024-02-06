@@ -4,21 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0f3062c-e759-49ff-9312-578ab6d64d8e" name="Changes" comment="Aggiustamenti 9">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/postgresql.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/postgresql_42_5_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/postgresql_42_5_11.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/postgresql_42_5_12.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="f0f3062c-e759-49ff-9312-578ab6d64d8e" name="Changes" comment="Aggiustamenti 10">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Connection/AcquistoDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Connection/AcquistoDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Connection/ArticoloScientificoDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Connection/ArticoloScientificoDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Connection/Connessione.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Connection/Connessione.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Connection/ConferenzaDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Connection/ConferenzaDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Connection/DisponibileADAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Connection/DisponibileADAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Connection/DisponibileLDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Connection/DisponibileLDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Connection/DisponibileSDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Connection/DisponibileSDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Connection/LibroDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Connection/LibroDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Connection/PresentazioneDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Connection/PresentazioneDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Connection/RivistaDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Connection/RivistaDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Connection/SerieDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Connection/SerieDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/HomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/HomeControllerAdminTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/HomeControllerAdminTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/NotificheController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/NotificheController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/LibroInformativaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/LibroInformativaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/PresentazioneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/PresentazioneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/SerieController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/SerieController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/UserInformativaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Controller/UserInformativaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/DAO/SerieDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/DAO/SerieDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Model/Libro.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Model/Libro.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/SupportStage.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/SupportStage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/notificheStage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/notificheStage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/homeStageAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/com/example/bibliotecadigitale/homeStageAdmin.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +81,7 @@
     "ignore.virus.scanning.warn.message": "true",
     "jdk.selected.JAVA_MODULE": "19",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Paolo/Downloads/openjfx-21.0.2_windows-x64_bin-jmods.zip",
+    "last_opened_file_path": "C:/Users/Paolo/Universita/Programmi/SceneBuilder/SceneBuilder.exe",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -193,7 +201,8 @@
       <workItem from="1706714607332" duration="9461000" />
       <workItem from="1706781512979" duration="2451000" />
       <workItem from="1707212332799" duration="511000" />
-      <workItem from="1707212861272" duration="6372000" />
+      <workItem from="1707212861272" duration="6394000" />
+      <workItem from="1707226482903" duration="8606000" />
     </task>
     <task id="LOCAL-00001" summary="importazione">
       <created>1698773198524</created>
@@ -334,14 +343,6 @@
       <option name="presentableId" value="LOCAL-00020" />
       <option name="project" value="LOCAL" />
       <updated>1699382050671</updated>
-    </task>
-    <task id="LOCAL-00038" summary="PICCOLO fix">
-      <option name="closed" value="true" />
-      <created>1700594812145</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1700594812145</updated>
     </task>
     <task id="LOCAL-00039" summary="mannac o buccacc">
       <option name="closed" value="true" />
@@ -567,7 +568,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706726430339</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="Aggiustamenti 10">
+      <option name="closed" value="true" />
+      <created>1707220961652</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1707220961652</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -602,7 +611,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="yeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" />
     <MESSAGE value="fINESTRA LIBRO" />
     <MESSAGE value="fix mio buf" />
     <MESSAGE value="vanno messe i bottoni e sistemata la grafica" />
@@ -627,7 +635,29 @@
     <MESSAGE value="Aggiustamenti 7" />
     <MESSAGE value="Aggiustamenti 8" />
     <MESSAGE value="Aggiustamenti 9" />
-    <option name="LAST_COMMIT_MESSAGE" value="Aggiustamenti 9" />
+    <MESSAGE value="Aggiustamenti 10" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aggiustamenti 10" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Connection/RivistaDAOImpl.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Connection/RivistaDAOImpl.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/java/com/example/bibliotecadigitale/Connection/DisponibileADAOImpl.java</url>
+          <line>16</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

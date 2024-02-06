@@ -17,15 +17,14 @@ public class Main extends Application {
 //    2) aggiustare grafica informativa articolo
 //    3) aggiustare grafica e funzionamento pagina presentazione
 //    4) aggiustare grafica pagina acquisto
-//    5) eliminate print di debug
+//    6) Errore acquistoA non funziona bene quadno si visualizzano tutti
+
 
     @Override
     public void start(Stage welcomeStage) throws IOException {
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("welcomeStage.fxml"));
-        //Prova per prendere la risoluzione dello schermo e settare la finestra di conseguenza
         Scene scene = new Scene(fxmlLoader.load(), 500, 500);
-        //Impostare la finestra non ridimensionabile.
         welcomeStage.setResizable(false);
         welcomeStage.setTitle("Benvenuto nella libreria online!");
         welcomeStage.setScene(scene);
@@ -42,5 +41,4 @@ public class Main extends Application {
         connessione.closeConnection();
         System.exit(0);
     }
-
 }

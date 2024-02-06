@@ -21,7 +21,7 @@ public class PresentazioneController {
     @FXML
     private Text textTipoId;
 
-    public void showInfoPresentazione(String codP)
+    public void showInfoPresentazione(int codP)
     {
         PresentazioneDAOImpl presentazioneDAO = new PresentazioneDAOImpl();
         Presentazione presentazione = presentazioneDAO.get(codP);

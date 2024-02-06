@@ -1,6 +1,7 @@
 package com.example.bibliotecadigitale.Connection;
 
 import com.example.bibliotecadigitale.DAO.ConferenzaDAO;
+import com.example.bibliotecadigitale.Model.ArticoloScientifico;
 import com.example.bibliotecadigitale.Model.Conferenza;
 import com.example.bibliotecadigitale.Model.Serie;
 
@@ -64,7 +65,21 @@ public class ConferenzaDAOImpl  implements ConferenzaDAO {
 
     @Override
     public List<Conferenza> getAll() throws SQLException {
-        return null;
+        ArrayList<Conferenza> conferenzaFinded = new ArrayList<>();
+        try {
+            Connessione connessione = new Connessione();
+            String query = "SELECT codC FROM conferenza;";
+            ResultSet rs = connessione.executeSearch(query);
+            Conferenza conferenza;
+            while (rs.next()) {
+                conferenza = get(rs.getInt(1));
+                conferenzaFinded.add(conferenza);
+            }
+            rs.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return conferenzaFinded;
     }
 
     @Override

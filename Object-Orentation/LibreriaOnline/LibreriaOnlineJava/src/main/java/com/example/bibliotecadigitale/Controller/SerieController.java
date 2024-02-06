@@ -63,10 +63,10 @@ public class SerieController implements Initializable {
 
     public void showSerie(int CodS) {
         SerieDAOImpl serieDAO = new SerieDAOImpl();
-        Serie serie = serieDAO.get(String.valueOf(CodS));
-        codSTxtId.setText("codice serie: " + String.valueOf(serie.getCodS()));
+        Serie serie = serieDAO.get(CodS);
+        codSTxtId.setText("codice serie: " + serie.getCodS());
         nomeTxtId.setText("Nome serie: " + serie.getNome());
-        numLibTxtId.setText("numero libri: " + String.valueOf(serie.getNumLibri()));
+        numLibTxtId.setText("numero libri: " + serie.getNumLibri());
         if (serie.getCompletata())
             completaTxtId.setText("stato serie:Completata");
         else

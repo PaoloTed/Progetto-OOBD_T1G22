@@ -11,11 +11,11 @@ import java.util.List;
 
 public class PresentazioneDAOImpl implements PresentazioneDAO {
 
-    public Presentazione get(String codsP) {
+    public Presentazione get(int codP) {
         Presentazione presentazione = null;
         try {
             Connessione connessione = new Connessione();
-            String query = "SELECT * FROM Presentazione WHERE codp = '" + codsP + "';";
+            String query = "SELECT * FROM Presentazione WHERE codp = '" + codP + "';";
             ResultSet rs = connessione.executeSearch(query);
             while (rs.next()) {
                 presentazione = new Presentazione();
@@ -56,8 +56,27 @@ public class PresentazioneDAOImpl implements PresentazioneDAO {
     }
 
     @Override
-    public List<Presentazione> getAll() throws SQLException {
+    public Presentazione get(String cod) throws SQLException {
         return null;
+    }
+
+    @Override
+    public List<Presentazione> getAll() throws SQLException {
+        ArrayList<Presentazione> presentazioneFinded = new ArrayList<>();
+        try {
+            Connessione connessione = new Connessione();
+            String query = "SELECT codp FROM presentazione;";
+            ResultSet rs = connessione.executeSearch(query);
+            Presentazione presentazione;
+            while (rs.next()) {
+                presentazione = get(rs.getInt(1));
+                presentazioneFinded.add(presentazione);
+            }
+            rs.close();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return presentazioneFinded;
     }
 
     @Override

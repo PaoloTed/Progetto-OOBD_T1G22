@@ -222,5 +222,6 @@
             <Font name="Arial Bold" size="20.0" />
          </font>
       </Text>
+      <Button fx:id="buttonViewAll" layoutX="678.0" layoutY="130.0" mnemonicParsing="false" onAction="#viewAll" text="Vedi Tutti" />
     </children>
 </AnchorPane>

@@ -79,7 +79,7 @@ public class LibroInformativaController {
 
 
 
-        if (libroPassato.getSerie() != 0) {
+        if (libroPassato.getSerie() != null) {
             buttonSerieId.setVisible(true);
             ArrayList<Integer> listaPreferiti = utenteDAO.searchPreferiti(Utente.getUtente().getEmail());
             if (listaPreferiti.contains(libroPassato.getSerie())) {
@@ -103,7 +103,7 @@ public class LibroInformativaController {
             buttonSuccessivoId.setVisible(false);
             buttonSuccessivoId.disableProperty().setValue(true);
         }
-        if (libroPassato.getPresentazione() != 0) {
+        if (libroPassato.getPresentazione() != null) {
             buttonPresentazioneid.setVisible(true);
             buttonPresentazioneid.disableProperty().setValue(false);
         } else {
@@ -120,6 +120,10 @@ public class LibroInformativaController {
     }
 
     public void goToPresentazione(ActionEvent event) {
+        if(libroMain.getPresentazione() == null){
+            support.messageStage("Il libro non ha una presentazione");
+            return;
+        }
         support.switchStage("presentazioneStage.fxml", libroMain.getPresentazione());
     }
 

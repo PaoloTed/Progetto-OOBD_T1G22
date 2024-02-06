@@ -8,8 +8,8 @@ public class Libro extends Pubblicazioni{
 
     private String successivo;
 
-    private int serie;
-    private int presentazione;
+    private Integer serie;
+    private Integer presentazione;
 
     public void prova(Libro libro) {
         this.ISBN = libro.getISBN();
@@ -22,11 +22,11 @@ public class Libro extends Pubblicazioni{
 
 
 
-    public int getPresentazione() {
+    public Integer getPresentazione() {
         return presentazione;
     }
 
-    public void setPresentazione(int presentazione) {
+    public void setPresentazione(Integer presentazione) {
         this.presentazione = presentazione;
     }
 
@@ -64,11 +64,11 @@ public class Libro extends Pubblicazioni{
         this.successivo = successivo;
     }
 
-    public int getSerie() {
+    public Integer getSerie() {
         return serie;
     }
 
-    public void setSerie(int serie) {
+    public void setSerie(Integer serie) {
         this.serie = serie;
     }
 

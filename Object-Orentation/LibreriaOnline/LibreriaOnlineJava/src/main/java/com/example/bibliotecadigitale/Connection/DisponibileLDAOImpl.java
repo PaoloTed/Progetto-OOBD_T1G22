@@ -10,11 +10,11 @@ import java.util.List;
 
 public class DisponibileLDAOImpl implements DisponibileLDAO {
     @Override
-    public DisponibileL get(int coda,String isbn ) throws SQLException {
+    public DisponibileL get(int coda, String isbn) throws SQLException {
         DisponibileL disponibileL;
         try {
             Connessione connessione = new Connessione();
-            String query = "SELECT * FROM disponibile_l WHERE coda = '" + coda + "'AND isbn = '" + isbn +"';";
+            String query = "SELECT * FROM disponibile_l WHERE coda = '" + coda + "'AND isbn = '" + isbn + "';";
             disponibileL = new DisponibileL();
             ResultSet rs = connessione.executeSearch(query);
             while (rs.next()) {
@@ -28,15 +28,15 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
     }
 
 
-    public ArrayList<DisponibileL> getAcquisti( String isbn ) throws SQLException {
-        ArrayList<DisponibileL>  disponibileL;
+    public ArrayList<DisponibileL> getAcquisti(String isbn) throws SQLException {
+        ArrayList<DisponibileL> disponibileL;
         try {
             Connessione connessione = new Connessione();
-            String query = "SELECT * FROM disponibile_l WHERE isbn = '" + isbn +"';";
-            disponibileL = new ArrayList();
+            String query = "SELECT * FROM disponibile_l WHERE isbn = '" + isbn + "';";
+            disponibileL = new ArrayList<>();
             ResultSet rs = connessione.executeSearch(query);
             while (rs.next()) {
-                disponibileL.add(get(rs.getInt(1),rs.getString(2)));
+                disponibileL.add(get(rs.getInt(1), rs.getString(2)));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -44,21 +44,21 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
         return disponibileL;
     }
 
-    public ArrayList<DisponibileL> getRicerca(String tipoRicerca,String parolaChiave){
+    public ArrayList<DisponibileL> getRicerca(String tipoRicerca, String parolaChiave) {
         ArrayList<DisponibileL> disponibileLFinded = new ArrayList<>();
         String query = "";
         try {
             Connessione connessione = new Connessione();
-            if(tipoRicerca.equalsIgnoreCase("coda")) {
-                query = "SELECT coda,isbn FROM disponibile_l WHERE "+tipoRicerca+"= "+parolaChiave+";";
+            if (tipoRicerca.equalsIgnoreCase("coda")) {
+                query = "SELECT coda,isbn FROM disponibile_l WHERE " + tipoRicerca + "= " + parolaChiave + ";";
             }
-            if(tipoRicerca.equalsIgnoreCase("isbn")) {
-                query = "SELECT coda,isbn FROM disponibile_l WHERE "+tipoRicerca+" LIKE LOWER('%"+parolaChiave+"%');";
+            if (tipoRicerca.equalsIgnoreCase("isbn")) {
+                query = "SELECT coda,isbn FROM disponibile_l WHERE " + tipoRicerca + " LIKE LOWER('%" + parolaChiave + "%');";
             }
             ResultSet rs = connessione.executeSearch(query);
             DisponibileL disponibileL;
             while (rs.next()) {
-                disponibileL = get(rs.getInt(1),rs.getString(2));
+                disponibileL = get(rs.getInt(1), rs.getString(2));
                 disponibileLFinded.add(disponibileL);
             }
             rs.close();
@@ -75,7 +75,21 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
 
     @Override
     public List<DisponibileL> getAll() throws SQLException {
-        return null;
+        ArrayList<DisponibileL> disponibileLFinded = new ArrayList<>();
+        try {
+            Connessione connessione = new Connessione();
+            String query = "SELECT coda,isbn FROM disponibile_l;";
+            ResultSet rs = connessione.executeSearch(query);
+            DisponibileL disponibileL;
+            while (rs.next()) {
+                disponibileL = get(rs.getInt(1), rs.getString(2));
+                disponibileLFinded.add(disponibileL);
+            }
+            rs.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return disponibileLFinded;
     }
 
     @Override
@@ -99,7 +113,7 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
     public void delete(DisponibileL disponibileL) throws SQLException {
         try {
             Connessione connessione = new Connessione();
-            String query = "DELETE FROM disponibile_l WHERE coda = " + disponibileL.getCodA() + " AND isbn = '" + disponibileL.getIsbn() +"';";
+            String query = "DELETE FROM disponibile_l WHERE coda = " + disponibileL.getCodA() + " AND isbn = '" + disponibileL.getIsbn() + "';";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);
