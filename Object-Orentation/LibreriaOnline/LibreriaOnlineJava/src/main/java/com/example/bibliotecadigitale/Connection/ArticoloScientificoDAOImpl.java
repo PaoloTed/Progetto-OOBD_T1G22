@@ -86,6 +86,36 @@ public class ArticoloScientificoDAOImpl implements ArticoloScientificoDAO {
 
     @Override
     public void insert(ArticoloScientifico articoloScientifico) throws SQLException {
+        try {
+            Connessione connessione = new Connessione();
+            String conferenza = "NULL";
+            String dataUscita = "NULL";
+            String descrizione = articoloScientifico.getDescrizione().replace("'", "''");
+
+            if(articoloScientifico.getConferenza() != 0) {
+                conferenza = Integer.toString(articoloScientifico.getConferenza());
+            }
+            if(articoloScientifico.getDataUscita() != null) {
+                dataUscita = "'" + articoloScientifico.getDataUscita() + "'";
+            }
+            String query = "INSERT INTO articolo_scientifico VALUES ('" + articoloScientifico.getDoi() +
+                    "', '" + articoloScientifico.getTitolo() +
+                    "', '" + articoloScientifico.getGenere() +
+                    "', " + articoloScientifico.getNumPagine() +
+                    ", " + dataUscita +
+                    ", '" + descrizione +
+                    "', '" + articoloScientifico.getFruizione() +
+                    "', '" + articoloScientifico.getEditore() +
+                    "', '" + articoloScientifico.getAutore() +
+                    "', '" + articoloScientifico.getLingua() +
+                    "', " + conferenza +
+                    ", '" + articoloScientifico.getNomer() +
+                    "', '" + articoloScientifico.getDatar() +
+                    "');";
+            connessione.executeUpdate(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

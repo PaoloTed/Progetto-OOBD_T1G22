@@ -78,6 +78,13 @@ public class AcquistoDAOImpl implements AcquistoDAO {
 
     @Override
     public void insert(Acquisto acquisto) throws SQLException {
+        try {
+            Connessione connessione = new Connessione();
+            String query = "INSERT INTO acquisto VALUES (" + acquisto.getCodA() + ",'" + acquisto.getNome() + "','" + acquisto.getTipoA() + "','" + acquisto.getUrl() + "','" + acquisto.getIndirizzo() + "');";
+            connessione.executeUpdate(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

@@ -17,7 +17,8 @@ public class Main extends Application {
 //    2) aggiustare grafica informativa articolo
 //    3) aggiustare grafica e funzionamento pagina presentazione
 //    4) aggiustare grafica pagina acquisto
-//    6) Errore acquistoA non funziona bene quadno si visualizzano tutti
+//    6) Errore disponibileA non funziona bene quadno si visualizzano tutti/
+//    7) aggiustare conferenza in articolo mettere codice conferenza come integer
 
 
     @Override

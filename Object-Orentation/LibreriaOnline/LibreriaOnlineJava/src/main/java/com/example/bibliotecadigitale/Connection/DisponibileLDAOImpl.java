@@ -94,6 +94,13 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
 
     @Override
     public void insert(DisponibileL disponibileL) throws SQLException {
+        try {
+            Connessione connessione = new Connessione();
+            String query = "INSERT INTO disponibile_l VALUES (" + disponibileL.getCodA() + ",'" + disponibileL.getIsbn() + "');";
+            connessione.executeUpdate(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

@@ -102,6 +102,13 @@ public class DisponibileADAOImpl implements DisponibileADAO {
 
     @Override
     public void insert(DisponibileA disponibileA) throws SQLException {
+        try {
+            Connessione connessione = new Connessione();
+            String query = "INSERT INTO disponibile_a VALUES (" + disponibileA.getCodA() + ",'" + disponibileA.getDoi() + "');";
+            connessione.executeUpdate(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
