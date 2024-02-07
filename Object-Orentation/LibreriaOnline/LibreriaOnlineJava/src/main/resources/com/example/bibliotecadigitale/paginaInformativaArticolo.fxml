@@ -5,17 +5,17 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.ArticoloInformativaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #fdf3ea; -fx-border-color: #964B00;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.ArticoloInformativaController">
    <children>
-      <Button layoutX="14.0" layoutY="462.0" mnemonicParsing="false" onAction="#goToHome" text="Go Back" />
-      <Text id="Titolo" fx:id="textTitleIId" layoutX="11.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titolo" AnchorPane.leftAnchor="11.0" AnchorPane.topAnchor="14.0" />
-      <Text id="Doi" fx:id="textDoiId" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doi" wrappingWidth="500.0" AnchorPane.topAnchor="287.05078125" />
-      <Text id="Genere" fx:id="textGenereId" layoutY="352.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Genere" wrappingWidth="500.0" AnchorPane.topAnchor="339.0" />
-      <Text id="Numero pagine" fx:id="textNumeroPagineId" layoutY="352.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero pagine" textAlignment="RIGHT" wrappingWidth="500.0" AnchorPane.topAnchor="339.0" />
-      <Text id="Descrizione" fx:id="textDescrizioneId" layoutX="14.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrizione" textAlignment="JUSTIFY" wrappingWidth="465.0" AnchorPane.topAnchor="85.0" />
-      <Text id="fruizione" fx:id="textFruizioneId" layoutX="-1.0" layoutY="324.94921875" strokeType="OUTSIDE" strokeWidth="0.0" text="Fruizione" textAlignment="RIGHT" wrappingWidth="500.0" AnchorPane.topAnchor="312.0" />
-      <Text id="Data uscita" fx:id="textDataUscitaId" layoutX="-1.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data Uscita" wrappingWidth="500.0" AnchorPane.topAnchor="311.0" />
-      <Text id="Lingua" fx:id="textLinguianId" layoutX="-1.0" layoutY="301.0" onDragDetected="#goToRivista" strokeType="OUTSIDE" strokeWidth="0.0" text="Lingua" textAlignment="RIGHT" wrappingWidth="500.0" AnchorPane.topAnchor="288.05078125" />
+      <Button layoutX="14.0" layoutY="462.0" mnemonicParsing="false" onAction="#goToHome" style="-fx-background-color: #2b2d30;" text="Go Back" textFill="WHITE" />
+      <Text id="Titolo" fx:id="textTitleIId" layoutX="11.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titolo:" AnchorPane.leftAnchor="11.0" AnchorPane.topAnchor="14.0" />
+      <Text id="Doi" fx:id="textDoiId" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doi:" wrappingWidth="500.0" AnchorPane.topAnchor="287.05078125" />
+      <Text id="Genere" fx:id="textGenereId" layoutY="352.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Genere:" wrappingWidth="500.0" AnchorPane.topAnchor="339.0" />
+      <Text id="Numero pagine" fx:id="textNumeroPagineId" layoutY="352.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero pagine:" textAlignment="RIGHT" wrappingWidth="500.0" AnchorPane.topAnchor="339.0" />
+      <Text id="Descrizione" fx:id="textDescrizioneId" layoutX="14.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrizione:" textAlignment="JUSTIFY" wrappingWidth="465.0" AnchorPane.topAnchor="85.0" />
+      <Text id="fruizione" fx:id="textFruizioneId" layoutX="-1.0" layoutY="324.94921875" strokeType="OUTSIDE" strokeWidth="0.0" text="Fruizione:" textAlignment="RIGHT" wrappingWidth="500.0" AnchorPane.topAnchor="312.0" />
+      <Text id="Data uscita" fx:id="textDataUscitaId" layoutX="-1.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data Uscita:" wrappingWidth="500.0" AnchorPane.topAnchor="311.0" />
+      <Text id="Lingua" fx:id="textLinguianId" layoutX="-1.0" layoutY="301.0" onDragDetected="#goToRivista" strokeType="OUTSIDE" strokeWidth="0.0" text="Lingua:" textAlignment="RIGHT" wrappingWidth="500.0" AnchorPane.topAnchor="288.05078125" />
 
       <Button fx:id="buttonRivistaId" defaultButton="true" layoutX="231.0" layoutY="384.0" mnemonicParsing="false" onAction="#goToRivista" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Rivista" textAlignment="JUSTIFY" textFill="#0800f8" underline="true" visible="false">
          <font>
@@ -28,8 +28,8 @@
          </font>
       </Button>
       <Text id="Frasee" fx:id="textMessagioId" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Premi qui per andare all'informazione della rivista" textAlignment="CENTER" visible="false" wrappingWidth="500.0" />
-      <Text id="Editore" fx:id="txtEditoreId" layoutY="411.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editore" wrappingWidth="480.0" />
-      <Text id="Autore" fx:id="textAutoreId" layoutY="412.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autore" textAlignment="RIGHT" wrappingWidth="500.0" />
+      <Text id="Editore" fx:id="txtEditoreId" layoutY="411.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editore:" wrappingWidth="480.0" />
+      <Text id="Autore" fx:id="textAutoreId" layoutY="412.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autore:" textAlignment="RIGHT" wrappingWidth="500.0" />
       <Button id="Conferenza" fx:id="buttonConferenzaId" defaultButton="true" layoutX="215.0" layoutY="460.0" mnemonicParsing="false" onAction="#goToConferenza" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Confernza" textFill="#0800f8" underline="true" visible="false">
          <font>
             <Font size="14.0" />

@@ -60,24 +60,22 @@ public class LibroInformativaController {
     public void showInfoLibro(Libro libroPassato) {
         UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
         libroMain = libroPassato;
-        textTitleIId.setText(libroPassato.getTitolo());
-        textIsbnId.setText(libroPassato.getISBN());
-        textGenereId.setText(libroPassato.getGenere());
-        textNumeroPagineId.setText(String.valueOf(libroPassato.getNumPagine()));
-        textTIpoId.setText(libroPassato.getTipo());
-        textDescrizioneId.setText(libroPassato.getDescrizione());
-        textFruizioneId.setText(libroPassato.getFruizione());
-        textDataUscitaId.setText(libroPassato.getDataUscita());
-        textLinguianId.setText(libroPassato.getLingua());
+        textTitleIId.setText(textTitleIId.getText()+libroPassato.getTitolo());
+        textIsbnId.setText(textIsbnId.getText()+libroPassato.getISBN());
+        textGenereId.setText(textGenereId.getText()+libroPassato.getGenere());
+        textNumeroPagineId.setText(textNumeroPagineId.getText()+String.valueOf(libroPassato.getNumPagine()));
+        textTIpoId.setText(textTIpoId.getText()+libroPassato.getTipo());
+        textDescrizioneId.setText(textDescrizioneId.getText()+"\n"+libroPassato.getDescrizione());
+        textFruizioneId.setText(textFruizioneId.getText()+libroPassato.getFruizione());
+        textDataUscitaId.setText(textDataUscitaId.getText()+libroPassato.getDataUscita());
+        textLinguianId.setText(textLinguianId.getText()+libroPassato.getLingua());
 
-        if (libroPassato.getTipo() != null) {
+        if (libroPassato.getMateria() != null) {
             textMateriaId.setVisible(true);
-            textMateriaId.setText(libroPassato.getMateria());
+            textMateriaId.setText(textMateriaId.getText()+libroPassato.getMateria());
         } else {
             textMateriaId.setVisible(false);
         }
-
-
 
         if (libroPassato.getSerie() != null) {
             buttonSerieId.setVisible(true);
@@ -94,8 +92,8 @@ public class LibroInformativaController {
             buttonSerieId.setVisible(false);
             textMessagioId.setVisible(false);
         }
-        textAutoreId.setText(libroPassato.getAutore());
-        txtEditoreId.setText(libroPassato.getEditore());
+        textAutoreId.setText(textAutoreId.getText()+libroPassato.getAutore());
+        txtEditoreId.setText(txtEditoreId.getText()+libroPassato.getEditore());
         if (libroPassato.getSuccessivo() != null) {
             buttonSuccessivoId.setVisible(true);
             buttonSuccessivoId.disableProperty().setValue(false);

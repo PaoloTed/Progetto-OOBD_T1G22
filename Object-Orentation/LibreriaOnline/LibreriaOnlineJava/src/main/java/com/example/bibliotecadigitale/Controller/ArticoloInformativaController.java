@@ -47,16 +47,16 @@ public class ArticoloInformativaController {
 
     public void showInfoArticolo(ArticoloScientifico articlopassato) {
         ArticoloMain = articlopassato;
-        textTitleIId.setText(articlopassato.getTitolo());
-        textDoiId.setText(articlopassato.getDoi());
-        textGenereId.setText(articlopassato.getGenere());
-        textNumeroPagineId.setText(String.valueOf(articlopassato.getNumPagine()));
-        textDescrizioneId.setText(articlopassato.getDescrizione());
-        textFruizioneId.setText(articlopassato.getFruizione());
-        textDataUscitaId.setText(String.valueOf(articlopassato.getDataUscita()));
-        textLinguianId.setText(articlopassato.getLingua());
-        textAutoreId.setText(articlopassato.getAutore());
-        txtEditoreId.setText(articlopassato.getEditore());
+        textTitleIId.setText(textTitleIId.getText()+articlopassato.getTitolo());
+        textDoiId.setText(textDoiId.getText()+articlopassato.getDoi());
+        textGenereId.setText(textGenereId.getText()+articlopassato.getGenere());
+        textNumeroPagineId.setText(textNumeroPagineId.getText()+String.valueOf(articlopassato.getNumPagine()));
+        textDescrizioneId.setText(textDescrizioneId.getText()+"\n"+articlopassato.getDescrizione());
+        textFruizioneId.setText(textFruizioneId.getText()+articlopassato.getFruizione());
+        textDataUscitaId.setText(textDataUscitaId.getText()+String.valueOf(articlopassato.getDataUscita()));
+        textLinguianId.setText(textLinguianId.getText()+articlopassato.getLingua());
+        textAutoreId.setText(textAutoreId.getText()+articlopassato.getAutore());
+        txtEditoreId.setText(txtEditoreId.getText()+articlopassato.getEditore());
         if (articlopassato.getConferenza() != 0) {
             buttonConferenzaId.setVisible(true);
         } else {
