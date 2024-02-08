@@ -10,11 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RivistaDAOImpl  implements RivistaDAO {
+    private final Connessione connessione = new Connessione();
 
     public Rivista get(String nome, String data) {
         Rivista rivista;
         try {
-            Connessione connessione = new Connessione();
             String query = "SELECT * FROM rivista WHERE nome = '" + nome + "' AND data = '" + data + "';";
             ResultSet rs = connessione.executeSearch(query);
             rivista = new Rivista();
@@ -36,7 +36,6 @@ public class RivistaDAOImpl  implements RivistaDAO {
         ArrayList<Rivista> rivistaFinded = new ArrayList<>();
         String query;
         try {
-            Connessione connessione = new Connessione();
             if(tipoRicerca.equalsIgnoreCase("nome")||tipoRicerca.equalsIgnoreCase("data")){
                 query = "SELECT nome, data FROM rivista WHERE " + tipoRicerca + " = " + parolaChiave + ";";
             }else{
@@ -65,7 +64,6 @@ public class RivistaDAOImpl  implements RivistaDAO {
     public List<Rivista> getAll() throws SQLException {
         ArrayList<Rivista> rivistaFinded = new ArrayList<>();
         try {
-            Connessione connessione = new Connessione();
             String query = "SELECT nome, data FROM rivista;";
             ResultSet rs = connessione.executeSearch(query);
             Rivista rivista;
@@ -83,7 +81,6 @@ public class RivistaDAOImpl  implements RivistaDAO {
     @Override
     public void insert(Rivista rivista) throws SQLException {
         try {
-            Connessione connessione = new Connessione();
             String nome = rivista.getNome();
             String data = rivista.getData();
             String responsabile = rivista.getResponsabile();
@@ -99,7 +96,6 @@ public class RivistaDAOImpl  implements RivistaDAO {
     @Override
     public void update(Rivista rivista) throws SQLException {
         try {
-            Connessione connessione = new Connessione();
             String nome = rivista.getNome();
             String data = rivista.getData();
             String responsabile = rivista.getResponsabile();
@@ -115,7 +111,6 @@ public class RivistaDAOImpl  implements RivistaDAO {
     @Override
     public void delete(Rivista rivista) throws SQLException {
         try{
-            Connessione connessione = new Connessione();
             String nome = rivista.getNome();
             String data = rivista.getData();
             String query = "DELETE FROM rivista WHERE nome = '" + nome + "' AND data = '" + data + "';";
@@ -123,6 +118,5 @@ public class RivistaDAOImpl  implements RivistaDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 }

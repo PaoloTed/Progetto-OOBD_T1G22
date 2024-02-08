@@ -10,12 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LibroDAOImpl implements LibroDAO {
+    private final Connessione connessione = new Connessione();
 
     public ArrayList<Libro> getRicerca(String tipoRicerca, String parolaChiave) {
         ArrayList<Libro> libroFinded = new ArrayList<>();
         String query = "";
         try {
-            Connessione connessione = new Connessione();
             if (tipoRicerca.equalsIgnoreCase("numpagine") || tipoRicerca.equalsIgnoreCase("serie")) {
                 query = "SELECT isbn FROM libro WHERE " + tipoRicerca + " = " + parolaChiave + ";";
             } else {
@@ -39,7 +39,6 @@ public class LibroDAOImpl implements LibroDAO {
     public Libro get(String isbn) throws SQLException {
         Libro libro;
         try {
-            Connessione connessione = new Connessione();
             String query = "SELECT * FROM libro WHERE isbn = '" + isbn + "';";
             ResultSet rs = connessione.executeSearch(query);
             libro = new Libro();
@@ -73,7 +72,6 @@ public class LibroDAOImpl implements LibroDAO {
     public List<Libro> getAll() throws SQLException {
         ArrayList<Libro> libroFinded = new ArrayList<>();
         try {
-            Connessione connessione = new Connessione();
             String query = "SELECT isbn FROM libro;";
             ResultSet rs = connessione.executeSearch(query);
             Libro libro;
@@ -91,7 +89,6 @@ public class LibroDAOImpl implements LibroDAO {
     @Override
     public void insert(Libro libro) throws SQLException {
         try {
-            Connessione connessione = new Connessione();
             String isbn = libro.getISBN();
             String titolo = libro.getTitolo();
             String genere = libro.getGenere();
@@ -117,7 +114,6 @@ public class LibroDAOImpl implements LibroDAO {
     @Override
     public void update(Libro libro) throws SQLException {
         try {
-            Connessione connessione = new Connessione();
             String descrizione = libro.getDescrizione().replace("'", "''");
             String successivo = "NULL";
             String serie = "NULL";
@@ -146,7 +142,6 @@ public class LibroDAOImpl implements LibroDAO {
     @Override
     public void delete(Libro libro) throws SQLException {
         try {
-            Connessione connessione = new Connessione();
             String isbn = libro.getISBN();
             String query = "DELETE FROM libro WHERE ISBN ='" + isbn + "';";
             connessione.executeUpdate(query);

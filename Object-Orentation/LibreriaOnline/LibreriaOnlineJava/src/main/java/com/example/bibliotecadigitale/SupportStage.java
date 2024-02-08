@@ -32,7 +32,7 @@ public class SupportStage {
             Parent root = loader.load();
             stage = new Stage();
             stage.setScene(new Scene(root, 500, 500));
-            stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/biblioteca.png")));
+            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/biblioteca.png"))));
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
@@ -49,7 +49,7 @@ public class SupportStage {
             Parent root = loader.load();
             stage = new Stage();
             stage.setScene(new Scene(root, larghezza, altezza));
-            stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/biblioteca.png")));
+            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/biblioteca.png"))));
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
@@ -65,7 +65,7 @@ public class SupportStage {
             Parent root = loader.load();
             stage = new Stage();
             stage.setScene(new Scene(root, altezza, larghezza));
-            stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/biblioteca.png")));
+            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/biblioteca.png"))));
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
@@ -81,7 +81,7 @@ public class SupportStage {
             Parent root = loader.load();
             stage = new Stage();
             stage.setScene(new Scene(root, 500, 500));
-            stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/biblioteca.png")));
+            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/biblioteca.png"))));
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
@@ -98,7 +98,7 @@ public class SupportStage {
             Parent root = loader.load();
             stage = new Stage();
             stage.setScene(new Scene(root, 250, 250));
-            stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/biblioteca.png")));
+            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/biblioteca.png"))));
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
@@ -115,7 +115,7 @@ public class SupportStage {
             Parent root = loader.load();
             stage = new Stage();
             stage.setScene(new Scene(root, 500, 500));
-            stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/biblioteca.png")));
+            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/biblioteca.png"))));
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
@@ -133,7 +133,7 @@ public class SupportStage {
             Parent root = loader.load();
             stage = new Stage();
             stage.setScene(new Scene(root, 250, 250));
-            stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/biblioteca.png")));
+            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/biblioteca.png"))));
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
@@ -144,18 +144,18 @@ public class SupportStage {
         }
     }
 
-    public void switchStage(String scenaNew, String Data, String Nome) {
+    public void switchStage(String scenaNew, String Nome, String Data) {
         try {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
             Parent root = loader.load();
             stage = new Stage();
             stage.setScene(new Scene(root, 250, 250));
-            stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/biblioteca.png")));
+            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/biblioteca.png"))));
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
             RivistaController rivistaController = loader.getController();
-            rivistaController.showInfoRivista(Data, Nome);
+            rivistaController.showInfoRivista(Nome, Data);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -168,7 +168,7 @@ public class SupportStage {
             Parent root = loader.load();
             stage = new Stage();
             stage.setScene(new Scene(root, 900, 800));
-            stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/biblioteca.png")));
+            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/biblioteca.png"))));
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
@@ -185,7 +185,7 @@ public class SupportStage {
             Parent root = loader.load();
             stage = new Stage();
             stage.setScene(new Scene(root, 900, 800));
-            stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/biblioteca.png")));
+            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/biblioteca.png"))));
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
@@ -202,7 +202,7 @@ public class SupportStage {
             Parent root = loader.load();
             stage = new Stage();
             stage.setScene(new Scene(root, 900, 800));
-            stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/biblioteca.png")));
+            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/biblioteca.png"))));
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
@@ -231,7 +231,7 @@ public class SupportStage {
             stage = new Stage();
             stage.setScene(new Scene(root, 300, 100));
             stage.setAlwaysOnTop(true);
-            stage.getIcons().add(new Image(getClass().getResourceAsStream("/Images/biblioteca.png")));
+            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/biblioteca.png"))));
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
@@ -246,5 +246,4 @@ public class SupportStage {
     public Stage getStage() {
         return stage;
     }
-
 }

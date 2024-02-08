@@ -104,4 +104,20 @@ public class Connessione {
         }
         return numeroOnline;
     }
+
+    public int getNumeroNotifiche(String email) {
+        int numeroNotifiche = 0;
+        try {
+            Connessione connessione = new Connessione();
+            String query = "select COUNT(*) from show_preferiti('" + email + "');";
+            ResultSet rs = connessione.executeSearch(query);
+            while (rs.next()) {
+                numeroNotifiche = rs.getInt(1);
+            }
+            rs.close();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return numeroNotifiche;
+    }
 }

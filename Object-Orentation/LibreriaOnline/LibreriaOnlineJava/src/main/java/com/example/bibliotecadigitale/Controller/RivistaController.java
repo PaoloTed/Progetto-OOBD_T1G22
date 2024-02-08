@@ -22,9 +22,9 @@ public class RivistaController {
     @FXML
     private Button buttonClose;
 
-    public void showInfoRivista(String data, String nome) {
+    public void showInfoRivista(String nome, String data) {
         RivistaDAOImpl rivistaDAO = new RivistaDAOImpl();
-        Rivista rivista = rivistaDAO.get(data, nome);
+        Rivista rivista = rivistaDAO.get(nome, data);
         textDataId.setText(String.valueOf(rivista.getData()));
         textNomeId.setText(rivista.getNome());
         textResponsabileId.setText(rivista.getResponsabile());

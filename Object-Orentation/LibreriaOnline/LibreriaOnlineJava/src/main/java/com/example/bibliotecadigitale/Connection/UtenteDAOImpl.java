@@ -15,6 +15,8 @@ import static com.example.bibliotecadigitale.Model.Utente.getUtente;
 
 public class UtenteDAOImpl implements UtenteDAO {
 
+    private final Connessione connessione = new Connessione();
+
     /*
     public int getRowsExsistUtenteEmailPassword(String emailUser, String passwordUser) {
         //TODO: aggiustare metodo e prendere direttamente i numero di righe senza fare il while
@@ -56,7 +58,6 @@ public class UtenteDAOImpl implements UtenteDAO {
 
     public void updatePassword(String emailUser, String passwordUser) {
         try {
-            Connessione connessione = new Connessione();
             String query = "UPDATE utente SET password = '" + passwordUser + "' WHERE email = '" + emailUser + "';";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
@@ -67,7 +68,6 @@ public class UtenteDAOImpl implements UtenteDAO {
     public ArrayList<Integer> searchPreferiti(String emailUser) {
         ArrayList<Integer> codiciPreferiti = new ArrayList<>();
         try {
-            Connessione connessione = new Connessione();
             String query = "SELECT cods FROM preferiti WHERE email = '" + emailUser + "';";
             ResultSet rs = connessione.executeSearch(query);
             while (rs.next()) {
@@ -81,7 +81,6 @@ public class UtenteDAOImpl implements UtenteDAO {
 
     public void insertPreferiti(String emailUser, int codiceSerie) {
         try {
-            Connessione connessione = new Connessione();
             String query = "INSERT INTO preferiti VALUES ('" + emailUser + "','" + codiceSerie + "');";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
@@ -91,7 +90,6 @@ public class UtenteDAOImpl implements UtenteDAO {
 
     public void deletePreferiti(String emailUser, int codiceSerie) {
         try {
-            Connessione connessione = new Connessione();
             String query = "DELETE FROM preferiti WHERE email = '" + emailUser + "' AND cods = '" + codiceSerie + "';";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
@@ -103,7 +101,6 @@ public class UtenteDAOImpl implements UtenteDAO {
     public Utente get(String emailUser) {
         Utente utente = null;
         try {
-            Connessione connessione = new Connessione();
             String query = "SELECT * FROM utente WHERE email = '" + emailUser + "';";
             ResultSet rs = connessione.executeSearch(query);
             while (rs.next()) {
@@ -121,7 +118,6 @@ public class UtenteDAOImpl implements UtenteDAO {
     public ArrayList<Utente> getRicerca(String tipoRicerca,String parolaChiave){
         ArrayList<Utente> utenteFinded = new ArrayList<>();
         try {
-            Connessione connessione = new Connessione();
             String query = "SELECT email FROM utente WHERE LOWER("+tipoRicerca+") LIKE LOWER('%"+parolaChiave+"%');";
             ResultSet rs = connessione.executeSearch(query);
             Utente utente;
@@ -145,7 +141,6 @@ public class UtenteDAOImpl implements UtenteDAO {
     @Override
     public void insert(Utente utente) {
         try {
-            Connessione connessione = new Connessione();
             String emailUser = utente.getEmail();
             String passwordUser = utente.getPassword();
             String date = Instant.now().atZone(ZoneOffset.UTC).format(DateTimeFormatter.ISO_LOCAL_DATE);
@@ -159,7 +154,6 @@ public class UtenteDAOImpl implements UtenteDAO {
     @Override
     public void update(Utente utente) throws SQLException {
         try {
-            Connessione connessione = new Connessione();
             String query = "UPDATE Utente SET password = '" + utente.getPassword() + "' WHERE email = '" + utente.getEmail() + "';";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
@@ -171,7 +165,6 @@ public class UtenteDAOImpl implements UtenteDAO {
     @Override
     public void delete(Utente utente) throws SQLException {
         try {
-            Connessione connessione = new Connessione();
             String query = "DELETE FROM Utente WHERE EMAIL ='" + utente.getEmail() + "';";
             connessione.executeUpdate(query);
         } catch (SQLException e) {

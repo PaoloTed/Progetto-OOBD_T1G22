@@ -10,11 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DisponibileSDAOImpl implements DisponibileSDAO {
+    private final Connessione connessione = new Connessione();
     @Override
     public DisponibileS get(int coda, int cods) throws SQLException {
         DisponibileS disponibileS;
         try {
-            Connessione connessione = new Connessione();
             String query = "SELECT * FROM disponibile_s WHERE coda = '" + coda + "' AND cods = '" + cods + "';";
             ResultSet rs = connessione.executeSearch(query);
             disponibileS = new DisponibileS();
@@ -32,7 +32,6 @@ public class DisponibileSDAOImpl implements DisponibileSDAO {
     public ArrayList<DisponibileS> getRicerca(String tipoRicerca, String parolaChiave) {
         ArrayList<DisponibileS> disponibileSFinded = new ArrayList<>();
         try {
-            Connessione connessione = new Connessione();
             String query = "SELECT coda,cods FROM disponibile_s WHERE " + tipoRicerca + " = " + parolaChiave + ";";
             ResultSet rs = connessione.executeSearch(query);
             DisponibileS disponibileS;
@@ -56,7 +55,6 @@ public class DisponibileSDAOImpl implements DisponibileSDAO {
     public List<DisponibileS> getAll() throws SQLException {
         ArrayList<DisponibileS> disponibileSFinded = new ArrayList<>();
         try {
-            Connessione connessione = new Connessione();
             String query = "SELECT coda,cods FROM disponibile_s;";
             ResultSet rs = connessione.executeSearch(query);
             DisponibileS disponibileS;
@@ -79,7 +77,6 @@ public class DisponibileSDAOImpl implements DisponibileSDAO {
     @Override
     public void update(DisponibileS disponibileS) throws SQLException {
         try {
-            Connessione connessione = new Connessione();
             String query = "UPDATE disponibile_s SET cods = '" + disponibileS.getCodS() + "' WHERE coda = " + disponibileS.getCodA() + ";";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
@@ -91,12 +88,10 @@ public class DisponibileSDAOImpl implements DisponibileSDAO {
     @Override
     public void delete(DisponibileS disponibileS) throws SQLException {
         try {
-            Connessione connessione = new Connessione();
             String query = "DELETE FROM disponibile_s WHERE coda = " + disponibileS.getCodA() + " AND cods = '" + disponibileS.getCodS() + "';";
             connessione.executeUpdate(query);
         } catch (Exception e) {
             throw new RuntimeException(e);
-
         }
     }
 }

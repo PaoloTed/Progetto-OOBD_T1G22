@@ -2,20 +2,21 @@ package com.example.bibliotecadigitale.Connection;
 
 import com.example.bibliotecadigitale.DAO.ArticoloScientificoDAO;
 import com.example.bibliotecadigitale.Model.ArticoloScientifico;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ArticoloScientificoDAOImpl implements ArticoloScientificoDAO {
+    private final Connessione connessione = new Connessione();
     public ArrayList<ArticoloScientifico> getRicerca(String tipoRicerca, String parolaChiave) {
         ArrayList<ArticoloScientifico> articoloScientificoFinded = new ArrayList<>();
         String query;
         try {
-            Connessione connessione = new Connessione();
-            if(tipoRicerca.equalsIgnoreCase("numpagine")||tipoRicerca.equalsIgnoreCase("conferenza")){
+            if (tipoRicerca.equalsIgnoreCase("numpagine") || tipoRicerca.equalsIgnoreCase("conferenza")) {
                 query = "SELECT doi FROM articolo_scientifico WHERE " + tipoRicerca + " = " + parolaChiave + ";";
-            }else{
+            } else {
                 query = "SELECT doi FROM articolo_scientifico WHERE " + tipoRicerca + " LIKE LOWER('%" + parolaChiave + "%');";
             }
             ResultSet rs = connessione.executeSearch(query);
@@ -36,7 +37,6 @@ public class ArticoloScientificoDAOImpl implements ArticoloScientificoDAO {
     public ArticoloScientifico get(String doi) throws SQLException {
         ArticoloScientifico articolo;
         try {
-            Connessione connessione = new Connessione();
             String query = "SELECT * FROM articolo_scientifico WHERE doi = '" + doi + "';";
             ResultSet rs = connessione.executeSearch(query);
             articolo = new ArticoloScientifico();
@@ -51,9 +51,7 @@ public class ArticoloScientificoDAOImpl implements ArticoloScientificoDAO {
                 articolo.setEditore(rs.getString(8));
                 articolo.setAutore(rs.getString(9));
                 articolo.setLingua(rs.getString(10));
-                if(rs.getInt(11) > 0){
-                    articolo.setConferenza(rs.getInt(11));
-                }
+                articolo.setConferenza(rs.getObject(11,Integer.class));
                 articolo.setNomer(rs.getString(12));
                 articolo.setDatar(rs.getString(13));
             }
@@ -69,7 +67,6 @@ public class ArticoloScientificoDAOImpl implements ArticoloScientificoDAO {
     public List<ArticoloScientifico> getAll() throws SQLException {
         ArrayList<ArticoloScientifico> articoloScientificoFinded = new ArrayList<>();
         try {
-            Connessione connessione = new Connessione();
             String query = "SELECT doi FROM articolo_scientifico;";
             ResultSet rs = connessione.executeSearch(query);
             ArticoloScientifico articolo;
@@ -87,15 +84,14 @@ public class ArticoloScientificoDAOImpl implements ArticoloScientificoDAO {
     @Override
     public void insert(ArticoloScientifico articoloScientifico) throws SQLException {
         try {
-            Connessione connessione = new Connessione();
             String conferenza = "NULL";
             String dataUscita = "NULL";
             String descrizione = articoloScientifico.getDescrizione().replace("'", "''");
 
-            if(articoloScientifico.getConferenza() != 0) {
+            if (articoloScientifico.getConferenza() != null) {
                 conferenza = Integer.toString(articoloScientifico.getConferenza());
             }
-            if(articoloScientifico.getDataUscita() != null) {
+            if (articoloScientifico.getDataUscita() != null) {
                 dataUscita = "'" + articoloScientifico.getDataUscita() + "'";
             }
             String query = "INSERT INTO articolo_scientifico VALUES ('" + articoloScientifico.getDoi() +
@@ -122,19 +118,17 @@ public class ArticoloScientificoDAOImpl implements ArticoloScientificoDAO {
     @Override
     public void update(ArticoloScientifico articoloScientifico) throws SQLException {
         try {
-            Connessione connessione = new Connessione();
-
             String numPagine = "NULL";
             String conferenza = "NULL";
             String dataUscita = "NULL";
             String descrizione = articoloScientifico.getDescrizione().replace("'", "''");
-            if(articoloScientifico.getNumPagine() != 0) {
+            if (articoloScientifico.getNumPagine() != 0) {
                 numPagine = Integer.toString(articoloScientifico.getNumPagine());
             }
-            if(articoloScientifico.getConferenza() != 0) {
+            if (articoloScientifico.getConferenza() != null) {
                 conferenza = Integer.toString(articoloScientifico.getConferenza());
             }
-            if(articoloScientifico.getDataUscita() != null) {
+            if (articoloScientifico.getDataUscita() != null) {
                 dataUscita = "'" + articoloScientifico.getDataUscita() + "'";
             }
             String query = "UPDATE articolo_scientifico SET doi = " + articoloScientifico.getDoi() +
@@ -161,7 +155,6 @@ public class ArticoloScientificoDAOImpl implements ArticoloScientificoDAO {
     @Override
     public void delete(ArticoloScientifico articoloScientifico) throws SQLException {
         try {
-            Connessione connessione = new Connessione();
             String query = "DELETE FROM articolo_scientifico WHERE doi = '" + articoloScientifico.getDoi() + "';";
             connessione.executeUpdate(query);
         } catch (SQLException e) {

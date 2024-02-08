@@ -15,11 +15,15 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class HomeController implements Initializable {
@@ -33,11 +37,12 @@ public class HomeController implements Initializable {
 
     @FXML
     private TextField idBarSearch;
-    public SupportStage support = new SupportStage();
+    private SupportStage support = new SupportStage();
 
     @FXML
     private ImageView imageLibriSfondo;
-
+    @FXML
+    private Text txtNumeroNotifiche;
     @FXML
     public TableView<Libro> libroTableView;
 
@@ -86,10 +91,13 @@ public class HomeController implements Initializable {
         buttonLibro.setStyle("-fx-border-color: red;  -fx-text-fill: white; -fx-background-color: #2b2d30;");
         buttonLibro.setDisable(true);
         buttonArticolo.setStyle("-fx-border-color: grey; -fx-text-fill: white; -fx-background-color: #2b2d30;");
-        imageLibriSfondo.setImage(new Image(getClass().getResourceAsStream("/Images/libri800x900.png")));
+        imageLibriSfondo.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/libri800x900.png"))));
 
         idComboBox.setItems(FXCollections.observableArrayList("Isbn", "Titolo", "Autore", "Genere", "Editore"));
         idComboBox.getSelectionModel().selectFirst();
+        Connessione connessione = new Connessione();
+        Utente utente = Utente.getUtente();
+        txtNumeroNotifiche.setText(String.valueOf(connessione.getNumeroNotifiche(utente.getEmail())));
     }
 
     @FXML
@@ -165,7 +173,6 @@ public class HomeController implements Initializable {
     }
 
     public void goToPaginaInformativaLibro(ActionEvent event) {
-        SupportStage support = new SupportStage();
         Libro libro = libroTableView.getSelectionModel().getSelectedItem();
         if (libro == null) {
             support.messageStage("Selezionare prima un libro");
@@ -177,13 +184,12 @@ public class HomeController implements Initializable {
     }
 
     public void goToPaginaInformativaSerie(ActionEvent event) {
-        SupportStage support = new SupportStage();
         Libro libro = libroTableView.getSelectionModel().getSelectedItem();
         if (libro == null) {
             support.messageStage("Selezionare prima un libro");
             return;
         }
-        if(libro.getSerie() == null){
+        if (libro.getSerie() == null) {
             support.messageStage("Il libro non fa parte di una serie");
             return;
         }
@@ -193,7 +199,6 @@ public class HomeController implements Initializable {
     }
 
     public void goToPaginaInformativaArticolo(ActionEvent event) {
-        SupportStage support = new SupportStage();
         ArticoloScientifico articoloScientifico = articoloTableView.getSelectionModel().getSelectedItem();
         if (articoloScientifico == null) {
             support.messageStage("Selezionare prima un articolo");

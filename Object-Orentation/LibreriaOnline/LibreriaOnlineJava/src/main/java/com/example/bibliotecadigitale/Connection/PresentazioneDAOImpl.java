@@ -10,11 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PresentazioneDAOImpl implements PresentazioneDAO {
+    private final Connessione connessione = new Connessione();
 
     public Presentazione get(int codP) {
         Presentazione presentazione = null;
         try {
-            Connessione connessione = new Connessione();
             String query = "SELECT * FROM Presentazione WHERE codp = '" + codP + "';";
             ResultSet rs = connessione.executeSearch(query);
             while (rs.next()) {
@@ -35,7 +35,6 @@ public class PresentazioneDAOImpl implements PresentazioneDAO {
         ArrayList<Presentazione> presentazioneFinded = new ArrayList<>();
         String query;
         try {
-            Connessione connessione = new Connessione();
             if(tipoRicerca.equalsIgnoreCase("codp")){
                 query = "SELECT codp FROM presentazione WHERE " + tipoRicerca + " = " + parolaChiave + ";";
             }else{
@@ -64,7 +63,6 @@ public class PresentazioneDAOImpl implements PresentazioneDAO {
     public List<Presentazione> getAll() throws SQLException {
         ArrayList<Presentazione> presentazioneFinded = new ArrayList<>();
         try {
-            Connessione connessione = new Connessione();
             String query = "SELECT codp FROM presentazione;";
             ResultSet rs = connessione.executeSearch(query);
             Presentazione presentazione;
@@ -82,7 +80,6 @@ public class PresentazioneDAOImpl implements PresentazioneDAO {
     @Override
     public void insert(Presentazione presentazione) throws SQLException {
         try {
-            Connessione connessione = new Connessione();
             int codp = presentazione.getCodP();
             String nome = presentazione.getNome();
             String indirizzo = presentazione.getIndirizzo();
@@ -99,7 +96,6 @@ public class PresentazioneDAOImpl implements PresentazioneDAO {
     @Override
     public void update(Presentazione presentazione) throws SQLException {
         try {
-            Connessione connessione = new Connessione();
             int codp = presentazione.getCodP();
             String nome = presentazione.getNome();
             String indirizzo = presentazione.getIndirizzo();
@@ -116,13 +112,11 @@ public class PresentazioneDAOImpl implements PresentazioneDAO {
     @Override
     public void delete(Presentazione presentazione) throws SQLException {
         try {
-            Connessione connessione = new Connessione();
             int codp = presentazione.getCodP();
             String query = "DELETE FROM presentazione WHERE codp = " + codp + ";";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);
-
         }
     }
 }

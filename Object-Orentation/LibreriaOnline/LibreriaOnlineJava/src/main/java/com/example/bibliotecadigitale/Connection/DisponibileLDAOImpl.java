@@ -9,11 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DisponibileLDAOImpl implements DisponibileLDAO {
+    private final Connessione connessione = new Connessione();
     @Override
     public DisponibileL get(int coda, String isbn) throws SQLException {
         DisponibileL disponibileL;
         try {
-            Connessione connessione = new Connessione();
             String query = "SELECT * FROM disponibile_l WHERE coda = '" + coda + "'AND isbn = '" + isbn + "';";
             disponibileL = new DisponibileL();
             ResultSet rs = connessione.executeSearch(query);
@@ -31,7 +31,6 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
     public ArrayList<DisponibileL> getAcquisti(String isbn) throws SQLException {
         ArrayList<DisponibileL> disponibileL;
         try {
-            Connessione connessione = new Connessione();
             String query = "SELECT * FROM disponibile_l WHERE isbn = '" + isbn + "';";
             disponibileL = new ArrayList<>();
             ResultSet rs = connessione.executeSearch(query);
@@ -48,7 +47,6 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
         ArrayList<DisponibileL> disponibileLFinded = new ArrayList<>();
         String query = "";
         try {
-            Connessione connessione = new Connessione();
             if (tipoRicerca.equalsIgnoreCase("coda")) {
                 query = "SELECT coda,isbn FROM disponibile_l WHERE " + tipoRicerca + "= " + parolaChiave + ";";
             }
@@ -77,7 +75,6 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
     public List<DisponibileL> getAll() throws SQLException {
         ArrayList<DisponibileL> disponibileLFinded = new ArrayList<>();
         try {
-            Connessione connessione = new Connessione();
             String query = "SELECT coda,isbn FROM disponibile_l;";
             ResultSet rs = connessione.executeSearch(query);
             DisponibileL disponibileL;
@@ -95,7 +92,6 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
     @Override
     public void insert(DisponibileL disponibileL) throws SQLException {
         try {
-            Connessione connessione = new Connessione();
             String query = "INSERT INTO disponibile_l VALUES (" + disponibileL.getCodA() + ",'" + disponibileL.getIsbn() + "');";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
@@ -107,7 +103,6 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
     @Override
     public void update(DisponibileL disponibileL) throws SQLException {
         try {
-            Connessione connessione = new Connessione();
             String query = "UPDATE disponibile_l SET isbn = '" + disponibileL.getIsbn() + "' WHERE coda = " + disponibileL.getCodA() + ";";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
@@ -119,7 +114,6 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
     @Override
     public void delete(DisponibileL disponibileL) throws SQLException {
         try {
-            Connessione connessione = new Connessione();
             String query = "DELETE FROM disponibile_l WHERE coda = " + disponibileL.getCodA() + " AND isbn = '" + disponibileL.getIsbn() + "';";
             connessione.executeUpdate(query);
         } catch (SQLException e) {

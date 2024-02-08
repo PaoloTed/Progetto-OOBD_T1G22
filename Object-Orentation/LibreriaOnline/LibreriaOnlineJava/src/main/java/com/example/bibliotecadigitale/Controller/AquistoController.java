@@ -16,11 +16,11 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class AquistoController implements Initializable {
 
-    public SupportStage support = new SupportStage();
     @FXML
     private ImageView imageLibriSfondo;
     @FXML
@@ -41,10 +41,7 @@ public class AquistoController implements Initializable {
         nomeColumn.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("nome"));
         urlColumn.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("url"));
         IndirizzoColumn.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("indirizzo"));
-
-        imageLibriSfondo.setImage(new Image(getClass().getResourceAsStream("/Images/libri800x900.png")));
-
-
+        imageLibriSfondo.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/libri800x900.png"))));
     }
 
     public void showInfoAquisto(String ISBN) {
@@ -73,7 +70,6 @@ public class AquistoController implements Initializable {
     //non testao ops
     public void showInfoArtcolo(String doi) {
         DisponibileADAOImpl disponibileADAO = new DisponibileADAOImpl();
-
         ArrayList<DisponibileA> DisponibileLarrey;
         try {
             DisponibileLarrey = disponibileADAO.getAquisti(doi);
@@ -84,22 +80,17 @@ public class AquistoController implements Initializable {
             AcquistoDAOImpl acquistoDAO = new AcquistoDAOImpl();
             Acquisto acquisto;
             try {
-                acquisto = acquistoDAO.get(DisponibileLarrey.get(0).getCodA());
+                acquisto = acquistoDAO.get(DisponibileLarrey.get(0).getCoda());
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
             tableView.getItems().add(acquisto);
             DisponibileLarrey.remove(0);
-
         }
-
-
     }
 
     public void close(ActionEvent event) {
-        SupportStage support = new SupportStage();
         Stage stage = (Stage) tableView.getScene().getWindow();
         stage.close();
-
     }
 }

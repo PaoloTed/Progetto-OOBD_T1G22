@@ -79,7 +79,7 @@ public class ArticoloInformativaController {
     }
 
     public void goToRivista(ActionEvent event) {
-        support.switchStage("rivistaStage.fxml", ArticoloMain.getDatar(), ArticoloMain.getNomer());
+        support.switchStage("rivistaStage.fxml", ArticoloMain.getNomer(), ArticoloMain.getDatar());
     }
 
     public void goToAquisto(ActionEvent event) {

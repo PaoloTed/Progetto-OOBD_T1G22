@@ -19,7 +19,6 @@
    <children>
       <ImageView fx:id="imageLibriSfondo" fitHeight="500.0" fitWidth="495.0" layoutX="2.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../../../../Downloads/libri800x900.png" />
          </image>
          <viewport>
             <Rectangle2D height="500.0" width="495.0" />

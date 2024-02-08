@@ -89,5 +89,10 @@
             <Font name="Arial" size="17.0" />
          </font>
       </Text>
+      <Text fx:id="txtNumeroNotifiche" fill="#de5f4f" layoutX="674.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

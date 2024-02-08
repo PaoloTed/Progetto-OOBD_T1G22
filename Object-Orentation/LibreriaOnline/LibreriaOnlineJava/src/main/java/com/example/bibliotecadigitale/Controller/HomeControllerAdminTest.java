@@ -218,6 +218,48 @@ public class HomeControllerAdminTest implements Initializable {
     @FXML
     private MenuItem itemInsert10;
 
+    @FXML
+    private MenuItem itemUpdate1;
+    @FXML
+    private MenuItem itemUpdate2;
+    @FXML
+    private MenuItem itemUpdate3;
+    @FXML
+    private MenuItem itemUpdate4;
+    @FXML
+    private MenuItem itemUpdate5;
+    @FXML
+    private MenuItem itemUpdate6;
+    @FXML
+    private MenuItem itemUpdate7;
+    @FXML
+    private MenuItem itemUpdate8;
+    @FXML
+    private MenuItem itemUpdate9;
+    @FXML
+    private MenuItem itemUpdate10;
+
+    @FXML
+    private MenuItem itemDelete1;
+    @FXML
+    private MenuItem itemDelete2;
+    @FXML
+    private MenuItem itemDelete3;
+    @FXML
+    private MenuItem itemDelete4;
+    @FXML
+    private MenuItem itemDelete5;
+    @FXML
+    private MenuItem itemDelete6;
+    @FXML
+    private MenuItem itemDelete7;
+    @FXML
+    private MenuItem itemDelete8;
+    @FXML
+    private MenuItem itemDelete9;
+    @FXML
+    private MenuItem itemDelete10;
+
     private HashMap<String, TableView> tableViewHashMap = new HashMap<>();
     private HashMap<String, ObservableList<String>> ricercaHashMap = new HashMap<>();
     private HashMap<String, DAO> implDaoHashMap = new HashMap<>();
@@ -358,7 +400,7 @@ public class HomeControllerAdminTest implements Initializable {
         completataSerie.setCellFactory(TextFieldTableCell.forTableColumn(new BooleanStringConverter()));
 
         //inizializzo le colonne della tabella disponibileA
-        codaDisponibileA.setCellValueFactory(new PropertyValueFactory<>("codA"));
+        codaDisponibileA.setCellValueFactory(new PropertyValueFactory<>("coda"));
         codaDisponibileA.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         codaDisponibileA.setEditable(false);
         doiDisponibileA.setCellValueFactory(new PropertyValueFactory<>("doi"));
@@ -394,8 +436,6 @@ public class HomeControllerAdminTest implements Initializable {
         comboBoxRicerca.setItems(FXCollections.observableArrayList("Isbn", "Titolo", "Genere", "Autore", "Editore", "DataUscita", "NumPagine", "Materia", "Descrizione", "Fruizione", "Successivo", "Serie", "Presentazione", "Lingua"));
         comboBoxRicerca.getSelectionModel().selectFirst();
 
-        prova.setCodA(1);
-        prova.setDoi("inserisci doi");
 
         objectHashMap.put("Libro", new Libro());
         objectHashMap.put("Articolo", new ArticoloScientifico());
@@ -404,7 +444,7 @@ public class HomeControllerAdminTest implements Initializable {
         objectHashMap.put("Presentazione", new Presentazione());
         objectHashMap.put("Rivista", new Rivista());
         objectHashMap.put("Serie", new Serie());
-        objectHashMap.put("DisponibileA", prova);
+        objectHashMap.put("DisponibileA", new DisponibileA());
         objectHashMap.put("DisponibileL", new DisponibileL());
         objectHashMap.put("DisponibileS", new DisponibileS());
 
@@ -544,8 +584,12 @@ public class HomeControllerAdminTest implements Initializable {
 
         setVisibleFalseAllTableView();
         for (TableView tableView : tableViewHashMap.values()) {
+
             tableView.getItems().clear();
             tableView.setPrefHeight(dimTable);
+//            if (sceltaMode.equals("insert")) {
+//                tableView.getItems().add(objectHashMap.get(scelta));
+//            }
         }
         if (sceltaMode.equals("insert")) {
             tableViewHashMap.get("Libro").getItems().add(new Libro());
@@ -594,6 +638,28 @@ public class HomeControllerAdminTest implements Initializable {
         itemInsert8.setVisible(sceltaBool);
         itemInsert9.setVisible(sceltaBool);
         itemInsert10.setVisible(sceltaBool);
+
+        itemUpdate1.setVisible(!sceltaBool);
+        itemUpdate2.setVisible(!sceltaBool);
+        itemUpdate3.setVisible(!sceltaBool);
+        itemUpdate4.setVisible(!sceltaBool);
+        itemUpdate5.setVisible(!sceltaBool);
+        itemUpdate6.setVisible(!sceltaBool);
+        itemUpdate7.setVisible(!sceltaBool);
+        itemUpdate8.setVisible(!sceltaBool);
+        itemUpdate9.setVisible(!sceltaBool);
+        itemUpdate10.setVisible(!sceltaBool);
+
+        itemDelete1.setVisible(!sceltaBool);
+        itemDelete2.setVisible(!sceltaBool);
+        itemDelete3.setVisible(!sceltaBool);
+        itemDelete4.setVisible(!sceltaBool);
+        itemDelete5.setVisible(!sceltaBool);
+        itemDelete6.setVisible(!sceltaBool);
+        itemDelete7.setVisible(!sceltaBool);
+        itemDelete8.setVisible(!sceltaBool);
+        itemDelete9.setVisible(!sceltaBool);
+        itemDelete10.setVisible(!sceltaBool);
 
         buttonViewAll.setVisible(!sceltaBool);
     }
@@ -656,11 +722,7 @@ public class HomeControllerAdminTest implements Initializable {
         String nomeMetodo = "set" + tipoColumn.substring(0, 1).toUpperCase() + tipoColumn.substring(1, tipoColumn.indexOf(scelta));
         try {
             Object test = tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem();
-
-//            tableViewHashMap.get(scelta).getItems().remove(test);
-            classHashMap.get(scelta).cast(test.getClass().getMethod(nomeMetodo, String.class).invoke(classHashMap.get(scelta).cast(test), valoreColumnString));
-//            tableViewHashMap.get(scelta).getItems().add((Libro) test);
-//            tableViewHashMap.get(scelta).refresh();
+            test.getClass().getMethod(nomeMetodo, String.class).invoke(test, valoreColumnString);
         } catch (Exception e) {
             System.out.println("Errore" + e.getMessage());
         }
@@ -674,10 +736,7 @@ public class HomeControllerAdminTest implements Initializable {
         String nomeMetodo = "set" + tipoColumn.substring(0, 1).toUpperCase() + tipoColumn.substring(1, tipoColumn.indexOf(scelta));
         try {
             Object test = tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem();
-            tableViewHashMap.get(scelta).getItems().remove(test);
             test.getClass().getMethod(nomeMetodo, int.class).invoke(test, valoreColumnInt);
-            tableViewHashMap.get(scelta).getItems().add(test);
-            tableViewHashMap.get(scelta).refresh();
         } catch (Exception e) {
             System.out.println("Errore" + e.getMessage());
         }
@@ -691,10 +750,7 @@ public class HomeControllerAdminTest implements Initializable {
         String nomeMetodo = "set" + tipoColumn.substring(0, 1).toUpperCase() + tipoColumn.substring(1, tipoColumn.indexOf(scelta));
         try {
             Object test = tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem();
-            tableViewHashMap.get(scelta).getItems().remove(test);
             test.getClass().getMethod(nomeMetodo, Boolean.class).invoke(test, valoreColumnBoolean);
-            tableViewHashMap.get(scelta).getItems().add(test);
-            tableViewHashMap.get(scelta).refresh();
         } catch (Exception e) {
             System.out.println("Errore" + e.getMessage());
         }

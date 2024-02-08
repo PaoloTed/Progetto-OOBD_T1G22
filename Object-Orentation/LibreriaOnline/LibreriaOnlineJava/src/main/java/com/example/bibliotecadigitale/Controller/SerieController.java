@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
 
 public class SerieController implements Initializable {
 
-    public SupportStage support = new SupportStage();
+    private SupportStage support = new SupportStage();
 
 
     @FXML
@@ -79,7 +79,6 @@ public class SerieController implements Initializable {
     }
 
     public void goToPaginaInformativaLibro(ActionEvent event) {
-        SupportStage support = new SupportStage();
         Libro libro = libroTableView.getSelectionModel().getSelectedItem();
         if (libro == null) {
             support.messageStage("Selezionare prima un libro");

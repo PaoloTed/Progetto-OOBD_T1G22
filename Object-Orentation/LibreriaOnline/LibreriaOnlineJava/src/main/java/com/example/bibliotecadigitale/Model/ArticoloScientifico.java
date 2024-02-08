@@ -3,7 +3,7 @@ package com.example.bibliotecadigitale.Model;
 public class ArticoloScientifico extends Pubblicazioni {
 
     private String doi;
-    private int conferenza;
+    private Integer conferenza;
     private String nomer;
     private String datar;
 
@@ -15,11 +15,11 @@ public class ArticoloScientifico extends Pubblicazioni {
         this.doi = doi;
     }
 
-    public int getConferenza() {
+    public Integer getConferenza() {
         return conferenza;
     }
 
-    public void setConferenza(int conferenza) {
+    public void setConferenza(Integer conferenza) {
         this.conferenza = conferenza;
     }
 

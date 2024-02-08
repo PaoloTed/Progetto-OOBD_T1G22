@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class NotificheController implements Initializable {
@@ -39,7 +40,7 @@ public class NotificheController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Utente utente = Utente.getUtente();
         String email = utente.getEmail();
-        imageLibriSfondo.setImage(new Image(getClass().getResourceAsStream("/Images/libri800x900.png")));
+        imageLibriSfondo.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/libri800x900.png"))));
         try {
             Connessione connessione = new Connessione();
             String query = "select * from show_preferiti('" + email + "');";
@@ -54,7 +55,6 @@ public class NotificheController implements Initializable {
     }
 
     public void goToPaginaInformativaSerie(ActionEvent event) {
-        SupportStage support = new SupportStage();
         int cods = Integer.parseInt(listViewSerieAcquisto.getSelectionModel().getSelectedItem().substring(7,listViewSerieAcquisto.getSelectionModel().getSelectedItem().indexOf(" || ")));
         Stage stage = (Stage) listViewSerieAcquisto.getScene().getWindow();
         stage.close();

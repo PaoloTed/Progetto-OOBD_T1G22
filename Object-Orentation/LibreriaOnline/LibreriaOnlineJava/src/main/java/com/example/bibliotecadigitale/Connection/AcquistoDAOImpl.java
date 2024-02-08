@@ -8,11 +8,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class AcquistoDAOImpl implements AcquistoDAO {
+
+    private final Connessione connessione = new Connessione();
     @Override
     public Acquisto get(int coda) throws SQLException {
         Acquisto acquisto;
         try {
-            Connessione connessione = new Connessione();
             String query = "SELECT * FROM acquisto WHERE coda = " + coda + ";";
             ResultSet rs = connessione.executeSearch(query);
             acquisto = new Acquisto();
@@ -33,7 +34,6 @@ public class AcquistoDAOImpl implements AcquistoDAO {
         ArrayList<Acquisto> acquistoFinded = new ArrayList<>();
         String query;
         try {
-            Connessione connessione = new Connessione();
             if(tipoRicerca.equalsIgnoreCase("coda")){
                 query = "SELECT coda FROM acquisto WHERE coda = " + parolaChiave + ";";
             }else {
@@ -61,7 +61,6 @@ public class AcquistoDAOImpl implements AcquistoDAO {
     public ArrayList<Acquisto> getAll() throws SQLException {
         ArrayList<Acquisto> acquistoFinded = new ArrayList<>();
         try {
-            Connessione connessione = new Connessione();
             String query = "SELECT coda FROM acquisto;";
             ResultSet rs = connessione.executeSearch(query);
             Acquisto acquisto;
@@ -79,7 +78,6 @@ public class AcquistoDAOImpl implements AcquistoDAO {
     @Override
     public void insert(Acquisto acquisto) throws SQLException {
         try {
-            Connessione connessione = new Connessione();
             String query = "INSERT INTO acquisto VALUES (" + acquisto.getCodA() + ",'" + acquisto.getNome() + "','" + acquisto.getTipoA() + "','" + acquisto.getUrl() + "','" + acquisto.getIndirizzo() + "');";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
@@ -91,7 +89,6 @@ public class AcquistoDAOImpl implements AcquistoDAO {
     @Override
     public void update(Acquisto acquisto) throws SQLException {
         try {
-            Connessione connessione = new Connessione();
             String query = "UPDATE acquisto SET coda = " + acquisto.getCodA() + ", nome = '" + acquisto.getNome() + "', tipoa = '" + acquisto.getTipoA() + "', url = '" + acquisto.getUrl() + "', indirizzo = '" + acquisto.getIndirizzo() + "' WHERE coda = " + acquisto.getCodA() + ";";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
@@ -103,7 +100,6 @@ public class AcquistoDAOImpl implements AcquistoDAO {
     @Override
     public void delete(Acquisto acquisto) throws SQLException {
         try {
-            Connessione connessione = new Connessione();
             String query = "DELETE FROM acquisto WHERE coda = " + acquisto.getCodA() + ";";
             connessione.executeUpdate(query);
         } catch (SQLException e) {

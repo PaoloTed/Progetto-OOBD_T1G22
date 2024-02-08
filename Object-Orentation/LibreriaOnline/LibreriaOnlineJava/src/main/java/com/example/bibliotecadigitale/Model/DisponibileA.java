@@ -4,11 +4,11 @@ public class DisponibileA {
     private int codA;
     private String doi;
 
-    public int getCodA() {
+    public int getCoda() {
         return codA;
     }
 
-    public void setCodA(int codA) {
+    public void setCoda(int codA) {
         this.codA = codA;
     }
 

@@ -2,7 +2,6 @@ package com.example.bibliotecadigitale.Connection;
 
 import com.example.bibliotecadigitale.DAO.DisponibileADAO;
 import com.example.bibliotecadigitale.Model.DisponibileA;
-import com.example.bibliotecadigitale.Model.DisponibileL;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,16 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DisponibileADAOImpl implements DisponibileADAO {
+    private final Connessione connessione = new Connessione();
     @Override
     public DisponibileA get(int coda, String doi) throws SQLException {
         DisponibileA disponibileA;
         try {
-            Connessione connessione = new Connessione();
             String query = "SELECT coda,doi FROM disponibile_a WHERE coda = " + coda + " AND doi = '" + doi +"';";
             ResultSet rs = connessione.executeSearch(query);
             disponibileA = new DisponibileA();
             while (rs.next()) {
-                disponibileA.setCodA(rs.getInt(1));
+                disponibileA.setCoda(rs.getInt(1));
                 disponibileA.setDoi(rs.getString(2));
             }
             rs.close();
@@ -27,7 +26,7 @@ public class DisponibileADAOImpl implements DisponibileADAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return null;
+        return disponibileA;
     }
 
 
@@ -35,8 +34,7 @@ public class DisponibileADAOImpl implements DisponibileADAO {
     public ArrayList<DisponibileA> getAquisti(String doi) throws SQLException {
         ArrayList<DisponibileA> disponibileA;
         try {
-            Connessione connessione = new Connessione();
-            String query = "SELECT * FROM disponibile_a WHERE coda = AND doi = '" + doi +"';";
+            String query = "SELECT * FROM disponibile_a WHERE doi = '" + doi +"';";
             ResultSet rs = connessione.executeSearch(query);
             disponibileA = new ArrayList();
             while (rs.next()) {
@@ -55,7 +53,6 @@ public class DisponibileADAOImpl implements DisponibileADAO {
         ArrayList<DisponibileA> disponibileAFinded = new ArrayList<>();
         String query = "";
         try {
-            Connessione connessione = new Connessione();
             //Controllo dovuto alla non possibilita di usare %% con un intero
             if(tipoRicerca.equalsIgnoreCase("coda")) {
                 query = "SELECT coda,doi FROM disponibile_a WHERE coda = '"+parolaChiave+"';";
@@ -85,7 +82,6 @@ public class DisponibileADAOImpl implements DisponibileADAO {
     public List<DisponibileA> getAll() throws SQLException {
         ArrayList<DisponibileA> disponibileAFinded = new ArrayList<>();
         try {
-            Connessione connessione = new Connessione();
             String query = "SELECT coda,doi FROM disponibile_a;";
             ResultSet rs = connessione.executeSearch(query);
             DisponibileA disponibileA;
@@ -103,8 +99,7 @@ public class DisponibileADAOImpl implements DisponibileADAO {
     @Override
     public void insert(DisponibileA disponibileA) throws SQLException {
         try {
-            Connessione connessione = new Connessione();
-            String query = "INSERT INTO disponibile_a VALUES (" + disponibileA.getCodA() + ",'" + disponibileA.getDoi() + "');";
+            String query = "INSERT INTO disponibile_a VALUES (" + disponibileA.getCoda() + ",'" + disponibileA.getDoi() + "');";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -115,8 +110,7 @@ public class DisponibileADAOImpl implements DisponibileADAO {
     @Override
     public void update(DisponibileA disponibileA) throws SQLException {
         try {
-            Connessione connessione = new Connessione();
-            String query = "UPDATE disponibile_a SET coda = " + disponibileA.getCodA() + ", doi = '" + disponibileA.getDoi() + "' WHERE coda = " + disponibileA.getCodA() + " AND doi = '" + disponibileA.getDoi() +"';";
+            String query = "UPDATE disponibile_a SET coda = " + disponibileA.getCoda() + ", doi = '" + disponibileA.getDoi() + "' WHERE coda = " + disponibileA.getCoda() + " AND doi = '" + disponibileA.getDoi() +"';";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -127,8 +121,7 @@ public class DisponibileADAOImpl implements DisponibileADAO {
     @Override
     public void delete(DisponibileA disponibileA) throws SQLException {
         try {
-            Connessione connessione = new Connessione();
-            String query = "DELETE FROM disponibile_a WHERE coda = " + disponibileA.getCodA() + " AND doi = '" + disponibileA.getDoi() +"';";
+            String query = "DELETE FROM disponibile_a WHERE coda = " + disponibileA.getCoda() + " AND doi = '" + disponibileA.getDoi() +"';";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);

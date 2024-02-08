@@ -122,7 +122,7 @@ public class LibroInformativaController {
             support.messageStage("Il libro non ha una presentazione");
             return;
         }
-        support.switchStage("presentazioneStage.fxml", libroMain.getPresentazione());
+        support.switchStagePresentazione("presentazioneStage.fxml", libroMain.getPresentazione());
     }
 
     public void goToNext(ActionEvent event) throws SQLException {
