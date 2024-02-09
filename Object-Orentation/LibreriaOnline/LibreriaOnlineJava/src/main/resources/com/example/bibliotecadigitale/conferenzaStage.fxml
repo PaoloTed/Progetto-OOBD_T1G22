@@ -4,15 +4,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.ConferenzaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: #fdf3ea; -fx-border-color: #964B00;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.ConferenzaController">
    <children>
-      <Text fx:id="textCodCId" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CodC" textAlignment="CENTER" wrappingWidth="250.0" />
-      <Text fx:id="textNomeId" layoutX="5.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome" textAlignment="CENTER" wrappingWidth="241.248046875" />
-      <Text fx:id="textIndizioId" layoutX="-1.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Indirizzo" textAlignment="CENTER" wrappingWidth="250.0" />
-      <Text fx:id="textResponsabileId" layoutX="-1.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Responsabile" textAlignment="CENTER" wrappingWidth="250.0" />
-      <Text fx:id="textDataIId" layoutX="1.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DataI" textAlignment="CENTER" wrappingWidth="250.0" />
-      <Button fx:id="buttonClose" layoutX="103.0" layoutY="211.0" mnemonicParsing="false" onAction="#close" text="Close" />
-      <Text fx:id="textStrutturaId" layoutX="1.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sruttura" textAlignment="CENTER" wrappingWidth="250.0" />
-      <Text fx:id="textDataFId" layoutX="1.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DataF" textAlignment="CENTER" wrappingWidth="250.0" />
+      <Text fx:id="textCodCId" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Codice Conferenza:" textAlignment="CENTER" wrappingWidth="250.0" AnchorPane.topAnchor="15.0" />
+      <Text fx:id="textNomeId" layoutX="5.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome:" textAlignment="CENTER" wrappingWidth="241.248046875" AnchorPane.topAnchor="35.0" />
+      <Text fx:id="textIndizioId" layoutX="-1.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Indirizzo:" textAlignment="CENTER" wrappingWidth="250.0" AnchorPane.topAnchor="75.0" />
+      <Text fx:id="textResponsabileId" layoutX="-1.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Responsabile:" textAlignment="CENTER" wrappingWidth="250.0" AnchorPane.topAnchor="135.0" />
+      <Text fx:id="textDataIId" layoutX="1.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data inizio: " textAlignment="CENTER" wrappingWidth="250.0" AnchorPane.topAnchor="95.0" />
+      <Button fx:id="buttonClose" layoutX="103.0" layoutY="211.0" mnemonicParsing="false" onAction="#close" style="-fx-background-color: #2b2d30;" text="Close" textFill="WHITE" />
+      <Text fx:id="textStrutturaId" layoutX="1.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sruttura:" textAlignment="CENTER" wrappingWidth="250.0" AnchorPane.topAnchor="55.0" />
+      <Text fx:id="textDataFId" layoutX="1.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data Fine" textAlignment="CENTER" wrappingWidth="250.0" AnchorPane.topAnchor="115.0" />
    </children>
 </AnchorPane>

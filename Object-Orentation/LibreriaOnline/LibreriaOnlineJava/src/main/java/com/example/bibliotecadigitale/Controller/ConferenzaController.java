@@ -34,13 +34,13 @@ public class ConferenzaController {
     {
         ConferenzaDAOImpl conferenzaDAO = new ConferenzaDAOImpl();
         Conferenza conferenza = conferenzaDAO.get(codc);
-        textCodCId.setText(String.valueOf(conferenza.getCodC()));
-        textNomeId.setText(conferenza.getNome());
-        textDataIId.setText(String.valueOf(conferenza.getDataI()));
-        textDataFId.setText(String.valueOf(conferenza.getDataF()));
-        textIndizioId.setText(conferenza.getIndirizzo());
-        textResponsabileId.setText(conferenza.getResponsabile());
-        textStrutturaId.setText(conferenza.getStruttura());
+        textCodCId.setText(textCodCId.getText()+String.valueOf(conferenza.getCodC()));
+        textNomeId.setText(textNomeId.getText()+conferenza.getNome());
+        textDataIId.setText(textDataIId.getText()+String.valueOf(conferenza.getDataI()));
+        textDataFId.setText(textDataFId.getText()+String.valueOf(conferenza.getDataF()));
+        textIndizioId.setText(textIndizioId.getText()+conferenza.getIndirizzo());
+        textResponsabileId.setText(textResponsabileId.getText()+conferenza.getResponsabile());
+        textStrutturaId.setText(textStrutturaId.getText()+conferenza.getStruttura());
 
     }
 

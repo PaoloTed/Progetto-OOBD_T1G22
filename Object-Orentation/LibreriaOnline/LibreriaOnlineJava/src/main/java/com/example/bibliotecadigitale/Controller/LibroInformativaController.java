@@ -126,6 +126,18 @@ public class LibroInformativaController {
     }
 
     public void goToNext(ActionEvent event) throws SQLException {
+        textTitleIId.setText("");
+        textIsbnId.setText("");
+        textGenereId.setText("");
+        textNumeroPagineId.setText("");
+        textTIpoId.setText("");
+        textMateriaId.setText("");
+        textDescrizioneId.setText("");
+        textFruizioneId.setText("");
+        textDataUscitaId.setText("");
+        textLinguianId.setText("");
+        textAutoreId.setText("");
+        txtEditoreId.setText("");
         LibroDAOImpl libroDAO = new LibroDAOImpl();
         Libro libroSuccessivo = libroDAO.get(libroMain.getSuccessivo());
         showInfoLibro(libroSuccessivo);

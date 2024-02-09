@@ -7,6 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="900.0" style="-fx-border-color: #de5f4f; -fx-border-width: 7; -fx-background-color: #fdf3ea;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.AcquistoController">
    <children>
@@ -25,5 +26,6 @@
             <TableColumn fx:id="IndirizzoColumn" prefWidth="315.0" text="Indirizzo" />
          </columns>
       </TableView>
+      <Text layoutX="284.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qui trovi dov'è possibile aquistare il libro da  te selezionato" />
    </children>
 </AnchorPane>
