@@ -50,10 +50,10 @@ public class ArticoloInformativaController {
         textTitleId.setText(textTitleId.getText()+articolopassato.getTitolo());
         textDoiId.setText(textDoiId.getText()+articolopassato.getDoi());
         textGenereId.setText(textGenereId.getText()+articolopassato.getGenere());
-        textNumeroPagineId.setText(textNumeroPagineId.getText()+String.valueOf(articolopassato.getNumPagine()));
+        textNumeroPagineId.setText(textNumeroPagineId.getText()+String.valueOf(articolopassato.getNumpagine()));
         textDescrizioneId.setText(textDescrizioneId.getText()+"\n"+articolopassato.getDescrizione());
         textFruizioneId.setText(textFruizioneId.getText()+articolopassato.getFruizione());
-        textDataUscitaId.setText(textDataUscitaId.getText()+String.valueOf(articolopassato.getDataUscita()));
+        textDataUscitaId.setText(textDataUscitaId.getText()+String.valueOf(articolopassato.getDatauscita()));
         textLinguianId.setText(textLinguianId.getText()+articolopassato.getLingua());
         textAutoreId.setText(textAutoreId.getText()+articolopassato.getAutore());
         txtEditoreId.setText(txtEditoreId.getText()+articolopassato.getEditore());

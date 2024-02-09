@@ -1,7 +1,5 @@
 package com.example.bibliotecadigitale.Model;
 
-import java.util.Date;
-
 public class Presentazione {
 
     private int codP;
@@ -10,11 +8,11 @@ public class Presentazione {
     private String dataPresentazione;
     private String tipo;
 
-    public int getCodP() {
+    public int getCodp() {
         return codP;
     }
 
-    public void setCodP(int codP) {
+    public void setCodp(int codP) {
         this.codP = codP;
     }
 
@@ -34,11 +32,11 @@ public class Presentazione {
         this.indirizzo = indirizzo;
     }
 
-    public String getDataPresentazione() {
+    public String getDatapresentazione() {
         return dataPresentazione;
     }
 
-    public void setDataPresentazione(String dataPresentazione) {
+    public void setDatapresentazione(String dataPresentazione) {
         this.dataPresentazione = dataPresentazione;
     }
 

@@ -1,9 +1,7 @@
 package com.example.bibliotecadigitale.Connection;
 
 import com.example.bibliotecadigitale.DAO.ConferenzaDAO;
-import com.example.bibliotecadigitale.Model.ArticoloScientifico;
 import com.example.bibliotecadigitale.Model.Conferenza;
-import com.example.bibliotecadigitale.Model.Serie;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,10 +17,10 @@ public class ConferenzaDAOImpl  implements ConferenzaDAO {
             ResultSet rs = connessione.executeSearch(query);
             while (rs.next()) {
                 conferenza = new Conferenza();
-                conferenza.setCodC(Integer.parseInt(rs.getString("codC")));
+                conferenza.setCodc(Integer.parseInt(rs.getString("codC")));
                 conferenza.setNome(rs.getString("nome"));
-                conferenza.setDataI(rs.getString("dataI"));
-                conferenza.setDataF(rs.getString("dataF"));
+                conferenza.setDatai(rs.getString("dataI"));
+                conferenza.setDataf(rs.getString("dataF"));
                 conferenza.setIndirizzo(rs.getString("indirizzo"));
                 conferenza.setResponsabile(rs.getString("responsabile"));
                 conferenza.setStruttura(rs.getString("struttura"));
@@ -83,10 +81,10 @@ public class ConferenzaDAOImpl  implements ConferenzaDAO {
     @Override
     public void insert(Conferenza conferenza) throws SQLException {
         try {
-            int codC = conferenza.getCodC();
+            int codC = conferenza.getCodc();
             String nome = conferenza.getNome();
-            String dataI = conferenza.getDataI();
-            String dataF = conferenza.getDataF();
+            String dataI = conferenza.getDatai();
+            String dataF = conferenza.getDataf();
             String indirizzo = conferenza.getIndirizzo();
             String responsabile = conferenza.getResponsabile();
             String struttura = conferenza.getStruttura();
@@ -101,10 +99,10 @@ public class ConferenzaDAOImpl  implements ConferenzaDAO {
     @Override
     public void update(Conferenza conferenza) throws SQLException {
         try{
-            int codC = conferenza.getCodC();
+            int codC = conferenza.getCodc();
             String nome = conferenza.getNome();
-            String dataI = conferenza.getDataI();
-            String dataF = conferenza.getDataF();
+            String dataI = conferenza.getDatai();
+            String dataF = conferenza.getDataf();
             String indirizzo = conferenza.getIndirizzo();
             String responsabile = conferenza.getResponsabile();
             String struttura = conferenza.getStruttura();
@@ -119,7 +117,7 @@ public class ConferenzaDAOImpl  implements ConferenzaDAO {
     @Override
     public void delete(Conferenza conferenza) throws SQLException {
         try{
-            int codC = conferenza.getCodC();
+            int codC = conferenza.getCodc();
             String query = "DELETE FROM conferenza WHERE codC = " + codC + ";";
             connessione.executeUpdate(query);
         } catch (SQLException e) {

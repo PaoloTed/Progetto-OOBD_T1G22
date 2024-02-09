@@ -16,11 +16,11 @@ public class Serie {
     }
 
 
-    public int getCodS() {
+    public int getCods() {
         return codS;
     }
 
-    public void setCodS(int codS) {
+    public void setCods(int codS) {
         this.codS = codS;
     }
 
@@ -32,11 +32,11 @@ public class Serie {
         this.nome = nome;
     }
 
-    public int getNumLibri() {
+    public int getNumlibri() {
         return numLibri;
     }
 
-    public void setNumLibri(int numLibri) {
+    public void setNumlibri(int numLibri) {
         this.numLibri = numLibri;
     }
 

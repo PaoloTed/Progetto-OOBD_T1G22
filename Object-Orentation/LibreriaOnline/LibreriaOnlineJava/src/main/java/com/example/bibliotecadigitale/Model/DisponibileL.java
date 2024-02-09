@@ -5,11 +5,11 @@ public class DisponibileL {
     private String isbn;
 
 
-    public int getCodA() {
+    public int getCoda() {
         return codA;
     }
 
-    public void setCodA(int coda) {
+    public void setCoda(int coda) {
         this.codA = coda;
     }
 

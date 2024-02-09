@@ -29,19 +29,19 @@ public class Pubblicazioni
         this.genere = genere;
     }
 
-    public int getNumPagine() {
+    public int getNumpagine() {
         return numPagine;
     }
 
-    public void setNumPagine(int numPagine) {
+    public void setNumpagine(int numPagine) {
         this.numPagine = numPagine;
     }
 
-    public String getDataUscita() {
+    public String getDatauscita() {
         return dataUscita;
     }
 
-    public void setDataUscita(String dataUscita) {
+    public void setDatauscita(String dataUscita) {
         this.dataUscita = dataUscita;
     }
 

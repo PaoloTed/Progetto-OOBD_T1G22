@@ -61,13 +61,13 @@ public class LibroInformativaController {
         UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
         libroMain = libroPassato;
         textTitleIId.setText(textTitleIId.getText()+libroPassato.getTitolo());
-        textIsbnId.setText(textIsbnId.getText()+libroPassato.getISBN());
+        textIsbnId.setText(textIsbnId.getText()+libroPassato.getIsbn());
         textGenereId.setText(textGenereId.getText()+libroPassato.getGenere());
-        textNumeroPagineId.setText(textNumeroPagineId.getText()+String.valueOf(libroPassato.getNumPagine()));
+        textNumeroPagineId.setText(textNumeroPagineId.getText()+String.valueOf(libroPassato.getNumpagine()));
         textTIpoId.setText(textTIpoId.getText()+libroPassato.getTipo());
         textDescrizioneId.setText(textDescrizioneId.getText()+"\n"+libroPassato.getDescrizione());
         textFruizioneId.setText(textFruizioneId.getText()+libroPassato.getFruizione());
-        textDataUscitaId.setText(textDataUscitaId.getText()+libroPassato.getDataUscita());
+        textDataUscitaId.setText(textDataUscitaId.getText()+libroPassato.getDatauscita());
         textLinguianId.setText(textLinguianId.getText()+libroPassato.getLingua());
 
         if (libroPassato.getMateria() != null) {
@@ -145,6 +145,6 @@ public class LibroInformativaController {
     }
 
     public void goToAquisto(ActionEvent event) {
-        support.switchStageAquistiLibri("acquistoStage.fxml", libroMain.getISBN());
+        support.switchStageAquistiLibri("acquistoStage.fxml", libroMain.getIsbn());
     }
 }

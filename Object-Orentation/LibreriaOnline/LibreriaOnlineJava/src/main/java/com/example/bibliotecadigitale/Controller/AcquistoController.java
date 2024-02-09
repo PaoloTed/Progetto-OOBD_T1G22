@@ -25,21 +25,21 @@ public class AcquistoController implements Initializable {
     @FXML
     public TableView<Acquisto> tableView;
     @FXML
-    TableColumn<Acquisto, Integer> codAColumn;
+    TableColumn<Acquisto, Integer> codaColumn;
     @FXML
     TableColumn<Acquisto, String> nomeColumn;
     @FXML
     TableColumn<Acquisto, String> urlColumn;
     @FXML
-    TableColumn<Acquisto, String> IndirizzoColumn;
+    TableColumn<Acquisto, String> indirizzoColumn;
 
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //inizializzo le colonne della tabella libro
-        codAColumn.setCellValueFactory(new PropertyValueFactory<Acquisto, Integer>("codA"));
+        codaColumn.setCellValueFactory(new PropertyValueFactory<Acquisto, Integer>("codA"));
         nomeColumn.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("nome"));
         urlColumn.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("url"));
-        IndirizzoColumn.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("indirizzo"));
+        indirizzoColumn.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("indirizzo"));
         imageLibriSfondo.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/libri800x900.png"))));
     }
 
@@ -56,7 +56,7 @@ public class AcquistoController implements Initializable {
             AcquistoDAOImpl acquistoDAO = new AcquistoDAOImpl();
             Acquisto acquisto;
             try {
-                acquisto = acquistoDAO.get(DisponibileLarray.get(0).getCodA());
+                acquisto = acquistoDAO.get(DisponibileLarray.get(0).getCoda());
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }

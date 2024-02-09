@@ -18,7 +18,7 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
             disponibileL = new DisponibileL();
             ResultSet rs = connessione.executeSearch(query);
             while (rs.next()) {
-                disponibileL.setCodA(rs.getInt(1));
+                disponibileL.setCoda(rs.getInt(1));
                 disponibileL.setIsbn(rs.getString(2));
             }
         } catch (SQLException e) {
@@ -92,7 +92,7 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
     @Override
     public void insert(DisponibileL disponibileL) throws SQLException {
         try {
-            String query = "INSERT INTO disponibile_l VALUES (" + disponibileL.getCodA() + ",'" + disponibileL.getIsbn() + "');";
+            String query = "INSERT INTO disponibile_l VALUES (" + disponibileL.getCoda() + ",'" + disponibileL.getIsbn() + "');";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -103,7 +103,7 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
     @Override
     public void update(DisponibileL disponibileL) throws SQLException {
         try {
-            String query = "UPDATE disponibile_l SET isbn = '" + disponibileL.getIsbn() + "' WHERE coda = " + disponibileL.getCodA() + ";";
+            String query = "UPDATE disponibile_l SET isbn = '" + disponibileL.getIsbn() + "' WHERE coda = " + disponibileL.getCoda() + ";";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -114,7 +114,7 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
     @Override
     public void delete(DisponibileL disponibileL) throws SQLException {
         try {
-            String query = "DELETE FROM disponibile_l WHERE coda = " + disponibileL.getCodA() + " AND isbn = '" + disponibileL.getIsbn() + "';";
+            String query = "DELETE FROM disponibile_l WHERE coda = " + disponibileL.getCoda() + " AND isbn = '" + disponibileL.getIsbn() + "';";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);

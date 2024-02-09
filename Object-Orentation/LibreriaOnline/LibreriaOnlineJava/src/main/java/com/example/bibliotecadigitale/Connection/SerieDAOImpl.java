@@ -18,9 +18,9 @@ public class SerieDAOImpl implements SerieDAO {
             ResultSet rs = connessione.executeSearch(query);
             while (rs.next()) {
                 serie = new Serie();
-                serie.setCodS(rs.getInt(1));
+                serie.setCods(rs.getInt(1));
                 serie.setNome(rs.getString(2));
-                serie.setNumLibri(rs.getInt(3));
+                serie.setNumlibri(rs.getInt(3));
                 serie.setCompletata(rs.getBoolean(4));
             }
             rs.close();
@@ -78,7 +78,7 @@ public class SerieDAOImpl implements SerieDAO {
     @Override
     public void insert(Serie serie) {
         try {
-            int cods = serie.getCodS();
+            int cods = serie.getCods();
             String nome = serie.getNome();
             String query = "INSERT INTO Serie VALUES ('" + cods + "','" + nome + "');";
             connessione.executeUpdate(query);
@@ -91,7 +91,7 @@ public class SerieDAOImpl implements SerieDAO {
     @Override
     public void update(Serie serie) throws SQLException {
         try {
-            int cods = serie.getCodS();
+            int cods = serie.getCods();
             String nome = serie.getNome();
             boolean completata = serie.getCompletata();
             String query = "UPDATE Serie SET nome = " + nome + ", completata = " + completata + " WHERE cods = " + cods + ";";
@@ -104,7 +104,7 @@ public class SerieDAOImpl implements SerieDAO {
     @Override
     public void delete(Serie serie) throws SQLException {
         try {
-            int cods = serie.getCodS();
+            int cods = serie.getCods();
             String query = "DELETE FROM Serie WHERE cods = " + cods + ";";
             connessione.executeUpdate(query);
         } catch (SQLException e) {

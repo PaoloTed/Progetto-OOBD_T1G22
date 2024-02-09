@@ -12,7 +12,7 @@ public class Libro extends Pubblicazioni{
     private Integer presentazione;
 
     public void prova(Libro libro) {
-        this.ISBN = libro.getISBN();
+        this.ISBN = libro.getIsbn();
         this.tipo = libro.getTipo();
         this.materia = libro.getMateria();
         this.successivo = libro.getSuccessivo();
@@ -32,11 +32,11 @@ public class Libro extends Pubblicazioni{
 
 
 
-    public String getISBN() {
+    public String getIsbn() {
         return ISBN;
     }
 
-    public void setISBN(String ISBN) {
+    public void setIsbn(String ISBN) {
         this.ISBN = ISBN;
     }
 

@@ -2,15 +2,12 @@ package com.example.bibliotecadigitale.Controller;
 
 import com.example.bibliotecadigitale.Connection.Connessione;
 import com.example.bibliotecadigitale.Connection.UtenteDAOImpl;
-import com.example.bibliotecadigitale.Model.Libro;
 import com.example.bibliotecadigitale.Model.Serie;
 import com.example.bibliotecadigitale.Model.Utente;
 import com.example.bibliotecadigitale.SupportStage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.control.ContextMenu;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
@@ -73,8 +70,10 @@ public class NotificheController implements Initializable {
     public void eliminaPreferito(ActionEvent event) {
         Serie serie = getSerieFromListView();
         UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
-        utenteDAO.deletePreferiti(Utente.getUtente().getEmail(), serie.getCodS());
-
+        utenteDAO.deletePreferiti(Utente.getUtente().getEmail(), serie.getCods());
+        Stage stage = (Stage) listViewSerieAcquisto.getScene().getWindow();
+        stage.close();
+        support.switchStage("notificheStage.fxml",900,800);
         //Elimino la serie selezionata dalla listView
         deleteSerieFromListView(serie);
         support.messageStage("Preferito eliminato con successo.");
@@ -83,14 +82,14 @@ public class NotificheController implements Initializable {
     private Serie getSerieFromListView() {
         String serieCodS_Nome = listViewSerieAcquisto.getSelectionModel().getSelectedItem();
         Serie serieAppoggio = new Serie();
-        serieAppoggio.setCodS(Integer.parseInt(serieCodS_Nome.substring(serieCodS_Nome.indexOf(": "), serieCodS_Nome.indexOf(" || "))));
+        serieAppoggio.setCods(Integer.parseInt(serieCodS_Nome.substring(serieCodS_Nome.indexOf(" ")+1, serieCodS_Nome.indexOf(" || "))));
         serieAppoggio.setNome(serieCodS_Nome.substring(serieCodS_Nome.indexOf(" - ") + 3));
         return serieAppoggio;
     }
 
     //Metodo che elimina la serie selezionata dalla listView
     private void deleteSerieFromListView(Serie serie) {
-        listViewSerieAcquisto.getItems().remove(serie.getCodS() + " - " + serie.getNome());
+        listViewSerieAcquisto.getItems().remove(serie.getCods() + " - " + serie.getNome());
     }
 
     public void goBack(ActionEvent event) {

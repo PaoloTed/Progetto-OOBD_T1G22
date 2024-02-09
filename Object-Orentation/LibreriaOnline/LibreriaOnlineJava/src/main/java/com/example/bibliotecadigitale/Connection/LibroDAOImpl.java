@@ -3,7 +3,6 @@ package com.example.bibliotecadigitale.Connection;
 import com.example.bibliotecadigitale.DAO.LibroDAO;
 import com.example.bibliotecadigitale.Model.Libro;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -43,17 +42,17 @@ public class LibroDAOImpl implements LibroDAO {
             ResultSet rs = connessione.executeSearch(query);
             libro = new Libro();
             while (rs.next()) {
-                libro.setISBN(rs.getString(1));
+                libro.setIsbn(rs.getString(1));
                 libro.setTitolo(rs.getString(2));
                 libro.setGenere(rs.getString(3));
-                libro.setNumPagine(rs.getInt(4));
+                libro.setNumpagine(rs.getInt(4));
                 libro.setTipo(rs.getString(5));
                 libro.setMateria(rs.getString(6));
                 libro.setDescrizione(rs.getString(7));
                 libro.setFruizione(rs.getString(8));
                 libro.setEditore(rs.getString(9));
                 libro.setAutore(rs.getString(10));
-                libro.setDataUscita(rs.getString(11));
+                libro.setDatauscita(rs.getString(11));
                 libro.setLingua(rs.getString(12));
                 libro.setSuccessivo(rs.getString(13));
                 libro.setSerie(rs.getObject(14, Integer.class));
@@ -89,17 +88,17 @@ public class LibroDAOImpl implements LibroDAO {
     @Override
     public void insert(Libro libro) throws SQLException {
         try {
-            String isbn = libro.getISBN();
+            String isbn = libro.getIsbn();
             String titolo = libro.getTitolo();
             String genere = libro.getGenere();
-            int numeroPagine = libro.getNumPagine();
+            int numeroPagine = libro.getNumpagine();
             String tipo = libro.getTipo();
             String materia = libro.getMateria();
             String descrizione = libro.getDescrizione();
             String fruizione = libro.getFruizione();
             String editore = libro.getEditore();
             String autore = libro.getAutore();
-            String datauscita = libro.getDataUscita();
+            String datauscita = libro.getDatauscita();
             String lingua = libro.getLingua();
             String successivo = libro.getSuccessivo();
             Integer presentazione = libro.getPresentazione();
@@ -131,7 +130,7 @@ public class LibroDAOImpl implements LibroDAO {
             if (libro.getMateria() != null) {
                 materia = "'" + libro.getMateria() + "'";
             }
-            String query = "UPDATE libro SET titolo = '" + libro.getTitolo() + "', genere = '" + libro.getGenere() + "', numpagine = " + libro.getNumPagine() + " , tipo = '" + libro.getTipo() + "', materia = " + materia + ", descrizione = '" + descrizione + "', fruizione = '" + libro.getFruizione() + "', editore = '" + libro.getEditore() + "', autore = '" + libro.getAutore() + "', datauscita = '" + libro.getDataUscita() + "', lingua = '" + libro.getLingua() + "', successivo = " + successivo + ", serie = " + serie + ", presentazione = " + presentazione + " WHERE isbn = '" + libro.getISBN() + "';";
+            String query = "UPDATE libro SET titolo = '" + libro.getTitolo() + "', genere = '" + libro.getGenere() + "', numpagine = " + libro.getNumpagine() + " , tipo = '" + libro.getTipo() + "', materia = " + materia + ", descrizione = '" + descrizione + "', fruizione = '" + libro.getFruizione() + "', editore = '" + libro.getEditore() + "', autore = '" + libro.getAutore() + "', datauscita = '" + libro.getDatauscita() + "', lingua = '" + libro.getLingua() + "', successivo = " + successivo + ", serie = " + serie + ", presentazione = " + presentazione + " WHERE isbn = '" + libro.getIsbn() + "';";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -142,7 +141,7 @@ public class LibroDAOImpl implements LibroDAO {
     @Override
     public void delete(Libro libro) throws SQLException {
         try {
-            String isbn = libro.getISBN();
+            String isbn = libro.getIsbn();
             String query = "DELETE FROM libro WHERE ISBN ='" + isbn + "';";
             connessione.executeUpdate(query);
         } catch (SQLException e) {

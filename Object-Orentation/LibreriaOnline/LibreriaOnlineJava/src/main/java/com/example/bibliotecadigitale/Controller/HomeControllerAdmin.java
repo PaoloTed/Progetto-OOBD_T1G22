@@ -1,12 +1,9 @@
 package com.example.bibliotecadigitale.Controller;
 
 import com.example.bibliotecadigitale.Connection.*;
-import com.example.bibliotecadigitale.DAO.DAO;
 import com.example.bibliotecadigitale.Model.*;
 import com.example.bibliotecadigitale.SupportStage;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,11 +15,9 @@ import javafx.scene.image.ImageView;
 import javafx.util.converter.BooleanStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.ResourceBundle;
 
 public class HomeControllerAdmin implements Initializable {
@@ -345,16 +340,16 @@ public class HomeControllerAdmin implements Initializable {
         completataSerie.setCellFactory(TextFieldTableCell.forTableColumn(new BooleanStringConverter()));
 
 
-        //inizializzo le colonne della tabella utente
-        emailUtente.setCellValueFactory(new PropertyValueFactory<Utente, String>("email"));
-        emailUtente.setCellFactory(TextFieldTableCell.forTableColumn());
-        emailUtente.setEditable(false);
-        passwordUtente.setCellValueFactory(new PropertyValueFactory<Utente, String>("password"));
-        passwordUtente.setCellFactory(TextFieldTableCell.forTableColumn());
-        dataIscrizioneUtente.setCellValueFactory(new PropertyValueFactory<Utente, String>("dataIscrizione"));
-        dataIscrizioneUtente.setCellFactory(TextFieldTableCell.forTableColumn());
-        isAdminUtente.setCellValueFactory(new PropertyValueFactory<Utente, String>("isAdmin"));
-        isAdminUtente.setCellFactory(TextFieldTableCell.forTableColumn());
+//        //inizializzo le colonne della tabella utente
+//        emailUtente.setCellValueFactory(new PropertyValueFactory<Utente, String>("email"));
+//        emailUtente.setCellFactory(TextFieldTableCell.forTableColumn());
+//        emailUtente.setEditable(false);
+//        passwordUtente.setCellValueFactory(new PropertyValueFactory<Utente, String>("password"));
+//        passwordUtente.setCellFactory(TextFieldTableCell.forTableColumn());
+//        dataIscrizioneUtente.setCellValueFactory(new PropertyValueFactory<Utente, String>("dataIscrizione"));
+//        dataIscrizioneUtente.setCellFactory(TextFieldTableCell.forTableColumn());
+//        isAdminUtente.setCellValueFactory(new PropertyValueFactory<Utente, String>("isAdmin"));
+//        isAdminUtente.setCellFactory(TextFieldTableCell.forTableColumn());
 
         //inizializzo le colonne della tabella disponibileA
         codaDisponibileA.setCellValueFactory(new PropertyValueFactory<DisponibileA, Integer>("codA"));
@@ -1018,7 +1013,7 @@ public class HomeControllerAdmin implements Initializable {
         String valoreColumnString = libroStringCellEditEvent.getNewValue();
         switch (tipoColumn) {
             case "isbnLibro":
-                libro.setISBN(valoreColumnString);
+                libro.setIsbn(valoreColumnString);
                 break;
             case "titoloLibro":
                 libro.setTitolo(valoreColumnString);
@@ -1045,7 +1040,7 @@ public class HomeControllerAdmin implements Initializable {
                 libro.setAutore(valoreColumnString);
                 break;
             case "dataUscitaLibro":
-                libro.setDataUscita(valoreColumnString);
+                libro.setDatauscita(valoreColumnString);
                 break;
             case "linguaLibro":
                 libro.setLingua(valoreColumnString);
@@ -1066,7 +1061,7 @@ public class HomeControllerAdmin implements Initializable {
         Integer valoreColumnInt = libroIntegerCellEditEvent.getNewValue();
         switch (tipoColumn) {
             case "numPagineLibro":
-                libro.setNumPagine(valoreColumnInt);
+                libro.setNumpagine(valoreColumnInt);
                 break;
             case "serieLibro":
                 libro.setSerie(valoreColumnInt);
@@ -1091,7 +1086,7 @@ public class HomeControllerAdmin implements Initializable {
                 acquisto.setNome(valoreColumnString);
                 break;
             case "tipoAcquisto":
-                acquisto.setTipoA(valoreColumnString);
+                acquisto.setTipoa(valoreColumnString);
                 break;
             case "urlAcquisto":
                 acquisto.setUrl(valoreColumnString);
@@ -1109,7 +1104,7 @@ public class HomeControllerAdmin implements Initializable {
         Acquisto acquisto = acquistoTableView.getSelectionModel().getSelectedItem();
         acquistoTableView.getItems().remove(acquisto);
         Integer valoreColumnInt = acquistoIntegerCellEditEvent.getNewValue();
-        acquisto.setCodA(valoreColumnInt);
+        acquisto.setCoda(valoreColumnInt);
         acquistoTableView.getItems().add(acquisto);
         acquistoTableView.refresh();
     }
@@ -1146,7 +1141,7 @@ public class HomeControllerAdmin implements Initializable {
                 articoloScientifico.setAutore(valoreColumnString);
                 break;
             case "dataUscitaArticolo":
-                articoloScientifico.setDataUscita(valoreColumnString);
+                articoloScientifico.setDatauscita(valoreColumnString);
                 break;
             case "nomerArticolo":
                 articoloScientifico.setNomer(valoreColumnString);
@@ -1167,7 +1162,7 @@ public class HomeControllerAdmin implements Initializable {
         Integer valoreColumnInt = articoloScientificoIntegerCellEditEvent.getNewValue();
         switch (tipoColumn) {
             case "numPagineArticolo":
-                articoloScientifico.setNumPagine(valoreColumnInt);
+                articoloScientifico.setNumpagine(valoreColumnInt);
                 break;
             case "conferenzaArticolo":
                 articoloScientifico.setConferenza(valoreColumnInt);
@@ -1194,10 +1189,10 @@ public class HomeControllerAdmin implements Initializable {
                 conferenza.setIndirizzo(valoreColumnString);
                 break;
             case "dataiConferenza":
-                conferenza.setDataI(valoreColumnString);
+                conferenza.setDatai(valoreColumnString);
                 break;
             case "datafConferenza":
-                conferenza.setDataF(valoreColumnString);
+                conferenza.setDataf(valoreColumnString);
                 break;
             case "responsabileConferenza":
                 conferenza.setResponsabile(valoreColumnString);
@@ -1212,7 +1207,7 @@ public class HomeControllerAdmin implements Initializable {
         Conferenza conferenza = conferenzaTableView.getSelectionModel().getSelectedItem();
         conferenzaTableView.getItems().remove(conferenza);
         Integer valoreColumnInt = conferenzaIntegerCellEditEvent.getNewValue();
-        conferenza.setCodC(valoreColumnInt);
+        conferenza.setCodc(valoreColumnInt);
         conferenzaTableView.getItems().add(conferenza);
         conferenzaTableView.refresh();
     }
@@ -1232,7 +1227,7 @@ public class HomeControllerAdmin implements Initializable {
                 presentazione.setIndirizzo(valoreColumnString);
                 break;
             case "dataPresentazione":
-                presentazione.setDataPresentazione(valoreColumnString);
+                presentazione.setDatapresentazione(valoreColumnString);
                 break;
             case "tipoPresentazione":
                 presentazione.setTipo(valoreColumnString);
@@ -1247,7 +1242,7 @@ public class HomeControllerAdmin implements Initializable {
         Presentazione presentazione = presentazioneTableView.getSelectionModel().getSelectedItem();
         presentazioneTableView.getItems().remove(presentazione);
         Integer valoreColumnInt = presentazioneIntegerCellEditEvent.getNewValue();
-        presentazione.setCodP(valoreColumnInt);
+        presentazione.setCodp(valoreColumnInt);
         presentazioneTableView.getItems().add(presentazione);
         presentazioneTableView.refresh();
     }
@@ -1304,10 +1299,10 @@ public class HomeControllerAdmin implements Initializable {
         String tipoColumn = serieIntegerCellEditEvent.getTableColumn().getId();
         switch (tipoColumn) {
             case "codsSerie":
-                serie.setCodS(valoreColumnInt);
+                serie.setCods(valoreColumnInt);
                 break;
             case "numLibriSerie":
-                serie.setNumLibri(valoreColumnInt);
+                serie.setNumlibri(valoreColumnInt);
                 break;
         }
         serieTableView.getItems().add(serie);

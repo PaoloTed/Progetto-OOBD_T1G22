@@ -44,8 +44,8 @@ public class ArticoloScientificoDAOImpl implements ArticoloScientificoDAO {
                 articolo.setDoi(rs.getString(1));
                 articolo.setTitolo(rs.getString(2));
                 articolo.setGenere(rs.getString(3));
-                articolo.setNumPagine(rs.getInt(4));
-                articolo.setDataUscita(rs.getString(5));
+                articolo.setNumpagine(rs.getInt(4));
+                articolo.setDatauscita(rs.getString(5));
                 articolo.setDescrizione(rs.getString(6));
                 articolo.setFruizione(rs.getString(7));
                 articolo.setEditore(rs.getString(8));
@@ -91,13 +91,13 @@ public class ArticoloScientificoDAOImpl implements ArticoloScientificoDAO {
             if (articoloScientifico.getConferenza() != null) {
                 conferenza = Integer.toString(articoloScientifico.getConferenza());
             }
-            if (articoloScientifico.getDataUscita() != null) {
-                dataUscita = "'" + articoloScientifico.getDataUscita() + "'";
+            if (articoloScientifico.getDatauscita() != null) {
+                dataUscita = "'" + articoloScientifico.getDatauscita() + "'";
             }
             String query = "INSERT INTO articolo_scientifico VALUES ('" + articoloScientifico.getDoi() +
                     "', '" + articoloScientifico.getTitolo() +
                     "', '" + articoloScientifico.getGenere() +
-                    "', " + articoloScientifico.getNumPagine() +
+                    "', " + articoloScientifico.getNumpagine() +
                     ", " + dataUscita +
                     ", '" + descrizione +
                     "', '" + articoloScientifico.getFruizione() +
@@ -122,14 +122,14 @@ public class ArticoloScientificoDAOImpl implements ArticoloScientificoDAO {
             String conferenza = "NULL";
             String dataUscita = "NULL";
             String descrizione = articoloScientifico.getDescrizione().replace("'", "''");
-            if (articoloScientifico.getNumPagine() != 0) {
-                numPagine = Integer.toString(articoloScientifico.getNumPagine());
+            if (articoloScientifico.getNumpagine() != 0) {
+                numPagine = Integer.toString(articoloScientifico.getNumpagine());
             }
             if (articoloScientifico.getConferenza() != null) {
                 conferenza = Integer.toString(articoloScientifico.getConferenza());
             }
-            if (articoloScientifico.getDataUscita() != null) {
-                dataUscita = "'" + articoloScientifico.getDataUscita() + "'";
+            if (articoloScientifico.getDatauscita() != null) {
+                dataUscita = "'" + articoloScientifico.getDatauscita() + "'";
             }
             String query = "UPDATE articolo_scientifico SET doi = " + articoloScientifico.getDoi() +
                     ", titolo = '" + articoloScientifico.getTitolo() +

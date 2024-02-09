@@ -19,10 +19,10 @@ public class PresentazioneDAOImpl implements PresentazioneDAO {
             ResultSet rs = connessione.executeSearch(query);
             while (rs.next()) {
                 presentazione = new Presentazione();
-                presentazione.setCodP(rs.getInt(1));
+                presentazione.setCodp(rs.getInt(1));
                 presentazione.setNome(rs.getString(2));
                 presentazione.setIndirizzo(rs.getString(3));
-                presentazione.setDataPresentazione(rs.getString(4));
+                presentazione.setDatapresentazione(rs.getString(4));
                 presentazione.setTipo(rs.getString(5));
             }
             rs.close();
@@ -80,10 +80,10 @@ public class PresentazioneDAOImpl implements PresentazioneDAO {
     @Override
     public void insert(Presentazione presentazione) throws SQLException {
         try {
-            int codp = presentazione.getCodP();
+            int codp = presentazione.getCodp();
             String nome = presentazione.getNome();
             String indirizzo = presentazione.getIndirizzo();
-            String dataPresentazione = presentazione.getDataPresentazione();
+            String dataPresentazione = presentazione.getDatapresentazione();
             String tipo = presentazione.getTipo();
             String query = "INSERT INTO presentazione VALUES (" + codp + ", '" + nome + "', '" + indirizzo + "', '" + dataPresentazione + "', '" + tipo + "');";
             connessione.executeUpdate(query);
@@ -96,10 +96,10 @@ public class PresentazioneDAOImpl implements PresentazioneDAO {
     @Override
     public void update(Presentazione presentazione) throws SQLException {
         try {
-            int codp = presentazione.getCodP();
+            int codp = presentazione.getCodp();
             String nome = presentazione.getNome();
             String indirizzo = presentazione.getIndirizzo();
-            String dataPresentazione = presentazione.getDataPresentazione();
+            String dataPresentazione = presentazione.getDatapresentazione();
             String tipo = presentazione.getTipo();
             String query = "UPDATE presentazione SET nome = '" + nome + "', indirizzo = '" + indirizzo + "', dataPresentazione = '" + dataPresentazione + "', tipo = '" + tipo + "' WHERE codp = " + codp + ";";
             connessione.executeUpdate(query);
@@ -112,7 +112,7 @@ public class PresentazioneDAOImpl implements PresentazioneDAO {
     @Override
     public void delete(Presentazione presentazione) throws SQLException {
         try {
-            int codp = presentazione.getCodP();
+            int codp = presentazione.getCodp();
             String query = "DELETE FROM presentazione WHERE codp = " + codp + ";";
             connessione.executeUpdate(query);
         } catch (SQLException e) {

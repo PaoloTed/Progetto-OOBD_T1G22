@@ -72,9 +72,9 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
          <columns>
-            <TableColumn fx:id="codSColumn" prefWidth="75.0" text="Codice Serie" />
+            <TableColumn fx:id="codsColumn" prefWidth="75.0" text="Codice Serie" />
             <TableColumn fx:id="nomeColumn" prefWidth="75.0" text="Nome Serie" />
-            <TableColumn fx:id="numLibriColumn" prefWidth="75.0" text="Numero Libri" />
+            <TableColumn fx:id="numlibriColumn" prefWidth="75.0" text="Numero Libri" />
             <TableColumn fx:id="completataColumn" prefWidth="75.0" text="Completata" />
          </columns>
       </TableView>

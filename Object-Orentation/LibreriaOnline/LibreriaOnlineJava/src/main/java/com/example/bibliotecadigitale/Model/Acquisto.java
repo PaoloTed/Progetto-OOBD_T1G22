@@ -7,11 +7,11 @@ public class Acquisto
     private String tipoA;
     private String url;
 
-    public int getCodA() {
+    public int getCoda() {
         return codA;
     }
 
-    public void setCodA(int coda) {
+    public void setCoda(int coda) {
         this.codA = coda;
     }
 
@@ -24,7 +24,7 @@ public class Acquisto
     }
 
 
-    public void setTipoA(String tipoA) {
+    public void setTipoa(String tipoA) {
         this.tipoA = tipoA;
     }
 
@@ -46,7 +46,7 @@ public class Acquisto
 
     private String indirizzo;
 
-    public String getTipoA() {
+    public String getTipoa() {
         return tipoA;
     }
 }

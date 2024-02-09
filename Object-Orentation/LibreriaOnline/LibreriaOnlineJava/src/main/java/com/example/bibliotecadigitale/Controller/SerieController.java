@@ -64,9 +64,9 @@ public class SerieController implements Initializable {
     public void showSerie(int CodS) {
         SerieDAOImpl serieDAO = new SerieDAOImpl();
         Serie serie = serieDAO.get(CodS);
-        codSTxtId.setText("codice serie: " + serie.getCodS());
+        codSTxtId.setText("codice serie: " + serie.getCods());
         nomeTxtId.setText("Nome serie: " + serie.getNome());
-        numLibTxtId.setText("numero libri: " + serie.getNumLibri());
+        numLibTxtId.setText("numero libri: " + serie.getNumlibri());
         if (serie.getCompletata())
             completaTxtId.setText("stato serie:Completata");
         else

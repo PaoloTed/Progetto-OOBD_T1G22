@@ -2,7 +2,6 @@ package com.example.bibliotecadigitale.Controller;
 
 import com.example.bibliotecadigitale.Connection.SerieDAOImpl;
 import com.example.bibliotecadigitale.Connection.UtenteDAOImpl;
-import com.example.bibliotecadigitale.Model.Libro;
 import com.example.bibliotecadigitale.Model.Serie;
 import com.example.bibliotecadigitale.Model.Utente;
 import com.example.bibliotecadigitale.SupportStage;
@@ -17,6 +16,7 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class UserInformativaController implements Initializable {
@@ -32,9 +32,9 @@ public class UserInformativaController implements Initializable {
     @FXML
     public TableView<Serie> tableView;
 
-    @FXML TableColumn<Serie, String> codSColumn;
+    @FXML TableColumn<Serie, String> codsColumn;
     @FXML TableColumn<Serie, String> nomeColumn;
-    @FXML TableColumn<Serie, Integer> numLibriColumn;
+    @FXML TableColumn<Serie, Integer> numlibriColumn;
     @FXML TableColumn<Serie, Boolean> completataColumn;
 
     @FXML
@@ -49,11 +49,11 @@ public class UserInformativaController implements Initializable {
         //Mostro l'email dell'utente
         String email = Utente.getUtente().getEmail();
         labelEmail.setText(email);
-        codSColumn.setCellValueFactory(new PropertyValueFactory<Serie, String>("codS"));
+        codsColumn.setCellValueFactory(new PropertyValueFactory<Serie, String>("cods"));
         nomeColumn.setCellValueFactory(new PropertyValueFactory<Serie, String>("nome"));
-        numLibriColumn.setCellValueFactory(new PropertyValueFactory<Serie, Integer>("numLibri"));
+        numlibriColumn.setCellValueFactory(new PropertyValueFactory<Serie, Integer>("numlibri"));
         completataColumn.setCellValueFactory(new PropertyValueFactory<Serie, Boolean>("completata"));
-        imageLibriSfondo.setImage(new Image(getClass().getResourceAsStream("/Images/libri800x900.png")));
+        imageLibriSfondo.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/libri800x900.png"))));
         setTableView(email);
     }
 
@@ -102,7 +102,7 @@ public class UserInformativaController implements Initializable {
         if (serie != null) {
             //Elimino la serie selezionata dal database
             UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
-            utenteDAO.deletePreferiti(Utente.getUtente().getEmail(), serie.getCodS());
+            utenteDAO.deletePreferiti(Utente.getUtente().getEmail(), serie.getCods());
 
             //Elimino la serie selezionata dalla listView
             tableView.getItems().remove(serie);
@@ -121,7 +121,7 @@ public class UserInformativaController implements Initializable {
         }
         Stage stage = (Stage) labelEmail.getScene().getWindow();
         stage.close();
-        support.switchStageSerieStage("serieStage.fxml", serie.getCodS());
+        support.switchStageSerieStage("serieStage.fxml", serie.getCods());
 
     }
 

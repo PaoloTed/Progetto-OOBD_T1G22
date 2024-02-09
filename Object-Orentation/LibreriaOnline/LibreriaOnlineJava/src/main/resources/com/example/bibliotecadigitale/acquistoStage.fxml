@@ -20,10 +20,10 @@
       <Button fx:id="buttonClose" layoutX="35.0" layoutY="736.0" mnemonicParsing="false" onAction="#close" style="-fx-background-color: #2b2d30;" text="Close" textFill="WHITE" />
       <TableView fx:id="tableView" fixedCellSize="0.0" layoutX="14.0" layoutY="58.0" prefHeight="395.0" prefWidth="471.0" AnchorPane.bottomAnchor="83.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="103.0" AnchorPane.topAnchor="175.0">
          <columns>
-            <TableColumn fx:id="codAColumn" prefWidth="54.0" text="CodA" />
+            <TableColumn fx:id="codaColumn" prefWidth="54.0" text="CodA" />
             <TableColumn fx:id="nomeColumn" prefWidth="241.0" text="Titolo" />
             <TableColumn fx:id="urlColumn" prefWidth="361.0" text="URL" />
-            <TableColumn fx:id="IndirizzoColumn" prefWidth="315.0" text="Indirizzo" />
+            <TableColumn fx:id="indirizzoColumn" prefWidth="315.0" text="Indirizzo" />
          </columns>
       </TableView>
       <Text layoutX="284.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qui trovi dov'è possibile aquistare il libro da  te selezionato" />

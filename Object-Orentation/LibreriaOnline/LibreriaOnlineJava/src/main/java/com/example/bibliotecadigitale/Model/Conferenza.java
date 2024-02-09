@@ -1,7 +1,5 @@
 package com.example.bibliotecadigitale.Model;
 
-import java.util.Date;
-
 public class Conferenza extends Piattaforma {
 
     private int codC;
@@ -13,11 +11,11 @@ public class Conferenza extends Piattaforma {
 
     private String Responsabile;
 
-    public int getCodC() {
+    public int getCodc() {
         return codC;
     }
 
-    public void setCodC(int codC) {
+    public void setCodc(int codC) {
         this.codC = codC;
     }
 
@@ -45,15 +43,15 @@ public class Conferenza extends Piattaforma {
         this.indirizzo = indirizzo;
     }
 
-    public String getDataI() {
+    public String getDatai() {
         return dataI;
     }
 
-    public void setDataI(String dataI) {
+    public void setDatai(String dataI) {
         this.dataI = dataI;
     }
 
-    public void setDataF(String dataF) {
+    public void setDataf(String dataF) {
         this.dataF = dataF;
     }
 
@@ -67,7 +65,7 @@ public class Conferenza extends Piattaforma {
         Responsabile = responsabile;
     }
 
-    public String getDataF() {
+    public String getDataf() {
         return dataF;
     }
 

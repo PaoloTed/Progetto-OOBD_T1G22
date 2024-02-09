@@ -1,7 +1,6 @@
 package com.example.bibliotecadigitale.Connection;
 
 import com.example.bibliotecadigitale.DAO.DisponibileSDAO;
-import com.example.bibliotecadigitale.Model.DisponibileL;
 import com.example.bibliotecadigitale.Model.DisponibileS;
 
 import java.sql.ResultSet;
@@ -19,8 +18,8 @@ public class DisponibileSDAOImpl implements DisponibileSDAO {
             ResultSet rs = connessione.executeSearch(query);
             disponibileS = new DisponibileS();
             while (rs.next()) {
-                disponibileS.setCodA(rs.getInt(1));
-                disponibileS.setCodS(rs.getInt(2));
+                disponibileS.setCoda(rs.getInt(1));
+                disponibileS.setCods(rs.getInt(2));
             }
             rs.close();
         } catch (SQLException e) {
@@ -77,7 +76,7 @@ public class DisponibileSDAOImpl implements DisponibileSDAO {
     @Override
     public void update(DisponibileS disponibileS) throws SQLException {
         try {
-            String query = "UPDATE disponibile_s SET cods = '" + disponibileS.getCodS() + "' WHERE coda = " + disponibileS.getCodA() + ";";
+            String query = "UPDATE disponibile_s SET cods = '" + disponibileS.getCods() + "' WHERE coda = " + disponibileS.getCoda() + ";";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -88,7 +87,7 @@ public class DisponibileSDAOImpl implements DisponibileSDAO {
     @Override
     public void delete(DisponibileS disponibileS) throws SQLException {
         try {
-            String query = "DELETE FROM disponibile_s WHERE coda = " + disponibileS.getCodA() + " AND cods = '" + disponibileS.getCodS() + "';";
+            String query = "DELETE FROM disponibile_s WHERE coda = " + disponibileS.getCoda() + " AND cods = '" + disponibileS.getCods() + "';";
             connessione.executeUpdate(query);
         } catch (Exception e) {
             throw new RuntimeException(e);
