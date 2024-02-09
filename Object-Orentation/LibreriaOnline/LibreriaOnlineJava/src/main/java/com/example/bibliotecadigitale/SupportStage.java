@@ -172,8 +172,8 @@ public class SupportStage {
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
-            AquistoController aquistoController = loader.getController();
-            aquistoController.showInfoAquisto(ISBN);
+            AcquistoController aquistoController = loader.getController();
+            aquistoController.showInfoAcquisto(ISBN);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -189,8 +189,8 @@ public class SupportStage {
             stage.setTitle("Libreria digitale");
             stage.setResizable(false);
             stage.show();
-            AquistoController aquistoController = loader.getController();
-            aquistoController.showInfoArtcolo(Doi);
+            AcquistoController aquistoController = loader.getController();
+            aquistoController.showInfoArticolo(Doi);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

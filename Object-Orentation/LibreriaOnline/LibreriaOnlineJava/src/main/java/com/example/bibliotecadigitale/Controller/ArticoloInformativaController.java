@@ -13,7 +13,7 @@ public class ArticoloInformativaController {
     private ArticoloScientifico ArticoloMain;
 
     @FXML
-    private Text textTitleIId;
+    private Text textTitleId;
     @FXML
     private Text textDoiId;
     @FXML
@@ -33,11 +33,11 @@ public class ArticoloInformativaController {
     @FXML
     private Text txtEditoreId;
     @FXML
-    private Button buttonAquistoId;
+    private Button buttonAcquistoId;
     @FXML
     private Button buttonConferenzaId;
     @FXML
-    private Text textMessagioId;
+    private Text textMessaggioId;
     @FXML
     private Button buttonRivistaId;
 
@@ -45,30 +45,30 @@ public class ArticoloInformativaController {
         support.switchStage("homeStage.fxml", event, 900, 800);
     }
 
-    public void showInfoArticolo(ArticoloScientifico articlopassato) {
-        ArticoloMain = articlopassato;
-        textTitleIId.setText(textTitleIId.getText()+articlopassato.getTitolo());
-        textDoiId.setText(textDoiId.getText()+articlopassato.getDoi());
-        textGenereId.setText(textGenereId.getText()+articlopassato.getGenere());
-        textNumeroPagineId.setText(textNumeroPagineId.getText()+String.valueOf(articlopassato.getNumPagine()));
-        textDescrizioneId.setText(textDescrizioneId.getText()+"\n"+articlopassato.getDescrizione());
-        textFruizioneId.setText(textFruizioneId.getText()+articlopassato.getFruizione());
-        textDataUscitaId.setText(textDataUscitaId.getText()+String.valueOf(articlopassato.getDataUscita()));
-        textLinguianId.setText(textLinguianId.getText()+articlopassato.getLingua());
-        textAutoreId.setText(textAutoreId.getText()+articlopassato.getAutore());
-        txtEditoreId.setText(txtEditoreId.getText()+articlopassato.getEditore());
-        if (articlopassato.getConferenza() != 0) {
+    public void showInfoArticolo(ArticoloScientifico articolopassato) {
+        ArticoloMain = articolopassato;
+        textTitleId.setText(textTitleId.getText()+articolopassato.getTitolo());
+        textDoiId.setText(textDoiId.getText()+articolopassato.getDoi());
+        textGenereId.setText(textGenereId.getText()+articolopassato.getGenere());
+        textNumeroPagineId.setText(textNumeroPagineId.getText()+String.valueOf(articolopassato.getNumPagine()));
+        textDescrizioneId.setText(textDescrizioneId.getText()+"\n"+articolopassato.getDescrizione());
+        textFruizioneId.setText(textFruizioneId.getText()+articolopassato.getFruizione());
+        textDataUscitaId.setText(textDataUscitaId.getText()+String.valueOf(articolopassato.getDataUscita()));
+        textLinguianId.setText(textLinguianId.getText()+articolopassato.getLingua());
+        textAutoreId.setText(textAutoreId.getText()+articolopassato.getAutore());
+        txtEditoreId.setText(txtEditoreId.getText()+articolopassato.getEditore());
+        if (articolopassato.getConferenza() != 0) {
             buttonConferenzaId.setVisible(true);
         } else {
             buttonConferenzaId.setVisible(false);
         }
 
-        if ((articlopassato.getNomer() != null) && (articlopassato.getDatar() != null)) {
-            textMessagioId.setVisible(true);
+        if ((articolopassato.getNomer() != null) && (articolopassato.getDatar() != null)) {
+            textMessaggioId.setVisible(true);
             buttonRivistaId.setVisible(true);
 
         } else {
-            textMessagioId.setVisible(false);
+            textMessaggioId.setVisible(false);
             buttonRivistaId.setVisible(false);
 
         }
@@ -82,7 +82,7 @@ public class ArticoloInformativaController {
         support.switchStage("rivistaStage.fxml", ArticoloMain.getNomer(), ArticoloMain.getDatar());
     }
 
-    public void goToAquisto(ActionEvent event) {
-        support.switchStageAquistiArticoli("aquistoStage.fxml", ArticoloMain.getDoi());
+    public void goToAcquisto(ActionEvent event) {
+        support.switchStageAquistiArticoli("acquistoStage.fxml", ArticoloMain.getDoi());
     }
 }

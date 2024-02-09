@@ -133,6 +133,6 @@ public class LibroInformativaController {
     }
 
     public void goToAquisto(ActionEvent event) {
-        support.switchStageAquistiLibri("aquistoStage.fxml", libroMain.getISBN());
+        support.switchStageAquistiLibri("acquistoStage.fxml", libroMain.getISBN());
     }
 }

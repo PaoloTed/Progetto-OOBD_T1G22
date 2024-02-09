@@ -31,7 +31,7 @@ public class DisponibileADAOImpl implements DisponibileADAO {
 
 
 
-    public ArrayList<DisponibileA> getAquisti(String doi) throws SQLException {
+    public ArrayList<DisponibileA> getAcquisti(String doi) throws SQLException {
         ArrayList<DisponibileA> disponibileA;
         try {
             String query = "SELECT * FROM disponibile_a WHERE doi = '" + doi +"';";

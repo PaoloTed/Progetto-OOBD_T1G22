@@ -2,7 +2,6 @@ package com.example.bibliotecadigitale.Controller;
 
 import com.example.bibliotecadigitale.Connection.*;
 import com.example.bibliotecadigitale.Model.*;
-import com.example.bibliotecadigitale.SupportStage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class AquistoController implements Initializable {
+public class AcquistoController implements Initializable {
 
     @FXML
     private ImageView imageLibriSfondo;
@@ -44,48 +43,48 @@ public class AquistoController implements Initializable {
         imageLibriSfondo.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/libri800x900.png"))));
     }
 
-    public void showInfoAquisto(String ISBN) {
+    public void showInfoAcquisto(String ISBN) {
         DisponibileLDAOImpl disponibileLDAO = new DisponibileLDAOImpl();
 
-        ArrayList<DisponibileL> DisponibileLarrey;
+        ArrayList<DisponibileL> DisponibileLarray;
         try {
-            DisponibileLarrey = disponibileLDAO.getAcquisti(ISBN);
+            DisponibileLarray = disponibileLDAO.getAcquisti(ISBN);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        while (!DisponibileLarrey.isEmpty()) {
+        while (!DisponibileLarray.isEmpty()) {
             AcquistoDAOImpl acquistoDAO = new AcquistoDAOImpl();
             Acquisto acquisto;
             try {
-                acquisto = acquistoDAO.get(DisponibileLarrey.get(0).getCodA());
+                acquisto = acquistoDAO.get(DisponibileLarray.get(0).getCodA());
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
             tableView.getItems().add(acquisto);
-            DisponibileLarrey.remove(0);
+            DisponibileLarray.remove(0);
 
         }
     }
 
     //non testao ops
-    public void showInfoArtcolo(String doi) {
+    public void showInfoArticolo(String doi) {
         DisponibileADAOImpl disponibileADAO = new DisponibileADAOImpl();
-        ArrayList<DisponibileA> DisponibileLarrey;
+        ArrayList<DisponibileA> DisponibileLarray;
         try {
-            DisponibileLarrey = disponibileADAO.getAquisti(doi);
+            DisponibileLarray = disponibileADAO.getAcquisti(doi);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        while (!DisponibileLarrey.isEmpty()) {
+        while (!DisponibileLarray.isEmpty()) {
             AcquistoDAOImpl acquistoDAO = new AcquistoDAOImpl();
             Acquisto acquisto;
             try {
-                acquisto = acquistoDAO.get(DisponibileLarrey.get(0).getCoda());
+                acquisto = acquistoDAO.get(DisponibileLarray.get(0).getCoda());
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
             tableView.getItems().add(acquisto);
-            DisponibileLarrey.remove(0);
+            DisponibileLarray.remove(0);
         }
     }
 
