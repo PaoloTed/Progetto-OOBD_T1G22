@@ -36,7 +36,7 @@ public class AcquistoController implements Initializable {
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //inizializzo le colonne della tabella libro
-        codaColumn.setCellValueFactory(new PropertyValueFactory<Acquisto, Integer>("codA"));
+        codaColumn.setCellValueFactory(new PropertyValueFactory<Acquisto, Integer>("coda"));
         nomeColumn.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("nome"));
         urlColumn.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("url"));
         indirizzoColumn.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("indirizzo"));

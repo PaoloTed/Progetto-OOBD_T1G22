@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class SerieController implements Initializable {
@@ -57,7 +58,7 @@ public class SerieController implements Initializable {
         autoreColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("autore"));
         editoreColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("editore"));
         genereColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("genere"));
-        imageLibriSfondo.setImage(new Image(getClass().getResourceAsStream("/Images/libri800x900.png")));
+        imageLibriSfondo.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/libri800x900.png"))));
 
     }
 

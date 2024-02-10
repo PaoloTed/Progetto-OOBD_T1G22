@@ -352,7 +352,7 @@ public class HomeControllerAdmin implements Initializable {
 //        isAdminUtente.setCellFactory(TextFieldTableCell.forTableColumn());
 
         //inizializzo le colonne della tabella disponibileA
-        codaDisponibileA.setCellValueFactory(new PropertyValueFactory<DisponibileA, Integer>("codA"));
+        codaDisponibileA.setCellValueFactory(new PropertyValueFactory<DisponibileA, Integer>("coda"));
         codaDisponibileA.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         codaDisponibileA.setEditable(false);
         doiDisponibileA.setCellValueFactory(new PropertyValueFactory<DisponibileA, String>("doi"));
@@ -360,7 +360,7 @@ public class HomeControllerAdmin implements Initializable {
         doiDisponibileA.setEditable(false);
 
         //inizializzo le colonne della tabella disponibileL
-        codaDisponibileL.setCellValueFactory(new PropertyValueFactory<DisponibileL, Integer>("codA"));
+        codaDisponibileL.setCellValueFactory(new PropertyValueFactory<DisponibileL, Integer>("coda"));
         codaDisponibileL.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         codaDisponibileL.setEditable(false);
         isbnDisponibileL.setCellValueFactory(new PropertyValueFactory<DisponibileL, String>("isbn"));
@@ -368,10 +368,10 @@ public class HomeControllerAdmin implements Initializable {
         isbnDisponibileL.setEditable(false);
 
         //inizializzo le colonne della tabella disponibileS
-        codaDisponibileS.setCellValueFactory(new PropertyValueFactory<DisponibileS, Integer>("codA"));
+        codaDisponibileS.setCellValueFactory(new PropertyValueFactory<DisponibileS, Integer>("coda"));
         codaDisponibileS.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         codaDisponibileS.setEditable(false);
-        codsDisponibileS.setCellValueFactory(new PropertyValueFactory<DisponibileS, Integer>("codS"));
+        codsDisponibileS.setCellValueFactory(new PropertyValueFactory<DisponibileS, Integer>("cods"));
         codsDisponibileS.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         codsDisponibileS.setEditable(false);
 

@@ -25,10 +25,10 @@ public class PresentazioneController {
     {
         PresentazioneDAOImpl presentazioneDAO = new PresentazioneDAOImpl();
         Presentazione presentazione = presentazioneDAO.get(codP);
-        textCodPId.setText(textCodPId.getText()+""+presentazione.getCodp());
+        textCodPId.setText(textCodPId.getText()+presentazione.getCodp());
         textNomeId.setText(textNomeId.getText()+presentazione.getNome());
         textIndizioId.setText(textIndizioId.getText()+presentazione.getIndirizzo());
-        textDataPresentazioneId.setText(textDataPresentazioneId.getText()+String.valueOf(presentazione.getDatapresentazione()));
+        textDataPresentazioneId.setText(textDataPresentazioneId.getText()+presentazione.getDatapresentazione());
         textTipoId.setText(textTipoId.getText()+presentazione.getTipo());
     }
 

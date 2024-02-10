@@ -18,6 +18,7 @@ import javafx.scene.text.Text;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 import static com.example.bibliotecadigitale.Model.Utente.getUtente;
@@ -67,8 +68,8 @@ public class WelcomeController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String numeroUtenti = String.valueOf(getUserRegistered());
         String numeroUtentiOnline = String.valueOf(getUserOnline());
-        imageWelcome.setImage(new Image(getClass().getResourceAsStream("/Images/welcomeFoto1.png")));
-        imageWelcome2.setImage(new Image(getClass().getResourceAsStream("/Images/welcomeFoto2.png")));
+        imageWelcome.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/welcomeFoto1.png"))));
+        imageWelcome2.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/welcomeFoto2.png"))));
         txtUserRegistrati.setText(numeroUtenti);
         txtUserOnline.setText(numeroUtentiOnline);
     }

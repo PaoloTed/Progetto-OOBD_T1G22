@@ -63,7 +63,7 @@ public class LibroInformativaController {
         textTitleIId.setText(textTitleIId.getText()+libroPassato.getTitolo());
         textIsbnId.setText(textIsbnId.getText()+libroPassato.getIsbn());
         textGenereId.setText(textGenereId.getText()+libroPassato.getGenere());
-        textNumeroPagineId.setText(textNumeroPagineId.getText()+String.valueOf(libroPassato.getNumpagine()));
+        textNumeroPagineId.setText(textNumeroPagineId.getText()+libroPassato.getNumpagine());
         textTIpoId.setText(textTIpoId.getText()+libroPassato.getTipo());
         textDescrizioneId.setText(textDescrizioneId.getText()+"\n"+libroPassato.getDescrizione());
         textFruizioneId.setText(textFruizioneId.getText()+libroPassato.getFruizione());

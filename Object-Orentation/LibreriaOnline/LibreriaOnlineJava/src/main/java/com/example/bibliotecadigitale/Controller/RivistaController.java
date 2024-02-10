@@ -31,24 +31,9 @@ public class RivistaController {
         textArgomentoId.setText(rivista.getArgomento());
 
     }
-
     public void close (ActionEvent event) {
         SupportStage support = new SupportStage();
         Stage stage = (Stage) textNomeId.getScene().getWindow();
         stage.close();
-
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
