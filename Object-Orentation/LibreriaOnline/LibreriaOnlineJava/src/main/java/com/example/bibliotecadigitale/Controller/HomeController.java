@@ -163,7 +163,7 @@ public class HomeController implements Initializable {
     }
 
 
-    public void logOff(ActionEvent event) throws IOException {
+    public void logOff(ActionEvent event) {
         Utente.getUtente().exitUtente();
         support.switchStage("welcomeStage.fxml", event);
     }

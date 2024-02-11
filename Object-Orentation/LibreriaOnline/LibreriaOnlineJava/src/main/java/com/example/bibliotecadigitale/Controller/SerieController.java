@@ -53,7 +53,7 @@ public class SerieController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //inizializzo le colonne della tabella libro
 
-        isbnColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("ISBN"));
+        isbnColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("isbn"));
         titoloColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("titolo"));
         autoreColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("autore"));
         editoreColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("editore"));

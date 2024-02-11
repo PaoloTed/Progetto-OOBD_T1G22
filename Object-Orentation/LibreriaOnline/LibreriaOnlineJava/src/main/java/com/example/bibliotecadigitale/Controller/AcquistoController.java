@@ -10,6 +10,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -33,6 +34,9 @@ public class AcquistoController implements Initializable {
     @FXML
     TableColumn<Acquisto, String> indirizzoColumn;
 
+    @FXML
+    private Text txtAcquisto;
+
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //inizializzo le colonne della tabella libro
@@ -41,11 +45,12 @@ public class AcquistoController implements Initializable {
         urlColumn.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("url"));
         indirizzoColumn.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("indirizzo"));
         imageLibriSfondo.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/libri800x900.png"))));
+
+
     }
 
     public void showInfoAcquisto(String ISBN) {
         DisponibileLDAOImpl disponibileLDAO = new DisponibileLDAOImpl();
-
         ArrayList<DisponibileL> DisponibileLarray;
         try {
             DisponibileLarray = disponibileLDAO.getAcquisti(ISBN);

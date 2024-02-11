@@ -25,22 +25,10 @@ import static com.example.bibliotecadigitale.Model.Utente.getUtente;
 
 
 public class WelcomeController implements Initializable {
-    //todo levare i file di test
-    //todo sistemare la grafica
-    //todo aggiungere informativa acquisto
-    //todo aggiungere informativa serie
-    //todo gestione admin login, insert controllo generale update
-    //todo finire di fare impl di conferenza, presentazione, rivista
-    //todo aggiustare problema di immagini che le vedo solamente io
-    //todo fare test per prima apertura
-    //todo risolvere api 19  21
-
-
     @FXML
     public Button ButtonSingUp;
     @FXML
     public Button ButtonLoginIn;
-    //txtEmailField è il fxid, (dentro code in scene builder) del campo di testo dove l'utente inserisce il suo username sadasd
     @FXML
     public TextField txtEmailField;
 
@@ -62,8 +50,6 @@ public class WelcomeController implements Initializable {
 
     @FXML
     private TextField txtPasswordFieldAdmin;
-    private Box box1;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String numeroUtenti = String.valueOf(getUserRegistered());
@@ -75,7 +61,7 @@ public class WelcomeController implements Initializable {
     }
 
     @FXML
-    public void LogIn(ActionEvent PressLogin) throws SQLException {
+    private void LogIn(ActionEvent PressLogin) throws SQLException {
         UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
         String emailUser = txtEmailField.getText();
         String passwordUser = txtPasswordField.getText();
@@ -113,8 +99,8 @@ public class WelcomeController implements Initializable {
         return connessione.getNumeroOnline();
     }
 
-
-    public void skip(ActionEvent event) {
+    @FXML
+    private void skip(ActionEvent event) {
         Utente utenteNew = getUtente();
         utenteNew.setEmail("giulio@ruopolo.it");
         utenteNew.setPassword("salernitana");

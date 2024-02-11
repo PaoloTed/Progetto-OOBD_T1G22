@@ -264,16 +264,12 @@ public class HomeControllerAdminTest implements Initializable {
     private HashMap<String, ObservableList<String>> ricercaHashMap = new HashMap<>();
     private HashMap<String, DAO> implDaoHashMap = new HashMap<>();
 
-    private HashMap<String, Class> classHashMap = new HashMap<>();
-
-    private HashMap<String, Object> objectHashMap = new HashMap<>();
+//    private HashMap<String, Object> objectHashMap = new HashMap<>();
     @FXML
     private ImageView imageLibriSfondo;
 
     @FXML
     private Button buttonViewAll;
-
-    public DisponibileA prova = new DisponibileA();
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         imageLibriSfondo.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/libri800x900.png"))));
@@ -438,16 +434,16 @@ public class HomeControllerAdminTest implements Initializable {
         comboBoxRicerca.getSelectionModel().selectFirst();
 
 
-        objectHashMap.put("Libro", new Libro());
-        objectHashMap.put("Articolo", new ArticoloScientifico());
-        objectHashMap.put("Acquisto", new Acquisto());
-        objectHashMap.put("Conferenza", new Conferenza());
-        objectHashMap.put("Presentazione", new Presentazione());
-        objectHashMap.put("Rivista", new Rivista());
-        objectHashMap.put("Serie", new Serie());
-        objectHashMap.put("DisponibileA", new DisponibileA());
-        objectHashMap.put("DisponibileL", new DisponibileL());
-        objectHashMap.put("DisponibileS", new DisponibileS());
+//        objectHashMap.put("Libro", new Libro());
+//        objectHashMap.put("Articolo", new ArticoloScientifico());
+//        objectHashMap.put("Acquisto", new Acquisto());
+//        objectHashMap.put("Conferenza", new Conferenza());
+//        objectHashMap.put("Presentazione", new Presentazione());
+//        objectHashMap.put("Rivista", new Rivista());
+//        objectHashMap.put("Serie", new Serie());
+//        objectHashMap.put("DisponibileA", new DisponibileA());
+//        objectHashMap.put("DisponibileL", new DisponibileL());
+//        objectHashMap.put("DisponibileS", new DisponibileS());
 
         implDaoHashMap.put("Libro", new LibroDAOImpl());
         implDaoHashMap.put("Articolo", new ArticoloScientificoDAOImpl());
@@ -470,8 +466,6 @@ public class HomeControllerAdminTest implements Initializable {
         tableViewHashMap.put("DisponibileA", disponibileATableView);
         tableViewHashMap.put("DisponibileL", disponibileLTableView);
         tableViewHashMap.put("DisponibileS", disponibileSTableView);
-
-        classHashMap.put("Libro", Libro.class);
 
         ricercaHashMap.put("Libro", (FXCollections.observableArrayList("Isbn", "Titolo", "Genere", "Autore", "Editore", "DataUscita", "NumPagine", "Materia", "Descrizione", "Fruizione", "Successivo", "Serie", "Presentazione")));
         ricercaHashMap.put("Articolo", (FXCollections.observableArrayList("Doi", "Titolo", "Genere", "Autore", "Editore", "DataUscita", "NumPagine", "Lingua", "Conferenza", "Nomer", "Datar")));
