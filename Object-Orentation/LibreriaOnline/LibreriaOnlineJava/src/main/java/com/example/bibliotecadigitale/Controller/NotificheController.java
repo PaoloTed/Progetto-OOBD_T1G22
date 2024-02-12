@@ -73,7 +73,7 @@ public class NotificheController implements Initializable {
         utenteDAO.deletePreferiti(Utente.getUtente().getEmail(), serie.getCods());
         Stage stage = (Stage) listViewSerieAcquisto.getScene().getWindow();
         stage.close();
-        support.switchStage("notificheStage.fxml",900,800);
+        support.switchStage("notificheStage.fxml",event ,800,900);
         //Elimino la serie selezionata dalla listView
         deleteSerieFromListView(serie);
         support.messageStage("Preferito eliminato con successo.");

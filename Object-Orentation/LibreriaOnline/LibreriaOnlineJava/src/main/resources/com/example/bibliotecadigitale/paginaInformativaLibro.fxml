@@ -1,46 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #fdf3ea; -fx-border-color: #964B00;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.LibroInformativaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="900.0" style="-fx-background-color: #fdf3ea; -fx-border-color: #964B00;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.LibroInformativaController">
    <children>
-      <Button layoutX="14.0" layoutY="462.0" mnemonicParsing="false" onAction="#goToHome" style="-fx-background-color: #2b2d30; " text="Go Back" textFill="WHITE" />
-      <Text fx:id="textTitleIId" layoutX="11.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titolo:" AnchorPane.leftAnchor="11.0" AnchorPane.topAnchor="14.0" />
-      <Text id="ISbn" fx:id="textIsbnId" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Isbn:" wrappingWidth="500.0" AnchorPane.topAnchor="287.05078125" />
-      <Text id="Genere" fx:id="textGenereId" layoutY="352.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Genere:" wrappingWidth="500.0" AnchorPane.topAnchor="339.0" />
-      <Text id="Numero pagine" fx:id="textNumeroPagineId" layoutX="-3.0" layoutY="376.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero pagine:" textAlignment="RIGHT" wrappingWidth="500.0" AnchorPane.topAnchor="363.05078125" />
-      <Text id="tipoA" fx:id="textTIpoId" layoutX="-1.0" layoutY="352.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo:" textAlignment="RIGHT" wrappingWidth="500.0" AnchorPane.topAnchor="339.05078125" />
-      <Text id="Materia" fx:id="textMateriaId" layoutX="5.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Materia:" visible="false" wrappingWidth="500.0" AnchorPane.topAnchor="362.05078125" />
-      <Text id="Descrizione" fx:id="textDescrizioneId" layoutX="-1.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrizione:" textAlignment="JUSTIFY" wrappingWidth="500.0" AnchorPane.topAnchor="41.05078125" />
-      <Text id="fruizione" fx:id="textFruizioneId" layoutX="-1.0" layoutY="324.94921875" strokeType="OUTSIDE" strokeWidth="0.0" text="Fruizione:" textAlignment="RIGHT" wrappingWidth="500.0" AnchorPane.topAnchor="312.0" />
-      <Text id="Data uscita" fx:id="textDataUscitaId" layoutX="-1.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data Uscita:" wrappingWidth="500.0" AnchorPane.topAnchor="311.0" />
-      <Text id="Lingua" fx:id="textLinguianId" layoutX="-1.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lingua:" textAlignment="RIGHT" wrappingWidth="500.0" AnchorPane.topAnchor="288.05078125" />
+      <ImageView fx:id="imageLibriSfondo" fitHeight="795.0" fitWidth="900.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../../Downloads/libri800x900.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdf3ea" height="650.0" layoutX="147.0" layoutY="104.0" stroke="#de5f4f" strokeType="INSIDE" style="-fx-background-color: #fdf3ea;" width="700.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0" />
+      <Button layoutX="583.0" layoutY="725.0" mnemonicParsing="false" onAction="#goToHome" style="-fx-background-color: #2b2d30; " text="Go Back" textFill="WHITE" />
+      <Text fx:id="textTitleIId" layoutX="103.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Titolo:" textAlignment="CENTER" wrappingWidth="700.0" AnchorPane.leftAnchor="102.0" AnchorPane.topAnchor="102.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
+      <Text id="ISbn" fx:id="textIsbnId" layoutX="101.0" layoutY="480.94921875" strokeType="OUTSIDE" strokeWidth="0.0" text="Isbn:" wrappingWidth="700.0" AnchorPane.topAnchor="467.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
+      <Text id="Genere" fx:id="textGenereId" layoutX="101.0" layoutY="504.94921875" strokeType="OUTSIDE" strokeWidth="0.0" text="Genere:" wrappingWidth="700.0" AnchorPane.topAnchor="491.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
+      <Text id="Numero pagine" fx:id="textNumeroPagineId" layoutX="101.0" layoutY="480.94921875" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero pagine:" textAlignment="RIGHT" wrappingWidth="700.0" AnchorPane.topAnchor="467.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
+      <Text id="tipoA" fx:id="textTIpoId" layoutX="101.0" layoutY="504.94921875" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo:" textAlignment="RIGHT" wrappingWidth="700.0" AnchorPane.topAnchor="491.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
+      <Text id="Materia" fx:id="textMateriaId" layoutX="101.0" layoutY="604.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Materia:" visible="false" wrappingWidth="700.0" AnchorPane.topAnchor="591.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
+      <Text id="Descrizione" fx:id="textDescrizioneId" layoutX="101.0" layoutY="168.94921875" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrizione:" textAlignment="JUSTIFY" wrappingWidth="700.0" AnchorPane.topAnchor="155.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
+      <Text id="fruizione" fx:id="textFruizioneId" layoutX="101.0" layoutY="533.94921875" strokeType="OUTSIDE" strokeWidth="0.0" text="Fruizione:" textAlignment="RIGHT" wrappingWidth="700.0" AnchorPane.topAnchor="520.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
+      <Text id="Data uscita" fx:id="textDataUscitaId" layoutX="101.0" layoutY="569.94921875" strokeType="OUTSIDE" strokeWidth="0.0" text="Data Uscita:" wrappingWidth="700.0" AnchorPane.topAnchor="556.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
+      <Text id="Lingua" fx:id="textLinguianId" layoutX="101.0" layoutY="569.94921875" strokeType="OUTSIDE" strokeWidth="0.0" text="Lingua:" textAlignment="RIGHT" wrappingWidth="700.0" AnchorPane.topAnchor="556.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
 
-      <Button fx:id="buttonSerieId" defaultButton="true" disable="true" layoutX="231.0" layoutY="392.0" mnemonicParsing="false" onAction="#setPreferito" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Serie" textAlignment="JUSTIFY" textFill="#0800f8" underline="true" visible="false">
+      <Button fx:id="buttonSerieId" defaultButton="true" disable="true" layoutX="428.0" layoutY="665.0" mnemonicParsing="false" onAction="#setPreferito" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Serie" textAlignment="JUSTIFY" textFill="#0800f8" underline="true" visible="false">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="buttonAquistoId" defaultButton="true" layoutX="420.0" layoutY="460.0" mnemonicParsing="false" onAction="#goToAquisto" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Acquisto" textFill="#0800f8" underline="true">
+      <Button fx:id="buttonAquistoId" defaultButton="true" layoutX="729.0" layoutY="721.0" mnemonicParsing="false" onAction="#goToAquisto" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Acquisto" textFill="#0800f8" underline="true">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="buttonSuccessivoId" defaultButton="true" disable="true" layoutX="132.0" layoutY="460.0" mnemonicParsing="false" onAction="#goToNext" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Successivo" textAlignment="JUSTIFY" textFill="#0800f8" underline="true" visible="false">
+      <Button fx:id="buttonSuccessivoId" defaultButton="true" disable="true" layoutX="259.0" layoutY="722.0" mnemonicParsing="false" onAction="#goToNext" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Successivo" textAlignment="JUSTIFY" textFill="#0800f8" underline="true" visible="false">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Text id="Frasee" fx:id="textMessagioId" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Premi sull'id della serie per aggiungerla tra i preferiti" textAlignment="CENTER" visible="false" wrappingWidth="500.0" />
-      <Text id="Editore" fx:id="txtEditoreId" layoutY="411.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editore:" wrappingWidth="480.0" />
-      <Text id="Autore" fx:id="textAutoreId" layoutY="412.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autore:" textAlignment="RIGHT" wrappingWidth="500.0" />
-      <Button fx:id="buttonPresentazioneid" defaultButton="true" disable="true" layoutX="272.0" layoutY="460.0" mnemonicParsing="false" onAction="#goToPresentazione" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Presentazione" textFill="#0800f8" underline="true" visible="false">
+      <Text id="Frasee" fx:id="textMessagioId" layoutX="202.0" layoutY="648.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Premi sull'id della serie per aggiungerla tra i preferiti" textAlignment="CENTER" visible="false" wrappingWidth="500.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
+      <Text id="Editore" fx:id="txtEditoreId" layoutX="102.0" layoutY="533.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editore:" wrappingWidth="700.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
+      <Button fx:id="buttonPresentazioneid" defaultButton="true" disable="true" layoutX="101.0" layoutY="721.0" mnemonicParsing="false" onAction="#goToPresentazione" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Presentazione" textFill="#0800f8" underline="true" visible="false">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
+      <Text id="Autore" fx:id="textAutoreId" layoutX="100.0" layoutY="605.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autore:" textAlignment="RIGHT" wrappingWidth="700.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Text>
    </children>
 </AnchorPane>

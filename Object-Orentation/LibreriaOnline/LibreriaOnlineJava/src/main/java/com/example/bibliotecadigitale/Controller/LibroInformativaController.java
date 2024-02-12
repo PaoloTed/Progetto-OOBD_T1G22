@@ -2,18 +2,29 @@ package com.example.bibliotecadigitale.Controller;
 
 import com.example.bibliotecadigitale.Connection.LibroDAOImpl;
 import com.example.bibliotecadigitale.Connection.UtenteDAOImpl;
+import com.example.bibliotecadigitale.Model.Acquisto;
 import com.example.bibliotecadigitale.Model.Libro;
 import com.example.bibliotecadigitale.Model.Utente;
 import com.example.bibliotecadigitale.SupportStage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Objects;
+import java.util.ResourceBundle;
 
-public class LibroInformativaController {
+public class LibroInformativaController implements Initializable {
+
+    @FXML
+    private ImageView imageLibriSfondo;
     private SupportStage support = new SupportStage();
     private Libro libroMain;
 
@@ -51,6 +62,11 @@ public class LibroInformativaController {
     private Text textMessagioId;
     @FXML
     private Button buttonPresentazioneid;
+
+
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        imageLibriSfondo.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/libri800x900.png"))));
+    }
 
 
     public void goToHome(ActionEvent event) {
