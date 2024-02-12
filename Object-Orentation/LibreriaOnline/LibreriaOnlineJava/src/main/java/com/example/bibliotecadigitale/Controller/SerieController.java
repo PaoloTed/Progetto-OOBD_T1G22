@@ -15,6 +15,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -74,7 +75,13 @@ public class SerieController implements Initializable {
             completaTxtId.setText("No Terminata");
 
         LibroDAOImpl libroDAO = new LibroDAOImpl();
-        ArrayList<Libro> libri = libroDAO.getRicerca("serie", String.valueOf(CodS));
+        ArrayList<Libro> libri = null;
+        try {
+            libri = libroDAO.getRicerca("serie", String.valueOf(CodS));
+        } catch (SQLException e) {
+            support.messageStage("Errore nel caricamento dei libri");
+            throw new RuntimeException(e);
+        }
         libroTableView.getItems().setAll(libri);
 
     }

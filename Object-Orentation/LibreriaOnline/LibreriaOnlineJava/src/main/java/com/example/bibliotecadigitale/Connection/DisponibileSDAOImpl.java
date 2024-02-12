@@ -10,11 +10,12 @@ import java.util.List;
 
 public class DisponibileSDAOImpl implements DisponibileSDAO {
     private final Connessione connessione = new Connessione();
+
     @Override
     public DisponibileS get(int coda, int cods) throws SQLException {
         DisponibileS disponibileS;
         try {
-            String query = "SELECT * FROM disponibile_s WHERE coda = '" + coda + "' AND cods = '" + cods + "';";
+            String query = "SELECT * FROM disponibile_s WHERE coda = " + coda + " AND cods = " + cods + ";";
             ResultSet rs = connessione.executeSearch(query);
             disponibileS = new DisponibileS();
             while (rs.next()) {
@@ -28,20 +29,18 @@ public class DisponibileSDAOImpl implements DisponibileSDAO {
         return disponibileS;
     }
 
-    public ArrayList<DisponibileS> getRicerca(String tipoRicerca, String parolaChiave) {
+    public ArrayList<DisponibileS> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
         ArrayList<DisponibileS> disponibileSFinded = new ArrayList<>();
-        try {
-            String query = "SELECT coda,cods FROM disponibile_s WHERE " + tipoRicerca + " = " + parolaChiave + ";";
-            ResultSet rs = connessione.executeSearch(query);
-            DisponibileS disponibileS;
-            while (rs.next()) {
-                disponibileS = get(rs.getInt(1), rs.getInt(2));
-                disponibileSFinded.add(disponibileS);
-            }
-            rs.close();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+
+        String query = "SELECT coda,cods FROM disponibile_s WHERE " + tipoRicerca + " = " + parolaChiave + ";";
+        ResultSet rs = connessione.executeSearch(query);
+        DisponibileS disponibileS;
+        while (rs.next()) {
+            disponibileS = get(rs.getInt(1), rs.getInt(2));
+            disponibileSFinded.add(disponibileS);
         }
+        rs.close();
+
         return disponibileSFinded;
     }
 
@@ -58,7 +57,7 @@ public class DisponibileSDAOImpl implements DisponibileSDAO {
             ResultSet rs = connessione.executeSearch(query);
             DisponibileS disponibileS;
             while (rs.next()) {
-                disponibileS = get(rs.getInt(1),rs.getInt(2));
+                disponibileS = get(rs.getInt(1), rs.getInt(2));
                 disponibileSFinded.add(disponibileS);
             }
             rs.close();
@@ -76,7 +75,7 @@ public class DisponibileSDAOImpl implements DisponibileSDAO {
     @Override
     public void update(DisponibileS disponibileS) throws SQLException {
         try {
-            String query = "UPDATE disponibile_s SET cods = '" + disponibileS.getCods() + "' WHERE coda = " + disponibileS.getCoda() + ";";
+            String query = "UPDATE disponibile_s SET cods = " + disponibileS.getCods() + " WHERE coda = " + disponibileS.getCoda() + ";";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);

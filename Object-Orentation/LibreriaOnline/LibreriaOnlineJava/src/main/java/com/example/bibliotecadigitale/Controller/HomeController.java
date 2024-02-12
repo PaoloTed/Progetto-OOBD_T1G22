@@ -101,7 +101,7 @@ public class HomeController implements Initializable {
     }
 
     @FXML
-    void Select(ActionEvent event) {
+    void Select(ActionEvent event)  {
         //Gestione errori per la ricerca
         if (scelta == null) {
             support.messageStage("Selezionare prima un tipo di ricerca");
@@ -121,7 +121,13 @@ public class HomeController implements Initializable {
         //Ricerca e visualizzazione risultati libri
         if (scelta.equals("libro")) {
             LibroDAOImpl libroDAO = new LibroDAOImpl();
-            ArrayList<Libro> libri = libroDAO.getRicerca(modRicerca, titoloRicerche);
+            ArrayList<Libro> libri = null;
+            try {
+                libri = libroDAO.getRicerca(modRicerca, titoloRicerche);
+            } catch (SQLException e) {
+                support.messageStage("Errore nella ricerca");
+                throw new RuntimeException(e);
+            }
             if (libri.isEmpty()) {
                 support.messageStage("Nessun match trovato");
                 idBarSearch.clear();
@@ -135,7 +141,13 @@ public class HomeController implements Initializable {
         //Ricerca e visualizzazione risultati articoli
         if (scelta.equals("articolo")) {
             ArticoloScientificoDAOImpl articoloScientificoDAO = new ArticoloScientificoDAOImpl();
-            ArrayList<ArticoloScientifico> articoli = articoloScientificoDAO.getRicerca(modRicerca, titoloRicerche);
+            ArrayList<ArticoloScientifico> articoli = null;
+            try {
+                articoli = articoloScientificoDAO.getRicerca(modRicerca, titoloRicerche);
+            } catch (SQLException e) {
+                support.messageStage("Errore nella ricerca");
+                throw new RuntimeException(e);
+            }
             if (articoli.isEmpty()) {
                 support.messageStage("Nessun match trovato");
                 idBarSearch.clear();

@@ -115,20 +115,19 @@ public class UtenteDAOImpl implements UtenteDAO {
         }
         return utente;
     }
-    public ArrayList<Utente> getRicerca(String tipoRicerca,String parolaChiave){
+
+    public ArrayList<Utente> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
         ArrayList<Utente> utenteFinded = new ArrayList<>();
-        try {
-            String query = "SELECT email FROM utente WHERE LOWER("+tipoRicerca+") LIKE LOWER('%"+parolaChiave+"%');";
-            ResultSet rs = connessione.executeSearch(query);
-            Utente utente;
-            while (rs.next()) {
-                utente = get(rs.getString(1));
-                utenteFinded.add(utente);
-            }
-            rs.close();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+
+        String query = "SELECT email FROM utente WHERE LOWER(" + tipoRicerca + ") LIKE LOWER('%" + parolaChiave + "%');";
+        ResultSet rs = connessione.executeSearch(query);
+        Utente utente;
+        while (rs.next()) {
+            utente = get(rs.getString(1));
+            utenteFinded.add(utente);
         }
+        rs.close();
+
         return utenteFinded;
     }
 

@@ -123,7 +123,7 @@ public class HomeControllerAdminTest implements Initializable {
     @FXML
     private TableColumn<Conferenza, Integer> codcConferenza;
     @FXML
-    private TableColumn<Conferenza, String> nomeConfernza;
+    private TableColumn<Conferenza, String> nomeConferenza;
     @FXML
     private TableColumn<Conferenza, String> strutturaConferenza;
     @FXML
@@ -349,8 +349,8 @@ public class HomeControllerAdminTest implements Initializable {
         codcConferenza.setCellValueFactory(new PropertyValueFactory<>("codc"));
         codcConferenza.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         codcConferenza.setEditable(false);
-        nomeConfernza.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        nomeConfernza.setCellFactory(TextFieldTableCell.forTableColumn());
+        nomeConferenza.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        nomeConferenza.setCellFactory(TextFieldTableCell.forTableColumn());
         strutturaConferenza.setCellValueFactory(new PropertyValueFactory<>("struttura"));
         strutturaConferenza.setCellFactory(TextFieldTableCell.forTableColumn());
         indirizzoConferenza.setCellValueFactory(new PropertyValueFactory<>("indirizzo"));
@@ -501,7 +501,13 @@ public class HomeControllerAdminTest implements Initializable {
         }
 
         //Ricerca e visualizzazione risultati libri
-        ArrayList arrayList = implDaoHashMap.get(scelta).getRicerca(modRicerca, titoloRicerche);
+        ArrayList arrayList = null;
+        try {
+            arrayList = implDaoHashMap.get(scelta).getRicerca(modRicerca, titoloRicerche);
+        } catch (SQLException e) {
+            support.messageStage("Errore nella ricerca");
+            throw new RuntimeException(e);
+        }
         tableViewHashMap.get(scelta).getItems().clear();
         tableViewHashMap.get(scelta).setVisible(true);
         idBarSearch.clear();

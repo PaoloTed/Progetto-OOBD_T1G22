@@ -10,6 +10,7 @@ import java.util.List;
 
 public class DisponibileLDAOImpl implements DisponibileLDAO {
     private final Connessione connessione = new Connessione();
+
     @Override
     public DisponibileL get(int coda, String isbn) throws SQLException {
         DisponibileL disponibileL;
@@ -43,26 +44,24 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
         return disponibileL;
     }
 
-    public ArrayList<DisponibileL> getRicerca(String tipoRicerca, String parolaChiave) {
+    public ArrayList<DisponibileL> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
         ArrayList<DisponibileL> disponibileLFinded = new ArrayList<>();
         String query = "";
-        try {
-            if (tipoRicerca.equalsIgnoreCase("coda")) {
-                query = "SELECT coda,isbn FROM disponibile_l WHERE " + tipoRicerca + "= " + parolaChiave + ";";
-            }
-            if (tipoRicerca.equalsIgnoreCase("isbn")) {
-                query = "SELECT coda,isbn FROM disponibile_l WHERE " + tipoRicerca + " LIKE LOWER('%" + parolaChiave + "%');";
-            }
-            ResultSet rs = connessione.executeSearch(query);
-            DisponibileL disponibileL;
-            while (rs.next()) {
-                disponibileL = get(rs.getInt(1), rs.getString(2));
-                disponibileLFinded.add(disponibileL);
-            }
-            rs.close();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+
+        if (tipoRicerca.equalsIgnoreCase("coda")) {
+            query = "SELECT coda,isbn FROM disponibile_l WHERE " + tipoRicerca + " = " + parolaChiave + ";";
         }
+        if (tipoRicerca.equalsIgnoreCase("isbn")) {
+            query = "SELECT coda,isbn FROM disponibile_l WHERE " + tipoRicerca + " LIKE '%" + parolaChiave + "%';";
+        }
+        ResultSet rs = connessione.executeSearch(query);
+        DisponibileL disponibileL;
+        while (rs.next()) {
+            disponibileL = get(rs.getInt(1), rs.getString(2));
+            disponibileLFinded.add(disponibileL);
+        }
+        rs.close();
+
         return disponibileLFinded;
     }
 

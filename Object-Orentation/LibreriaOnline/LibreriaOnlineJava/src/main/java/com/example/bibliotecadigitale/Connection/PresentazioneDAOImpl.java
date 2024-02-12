@@ -15,7 +15,7 @@ public class PresentazioneDAOImpl implements PresentazioneDAO {
     public Presentazione get(int codP) {
         Presentazione presentazione = null;
         try {
-            String query = "SELECT * FROM Presentazione WHERE codp = '" + codP + "';";
+            String query = "SELECT * FROM Presentazione WHERE codp = " + codP + ";";
             ResultSet rs = connessione.executeSearch(query);
             while (rs.next()) {
                 presentazione = new Presentazione();
@@ -31,26 +31,22 @@ public class PresentazioneDAOImpl implements PresentazioneDAO {
         }
         return presentazione;
     }
-    public ArrayList<Presentazione> getRicerca(String tipoRicerca, String parolaChiave) {
+
+    public ArrayList<Presentazione> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
         ArrayList<Presentazione> presentazioneFinded = new ArrayList<>();
         String query;
-        try {
-            if(tipoRicerca.equalsIgnoreCase("codp")){
-                query = "SELECT codp FROM presentazione WHERE " + tipoRicerca + " = " + parolaChiave + ";";
-            }else{
-                query = "SELECT codp FROM presentazione WHERE " + tipoRicerca + " LIKE '%" + parolaChiave + "%';";
-            }
-            ResultSet rs = connessione.executeSearch(query);
-            Presentazione presentazione;
-            while (rs.next()) {
-                presentazione = get(rs.getString(1));
-                presentazioneFinded.add(presentazione);
-            }
-            rs.close();
-        } catch (
-                Exception e) {
-            throw new RuntimeException(e);
+        if (tipoRicerca.equalsIgnoreCase("codp")) {
+            query = "SELECT codp FROM presentazione WHERE " + tipoRicerca + " = " + parolaChiave + ";";
+        } else {
+            query = "SELECT codp FROM presentazione WHERE " + tipoRicerca + " LIKE '%" + parolaChiave + "%';";
         }
+        ResultSet rs = connessione.executeSearch(query);
+        Presentazione presentazione;
+        while (rs.next()) {
+            presentazione = get(rs.getString(1));
+            presentazioneFinded.add(presentazione);
+        }
+        rs.close();
         return presentazioneFinded;
     }
 

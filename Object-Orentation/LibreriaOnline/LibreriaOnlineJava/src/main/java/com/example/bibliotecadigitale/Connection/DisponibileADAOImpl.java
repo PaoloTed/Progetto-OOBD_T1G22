@@ -10,11 +10,12 @@ import java.util.List;
 
 public class DisponibileADAOImpl implements DisponibileADAO {
     private final Connessione connessione = new Connessione();
+
     @Override
     public DisponibileA get(int coda, String doi) throws SQLException {
         DisponibileA disponibileA;
         try {
-            String query = "SELECT coda,doi FROM disponibile_a WHERE coda = " + coda + " AND doi = '" + doi +"';";
+            String query = "SELECT coda,doi FROM disponibile_a WHERE coda = " + coda + " AND doi = '" + doi + "';";
             ResultSet rs = connessione.executeSearch(query);
             disponibileA = new DisponibileA();
             while (rs.next()) {
@@ -30,15 +31,14 @@ public class DisponibileADAOImpl implements DisponibileADAO {
     }
 
 
-
     public ArrayList<DisponibileA> getAcquisti(String doi) throws SQLException {
         ArrayList<DisponibileA> disponibileA;
         try {
-            String query = "SELECT * FROM disponibile_a WHERE doi = '" + doi +"';";
+            String query = "SELECT * FROM disponibile_a WHERE doi = '" + doi + "';";
             ResultSet rs = connessione.executeSearch(query);
             disponibileA = new ArrayList();
             while (rs.next()) {
-                disponibileA.add(get(rs.getInt(1),rs.getString(2)));
+                disponibileA.add(get(rs.getInt(1), rs.getString(2)));
             }
             rs.close();
 
@@ -49,27 +49,24 @@ public class DisponibileADAOImpl implements DisponibileADAO {
     }
 
 
-    public ArrayList<DisponibileA> getRicerca(String tipoRicerca, String parolaChiave){
+    public ArrayList<DisponibileA> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
         ArrayList<DisponibileA> disponibileAFinded = new ArrayList<>();
         String query = "";
-        try {
-            //Controllo dovuto alla non possibilita di usare %% con un intero
-            if(tipoRicerca.equalsIgnoreCase("coda")) {
-                query = "SELECT coda,doi FROM disponibile_a WHERE coda = '"+parolaChiave+"';";
-            }
-            if(tipoRicerca.equalsIgnoreCase("doi")) {
-                query = "SELECT coda,doi FROM disponibile_a WHERE doi LIKE LOWER('%"+parolaChiave+"%');";
-            }
-            ResultSet rs = connessione.executeSearch(query);
-            DisponibileA disponibileA;
-            while (rs.next()) {
-                disponibileA = get(rs.getInt(1),rs.getString(2));
-                disponibileAFinded.add(disponibileA);
-            }
-            rs.close();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+
+        if (tipoRicerca.equalsIgnoreCase("coda")) {
+            query = "SELECT coda,doi FROM disponibile_a WHERE coda = " + parolaChiave + ";";
         }
+        if (tipoRicerca.equalsIgnoreCase("doi")) {
+            query = "SELECT coda,doi FROM disponibile_a WHERE doi LIKE '%" + parolaChiave + "%';";
+        }
+        ResultSet rs = connessione.executeSearch(query);
+        DisponibileA disponibileA;
+        while (rs.next()) {
+            disponibileA = get(rs.getInt(1), rs.getString(2));
+            disponibileAFinded.add(disponibileA);
+        }
+        rs.close();
+
         return disponibileAFinded;
     }
 
@@ -86,7 +83,7 @@ public class DisponibileADAOImpl implements DisponibileADAO {
             ResultSet rs = connessione.executeSearch(query);
             DisponibileA disponibileA;
             while (rs.next()) {
-                disponibileA = get(rs.getInt(1),rs.getString(2));
+                disponibileA = get(rs.getInt(1), rs.getString(2));
                 disponibileAFinded.add(disponibileA);
             }
             rs.close();
@@ -110,7 +107,7 @@ public class DisponibileADAOImpl implements DisponibileADAO {
     @Override
     public void update(DisponibileA disponibileA) throws SQLException {
         try {
-            String query = "UPDATE disponibile_a SET coda = " + disponibileA.getCoda() + ", doi = '" + disponibileA.getDoi() + "' WHERE coda = " + disponibileA.getCoda() + " AND doi = '" + disponibileA.getDoi() +"';";
+            String query = "UPDATE disponibile_a SET coda = " + disponibileA.getCoda() + ", doi = '" + disponibileA.getDoi() + "' WHERE coda = " + disponibileA.getCoda() + " AND doi = '" + disponibileA.getDoi() + "';";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -121,7 +118,7 @@ public class DisponibileADAOImpl implements DisponibileADAO {
     @Override
     public void delete(DisponibileA disponibileA) throws SQLException {
         try {
-            String query = "DELETE FROM disponibile_a WHERE coda = " + disponibileA.getCoda() + " AND doi = '" + disponibileA.getDoi() +"';";
+            String query = "DELETE FROM disponibile_a WHERE coda = " + disponibileA.getCoda() + " AND doi = '" + disponibileA.getDoi() + "';";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);

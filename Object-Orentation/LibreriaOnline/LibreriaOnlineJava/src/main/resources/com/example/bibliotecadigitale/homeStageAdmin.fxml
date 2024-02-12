@@ -98,7 +98,7 @@
         <TableView fx:id="conferenzaTableView" editable="true" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0" prefHeight="535.0" prefWidth="700.0">
             <columns>
                 <TableColumn fx:id="codcConferenza" onEditCommit="#onEditChangedInt" prefWidth="95.9999771118164" text="CodC" />
-                <TableColumn fx:id="nomeConfernza" onEditCommit="#onEditChangedString" prefWidth="300.6666717529297" text="Nome" />
+                <TableColumn fx:id="nomeConferenza" onEditCommit="#onEditChangedString" prefWidth="300.6666717529297" text="Nome" />
                 <TableColumn fx:id="strutturaConferenza" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688" text="Struttura" />
                 <TableColumn fx:id="indirizzoConferenza" onEditCommit="#onEditChangedString" prefWidth="105.33331298828125" text="Indirizzo" />
                 <TableColumn fx:id="dataiConferenza" onEditCommit="#onEditChangedString" prefWidth="105.33331298828125" text="DataInizio" />

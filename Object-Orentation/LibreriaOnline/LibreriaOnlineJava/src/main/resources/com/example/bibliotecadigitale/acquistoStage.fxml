@@ -3,7 +3,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
@@ -14,12 +13,11 @@
    <children>
       <ImageView fx:id="imageLibriSfondo" fitHeight="795.0" fitWidth="900.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../../../../Downloads/libri800x900.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcf3eb" height="587.0" layoutX="91.0" layoutY="148.0" stroke="#de5f4f" strokeWidth="2.0" width="710.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcf3eb" height="535.0" layoutX="97.0" layoutY="202.0" stroke="#de5f4f" strokeWidth="2.0" width="706.0" />
       <Button fx:id="buttonClose" layoutX="424.0" layoutY="691.0" mnemonicParsing="false" onAction="#close" style="-fx-background-color: #2b2d30;" text="Close" textFill="WHITE" />
-      <TableView fx:id="tableView" fixedCellSize="0.0" layoutX="93.0" layoutY="202.0" prefHeight="498.0" prefWidth="720.0" AnchorPane.bottomAnchor="114.80000000000018" AnchorPane.leftAnchor="93.0" AnchorPane.rightAnchor="102.20000000000005" AnchorPane.topAnchor="202.0">
+      <TableView fx:id="tableView" fixedCellSize="0.0" layoutX="98.4" layoutY="231.2" prefHeight="438.0" prefWidth="714.0" AnchorPane.bottomAnchor="138.0" AnchorPane.leftAnchor="91.0" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="224.0">
          <columns>
             <TableColumn fx:id="codaColumn" prefWidth="54.0" text="CodA" />
             <TableColumn fx:id="nomeColumn" prefWidth="241.0" text="Titolo" />
@@ -27,9 +25,8 @@
             <TableColumn fx:id="indirizzoColumn" prefWidth="315.0" text="Indirizzo" />
          </columns>
       </TableView>
-      <Text layoutX="297.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Premi con il tasto destro del mouse per le azioni" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcf3eb" height="73.0" layoutX="87.0" layoutY="53.0" stroke="#de5f4f" strokeWidth="2.0" width="718.0" />
-      <Text fill="#2b2d30" layoutX="94.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pannello Di Visualizzazione Acquisto" wrappingWidth="435.6032905578613">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcf3eb" height="75.0" layoutX="98.0" layoutY="52.0" stroke="#de5f4f" strokeWidth="2.0" width="708.0" />
+      <Text fill="#2b2d30" layoutX="105.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pannello Di Visualizzazione Acquisto" wrappingWidth="435.6032905578613">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>

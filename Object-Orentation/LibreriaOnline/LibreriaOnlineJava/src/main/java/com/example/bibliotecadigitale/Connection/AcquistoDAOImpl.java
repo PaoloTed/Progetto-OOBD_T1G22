@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class AcquistoDAOImpl implements AcquistoDAO {
 
     private final Connessione connessione = new Connessione();
+
     @Override
     public Acquisto get(int coda) throws SQLException {
         Acquisto acquisto;
@@ -30,25 +31,24 @@ public class AcquistoDAOImpl implements AcquistoDAO {
         }
         return acquisto;
     }
-    public ArrayList<Acquisto> getRicerca(String tipoRicerca,String parolaChiave){
+
+    public ArrayList<Acquisto> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
         ArrayList<Acquisto> acquistoFinded = new ArrayList<>();
         String query;
-        try {
-            if(tipoRicerca.equalsIgnoreCase("coda")){
-                query = "SELECT coda FROM acquisto WHERE coda = " + parolaChiave + ";";
-            }else {
-                query = "SELECT coda FROM acquisto WHERE LOWER(" + tipoRicerca + ") LIKE LOWER('%" + parolaChiave + "%');";
-            }
-            ResultSet rs = connessione.executeSearch(query);
-            Acquisto acquisto;
-            while (rs.next()) {
-                acquisto = get(rs.getInt(1));
-                acquistoFinded.add(acquisto);
-            }
-            rs.close();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+
+        if (tipoRicerca.equalsIgnoreCase("coda")) {
+            query = "SELECT coda FROM acquisto WHERE coda = " + parolaChiave + ";";
+        } else {
+            query = "SELECT coda FROM acquisto WHERE " + tipoRicerca + " LIKE '%" + parolaChiave + "%';";
         }
+        ResultSet rs = connessione.executeSearch(query);
+        Acquisto acquisto;
+        while (rs.next()) {
+            acquisto = get(rs.getInt(1));
+            acquistoFinded.add(acquisto);
+        }
+        rs.close();
+
         return acquistoFinded;
     }
 

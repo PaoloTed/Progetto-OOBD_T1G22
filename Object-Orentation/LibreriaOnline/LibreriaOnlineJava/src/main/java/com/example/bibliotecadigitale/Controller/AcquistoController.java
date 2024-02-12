@@ -67,7 +67,6 @@ public class AcquistoController implements Initializable {
             }
             tableView.getItems().add(acquisto);
             DisponibileLarray.remove(0);
-
         }
     }
 

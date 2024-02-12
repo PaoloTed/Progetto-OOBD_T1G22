@@ -8,8 +8,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConferenzaDAOImpl  implements ConferenzaDAO {
+public class ConferenzaDAOImpl implements ConferenzaDAO {
     private final Connessione connessione = new Connessione();
+
     public Conferenza get(int codC) {
         Conferenza conferenza = null;
         try {
@@ -32,26 +33,23 @@ public class ConferenzaDAOImpl  implements ConferenzaDAO {
         return conferenza;
     }
 
-    public ArrayList<Conferenza> getRicerca(String tipoRicerca, String parolaChiave) {
+    public ArrayList<Conferenza> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
         ArrayList<Conferenza> conferenzaFinded = new ArrayList<>();
         String query;
-        try {
-            if(tipoRicerca.equalsIgnoreCase("codC")){
-                query = "SELECT codC FROM conferenza WHERE " + tipoRicerca + " = " + parolaChiave + ";";
-            }else{
-                query = "SELECT codC FROM conferenza WHERE " + tipoRicerca + " LIKE '%" + parolaChiave + "%';";
-            }
-            ResultSet rs = connessione.executeSearch(query);
-            Conferenza conferenza;
-            while (rs.next()) {
-                conferenza = get(rs.getInt(1));
-                conferenzaFinded.add(conferenza);
-            }
-            rs.close();
-        } catch (
-                Exception e) {
-            throw new RuntimeException(e);
+
+        if (tipoRicerca.equalsIgnoreCase("codC")) {
+            query = "SELECT codC FROM conferenza WHERE " + tipoRicerca + " = " + parolaChiave + ";";
+        } else {
+            query = "SELECT codC FROM conferenza WHERE " + tipoRicerca + " LIKE '%" + parolaChiave + "%';";
         }
+        ResultSet rs = connessione.executeSearch(query);
+        Conferenza conferenza;
+        while (rs.next()) {
+            conferenza = get(rs.getInt(1));
+            conferenzaFinded.add(conferenza);
+        }
+        rs.close();
+
         return conferenzaFinded;
     }
 
@@ -98,7 +96,7 @@ public class ConferenzaDAOImpl  implements ConferenzaDAO {
 
     @Override
     public void update(Conferenza conferenza) throws SQLException {
-        try{
+        try {
             int codC = conferenza.getCodc();
             String nome = conferenza.getNome();
             String dataI = conferenza.getDatai();
@@ -116,7 +114,7 @@ public class ConferenzaDAOImpl  implements ConferenzaDAO {
 
     @Override
     public void delete(Conferenza conferenza) throws SQLException {
-        try{
+        try {
             int codC = conferenza.getCodc();
             String query = "DELETE FROM conferenza WHERE codC = " + codC + ";";
             connessione.executeUpdate(query);

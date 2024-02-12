@@ -11,26 +11,23 @@ import java.util.List;
 public class LibroDAOImpl implements LibroDAO {
     private final Connessione connessione = new Connessione();
 
-    public ArrayList<Libro> getRicerca(String tipoRicerca, String parolaChiave) {
+    public ArrayList<Libro> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
         ArrayList<Libro> libroFinded = new ArrayList<>();
         String query = "";
-        try {
-            if (tipoRicerca.equalsIgnoreCase("numpagine") || tipoRicerca.equalsIgnoreCase("serie")) {
-                query = "SELECT isbn FROM libro WHERE " + tipoRicerca + " = " + parolaChiave + ";";
-            } else {
-                query = "SELECT isbn FROM libro WHERE " + tipoRicerca + " LIKE '%" + parolaChiave + "%';";
-            }
-            ResultSet rs = connessione.executeSearch(query);
-            Libro libro;
-            while (rs.next()) {
-                libro = get(rs.getString(1));
-                libroFinded.add(libro);
-            }
-            rs.close();
-        } catch (
-                Exception e) {
-            throw new RuntimeException(e);
+
+        if (tipoRicerca.equalsIgnoreCase("numpagine") || tipoRicerca.equalsIgnoreCase("serie")) {
+            query = "SELECT isbn FROM libro WHERE " + tipoRicerca + " = " + parolaChiave + ";";
+        } else {
+            query = "SELECT isbn FROM libro WHERE " + tipoRicerca + " LIKE '%" + parolaChiave + "%';";
         }
+        ResultSet rs = connessione.executeSearch(query);
+        Libro libro;
+        while (rs.next()) {
+            libro = get(rs.getString(1));
+            libroFinded.add(libro);
+        }
+        rs.close();
+
         return libroFinded;
     }
 
@@ -103,7 +100,7 @@ public class LibroDAOImpl implements LibroDAO {
             String successivo = libro.getSuccessivo();
             Integer presentazione = libro.getPresentazione();
             Integer serie = libro.getSerie();
-            String query = "INSERT INTO libro VALUES ('" + isbn + "','" + titolo + "','" + genere + "'," + numeroPagine + ",'" + tipo + "','" + materia + "','" + descrizione + "','" + fruizione + "','" + editore + "','" + autore + "','" + datauscita + "','" + lingua + "','" + successivo + "'," + serie +" , " + presentazione + ");";
+            String query = "INSERT INTO libro VALUES ('" + isbn + "','" + titolo + "','" + genere + "'," + numeroPagine + ",'" + tipo + "','" + materia + "','" + descrizione + "','" + fruizione + "','" + editore + "','" + autore + "','" + datauscita + "','" + lingua + "','" + successivo + "'," + serie + " , " + presentazione + ");";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);

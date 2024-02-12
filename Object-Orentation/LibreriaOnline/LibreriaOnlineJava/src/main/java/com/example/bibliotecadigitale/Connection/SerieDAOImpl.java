@@ -10,11 +10,12 @@ import java.util.List;
 
 public class SerieDAOImpl implements SerieDAO {
     private final Connessione connessione = new Connessione();
+
     @Override
     public Serie get(int cods) {
         Serie serie = null;
         try {
-            String query = "SELECT * FROM serie WHERE cods = '" + cods + "';";
+            String query = "SELECT * FROM serie WHERE cods = " + cods + ";";
             ResultSet rs = connessione.executeSearch(query);
             while (rs.next()) {
                 serie = new Serie();
@@ -30,25 +31,23 @@ public class SerieDAOImpl implements SerieDAO {
         return serie;
     }
 
-    public ArrayList<Serie> getRicerca(String tipoRicerca, String parolaChiave) {
+    public ArrayList<Serie> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
         ArrayList<Serie> serieFinded = new ArrayList<>();
         String query = "";
-        try {
-            if (tipoRicerca.equalsIgnoreCase("numlibri") || tipoRicerca.equalsIgnoreCase("completata") || tipoRicerca.equalsIgnoreCase("cods")) {
-                query = "SELECT cods FROM serie WHERE " + tipoRicerca + " = " + parolaChiave + ";";
-            } else {
-                query = "SELECT cods FROM serie WHERE " + tipoRicerca + " LIKE LOWER('%" + parolaChiave + "%');";
-            }
-            ResultSet rs = connessione.executeSearch(query);
-            Serie serie;
-            while (rs.next()) {
-                serie = get(rs.getString(1));
-                serieFinded.add(serie);
-            }
-            rs.close();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+
+        if (tipoRicerca.equalsIgnoreCase("numlibri") || tipoRicerca.equalsIgnoreCase("completata") || tipoRicerca.equalsIgnoreCase("cods")) {
+            query = "SELECT cods FROM serie WHERE " + tipoRicerca + " = " + parolaChiave + ";";
+        } else {
+            query = "SELECT cods FROM serie WHERE " + tipoRicerca + " LIKE '%" + parolaChiave + "%';";
         }
+        ResultSet rs = connessione.executeSearch(query);
+        Serie serie;
+        while (rs.next()) {
+            serie = get(rs.getInt(1));
+            serieFinded.add(serie);
+        }
+        rs.close();
+
         return serieFinded;
     }
 
@@ -80,7 +79,7 @@ public class SerieDAOImpl implements SerieDAO {
         try {
             int cods = serie.getCods();
             String nome = serie.getNome();
-            String query = "INSERT INTO Serie VALUES ('" + cods + "','" + nome + "');";
+            String query = "INSERT INTO Serie VALUES (" + cods + ",'" + nome + "');";
             connessione.executeUpdate(query);
         } catch (SQLException e) {
             throw new RuntimeException(e);

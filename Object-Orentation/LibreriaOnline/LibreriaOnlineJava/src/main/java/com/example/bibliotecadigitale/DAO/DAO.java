@@ -15,5 +15,5 @@ public interface DAO<T> {
 
     void delete(T t) throws SQLException;
 
-    ArrayList<T> getRicerca(String tipoRicerca, String parolaChiave);
+    ArrayList<T> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException;
 }
