@@ -252,6 +252,6 @@ public class HomeController implements Initializable {
     public void goToAdmin(ActionEvent event) {
         Stage stage = (Stage) articoloTableView.getScene().getWindow();
         stage.close();
-        support.switchStage("homeStageAdmin.fxml", 900, 800);
+        support.switchStage("homeStageAdmin.fxml", event, 800,900);
     }
 }

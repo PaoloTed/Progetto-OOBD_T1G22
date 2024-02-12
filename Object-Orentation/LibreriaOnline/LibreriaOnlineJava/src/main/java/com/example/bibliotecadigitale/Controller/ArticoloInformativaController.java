@@ -5,10 +5,17 @@ import com.example.bibliotecadigitale.Model.ArticoloScientifico;
 import com.example.bibliotecadigitale.SupportStage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 
-public class ArticoloInformativaController {
+import java.net.URL;
+import java.util.Objects;
+import java.util.ResourceBundle;
+
+public class ArticoloInformativaController implements Initializable {
     private SupportStage support = new SupportStage();
     private ArticoloScientifico ArticoloMain;
 
@@ -40,6 +47,12 @@ public class ArticoloInformativaController {
     private Text textMessaggioId;
     @FXML
     private Button buttonRivistaId;
+
+    @FXML
+    private ImageView imageLibriSfondo;
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        imageLibriSfondo.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/libri800x900.png"))));
+    }
 
     public void goToHome(ActionEvent event) {
         support.switchStage("homeStage.fxml", event, 900, 800);
