@@ -2,7 +2,6 @@ package com.example.bibliotecadigitale.Connection;
 
 import com.example.bibliotecadigitale.DAO.AcquistoDAO;
 import com.example.bibliotecadigitale.Model.Acquisto;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;

@@ -2,7 +2,6 @@ package com.example.bibliotecadigitale.Connection;
 
 import com.example.bibliotecadigitale.DAO.SerieDAO;
 import com.example.bibliotecadigitale.Model.Serie;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -33,7 +32,7 @@ public class SerieDAOImpl implements SerieDAO {
 
     public ArrayList<Serie> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
         ArrayList<Serie> serieFinded = new ArrayList<>();
-        String query = "";
+        String query;
 
         if (tipoRicerca.equalsIgnoreCase("numlibri") || tipoRicerca.equalsIgnoreCase("completata") || tipoRicerca.equalsIgnoreCase("cods")) {
             query = "SELECT cods FROM serie WHERE " + tipoRicerca + " = " + parolaChiave + ";";

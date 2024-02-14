@@ -9,7 +9,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -26,7 +25,7 @@ public class SignUpController implements Initializable {
     @FXML
     private ImageView imageLibriSfondo;
 
-    private SupportStage support = new SupportStage();
+    private final SupportStage support = new SupportStage();
     //SupportStage è una classe che contiene metodi che possono essere utilizzati da più controller
     // per gestire errori e cambiare scena
 

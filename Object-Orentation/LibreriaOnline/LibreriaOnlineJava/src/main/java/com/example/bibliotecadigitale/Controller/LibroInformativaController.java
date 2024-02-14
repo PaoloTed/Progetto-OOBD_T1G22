@@ -2,7 +2,6 @@ package com.example.bibliotecadigitale.Controller;
 
 import com.example.bibliotecadigitale.Connection.LibroDAOImpl;
 import com.example.bibliotecadigitale.Connection.UtenteDAOImpl;
-import com.example.bibliotecadigitale.Model.Acquisto;
 import com.example.bibliotecadigitale.Model.Libro;
 import com.example.bibliotecadigitale.Model.Utente;
 import com.example.bibliotecadigitale.SupportStage;
@@ -10,11 +9,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -25,7 +22,7 @@ public class LibroInformativaController implements Initializable {
 
     @FXML
     private ImageView imageLibriSfondo;
-    private SupportStage support = new SupportStage();
+    private final SupportStage support = new SupportStage();
     private Libro libroMain;
 
     @FXML
@@ -52,8 +49,6 @@ public class LibroInformativaController implements Initializable {
     private Text textAutoreId;
     @FXML
     private Text txtEditoreId;
-    @FXML
-    private Button buttonAquistoId;
     @FXML
     private Button buttonSuccessivoId;
     @FXML
@@ -131,6 +126,7 @@ public class LibroInformativaController implements Initializable {
         utenteDAO.insertPreferiti(Utente.getUtente().getEmail() , libroMain.getSerie());
         textMessagioId.setText("Serie aggiunto ai preferiti");
         buttonSerieId.disableProperty().setValue(true);
+        event.consume();
     }
 
     public void goToPresentazione(ActionEvent event) {
@@ -139,6 +135,7 @@ public class LibroInformativaController implements Initializable {
             return;
         }
         support.switchStagePresentazione("presentazioneStage.fxml", libroMain.getPresentazione());
+        event.consume();
     }
 
     public void goToNext(ActionEvent event) throws SQLException {
@@ -158,9 +155,11 @@ public class LibroInformativaController implements Initializable {
         Libro libroSuccessivo = libroDAO.get(libroMain.getSuccessivo());
         showInfoLibro(libroSuccessivo);
         libroMain = libroSuccessivo;
+        event.consume();
     }
 
     public void goToAquisto(ActionEvent event) {
         support.switchStageAquistiLibri("acquistoStage.fxml", libroMain.getIsbn());
+        event.consume();
     }
 }

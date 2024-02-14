@@ -4,7 +4,7 @@
 <?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.image.Image?>
+
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
@@ -14,9 +14,6 @@
 <AnchorPane maxHeight="800.0" maxWidth="900.0" minHeight="800.0" minWidth="900.0" prefHeight="800.0" prefWidth="900.0" style="-fx-border-color: #de5f4f; -fx-border-width: 3; -fx-background-color: #fdf3ea;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.NotificheController">
    <children>
       <ImageView fx:id="imageLibriSfondo" fitHeight="795.0" fitWidth="900.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../../../../../../Downloads/libri800x900.png" />
-         </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcf3eb" height="563.0" layoutX="62.0" layoutY="160.0" stroke="#de5f4f" strokeWidth="2.0" width="708.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0" />
       <ListView fx:id="listViewSerieAcquisto" layoutX="103.0" layoutY="108.0" prefHeight="555.0" prefWidth="702.0" AnchorPane.leftAnchor="103.0">

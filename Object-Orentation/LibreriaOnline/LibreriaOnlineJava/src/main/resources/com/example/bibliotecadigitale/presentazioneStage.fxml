@@ -11,6 +11,6 @@
       <Text fx:id="textIndizioId" layoutX="-1.0" layoutY="111.94921875" strokeType="OUTSIDE" strokeWidth="0.0" text="Indirizzo:" textAlignment="CENTER" wrappingWidth="250.0" AnchorPane.topAnchor="99.0" />
       <Text fx:id="textTipoId" layoutX="-1.0" layoutY="152.94921875" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo:" textAlignment="CENTER" wrappingWidth="250.0" AnchorPane.topAnchor="140.0" />
       <Text fx:id="textDataPresentazioneId" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DataPresentazione:" textAlignment="CENTER" wrappingWidth="250.0" AnchorPane.topAnchor="119.0" />
-      <Button fx:id="buttonClose" layoutX="103.0" layoutY="211.0" mnemonicParsing="false" onAction="#close" style="-fx-background-color: #2b2d30;" text="Close" textFill="WHITE" />
+      <Button layoutX="103.0" layoutY="211.0" mnemonicParsing="false" onAction="#close" style="-fx-background-color: #2b2d30;" text="Close" textFill="WHITE" />
    </children>
 </AnchorPane>

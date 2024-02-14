@@ -13,11 +13,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="idSearchBar" maxHeight="800.0" maxWidth="900.0" minHeight="800.0" minWidth="900.0" prefHeight="800.0" prefWidth="900.0" style="-fx-border-color: #de5f4f; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.HomeControllerAdminTest">
+<AnchorPane  maxHeight="800.0" maxWidth="900.0" minHeight="800.0" minWidth="900.0" prefHeight="800.0" prefWidth="900.0" style="-fx-border-color: #de5f4f; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.HomeControllerAdminTest">
     <children>
       <ImageView fx:id="imageLibriSfondo" fitHeight="800.0" fitWidth="895.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-         </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdf3ea" height="706.0" layoutX="92.0" layoutY="63.0" stroke="#de5f4f" strokeType="INSIDE" strokeWidth="3.0" width="707.0" />
         <Button layoutX="423.0" layoutY="727.0" mnemonicParsing="false" onAction="#logOff" style="-fx-background-color: black;" text="Log off" textFill="#fafafa" />
@@ -212,7 +210,7 @@
         <Text layoutX="199.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Premi Con Il Tasto Destro Del Mouse Per Le Azioni, premi Enter per confermare le modifiche" wrappingWidth="502.37743377685547" />
         <ComboBox fx:id="comboBoxTableView" layoutX="117.0" layoutY="130.0" onAction="#selezioneSceltaTableView" prefWidth="150.0" />
         <Button fx:id="buttonView" layoutX="450.0" layoutY="80.0" mnemonicParsing="false" onAction="#sceltaView" prefHeight="25.0" prefWidth="54.0" text="View" />
-      <Button fx:id="buttonInserisci" layoutX="805.0" layoutY="210.0" mnemonicParsing="false" onAction="#insertDao" text="Inserisci" visible="false" />
+      <Button layoutX="805.0" layoutY="210.0" mnemonicParsing="false" onAction="#insertDao" text="Inserisci" visible="false" />
       <Button fx:id="buttonInsert" layoutX="392.0" layoutY="80.0" mnemonicParsing="false" onAction="#sceltaInsert" prefHeight="25.0" prefWidth="54.0" text="Insert" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdf3ea" height="44.0" layoutX="92.0" layoutY="7.0" stroke="#de5f4f" strokeType="INSIDE" strokeWidth="3.0" width="707.0" />
       <Text layoutX="102.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pannello gestione Admin" wrappingWidth="329.71080780029297">

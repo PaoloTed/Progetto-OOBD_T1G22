@@ -3,7 +3,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
@@ -13,8 +12,6 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #fdf3ea; -fx-border-color: #de5f4f; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.SignUpController">
    <children>
       <ImageView fx:id="imageLibriSfondo" fitHeight="497.0" fitWidth="497.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true">
-         <image>
-         </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcf3eb" height="288.0" layoutX="69.0" layoutY="122.0" stroke="#de5f4f" strokeType="INSIDE" strokeWidth="3.0" width="369.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcf3eb" height="48.0" layoutX="66.0" layoutY="29.0" stroke="#de5f4f" strokeType="INSIDE" strokeWidth="3.0" width="369.0" />

@@ -10,9 +10,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -34,19 +32,13 @@ public class AcquistoController implements Initializable {
     @FXML
     TableColumn<Acquisto, String> indirizzoColumn;
 
-    @FXML
-    private Text txtAcquisto;
-
-
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //inizializzo le colonne della tabella libro
-        codaColumn.setCellValueFactory(new PropertyValueFactory<Acquisto, Integer>("coda"));
-        nomeColumn.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("nome"));
-        urlColumn.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("url"));
-        indirizzoColumn.setCellValueFactory(new PropertyValueFactory<Acquisto, String>("indirizzo"));
+        codaColumn.setCellValueFactory(new PropertyValueFactory<>("coda"));
+        nomeColumn.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        urlColumn.setCellValueFactory(new PropertyValueFactory<>("url"));
+        indirizzoColumn.setCellValueFactory(new PropertyValueFactory<>("indirizzo"));
         imageLibriSfondo.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/libri800x900.png"))));
-
-
     }
 
     public void showInfoAcquisto(String ISBN) {
@@ -70,7 +62,6 @@ public class AcquistoController implements Initializable {
         }
     }
 
-    //non testao ops
     public void showInfoArticolo(String doi) {
         DisponibileADAOImpl disponibileADAO = new DisponibileADAOImpl();
         ArrayList<DisponibileA> DisponibileLarray;
@@ -94,6 +85,7 @@ public class AcquistoController implements Initializable {
 
     public void close(ActionEvent event) {
         Stage stage = (Stage) tableView.getScene().getWindow();
+        event.consume();
         stage.close();
     }
 }

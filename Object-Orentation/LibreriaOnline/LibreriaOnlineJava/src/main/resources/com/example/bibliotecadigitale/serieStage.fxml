@@ -6,7 +6,6 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
@@ -16,13 +15,10 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="900.0" style="-fx-border-color: #de5f4f; -fx-border-width: 7; -fx-background-color: #fdf3ea;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.SerieController">
     <children>
         <ImageView fx:id="imageLibriSfondo" fitHeight="795.0" fitWidth="900.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../../../../../../../../../../Downloads/libri800x900.png" />
-            </image>
         </ImageView>
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcf3eb" height="622.0" layoutX="92.0" layoutY="91.0" stroke="#de5f4f" strokeWidth="2.0" width="708.0" />
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcf3eb" height="61.0" layoutX="91.0" layoutY="23.0" stroke="#de5f4f" strokeWidth="2.0" width="708.0" />
-        <Button fx:id="buttonClose" layoutX="428.0" layoutY="661.0" mnemonicParsing="false" onAction="#close" style="-fx-background-color: #2b2d30;" text="Close" textFill="WHITE" />
+        <Button  layoutX="428.0" layoutY="661.0" mnemonicParsing="false" onAction="#close" style="-fx-background-color: #2b2d30;" text="Close" textFill="WHITE" />
         <TableView fx:id="libroTableView" fixedCellSize="0.0" layoutX="98.4" layoutY="201.6" maxHeight="500.0" maxWidth="710.0" minHeight="448.0" minWidth="700.0" prefHeight="448.0" prefWidth="710.0" AnchorPane.bottomAnchor="158.0" AnchorPane.leftAnchor="91.0" AnchorPane.rightAnchor="99.0" AnchorPane.topAnchor="194.0">
             <columns>
                 <TableColumn fx:id="isbnColumn" prefWidth="95.9999771118164" text="ISBN" />

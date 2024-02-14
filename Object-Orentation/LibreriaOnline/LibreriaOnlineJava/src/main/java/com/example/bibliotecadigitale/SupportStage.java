@@ -1,11 +1,8 @@
 package com.example.bibliotecadigitale;
 
-
 import com.example.bibliotecadigitale.Controller.*;
 import com.example.bibliotecadigitale.Model.ArticoloScientifico;
 import com.example.bibliotecadigitale.Model.Libro;
-
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -13,15 +10,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.Objects;
 
 public class SupportStage {
-    public SupportStage() {
-    }
-
-
     private Stage stage;
 
     public void switchStage(String scenaNew, ActionEvent eventClose) {

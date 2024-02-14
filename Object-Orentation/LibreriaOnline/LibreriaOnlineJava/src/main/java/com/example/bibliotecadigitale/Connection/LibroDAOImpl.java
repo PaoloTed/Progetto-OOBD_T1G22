@@ -2,7 +2,6 @@ package com.example.bibliotecadigitale.Connection;
 
 import com.example.bibliotecadigitale.DAO.LibroDAO;
 import com.example.bibliotecadigitale.Model.Libro;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -13,7 +12,7 @@ public class LibroDAOImpl implements LibroDAO {
 
     public ArrayList<Libro> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
         ArrayList<Libro> libroFinded = new ArrayList<>();
-        String query = "";
+        String query;
 
         if (tipoRicerca.equalsIgnoreCase("numpagine") || tipoRicerca.equalsIgnoreCase("serie")) {
             query = "SELECT isbn FROM libro WHERE " + tipoRicerca + " = " + parolaChiave + ";";

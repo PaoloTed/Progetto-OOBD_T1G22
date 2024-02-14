@@ -2,10 +2,8 @@ package com.example.bibliotecadigitale.Controller;
 
 import com.example.bibliotecadigitale.Connection.ConferenzaDAOImpl;
 import com.example.bibliotecadigitale.Model.Conferenza;
-import com.example.bibliotecadigitale.SupportStage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -26,10 +24,6 @@ public class ConferenzaController {
     @FXML
     private Text textStrutturaId;
 
-    @FXML
-    private Button buttonClose;
-
-
     public void showInfoConferenza(int codc)
     {
         ConferenzaDAOImpl conferenzaDAO = new ConferenzaDAOImpl();
@@ -41,13 +35,12 @@ public class ConferenzaController {
         textIndizioId.setText(textIndizioId.getText()+conferenza.getIndirizzo());
         textResponsabileId.setText(textResponsabileId.getText()+conferenza.getResponsabile());
         textStrutturaId.setText(textStrutturaId.getText()+conferenza.getStruttura());
-
     }
 
     public void close(ActionEvent event) {
-        SupportStage support = new SupportStage();
         Stage stage = (Stage)  textCodCId.getScene().getWindow();
         stage.close();
+        event.consume();
     }
 }
 

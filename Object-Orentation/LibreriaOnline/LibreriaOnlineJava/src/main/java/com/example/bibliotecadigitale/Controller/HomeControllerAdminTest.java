@@ -16,7 +16,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.converter.BooleanStringConverter;
 import javafx.util.converter.IntegerStringConverter;
-
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -264,7 +263,6 @@ public class HomeControllerAdminTest implements Initializable {
     private HashMap<String, ObservableList<String>> ricercaHashMap = new HashMap<>();
     private HashMap<String, DAO> implDaoHashMap = new HashMap<>();
 
-//    private HashMap<String, Object> objectHashMap = new HashMap<>();
     @FXML
     private ImageView imageLibriSfondo;
 
@@ -433,18 +431,6 @@ public class HomeControllerAdminTest implements Initializable {
         comboBoxRicerca.setItems(FXCollections.observableArrayList("Isbn", "Titolo", "Genere", "Autore", "Editore", "DataUscita", "NumPagine", "Materia", "Descrizione", "Fruizione", "Successivo", "Serie", "Presentazione", "Lingua"));
         comboBoxRicerca.getSelectionModel().selectFirst();
 
-
-//        objectHashMap.put("Libro", new Libro());
-//        objectHashMap.put("Articolo", new ArticoloScientifico());
-//        objectHashMap.put("Acquisto", new Acquisto());
-//        objectHashMap.put("Conferenza", new Conferenza());
-//        objectHashMap.put("Presentazione", new Presentazione());
-//        objectHashMap.put("Rivista", new Rivista());
-//        objectHashMap.put("Serie", new Serie());
-//        objectHashMap.put("DisponibileA", new DisponibileA());
-//        objectHashMap.put("DisponibileL", new DisponibileL());
-//        objectHashMap.put("DisponibileS", new DisponibileS());
-
         implDaoHashMap.put("Libro", new LibroDAOImpl());
         implDaoHashMap.put("Articolo", new ArticoloScientificoDAOImpl());
         implDaoHashMap.put("Acquisto", new AcquistoDAOImpl());
@@ -585,13 +571,10 @@ public class HomeControllerAdminTest implements Initializable {
 
         setVisibleFalseAllTableView();
         for (TableView tableView : tableViewHashMap.values()) {
-
             tableView.getItems().clear();
             tableView.setPrefHeight(dimTable);
-//            if (sceltaMode.equals("insert")) {
-//                tableView.getItems().add(objectHashMap.get(scelta));
-//            }
         }
+
         if (sceltaMode.equals("insert")) {
             tableViewHashMap.get("Libro").getItems().add(new Libro());
             tableViewHashMap.get("Articolo").getItems().add(new ArticoloScientifico());
@@ -756,318 +739,4 @@ public class HomeControllerAdminTest implements Initializable {
             System.out.println("Errore" + e.getMessage());
         }
     }
-
-//    @FXML
-//    private void onEditChangedLibroString(TableColumn.CellEditEvent<Libro, String> libroStringCellEditEvent) {
-//        System.out.println("Modifica");
-//        Libro libro = libroTableView.getSelectionModel().getSelectedItem();
-//        libroTableView.getItems().remove(libro);
-//        String tipoColumn = libroStringCellEditEvent.getTableColumn().getId();
-//        String valoreColumnString = libroStringCellEditEvent.getNewValue();
-//        switch (tipoColumn) {
-//            case "isbnLibro":
-//                libro.setISBN(valoreColumnString);
-//                break;
-//            case "titoloLibro":
-//                libro.setTitolo(valoreColumnString);
-//                break;
-//            case "genereLibro":
-//                libro.setGenere(valoreColumnString);
-//                break;
-//            case "tipoLibro":
-//                libro.setTipo(valoreColumnString);
-//                break;
-//            case "materiaLibro":
-//                libro.setMateria(valoreColumnString);
-//                break;
-//            case "descrizioneLibro":
-//                libro.setDescrizione(valoreColumnString);
-//                break;
-//            case "fruizioneLibro":
-//                libro.setFruizione(valoreColumnString);
-//                break;
-//            case "editoreLibro":
-//                libro.setEditore(valoreColumnString);
-//                break;
-//            case "autoreLibro":
-//                libro.setAutore(valoreColumnString);
-//                break;
-//            case "dataUscitaLibro":
-//                libro.setDataUscita(valoreColumnString);
-//                break;
-//            case "linguaLibro":
-//                libro.setLingua(valoreColumnString);
-//                break;
-//            case "successivoLibro":
-//                libro.setSuccessivo(valoreColumnString);
-//                break;
-//        }
-//        libroTableView.getItems().add(libro);
-//        libroTableView.refresh();
-//    }
-//
-//    @FXML
-//    private void onEditChangedLibroInt(TableColumn.CellEditEvent<Libro, Integer> libroIntegerCellEditEvent) {
-//        Libro libro = libroTableView.getSelectionModel().getSelectedItem();
-//        libroTableView.getItems().remove(libro);
-//        String tipoColumn = libroIntegerCellEditEvent.getTableColumn().getId();
-//        Integer valoreColumnInt = libroIntegerCellEditEvent.getNewValue();
-//        switch (tipoColumn) {
-//            case "numPagineLibro":
-//                libro.setNumPagine(valoreColumnInt);
-//                break;
-//            case "serieLibro":
-//                libro.setSerie(valoreColumnInt);
-//                break;
-//            case "presentazioneLibro":
-//                libro.setPresentazione(valoreColumnInt);
-//                break;
-//        }
-//        libroTableView.getItems().add(libro);
-//        libroTableView.refresh();
-//    }
-//
-//    @FXML
-//    private void onEditChangedAcquistoString(TableColumn.CellEditEvent<Acquisto, String> acquistoStringCellEditEvent) {
-//        System.out.println("Modifica");
-//        Acquisto acquisto = acquistoTableView.getSelectionModel().getSelectedItem();
-//        acquistoTableView.getItems().remove(acquisto);
-//        String tipoColumn = acquistoStringCellEditEvent.getTableColumn().getId();
-//        String valoreColumnString = acquistoStringCellEditEvent.getNewValue();
-//        switch (tipoColumn) {
-//            case "nomeAcquisto":
-//                acquisto.setNome(valoreColumnString);
-//                break;
-//            case "tipoAcquisto":
-//                acquisto.setTipoA(valoreColumnString);
-//                break;
-//            case "urlAcquisto":
-//                acquisto.setUrl(valoreColumnString);
-//                break;
-//            case "indirizzoAcquisto":
-//                acquisto.setIndirizzo(valoreColumnString);
-//                break;
-//        }
-//        acquistoTableView.getItems().add(acquisto);
-//        acquistoTableView.refresh();
-//    }
-//
-//    @FXML
-//    private void onEditChangedAcquistoInt(TableColumn.CellEditEvent<Acquisto, Integer> acquistoIntegerCellEditEvent) {
-//        Acquisto acquisto = acquistoTableView.getSelectionModel().getSelectedItem();
-//        acquistoTableView.getItems().remove(acquisto);
-//        Integer valoreColumnInt = acquistoIntegerCellEditEvent.getNewValue();
-//        acquisto.setCodA(valoreColumnInt);
-//        acquistoTableView.getItems().add(acquisto);
-//        acquistoTableView.refresh();
-//    }
-//
-//    @FXML
-//    private void onEditChangedArticoloScientificoString(TableColumn.CellEditEvent<ArticoloScientifico, String> articoloScientificoStringCellEditEvent) {
-//        ArticoloScientifico articoloScientifico = articoloTableView.getSelectionModel().getSelectedItem();
-//        articoloTableView.getItems().remove(articoloScientifico);
-//        String tipoColumn = articoloScientificoStringCellEditEvent.getTableColumn().getId();
-//        String valoreColumnString = articoloScientificoStringCellEditEvent.getNewValue();
-//        switch (tipoColumn) {
-//            case "doiArticolo":
-//                articoloScientifico.setDoi(valoreColumnString);
-//                break;
-//            case "titoloArticolo":
-//                articoloScientifico.setTitolo(valoreColumnString);
-//                break;
-//            case "genereArticolo":
-//                articoloScientifico.setGenere(valoreColumnString);
-//                break;
-//            case "linguaArticolo":
-//                articoloScientifico.setLingua(valoreColumnString);
-//                break;
-//            case "descrizioneArticolo":
-//                articoloScientifico.setDescrizione(valoreColumnString);
-//                break;
-//            case "fruizioneArticolo":
-//                articoloScientifico.setFruizione(valoreColumnString);
-//                break;
-//            case "editoreArticolo":
-//                articoloScientifico.setEditore(valoreColumnString);
-//                break;
-//            case "autoreArticolo":
-//                articoloScientifico.setAutore(valoreColumnString);
-//                break;
-//            case "dataUscitaArticolo":
-//                articoloScientifico.setDataUscita(valoreColumnString);
-//                break;
-//            case "nomerArticolo":
-//                articoloScientifico.setNomer(valoreColumnString);
-//                break;
-//            case "datarArticolo":
-//                articoloScientifico.setDatar(valoreColumnString);
-//                break;
-//        }
-//        articoloTableView.getItems().add(articoloScientifico);
-//        articoloTableView.refresh();
-//    }
-//
-//    @FXML
-//    private void onEditChangedArticoloScientificoInt(TableColumn.CellEditEvent<ArticoloScientifico, Integer> articoloScientificoIntegerCellEditEvent) {
-//        ArticoloScientifico articoloScientifico = articoloTableView.getSelectionModel().getSelectedItem();
-//        articoloTableView.getItems().remove(articoloScientifico);
-//        String tipoColumn = articoloScientificoIntegerCellEditEvent.getTableColumn().getId();
-//        Integer valoreColumnInt = articoloScientificoIntegerCellEditEvent.getNewValue();
-//        switch (tipoColumn) {
-//            case "numPagineArticolo":
-//                articoloScientifico.setNumPagine(valoreColumnInt);
-//                break;
-//            case "conferenzaArticolo":
-//                articoloScientifico.setConferenza(valoreColumnInt);
-//                break;
-//        }
-//        articoloTableView.getItems().add(articoloScientifico);
-//        articoloTableView.refresh();
-//    }
-//
-//    @FXML
-//    private void onEditChangedConferenzaString(TableColumn.CellEditEvent conferenzaStringCellEditEvent) throws NoSuchFieldException {
-//        Conferenza conferenza = conferenzaTableView.getSelectionModel().getSelectedItem();
-//        System.out.println(tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem().getClass().getDeclaredField("codC"));
-//        conferenzaStringCellEditEvent.toString();
-//        conferenzaTableView.getItems().remove(conferenza);
-//        String tipoColumn = conferenzaStringCellEditEvent.getTableColumn().getId();
-//        String valoreColumnString = (String) conferenzaStringCellEditEvent.getNewValue();
-//        String nomeMetodo = "set" + tipoColumn.substring(0, 1).toUpperCase() + tipoColumn.substring(1, tipoColumn.indexOf("C"));
-//        try {
-//            conferenza.getClass().getMethod(nomeMetodo, String.class).invoke(conferenza, valoreColumnString);
-//        } catch (Exception e) {
-//
-//        }
-////        switch (tipoColumn) {
-////            case "nomeConfernza":
-////                conferenza.setNome(valoreColumnString);
-////                break;
-////            case "strutturaConferenza":
-////                conferenza.setStruttura(valoreColumnString);
-////                break;
-////            case "indirizzoConferenza":
-////                conferenza.setIndirizzo(valoreColumnString);
-////                break;
-////            case "dataiConferenza":
-////                conferenza.setDataI(valoreColumnString);
-////                break;
-////            case "datafConferenza":
-////                conferenza.setDataF(valoreColumnString);
-////                break;
-////            case "responsabileConferenza":
-////                conferenza.setResponsabile(valoreColumnString);
-////                break;
-////        }
-//        conferenzaTableView.getItems().add(conferenza);
-//        conferenzaTableView.refresh();
-//
-//    }
-//
-//    @FXML
-//    private void onEditChangedConferenzaInt(TableColumn.CellEditEvent<Conferenza, Integer> conferenzaIntegerCellEditEvent) {
-//        Conferenza conferenza = conferenzaTableView.getSelectionModel().getSelectedItem();
-//        conferenzaTableView.getItems().remove(conferenza);
-//        Integer valoreColumnInt = conferenzaIntegerCellEditEvent.getNewValue();
-//        conferenza.setCodC(valoreColumnInt);
-//        conferenzaTableView.getItems().add(conferenza);
-//        conferenzaTableView.refresh();
-//    }
-//
-//
-//    @FXML
-//    private void onEditChangedPresentazioneString(TableColumn.CellEditEvent<Presentazione, String> presentazioneStringCellEditEvent) {
-//        Presentazione presentazione = presentazioneTableView.getSelectionModel().getSelectedItem();
-//        presentazioneTableView.getItems().remove(presentazione);
-//        String tipoColumn = presentazioneStringCellEditEvent.getTableColumn().getId();
-//        String valoreColumnString = presentazioneStringCellEditEvent.getNewValue();
-//        switch (tipoColumn) {
-//            case "nomePresentazione":
-//                presentazione.setNome(valoreColumnString);
-//                break;
-//            case "indirizzoPresentazione":
-//                presentazione.setIndirizzo(valoreColumnString);
-//                break;
-//            case "dataPresentazione":
-//                presentazione.setDataPresentazione(valoreColumnString);
-//                break;
-//            case "tipoPresentazione":
-//                presentazione.setTipo(valoreColumnString);
-//                break;
-//        }
-//        presentazioneTableView.getItems().add(presentazione);
-//        presentazioneTableView.refresh();
-//    }
-//
-//    @FXML
-//    private void onEditChangedPresentazioneInt(TableColumn.CellEditEvent<Presentazione, Integer> presentazioneIntegerCellEditEvent) {
-//        Presentazione presentazione = presentazioneTableView.getSelectionModel().getSelectedItem();
-//        presentazioneTableView.getItems().remove(presentazione);
-//        Integer valoreColumnInt = presentazioneIntegerCellEditEvent.getNewValue();
-//        presentazione.setCodP(valoreColumnInt);
-//        presentazioneTableView.getItems().add(presentazione);
-//        presentazioneTableView.refresh();
-//    }
-//
-//    @FXML
-//    private void onEditChangedRivistaString(TableColumn.CellEditEvent<Rivista, String> rivistaStringCellEditEvent) {
-//        Rivista rivista = rivistaTableView.getSelectionModel().getSelectedItem();
-//        rivistaTableView.getItems().remove(rivista);
-//        String tipoColumn = rivistaStringCellEditEvent.getTableColumn().getId();
-//        String valoreColumnString = rivistaStringCellEditEvent.getNewValue();
-//        switch (tipoColumn) {
-//            case "nomeRivista":
-//                rivista.setNome(valoreColumnString);
-//                break;
-//            case "dataRivista":
-//                rivista.setData(valoreColumnString);
-//                break;
-//            case "responsabileRivista":
-//                rivista.setResponsabile(valoreColumnString);
-//                break;
-//            case "argomentoRivista":
-//                rivista.setArgomento(valoreColumnString);
-//                break;
-//        }
-//        rivistaTableView.getItems().add(rivista);
-//        rivistaTableView.refresh();
-//    }
-//
-//    @FXML
-//    private void onEditChangedSerieString(TableColumn.CellEditEvent<Serie, String> serieStringCellEditEvent) {
-//        Serie serie = serieTableView.getSelectionModel().getSelectedItem();
-//        serieTableView.getItems().remove(serie);
-//        String valoreColumnString = serieStringCellEditEvent.getNewValue();
-//        serie.setNome(valoreColumnString);
-//        serieTableView.getItems().add(serie);
-//        serieTableView.refresh();
-//    }
-//
-//    @FXML
-//    private void onEditChangedSerieBool(TableColumn.CellEditEvent<Serie, Boolean> serieStringCellEditEvent) {
-//        Serie serie = serieTableView.getSelectionModel().getSelectedItem();
-//        serieTableView.getItems().remove(serie);
-//        boolean valoreColumnBool = serieStringCellEditEvent.getNewValue();
-//        serie.setCompletata(valoreColumnBool);
-//        serieTableView.getItems().add(serie);
-//        serieTableView.refresh();
-//    }
-//
-//    @FXML
-//    private void onEditChangedSerieInt(TableColumn.CellEditEvent<Serie, Integer> serieIntegerCellEditEvent) {
-//        Serie serie = serieTableView.getSelectionModel().getSelectedItem();
-//        serieTableView.getItems().remove(serie);
-//        Integer valoreColumnInt = serieIntegerCellEditEvent.getNewValue();
-//        String tipoColumn = serieIntegerCellEditEvent.getTableColumn().getId();
-//        switch (tipoColumn) {
-//            case "codsSerie":
-//                serie.setCodS(valoreColumnInt);
-//                break;
-//            case "numLibriSerie":
-//                serie.setNumLibri(valoreColumnInt);
-//                break;
-//        }
-//        serieTableView.getItems().add(serie);
-//        serieTableView.refresh();
-//    }
 }

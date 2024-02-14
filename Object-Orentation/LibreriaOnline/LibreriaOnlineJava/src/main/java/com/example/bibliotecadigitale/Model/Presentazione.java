@@ -1,5 +1,4 @@
 package com.example.bibliotecadigitale.Model;
-
 public class Presentazione {
 
     private int codP;

@@ -17,10 +17,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 import java.net.URL;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -37,7 +34,7 @@ public class HomeController implements Initializable {
 
     @FXML
     private TextField idBarSearch;
-    private SupportStage support = new SupportStage();
+    private final SupportStage support = new SupportStage();
 
     @FXML
     private ImageView imageLibriSfondo;
@@ -73,18 +70,18 @@ public class HomeController implements Initializable {
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //inizializzo le colonne della tabella libro
-        isbnColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("isbn"));
-        titoloColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("titolo"));
-        autoreColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("autore"));
-        editoreColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("editore"));
-        genereColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("genere"));
+        isbnColumn.setCellValueFactory(new PropertyValueFactory<>("isbn"));
+        titoloColumn.setCellValueFactory(new PropertyValueFactory<>("titolo"));
+        autoreColumn.setCellValueFactory(new PropertyValueFactory<>("autore"));
+        editoreColumn.setCellValueFactory(new PropertyValueFactory<>("editore"));
+        genereColumn.setCellValueFactory(new PropertyValueFactory<>("genere"));
 
         //inizializzo le colonne della tabella articolo
-        doiColumn.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("doi"));
-        titoloAColumn.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("titolo"));
-        autoreAColumn.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("autore"));
-        editoreAColumn.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("editore"));
-        genereAColumn.setCellValueFactory(new PropertyValueFactory<ArticoloScientifico, String>("genere"));
+        doiColumn.setCellValueFactory(new PropertyValueFactory<>("doi"));
+        titoloAColumn.setCellValueFactory(new PropertyValueFactory<>("titolo"));
+        autoreAColumn.setCellValueFactory(new PropertyValueFactory<>("autore"));
+        editoreAColumn.setCellValueFactory(new PropertyValueFactory<>("editore"));
+        genereAColumn.setCellValueFactory(new PropertyValueFactory<>("genere"));
 
         //Imposto la ricerca su libro come default e nascondo la tabella articolo
         articoloTableView.setVisible(false);
@@ -121,7 +118,7 @@ public class HomeController implements Initializable {
         //Ricerca e visualizzazione risultati libri
         if (scelta.equals("libro")) {
             LibroDAOImpl libroDAO = new LibroDAOImpl();
-            ArrayList<Libro> libri = null;
+            ArrayList<Libro> libri;
             try {
                 libri = libroDAO.getRicerca(modRicerca, titoloRicerche);
             } catch (SQLException e) {
@@ -133,7 +130,6 @@ public class HomeController implements Initializable {
                 idBarSearch.clear();
                 return;
             }
-
             libroTableView.getItems().clear();
             libroTableView.getItems().addAll(libri);
         }
@@ -141,7 +137,7 @@ public class HomeController implements Initializable {
         //Ricerca e visualizzazione risultati articoli
         if (scelta.equals("articolo")) {
             ArticoloScientificoDAOImpl articoloScientificoDAO = new ArticoloScientificoDAOImpl();
-            ArrayList<ArticoloScientifico> articoli = null;
+            ArrayList<ArticoloScientifico> articoli;
             try {
                 articoli = articoloScientificoDAO.getRicerca(modRicerca, titoloRicerche);
             } catch (SQLException e) {
@@ -153,10 +149,10 @@ public class HomeController implements Initializable {
                 idBarSearch.clear();
                 return;
             }
-
             articoloTableView.getItems().clear();
             articoloTableView.getItems().addAll(articoli);
         }
+        event.consume();
     }
 
     @FXML
@@ -172,8 +168,8 @@ public class HomeController implements Initializable {
         if (scelta.equals("articolo")) {
             articoloTableView.getItems().clear();
         }
+        event.consume();
     }
-
 
     public void logOff(ActionEvent event) {
         Utente.getUtente().exitUtente();
@@ -193,6 +189,7 @@ public class HomeController implements Initializable {
         Stage stage = (Stage) libroTableView.getScene().getWindow();
         stage.close();
         support.switchStage("paginaInformativaLibro.fxml", libro);
+        event.consume();
     }
 
     public void goToPaginaInformativaSerie(ActionEvent event) {
@@ -208,6 +205,7 @@ public class HomeController implements Initializable {
         Stage stage = (Stage) libroTableView.getScene().getWindow();
         stage.close();
         support.switchStageSerieStage("serieStage.fxml", libro.getSerie());
+        event.consume();
     }
 
     public void goToPaginaInformativaArticolo(ActionEvent event) {
@@ -219,6 +217,7 @@ public class HomeController implements Initializable {
         Stage stage = (Stage) articoloTableView.getScene().getWindow();
         stage.close();
         support.switchStage("paginaInformativaArticolo.fxml", articoloScientifico);
+        event.consume();
     }
 
     public void selezioneLibro(ActionEvent event) {
@@ -232,7 +231,7 @@ public class HomeController implements Initializable {
         articoloTableView.setVisible(false);
         buttonArticolo.setDisable(false);
         buttonArticolo.setStyle("-fx-border-color: grey; -fx-text-fill: white; -fx-background-color: #2b2d30;");
-
+        event.consume();
     }
 
     public void selezioneArticolo(ActionEvent event) {
@@ -246,12 +245,6 @@ public class HomeController implements Initializable {
         libroTableView.setVisible(false);
         buttonLibro.setDisable(false);
         buttonLibro.setStyle("-fx-border-color: grey; -fx-text-fill: white; -fx-background-color: #2b2d30;");
-    }
-
-    @FXML
-    public void goToAdmin(ActionEvent event) {
-        Stage stage = (Stage) articoloTableView.getScene().getWindow();
-        stage.close();
-        support.switchStage("homeStageAdmin.fxml", event, 800,900);
+        event.consume();
     }
 }

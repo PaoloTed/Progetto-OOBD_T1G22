@@ -1,6 +1,5 @@
 package com.example.bibliotecadigitale.Controller;
 
-
 import com.example.bibliotecadigitale.Connection.Connessione;
 import com.example.bibliotecadigitale.Connection.UtenteDAOImpl;
 import com.example.bibliotecadigitale.Model.Utente;
@@ -12,17 +11,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.shape.Box;
 import javafx.scene.text.Text;
-
 import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
-
 import static com.example.bibliotecadigitale.Model.Utente.getUtente;
-
 
 public class WelcomeController implements Initializable {
     @FXML
@@ -35,7 +28,7 @@ public class WelcomeController implements Initializable {
     @FXML
     public TextField txtPasswordField;
 
-    private SupportStage support = new SupportStage();
+    private final SupportStage support = new SupportStage();
 
     @FXML
     private Text txtUserRegistrati;
@@ -61,7 +54,7 @@ public class WelcomeController implements Initializable {
     }
 
     @FXML
-    private void LogIn(ActionEvent PressLogin) throws SQLException {
+    private void LogIn(ActionEvent PressLogin) {
         UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
         String emailUser = txtEmailField.getText();
         String passwordUser = txtPasswordField.getText();

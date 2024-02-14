@@ -9,11 +9,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
-import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,13 +19,10 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class NotificheController implements Initializable {
-    private SupportStage support = new SupportStage();
+    private final SupportStage support = new SupportStage();
 
     @FXML
     public ListView<String> listViewSerieAcquisto;
-
-    @FXML
-    public MenuItem prova1;
 
     @FXML
     private ImageView imageLibriSfondo;
@@ -56,16 +51,8 @@ public class NotificheController implements Initializable {
         Stage stage = (Stage) listViewSerieAcquisto.getScene().getWindow();
         stage.close();
         support.switchStageSerieStage("serieStage.fxml", cods);
+        event.consume();
     }
-//
-//
-//    public void home(ActionEvent event) {
-//        //Prendo la finestra corrente e la chiudo, non posso prendere la scena
-//        //da menuitem perchè non è un nodo, la prendo da listViewSerieAcquisto
-//        Stage stage = (Stage) listViewSerieAcquisto.getScene().getWindow();
-//        stage.close();
-//        support.switchStage("homeStage.fxml",800,900);
-//    }
 
     public void eliminaPreferito(ActionEvent event) {
         Serie serie = getSerieFromListView();

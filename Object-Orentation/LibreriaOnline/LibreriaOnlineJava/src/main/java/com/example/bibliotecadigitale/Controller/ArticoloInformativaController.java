@@ -1,7 +1,6 @@
 package com.example.bibliotecadigitale.Controller;
 
 import com.example.bibliotecadigitale.Model.ArticoloScientifico;
-
 import com.example.bibliotecadigitale.SupportStage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,13 +9,12 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ArticoloInformativaController implements Initializable {
-    private SupportStage support = new SupportStage();
+    private final SupportStage support = new SupportStage();
     private ArticoloScientifico ArticoloMain;
 
     @FXML
@@ -39,8 +37,6 @@ public class ArticoloInformativaController implements Initializable {
     private Text textAutoreId;
     @FXML
     private Text txtEditoreId;
-    @FXML
-    private Button buttonAcquistoId;
     @FXML
     private Button buttonConferenzaId;
     @FXML
@@ -79,23 +75,24 @@ public class ArticoloInformativaController implements Initializable {
         if ((articolopassato.getNomer() != null) && (articolopassato.getDatar() != null)) {
             textMessaggioId.setVisible(true);
             buttonRivistaId.setVisible(true);
-
         } else {
             textMessaggioId.setVisible(false);
             buttonRivistaId.setVisible(false);
-
         }
     }
 
     public void goToConferenza(ActionEvent event) {
         support.switchStage("conferenzaStage.fxml", ArticoloMain.getConferenza());
+        event.consume();
     }
 
     public void goToRivista(ActionEvent event) {
         support.switchStage("rivistaStage.fxml", ArticoloMain.getNomer(), ArticoloMain.getDatar());
+        event.consume();
     }
 
     public void goToAcquisto(ActionEvent event) {
         support.switchStageAquistiArticoli("acquistoStage.fxml", ArticoloMain.getDoi());
+        event.consume();
     }
 }

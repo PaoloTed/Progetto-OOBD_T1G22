@@ -6,28 +6,28 @@ import java.util.ArrayList;
 import javax.swing.filechooser.FileSystemView;
 
 public class Connessione {
-    private static String url = "";
-    private static String className = "";
-    private static String user = "";
-    private static String password = "";
-    private static Connection con;
+    private static final String url;
+
+    private static final String user;
+    private static final String password;
+    private static final Connection con;
 
 
     static {
-        try {
-            Class.forName(className);
-        } catch (ClassNotFoundException e1) {
-        }
         //connessione alla base di dati libreriaOnline
         try {
             //leggo le credenziali dal file credenzialiProgetto.txt
             //il file deve essere nella cartella documenti
             ArrayList<String> credenziali = leggiCredenziali();
             url = credenziali.get(0);
-            className = credenziali.get(1);
+
+            //TODO:Da rivedere questa cosa con il try catch non so perche serve e perche se cattura un eccezzione, forse serve il driver da qualche parte ?
+            try {
+                Class.forName(credenziali.get(1));
+            } catch (ClassNotFoundException e) {
+            }
             user = credenziali.get(2);
             password = credenziali.get(3);
-
             con = DriverManager.getConnection(url, user, password);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -40,8 +40,7 @@ public class Connessione {
 
     public ResultSet executeSearch(String query) throws SQLException {
         Statement stat = con.createStatement();
-        ResultSet rs = stat.executeQuery(query);
-        return rs;
+        return stat.executeQuery(query);
     }
 
     public static ArrayList<String> leggiCredenziali() {
@@ -59,7 +58,6 @@ public class Connessione {
             System.out.println("Errore nella lettura del file credenzialiProgetto.txt, inserire il file nella cartella documenti");
             throw new RuntimeException(e);
         }
-
     }
 
     public void executeUpdate(String query) throws SQLException {

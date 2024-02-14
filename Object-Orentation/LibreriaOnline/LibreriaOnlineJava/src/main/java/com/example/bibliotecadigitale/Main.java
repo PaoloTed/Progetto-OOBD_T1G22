@@ -6,28 +6,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
-
 import java.io.IOException;
+import java.util.Objects;
 
 public class Main extends Application {
-
-//    TODO :
-//    1) aggiustare grafica informativa libro
-//    2) aggiustare grafica informativa articolo
-//    3) aggiustare grafica e funzionamento pagina presentazione
-//    4) aggiustare grafica pagina acquisto
-//    5) aggiustare mettere i codA come coda perche senno il metodo in homestage controller test non funziona
-
     @Override
     public void start(Stage welcomeStage) throws IOException {
-
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("welcomeStage.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 500, 500);
         welcomeStage.setResizable(false);
         welcomeStage.setTitle("Benvenuto nella libreria online!");
         welcomeStage.setScene(scene);
-        welcomeStage.getIcons().add(new Image("https://raw.githubusercontent.com/PaoloTed/Progetto-OOBD_T1G22/3388e4fb3e1e90d0792ee8abd540b0dbd3c50e91/Object-Orentation/LibreriaOnline/LibreriaOnlineJava/src/main/resources/Images/biblioteca.png"));
+        welcomeStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/biblioteca.png"))));
         welcomeStage.show();
     }
 

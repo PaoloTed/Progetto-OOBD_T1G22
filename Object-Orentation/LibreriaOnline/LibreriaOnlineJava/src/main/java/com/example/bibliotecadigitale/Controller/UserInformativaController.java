@@ -13,7 +13,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -26,8 +25,6 @@ public class UserInformativaController implements Initializable {
     public PasswordField txtOldPassword;
     @FXML
     public PasswordField txtNewPassword;
-    @FXML
-    public ListView<String> listViewSerie;
 
     @FXML
     public TableView<Serie> tableView;
@@ -41,7 +38,7 @@ public class UserInformativaController implements Initializable {
     private ImageView imageLibriSfondo;
 
     //Supporto per la gestione delle finestre
-    private SupportStage support = new SupportStage();
+    private final SupportStage support = new SupportStage();
 
     @Override
     //Inizializza la pagina con i dati dell'utente e le serie preferite
@@ -49,10 +46,10 @@ public class UserInformativaController implements Initializable {
         //Mostro l'email dell'utente
         String email = Utente.getUtente().getEmail();
         labelEmail.setText(email);
-        codsColumn.setCellValueFactory(new PropertyValueFactory<Serie, String>("cods"));
-        nomeColumn.setCellValueFactory(new PropertyValueFactory<Serie, String>("nome"));
-        numlibriColumn.setCellValueFactory(new PropertyValueFactory<Serie, Integer>("numlibri"));
-        completataColumn.setCellValueFactory(new PropertyValueFactory<Serie, Boolean>("completata"));
+        codsColumn.setCellValueFactory(new PropertyValueFactory<>("cods"));
+        nomeColumn.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        numlibriColumn.setCellValueFactory(new PropertyValueFactory<>("numlibri"));
+        completataColumn.setCellValueFactory(new PropertyValueFactory<>("completata"));
         imageLibriSfondo.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/libri800x900.png"))));
         setTableView(email);
     }
@@ -92,6 +89,7 @@ public class UserInformativaController implements Initializable {
         UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
         utenteDAO.updatePassword(Utente.getUtente().getEmail(), newPassword);
         support.messageStage("Password cambiata con successo");
+        event.consume();
     }
 
     //Metodo che elimina la serie selezionata dalla listView e dal database
@@ -111,6 +109,7 @@ public class UserInformativaController implements Initializable {
         } else {
             support.messageStage("Selezionare una serie");
         }
+        event.consume();
     }
 
     public void goToPaginaInformativaSerie(ActionEvent event) {
@@ -122,13 +121,18 @@ public class UserInformativaController implements Initializable {
         Stage stage = (Stage) labelEmail.getScene().getWindow();
         stage.close();
         support.switchStageSerieStage("serieStage.fxml", serie.getCods());
+        event.consume();
+    }
 
+    @FXML
+    void eliminareAccount(ActionEvent event) {
+        UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
+        utenteDAO.delete(Utente.getUtente());
+        support.switchStage("welcomeStage.fxml", event, 500, 500);
+        support.messageStage("Account eliminato con successo");
     }
 
     public void back_goToHome(ActionEvent event) {
         support.switchStage("homeStage.fxml", event, 900, 800);
     }
-
-
-
 }

@@ -2,7 +2,6 @@ package com.example.bibliotecadigitale.Connection;
 
 import com.example.bibliotecadigitale.DAO.ArticoloScientificoDAO;
 import com.example.bibliotecadigitale.Model.ArticoloScientifico;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,7 +17,7 @@ public class ArticoloScientificoDAOImpl implements ArticoloScientificoDAO {
         if (tipoRicerca.equalsIgnoreCase("numpagine") || tipoRicerca.equalsIgnoreCase("conferenza")) {
             query = "SELECT doi FROM articolo_scientifico WHERE " + tipoRicerca + " = " + parolaChiave + ";";
         } else {
-            query = "SELECT doi FROM articolo_scientifico WHERE " + tipoRicerca + " LIKE LOWER('%" + parolaChiave + "%');";
+            query = "SELECT doi FROM articolo_scientifico WHERE " + tipoRicerca + " LIKE '%" + parolaChiave + "%';";
         }
         ResultSet rs = connessione.executeSearch(query);
         ArticoloScientifico articolo;
@@ -166,6 +165,5 @@ public class ArticoloScientificoDAOImpl implements ArticoloScientificoDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 }

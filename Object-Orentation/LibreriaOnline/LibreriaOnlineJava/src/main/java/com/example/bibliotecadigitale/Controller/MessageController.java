@@ -9,7 +9,6 @@ import javafx.stage.Stage;
 public class MessageController {
     @FXML
     public Text textError;
-
     @FXML
     public void setText( String errore) {
         textError.setText(errore);

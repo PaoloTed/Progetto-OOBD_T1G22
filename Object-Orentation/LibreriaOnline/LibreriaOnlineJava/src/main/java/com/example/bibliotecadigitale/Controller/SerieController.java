@@ -13,7 +13,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -22,7 +21,7 @@ import java.util.ResourceBundle;
 
 public class SerieController implements Initializable {
 
-    private SupportStage support = new SupportStage();
+    private final SupportStage support = new SupportStage();
 
 
     @FXML
@@ -54,13 +53,12 @@ public class SerieController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //inizializzo le colonne della tabella libro
 
-        isbnColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("isbn"));
-        titoloColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("titolo"));
-        autoreColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("autore"));
-        editoreColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("editore"));
-        genereColumn.setCellValueFactory(new PropertyValueFactory<Libro, String>("genere"));
+        isbnColumn.setCellValueFactory(new PropertyValueFactory<>("isbn"));
+        titoloColumn.setCellValueFactory(new PropertyValueFactory<>("titolo"));
+        autoreColumn.setCellValueFactory(new PropertyValueFactory<>("autore"));
+        editoreColumn.setCellValueFactory(new PropertyValueFactory<>("editore"));
+        genereColumn.setCellValueFactory(new PropertyValueFactory<>("genere"));
         imageLibriSfondo.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/libri800x900.png"))));
-
     }
 
     public void showSerie(int CodS) {
@@ -75,7 +73,7 @@ public class SerieController implements Initializable {
             completaTxtId.setText("No Terminata");
 
         LibroDAOImpl libroDAO = new LibroDAOImpl();
-        ArrayList<Libro> libri = null;
+        ArrayList<Libro> libri;
         try {
             libri = libroDAO.getRicerca("serie", String.valueOf(CodS));
         } catch (SQLException e) {
@@ -95,6 +93,7 @@ public class SerieController implements Initializable {
         Stage stage = (Stage) libroTableView.getScene().getWindow();
         stage.close();
         support.switchStage("paginaInformativaLibro.fxml", libro);
+        event.consume();
     }
 
     public void close(ActionEvent event) {
