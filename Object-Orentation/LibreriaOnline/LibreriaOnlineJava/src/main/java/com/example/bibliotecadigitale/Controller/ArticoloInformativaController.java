@@ -43,9 +43,9 @@ public class ArticoloInformativaController implements Initializable {
     private Text textMessaggioId;
     @FXML
     private Button buttonRivistaId;
-
     @FXML
     private ImageView imageLibriSfondo;
+
     public void initialize(URL url, ResourceBundle resourceBundle) {
         imageLibriSfondo.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/libri800x900.png"))));
     }
@@ -71,7 +71,6 @@ public class ArticoloInformativaController implements Initializable {
         } else {
             buttonConferenzaId.setVisible(false);
         }
-
         if ((articolopassato.getNomer() != null) && (articolopassato.getDatar() != null)) {
             textMessaggioId.setVisible(true);
             buttonRivistaId.setVisible(true);

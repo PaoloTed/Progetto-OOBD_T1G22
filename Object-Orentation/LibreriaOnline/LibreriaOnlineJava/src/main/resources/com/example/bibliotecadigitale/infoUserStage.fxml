@@ -14,72 +14,83 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="500.0" maxWidth="500.0" minHeight="500.0" minWidth="500.0" prefHeight="500.0" prefWidth="500" style="-fx-background-color: #fdf3ea; -fx-border-width: 3; -fx-border-color: #de5f4f;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.UserInformativaController">
-   <children>
-      <ImageView fx:id="imageLibriSfondo" fitHeight="500.0" fitWidth="495.0" layoutX="2.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
-         <viewport>
-            <Rectangle2D height="500.0" width="495.0" />
-         </viewport>
-         <rotationAxis>
-            <Point3D />
-         </rotationAxis>
-      </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdf3ea" height="380.0" layoutX="28.0" layoutY="85.0" stroke="#de5f4f" strokeType="INSIDE" strokeWidth="2.0" width="445.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdf3ea" height="47.0" layoutX="28.0" layoutY="14.0" stroke="#de5f4f" strokeType="INSIDE" strokeWidth="2.0" width="445.0" />
-      <Label layoutX="34.0" layoutY="3.0" prefHeight="47.0" prefWidth="293.0" text="Pannello Informazioni Utente">
-         <font>
-            <Font name="Arial Bold" size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="64.0" layoutY="88.0" prefHeight="17.0" prefWidth="107.0" text="Email">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Label fx:id="labelEmail" layoutX="108.0" layoutY="90.0" prefHeight="17.0" prefWidth="255.0" text="emailUser" />
-      <Label layoutX="64.0" layoutY="111.0" prefHeight="21.0" prefWidth="183.0" text="Vuoi cambiare Password ?" textFill="#2b2d30">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Button layoutX="386.0" layoutY="133.0" mnemonicParsing="false" onAction="#changePassword" style="-fx-background-color: #2b2d30; -fx-text-fill: white;" text="Cambia" />
-      <Label layoutX="34.0" layoutY="171.0" prefHeight="22.0" prefWidth="128.0" text="Preferiti Utente">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
-      <Button layoutX="227.0" layoutY="428.0" mnemonicParsing="false" onAction="#back_goToHome" style="-fx-background-color: #2b2d30; -fx-text-fill: white;" text="Back" />
-      <PasswordField fx:id="txtOldPassword" layoutX="87.0" layoutY="133.0" promptText="Vecchia Password" />
-      <PasswordField fx:id="txtNewPassword" layoutX="236.0" layoutY="133.0" promptText="NuovaPassword" />
-      <Label layoutX="85.0" layoutY="405.0" text="Per eliminare o vedere le informazioni della serie premici con il tasto destro">
-         <font>
-            <Font size="10.0" />
-         </font>
-      </Label>
-      <TableView fx:id="tableView" editable="true" layoutX="32.0" layoutY="199.0" prefHeight="200.0" prefWidth="437.0">
-         <contextMenu>
-            <ContextMenu>
-              <items>
-                <MenuItem mnemonicParsing="false" onAction="#goToPaginaInformativaSerie" text="Vai Alla Pagina Informativa Serie" />
-                  <MenuItem mnemonicParsing="false" onAction="#eliminaPreferito" text="Elimina Dai preferiti" />
-              </items>
-            </ContextMenu>
-         </contextMenu>
-         <columnResizePolicy>
-            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-         </columnResizePolicy>
-         <columns>
-            <TableColumn fx:id="codsColumn" prefWidth="75.0" text="Codice Serie" />
-            <TableColumn fx:id="nomeColumn" prefWidth="75.0" text="Nome Serie" />
-            <TableColumn fx:id="numlibriColumn" prefWidth="75.0" text="Numero Libri" />
-            <TableColumn fx:id="completataColumn" prefWidth="75.0" text="Completata" />
-         </columns>
-      </TableView>
-      <Label layoutX="34.0" layoutY="24.0" prefHeight="47.0" prefWidth="454.0" text="Qui puoi vedere le tue informazioni e le tue serie preferite">
-         <font>
-            <Font name="Arial" size="17.0" />
-         </font>
-      </Label>
-      <Button layoutX="393.0" layoutY="468.0" mnemonicParsing="false" onAction="#eliminareAccount" style="-fx-background-color: #2b2d30; -fx-text-fill: white;" text="Elimina il Profilo" />
-   </children>
+<AnchorPane maxHeight="500.0" maxWidth="500.0" minHeight="500.0" minWidth="500.0" prefHeight="500.0" prefWidth="500"
+            style="-fx-background-color: #fdf3ea; -fx-border-width: 3; -fx-border-color: #de5f4f;"
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.bibliotecadigitale.Controller.UserInformativaController">
+   <ImageView fx:id="imageLibriSfondo" fitHeight="500.0" fitWidth="495.0" layoutX="2.0" layoutY="3.0"
+              pickOnBounds="true" preserveRatio="true">
+      <viewport>
+         <Rectangle2D height="500.0" width="495.0"/>
+      </viewport>
+      <rotationAxis>
+         <Point3D/>
+      </rotationAxis>
+   </ImageView>
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdf3ea" height="380.0" layoutX="28.0" layoutY="85.0"
+              stroke="#de5f4f" strokeType="INSIDE" strokeWidth="2.0" width="445.0"/>
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdf3ea" height="47.0" layoutX="28.0" layoutY="14.0" stroke="#de5f4f"
+              strokeType="INSIDE" strokeWidth="2.0" width="445.0"/>
+   <Label layoutX="34.0" layoutY="3.0" prefHeight="47.0" prefWidth="293.0" text="Pannello Informazioni Utente">
+      <font>
+         <Font name="Arial Bold" size="20.0"/>
+      </font>
+   </Label>
+   <Label layoutX="64.0" layoutY="88.0" prefHeight="17.0" prefWidth="107.0" text="Email">
+      <font>
+         <Font size="15.0"/>
+      </font>
+   </Label>
+   <Label fx:id="labelEmail" layoutX="108.0" layoutY="90.0" prefHeight="17.0" prefWidth="255.0" text="emailUser"/>
+   <Label layoutX="64.0" layoutY="111.0" prefHeight="21.0" prefWidth="183.0" text="Vuoi cambiare Password ?"
+          textFill="#2b2d30">
+      <font>
+         <Font size="15.0"/>
+      </font>
+   </Label>
+   <Button layoutX="386.0" layoutY="133.0" mnemonicParsing="false" onAction="#changePassword"
+           style="-fx-background-color: #2b2d30; -fx-text-fill: white;" text="Cambia"/>
+   <Label layoutX="34.0" layoutY="171.0" prefHeight="22.0" prefWidth="128.0" text="Preferiti Utente">
+      <font>
+         <Font name="System Bold" size="15.0"/>
+      </font>
+   </Label>
+   <Button layoutX="227.0" layoutY="428.0" mnemonicParsing="false" onAction="#back_goToHome"
+           style="-fx-background-color: #2b2d30; -fx-text-fill: white;" text="Back"/>
+   <PasswordField fx:id="txtOldPassword" layoutX="87.0" layoutY="133.0" promptText="Vecchia Password"/>
+   <PasswordField fx:id="txtNewPassword" layoutX="236.0" layoutY="133.0" promptText="NuovaPassword"/>
+   <Label layoutX="85.0" layoutY="405.0"
+          text="Per eliminare o vedere le informazioni della serie premici con il tasto destro">
+      <font>
+         <Font size="10.0"/>
+      </font>
+   </Label>
+   <TableView fx:id="tableView" editable="true" layoutX="32.0" layoutY="199.0" prefHeight="200.0" prefWidth="437.0">
+      <contextMenu>
+         <ContextMenu>
+            <items>
+               <MenuItem mnemonicParsing="false" onAction="#goToPaginaInformativaSerie"
+                         text="Vai Alla Pagina Informativa Serie"/>
+               <MenuItem mnemonicParsing="false" onAction="#eliminaPreferito" text="Elimina Dai preferiti"/>
+            </items>
+         </ContextMenu>
+      </contextMenu>
+      <columnResizePolicy>
+         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+      </columnResizePolicy>
+      <columns>
+         <TableColumn fx:id="codsColumn" prefWidth="75.0" text="Codice Serie"/>
+         <TableColumn fx:id="nomeColumn" prefWidth="75.0" text="Nome Serie"/>
+         <TableColumn fx:id="numlibriColumn" prefWidth="75.0" text="Numero Libri"/>
+         <TableColumn fx:id="completataColumn" prefWidth="75.0" text="Completata"/>
+      </columns>
+   </TableView>
+   <Label layoutX="34.0" layoutY="24.0" prefHeight="47.0" prefWidth="454.0"
+          text="Qui puoi vedere le tue informazioni e le tue serie preferite">
+      <font>
+         <Font name="Arial" size="17.0"/>
+      </font>
+   </Label>
+   <Button layoutX="393.0" layoutY="468.0" mnemonicParsing="false" onAction="#eliminareAccount"
+           style="-fx-background-color: #2b2d30; -fx-text-fill: white;" text="Elimina il Profilo"/>
 </AnchorPane>

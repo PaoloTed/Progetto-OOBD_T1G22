@@ -31,6 +31,7 @@ public class AcquistoDAOImpl implements AcquistoDAO {
         return acquisto;
     }
 
+    @Override
     public ArrayList<Acquisto> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
         ArrayList<Acquisto> acquistoFinded = new ArrayList<>();
         String query;
@@ -49,11 +50,6 @@ public class AcquistoDAOImpl implements AcquistoDAO {
         rs.close();
 
         return acquistoFinded;
-    }
-
-    @Override
-    public Acquisto get(String cod) throws SQLException {
-        return null;
     }
 
     @Override

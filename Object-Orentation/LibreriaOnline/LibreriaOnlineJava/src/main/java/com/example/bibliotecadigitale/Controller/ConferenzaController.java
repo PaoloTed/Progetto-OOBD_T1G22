@@ -24,8 +24,7 @@ public class ConferenzaController {
     @FXML
     private Text textStrutturaId;
 
-    public void showInfoConferenza(int codc)
-    {
+    public void showInfoConferenza(int codc) {
         ConferenzaDAOImpl conferenzaDAO = new ConferenzaDAOImpl();
         Conferenza conferenza = conferenzaDAO.get(codc);
         textCodCId.setText(textCodCId.getText()+conferenza.getCodc());

@@ -75,6 +75,7 @@ public class UtenteDAOImpl implements UtenteDAO {
         return utente;
     }
 
+    @Override
     public ArrayList<Utente> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
         ArrayList<Utente> utenteFinded = new ArrayList<>();
 
@@ -91,7 +92,20 @@ public class UtenteDAOImpl implements UtenteDAO {
 
     @Override
     public List<Utente> getAll() throws SQLException {
-        return null;
+        try {
+            String query = "SELECT email FROM utente;";
+            ResultSet rs = connessione.executeSearch(query);
+            ArrayList<Utente> utenteFinded = new ArrayList<>();
+            Utente utente;
+            while (rs.next()) {
+                utente = get(rs.getString(1));
+                utenteFinded.add(utente);
+            }
+            rs.close();
+            return utenteFinded;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

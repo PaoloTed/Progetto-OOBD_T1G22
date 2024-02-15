@@ -28,9 +28,9 @@ public class DisponibileSDAOImpl implements DisponibileSDAO {
         return disponibileS;
     }
 
+    @Override
     public ArrayList<DisponibileS> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
         ArrayList<DisponibileS> disponibileSFinded = new ArrayList<>();
-
         String query = "SELECT coda,cods FROM disponibile_s WHERE " + tipoRicerca + " = " + parolaChiave + ";";
         ResultSet rs = connessione.executeSearch(query);
         DisponibileS disponibileS;
@@ -39,13 +39,7 @@ public class DisponibileSDAOImpl implements DisponibileSDAO {
             disponibileSFinded.add(disponibileS);
         }
         rs.close();
-
         return disponibileSFinded;
-    }
-
-    @Override
-    public DisponibileS get(String cod) throws SQLException {
-        return null;
     }
 
     @Override
@@ -68,7 +62,12 @@ public class DisponibileSDAOImpl implements DisponibileSDAO {
 
     @Override
     public void insert(DisponibileS disponibileS) throws SQLException {
-
+        try {
+            String query = "INSERT INTO disponibile_s (coda,cods) VALUES (" + disponibileS.getCoda() + "," + disponibileS.getCods() + ");";
+            connessione.executeUpdate(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -79,7 +78,6 @@ public class DisponibileSDAOImpl implements DisponibileSDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.example.bibliotecadigitale.Connection;
 
 import com.example.bibliotecadigitale.DAO.DisponibileLDAO;
 import com.example.bibliotecadigitale.Model.DisponibileL;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -43,10 +44,10 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
         return disponibileL;
     }
 
+    @Override
     public ArrayList<DisponibileL> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
         ArrayList<DisponibileL> disponibileLFinded = new ArrayList<>();
         String query = "";
-
         if (tipoRicerca.equalsIgnoreCase("coda")) {
             query = "SELECT coda,isbn FROM disponibile_l WHERE " + tipoRicerca + " = " + parolaChiave + ";";
         }
@@ -60,13 +61,7 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
             disponibileLFinded.add(disponibileL);
         }
         rs.close();
-
         return disponibileLFinded;
-    }
-
-    @Override
-    public DisponibileL get(String cod) throws SQLException {
-        return null;
     }
 
     @Override
@@ -95,7 +90,6 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     @Override
@@ -106,7 +100,6 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     @Override
@@ -117,6 +110,5 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 }

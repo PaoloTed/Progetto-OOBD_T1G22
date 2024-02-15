@@ -10,6 +10,7 @@ import java.util.List;
 public class RivistaDAOImpl implements RivistaDAO {
     private final Connessione connessione = new Connessione();
 
+    @Override
     public Rivista get(String nome, String data) {
         Rivista rivista;
         try {
@@ -30,6 +31,7 @@ public class RivistaDAOImpl implements RivistaDAO {
         return rivista;
     }
 
+    @Override
     public ArrayList<Rivista> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
         ArrayList<Rivista> rivistaFinded = new ArrayList<>();
         String query;
@@ -41,13 +43,7 @@ public class RivistaDAOImpl implements RivistaDAO {
             rivistaFinded.add(rivista);
         }
         rs.close();
-
         return rivistaFinded;
-    }
-
-    @Override
-    public Rivista get(String cod) throws SQLException {
-        return null;
     }
 
     @Override
@@ -80,7 +76,6 @@ public class RivistaDAOImpl implements RivistaDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     @Override
@@ -95,7 +90,6 @@ public class RivistaDAOImpl implements RivistaDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     @Override

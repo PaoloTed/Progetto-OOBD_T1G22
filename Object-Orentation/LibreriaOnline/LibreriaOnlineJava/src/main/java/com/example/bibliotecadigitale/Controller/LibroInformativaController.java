@@ -9,6 +9,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
@@ -58,6 +60,9 @@ public class LibroInformativaController implements Initializable {
     @FXML
     private Button buttonPresentazioneid;
 
+    @FXML
+    private TextArea prova;
+
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         imageLibriSfondo.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/libri800x900.png"))));
@@ -76,7 +81,9 @@ public class LibroInformativaController implements Initializable {
         textGenereId.setText(textGenereId.getText()+libroPassato.getGenere());
         textNumeroPagineId.setText(textNumeroPagineId.getText()+libroPassato.getNumpagine());
         textTIpoId.setText(textTIpoId.getText()+libroPassato.getTipo());
-        textDescrizioneId.setText(textDescrizioneId.getText()+"\n"+libroPassato.getDescrizione());
+        prova.setText(libroPassato.getDescrizione());
+        prova.setWrapText(true);
+//        textDescrizioneId.setText(textDescrizioneId.getText()+"\n"+libroPassato.getDescrizione());
         textFruizioneId.setText(textFruizioneId.getText()+libroPassato.getFruizione());
         textDataUscitaId.setText(textDataUscitaId.getText()+libroPassato.getDatauscita());
         textLinguianId.setText(textLinguianId.getText()+libroPassato.getLingua());
@@ -99,24 +106,25 @@ public class LibroInformativaController implements Initializable {
             }
             buttonSerieId.setText("" + libroPassato.getSerie());
             textMessagioId.setVisible(true);
+            if (libroPassato.getSuccessivo() != null) {
+                buttonSuccessivoId.setVisible(true);
+                buttonSuccessivoId.disableProperty().setValue(false);
+            } else {
+//                buttonSuccessivoId.setVisible(false);
+                buttonSuccessivoId.disableProperty().setValue(true);
+            }
         } else {
             buttonSerieId.setVisible(false);
             textMessagioId.setVisible(false);
         }
         textAutoreId.setText(textAutoreId.getText()+libroPassato.getAutore());
         txtEditoreId.setText(txtEditoreId.getText()+libroPassato.getEditore());
-        if (libroPassato.getSuccessivo() != null) {
-            buttonSuccessivoId.setVisible(true);
-            buttonSuccessivoId.disableProperty().setValue(false);
-        } else {
-            buttonSuccessivoId.setVisible(false);
-            buttonSuccessivoId.disableProperty().setValue(true);
-        }
+
         if (libroPassato.getPresentazione() != null) {
-            buttonPresentazioneid.setVisible(true);
+            //buttonPresentazioneid.setVisible(true);
             buttonPresentazioneid.disableProperty().setValue(false);
         } else {
-            buttonPresentazioneid.setVisible(false);
+           // buttonPresentazioneid.setVisible(false);
             buttonPresentazioneid.disableProperty().setValue(true);
         }
     }
@@ -139,18 +147,18 @@ public class LibroInformativaController implements Initializable {
     }
 
     public void goToNext(ActionEvent event) throws SQLException {
-        textTitleIId.setText("");
-        textIsbnId.setText("");
-        textGenereId.setText("");
-        textNumeroPagineId.setText("");
+        textTitleIId.setText("Titolo:");
+        textIsbnId.setText("Isbn:");
+        textGenereId.setText("Genere:");
+        textNumeroPagineId.setText("Numero pagine:");
         textTIpoId.setText("");
-        textMateriaId.setText("");
-        textDescrizioneId.setText("");
-        textFruizioneId.setText("");
-        textDataUscitaId.setText("");
-        textLinguianId.setText("");
-        textAutoreId.setText("");
-        txtEditoreId.setText("");
+        textMateriaId.setText("Materia:");
+//        textDescrizioneId.setText("");
+        textFruizioneId.setText("Fruizione:");
+        textDataUscitaId.setText("Data Uscita:");
+        textLinguianId.setText("Lingua:");
+        textAutoreId.setText("Autore:");
+        txtEditoreId.setText("Editore:");
         LibroDAOImpl libroDAO = new LibroDAOImpl();
         Libro libroSuccessivo = libroDAO.get(libroMain.getSuccessivo());
         showInfoLibro(libroSuccessivo);
@@ -158,7 +166,7 @@ public class LibroInformativaController implements Initializable {
         event.consume();
     }
 
-    public void goToAquisto(ActionEvent event) {
+    public void goToAcquisto(ActionEvent event) {
         support.switchStageAquistiLibri("acquistoStage.fxml", libroMain.getIsbn());
         event.consume();
     }

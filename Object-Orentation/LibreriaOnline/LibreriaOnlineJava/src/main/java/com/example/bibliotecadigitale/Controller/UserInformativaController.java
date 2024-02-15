@@ -13,6 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -29,10 +30,14 @@ public class UserInformativaController implements Initializable {
     @FXML
     public TableView<Serie> tableView;
 
-    @FXML TableColumn<Serie, String> codsColumn;
-    @FXML TableColumn<Serie, String> nomeColumn;
-    @FXML TableColumn<Serie, Integer> numlibriColumn;
-    @FXML TableColumn<Serie, Boolean> completataColumn;
+    @FXML
+    TableColumn<Serie, String> codsColumn;
+    @FXML
+    TableColumn<Serie, String> nomeColumn;
+    @FXML
+    TableColumn<Serie, Integer> numlibriColumn;
+    @FXML
+    TableColumn<Serie, Boolean> completataColumn;
 
     @FXML
     private ImageView imageLibriSfondo;
@@ -61,9 +66,9 @@ public class UserInformativaController implements Initializable {
         ArrayList<Integer> codPreferiti = utenteDAO.searchPreferiti(email);
         //Recupero le serie preferite dell'utente
         //Mostro le serie preferite dell'utente nella listView
-        for (int i = 0; i < codPreferiti.size(); i++) {
+        for (Integer codicePreferito : codPreferiti) {
             //Viene inserito nella listView il codice della serie e il suo nome
-            tableView.getItems().add(serieDAO.get(codPreferiti.get(i)));
+            tableView.getItems().add(serieDAO.get(codicePreferito));
         }
     }
 
@@ -105,7 +110,6 @@ public class UserInformativaController implements Initializable {
             //Elimino la serie selezionata dalla listView
             tableView.getItems().remove(serie);
             support.messageStage("Preferito eliminato con successo");
-
         } else {
             support.messageStage("Selezionare una serie");
         }
@@ -127,9 +131,16 @@ public class UserInformativaController implements Initializable {
     @FXML
     void eliminareAccount(ActionEvent event) {
         UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
-        utenteDAO.delete(Utente.getUtente());
-        support.switchStage("welcomeStage.fxml", event, 500, 500);
-        support.messageStage("Account eliminato con successo");
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Eliminazione account");
+        alert.setHeaderText("Sei sicuro di voler eliminare il tuo profilo ?");
+        alert.setContentText("Una volta eliminato non potrai più accedere al tuo account");
+        alert.getButtonTypes().setAll(ButtonType.OK, ButtonType.CANCEL);
+        if (alert.showAndWait().get() == ButtonType.OK) {
+            utenteDAO.delete(Utente.getUtente());
+            support.switchStage("welcomeStage.fxml", event, 500, 500);
+            support.messageStage("Account eliminato con successo");
+        }
     }
 
     public void back_goToHome(ActionEvent event) {

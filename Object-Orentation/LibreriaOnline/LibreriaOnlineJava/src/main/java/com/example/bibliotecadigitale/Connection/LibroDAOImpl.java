@@ -10,10 +10,10 @@ import java.util.List;
 public class LibroDAOImpl implements LibroDAO {
     private final Connessione connessione = new Connessione();
 
+    @Override
     public ArrayList<Libro> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
         ArrayList<Libro> libroFinded = new ArrayList<>();
         String query;
-
         if (tipoRicerca.equalsIgnoreCase("numpagine") || tipoRicerca.equalsIgnoreCase("serie")) {
             query = "SELECT isbn FROM libro WHERE " + tipoRicerca + " = " + parolaChiave + ";";
         } else {
@@ -26,7 +26,6 @@ public class LibroDAOImpl implements LibroDAO {
             libroFinded.add(libro);
         }
         rs.close();
-
         return libroFinded;
     }
 
@@ -131,7 +130,6 @@ public class LibroDAOImpl implements LibroDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     @Override
@@ -143,6 +141,5 @@ public class LibroDAOImpl implements LibroDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 }

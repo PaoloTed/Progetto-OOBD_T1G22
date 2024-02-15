@@ -6,15 +6,6 @@ public class Serie {
     private String nome;
     private int numLibri;
     private boolean completata;
-    public Serie(){}
-
-    public Serie(int codS, String nome, int numLibri, boolean completata) {
-        this.codS = codS;
-        this.nome = nome;
-        this.numLibri = numLibri;
-        this.completata = completata;
-    }
-
 
     public int getCods() {
         return codS;

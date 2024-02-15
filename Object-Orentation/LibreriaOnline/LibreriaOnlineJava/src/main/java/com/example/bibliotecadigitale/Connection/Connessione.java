@@ -7,7 +7,6 @@ import javax.swing.filechooser.FileSystemView;
 
 public class Connessione {
     private static final String url;
-
     private static final String user;
     private static final String password;
     private static final Connection con;

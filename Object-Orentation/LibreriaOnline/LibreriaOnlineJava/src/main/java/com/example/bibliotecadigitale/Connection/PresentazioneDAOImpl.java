@@ -2,6 +2,7 @@ package com.example.bibliotecadigitale.Connection;
 
 import com.example.bibliotecadigitale.DAO.PresentazioneDAO;
 import com.example.bibliotecadigitale.Model.Presentazione;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.List;
 public class PresentazioneDAOImpl implements PresentazioneDAO {
     private final Connessione connessione = new Connessione();
 
+    @Override
     public Presentazione get(int codP) {
         Presentazione presentazione = null;
         try {
@@ -30,6 +32,7 @@ public class PresentazioneDAOImpl implements PresentazioneDAO {
         return presentazione;
     }
 
+    @Override
     public ArrayList<Presentazione> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
         ArrayList<Presentazione> presentazioneFinded = new ArrayList<>();
         String query;
@@ -41,16 +44,11 @@ public class PresentazioneDAOImpl implements PresentazioneDAO {
         ResultSet rs = connessione.executeSearch(query);
         Presentazione presentazione;
         while (rs.next()) {
-            presentazione = get(rs.getString(1));
+            presentazione = get(rs.getInt(1));
             presentazioneFinded.add(presentazione);
         }
         rs.close();
         return presentazioneFinded;
-    }
-
-    @Override
-    public Presentazione get(String cod) throws SQLException {
-        return null;
     }
 
     @Override
@@ -84,7 +82,6 @@ public class PresentazioneDAOImpl implements PresentazioneDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     @Override
@@ -100,7 +97,6 @@ public class PresentazioneDAOImpl implements PresentazioneDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     @Override

@@ -10,6 +10,7 @@ import java.util.List;
 public class ConferenzaDAOImpl implements ConferenzaDAO {
     private final Connessione connessione = new Connessione();
 
+    @Override
     public Conferenza get(int codC) {
         Conferenza conferenza = null;
         try {
@@ -32,6 +33,7 @@ public class ConferenzaDAOImpl implements ConferenzaDAO {
         return conferenza;
     }
 
+    @Override
     public ArrayList<Conferenza> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
         ArrayList<Conferenza> conferenzaFinded = new ArrayList<>();
         String query;
@@ -48,13 +50,7 @@ public class ConferenzaDAOImpl implements ConferenzaDAO {
             conferenzaFinded.add(conferenza);
         }
         rs.close();
-
         return conferenzaFinded;
-    }
-
-    @Override
-    public Conferenza get(String cod) throws SQLException {
-        return null;
     }
 
     @Override
@@ -90,7 +86,6 @@ public class ConferenzaDAOImpl implements ConferenzaDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     @Override
@@ -108,7 +103,6 @@ public class ConferenzaDAOImpl implements ConferenzaDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     @Override
@@ -120,6 +114,5 @@ public class ConferenzaDAOImpl implements ConferenzaDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 }

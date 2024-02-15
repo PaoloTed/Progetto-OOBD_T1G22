@@ -18,7 +18,6 @@ public class RivistaController {
     @FXML
     private Text textArgomentoId;
 
-
     public void showInfoRivista(String nome, String data) {
         RivistaDAOImpl rivistaDAO = new RivistaDAOImpl();
         Rivista rivista = rivistaDAO.get(nome, data);
@@ -30,5 +29,6 @@ public class RivistaController {
     public void close (ActionEvent event) {
         Stage stage = (Stage) textNomeId.getScene().getWindow();
         stage.close();
+        event.consume();
     }
 }

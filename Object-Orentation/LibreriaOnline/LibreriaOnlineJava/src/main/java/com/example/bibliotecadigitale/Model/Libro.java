@@ -19,8 +19,6 @@ public class Libro extends Pubblicazioni{
         this.presentazione = presentazione;
     }
 
-
-
     public String getIsbn() {
         return ISBN;
     }

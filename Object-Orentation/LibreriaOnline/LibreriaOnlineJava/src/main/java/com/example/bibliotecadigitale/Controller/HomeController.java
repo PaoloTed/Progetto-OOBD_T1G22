@@ -31,18 +31,16 @@ public class HomeController implements Initializable {
     private String scelta = "libro";
     @FXML
     private ComboBox<String> idComboBox;
-
     @FXML
     private TextField idBarSearch;
     private final SupportStage support = new SupportStage();
-
     @FXML
     private ImageView imageLibriSfondo;
     @FXML
     private Text txtNumeroNotifiche;
+
     @FXML
     public TableView<Libro> libroTableView;
-
     @FXML
     TableColumn<Libro, String> isbnColumn;
     @FXML
@@ -56,7 +54,6 @@ public class HomeController implements Initializable {
 
     @FXML
     public TableView<ArticoloScientifico> articoloTableView;
-
     @FXML
     TableColumn<ArticoloScientifico, String> doiColumn;
     @FXML

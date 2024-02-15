@@ -258,14 +258,11 @@ public class HomeControllerAdminTest implements Initializable {
     private MenuItem itemDelete9;
     @FXML
     private MenuItem itemDelete10;
-
     private HashMap<String, TableView> tableViewHashMap = new HashMap<>();
     private HashMap<String, ObservableList<String>> ricercaHashMap = new HashMap<>();
     private HashMap<String, DAO> implDaoHashMap = new HashMap<>();
-
     @FXML
     private ImageView imageLibriSfondo;
-
     @FXML
     private Button buttonViewAll;
 
@@ -299,7 +296,7 @@ public class HomeControllerAdminTest implements Initializable {
         presentazioneLibro.setCellValueFactory(new PropertyValueFactory<>("presentazione"));
         presentazioneLibro.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
 
-//inizializzo le colonne della tabella articolo
+        //inizializzo le colonne della tabella articolo
         doiArticolo.setCellValueFactory(new PropertyValueFactory<>("doi"));
         doiArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
         doiArticolo.setEditable(false);
@@ -330,7 +327,7 @@ public class HomeControllerAdminTest implements Initializable {
         datarArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
         datarArticolo.setEditable(false);
 
-//inizializzo le colonne della tabella acquisto
+        //inizializzo le colonne della tabella acquisto
         codaAcquisto.setCellValueFactory(new PropertyValueFactory<>("coda"));
         codaAcquisto.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         codaAcquisto.setEditable(false);
@@ -343,7 +340,7 @@ public class HomeControllerAdminTest implements Initializable {
         indirizzoAcquisto.setCellValueFactory(new PropertyValueFactory<>("indirizzo"));
         indirizzoAcquisto.setCellFactory(TextFieldTableCell.forTableColumn());
 
-//inizializzo le colonne della tabella conferenza
+        //inizializzo le colonne della tabella conferenza
         codcConferenza.setCellValueFactory(new PropertyValueFactory<>("codc"));
         codcConferenza.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         codcConferenza.setEditable(false);
@@ -360,7 +357,7 @@ public class HomeControllerAdminTest implements Initializable {
         responsabileConferenza.setCellValueFactory(new PropertyValueFactory<>("responsabile"));
         responsabileConferenza.setCellFactory(TextFieldTableCell.forTableColumn());
 
-//inizializzo le colonne della tabella presentazione
+        //inizializzo le colonne della tabella presentazione
         codpPresentazione.setCellValueFactory(new PropertyValueFactory<>("codp"));
         codpPresentazione.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         codpPresentazione.setEditable(false);
@@ -373,7 +370,7 @@ public class HomeControllerAdminTest implements Initializable {
         tipoPresentazione.setCellValueFactory(new PropertyValueFactory<>("tipo"));
         tipoPresentazione.setCellFactory(TextFieldTableCell.forTableColumn());
 
-//inizializzo le colonne della tabella rivista
+        //inizializzo le colonne della tabella rivista
         nomeRivista.setCellValueFactory(new PropertyValueFactory<>("nome"));
         nomeRivista.setCellFactory(TextFieldTableCell.forTableColumn());
         nomeRivista.setEditable(false);
@@ -383,7 +380,7 @@ public class HomeControllerAdminTest implements Initializable {
         argomentoRivista.setCellValueFactory(new PropertyValueFactory<>("argomento"));
         argomentoRivista.setCellFactory(TextFieldTableCell.forTableColumn());
 
-//inizializzo le colonne della tabella serie
+        //inizializzo le colonne della tabella serie
         codsSerie.setCellValueFactory(new PropertyValueFactory<>("cods"));
         codsSerie.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         codsSerie.setEditable(false);
@@ -393,7 +390,7 @@ public class HomeControllerAdminTest implements Initializable {
         completataSerie.setCellValueFactory(new PropertyValueFactory<>("completata"));
         completataSerie.setCellFactory(TextFieldTableCell.forTableColumn(new BooleanStringConverter()));
 
-//inizializzo le colonne della tabella disponibileA
+        //inizializzo le colonne della tabella disponibileA
         codaDisponibileA.setCellValueFactory(new PropertyValueFactory<>("coda"));
         codaDisponibileA.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         codaDisponibileA.setEditable(false);
@@ -401,7 +398,7 @@ public class HomeControllerAdminTest implements Initializable {
         doiDisponibileA.setCellFactory(TextFieldTableCell.forTableColumn());
         doiDisponibileA.setEditable(false);
 
-//inizializzo le colonne della tabella disponibileL
+        //inizializzo le colonne della tabella disponibileL
         codaDisponibileL.setCellValueFactory(new PropertyValueFactory<>("coda"));
         codaDisponibileL.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         codaDisponibileL.setEditable(false);
@@ -409,7 +406,7 @@ public class HomeControllerAdminTest implements Initializable {
         isbnDisponibileL.setCellFactory(TextFieldTableCell.forTableColumn());
         isbnDisponibileL.setEditable(false);
 
-//inizializzo le colonne della tabella disponibileS
+        //inizializzo le colonne della tabella disponibileS
         codaDisponibileS.setCellValueFactory(new PropertyValueFactory<>("coda"));
         codaDisponibileS.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         codaDisponibileS.setEditable(false);

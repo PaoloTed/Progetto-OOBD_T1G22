@@ -10,6 +10,7 @@ import java.util.List;
 public class ArticoloScientificoDAOImpl implements ArticoloScientificoDAO {
     private final Connessione connessione = new Connessione();
 
+    @Override
     public ArrayList<ArticoloScientifico> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
         ArrayList<ArticoloScientifico> articoloScientificoFinded = new ArrayList<>();
         String query;

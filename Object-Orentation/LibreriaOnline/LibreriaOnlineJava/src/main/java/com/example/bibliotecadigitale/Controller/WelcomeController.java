@@ -95,9 +95,9 @@ public class WelcomeController implements Initializable {
     @FXML
     private void skip(ActionEvent event) {
         Utente utenteNew = getUtente();
-        utenteNew.setEmail("giulio@ruopolo.it");
-        utenteNew.setPassword("salernitana");
-        utenteNew.setData("2002-10-05");
+        utenteNew.setEmail("d@d.it");
+        utenteNew.setPassword("d");
+        utenteNew.setData("2024-02-15");
         support.switchStage("homeStage.fxml", event, 900, 800);
     }
 

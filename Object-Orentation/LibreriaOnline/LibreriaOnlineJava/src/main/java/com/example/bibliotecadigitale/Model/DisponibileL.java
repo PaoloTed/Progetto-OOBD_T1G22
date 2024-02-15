@@ -4,7 +4,6 @@ public class DisponibileL {
     private int codA;
     private String isbn;
 
-
     public int getCoda() {
         return codA;
     }

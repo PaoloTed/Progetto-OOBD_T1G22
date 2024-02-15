@@ -30,10 +30,10 @@ public class SerieDAOImpl implements SerieDAO {
         return serie;
     }
 
+    @Override
     public ArrayList<Serie> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
         ArrayList<Serie> serieFinded = new ArrayList<>();
         String query;
-
         if (tipoRicerca.equalsIgnoreCase("numlibri") || tipoRicerca.equalsIgnoreCase("completata") || tipoRicerca.equalsIgnoreCase("cods")) {
             query = "SELECT cods FROM serie WHERE " + tipoRicerca + " = " + parolaChiave + ";";
         } else {
@@ -46,13 +46,7 @@ public class SerieDAOImpl implements SerieDAO {
             serieFinded.add(serie);
         }
         rs.close();
-
         return serieFinded;
-    }
-
-    @Override
-    public Serie get(String cod) throws SQLException {
-        return null;
     }
 
     @Override
@@ -83,7 +77,6 @@ public class SerieDAOImpl implements SerieDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     @Override

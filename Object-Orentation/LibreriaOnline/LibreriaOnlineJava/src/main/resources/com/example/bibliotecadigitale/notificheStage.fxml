@@ -11,37 +11,52 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="800.0" maxWidth="900.0" minHeight="800.0" minWidth="900.0" prefHeight="800.0" prefWidth="900.0" style="-fx-border-color: #de5f4f; -fx-border-width: 3; -fx-background-color: #fdf3ea;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.NotificheController">
-   <children>
-      <ImageView fx:id="imageLibriSfondo" fitHeight="795.0" fitWidth="900.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
-      </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcf3eb" height="563.0" layoutX="62.0" layoutY="160.0" stroke="#de5f4f" strokeWidth="2.0" width="708.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0" />
-      <ListView fx:id="listViewSerieAcquisto" layoutX="103.0" layoutY="108.0" prefHeight="555.0" prefWidth="702.0" AnchorPane.leftAnchor="103.0">
-         <contextMenu>
-            <ContextMenu>
-              <items>
-                <MenuItem mnemonicParsing="false" onAction="#goToPaginaInformativaSerie" text="Vedi info Serie" />
-                  <MenuItem mnemonicParsing="false" onAction="#eliminaPreferito" text="Elimina la serie dai preferiti" />
-              </items>
-            </ContextMenu>
-         </contextMenu></ListView>
-      <Button layoutX="14.0" layoutY="760.0" mnemonicParsing="false" onAction="#goBack" style="-fx-background-color: #2b2d30;" text="Back" textFill="WHITE" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcf3eb" height="63.0" layoutX="102.0" layoutY="34.0" stroke="#de5f4f" strokeWidth="2.0" width="710.0" AnchorPane.leftAnchor="101.0" AnchorPane.rightAnchor="87.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcf3eb" height="42.0" layoutX="103.0" layoutY="678.0" stroke="#de5f4f" strokeWidth="2.0" width="710.0" />
-      <Text fill="#2b2d30" layoutX="107.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pannello notifiche" wrappingWidth="278.8033332824707">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Text>
-      <Text fill="#2b2d30" layoutX="106.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qui potrai vedere quali delle serie che hai aggiunto ai preferiti sono acquistabili e dove reperirle" AnchorPane.leftAnchor="106.0" AnchorPane.rightAnchor="120.7109375">
-         <font>
-            <Font name="Arial" size="16.0" />
-         </font>
-      </Text>
-      <Text fill="#2b2d30" layoutX="140.0" layoutY="704.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Per vedere le informazioni serie o acquisto o eliminarla dai preferiti premi il tasto destro" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="143.71875">
-         <font>
-            <Font name="Arial" size="16.0" />
-         </font>
-      </Text>
-   </children>
+<AnchorPane maxHeight="800.0" maxWidth="900.0" minHeight="800.0" minWidth="900.0" prefHeight="800.0" prefWidth="900.0"
+            style="-fx-border-color: #de5f4f; -fx-border-width: 3; -fx-background-color: #fdf3ea;"
+            xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.bibliotecadigitale.Controller.NotificheController">
+   <ImageView fx:id="imageLibriSfondo" fitHeight="795.0" fitWidth="900.0" layoutX="3.0" layoutY="3.0"
+              pickOnBounds="true" preserveRatio="true">
+   </ImageView>
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcf3eb" height="563.0" layoutX="62.0" layoutY="160.0"
+              stroke="#de5f4f" strokeWidth="2.0" width="708.0" AnchorPane.bottomAnchor="100.0"
+              AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0"/>
+   <ListView fx:id="listViewSerieAcquisto" layoutX="103.0" layoutY="108.0" prefHeight="555.0" prefWidth="702.0"
+             AnchorPane.leftAnchor="103.0">
+      <contextMenu>
+         <ContextMenu>
+            <items>
+               <MenuItem mnemonicParsing="false" onAction="#goToPaginaInformativaSerie" text="Vedi info Serie"/>
+               <MenuItem mnemonicParsing="false" onAction="#eliminaPreferito" text="Elimina la serie dai preferiti"/>
+            </items>
+         </ContextMenu>
+      </contextMenu>
+   </ListView>
+   <Button layoutX="14.0" layoutY="760.0" mnemonicParsing="false" onAction="#goBack"
+           style="-fx-background-color: #2b2d30;" text="Back" textFill="WHITE"/>
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcf3eb" height="63.0" layoutX="102.0" layoutY="34.0"
+              stroke="#de5f4f" strokeWidth="2.0" width="710.0" AnchorPane.leftAnchor="101.0"
+              AnchorPane.rightAnchor="87.0"/>
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcf3eb" height="42.0" layoutX="103.0" layoutY="678.0"
+              stroke="#de5f4f" strokeWidth="2.0" width="710.0"/>
+   <Text fill="#2b2d30" layoutX="107.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pannello notifiche"
+         wrappingWidth="278.8033332824707">
+      <font>
+         <Font name="System Bold" size="24.0"/>
+      </font>
+   </Text>
+   <Text fill="#2b2d30" layoutX="106.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0"
+         text="Qui potrai vedere quali delle serie che hai aggiunto ai preferiti sono acquistabili e dove reperirle"
+         AnchorPane.leftAnchor="106.0" AnchorPane.rightAnchor="120.7109375">
+      <font>
+         <Font name="Arial" size="16.0"/>
+      </font>
+   </Text>
+   <Text fill="#2b2d30" layoutX="140.0" layoutY="704.0" strokeType="OUTSIDE" strokeWidth="0.0"
+         text="Per vedere le informazioni serie o acquisto o eliminarla dai preferiti premi il tasto destro"
+         AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="143.71875">
+      <font>
+         <Font name="Arial" size="16.0"/>
+      </font>
+   </Text>
 </AnchorPane>

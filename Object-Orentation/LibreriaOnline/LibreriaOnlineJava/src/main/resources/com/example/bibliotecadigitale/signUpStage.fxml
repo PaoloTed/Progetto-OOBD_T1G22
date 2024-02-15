@@ -9,27 +9,39 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #fdf3ea; -fx-border-color: #de5f4f; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.SignUpController">
-   <children>
-      <ImageView fx:id="imageLibriSfondo" fitHeight="497.0" fitWidth="497.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true">
-      </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcf3eb" height="288.0" layoutX="69.0" layoutY="122.0" stroke="#de5f4f" strokeType="INSIDE" strokeWidth="3.0" width="369.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcf3eb" height="48.0" layoutX="66.0" layoutY="29.0" stroke="#de5f4f" strokeType="INSIDE" strokeWidth="3.0" width="369.0" />
-      <Button layoutX="36.66666666666667" layoutY="444.0" minWidth="50.0" mnemonicParsing="false" onAction="#back_goToWelcome" prefHeight="25.0" prefWidth="50.0" style="-fx-background-color: black;" text="Back" textFill="WHITE" AnchorPane.leftAnchor="33.0" />
-      <Button layoutX="211.0" layoutY="311.0" minWidth="71.0" mnemonicParsing="false" onAction="#signUpTry" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: black;" text="Register" textFill="WHITE" AnchorPane.rightAnchor="217.66666666666669" />
-      <Text layoutX="103.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" AnchorPane.leftAnchor="103.0" />
-      <Text layoutX="103.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" AnchorPane.leftAnchor="103.0" />
-      <TextField fx:id="txtSignUpEmailField" layoutX="175.0" layoutY="165.0" promptText="Email" AnchorPane.rightAnchor="178.66666666666663" />
-      <PasswordField fx:id="txtSignUpPasswordField" layoutX="175.0" layoutY="216.0" promptText="Password" AnchorPane.rightAnchor="175.66666666666663" />
-      <Text layoutX="72.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pannello registrazione Utente">
-         <font>
-            <Font name="Arial Bold" size="20.0" />
-         </font>
-      </Text>
-      <Text layoutX="80.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qui potrai creare il tuo profilo">
-         <font>
-            <Font name="Arial" size="17.0" />
-         </font>
-      </Text>
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0"
+            prefWidth="500.0" style="-fx-background-color: #fdf3ea; -fx-border-color: #de5f4f; -fx-border-width: 3;"
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.bibliotecadigitale.Controller.SignUpController">
+   <ImageView fx:id="imageLibriSfondo" fitHeight="497.0" fitWidth="497.0" layoutX="2.0" layoutY="2.0"
+              pickOnBounds="true">
+   </ImageView>
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcf3eb" height="288.0" layoutX="69.0" layoutY="122.0"
+              stroke="#de5f4f" strokeType="INSIDE" strokeWidth="3.0" width="369.0"/>
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcf3eb" height="48.0" layoutX="66.0" layoutY="29.0" stroke="#de5f4f"
+              strokeType="INSIDE" strokeWidth="3.0" width="369.0"/>
+   <Button layoutX="36.66666666666667" layoutY="444.0" minWidth="50.0" mnemonicParsing="false"
+           onAction="#back_goToWelcome" prefHeight="25.0" prefWidth="50.0" style="-fx-background-color: black;"
+           text="Back" textFill="WHITE" AnchorPane.leftAnchor="33.0"/>
+   <Button layoutX="211.0" layoutY="311.0" minWidth="71.0" mnemonicParsing="false" onAction="#signUpTry"
+           prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: black;" text="Register" textFill="WHITE"
+           AnchorPane.rightAnchor="217.66666666666669"/>
+   <Text layoutX="103.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email"
+         AnchorPane.leftAnchor="103.0"/>
+   <Text layoutX="103.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password"
+         AnchorPane.leftAnchor="103.0"/>
+   <TextField fx:id="txtSignUpEmailField" layoutX="175.0" layoutY="165.0" promptText="Email"
+              AnchorPane.rightAnchor="178.66666666666663"/>
+   <PasswordField fx:id="txtSignUpPasswordField" layoutX="175.0" layoutY="216.0" promptText="Password"
+                  AnchorPane.rightAnchor="175.66666666666663"/>
+   <Text layoutX="72.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pannello registrazione Utente">
+      <font>
+         <Font name="Arial Bold" size="20.0"/>
+      </font>
+   </Text>
+   <Text layoutX="80.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qui potrai creare il tuo profilo">
+      <font>
+         <Font name="Arial" size="17.0"/>
+      </font>
+   </Text>
 </AnchorPane>

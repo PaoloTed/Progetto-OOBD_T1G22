@@ -67,10 +67,12 @@ public class SerieController implements Initializable {
         codSTxtId.setText("codice serie: " + serie.getCods());
         nomeTxtId.setText("Nome serie: " + serie.getNome());
         numLibTxtId.setText("numero libri: " + serie.getNumlibri());
-        if (serie.getCompletata())
+        if (serie.getCompletata()) {
             completaTxtId.setText("stato serie:Completata");
-        else
+        }
+        else {
             completaTxtId.setText("No Terminata");
+        }
 
         LibroDAOImpl libroDAO = new LibroDAOImpl();
         ArrayList<Libro> libri;
@@ -81,7 +83,6 @@ public class SerieController implements Initializable {
             throw new RuntimeException(e);
         }
         libroTableView.getItems().setAll(libri);
-
     }
 
     public void goToPaginaInformativaLibro(ActionEvent event) {

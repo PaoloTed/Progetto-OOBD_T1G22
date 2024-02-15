@@ -2,6 +2,7 @@ package com.example.bibliotecadigitale.Connection;
 
 import com.example.bibliotecadigitale.DAO.DisponibileADAO;
 import com.example.bibliotecadigitale.Model.DisponibileA;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -29,13 +30,12 @@ public class DisponibileADAOImpl implements DisponibileADAO {
         return disponibileA;
     }
 
-
     public ArrayList<DisponibileA> getAcquisti(String doi) throws SQLException {
         ArrayList<DisponibileA> disponibileA;
         try {
             String query = "SELECT * FROM disponibile_a WHERE doi = '" + doi + "';";
             ResultSet rs = connessione.executeSearch(query);
-            disponibileA = new ArrayList();
+            disponibileA = new ArrayList<>();
             while (rs.next()) {
                 disponibileA.add(get(rs.getInt(1), rs.getString(2)));
             }
@@ -47,7 +47,7 @@ public class DisponibileADAOImpl implements DisponibileADAO {
         return disponibileA;
     }
 
-
+    @Override
     public ArrayList<DisponibileA> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
         ArrayList<DisponibileA> disponibileAFinded = new ArrayList<>();
         String query = "";
@@ -67,11 +67,6 @@ public class DisponibileADAOImpl implements DisponibileADAO {
         rs.close();
 
         return disponibileAFinded;
-    }
-
-    @Override
-    public DisponibileA get(String cod) throws SQLException {
-        return null;
     }
 
     @Override
@@ -100,7 +95,6 @@ public class DisponibileADAOImpl implements DisponibileADAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     @Override
@@ -111,7 +105,6 @@ public class DisponibileADAOImpl implements DisponibileADAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     @Override
@@ -122,11 +115,5 @@ public class DisponibileADAOImpl implements DisponibileADAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-    }
-
-    @Override
-    public DisponibileA get(String coda, String doi) throws SQLException {
-        return null;
     }
 }
