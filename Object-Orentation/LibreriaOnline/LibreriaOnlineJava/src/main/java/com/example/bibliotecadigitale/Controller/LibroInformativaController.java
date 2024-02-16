@@ -1,7 +1,9 @@
 package com.example.bibliotecadigitale.Controller;
 
+import com.example.bibliotecadigitale.Connection.DisponibileLDAOImpl;
 import com.example.bibliotecadigitale.Connection.LibroDAOImpl;
 import com.example.bibliotecadigitale.Connection.UtenteDAOImpl;
+import com.example.bibliotecadigitale.Model.DisponibileL;
 import com.example.bibliotecadigitale.Model.Libro;
 import com.example.bibliotecadigitale.Model.Utente;
 import com.example.bibliotecadigitale.SupportStage;
@@ -61,6 +63,9 @@ public class LibroInformativaController implements Initializable {
     private Button buttonPresentazioneid;
 
     @FXML
+    private Button buttonAquistoId;
+
+    @FXML
     private TextArea prova;
 
 
@@ -73,7 +78,7 @@ public class LibroInformativaController implements Initializable {
         support.switchStage("homeStage.fxml", event, 900, 800);
     }
 
-    public void showInfoLibro(Libro libroPassato) {
+    public void showInfoLibro(Libro libroPassato)  {
         UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
         libroMain = libroPassato;
         textTitleIId.setText(textTitleIId.getText()+libroPassato.getTitolo());
@@ -127,6 +132,18 @@ public class LibroInformativaController implements Initializable {
            // buttonPresentazioneid.setVisible(false);
             buttonPresentazioneid.disableProperty().setValue(true);
         }
+        try {
+            DisponibileLDAOImpl disponibileLDAO = new DisponibileLDAOImpl();
+            ArrayList<DisponibileL> disponibileL =  disponibileLDAO.getAcquisti(libroPassato.getIsbn());
+            if(!disponibileL.isEmpty()){
+                buttonAquistoId.disableProperty().setValue(false);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+
+        }
+
+
     }
 
     public void setPreferito(ActionEvent event) {
@@ -159,6 +176,7 @@ public class LibroInformativaController implements Initializable {
         textLinguianId.setText("Lingua:");
         textAutoreId.setText("Autore:");
         txtEditoreId.setText("Editore:");
+
         LibroDAOImpl libroDAO = new LibroDAOImpl();
         Libro libroSuccessivo = libroDAO.get(libroMain.getSuccessivo());
         showInfoLibro(libroSuccessivo);
