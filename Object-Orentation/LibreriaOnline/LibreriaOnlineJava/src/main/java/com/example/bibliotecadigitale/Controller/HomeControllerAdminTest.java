@@ -16,6 +16,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.converter.BooleanStringConverter;
 import javafx.util.converter.IntegerStringConverter;
+
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -499,7 +500,6 @@ public class HomeControllerAdminTest implements Initializable {
             return;
         }
         tableViewHashMap.get(scelta).getItems().addAll(arrayList);
-
     }
 
     @FXML
@@ -661,6 +661,21 @@ public class HomeControllerAdminTest implements Initializable {
 
     @FXML
     private void deleteDao() {
+        try {
+            String scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
+            if (scelta == null) {
+                support.messageStage("Selezionare prima un tipo di ricerca");
+                return;
+            }
+            tableViewHashMap.get(scelta).getItems().remove(tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem());
+            implDaoHashMap.get(scelta).delete(tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem());
+            support.messageStage("Delete effettuato");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @FXML
+    private void deleteDaoT() {
         try {
             String scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
             if (scelta == null) {

@@ -105,6 +105,32 @@ public class LibroDAOImpl implements LibroDAO {
         }
     }
 
+
+//    public void insertT(ArrayList<String> libro) throws SQLException {
+//        try {
+//            String isbn = libro.get(0);
+//            String titolo = libro.get(1);
+//            String genere = libro.get(2);
+//            String numeroPagine = String.valueOf(libro.get(3));
+//            String tipo = libro.get(4);
+//            String materia = libro.get(5);
+//            String descrizione = libro.get(6);
+//            String fruizione = libro.get(7);
+//            String editore = libro.get(8);
+//            String autore = libro.get(9);
+//            String datauscita = libro.get(10);
+//            String lingua = libro.get(11);
+//            String successivo = libro.get(12);
+//            String serie = Integer.parseInt(libro.get(13));
+//            Integer presentazione = Integer.parseInt(libro.get(14));
+//
+//            String query = "INSERT INTO libro VALUES ('" + isbn + "','" + titolo + "','" + genere + "'," + numeroPagine + ",'" + tipo + "','" + materia + "','" + descrizione + "','" + fruizione + "','" + editore + "','" + autore + "','" + datauscita + "','" + lingua + "','" + successivo + "'," + serie + " , " + presentazione + ");";
+//            connessione.executeUpdate(query);
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
+
     @Override
     public void update(Libro libro) throws SQLException {
         try {
@@ -142,4 +168,6 @@ public class LibroDAOImpl implements LibroDAO {
             throw new RuntimeException(e);
         }
     }
+
+//    public void deleteT()
 }

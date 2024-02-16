@@ -1,4 +1,7 @@
 package com.example.bibliotecadigitale.Model;
+
+import java.util.ArrayList;
+
 public class Presentazione {
 
     private int codP;
@@ -45,6 +48,26 @@ public class Presentazione {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public ArrayList<String> objToArrayList() {
+        ArrayList<String> arrayList = new ArrayList<>();
+        arrayList.add(String.valueOf(codP));
+        arrayList.add(nome);
+        arrayList.add(indirizzo);
+        arrayList.add(dataPresentazione);
+        arrayList.add(tipo);
+        return arrayList;
+    }
+
+    public static Presentazione arrayListToObj(ArrayList<String> arrayList) {
+        Presentazione presentazione = new Presentazione();
+        presentazione.setCodp(Integer.parseInt(arrayList.get(0)));
+        presentazione.setNome(arrayList.get(1));
+        presentazione.setIndirizzo(arrayList.get(2));
+        presentazione.setDatapresentazione(arrayList.get(3));
+        presentazione.setTipo(arrayList.get(4));
+        return presentazione;
     }
 
 

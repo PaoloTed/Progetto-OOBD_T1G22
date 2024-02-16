@@ -1,5 +1,7 @@
 package com.example.bibliotecadigitale.Model;
 
+import java.util.ArrayList;
+
 public class Serie {
 
     private int codS;
@@ -37,5 +39,23 @@ public class Serie {
 
     public void setCompletata(boolean completata) {
         this.completata = completata;
+    }
+
+    public ArrayList<String> objToArrayList() {
+        ArrayList<String> arrayList = new ArrayList<>();
+        arrayList.add(String.valueOf(codS));
+        arrayList.add(nome);
+        arrayList.add(String.valueOf(numLibri));
+        arrayList.add(String.valueOf(completata));
+        return arrayList;
+    }
+
+    public static Serie arrayListToObj(ArrayList<String> arrayList) {
+        Serie serie = new Serie();
+        serie.setCods(Integer.parseInt(arrayList.get(0)));
+        serie.setNome(arrayList.get(1));
+        serie.setNumlibri(Integer.parseInt(arrayList.get(2)));
+        serie.setCompletata(Boolean.parseBoolean(arrayList.get(3)));
+        return serie;
     }
 }

@@ -1,5 +1,7 @@
 package com.example.bibliotecadigitale.Model;
 
+import java.util.ArrayList;
+
 public class Acquisto
 {
     private int codA;
@@ -48,5 +50,15 @@ public class Acquisto
 
     public String getTipoa() {
         return tipoA;
+    }
+
+    public ArrayList<String> toArrayList() {
+        ArrayList<String> arrayList = new ArrayList<>();
+        arrayList.add(String.valueOf(codA));
+        arrayList.add(nome);
+        arrayList.add(tipoA);
+        arrayList.add(url);
+        arrayList.add(indirizzo);
+        return arrayList;
     }
 }

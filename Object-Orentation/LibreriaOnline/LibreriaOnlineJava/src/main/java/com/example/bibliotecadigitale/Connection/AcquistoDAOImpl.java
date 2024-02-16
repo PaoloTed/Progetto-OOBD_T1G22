@@ -10,6 +10,24 @@ public class AcquistoDAOImpl implements AcquistoDAO {
 
     private final Connessione connessione = new Connessione();
 
+//    public ArrayList<String> get(int coda){
+//        ArrayList<String> acquisto = new ArrayList<>();
+//        try {
+//            String query = "SELECT * FROM acquisto WHERE coda = " + coda + ";";
+//            ResultSet rs = connessione.executeSearch(query);
+//            while (rs.next()) {
+//                acquisto.add(rs.getString(1));
+//                acquisto.add(rs.getString(2));
+//                acquisto.add(rs.getString(3));
+//                acquisto.add(rs.getString(4));
+//                acquisto.add(rs.getString(5));
+//            }
+//            rs.close();
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//        return acquisto;
+//    }
     @Override
     public Acquisto get(int coda) throws SQLException {
         Acquisto acquisto;
@@ -78,8 +96,16 @@ public class AcquistoDAOImpl implements AcquistoDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
+
+//    public void insert(int coda, String nome, String tipoa, String url, String indirizzo) throws SQLException {
+//        try {
+//            String query = "INSERT INTO acquisto VALUES (" + coda + ",'" + nome + "','" + tipoa + "','" + url + "','" + indirizzo + "');";
+//            connessione.executeUpdate(query);
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
     @Override
     public void update(Acquisto acquisto) throws SQLException {
@@ -89,8 +115,15 @@ public class AcquistoDAOImpl implements AcquistoDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
+//    public void update(int coda, String nome, String tipoa, String url, String indirizzo) throws SQLException {
+//        try {
+//            String query = "UPDATE acquisto SET coda = " + coda + ", nome = '" + nome + "', tipoa = '" + tipoa + "', url = '" + url + "', indirizzo = '" + indirizzo + "' WHERE coda = " + coda + ";";
+//            connessione.executeUpdate(query);
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
     @Override
     public void delete(Acquisto acquisto) throws SQLException {
