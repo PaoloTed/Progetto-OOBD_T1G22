@@ -43,6 +43,11 @@ public class DisponibileSDAOImpl implements DisponibileSDAO {
     }
 
     @Override
+    public ArrayList<ArrayList<String>> getAllT() {
+        return null;
+    }
+
+    @Override
     public List<DisponibileS> getAll() throws SQLException {
         ArrayList<DisponibileS> disponibileSFinded = new ArrayList<>();
         try {

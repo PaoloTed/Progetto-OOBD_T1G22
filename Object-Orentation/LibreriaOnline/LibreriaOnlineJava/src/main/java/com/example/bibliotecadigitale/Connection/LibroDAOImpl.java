@@ -127,6 +127,37 @@ public class LibroDAOImpl implements LibroDAO {
         return libroFinded;
     }
 
+    public ArrayList<ArrayList<String>> getAllT(){
+        ArrayList<ArrayList<String>> libroFinded = new ArrayList<>();
+        try {
+            String query = "SELECT * FROM libro;";
+            ResultSet rs = connessione.executeSearch(query);
+            ArrayList<String> libro = new ArrayList<>();
+            while (rs.next()) {
+                libro.add(rs.getString(1));
+                libro.add(rs.getString(2));
+                libro.add(rs.getString(3));
+                libro.add(rs.getString(4));
+                libro.add(rs.getString(5));
+                libro.add(rs.getString(6));
+                libro.add(rs.getString(7));
+                libro.add(rs.getString(8));
+                libro.add(rs.getString(9));
+                libro.add(rs.getString(10));
+                libro.add(rs.getString(11));
+                libro.add(rs.getString(12));
+                libro.add(rs.getString(13));
+                libro.add(rs.getString(14));
+                libro.add(rs.getString(15));
+                libroFinded.add(libro);
+            }
+            rs.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return libroFinded;
+    }
+
     @Override
     public void insert(Libro libro) throws SQLException {
         try {

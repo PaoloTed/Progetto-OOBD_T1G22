@@ -262,6 +262,8 @@ public class HomeControllerAdminTest implements Initializable {
     private HashMap<String, TableView> tableViewHashMap = new HashMap<>();
     private HashMap<String, ObservableList<String>> ricercaHashMap = new HashMap<>();
     private HashMap<String, DAO> implDaoHashMap = new HashMap<>();
+
+    private HashMap<String, Class> objectHashMap = new HashMap<>();
     @FXML
     private ImageView imageLibriSfondo;
     @FXML
@@ -440,6 +442,17 @@ public class HomeControllerAdminTest implements Initializable {
         implDaoHashMap.put("DisponibileL", new DisponibileLDAOImpl());
         implDaoHashMap.put("DisponibileS", new DisponibileSDAOImpl());
 
+        objectHashMap.put("Libro", Libro.class);
+        objectHashMap.put("Articolo", ArticoloScientifico.class);
+        objectHashMap.put("Acquisto", Acquisto.class);
+        objectHashMap.put("Conferenza", Conferenza.class);
+        objectHashMap.put("Presentazione", Presentazione.class);
+        objectHashMap.put("Rivista", Rivista.class);
+        objectHashMap.put("Serie", Serie.class);
+        objectHashMap.put("DisponibileA", DisponibileA.class);
+        objectHashMap.put("DisponibileL", DisponibileL.class);
+        objectHashMap.put("DisponibileS", DisponibileS.class);
+
         tableViewHashMap.put("Libro", libroTableView);
         tableViewHashMap.put("Articolo", articoloTableView);
         tableViewHashMap.put("Acquisto", acquistoTableView);
@@ -511,10 +524,14 @@ public class HomeControllerAdminTest implements Initializable {
         }
         try {
             tableViewHashMap.get(scelta).getItems().clear();
-            tableViewHashMap.get(scelta).getItems().addAll(implDaoHashMap.get(scelta).getAll());
-        } catch (SQLException e) {
+            ArrayList<ArrayList<String>> arrayList = implDaoHashMap.get(scelta).getAllT();
+            for (ArrayList<String> strings : arrayList) {
+                tableViewHashMap.get(scelta).getItems().add(objectHashMap.get(scelta).getConstructor(ArrayList.class).newInstance(strings));
+            }
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
+
     }
 
     @FXML

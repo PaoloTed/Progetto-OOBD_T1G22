@@ -86,32 +86,32 @@ public class Pubblicazioni
         this.lingua = lingua;
     }
 
-    public ArrayList<String> objToArrayList() {
-        ArrayList<String> arrayList = new ArrayList<>();
-        arrayList.add(titolo);
-        arrayList.add(genere);
-        arrayList.add(String.valueOf(numPagine));
-        arrayList.add(dataUscita);
-        arrayList.add(descrizione);
-        arrayList.add(fruizione);
-        arrayList.add(editore);
-        arrayList.add(autore);
-        arrayList.add(lingua);
-        return arrayList;
-    }
-
-    public static Pubblicazioni arrayListToObj(ArrayList<String> arrayList) {
-        Pubblicazioni pubblicazioni = new Pubblicazioni();
-        pubblicazioni.setTitolo(arrayList.get(0));
-        pubblicazioni.setGenere(arrayList.get(1));
-        pubblicazioni.setNumpagine(Integer.parseInt(arrayList.get(2)));
-        pubblicazioni.setDatauscita(arrayList.get(3));
-        pubblicazioni.setDescrizione(arrayList.get(4));
-        pubblicazioni.setFruizione(arrayList.get(5));
-        pubblicazioni.setEditore(arrayList.get(6));
-        pubblicazioni.setAutore(arrayList.get(7));
-        pubblicazioni.setLingua(arrayList.get(8));
-        return pubblicazioni;
-    }
+//    public ArrayList<String> objToArrayList() {
+//        ArrayList<String> arrayList = new ArrayList<>();
+//        arrayList.add(titolo);
+//        arrayList.add(genere);
+//        arrayList.add(String.valueOf(numPagine));
+//        arrayList.add(dataUscita);
+//        arrayList.add(descrizione);
+//        arrayList.add(fruizione);
+//        arrayList.add(editore);
+//        arrayList.add(autore);
+//        arrayList.add(lingua);
+//        return arrayList;
+//    }
+//
+//    public static Pubblicazioni arrayListToObj(ArrayList<String> arrayList) {
+//        Pubblicazioni pubblicazioni = new Pubblicazioni();
+//        pubblicazioni.setTitolo(arrayList.get(0));
+//        pubblicazioni.setGenere(arrayList.get(1));
+//        pubblicazioni.setNumpagine(Integer.parseInt(arrayList.get(2)));
+//        pubblicazioni.setDatauscita(arrayList.get(3));
+//        pubblicazioni.setDescrizione(arrayList.get(4));
+//        pubblicazioni.setFruizione(arrayList.get(5));
+//        pubblicazioni.setEditore(arrayList.get(6));
+//        pubblicazioni.setAutore(arrayList.get(7));
+//        pubblicazioni.setLingua(arrayList.get(8));
+//        return pubblicazioni;
+//    }
 
 }

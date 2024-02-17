@@ -52,6 +52,11 @@ public class PresentazioneDAOImpl implements PresentazioneDAO {
     }
 
     @Override
+    public ArrayList<ArrayList<String>> getAllT() {
+        return null;
+    }
+
+    @Override
     public List<Presentazione> getAll() throws SQLException {
         ArrayList<Presentazione> presentazioneFinded = new ArrayList<>();
         try {

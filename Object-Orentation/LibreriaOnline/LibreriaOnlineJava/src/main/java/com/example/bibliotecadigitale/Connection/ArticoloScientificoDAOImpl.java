@@ -32,6 +32,11 @@ public class ArticoloScientificoDAOImpl implements ArticoloScientificoDAO {
     }
 
     @Override
+    public ArrayList<ArrayList<String>> getAllT() {
+        return null;
+    }
+
+    @Override
     public ArticoloScientifico get(String doi) throws SQLException {
         ArticoloScientifico articolo;
         try {
