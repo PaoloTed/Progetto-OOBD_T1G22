@@ -71,6 +71,11 @@ public class AcquistoDAOImpl implements AcquistoDAO {
     }
 
     @Override
+    public ArrayList<ArrayList<String>> getAllT() {
+        return null;
+    }
+
+    @Override
     public ArrayList<Acquisto> getAll() throws SQLException {
         ArrayList<Acquisto> acquistoFinded = new ArrayList<>();
         try {

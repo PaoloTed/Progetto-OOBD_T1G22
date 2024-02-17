@@ -47,6 +47,11 @@ public class RivistaDAOImpl implements RivistaDAO {
     }
 
     @Override
+    public ArrayList<ArrayList<String>> getAllT() {
+        return null;
+    }
+
+    @Override
     public List<Rivista> getAll() throws SQLException {
         ArrayList<Rivista> rivistaFinded = new ArrayList<>();
         try {

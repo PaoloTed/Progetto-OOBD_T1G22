@@ -70,6 +70,11 @@ public class DisponibileADAOImpl implements DisponibileADAO {
     }
 
     @Override
+    public ArrayList<ArrayList<String>> getAllT() {
+        return null;
+    }
+
+    @Override
     public List<DisponibileA> getAll() throws SQLException {
         ArrayList<DisponibileA> disponibileAFinded = new ArrayList<>();
         try {

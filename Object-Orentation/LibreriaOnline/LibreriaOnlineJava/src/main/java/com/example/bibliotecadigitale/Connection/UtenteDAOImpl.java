@@ -91,6 +91,11 @@ public class UtenteDAOImpl implements UtenteDAO {
     }
 
     @Override
+    public ArrayList<ArrayList<String>> getAllT() {
+        return null;
+    }
+
+    @Override
     public List<Utente> getAll() throws SQLException {
         try {
             String query = "SELECT email FROM utente;";

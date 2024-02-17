@@ -65,6 +65,11 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
     }
 
     @Override
+    public ArrayList<ArrayList<String>> getAllT() {
+        return null;
+    }
+
+    @Override
     public List<DisponibileL> getAll() throws SQLException {
         ArrayList<DisponibileL> disponibileLFinded = new ArrayList<>();
         try {

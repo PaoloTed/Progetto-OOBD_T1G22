@@ -81,23 +81,29 @@ public class Libro extends Pubblicazioni{
         return arrayList;
     }
 
-    public static Libro arrayListToObj(ArrayList<String> arrayList) {
-        Libro libro = new Libro();
-        libro.setIsbn(arrayList.get(0));
-        libro.setTitolo(arrayList.get(1));
-        libro.setGenere(arrayList.get(2));
-        libro.setNumpagine(Integer.parseInt(arrayList.get(3)));
-        libro.setTipo(arrayList.get(4));
-        libro.setMateria(arrayList.get(5));
-        libro.setDescrizione(arrayList.get(6));
-        libro.setFruizione(arrayList.get(7));
-        libro.setEditore(arrayList.get(8));
-        libro.setAutore(arrayList.get(9));
-        libro.setDatauscita(arrayList.get(10));
-        libro.setLingua(arrayList.get(11));
-        libro.setSuccessivo(arrayList.get(12));
-        libro.setSerie(Integer.parseInt(arrayList.get(13)));
-        libro.setPresentazione(Integer.parseInt(arrayList.get(14)));
-        return libro;
+    public Libro(){}
+
+    public Libro(ArrayList<String> arrayList) {
+        ISBN = arrayList.get(0);
+        setTitolo(arrayList.get(1));
+        setGenere(arrayList.get(2));
+        setNumpagine(Integer.parseInt(arrayList.get(3)));
+        setTipo(arrayList.get(4));
+        setMateria(arrayList.get(5));
+        setDescrizione(arrayList.get(6));
+        setFruizione(arrayList.get(7));
+        setEditore(arrayList.get(8));
+        setAutore(arrayList.get(9));
+        setDatauscita(arrayList.get(10));
+        if(arrayList.get(13) == null)
+            setSerie(null);
+        else{
+            setSerie(Integer.parseInt(arrayList.get(13)));
+        }
+        if(arrayList.get(14) == null)
+            setPresentazione(null);
+        else {
+            setPresentazione(Integer.parseInt(arrayList.get(14)));
+        }
     }
 }

@@ -115,21 +115,24 @@ public class HomeController implements Initializable {
         //Ricerca e visualizzazione risultati libri
         if (scelta.equals("libro")) {
             LibroDAOImpl libroDAO = new LibroDAOImpl();
-            ArrayList<Libro> libri;
+            ArrayList<Libro> libri = new ArrayList<>();
+            ArrayList<ArrayList<String>> libriArray;
             try {
-                libri = libroDAO.getRicerca(modRicerca, titoloRicerche);
+                libriArray = libroDAO.getRicercaT(modRicerca, titoloRicerche);
             } catch (SQLException e) {
                 support.messageStage("Errore nella ricerca");
                 throw new RuntimeException(e);
             }
-            if (libri.isEmpty()) {
+            if (libriArray.isEmpty()) {
                 support.messageStage("Nessun match trovato");
                 idBarSearch.clear();
                 return;
             }
+            for (ArrayList<String> libro : libriArray) {
+                libri.add(new Libro(libro));
+            }
             libroTableView.getItems().clear();
             libroTableView.getItems().addAll(libri);
-            //test
         }
 
         //Ricerca e visualizzazione risultati articoli

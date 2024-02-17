@@ -50,6 +50,11 @@ public class SerieDAOImpl implements SerieDAO {
     }
 
     @Override
+    public ArrayList<ArrayList<String>> getAllT() {
+        return null;
+    }
+
+    @Override
     public List<Serie> getAll() throws SQLException {
         ArrayList<Serie> serieFinded = new ArrayList<>();
         try {
