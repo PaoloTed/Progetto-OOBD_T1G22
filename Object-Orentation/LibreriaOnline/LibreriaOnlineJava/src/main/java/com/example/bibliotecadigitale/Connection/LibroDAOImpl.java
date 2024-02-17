@@ -29,6 +29,24 @@ public class LibroDAOImpl implements LibroDAO {
         return libroFinded;
     }
 
+    public ArrayList<ArrayList<String>> getRicercaT(String tipoRicerca, String parolaChiave) throws SQLException {
+        ArrayList<ArrayList<String>> libroFinded = new ArrayList<>();
+        String query;
+        if (tipoRicerca.equalsIgnoreCase("numpagine") || tipoRicerca.equalsIgnoreCase("serie")) {
+            query = "SELECT * FROM libro WHERE " + tipoRicerca + " = " + parolaChiave + ";";
+        } else {
+            query = "SELECT * FROM libro WHERE " + tipoRicerca + " LIKE '%" + parolaChiave + "%';";
+        }
+        ResultSet rs = connessione.executeSearch(query);
+        ArrayList<String> libro;
+        while (rs.next()) {
+            libro = getT(rs.getString(1));
+            libroFinded.add(libro);
+        }
+        rs.close();
+        return libroFinded;
+    }
+
     @Override
     public Libro get(String isbn) throws SQLException {
         Libro libro;
@@ -55,6 +73,35 @@ public class LibroDAOImpl implements LibroDAO {
             }
             rs.close();
 
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return libro;
+    }
+
+    public ArrayList<String> getT(String isbn){
+        ArrayList<String> libro = new ArrayList<>();
+        try {
+            String query = "SELECT * FROM libro WHERE isbn = '" + isbn + "';";
+            ResultSet rs = connessione.executeSearch(query);
+            while (rs.next()) {
+                libro.add(rs.getString(1));
+                libro.add(rs.getString(2));
+                libro.add(rs.getString(3));
+                libro.add(rs.getString(4));
+                libro.add(rs.getString(5));
+                libro.add(rs.getString(6));
+                libro.add(rs.getString(7));
+                libro.add(rs.getString(8));
+                libro.add(rs.getString(9));
+                libro.add(rs.getString(10));
+                libro.add(rs.getString(11));
+                libro.add(rs.getString(12));
+                libro.add(rs.getString(13));
+                libro.add(rs.getString(14));
+                libro.add(rs.getString(15));
+            }
+            rs.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

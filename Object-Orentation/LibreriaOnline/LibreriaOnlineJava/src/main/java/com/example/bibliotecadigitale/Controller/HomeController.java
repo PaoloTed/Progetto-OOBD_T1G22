@@ -129,6 +129,7 @@ public class HomeController implements Initializable {
             }
             libroTableView.getItems().clear();
             libroTableView.getItems().addAll(libri);
+            //test
         }
 
         //Ricerca e visualizzazione risultati articoli
