@@ -70,6 +70,26 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
     }
 
     @Override
+    public ArrayList<ArrayList<String>> getRicercaT(String modRicerca, String titoloRicerche) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public void deleteT(ArrayList<String> elemento) throws SQLException {
+
+    }
+
+    @Override
+    public void insertT(ArrayList<String> elemento) throws SQLException {
+
+    }
+
+    @Override
+    public void updateT(ArrayList<String> elemento) throws SQLException {
+
+    }
+
+    @Override
     public List<DisponibileL> getAll() throws SQLException {
         ArrayList<DisponibileL> disponibileLFinded = new ArrayList<>();
         try {

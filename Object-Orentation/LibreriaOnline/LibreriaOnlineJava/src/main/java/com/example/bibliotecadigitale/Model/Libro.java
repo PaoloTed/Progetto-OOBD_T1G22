@@ -2,7 +2,7 @@ package com.example.bibliotecadigitale.Model;
 
 import java.util.ArrayList;
 
-public class Libro extends Pubblicazioni{
+public class Libro extends Pubblicazioni implements ArrayListObject{
 
     private String ISBN;
     private String tipo;
@@ -61,26 +61,6 @@ public class Libro extends Pubblicazioni{
         this.serie = serie;
     }
 
-    public ArrayList<String> objToArrayList() {
-        ArrayList<String> arrayList = new ArrayList<>();
-        arrayList.add(ISBN);
-        arrayList.add(getTitolo());
-        arrayList.add(getGenere());
-        arrayList.add(String.valueOf(getNumpagine()));
-        arrayList.add(getTipo());
-        arrayList.add(getMateria());
-        arrayList.add(getDescrizione());
-        arrayList.add(getFruizione());
-        arrayList.add(getEditore());
-        arrayList.add(getAutore());
-        arrayList.add(getDatauscita());
-        arrayList.add(getLingua());
-        arrayList.add(successivo);
-        arrayList.add(String.valueOf(serie));
-        arrayList.add(String.valueOf(presentazione));
-        return arrayList;
-    }
-
     public Libro(){}
 
     public Libro(ArrayList<String> arrayList) {
@@ -105,5 +85,25 @@ public class Libro extends Pubblicazioni{
         else {
             setPresentazione(Integer.parseInt(arrayList.get(14)));
         }
+    }
+
+    @Override
+    public ArrayList<String> ObjToArrayList() {
+        ArrayList<String> arrayList = new ArrayList<>();
+        arrayList.add(ISBN);
+        arrayList.add(getTitolo());
+        arrayList.add(getGenere());
+        arrayList.add(String.valueOf(getNumpagine()));
+        arrayList.add(getTipo());
+        arrayList.add(getMateria());
+        arrayList.add(getDescrizione());
+        arrayList.add(getFruizione());
+        arrayList.add(getEditore());
+        arrayList.add(getAutore());
+        arrayList.add(getDatauscita());
+        arrayList.add(getSuccessivo());
+        arrayList.add(String.valueOf(getSerie()));
+        arrayList.add(String.valueOf(getPresentazione()));
+        return arrayList;
     }
 }

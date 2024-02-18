@@ -17,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.util.converter.BooleanStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -479,7 +480,7 @@ public class HomeControllerAdminTest implements Initializable {
     }
 
     @FXML
-    private void Select(ActionEvent event) {
+    private void Select(ActionEvent event) throws SQLException {
         scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
         if (scelta == null) {
             support.messageStage("Selezionare prima un tipo di ricerca");
@@ -498,13 +499,8 @@ public class HomeControllerAdminTest implements Initializable {
         }
 
         //Ricerca e visualizzazione risultati libri
-        ArrayList arrayList = null;
-        try {
-            arrayList = implDaoHashMap.get(scelta).getRicerca(modRicerca, titoloRicerche);
-        } catch (SQLException e) {
-            support.messageStage("Errore nella ricerca");
-            throw new RuntimeException(e);
-        }
+        ArrayList<ArrayList<String>> arrayList = new ArrayList<>();
+        arrayList = implDaoHashMap.get(scelta).getRicercaT(modRicerca, titoloRicerche);
         tableViewHashMap.get(scelta).getItems().clear();
         tableViewHashMap.get(scelta).setVisible(true);
         idBarSearch.clear();
@@ -512,7 +508,13 @@ public class HomeControllerAdminTest implements Initializable {
             support.messageStage("Nessun match trovato");
             return;
         }
-        tableViewHashMap.get(scelta).getItems().addAll(arrayList);
+        for (ArrayList<String> strings : arrayList) {
+            try {
+                tableViewHashMap.get(scelta).getItems().add(objectHashMap.get(scelta).getConstructor(ArrayList.class).newInstance(strings));
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     @FXML
@@ -676,54 +678,79 @@ public class HomeControllerAdminTest implements Initializable {
         comboBoxRicerca.getSelectionModel().selectFirst();
     }
 
+//    @FXML
+//    private void deleteDaoT() {
+//        try {
+//            String scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
+//            if (scelta == null) {
+//                support.messageStage("Selezionare prima un tipo di ricerca");
+//                return;
+//            }
+//            tableViewHashMap.get(scelta).getItems().remove(tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem());
+//            implDaoHashMap.get(scelta).deleteT();
+//            support.messageStage("Delete effettuato");
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
+
     @FXML
     private void deleteDao() {
+        String scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
+        if (scelta == null) {
+            support.messageStage("Selezionare prima un tipo di ricerca");
+            return;
+        }
+        Object objDelete = tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem();
+        tableViewHashMap.get(scelta).getItems().remove(objDelete);
+        ArrayList<String> arrayList = null;
         try {
-            String scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
-            if (scelta == null) {
-                support.messageStage("Selezionare prima un tipo di ricerca");
-                return;
-            }
-            tableViewHashMap.get(scelta).getItems().remove(tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem());
-            implDaoHashMap.get(scelta).delete(tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem());
-            support.messageStage("Delete effettuato");
-        } catch (SQLException e) {
+            arrayList = (ArrayList<String>) objDelete.getClass().getMethod("ObjToArrayList").invoke(objDelete);
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
-    }
-    @FXML
-    private void deleteDaoT() {
         try {
-            String scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
-            if (scelta == null) {
-                support.messageStage("Selezionare prima un tipo di ricerca");
-                return;
-            }
-            tableViewHashMap.get(scelta).getItems().remove(tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem());
-            implDaoHashMap.get(scelta).delete(tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem());
+            implDaoHashMap.get(scelta).deleteT(arrayList);
             support.messageStage("Delete effettuato");
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            support.messageStage("Errore nell'eliminazione");
+            e.printStackTrace();
         }
     }
 
     @FXML
     private void insertDao() {
+        Object objInsert = tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem();
+        ArrayList<String> arrayList = null;
         try {
-            implDaoHashMap.get(scelta).insert(tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem());
+            arrayList = (ArrayList<String>) objInsert.getClass().getMethod("ObjToArrayList").invoke(objInsert);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            implDaoHashMap.get(scelta).insertT(arrayList);
             support.messageStage("Insert effettuato");
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            support.messageStage("Errore nell'inserimento");
+            e.printStackTrace();
         }
     }
 
     @FXML
     private void updateDao() {
+        Object objUpdate = tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem();
+        ArrayList<String> arrayList = null;
         try {
-            implDaoHashMap.get(scelta).update(tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem());
+            arrayList = (ArrayList<String>) objUpdate.getClass().getMethod("ObjToArrayList").invoke(objUpdate);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            implDaoHashMap.get(scelta).updateT(arrayList);
             support.messageStage("Update effettuato");
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            support.messageStage("Errore nell'aggiornamento");
+            e.printStackTrace();
         }
     }
 
