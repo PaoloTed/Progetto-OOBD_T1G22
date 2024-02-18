@@ -107,8 +107,6 @@ public class Libro extends Pubblicazioni implements ArrayListObject{
         arrayList.add(getEditore());
         arrayList.add(getAutore());
         arrayList.add(getDatauscita());
-        if(getLingua() == null)
-            System.out.println("Lingua null");
         arrayList.add(getLingua());
         arrayList.add(getSuccessivo());
         arrayList.add(String.valueOf(getSerie()));
