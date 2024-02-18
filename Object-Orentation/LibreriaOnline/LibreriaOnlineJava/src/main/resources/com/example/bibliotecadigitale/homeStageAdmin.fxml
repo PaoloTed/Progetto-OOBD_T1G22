@@ -13,213 +13,300 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="800.0" maxWidth="900.0" minHeight="800.0" minWidth="900.0" prefHeight="800.0" prefWidth="900.0" style="-fx-border-color: #de5f4f; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.HomeControllerAdminTest">
-    <ImageView fx:id="imageLibriSfondo" fitHeight="800.0" fitWidth="895.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+<AnchorPane maxHeight="800.0" maxWidth="900.0" minHeight="800.0" minWidth="900.0" prefHeight="800.0" prefWidth="900.0"
+            style="-fx-border-color: #de5f4f; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.bibliotecadigitale.Controller.HomeControllerAdminTest">
+    <ImageView fx:id="imageLibriSfondo" fitHeight="800.0" fitWidth="895.0" layoutX="2.0" layoutY="2.0"
+               pickOnBounds="true" preserveRatio="true">
     </ImageView>
-    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdf3ea" height="706.0" layoutX="92.0" layoutY="63.0" stroke="#de5f4f" strokeType="INSIDE" strokeWidth="3.0" width="707.0" />
-    <Button layoutX="423.0" layoutY="727.0" mnemonicParsing="false" onAction="#logOff" style="-fx-background-color: black;" text="Log off" textFill="#fafafa" />
-    <TextField fx:id="idBarSearch" layoutX="298.0" layoutY="130.0" />
-    <Button fx:id="buttonCerca" layoutX="607.0" layoutY="130.0" mnemonicParsing="false" onAction="#Select" text="Cerca" />
-    <ComboBox fx:id="comboBoxRicerca" layoutX="450.0" layoutY="130.0" prefWidth="150.0" />
-    <TableView fx:id="libroTableView" editable="true" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0" prefHeight="535.0" prefWidth="700.0">
+    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdf3ea" height="706.0" layoutX="92.0" layoutY="63.0"
+               stroke="#de5f4f" strokeType="INSIDE" strokeWidth="3.0" width="707.0"/>
+    <Button layoutX="423.0" layoutY="727.0" mnemonicParsing="false" onAction="#logOff"
+            style="-fx-background-color: black;" text="Log off" textFill="#fafafa"/>
+    <TextField fx:id="idBarSearch" layoutX="298.0" layoutY="130.0"/>
+    <Button fx:id="buttonCerca" layoutX="607.0" layoutY="130.0" mnemonicParsing="false" onAction="#Select"
+            text="Cerca"/>
+    <ComboBox fx:id="comboBoxRicerca" layoutX="450.0" layoutY="130.0" prefWidth="150.0"/>
+    <TableView fx:id="libroTableView" editable="true" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0"
+               prefHeight="535.0" prefWidth="700.0">
         <columns>
-            <TableColumn fx:id="isbnLibro" editable="false" onEditCommit="#onEditChangedString" prefWidth="95.9999771118164" text="ISBN" />
-            <TableColumn fx:id="titoloLibro" onEditCommit="#onEditChangedString" prefWidth="300.6666717529297" text="Titolo" />
-            <TableColumn fx:id="genereLibro" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688" text="Genere" />
-            <TableColumn fx:id="numpagineLibro" onEditCommit="#onEditChangedInt" prefWidth="104.66671752929688" text="NumeroPagine" />
-            <TableColumn fx:id="materiaLibro" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688" text="Materia" />
-            <TableColumn fx:id="descrizioneLibro" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688" text="Descrizione" />
-            <TableColumn fx:id="fruizioneLibro" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688" text="Fruizione" />
-            <TableColumn fx:id="editoreLibro" onEditCommit="#onEditChangedString" prefWidth="105.33331298828125" text="Editore" />
-            <TableColumn fx:id="autoreLibro" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688" text="Autore" />
-            <TableColumn fx:id="datauscitaLibro" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688" text="DataUscita" />
-            <TableColumn fx:id="successivoLibro" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688" text="Successivo" />
-            <TableColumn fx:id="serieLibro" onEditCommit="#onEditChangedInt" prefWidth="104.66671752929688" text="Serie" />
-            <TableColumn fx:id="presentazioneLibro" onEditCommit="#onEditChangedInt" prefWidth="104.66671752929688" text="Presentazione" />
+            <TableColumn fx:id="isbnLibro" editable="false" onEditCommit="#onEditChangedString"
+                         prefWidth="95.9999771118164" text="ISBN"/>
+            <TableColumn fx:id="titoloLibro" onEditCommit="#onEditChangedString" prefWidth="300.6666717529297"
+                         text="Titolo"/>
+            <TableColumn fx:id="genereLibro" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688"
+                         text="Genere"/>
+            <TableColumn fx:id="numpagineLibro" onEditCommit="#onEditChangedInt" prefWidth="104.66671752929688"
+                         text="NumeroPagine"/>
+            <TableColumn fx:id="tipoLibro" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688"
+                         text="tipoLibro"/>
+            <TableColumn fx:id="materiaLibro" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688"
+                         text="Materia"/>
+            <TableColumn fx:id="descrizioneLibro" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688"
+                         text="Descrizione"/>
+            <TableColumn fx:id="fruizioneLibro" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688"
+                         text="Fruizione"/>
+            <TableColumn fx:id="editoreLibro" onEditCommit="#onEditChangedString" prefWidth="105.33331298828125"
+                         text="Editore"/>
+            <TableColumn fx:id="autoreLibro" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688"
+                         text="Autore"/>
+            <TableColumn fx:id="datauscitaLibro" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688"
+                         text="DataUscita"/>
+            <TableColumn fx:id="linguaLibro" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688"
+                         text="Lingua"/>
+            <TableColumn fx:id="successivoLibro" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688"
+                         text="Successivo"/>
+            <TableColumn fx:id="serieLibro" onEditCommit="#onEditChangedInt" prefWidth="104.66671752929688"
+                         text="Serie"/>
+            <TableColumn fx:id="presentazioneLibro" onEditCommit="#onEditChangedInt" prefWidth="104.66671752929688"
+                         text="Presentazione"/>
 
         </columns>
         <contextMenu>
             <ContextMenu>
                 <items>
-                    <MenuItem fx:id="itemUpdate1" mnemonicParsing="false" onAction="#updateDao" text="Update" />
-                    <MenuItem fx:id="itemDelete1" mnemonicParsing="false" onAction="#deleteDao" text="Delete" />
-                    <MenuItem fx:id="itemInsert1" mnemonicParsing="false" onAction="#insertDao" text="Insert" />
+                    <MenuItem fx:id="itemUpdate1" mnemonicParsing="false" onAction="#updateDao" text="Update"/>
+                    <MenuItem fx:id="itemDelete1" mnemonicParsing="false" onAction="#deleteDao" text="Delete"/>
+                    <MenuItem fx:id="itemInsert1" mnemonicParsing="false" onAction="#insertDao" text="Insert"/>
                 </items>
             </ContextMenu>
         </contextMenu>
     </TableView>
-    <TableView fx:id="articoloTableView" editable="true" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0" prefHeight="535.0" prefWidth="700.0">
+    <TableView fx:id="articoloTableView" editable="true" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0"
+               prefHeight="535.0" prefWidth="700.0">
         <columns>
-            <TableColumn fx:id="doiArticolo" onEditCommit="#onEditChangedString" prefWidth="300.6666717529297" text="doi" />
-            <TableColumn fx:id="titoloArticolo" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688" text="Titolo" />
-            <TableColumn fx:id="genereArticolo" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688" text="genere" />
-            <TableColumn fx:id="numpagineArticolo" onEditCommit="#onEditChangedInt" prefWidth="104.66671752929688" text="NumeroPagine" />
-            <TableColumn fx:id="datauscitaArticolo" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688" text="DataUscita" />
-            <TableColumn fx:id="descrizioneArticolo" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688" text="Descrizione" />
-            <TableColumn fx:id="fruizioneArticolo" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688" text="Fruizione" />
-            <TableColumn fx:id="editoreArticolo" onEditCommit="#onEditChangedString" prefWidth="105.33331298828125" text="Editore" />
-            <TableColumn fx:id="autoreArticolo" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688" text="Autore" />
-            <TableColumn fx:id="linguaArticolo" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688" text="Lingua" />
-            <TableColumn fx:id="conferenzaArticolo" onEditCommit="#onEditChangedInt" prefWidth="104.66671752929688" text="Conferenza" />
-            <TableColumn fx:id="nomerArticolo" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688" text="NomeRivista" />
-            <TableColumn fx:id="datarArticolo" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688" text="DataRivista" />
+            <TableColumn fx:id="doiArticolo" onEditCommit="#onEditChangedString" prefWidth="300.6666717529297"
+                         text="doi"/>
+            <TableColumn fx:id="titoloArticolo" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688"
+                         text="Titolo"/>
+            <TableColumn fx:id="genereArticolo" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688"
+                         text="genere"/>
+            <TableColumn fx:id="numpagineArticolo" onEditCommit="#onEditChangedInt" prefWidth="104.66671752929688"
+                         text="NumeroPagine"/>
+            <TableColumn fx:id="datauscitaArticolo" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688"
+                         text="DataUscita"/>
+            <TableColumn fx:id="descrizioneArticolo" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688"
+                         text="Descrizione"/>
+            <TableColumn fx:id="fruizioneArticolo" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688"
+                         text="Fruizione"/>
+            <TableColumn fx:id="editoreArticolo" onEditCommit="#onEditChangedString" prefWidth="105.33331298828125"
+                         text="Editore"/>
+            <TableColumn fx:id="autoreArticolo" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688"
+                         text="Autore"/>
+            <TableColumn fx:id="linguaArticolo" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688"
+                         text="Lingua"/>
+            <TableColumn fx:id="conferenzaArticolo" onEditCommit="#onEditChangedInt" prefWidth="104.66671752929688"
+                         text="Conferenza"/>
+            <TableColumn fx:id="nomerArticolo" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688"
+                         text="NomeRivista"/>
+            <TableColumn fx:id="datarArticolo" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688"
+                         text="DataRivista"/>
         </columns>
         <contextMenu>
             <ContextMenu>
                 <items>
-                    <MenuItem fx:id="itemUpdate2" mnemonicParsing="false" onAction="#updateDao" text="Update" />
-                    <MenuItem fx:id="itemDelete2" mnemonicParsing="false" onAction="#deleteDao" text="Delete" />
-                    <MenuItem fx:id="itemInsert2" mnemonicParsing="false" onAction="#insertDao" text="Insert" />
+                    <MenuItem fx:id="itemUpdate2" mnemonicParsing="false" onAction="#updateDao" text="Update"/>
+                    <MenuItem fx:id="itemDelete2" mnemonicParsing="false" onAction="#deleteDao" text="Delete"/>
+                    <MenuItem fx:id="itemInsert2" mnemonicParsing="false" onAction="#insertDao" text="Insert"/>
                 </items>
             </ContextMenu>
         </contextMenu>
     </TableView>
-    <TableView fx:id="acquistoTableView" editable="true" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0" prefHeight="535.0" prefWidth="700.0">
+    <TableView fx:id="acquistoTableView" editable="true" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0"
+               prefHeight="535.0" prefWidth="700.0">
         <columns>
-            <TableColumn fx:id="codaAcquisto" onEditCommit="#onEditChangedInt" prefWidth="95.9999771118164" text="CodA" />
-            <TableColumn fx:id="nomeAcquisto" onEditCommit="#onEditChangedString" prefWidth="300.6666717529297" text="Nome" />
-            <TableColumn fx:id="tipoAcquisto" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688" text="Tipo" />
-            <TableColumn fx:id="urlAcquisto" onEditCommit="#onEditChangedString" prefWidth="105.33331298828125" text="Url" />
-            <TableColumn fx:id="indirizzoAcquisto" onEditCommit="#onEditChangedString" prefWidth="75.3333740234375" text="Indirizzo" />
+            <TableColumn fx:id="codaAcquisto" onEditCommit="#onEditChangedInt" prefWidth="95.9999771118164"
+                         text="CodA"/>
+            <TableColumn fx:id="nomeAcquisto" onEditCommit="#onEditChangedString" prefWidth="300.6666717529297"
+                         text="Nome"/>
+            <TableColumn fx:id="tipoAcquisto" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688"
+                         text="Tipo"/>
+            <TableColumn fx:id="urlAcquisto" onEditCommit="#onEditChangedString" prefWidth="105.33331298828125"
+                         text="Url"/>
+            <TableColumn fx:id="indirizzoAcquisto" onEditCommit="#onEditChangedString" prefWidth="75.3333740234375"
+                         text="Indirizzo"/>
         </columns>
         <contextMenu>
             <ContextMenu>
                 <items>
-                    <MenuItem fx:id="itemUpdate3" mnemonicParsing="false" onAction="#updateDao" text="Update" />
-                    <MenuItem fx:id="itemDelete3" mnemonicParsing="false" onAction="#deleteDao" text="Delete" />
-                    <MenuItem fx:id="itemInsert3" mnemonicParsing="false" onAction="#insertDao" text="Insert" />
+                    <MenuItem fx:id="itemUpdate3" mnemonicParsing="false" onAction="#updateDao" text="Update"/>
+                    <MenuItem fx:id="itemDelete3" mnemonicParsing="false" onAction="#deleteDao" text="Delete"/>
+                    <MenuItem fx:id="itemInsert3" mnemonicParsing="false" onAction="#insertDao" text="Insert"/>
                 </items>
             </ContextMenu>
         </contextMenu>
     </TableView>
-    <TableView fx:id="conferenzaTableView" editable="true" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0" prefHeight="535.0" prefWidth="700.0">
+    <TableView fx:id="conferenzaTableView" editable="true" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0"
+               prefHeight="535.0" prefWidth="700.0">
         <columns>
-            <TableColumn fx:id="codcConferenza" onEditCommit="#onEditChangedInt" prefWidth="95.9999771118164" text="CodC" />
-            <TableColumn fx:id="nomeConferenza" onEditCommit="#onEditChangedString" prefWidth="300.6666717529297" text="Nome" />
-            <TableColumn fx:id="strutturaConferenza" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688" text="Struttura" />
-            <TableColumn fx:id="indirizzoConferenza" onEditCommit="#onEditChangedString" prefWidth="105.33331298828125" text="Indirizzo" />
-            <TableColumn fx:id="dataiConferenza" onEditCommit="#onEditChangedString" prefWidth="105.33331298828125" text="DataInizio" />
-            <TableColumn fx:id="datafConferenza" onEditCommit="#onEditChangedString" prefWidth="105.33331298828125" text="DataFine" />
-            <TableColumn fx:id="responsabileConferenza" onEditCommit="#onEditChangedString" prefWidth="105.33331298828125" text="Responsabile" />
+            <TableColumn fx:id="codcConferenza" onEditCommit="#onEditChangedInt" prefWidth="95.9999771118164"
+                         text="CodC"/>
+            <TableColumn fx:id="nomeConferenza" onEditCommit="#onEditChangedString" prefWidth="300.6666717529297"
+                         text="Nome"/>
+            <TableColumn fx:id="strutturaConferenza" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688"
+                         text="Struttura"/>
+            <TableColumn fx:id="indirizzoConferenza" onEditCommit="#onEditChangedString" prefWidth="105.33331298828125"
+                         text="Indirizzo"/>
+            <TableColumn fx:id="dataiConferenza" onEditCommit="#onEditChangedString" prefWidth="105.33331298828125"
+                         text="DataInizio"/>
+            <TableColumn fx:id="datafConferenza" onEditCommit="#onEditChangedString" prefWidth="105.33331298828125"
+                         text="DataFine"/>
+            <TableColumn fx:id="responsabileConferenza" onEditCommit="#onEditChangedString"
+                         prefWidth="105.33331298828125" text="Responsabile"/>
         </columns>
         <contextMenu>
             <ContextMenu>
                 <items>
-                    <MenuItem fx:id="itemUpdate4" mnemonicParsing="false" onAction="#updateDao" text="Update" />
-                    <MenuItem fx:id="itemDelete4" mnemonicParsing="false" onAction="#deleteDao" text="Delete" />
-                    <MenuItem fx:id="itemInsert4" mnemonicParsing="false" onAction="#insertDao" text="Insert" />
+                    <MenuItem fx:id="itemUpdate4" mnemonicParsing="false" onAction="#updateDao" text="Update"/>
+                    <MenuItem fx:id="itemDelete4" mnemonicParsing="false" onAction="#deleteDao" text="Delete"/>
+                    <MenuItem fx:id="itemInsert4" mnemonicParsing="false" onAction="#insertDao" text="Insert"/>
                 </items>
             </ContextMenu>
         </contextMenu>
     </TableView>
-    <TableView fx:id="presentazioneTableView" editable="true" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0" prefHeight="535.0" prefWidth="700.0">
+    <TableView fx:id="presentazioneTableView" editable="true" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0"
+               prefHeight="535.0" prefWidth="700.0">
         <columns>
-            <TableColumn fx:id="codpPresentazione" onEditCommit="#onEditChangedInt" prefWidth="95.9999771118164" text="CodP" />
-            <TableColumn fx:id="nomePresentazione" onEditCommit="#onEditChangedString" prefWidth="300.6666717529297" text="Nome" />
-            <TableColumn fx:id="indirizzoPresentazione" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688" text="Indirizzo" />
-            <TableColumn fx:id="dataPresentazione" onEditCommit="#onEditChangedString" prefWidth="105.33331298828125" text="Data" />
-            <TableColumn fx:id="tipoPresentazione" onEditCommit="#onEditChangedString" prefWidth="75.3333740234375" text="Tipo" />
+            <TableColumn fx:id="codpPresentazione" onEditCommit="#onEditChangedInt" prefWidth="95.9999771118164"
+                         text="CodP"/>
+            <TableColumn fx:id="nomePresentazione" onEditCommit="#onEditChangedString" prefWidth="300.6666717529297"
+                         text="Nome"/>
+            <TableColumn fx:id="indirizzoPresentazione" onEditCommit="#onEditChangedString"
+                         prefWidth="104.66671752929688" text="Indirizzo"/>
+            <TableColumn fx:id="dataPresentazione" onEditCommit="#onEditChangedString" prefWidth="105.33331298828125"
+                         text="Data"/>
+            <TableColumn fx:id="tipoPresentazione" onEditCommit="#onEditChangedString" prefWidth="75.3333740234375"
+                         text="Tipo"/>
         </columns>
         <contextMenu>
             <ContextMenu>
                 <items>
-                    <MenuItem fx:id="itemUpdate5" mnemonicParsing="false" onAction="#updateDao" text="Update" />
-                    <MenuItem fx:id="itemDelete5" mnemonicParsing="false" onAction="#deleteDao" text="Delete" />
-                    <MenuItem fx:id="itemInsert5" mnemonicParsing="false" onAction="#insertDao" text="Insert" />
+                    <MenuItem fx:id="itemUpdate5" mnemonicParsing="false" onAction="#updateDao" text="Update"/>
+                    <MenuItem fx:id="itemDelete5" mnemonicParsing="false" onAction="#deleteDao" text="Delete"/>
+                    <MenuItem fx:id="itemInsert5" mnemonicParsing="false" onAction="#insertDao" text="Insert"/>
                 </items>
             </ContextMenu>
         </contextMenu>
     </TableView>
-    <TableView fx:id="rivistaTableView" editable="true" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0" prefHeight="535.0" prefWidth="700.0">
+    <TableView fx:id="rivistaTableView" editable="true" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0"
+               prefHeight="535.0" prefWidth="700.0">
         <columns>
-            <TableColumn fx:id="nomeRivista" onEditCommit="#onEditChangedString" prefWidth="95.9999771118164" text="Nome" />
-            <TableColumn fx:id="dataRivista" onEditCommit="#onEditChangedString" prefWidth="300.6666717529297" text="Data" />
-            <TableColumn fx:id="responsabileRivista" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688" text="Responsabile" />
-            <TableColumn fx:id="argomentoRivista" onEditCommit="#onEditChangedString" prefWidth="105.33331298828125" text="Argomento" />
+            <TableColumn fx:id="nomeRivista" onEditCommit="#onEditChangedString" prefWidth="95.9999771118164"
+                         text="Nome"/>
+            <TableColumn fx:id="dataRivista" onEditCommit="#onEditChangedString" prefWidth="300.6666717529297"
+                         text="Data"/>
+            <TableColumn fx:id="responsabileRivista" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688"
+                         text="Responsabile"/>
+            <TableColumn fx:id="argomentoRivista" onEditCommit="#onEditChangedString" prefWidth="105.33331298828125"
+                         text="Argomento"/>
         </columns>
         <contextMenu>
             <ContextMenu>
                 <items>
-                    <MenuItem fx:id="itemUpdate6" mnemonicParsing="false" onAction="#updateDao" text="Update" />
-                    <MenuItem fx:id="itemDelete6" mnemonicParsing="false" onAction="#deleteDao" text="Delete" />
-                    <MenuItem fx:id="itemInsert6" mnemonicParsing="false" onAction="#insertDao" text="Insert" />
+                    <MenuItem fx:id="itemUpdate6" mnemonicParsing="false" onAction="#updateDao" text="Update"/>
+                    <MenuItem fx:id="itemDelete6" mnemonicParsing="false" onAction="#deleteDao" text="Delete"/>
+                    <MenuItem fx:id="itemInsert6" mnemonicParsing="false" onAction="#insertDao" text="Insert"/>
                 </items>
             </ContextMenu>
         </contextMenu>
     </TableView>
-    <TableView fx:id="serieTableView" editable="true" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0" prefHeight="535.0" prefWidth="700.0">
+    <TableView fx:id="serieTableView" editable="true" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0"
+               prefHeight="535.0" prefWidth="700.0">
         <columns>
-            <TableColumn fx:id="codsSerie" onEditCommit="#onEditChangedInt" prefWidth="95.9999771118164" text="CodS" />
-            <TableColumn fx:id="nomeSerie" onEditCommit="#onEditChangedString" prefWidth="300.6666717529297" text="Nome" />
-            <TableColumn fx:id="numlibriSerie" onEditCommit="#onEditChangedInt" prefWidth="104.66671752929688" text="NumeroLibri" />
-            <TableColumn fx:id="completataSerie" onEditCommit="#onEditChangedBool" prefWidth="105.33331298828125" text="Completata" />
+            <TableColumn fx:id="codsSerie" onEditCommit="#onEditChangedInt" prefWidth="95.9999771118164" text="CodS"/>
+            <TableColumn fx:id="nomeSerie" onEditCommit="#onEditChangedString" prefWidth="300.6666717529297"
+                         text="Nome"/>
+            <TableColumn fx:id="numlibriSerie" onEditCommit="#onEditChangedInt" prefWidth="104.66671752929688"
+                         text="NumeroLibri"/>
+            <TableColumn fx:id="completataSerie" onEditCommit="#onEditChangedBool" prefWidth="105.33331298828125"
+                         text="Completata"/>
         </columns>
         <contextMenu>
             <ContextMenu>
                 <items>
-                    <MenuItem fx:id="itemUpdate7" mnemonicParsing="false" onAction="#updateDao" text="Update" />
-                    <MenuItem fx:id="itemDelete7" mnemonicParsing="false" onAction="#deleteDao" text="Delete" />
-                    <MenuItem fx:id="itemInsert7" mnemonicParsing="false" onAction="#insertDao" text="Insert" />
+                    <MenuItem fx:id="itemUpdate7" mnemonicParsing="false" onAction="#updateDao" text="Update"/>
+                    <MenuItem fx:id="itemDelete7" mnemonicParsing="false" onAction="#deleteDao" text="Delete"/>
+                    <MenuItem fx:id="itemInsert7" mnemonicParsing="false" onAction="#insertDao" text="Insert"/>
                 </items>
             </ContextMenu>
         </contextMenu>
     </TableView>
-    <TableView fx:id="disponibileATableView" editable="true" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0" prefHeight="535.0" prefWidth="700.0">
+    <TableView fx:id="disponibileATableView" editable="true" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0"
+               prefHeight="535.0" prefWidth="700.0">
         <columns>
-            <TableColumn fx:id="codaDisponibileA" onEditCommit="#onEditChangedInt" prefWidth="95.9999771118164" text="CodAcquisto" />
-            <TableColumn fx:id="doiDisponibileA" onEditCommit="#onEditChangedString" prefWidth="300.6666717529297" text="Doi" />
+            <TableColumn fx:id="codaDisponibileA" onEditCommit="#onEditChangedInt" prefWidth="95.9999771118164"
+                         text="CodAcquisto"/>
+            <TableColumn fx:id="doiDisponibileA" onEditCommit="#onEditChangedString" prefWidth="300.6666717529297"
+                         text="Doi"/>
         </columns>
         <contextMenu>
             <ContextMenu>
                 <items>
-                    <MenuItem fx:id="itemUpdate8" mnemonicParsing="false" onAction="#updateDao" text="Update" />
-                    <MenuItem fx:id="itemDelete8" mnemonicParsing="false" onAction="#deleteDao" text="Delete" />
-                    <MenuItem fx:id="itemInsert8" mnemonicParsing="false" onAction="#insertDao" text="Insert" />
+                    <MenuItem fx:id="itemUpdate8" mnemonicParsing="false" onAction="#updateDao" text="Update"/>
+                    <MenuItem fx:id="itemDelete8" mnemonicParsing="false" onAction="#deleteDao" text="Delete"/>
+                    <MenuItem fx:id="itemInsert8" mnemonicParsing="false" onAction="#insertDao" text="Insert"/>
                 </items>
             </ContextMenu>
         </contextMenu>
     </TableView>
-    <TableView fx:id="disponibileLTableView" editable="true" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0" prefHeight="535.0" prefWidth="700.0">
+    <TableView fx:id="disponibileLTableView" editable="true" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0"
+               prefHeight="535.0" prefWidth="700.0">
         <columns>
-            <TableColumn fx:id="codaDisponibileL" onEditCommit="#onEditChangedInt" prefWidth="95.9999771118164" text="CodAcquisto" />
-            <TableColumn fx:id="isbnDisponibileL" onEditCommit="#onEditChangedString" prefWidth="300.6666717529297" text="Isbn" />
+            <TableColumn fx:id="codaDisponibileL" onEditCommit="#onEditChangedInt" prefWidth="95.9999771118164"
+                         text="CodAcquisto"/>
+            <TableColumn fx:id="isbnDisponibileL" onEditCommit="#onEditChangedString" prefWidth="300.6666717529297"
+                         text="Isbn"/>
         </columns>
         <contextMenu>
             <ContextMenu>
                 <items>
-                    <MenuItem fx:id="itemUpdate9" mnemonicParsing="false" onAction="#updateDao" text="Update" />
-                    <MenuItem fx:id="itemDelete9" mnemonicParsing="false" onAction="#deleteDao" text="Delete" />
-                    <MenuItem fx:id="itemInsert9" mnemonicParsing="false" onAction="#insertDao" text="Insert" />
+                    <MenuItem fx:id="itemUpdate9" mnemonicParsing="false" onAction="#updateDao" text="Update"/>
+                    <MenuItem fx:id="itemDelete9" mnemonicParsing="false" onAction="#deleteDao" text="Delete"/>
+                    <MenuItem fx:id="itemInsert9" mnemonicParsing="false" onAction="#insertDao" text="Insert"/>
                 </items>
             </ContextMenu>
         </contextMenu>
     </TableView>
-    <TableView fx:id="disponibileSTableView" editable="true" fixedCellSize="0.0" layoutX="95.0" layoutY="182.0" prefHeight="535.0" prefWidth="700.0">
+    <TableView fx:id="disponibileSTableView" editable="true" fixedCellSize="0.0" layoutX="95.0" layoutY="182.0"
+               prefHeight="535.0" prefWidth="700.0">
         <columns>
-            <TableColumn fx:id="codaDisponibileS" onEditCommit="#onEditChangedInt" prefWidth="95.9999771118164" text="CodAcquisto" />
-            <TableColumn fx:id="codsDisponibileS" onEditCommit="#onEditChangedInt" prefWidth="300.6666717529297" text="CodSerie" />
+            <TableColumn fx:id="codaDisponibileS" onEditCommit="#onEditChangedInt" prefWidth="95.9999771118164"
+                         text="CodAcquisto"/>
+            <TableColumn fx:id="codsDisponibileS" onEditCommit="#onEditChangedInt" prefWidth="300.6666717529297"
+                         text="CodSerie"/>
         </columns>
         <contextMenu>
             <ContextMenu>
                 <items>
-                    <MenuItem fx:id="itemUpdate10" mnemonicParsing="false" onAction="#updateDao" text="Update" />
-                    <MenuItem fx:id="itemDelete10" mnemonicParsing="false" onAction="#deleteDao" text="Delete" />
-                    <MenuItem fx:id="itemInsert10" mnemonicParsing="false" onAction="#insertDao" text="Insert" />
+                    <MenuItem fx:id="itemUpdate10" mnemonicParsing="false" onAction="#updateDao" text="Update"/>
+                    <MenuItem fx:id="itemDelete10" mnemonicParsing="false" onAction="#deleteDao" text="Delete"/>
+                    <MenuItem fx:id="itemInsert10" mnemonicParsing="false" onAction="#insertDao" text="Insert"/>
                 </items>
             </ContextMenu>
         </contextMenu>
     </TableView>
-    <Text fx:id="txtRicercaInserimento" layoutX="130.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cosa Vuoi ricercare ?" wrappingWidth="136.91082000732422" />
-    <Text layoutX="199.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Premi Con Il Tasto Destro Del Mouse Per Le Azioni, premi Enter per confermare le modifiche" wrappingWidth="502.37743377685547" />
-    <ComboBox fx:id="comboBoxTableView" layoutX="117.0" layoutY="130.0" onAction="#selezioneSceltaTableView" prefWidth="150.0" />
-    <Button fx:id="buttonView" layoutX="450.0" layoutY="80.0" mnemonicParsing="false" onAction="#sceltaView" prefHeight="25.0" prefWidth="54.0" text="View" />
-    <Button layoutX="805.0" layoutY="210.0" mnemonicParsing="false" onAction="#insertDao" text="Inserisci" visible="false" />
-    <Button fx:id="buttonInsert" layoutX="392.0" layoutY="80.0" mnemonicParsing="false" onAction="#sceltaInsert" prefHeight="25.0" prefWidth="54.0" text="Insert" />
-    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdf3ea" height="44.0" layoutX="92.0" layoutY="7.0" stroke="#de5f4f" strokeType="INSIDE" strokeWidth="3.0" width="707.0" />
-    <Text layoutX="102.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pannello gestione Admin" wrappingWidth="329.71080780029297">
+    <Text layoutX="130.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cosa Vuoi ricercare ?"
+          wrappingWidth="136.91082000732422"/>
+    <Text layoutX="199.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0"
+          text="Premi Con Il Tasto Destro Del Mouse Per Le Azioni, premi Enter per confermare le modifiche"
+          wrappingWidth="502.37743377685547"/>
+    <ComboBox fx:id="comboBoxTableView" layoutX="117.0" layoutY="130.0" onAction="#selezioneSceltaTableView"
+              prefWidth="150.0"/>
+    <Button fx:id="buttonView" layoutX="450.0" layoutY="80.0" mnemonicParsing="false" onAction="#sceltaView"
+            prefHeight="25.0" prefWidth="54.0" text="View"/>
+    <Button layoutX="805.0" layoutY="210.0" mnemonicParsing="false" onAction="#insertDao" text="Inserisci"
+            visible="false"/>
+    <Button fx:id="buttonInsert" layoutX="392.0" layoutY="80.0" mnemonicParsing="false" onAction="#sceltaInsert"
+            prefHeight="25.0" prefWidth="54.0" text="Insert"/>
+    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdf3ea" height="44.0" layoutX="92.0" layoutY="7.0" stroke="#de5f4f"
+               strokeType="INSIDE" strokeWidth="3.0" width="707.0"/>
+    <Text layoutX="102.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pannello gestione Admin"
+          wrappingWidth="329.71080780029297">
         <font>
-            <Font name="Arial Bold" size="20.0" />
+            <Font name="Arial Bold" size="20.0"/>
         </font>
     </Text>
-    <Button fx:id="buttonViewAll" layoutX="678.0" layoutY="130.0" mnemonicParsing="false" onAction="#viewAll" text="Vedi Tutti" />
+    <Button fx:id="buttonViewAll" layoutX="678.0" layoutY="130.0" mnemonicParsing="false" onAction="#viewAll"
+            text="Vedi Tutti"/>
 </AnchorPane>
