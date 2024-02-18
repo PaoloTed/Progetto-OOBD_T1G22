@@ -511,18 +511,18 @@ public class HomeControllerAdminTest implements Initializable {
         }
 
         //Ricerca e visualizzazione risultati libri
-        ArrayList<ArrayList<String>> arrayList = new ArrayList<>();
-        arrayList = implDaoHashMap.get(scelta).getRicercaT(modRicerca, titoloRicerche);
+        ArrayList<ArrayList<String>> objects = new ArrayList<>();
+        objects = implDaoHashMap.get(scelta).getRicerca(modRicerca, titoloRicerche);
         tableViewHashMap.get(scelta).getItems().clear();
         tableViewHashMap.get(scelta).setVisible(true);
         idBarSearch.clear();
-        if (arrayList.isEmpty()) {
+        if (objects.isEmpty()) {
             support.messageStage("Nessun match trovato");
             return;
         }
-        for (ArrayList<String> strings : arrayList) {
+        for (ArrayList<String> object : objects) {
             try {
-                tableViewHashMap.get(scelta).getItems().add(objectHashMap.get(scelta).getConstructor(ArrayList.class).newInstance(strings));
+                tableViewHashMap.get(scelta).getItems().add(objectHashMap.get(scelta).getConstructor(ArrayList.class).newInstance(object));
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -538,7 +538,7 @@ public class HomeControllerAdminTest implements Initializable {
         }
         try {
             tableViewHashMap.get(scelta).getItems().clear();
-            ArrayList<ArrayList<String>> arrayList = implDaoHashMap.get(scelta).getAllT();
+            ArrayList<ArrayList<String>> arrayList = implDaoHashMap.get(scelta).getAll();
             for (ArrayList<String> strings : arrayList) {
                 tableViewHashMap.get(scelta).getItems().add(objectHashMap.get(scelta).getConstructor(ArrayList.class).newInstance(strings));
             }

@@ -48,6 +48,7 @@ public class PresentazioneDAOImpl implements PresentazioneDAO {
             presentazioneFinded.add(presentazione);
         }
         rs.close();
+
         return presentazioneFinded;
     }
 
