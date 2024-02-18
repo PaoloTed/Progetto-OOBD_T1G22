@@ -56,6 +56,8 @@ public class HomeControllerAdminTest implements Initializable {
     @FXML
     private TableColumn<Libro, Integer> numpagineLibro;
     @FXML
+    private TableColumn<Libro, String> tipoLibro;
+    @FXML
     private TableColumn<Libro, String> materiaLibro;
     @FXML
     private TableColumn<Libro, String> descrizioneLibro;
@@ -67,6 +69,8 @@ public class HomeControllerAdminTest implements Initializable {
     private TableColumn<Libro, String> autoreLibro;
     @FXML
     private TableColumn<Libro, String> datauscitaLibro;
+    @FXML
+    private TableColumn<Libro, String> linguaLibro;
     @FXML
     private TableColumn<Libro, String> successivoLibro;
     @FXML
@@ -281,6 +285,8 @@ public class HomeControllerAdminTest implements Initializable {
         genereLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         numpagineLibro.setCellValueFactory(new PropertyValueFactory<>("numpagine"));
         numpagineLibro.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        tipoLibro.setCellValueFactory(new PropertyValueFactory<>("tipo"));
+        tipoLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         materiaLibro.setCellValueFactory(new PropertyValueFactory<>("materia"));
         materiaLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         descrizioneLibro.setCellValueFactory(new PropertyValueFactory<>("descrizione"));
@@ -293,6 +299,8 @@ public class HomeControllerAdminTest implements Initializable {
         autoreLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         datauscitaLibro.setCellValueFactory(new PropertyValueFactory<>("datauscita"));
         datauscitaLibro.setCellFactory(TextFieldTableCell.forTableColumn());
+        linguaLibro.setCellValueFactory(new PropertyValueFactory<>("lingua"));
+        linguaLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         successivoLibro.setCellValueFactory(new PropertyValueFactory<>("successivo"));
         successivoLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         serieLibro.setCellValueFactory(new PropertyValueFactory<>("serie"));
@@ -429,7 +437,7 @@ public class HomeControllerAdminTest implements Initializable {
         disponibileSTableView.setVisible(false);
         comboBoxTableView.setItems(FXCollections.observableArrayList("Libro", "Articolo", "Acquisto", "Conferenza", "Presentazione", "Rivista", "Serie", "DisponibileA", "DisponibileL", "DisponibileS"));
         comboBoxTableView.getSelectionModel().selectFirst();
-        comboBoxRicerca.setItems(FXCollections.observableArrayList("Isbn", "Titolo", "Genere", "Autore", "Editore", "DataUscita", "NumPagine", "Materia", "Descrizione", "Fruizione", "Successivo", "Serie", "Presentazione", "Lingua"));
+        comboBoxRicerca.setItems(FXCollections.observableArrayList("Isbn", "Titolo", "Genere", "Autore", "Editore", "DataUscita", "NumPagine", "Materia", "Descrizione", "Fruizione", "Lingua", "Successivo", "Serie", "Presentazione"));
         comboBoxRicerca.getSelectionModel().selectFirst();
 
         implDaoHashMap.put("Libro", new LibroDAOImpl());
@@ -465,7 +473,7 @@ public class HomeControllerAdminTest implements Initializable {
         tableViewHashMap.put("DisponibileL", disponibileLTableView);
         tableViewHashMap.put("DisponibileS", disponibileSTableView);
 
-        ricercaHashMap.put("Libro", (FXCollections.observableArrayList("Isbn", "Titolo", "Genere", "Autore", "Editore", "DataUscita", "NumPagine", "Materia", "Descrizione", "Fruizione", "Successivo", "Serie", "Presentazione")));
+        ricercaHashMap.put("Libro", (FXCollections.observableArrayList("Isbn", "Titolo", "Genere", "Autore", "Editore", "DataUscita", "NumPagine", "Tipo", "Materia", "Descrizione", "Fruizione", "Lingua", "Successivo", "Serie", "Presentazione")));
         ricercaHashMap.put("Articolo", (FXCollections.observableArrayList("Doi", "Titolo", "Genere", "Autore", "Editore", "DataUscita", "NumPagine", "Lingua", "Conferenza", "Nomer", "Datar")));
         ricercaHashMap.put("Acquisto", (FXCollections.observableArrayList("Coda", "Nome", "Tipo", "Url", "Indirizzo")));
         ricercaHashMap.put("Conferenza", (FXCollections.observableArrayList("Codc", "Nome", "Struttura", "Indirizzo", "Datai", "Dataf", "Responsabile")));

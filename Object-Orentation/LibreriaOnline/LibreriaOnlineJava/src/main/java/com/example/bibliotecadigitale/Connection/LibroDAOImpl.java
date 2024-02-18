@@ -2,13 +2,14 @@ package com.example.bibliotecadigitale.Connection;
 
 import com.example.bibliotecadigitale.DAO.LibroDAO;
 import com.example.bibliotecadigitale.Model.Libro;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class LibroDAOImpl implements LibroDAO {
     private final Connessione connessione = new Connessione();
+    private final Connection conn = Connessione.getConnection();
 
     @Override
     public ArrayList<Libro> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
@@ -94,7 +95,7 @@ public class LibroDAOImpl implements LibroDAO {
         return libro;
     }
 
-    public ArrayList<String> getT(String isbn){
+    public ArrayList<String> getT(String isbn) {
         ArrayList<String> libro = new ArrayList<>();
         try {
             String query = "SELECT * FROM libro WHERE isbn = '" + isbn + "';";
@@ -142,7 +143,7 @@ public class LibroDAOImpl implements LibroDAO {
         return libroFinded;
     }
 
-    public ArrayList<ArrayList<String>> getAllT(){
+    public ArrayList<ArrayList<String>> getAllT() {
         ArrayList<ArrayList<String>> libroFinded = new ArrayList<>();
         try {
             String query = "SELECT * FROM libro;";
@@ -200,30 +201,52 @@ public class LibroDAOImpl implements LibroDAO {
     }
 
 
-//    public void insertT(ArrayList<String> libro) throws SQLException {
-//        try {
-//            String isbn = libro.get(0);
-//            String titolo = libro.get(1);
-//            String genere = libro.get(2);
-//            String numeroPagine = String.valueOf(libro.get(3));
-//            String tipo = libro.get(4);
-//            String materia = libro.get(5);
-//            String descrizione = libro.get(6);
-//            String fruizione = libro.get(7);
-//            String editore = libro.get(8);
-//            String autore = libro.get(9);
-//            String datauscita = libro.get(10);
-//            String lingua = libro.get(11);
-//            String successivo = libro.get(12);
-//            String serie = Integer.parseInt(libro.get(13));
-//            Integer presentazione = Integer.parseInt(libro.get(14));
-//
-//            String query = "INSERT INTO libro VALUES ('" + isbn + "','" + titolo + "','" + genere + "'," + numeroPagine + ",'" + tipo + "','" + materia + "','" + descrizione + "','" + fruizione + "','" + editore + "','" + autore + "','" + datauscita + "','" + lingua + "','" + successivo + "'," + serie + " , " + presentazione + ");";
-//            connessione.executeUpdate(query);
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
+    public void insertT(ArrayList<String> libro) throws SQLException {
+        PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO libro VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);");
+        //Inserimento valori non nullable
+        preparedStatement.setString(1, libro.get(0));//isbn
+        preparedStatement.setString(2, libro.get(1));//titolo
+        preparedStatement.setInt(4, Integer.parseInt(libro.get(3)));//numpagine
+        preparedStatement.setString(5, libro.get(4));//tipo
+        preparedStatement.setString(7, libro.get(6).replace("'", "''"));//descrizione
+        preparedStatement.setString(8, libro.get(7));//fruizione
+        preparedStatement.setString(9, libro.get(8));//editore
+        preparedStatement.setString(10, libro.get(9));//autore
+        preparedStatement.setString(12, libro.get(11));//lingua
+
+        //Inserimento valori nullable
+        if (libro.get(2) == null) {//genere
+            preparedStatement.setNull(3, java.sql.Types.VARCHAR);
+        } else {
+            preparedStatement.setString(3, libro.get(2));
+        }
+        if (libro.get(5) == null) {//materia
+            preparedStatement.setNull(6, java.sql.Types.VARCHAR);
+        } else {
+            preparedStatement.setString(6, libro.get(5));
+        }
+        if (libro.get(10) == null) {//datauscita
+            preparedStatement.setNull(11, java.sql.Types.VARCHAR);
+        } else {
+            preparedStatement.setString(11, libro.get(10));
+        }
+        if (libro.get(12) == null) {//successivo
+            preparedStatement.setNull(13, java.sql.Types.VARCHAR);
+        } else {
+            preparedStatement.setString(13, libro.get(12));
+        }
+        if (libro.get(13).equals("null")) {//serie
+            preparedStatement.setNull(14, java.sql.Types.INTEGER);
+        } else {
+            preparedStatement.setInt(14, Integer.parseInt(libro.get(13)));
+        }
+        if (libro.get(14).equals("null")) {//presentazione
+            preparedStatement.setNull(15, java.sql.Types.INTEGER);
+        } else {
+            preparedStatement.setInt(15, Integer.parseInt(libro.get(14)));
+        }
+        preparedStatement.executeUpdate();
+    }
 
     @Override
     public void update(Libro libro) throws SQLException {
@@ -264,21 +287,54 @@ public class LibroDAOImpl implements LibroDAO {
     }
 
     public void deleteT(ArrayList<String> libro) throws SQLException {
-        try {
-            String query = "DELETE FROM libro WHERE ISBN ='" + libro.get(0) + "';";
-            connessione.executeUpdate(query);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        PreparedStatement preparedStatement = conn.prepareStatement("DELETE FROM libro WHERE ISBN = ?;");
+        preparedStatement.setString(1, libro.get(0));
+        preparedStatement.executeUpdate();
+    }
+
+
+    @Override
+    public void updateT(ArrayList<String> libro) throws SQLException {
+        PreparedStatement preparedStatement = conn.prepareStatement("UPDATE libro SET titolo = ?, genere = ?, numpagine = ?, tipo = ?, materia = ?, descrizione = ?, fruizione = ?, editore = ?, autore = ?, datauscita = ?, lingua = ?, successivo = ?, serie = ?, presentazione = ? WHERE isbn = ?;");
+        //Inserimento valori non nullable
+        preparedStatement.setString(15, libro.get(0));//isbn insert
+        preparedStatement.setString(1, libro.get(1));//titolo
+        preparedStatement.setString(2, libro.get(2));//genere
+        preparedStatement.setInt(3, Integer.parseInt(libro.get(3)));//numpagine
+        preparedStatement.setString(4, libro.get(4));//tipo
+        preparedStatement.setString(6, libro.get(6).replace("'", "''"));//descrizione
+        preparedStatement.setString(7, libro.get(7));//fruizione
+        preparedStatement.setString(8, libro.get(8));//editore
+        preparedStatement.setString(9, libro.get(9));//autore
+        preparedStatement.setString(11, libro.get(11));//lingua
+
+
+        //Inserimento valori nullable
+        if (libro.get(5) == null) {//materia
+            preparedStatement.setNull(5, java.sql.Types.VARCHAR);
+        } else {
+            preparedStatement.setString(5, libro.get(5));
         }
-    }
-
-    @Override
-    public void insertT(ArrayList<String> elemento) throws SQLException {
-
-    }
-
-    @Override
-    public void updateT(ArrayList<String> elemento) throws SQLException {
-
+        if (libro.get(10) == null) {//datauscita
+            preparedStatement.setNull(10, java.sql.Types.VARCHAR);
+        } else {
+            preparedStatement.setDate(10, Date.valueOf(libro.get(10)));
+        }
+        if (libro.get(12) == null) {//successivo
+            preparedStatement.setNull(12, java.sql.Types.VARCHAR);
+        } else {
+            preparedStatement.setString(12, libro.get(12));
+        }
+        if (libro.get(13).equals("null")) {//serie
+            preparedStatement.setNull(13, java.sql.Types.INTEGER);
+        } else {
+            preparedStatement.setInt(13, Integer.parseInt(libro.get(13)));
+        }
+        if (libro.get(14).equals("null")) {//presentazione
+            preparedStatement.setNull(14, java.sql.Types.INTEGER);
+        } else {
+            preparedStatement.setInt(14, Integer.parseInt(libro.get(14)));
+        }
+        preparedStatement.executeUpdate();
     }
 }

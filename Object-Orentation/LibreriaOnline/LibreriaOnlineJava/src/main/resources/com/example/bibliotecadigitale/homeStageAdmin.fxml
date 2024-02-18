@@ -39,6 +39,8 @@
                          text="Genere"/>
             <TableColumn fx:id="numpagineLibro" onEditCommit="#onEditChangedInt" prefWidth="104.66671752929688"
                          text="NumeroPagine"/>
+            <TableColumn fx:id="tipoLibro" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688"
+                         text="tipoLibro"/>
             <TableColumn fx:id="materiaLibro" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688"
                          text="Materia"/>
             <TableColumn fx:id="descrizioneLibro" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688"
@@ -51,6 +53,8 @@
                          text="Autore"/>
             <TableColumn fx:id="datauscitaLibro" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688"
                          text="DataUscita"/>
+            <TableColumn fx:id="linguaLibro" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688"
+                         text="Lingua"/>
             <TableColumn fx:id="successivoLibro" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688"
                          text="Successivo"/>
             <TableColumn fx:id="serieLibro" onEditCommit="#onEditChangedInt" prefWidth="104.66671752929688"

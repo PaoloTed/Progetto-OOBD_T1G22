@@ -75,6 +75,12 @@ public class Libro extends Pubblicazioni implements ArrayListObject{
         setEditore(arrayList.get(8));
         setAutore(arrayList.get(9));
         setDatauscita(arrayList.get(10));
+        setLingua(arrayList.get(11));
+
+        if(arrayList.get(12) == null)
+            setSuccessivo(null);
+        else
+            setSuccessivo(arrayList.get(12));
         if(arrayList.get(13) == null)
             setSerie(null);
         else{
@@ -101,6 +107,9 @@ public class Libro extends Pubblicazioni implements ArrayListObject{
         arrayList.add(getEditore());
         arrayList.add(getAutore());
         arrayList.add(getDatauscita());
+        if(getLingua() == null)
+            System.out.println("Lingua null");
+        arrayList.add(getLingua());
         arrayList.add(getSuccessivo());
         arrayList.add(String.valueOf(getSerie()));
         arrayList.add(String.valueOf(getPresentazione()));
