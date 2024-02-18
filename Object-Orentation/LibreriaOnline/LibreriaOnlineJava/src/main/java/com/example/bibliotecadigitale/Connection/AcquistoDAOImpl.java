@@ -76,6 +76,26 @@ public class AcquistoDAOImpl implements AcquistoDAO {
     }
 
     @Override
+    public ArrayList<ArrayList<String>> getRicercaT(String modRicerca, String titoloRicerche) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public void deleteT(ArrayList<String> elemento) throws SQLException {
+
+    }
+
+    @Override
+    public void insertT(ArrayList<String> elemento) throws SQLException {
+
+    }
+
+    @Override
+    public void updateT(ArrayList<String> elemento) throws SQLException {
+
+    }
+
+    @Override
     public ArrayList<Acquisto> getAll() throws SQLException {
         ArrayList<Acquisto> acquistoFinded = new ArrayList<>();
         try {

@@ -57,6 +57,26 @@ public class PresentazioneDAOImpl implements PresentazioneDAO {
     }
 
     @Override
+    public ArrayList<ArrayList<String>> getRicercaT(String modRicerca, String titoloRicerche) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public void deleteT(ArrayList<String> elemento) throws SQLException {
+
+    }
+
+    @Override
+    public void insertT(ArrayList<String> elemento) throws SQLException {
+
+    }
+
+    @Override
+    public void updateT(ArrayList<String> elemento) throws SQLException {
+
+    }
+
+    @Override
     public List<Presentazione> getAll() throws SQLException {
         ArrayList<Presentazione> presentazioneFinded = new ArrayList<>();
         try {

@@ -16,4 +16,12 @@ public interface DAO<T> {
     ArrayList<T> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException;
 
     ArrayList<ArrayList<String>> getAllT();
+
+    ArrayList<ArrayList<String>> getRicercaT(String modRicerca, String titoloRicerche) throws SQLException;
+
+    void deleteT(ArrayList<String> elemento) throws SQLException;
+
+    void insertT(ArrayList<String> elemento) throws SQLException;
+
+    void updateT(ArrayList<String> elemento) throws SQLException;
 }

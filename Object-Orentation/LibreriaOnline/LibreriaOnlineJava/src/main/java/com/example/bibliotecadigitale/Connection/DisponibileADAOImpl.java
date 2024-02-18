@@ -75,6 +75,26 @@ public class DisponibileADAOImpl implements DisponibileADAO {
     }
 
     @Override
+    public ArrayList<ArrayList<String>> getRicercaT(String modRicerca, String titoloRicerche) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public void deleteT(ArrayList<String> elemento) throws SQLException {
+
+    }
+
+    @Override
+    public void insertT(ArrayList<String> elemento) throws SQLException {
+
+    }
+
+    @Override
+    public void updateT(ArrayList<String> elemento) throws SQLException {
+
+    }
+
+    @Override
     public List<DisponibileA> getAll() throws SQLException {
         ArrayList<DisponibileA> disponibileAFinded = new ArrayList<>();
         try {

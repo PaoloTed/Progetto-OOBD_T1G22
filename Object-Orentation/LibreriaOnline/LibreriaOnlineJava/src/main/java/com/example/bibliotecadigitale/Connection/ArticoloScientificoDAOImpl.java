@@ -37,6 +37,26 @@ public class ArticoloScientificoDAOImpl implements ArticoloScientificoDAO {
     }
 
     @Override
+    public ArrayList<ArrayList<String>> getRicercaT(String modRicerca, String titoloRicerche) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public void deleteT(ArrayList<String> elemento) throws SQLException {
+
+    }
+
+    @Override
+    public void insertT(ArrayList<String> elemento) throws SQLException {
+
+    }
+
+    @Override
+    public void updateT(ArrayList<String> elemento) throws SQLException {
+
+    }
+
+    @Override
     public ArticoloScientifico get(String doi) throws SQLException {
         ArticoloScientifico articolo;
         try {

@@ -40,7 +40,22 @@ public class LibroDAOImpl implements LibroDAO {
         ResultSet rs = connessione.executeSearch(query);
         ArrayList<String> libro;
         while (rs.next()) {
-            libro = getT(rs.getString(1));
+            libro = new ArrayList<>();
+            libro.add(rs.getString(1));
+            libro.add(rs.getString(2));
+            libro.add(rs.getString(3));
+            libro.add(rs.getString(4));
+            libro.add(rs.getString(5));
+            libro.add(rs.getString(6));
+            libro.add(rs.getString(7));
+            libro.add(rs.getString(8));
+            libro.add(rs.getString(9));
+            libro.add(rs.getString(10));
+            libro.add(rs.getString(11));
+            libro.add(rs.getString(12));
+            libro.add(rs.getString(13));
+            libro.add(rs.getString(14));
+            libro.add(rs.getString(15));
             libroFinded.add(libro);
         }
         rs.close();
@@ -132,8 +147,9 @@ public class LibroDAOImpl implements LibroDAO {
         try {
             String query = "SELECT * FROM libro;";
             ResultSet rs = connessione.executeSearch(query);
-            ArrayList<String> libro = new ArrayList<>();
+            ArrayList<String> libro;
             while (rs.next()) {
+                libro = new ArrayList<>();
                 libro.add(rs.getString(1));
                 libro.add(rs.getString(2));
                 libro.add(rs.getString(3));
@@ -247,5 +263,22 @@ public class LibroDAOImpl implements LibroDAO {
         }
     }
 
-//    public void deleteT()
+    public void deleteT(ArrayList<String> libro) throws SQLException {
+        try {
+            String query = "DELETE FROM libro WHERE ISBN ='" + libro.get(0) + "';";
+            connessione.executeUpdate(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void insertT(ArrayList<String> elemento) throws SQLException {
+
+    }
+
+    @Override
+    public void updateT(ArrayList<String> elemento) throws SQLException {
+
+    }
 }
