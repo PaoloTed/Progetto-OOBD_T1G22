@@ -1,7 +1,7 @@
 package com.example.bibliotecadigitale.DAO;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
-import com.example.bibliotecadigitale.Model.Conferenza;
-
-public interface ConferenzaDAO extends DAO<Conferenza> {
-    Conferenza get(int codC);
+public interface ConferenzaDAO extends DAO {
+    ArrayList<String> get(int codC)throws SQLException;
 }

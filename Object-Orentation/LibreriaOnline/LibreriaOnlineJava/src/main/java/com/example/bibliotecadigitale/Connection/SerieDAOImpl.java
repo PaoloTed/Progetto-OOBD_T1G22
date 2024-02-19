@@ -2,6 +2,9 @@ package com.example.bibliotecadigitale.Connection;
 
 import com.example.bibliotecadigitale.DAO.SerieDAO;
 import com.example.bibliotecadigitale.Model.Serie;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -9,40 +12,23 @@ import java.util.List;
 
 public class SerieDAOImpl implements SerieDAO {
     private final Connessione connessione = new Connessione();
+    private final Connection conn = Connessione.getConnection();
 
-    @Override
-    public Serie get(int cods) {
-        Serie serie = null;
-        try {
-            String query = "SELECT * FROM serie WHERE cods = " + cods + ";";
-            ResultSet rs = connessione.executeSearch(query);
-            while (rs.next()) {
-                serie = new Serie();
-                serie.setCods(rs.getInt(1));
-                serie.setNome(rs.getString(2));
-                serie.setNumlibri(rs.getInt(3));
-                serie.setCompletata(rs.getBoolean(4));
-            }
-            rs.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+    private ArrayList<String> rsToArrayList(ResultSet rs, int numCampi) throws SQLException {
+        ArrayList<String> array = new ArrayList<>();
+        for (int i = 1; i <= numCampi; i++) {
+            array.add(rs.getString(i));
         }
-        return serie;
+        return array;
     }
-
     @Override
-    public ArrayList<Serie> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
-        ArrayList<Serie> serieFinded = new ArrayList<>();
-        String query;
-        if (tipoRicerca.equalsIgnoreCase("numlibri") || tipoRicerca.equalsIgnoreCase("completata") || tipoRicerca.equalsIgnoreCase("cods")) {
-            query = "SELECT cods FROM serie WHERE " + tipoRicerca + " = " + parolaChiave + ";";
-        } else {
-            query = "SELECT cods FROM serie WHERE " + tipoRicerca + " LIKE '%" + parolaChiave + "%';";
-        }
+    public ArrayList<ArrayList<String>> getAll() throws SQLException {
+        ArrayList<ArrayList<String>> serieFinded = new ArrayList<>();
+        String query = "SELECT * FROM serie;";
         ResultSet rs = connessione.executeSearch(query);
-        Serie serie;
+        ArrayList<String> serie;
         while (rs.next()) {
-            serie = get(rs.getInt(1));
+            serie = rsToArrayList(rs, 2);
             serieFinded.add(serie);
         }
         rs.close();
@@ -50,81 +36,56 @@ public class SerieDAOImpl implements SerieDAO {
     }
 
     @Override
-    public ArrayList<ArrayList<String>> getAllT() {
-        return null;
+    public void insert(ArrayList<String> strings) throws SQLException{
+        PreparedStatement ps = conn.prepareStatement("INSERT INTO serie VALUES (?,?,?,?);");
+        ps.setInt(1, Integer.parseInt(strings.get(0)));//cods
+        ps.setString(2, strings.get(1));//nome
+        ps.setInt(3, Integer.parseInt(strings.get(2)));//numerolibri
+        ps.setBoolean(4, Boolean.parseBoolean(strings.get(3)));//completata
+        ps.executeUpdate();
+        ps.close();
     }
 
     @Override
-    public ArrayList<ArrayList<String>> getRicercaT(String modRicerca, String titoloRicerche) throws SQLException {
-        return null;
+    public void update(ArrayList<String> strings) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("UPDATE serie SET nome = ?, numlibri = ?, completata = ? WHERE cods = ?;");
+        ps.setString(1, strings.get(1));//nome
+        ps.setInt(2, Integer.parseInt(strings.get(2)));//numerolibri
+        ps.setBoolean(3, Boolean.parseBoolean(strings.get(3)));//completata
+        ps.setInt(4, Integer.parseInt(strings.get(0)));//cods
+        ps.executeUpdate();
+        ps.close();
     }
 
     @Override
-    public void deleteT(ArrayList<String> elemento) throws SQLException {
-
+    public void delete(ArrayList<String> strings) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("DELETE FROM serie WHERE cods = ?;");
+        ps.setInt(1, Integer.parseInt(strings.get(0)));//cods
+        ps.executeUpdate();
+        ps.close();
     }
 
     @Override
-    public void insertT(ArrayList<String> elemento) throws SQLException {
-
-    }
-
-    @Override
-    public void updateT(ArrayList<String> elemento) throws SQLException {
-
-    }
-
-    @Override
-    public List<Serie> getAll() throws SQLException {
-        ArrayList<Serie> serieFinded = new ArrayList<>();
-        try {
-            String query = "SELECT cods FROM serie;";
-            ResultSet rs = connessione.executeSearch(query);
-            Serie serie;
-            while (rs.next()) {
-                serie = get(rs.getInt(1));
-                serieFinded.add(serie);
-            }
-            rs.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+    public ArrayList<ArrayList<String>> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
+        ArrayList<ArrayList<String>> serieFinded = new ArrayList<>();
+        String query;
+        if (tipoRicerca.equalsIgnoreCase("completata")||tipoRicerca.equalsIgnoreCase("cods")||tipoRicerca.equalsIgnoreCase("numlibri")) {
+            query = "SELECT * FROM serie WHERE " + tipoRicerca + " = " + parolaChiave + ";";
+        } else {
+            query = "SELECT * FROM serie WHERE " + tipoRicerca + " LIKE '%" + parolaChiave + "%';";
         }
+        ResultSet rs = connessione.executeSearch(query);
+        ArrayList<String> serie;
+        while (rs.next()) {
+            serie = rsToArrayList(rs, 4);
+            serieFinded.add(serie);
+        }
+        rs.close();
         return serieFinded;
     }
 
     @Override
-    public void insert(Serie serie) {
-        try {
-            int cods = serie.getCods();
-            String nome = serie.getNome();
-            String query = "INSERT INTO Serie VALUES (" + cods + ",'" + nome + "');";
-            connessione.executeUpdate(query);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public void update(Serie serie) throws SQLException {
-        try {
-            int cods = serie.getCods();
-            String nome = serie.getNome();
-            boolean completata = serie.getCompletata();
-            String query = "UPDATE Serie SET nome = " + nome + ", completata = " + completata + " WHERE cods = " + cods + ";";
-            connessione.executeUpdate(query);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public void delete(Serie serie) throws SQLException {
-        try {
-            int cods = serie.getCods();
-            String query = "DELETE FROM Serie WHERE cods = " + cods + ";";
-            connessione.executeUpdate(query);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+    public ArrayList<String> get(int cods) throws SQLException {
+        return null;
     }
 }

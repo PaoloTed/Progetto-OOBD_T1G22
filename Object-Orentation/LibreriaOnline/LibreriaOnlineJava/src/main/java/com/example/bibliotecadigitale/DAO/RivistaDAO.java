@@ -2,6 +2,9 @@ package com.example.bibliotecadigitale.DAO;
 
 import com.example.bibliotecadigitale.Model.Rivista;
 
-public interface RivistaDAO extends DAO<Rivista> {
-    Rivista get(String nome, String data);
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+public interface RivistaDAO extends DAO {
+    ArrayList<String> get(String nome, String data) throws SQLException;
 }

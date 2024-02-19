@@ -13,6 +13,10 @@ public class Libro extends Pubblicazioni implements ArrayListObject{
     private Integer serie;
     private Integer presentazione;
 
+     void ciao() {
+        System.out.println("ciao");
+    }
+
     public Integer getPresentazione() {
         return presentazione;
     }

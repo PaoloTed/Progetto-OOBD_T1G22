@@ -5,6 +5,6 @@ import com.example.bibliotecadigitale.Model.DisponibileA;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface DisponibileADAO extends DAO<DisponibileA>{
-    DisponibileA get(int coda,String doi) throws SQLException;
+public interface DisponibileADAO extends DAO{
+    ArrayList<String> get(int coda,String doi) throws SQLException;
 }
