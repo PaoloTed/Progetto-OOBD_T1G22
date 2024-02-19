@@ -120,6 +120,7 @@ public class LibroInformativaController implements Initializable {
         } else {
             buttonSerieId.setVisible(false);
             textMessagioId.setVisible(false);
+            buttonSuccessivoId.disableProperty().setValue(true);
         }
         textAutoreId.setText(textAutoreId.getText()+libroPassato.getAutore());
         txtEditoreId.setText(txtEditoreId.getText()+libroPassato.getEditore());
@@ -141,8 +142,6 @@ public class LibroInformativaController implements Initializable {
             throw new RuntimeException(e);
 
         }
-
-
     }
 
     public void setPreferito(ActionEvent event) {
