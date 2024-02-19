@@ -3,6 +3,7 @@ package com.example.bibliotecadigitale.Connection;
 import com.example.bibliotecadigitale.DAO.DisponibileLDAO;
 import com.example.bibliotecadigitale.Model.DisponibileL;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -10,54 +11,24 @@ import java.util.List;
 
 public class DisponibileLDAOImpl implements DisponibileLDAO {
     private final Connessione connessione = new Connessione();
+    private final java.sql.Connection conn = Connessione.getConnection();
 
-    @Override
-    public DisponibileL get(int coda, String isbn) throws SQLException {
-        DisponibileL disponibileL;
-        try {
-            String query = "SELECT * FROM disponibile_l WHERE coda = '" + coda + "'AND isbn = '" + isbn + "';";
-            disponibileL = new DisponibileL();
-            ResultSet rs = connessione.executeSearch(query);
-            while (rs.next()) {
-                disponibileL.setCoda(rs.getInt(1));
-                disponibileL.setIsbn(rs.getString(2));
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+    private ArrayList<String> rsToArrayList(ResultSet rs, int numCampi) throws SQLException {
+        ArrayList<String> array = new ArrayList<>();
+        for (int i = 1; i <= numCampi; i++) {
+            array.add(rs.getString(i));
         }
-        return disponibileL;
-    }
-
-
-    public ArrayList<DisponibileL> getAcquisti(String isbn) throws SQLException {
-        ArrayList<DisponibileL> disponibileL;
-        try {
-            String query = "SELECT * FROM disponibile_l WHERE isbn = '" + isbn + "';";
-            disponibileL = new ArrayList<>();
-            ResultSet rs = connessione.executeSearch(query);
-            while (rs.next()) {
-                disponibileL.add(get(rs.getInt(1), rs.getString(2)));
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return disponibileL;
+        return array;
     }
 
     @Override
-    public ArrayList<DisponibileL> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
-        ArrayList<DisponibileL> disponibileLFinded = new ArrayList<>();
-        String query = "";
-        if (tipoRicerca.equalsIgnoreCase("coda")) {
-            query = "SELECT coda,isbn FROM disponibile_l WHERE " + tipoRicerca + " = " + parolaChiave + ";";
-        }
-        if (tipoRicerca.equalsIgnoreCase("isbn")) {
-            query = "SELECT coda,isbn FROM disponibile_l WHERE " + tipoRicerca + " LIKE '%" + parolaChiave + "%';";
-        }
+    public ArrayList<ArrayList<String>> getAll() throws SQLException {
+        ArrayList<ArrayList<String>> disponibileLFinded = new ArrayList<>();
+        String query = "SELECT * FROM disponibilel;";
         ResultSet rs = connessione.executeSearch(query);
-        DisponibileL disponibileL;
+        ArrayList<String> disponibileL;
         while (rs.next()) {
-            disponibileL = get(rs.getInt(1), rs.getString(2));
+            disponibileL = rsToArrayList(rs, 2);
             disponibileLFinded.add(disponibileL);
         }
         rs.close();
@@ -65,75 +36,53 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
     }
 
     @Override
-    public ArrayList<ArrayList<String>> getAllT() {
-        return null;
+    public void insert(ArrayList<String> strings) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("INSERT INTO disponibile_l VALUES (?,?);");
+        ps.setInt(1, Integer.parseInt(strings.get(0)));//coda
+        ps.setString(2, strings.get(1));//isbn
+        ps.executeUpdate();
+        ps.close();
     }
 
     @Override
-    public ArrayList<ArrayList<String>> getRicercaT(String modRicerca, String titoloRicerche) throws SQLException {
-        return null;
+    public void update(ArrayList<String> strings) throws SQLException {
+        //TODO non deve essere implementato???
     }
 
     @Override
-    public void deleteT(ArrayList<String> elemento) throws SQLException {
-
+    public void delete(ArrayList<String> strings) throws SQLException {
+        //TODO non deve essere implementato???
     }
 
     @Override
-    public void insertT(ArrayList<String> elemento) throws SQLException {
-
-    }
-
-    @Override
-    public void updateT(ArrayList<String> elemento) throws SQLException {
-
-    }
-
-    @Override
-    public List<DisponibileL> getAll() throws SQLException {
-        ArrayList<DisponibileL> disponibileLFinded = new ArrayList<>();
-        try {
-            String query = "SELECT coda,isbn FROM disponibile_l;";
-            ResultSet rs = connessione.executeSearch(query);
-            DisponibileL disponibileL;
-            while (rs.next()) {
-                disponibileL = get(rs.getInt(1), rs.getString(2));
-                disponibileLFinded.add(disponibileL);
-            }
-            rs.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+    public ArrayList<ArrayList<String>> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
+        ArrayList<ArrayList<String>> disponibileLFinded = new ArrayList<>();
+        String query = "SELECT * FROM disponibile_l WHERE ";
+        if(tipoRicerca.equals("coda")) {
+            query = "SELECT * FROM disponibile_l WHERE coda = " + parolaChiave + ";";
+        } else if(tipoRicerca.equals("isbn")) {
+            query = "SELECT * FROM disponibile_l WHERE isbn = '" + parolaChiave + "';";
         }
+        ResultSet rs = connessione.executeSearch(query);
+        ArrayList<String> disponibileL;
+        while (rs.next()) {
+            disponibileL = rsToArrayList(rs, 2);
+            disponibileLFinded.add(disponibileL);
+        }
+        rs.close();
         return disponibileLFinded;
     }
 
     @Override
-    public void insert(DisponibileL disponibileL) throws SQLException {
-        try {
-            String query = "INSERT INTO disponibile_l VALUES (" + disponibileL.getCoda() + ",'" + disponibileL.getIsbn() + "');";
-            connessione.executeUpdate(query);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+    public ArrayList<String> get(int coda, String isbn) throws SQLException {
+        //TODO non deve essere implementato???
+        ArrayList<String> disponibileL = new ArrayList<>();
+        String query = "SELECT * FROM disponibile_l WHERE coda = " + coda + " AND isbn = '" + isbn + "';";
+        ResultSet rs = connessione.executeSearch(query);
+        if (rs.next()) {
+            disponibileL = rsToArrayList(rs, 2);
         }
-    }
-
-    @Override
-    public void update(DisponibileL disponibileL) throws SQLException {
-        try {
-            String query = "UPDATE disponibile_l SET isbn = '" + disponibileL.getIsbn() + "' WHERE coda = " + disponibileL.getCoda() + ";";
-            connessione.executeUpdate(query);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public void delete(DisponibileL disponibileL) throws SQLException {
-        try {
-            String query = "DELETE FROM disponibile_l WHERE coda = " + disponibileL.getCoda() + " AND isbn = '" + disponibileL.getIsbn() + "';";
-            connessione.executeUpdate(query);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        rs.close();
+        return disponibileL;
     }
 }

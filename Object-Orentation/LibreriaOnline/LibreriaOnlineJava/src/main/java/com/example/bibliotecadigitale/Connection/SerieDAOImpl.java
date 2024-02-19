@@ -38,10 +38,21 @@ public class SerieDAOImpl implements SerieDAO {
     @Override
     public void insert(ArrayList<String> strings) throws SQLException{
         PreparedStatement ps = conn.prepareStatement("INSERT INTO serie VALUES (?,?,?,?);");
+        //Inserimento valori non nullable
         ps.setInt(1, Integer.parseInt(strings.get(0)));//cods
         ps.setString(2, strings.get(1));//nome
-        ps.setInt(3, Integer.parseInt(strings.get(2)));//numerolibri
-        ps.setBoolean(4, Boolean.parseBoolean(strings.get(3)));//completata
+
+        //Inserimento valori nullable
+        if (strings.get(2) == null) {
+            ps.setNull(3, java.sql.Types.INTEGER);
+        } else {
+            ps.setInt(3, Integer.parseInt(strings.get(2)));//numerolibri
+        }
+        if (strings.get(3) == null) {
+            ps.setNull(4, java.sql.Types.BOOLEAN);
+        } else {
+            ps.setBoolean(4, Boolean.parseBoolean(strings.get(3)));//completata
+        }
         ps.executeUpdate();
         ps.close();
     }
@@ -49,10 +60,21 @@ public class SerieDAOImpl implements SerieDAO {
     @Override
     public void update(ArrayList<String> strings) throws SQLException {
         PreparedStatement ps = conn.prepareStatement("UPDATE serie SET nome = ?, numlibri = ?, completata = ? WHERE cods = ?;");
+        //Inserimento valori non nullable
         ps.setString(1, strings.get(1));//nome
-        ps.setInt(2, Integer.parseInt(strings.get(2)));//numerolibri
-        ps.setBoolean(3, Boolean.parseBoolean(strings.get(3)));//completata
         ps.setInt(4, Integer.parseInt(strings.get(0)));//cods
+        //Inserimento valori nullable
+        if (strings.get(2) == null) {
+            ps.setNull(3, java.sql.Types.INTEGER);
+        } else {
+            ps.setInt(3, Integer.parseInt(strings.get(2)));//numerolibri
+        }
+        if (strings.get(3) == null) {
+            ps.setNull(4, java.sql.Types.BOOLEAN);
+        } else {
+            ps.setBoolean(4, Boolean.parseBoolean(strings.get(3)));//completata
+        }
+
         ps.executeUpdate();
         ps.close();
     }
@@ -86,6 +108,13 @@ public class SerieDAOImpl implements SerieDAO {
 
     @Override
     public ArrayList<String> get(int cods) throws SQLException {
-        return null;
+        ArrayList<String> serie = new ArrayList<>();
+        String query = "SELECT * FROM serie WHERE cods = " + cods + ";";
+        ResultSet rs = connessione.executeSearch(query);
+        while (rs.next()) {
+            serie = rsToArrayList(rs, 4);
+        }
+        rs.close();
+        return serie;
     }
 }

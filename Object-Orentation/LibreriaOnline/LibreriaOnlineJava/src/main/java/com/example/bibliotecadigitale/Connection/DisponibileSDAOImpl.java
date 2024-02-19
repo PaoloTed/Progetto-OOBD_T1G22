@@ -1,41 +1,32 @@
 package com.example.bibliotecadigitale.Connection;
 
 import com.example.bibliotecadigitale.DAO.DisponibileSDAO;
-import com.example.bibliotecadigitale.Model.DisponibileS;
+
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class DisponibileSDAOImpl implements DisponibileSDAO {
     private final Connessione connessione = new Connessione();
+    private final java.sql.Connection conn = Connessione.getConnection();
 
-    @Override
-    public DisponibileS get(int coda, int cods) throws SQLException {
-        DisponibileS disponibileS;
-        try {
-            String query = "SELECT * FROM disponibile_s WHERE coda = " + coda + " AND cods = " + cods + ";";
-            ResultSet rs = connessione.executeSearch(query);
-            disponibileS = new DisponibileS();
-            while (rs.next()) {
-                disponibileS.setCoda(rs.getInt(1));
-                disponibileS.setCods(rs.getInt(2));
-            }
-            rs.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+    private ArrayList<String> rsToArrayList(ResultSet rs, int numCampi) throws SQLException {
+        ArrayList<String> array = new ArrayList<>();
+        for (int i = 1; i <= numCampi; i++) {
+            array.add(rs.getString(i));
         }
-        return disponibileS;
+        return array;
     }
 
     @Override
-    public ArrayList<DisponibileS> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
-        ArrayList<DisponibileS> disponibileSFinded = new ArrayList<>();
-        String query = "SELECT coda,cods FROM disponibile_s WHERE " + tipoRicerca + " = " + parolaChiave + ";";
+    public ArrayList<ArrayList<String>> getAll() throws SQLException {
+        ArrayList<ArrayList<String>> disponibileSFinded = new ArrayList<>();
+        String query = "SELECT * FROM disponibile_s;";
         ResultSet rs = connessione.executeSearch(query);
-        DisponibileS disponibileS;
+        ArrayList<String> disponibileS;
         while (rs.next()) {
-            disponibileS = get(rs.getInt(1), rs.getInt(2));
+            disponibileS = rsToArrayList(rs, 2);
             disponibileSFinded.add(disponibileS);
         }
         rs.close();
@@ -43,75 +34,48 @@ public class DisponibileSDAOImpl implements DisponibileSDAO {
     }
 
     @Override
-    public ArrayList<ArrayList<String>> getAllT() {
-        return null;
+    public void insert(ArrayList<String> strings) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("INSERT INTO disponibile_s VALUES (?,?);");
+        ps.setInt(1, Integer.parseInt(strings.get(0)));//coda
+        ps.setInt(2, Integer.parseInt(strings.get(1)));//cods
+        ps.executeUpdate();
+        ps.close();
     }
 
     @Override
-    public ArrayList<ArrayList<String>> getRicercaT(String modRicerca, String titoloRicerche) throws SQLException {
-        return null;
+    public void update(ArrayList<String> strings) throws SQLException {
+        //TODO Non deve essere implementato??
     }
 
     @Override
-    public void deleteT(ArrayList<String> elemento) throws SQLException {
-
+    public void delete(ArrayList<String> strings) throws SQLException {
+        //TODO Non deve essere implementato??
     }
 
     @Override
-    public void insertT(ArrayList<String> elemento) throws SQLException {
-
-    }
-
-    @Override
-    public void updateT(ArrayList<String> elemento) throws SQLException {
-
-    }
-
-    @Override
-    public List<DisponibileS> getAll() throws SQLException {
-        ArrayList<DisponibileS> disponibileSFinded = new ArrayList<>();
-        try {
-            String query = "SELECT coda,cods FROM disponibile_s;";
-            ResultSet rs = connessione.executeSearch(query);
-            DisponibileS disponibileS;
-            while (rs.next()) {
-                disponibileS = get(rs.getInt(1), rs.getInt(2));
-                disponibileSFinded.add(disponibileS);
-            }
-            rs.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+    public ArrayList<ArrayList<String>> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
+        ArrayList<ArrayList<String>> disponibileSFinded = new ArrayList<>();
+        String query = "SELECT * FROM disponibile_s WHERE " + tipoRicerca + " = " + parolaChiave + ";";
+        ResultSet rs = connessione.executeSearch(query);
+        ArrayList<String> disponibileS;
+        while (rs.next()) {
+            disponibileS = rsToArrayList(rs, 2);
+            disponibileSFinded.add(disponibileS);
         }
+        rs.close();
         return disponibileSFinded;
     }
 
     @Override
-    public void insert(DisponibileS disponibileS) throws SQLException {
-        try {
-            String query = "INSERT INTO disponibile_s (coda,cods) VALUES (" + disponibileS.getCoda() + "," + disponibileS.getCods() + ");";
-            connessione.executeUpdate(query);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+    public ArrayList<String> get(int coda, int cods) throws SQLException{
+        //TODO Non deve essere implementato??
+        ArrayList<String> disponibileS = new ArrayList<>();
+        String query = "SELECT * FROM disponibile_s WHERE coda = " + coda + " AND cods = " + cods + ";";
+        ResultSet rs = connessione.executeSearch(query);
+        while (rs.next()) {
+            disponibileS = rsToArrayList(rs, 2);
         }
-    }
-
-    @Override
-    public void update(DisponibileS disponibileS) throws SQLException {
-        try {
-            String query = "UPDATE disponibile_s SET cods = " + disponibileS.getCods() + " WHERE coda = " + disponibileS.getCoda() + ";";
-            connessione.executeUpdate(query);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public void delete(DisponibileS disponibileS) throws SQLException {
-        try {
-            String query = "DELETE FROM disponibile_s WHERE coda = " + disponibileS.getCoda() + " AND cods = '" + disponibileS.getCods() + "';";
-            connessione.executeUpdate(query);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        rs.close();
+        return disponibileS;
     }
 }
