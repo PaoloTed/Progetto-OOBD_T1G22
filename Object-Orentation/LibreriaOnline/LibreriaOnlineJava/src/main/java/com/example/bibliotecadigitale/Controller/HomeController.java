@@ -118,7 +118,7 @@ public class HomeController implements Initializable {
             ArrayList<Libro> libri = new ArrayList<>();
             ArrayList<ArrayList<String>> libriArray;
             try {
-                libriArray = libroDAO.getRicercaT(modRicerca, titoloRicerche);
+                libriArray = libroDAO.getRicerca(modRicerca, titoloRicerche);
             } catch (SQLException e) {
                 support.messageStage("Errore nella ricerca");
                 throw new RuntimeException(e);
@@ -137,18 +137,22 @@ public class HomeController implements Initializable {
 
         //Ricerca e visualizzazione risultati articoli
         if (scelta.equals("articolo")) {
-            ArticoloScientificoDAOImpl articoloScientificoDAO = new ArticoloScientificoDAOImpl();
-            ArrayList<ArticoloScientifico> articoli;
+            LibroDAOImpl aricoloDAO = new LibroDAOImpl();
+            ArrayList<ArticoloScientifico> articoli = new ArrayList<>();
+            ArrayList<ArrayList<String>> articoloArray;
             try {
-                articoli = articoloScientificoDAO.getRicerca(modRicerca, titoloRicerche);
+                articoloArray = aricoloDAO.getRicerca(modRicerca, titoloRicerche);
             } catch (SQLException e) {
                 support.messageStage("Errore nella ricerca");
                 throw new RuntimeException(e);
             }
-            if (articoli.isEmpty()) {
+            if (articoloArray.isEmpty()) {
                 support.messageStage("Nessun match trovato");
                 idBarSearch.clear();
                 return;
+            }
+            for (ArrayList<String> articolo : articoloArray) {
+                articoli.add(new ArticoloScientifico(articolo));
             }
             articoloTableView.getItems().clear();
             articoloTableView.getItems().addAll(articoli);
