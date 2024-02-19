@@ -2,6 +2,9 @@ package com.example.bibliotecadigitale.Connection;
 
 import com.example.bibliotecadigitale.DAO.RivistaDAO;
 import com.example.bibliotecadigitale.Model.Rivista;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -9,37 +12,24 @@ import java.util.List;
 
 public class RivistaDAOImpl implements RivistaDAO {
     private final Connessione connessione = new Connessione();
+    private final Connection conn = Connessione.getConnection();
 
-    @Override
-    public Rivista get(String nome, String data) {
-        Rivista rivista;
-        try {
-            String query = "SELECT * FROM rivista WHERE nome = '" + nome + "' AND data = '" + data + "';";
-            ResultSet rs = connessione.executeSearch(query);
-            rivista = new Rivista();
-            while (rs.next()) {
-                rivista = new Rivista();
-                rivista.setNome(rs.getString(1));
-                rivista.setData(rs.getString(2));
-                rivista.setResponsabile(rs.getString(3));
-                rivista.setArgomento(rs.getString(4));
-            }
-            rs.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+    private ArrayList<String> rsToArrayList(ResultSet rs, int numCampi) throws SQLException {
+        ArrayList<String> array = new ArrayList<>();
+        for (int i = 1; i <= numCampi; i++) {
+            array.add(rs.getString(i));
         }
-        return rivista;
+        return array;
     }
 
     @Override
-    public ArrayList<Rivista> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
-        ArrayList<Rivista> rivistaFinded = new ArrayList<>();
-        String query;
-        query = "SELECT nome, data FROM rivista WHERE " + tipoRicerca + " LIKE '%" + parolaChiave + "%';";
+    public ArrayList<ArrayList<String>> getAll() throws SQLException {
+        ArrayList<ArrayList<String>> rivistaFinded = new ArrayList<>();
+        String query = "SELECT * FROM rivista;";
         ResultSet rs = connessione.executeSearch(query);
-        Rivista rivista;
+        ArrayList<String> rivista;
         while (rs.next()) {
-            rivista = get(rs.getString(1), rs.getString(2));
+            rivista = rsToArrayList(rs, 5);
             rivistaFinded.add(rivista);
         }
         rs.close();
@@ -47,85 +37,63 @@ public class RivistaDAOImpl implements RivistaDAO {
     }
 
     @Override
-    public ArrayList<ArrayList<String>> getAllT() {
-        return null;
+    public void insert(ArrayList<String> strings) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("INSERT INTO rivista VALUES (?,?,?,?);");
+        ps.setString(1, strings.get(0));//nome
+        ps.setDate(2, java.sql.Date.valueOf(strings.get(1)));//data
+        ps.setString(3, strings.get(2));//responsabile
+        ps.setString(4, strings.get(3));//argomento
+        ps.executeUpdate();
+        ps.close();
     }
 
     @Override
-    public ArrayList<ArrayList<String>> getRicercaT(String modRicerca, String titoloRicerche) throws SQLException {
-        return null;
+    public void update(ArrayList<String> strings) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("UPDATE rivista SET data = ?, responsabile = ?, argomento = ? WHERE nome = ?;");
+        ps.setDate(1, java.sql.Date.valueOf(strings.get(1)));//data
+        ps.setString(2, strings.get(2));//responsabile
+        ps.setString(3, strings.get(3));//argomento
+        ps.setString(4, strings.get(0));//nome
+        ps.executeUpdate();
+        ps.close();
     }
 
     @Override
-    public void deleteT(ArrayList<String> elemento) throws SQLException {
-
+    public void delete(ArrayList<String> strings) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("DELETE FROM rivista WHERE nome = ?;");
+        ps.setString(1, strings.get(0));//nome
+        ps.executeUpdate();
+        ps.close();
     }
 
     @Override
-    public void insertT(ArrayList<String> elemento) throws SQLException {
-
-    }
-
-    @Override
-    public void updateT(ArrayList<String> elemento) throws SQLException {
-
-    }
-
-    @Override
-    public List<Rivista> getAll() throws SQLException {
-        ArrayList<Rivista> rivistaFinded = new ArrayList<>();
-        try {
-            String query = "SELECT nome, data FROM rivista;";
-            ResultSet rs = connessione.executeSearch(query);
-            Rivista rivista;
-            while (rs.next()) {
-                rivista = get(rs.getString(1), rs.getString(2));
-                rivistaFinded.add(rivista);
-            }
-            rs.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+    public ArrayList<ArrayList<String>> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
+        ArrayList<ArrayList<String>> rivistaFinded = new ArrayList<>();
+        String query;
+        if (tipoRicerca.equalsIgnoreCase("data")) {
+            query = "SELECT * FROM rivista WHERE " + tipoRicerca + " = '" + parolaChiave + "';";
+        } else {
+            query = "SELECT * FROM rivista WHERE " + tipoRicerca + " LIKE '%" + parolaChiave + "%';";
         }
+        ResultSet rs = connessione.executeSearch(query);
+        ArrayList<String> rivista;
+        while (rs.next()) {
+            rivista = rsToArrayList(rs, 5);
+            rivistaFinded.add(rivista);
+        }
+        rs.close();
         return rivistaFinded;
     }
 
     @Override
-    public void insert(Rivista rivista) throws SQLException {
-        try {
-            String nome = rivista.getNome();
-            String data = rivista.getData();
-            String responsabile = rivista.getResponsabile();
-            String argomento = rivista.getArgomento();
-            String query = "INSERT INTO rivista VALUES ('" + nome + "', '" + data + "', '" + responsabile + "', '" + argomento + "');";
-            connessione.executeUpdate(query);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+    public ArrayList<String> get(String nome, String data) throws SQLException {
+        ArrayList<String> rivista = new ArrayList<>();
+        String query = "SELECT * FROM rivista WHERE nome = " + nome + " AND data = " + data + ";";
+        ResultSet rs = connessione.executeSearch(query);
+        while (rs.next()) {
+            rivista = rsToArrayList(rs, 5);
         }
-    }
-
-    @Override
-    public void update(Rivista rivista) throws SQLException {
-        try {
-            String nome = rivista.getNome();
-            String data = rivista.getData();
-            String responsabile = rivista.getResponsabile();
-            String argomento = rivista.getArgomento();
-            String query = "UPDATE rivista SET nome = '" + nome + "', data = '" + data + "', responsabile = '" + responsabile + "', argomento = '" + argomento + "' WHERE nome = '" + nome + "' AND data = '" + data + "';";
-            connessione.executeUpdate(query);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public void delete(Rivista rivista) throws SQLException {
-        try {
-            String nome = rivista.getNome();
-            String data = rivista.getData();
-            String query = "DELETE FROM rivista WHERE nome = '" + nome + "' AND data = '" + data + "';";
-            connessione.executeUpdate(query);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        rs.close();
+        return rivista;
     }
 }

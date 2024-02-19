@@ -718,7 +718,7 @@ public class HomeControllerAdminTest implements Initializable {
             throw new RuntimeException(e);
         }
         try {
-            implDaoHashMap.get(scelta).deleteT(arrayList);
+            implDaoHashMap.get(scelta).delete(arrayList);
             support.messageStage("Delete effettuato");
         } catch (SQLException e) {
             support.messageStage("Errore nell'eliminazione");
@@ -736,7 +736,7 @@ public class HomeControllerAdminTest implements Initializable {
             throw new RuntimeException(e);
         }
         try {
-            implDaoHashMap.get(scelta).insertT(arrayList);
+            implDaoHashMap.get(scelta).insert(arrayList);
             support.messageStage("Insert effettuato");
         } catch (SQLException e) {
             support.messageStage("Errore nell'inserimento");
@@ -754,7 +754,7 @@ public class HomeControllerAdminTest implements Initializable {
             throw new RuntimeException(e);
         }
         try {
-            implDaoHashMap.get(scelta).updateT(arrayList);
+            implDaoHashMap.get(scelta).update(arrayList);
             support.messageStage("Update effettuato");
         } catch (SQLException e) {
             support.messageStage("Errore nell'aggiornamento");
