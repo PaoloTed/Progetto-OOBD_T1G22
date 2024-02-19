@@ -14,6 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 import javafx.util.converter.BooleanStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 
@@ -266,6 +267,9 @@ public class HomeControllerAdminTest implements Initializable {
     private ImageView imageLibriSfondo;
     @FXML
     private Button buttonViewAll;
+
+    @FXML
+    private Text txtRicercaInserimento;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         imageLibriSfondo.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/libri800x900.png"))));
@@ -539,12 +543,14 @@ public class HomeControllerAdminTest implements Initializable {
     @FXML
     private void sceltaInsert() {
         sceltaInsertView = "insert";
+        txtRicercaInserimento.setText("Cosa vuori Inserire ?");
         sceltaSetter(sceltaInsertView);
     }
 
     @FXML
     private void sceltaView() {
         sceltaInsertView = "view";
+        txtRicercaInserimento.setText("Cosa vuori Visualizzare ?");
         sceltaSetter(sceltaInsertView);
     }
 
