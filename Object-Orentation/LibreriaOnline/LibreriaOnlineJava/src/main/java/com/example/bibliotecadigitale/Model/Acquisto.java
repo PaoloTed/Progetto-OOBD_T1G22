@@ -52,13 +52,23 @@ public class Acquisto
         return tipoA;
     }
 
-    public ArrayList<String> toArrayList() {
-        ArrayList<String> arrayList = new ArrayList<>();
-        arrayList.add(String.valueOf(codA));
-        arrayList.add(nome);
-        arrayList.add(tipoA);
-        arrayList.add(url);
-        arrayList.add(indirizzo);
-        return arrayList;
-    }
+//    Acquisto(ArrayList<String> strings) {
+//        codA = Integer.parseInt(strings.get(0));
+//        if(strings.get(1) == null) {
+//            nome = null;
+//        } else {
+//            nome = strings.get(1);
+//        }
+//        tipoA = strings.get(2);
+//        if(strings.get(3) == null) {
+//            url = null;
+//        } else {
+//            url = strings.get(3);
+//        }
+//        if(strings.get(4) == null) {
+//            indirizzo = null;
+//        } else {
+//            indirizzo = strings.get(4);
+//        }
+//    }
 }

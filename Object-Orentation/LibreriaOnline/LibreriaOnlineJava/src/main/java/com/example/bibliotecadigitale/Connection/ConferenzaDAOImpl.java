@@ -79,13 +79,32 @@ public class ConferenzaDAOImpl implements ConferenzaDAO {
 
     @Override
     public void delete(ArrayList<String> strings) throws SQLException {
-
+        PreparedStatement ps = conn.prepareStatement("DELETE FROM conferenza WHERE codC = ?;");
+        ps.setInt(1, Integer.parseInt(strings.get(0)));//codC
+        ps.executeUpdate();
+        ps.close();
     }
 
     @Override
     public ArrayList<ArrayList<String>> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
-        return null;
+        ArrayList<ArrayList<String>> conferenzaFinded = new ArrayList<>();
+        String query;
+        if (tipoRicerca.equalsIgnoreCase("codC")) {
+            query = "SELECT * FROM conferenza WHERE " + tipoRicerca + " = " + parolaChiave + ";";
+        } else {
+            if (tipoRicerca.equalsIgnoreCase("dataI") || tipoRicerca.equalsIgnoreCase("dataF")) {
+                query = "SELECT * FROM conferenza WHERE " + tipoRicerca + " = '" + parolaChiave + "';";
+            } else {
+                query = "SELECT * FROM conferenza WHERE " + tipoRicerca + " LIKE '%" + parolaChiave + "%';";
+            }
+        }
+        ResultSet rs = connessione.executeSearch(query);
+        ArrayList<String> conferenza;
+        while (rs.next()) {
+            conferenza = rsToArrayList(rs, 7);
+            conferenzaFinded.add(conferenza);
+        }
+        rs.close();
+        return conferenzaFinded;
     }
-
-    C
 }

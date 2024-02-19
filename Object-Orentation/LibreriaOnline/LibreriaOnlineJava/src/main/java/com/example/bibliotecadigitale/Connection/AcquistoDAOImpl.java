@@ -2,161 +2,127 @@ package com.example.bibliotecadigitale.Connection;
 
 import com.example.bibliotecadigitale.DAO.AcquistoDAO;
 import com.example.bibliotecadigitale.Model.Acquisto;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
+import java.sql.*;
 import java.util.ArrayList;
 
 public class AcquistoDAOImpl implements AcquistoDAO {
 
     private final Connessione connessione = new Connessione();
+    private final Connection conn = Connessione.getConnection();
 
-//    public ArrayList<String> get(int coda){
-//        ArrayList<String> acquisto = new ArrayList<>();
-//        try {
-//            String query = "SELECT * FROM acquisto WHERE coda = " + coda + ";";
-//            ResultSet rs = connessione.executeSearch(query);
-//            while (rs.next()) {
-//                acquisto.add(rs.getString(1));
-//                acquisto.add(rs.getString(2));
-//                acquisto.add(rs.getString(3));
-//                acquisto.add(rs.getString(4));
-//                acquisto.add(rs.getString(5));
-//            }
-//            rs.close();
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//        return acquisto;
-//    }
-    @Override
-    public Acquisto get(int coda) throws SQLException {
-        Acquisto acquisto;
-        try {
-            String query = "SELECT * FROM acquisto WHERE coda = " + coda + ";";
-            ResultSet rs = connessione.executeSearch(query);
-            acquisto = new Acquisto();
-            while (rs.next()) {
-                acquisto.setCoda(rs.getInt(1));
-                acquisto.setNome(rs.getString(2));
-                acquisto.setTipoa(rs.getString(3));
-                acquisto.setUrl(rs.getString(4));
-                acquisto.setIndirizzo(rs.getString(5));
-            }
-            rs.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+    private ArrayList<String> rsToArrayList(ResultSet rs, int numCampi) throws SQLException {
+        ArrayList<String> array = new ArrayList<>();
+        for (int i = 1; i <= numCampi; i++) {
+            array.add(rs.getString(i));
         }
+        return array;
+    }
+
+    @Override
+    public ArrayList<String> get(int coda) throws SQLException {
+        ArrayList<String> acquisto = new ArrayList<>();
+        String query = "SELECT * FROM acquisto WHERE coda = " + coda + ";";
+        ResultSet rs = connessione.executeSearch(query);
+        while (rs.next()) {
+            acquisto = rsToArrayList(rs, 15);
+        }
+        rs.close();
         return acquisto;
     }
 
     @Override
-    public ArrayList<Acquisto> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
-        ArrayList<Acquisto> acquistoFinded = new ArrayList<>();
-        String query;
-
-        if (tipoRicerca.equalsIgnoreCase("coda")) {
-            query = "SELECT coda FROM acquisto WHERE coda = " + parolaChiave + ";";
-        } else {
-            query = "SELECT coda FROM acquisto WHERE " + tipoRicerca + " LIKE '%" + parolaChiave + "%';";
-        }
+    public ArrayList<ArrayList<String>> getAll() throws SQLException {
+        ArrayList<ArrayList<String>> acquistoFinded = new ArrayList<>();
+        String query = "SELECT * FROM acquisto;";
         ResultSet rs = connessione.executeSearch(query);
-        Acquisto acquisto;
+        ArrayList<String> acquisto;
         while (rs.next()) {
-            acquisto = get(rs.getInt(1));
+            acquisto = rsToArrayList(rs, 15);
             acquistoFinded.add(acquisto);
         }
         rs.close();
-
         return acquistoFinded;
     }
 
     @Override
-    public ArrayList<ArrayList<String>> getAllT() {
-        return null;
-    }
+    public void insert(ArrayList<String> strings) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("INSERT INTO acquisto VALUES (?,?,?,?,?);");
+        //Inserimento valori non nullable
+        ps.setInt(1, Integer.parseInt(strings.get(0)));//coda
+        ps.setString(3, strings.get(2));//tipo
 
-    @Override
-    public ArrayList<ArrayList<String>> getRicercaT(String modRicerca, String titoloRicerche) throws SQLException {
-        return null;
-    }
-
-    @Override
-    public void deleteT(ArrayList<String> elemento) throws SQLException {
-
-    }
-
-    @Override
-    public void insertT(ArrayList<String> elemento) throws SQLException {
-
-    }
-
-    @Override
-    public void updateT(ArrayList<String> elemento) throws SQLException {
-
-    }
-
-    @Override
-    public ArrayList<Acquisto> getAll() throws SQLException {
-        ArrayList<Acquisto> acquistoFinded = new ArrayList<>();
-        try {
-            String query = "SELECT coda FROM acquisto;";
-            ResultSet rs = connessione.executeSearch(query);
-            Acquisto acquisto;
-            while (rs.next()) {
-                acquisto = get(rs.getInt(1));
-                acquistoFinded.add(acquisto);
-            }
-            rs.close();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        //Inserimento valori nullable
+        if(strings.get(1) == null) {
+            ps.setNull(2, Types.VARCHAR);
+        } else {
+            ps.setString(2, strings.get(1));//nome
         }
+        if(strings.get(3) == null) {
+            ps.setNull(4, Types.VARCHAR);
+        } else {
+            ps.setString(4, strings.get(3));//url
+        }
+        if(strings.get(4) == null) {
+            ps.setNull(5, Types.VARCHAR);
+        } else {
+            ps.setString(5, strings.get(4));//indirizzo
+        }
+        ps.executeUpdate();
+        ps.close();
+    }
+
+    @Override
+    public void update(ArrayList<String> strings) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("UPDATE acquisto SET nome = ?, tipo = ?, url = ?, indirizzo = ? WHERE coda = ?;");
+        //Inserimento valori non nullable
+        ps.setString(2, strings.get(2));//tipo
+        ps.setInt(5, Integer.parseInt(strings.get(0)));//coda
+
+        //Inserimento valori nullable
+        if(strings.get(1) == null) {
+            ps.setNull(1, Types.VARCHAR);
+        } else {
+            ps.setString(1, strings.get(1));//nome
+        }
+        if(strings.get(3) == null) {
+            ps.setNull(3, Types.VARCHAR);
+        } else {
+            ps.setString(3, strings.get(3));//url
+        }
+        if(strings.get(4) == null) {
+            ps.setNull(4, Types.VARCHAR);
+        } else {
+            ps.setString(4, strings.get(4));//indirizzo
+        }
+        ps.executeUpdate();
+        ps.close();
+    }
+
+    @Override
+    public void delete(ArrayList<String> strings) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("DELETE FROM acquisto WHERE coda = ?;");
+        ps.setInt(1, Integer.parseInt(strings.get(0)));//coda
+        ps.executeUpdate();
+        ps.close();
+    }
+
+    @Override
+    public ArrayList<ArrayList<String>> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
+        ArrayList<ArrayList<String>> acquistoFinded = new ArrayList<>();
+        String query;
+        if (tipoRicerca.equalsIgnoreCase("coda")) {
+            query = "SELECT * FROM acquisto WHERE " + tipoRicerca + " = " + parolaChiave + ";";
+        } else {
+            query = "SELECT * FROM acquisto WHERE " + tipoRicerca + " LIKE '%" + parolaChiave + "%';";
+        }
+        ResultSet rs = connessione.executeSearch(query);
+        ArrayList<String> acquisto;
+        while (rs.next()) {
+            acquisto = rsToArrayList(rs, 15);
+            acquistoFinded.add(acquisto);
+        }
+        rs.close();
         return acquistoFinded;
-    }
-
-    @Override
-    public void insert(Acquisto acquisto) throws SQLException {
-        try {
-            String query = "INSERT INTO acquisto VALUES (" + acquisto.getCoda() + ",'" + acquisto.getNome() + "','" + acquisto.getTipoa() + "','" + acquisto.getUrl() + "','" + acquisto.getIndirizzo() + "');";
-            connessione.executeUpdate(query);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-//    public void insert(int coda, String nome, String tipoa, String url, String indirizzo) throws SQLException {
-//        try {
-//            String query = "INSERT INTO acquisto VALUES (" + coda + ",'" + nome + "','" + tipoa + "','" + url + "','" + indirizzo + "');";
-//            connessione.executeUpdate(query);
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
-
-    @Override
-    public void update(Acquisto acquisto) throws SQLException {
-        try {
-            String query = "UPDATE acquisto SET coda = " + acquisto.getCoda() + ", nome = '" + acquisto.getNome() + "', tipoa = '" + acquisto.getTipoa() + "', url = '" + acquisto.getUrl() + "', indirizzo = '" + acquisto.getIndirizzo() + "' WHERE coda = " + acquisto.getCoda() + ";";
-            connessione.executeUpdate(query);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-//    public void update(int coda, String nome, String tipoa, String url, String indirizzo) throws SQLException {
-//        try {
-//            String query = "UPDATE acquisto SET coda = " + coda + ", nome = '" + nome + "', tipoa = '" + tipoa + "', url = '" + url + "', indirizzo = '" + indirizzo + "' WHERE coda = " + coda + ";";
-//            connessione.executeUpdate(query);
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
-
-    @Override
-    public void delete(Acquisto acquisto) throws SQLException {
-        try {
-            String query = "DELETE FROM acquisto WHERE coda = " + acquisto.getCoda() + ";";
-            connessione.executeUpdate(query);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
     }
 }
