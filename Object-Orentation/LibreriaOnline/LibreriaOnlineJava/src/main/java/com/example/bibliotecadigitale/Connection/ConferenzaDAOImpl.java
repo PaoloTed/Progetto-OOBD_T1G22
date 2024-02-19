@@ -2,6 +2,9 @@ package com.example.bibliotecadigitale.Connection;
 
 import com.example.bibliotecadigitale.DAO.ConferenzaDAO;
 import com.example.bibliotecadigitale.Model.Conferenza;
+
+import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -9,44 +12,36 @@ import java.util.List;
 
 public class ConferenzaDAOImpl implements ConferenzaDAO {
     private final Connessione connessione = new Connessione();
+    private final java.sql.Connection conn = Connessione.getConnection();
 
-    @Override
-    public Conferenza get(int codC) {
-        Conferenza conferenza = null;
-        try {
-            String query = "SELECT * FROM conferenza WHERE codC = '" + codC + "';";
-            ResultSet rs = connessione.executeSearch(query);
-            while (rs.next()) {
-                conferenza = new Conferenza();
-                conferenza.setCodc(Integer.parseInt(rs.getString("codC")));
-                conferenza.setNome(rs.getString("nome"));
-                conferenza.setDatai(rs.getString("dataI"));
-                conferenza.setDataf(rs.getString("dataF"));
-                conferenza.setIndirizzo(rs.getString("indirizzo"));
-                conferenza.setResponsabile(rs.getString("responsabile"));
-                conferenza.setStruttura(rs.getString("struttura"));
-            }
-            rs.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+    private ArrayList<String> rsToArrayList(ResultSet rs, int numCampi) throws SQLException {
+        ArrayList<String> array = new ArrayList<>();
+        for (int i = 1; i <= numCampi; i++) {
+            array.add(rs.getString(i));
         }
-        return conferenza;
+        return array;
     }
 
     @Override
-    public ArrayList<Conferenza> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
-        ArrayList<Conferenza> conferenzaFinded = new ArrayList<>();
-        String query;
-
-        if (tipoRicerca.equalsIgnoreCase("codC")) {
-            query = "SELECT codC FROM conferenza WHERE " + tipoRicerca + " = " + parolaChiave + ";";
-        } else {
-            query = "SELECT codC FROM conferenza WHERE " + tipoRicerca + " LIKE '%" + parolaChiave + "%';";
-        }
+    public ArrayList<String> get(int codC) throws SQLException {
+        ArrayList<String> conferenzaFinded = new ArrayList<>();
+        String query = "SELECT * FROM conferenza WHERE codC = " + codC + ";";
         ResultSet rs = connessione.executeSearch(query);
-        Conferenza conferenza;
+        if (rs.next()) {
+            conferenzaFinded = rsToArrayList(rs, 3);
+        }
+        rs.close();
+        return conferenzaFinded;
+    }
+
+    @Override
+    public ArrayList<ArrayList<String>> getAll() throws SQLException {
+        ArrayList<ArrayList<String>> conferenzaFinded = new ArrayList<>();
+        String query = "SELECT * FROM conferenza;";
+        ResultSet rs = connessione.executeSearch(query);
+        ArrayList<String> conferenza;
         while (rs.next()) {
-            conferenza = get(rs.getInt(1));
+            conferenza = rsToArrayList(rs, 3);
             conferenzaFinded.add(conferenza);
         }
         rs.close();
@@ -54,90 +49,43 @@ public class ConferenzaDAOImpl implements ConferenzaDAO {
     }
 
     @Override
-    public ArrayList<ArrayList<String>> getAllT() {
+    public void insert(ArrayList<String> strings) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("INSERT INTO conferenza VALUES (?,?,?,?,?,?,?);");
+        ps.setInt(1, Integer.parseInt(strings.get(0)));//codC
+        ps.setString(2, strings.get(1));//nome
+        ps.setString(3, strings.get(2));//struttura
+        ps.setString(4, strings.get(3));//indirizzo
+        ps.setDate(5, Date.valueOf(strings.get(4)));//dataInizio
+        ps.setDate(6, Date.valueOf(strings.get(5)));//dataFine
+        ps.setString(7, strings.get(6));//responsabile
+        ps.executeUpdate();
+        ps.close();
+    }
+
+    @Override
+    public void update(ArrayList<String> strings) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement("UPDATE conferenza SET codC = ?, nome = ?, struttura = ?, indirizzo = ?, dataInizio = ?, dataFine = ?, responsabile = ? WHERE codC = ?;");
+        ps.setInt(1, Integer.parseInt(strings.get(0)));//codC
+        ps.setString(2, strings.get(1));//nome
+        ps.setString(3, strings.get(2));//struttura
+        ps.setString(4, strings.get(3));//indirizzo
+        ps.setDate(5, Date.valueOf(strings.get(4)));//dataInizio
+        ps.setDate(6, Date.valueOf(strings.get(5)));//dataFine
+        ps.setString(7, strings.get(6));//responsabile
+        ps.setInt(8, Integer.parseInt(strings.get(0)));//codC
+        ps.executeUpdate();
+        ps.close();
+    }
+
+    @Override
+    public void delete(ArrayList<String> strings) throws SQLException {
+
+    }
+
+    @Override
+    public ArrayList<ArrayList<String>> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
         return null;
     }
 
-    @Override
-    public ArrayList<ArrayList<String>> getRicercaT(String modRicerca, String titoloRicerche) throws SQLException {
-        return null;
-    }
-
-    @Override
-    public void deleteT(ArrayList<String> elemento) throws SQLException {
-
-    }
-
-    @Override
-    public void insertT(ArrayList<String> elemento) throws SQLException {
-
-    }
-
-    @Override
-    public void updateT(ArrayList<String> elemento) throws SQLException {
-
-    }
-
-    @Override
-    public List<Conferenza> getAll() throws SQLException {
-        ArrayList<Conferenza> conferenzaFinded = new ArrayList<>();
-        try {
-            String query = "SELECT codC FROM conferenza;";
-            ResultSet rs = connessione.executeSearch(query);
-            Conferenza conferenza;
-            while (rs.next()) {
-                conferenza = get(rs.getInt(1));
-                conferenzaFinded.add(conferenza);
-            }
-            rs.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return conferenzaFinded;
-    }
-
-    @Override
-    public void insert(Conferenza conferenza) throws SQLException {
-        try {
-            int codC = conferenza.getCodc();
-            String nome = conferenza.getNome();
-            String dataI = conferenza.getDatai();
-            String dataF = conferenza.getDataf();
-            String indirizzo = conferenza.getIndirizzo();
-            String responsabile = conferenza.getResponsabile();
-            String struttura = conferenza.getStruttura();
-            String query = "INSERT INTO conferenza VALUES (" + codC + ", '" + nome + "', '" + dataI + "', '" + dataF + "', '" + indirizzo + "', '" + responsabile + "', '" + struttura + "');";
-            connessione.executeUpdate(query);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public void update(Conferenza conferenza) throws SQLException {
-        try {
-            int codC = conferenza.getCodc();
-            String nome = conferenza.getNome();
-            String dataI = conferenza.getDatai();
-            String dataF = conferenza.getDataf();
-            String indirizzo = conferenza.getIndirizzo();
-            String responsabile = conferenza.getResponsabile();
-            String struttura = conferenza.getStruttura();
-            String query = "UPDATE conferenza SET nome = '" + nome + "', dataI = '" + dataI + "', dataF = '" + dataF + "', indirizzo = '" + indirizzo + "', responsabile = '" + responsabile + "', struttura = '" + struttura + "' WHERE codC = " + codC + ";";
-            connessione.executeUpdate(query);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public void delete(Conferenza conferenza) throws SQLException {
-        try {
-            int codC = conferenza.getCodc();
-            String query = "DELETE FROM conferenza WHERE codC = " + codC + ";";
-            connessione.executeUpdate(query);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
+    C
 }
