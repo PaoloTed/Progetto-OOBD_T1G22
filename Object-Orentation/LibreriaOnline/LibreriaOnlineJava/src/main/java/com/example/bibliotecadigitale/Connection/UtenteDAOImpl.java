@@ -56,4 +56,36 @@ public class UtenteDAOImpl implements UtenteDAO {
             throw new RuntimeException(e);
         }
     }
+
+    public ArrayList<Integer> searchPreferiti(String emailUser) {
+        ArrayList<Integer> codiciPreferiti = new ArrayList<>();
+        try {
+            String query = "SELECT cods FROM preferiti WHERE email = '" + emailUser + "';";
+            ResultSet rs = connessione.executeSearch(query);
+            while (rs.next()) {
+                codiciPreferiti.add((rs.getInt(1)));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return codiciPreferiti;
+    }
+
+    public void insertPreferiti(String emailUser, int codiceSerie) {
+        try {
+            String query = "INSERT INTO preferiti VALUES ('" + emailUser + "','" + codiceSerie + "');";
+            connessione.executeUpdate(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void deletePreferiti(String emailUser, int codiceSerie) {
+        try {
+            String query = "DELETE FROM preferiti WHERE email = '" + emailUser + "' AND cods = '" + codiceSerie + "';";
+            connessione.executeUpdate(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
