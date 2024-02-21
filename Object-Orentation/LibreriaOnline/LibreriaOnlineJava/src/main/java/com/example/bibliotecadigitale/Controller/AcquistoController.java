@@ -53,7 +53,7 @@ public class AcquistoController implements Initializable {
             AcquistoDAOImpl acquistoDAO = new AcquistoDAOImpl();
             Acquisto acquisto;
             try {
-                acquisto = acquistoDAO.get(DisponibileLarray.get(0).getCoda());
+                acquisto = new Acquisto(acquistoDAO.get(DisponibileLarray.get(0).getCoda()));
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
@@ -74,7 +74,7 @@ public class AcquistoController implements Initializable {
             AcquistoDAOImpl acquistoDAO = new AcquistoDAOImpl();
             Acquisto acquisto;
             try {
-                acquisto = acquistoDAO.get(DisponibileLarray.get(0).getCoda());
+                acquisto = new Acquisto(acquistoDAO.get(DisponibileLarray.get(0).getCoda()));
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }

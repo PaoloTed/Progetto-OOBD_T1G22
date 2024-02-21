@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -45,13 +46,22 @@ public class SignUpController implements Initializable {
         }
         //Controllare prima che non esista già un utente con la stessa email
         UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
-        Utente utente = utenteDAO.get(emailUser);
+        Utente utente = null;
+        try {
+            utente = new Utente(utenteDAO.get(emailUser));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         //Se nessun utente ha la stessa email, inserire l'utente nel database
-        if (utente == null) {
+        if (utente.getEmail() == null){
             utente = getUtente();
             utente.setEmail(emailUser);
             utente.setPassword(passwordUser);
-            utenteDAO.insert(utente);
+            try {
+                utenteDAO.insert(utente.objToArrayList());
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
             support.messageStage("Registrazione effettuata con successo");
             support.switchStage("welcomeStage.fxml", event);
         } else {

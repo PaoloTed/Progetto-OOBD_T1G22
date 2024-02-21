@@ -8,6 +8,8 @@ import javafx.fxml.FXML;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.sql.SQLException;
+
 public class PresentazioneController {
 
     @FXML
@@ -23,7 +25,12 @@ public class PresentazioneController {
 
     public void showInfoPresentazione(int codP) {
         PresentazioneDAOImpl presentazioneDAO = new PresentazioneDAOImpl();
-        Presentazione presentazione = presentazioneDAO.get(codP);
+        Presentazione presentazione = null;
+        try {
+            presentazione = new Presentazione(presentazioneDAO.get(codP));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         textCodPId.setText(textCodPId.getText()+presentazione.getCodp());
         textNomeId.setText(textNomeId.getText()+presentazione.getNome());
         textIndizioId.setText(textIndizioId.getText()+presentazione.getIndirizzo());

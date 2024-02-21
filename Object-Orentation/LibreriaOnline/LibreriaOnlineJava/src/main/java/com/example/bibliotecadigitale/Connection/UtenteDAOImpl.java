@@ -48,6 +48,12 @@ public class UtenteDAOImpl implements UtenteDAO {
         return null;
     }
 
-    public void updatePassword(String email, String newPassword) {
+    public void updatePassword(String emailUser, String passwordUser) {
+        try {
+            String query = "UPDATE utente SET password = '" + passwordUser + "' WHERE email = '" + emailUser + "';";
+            connessione.executeUpdate(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

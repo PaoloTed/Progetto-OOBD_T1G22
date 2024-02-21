@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.sql.SQLException;
+
 public class RivistaController {
 
     @FXML
@@ -20,7 +22,12 @@ public class RivistaController {
 
     public void showInfoRivista(String nome, String data) {
         RivistaDAOImpl rivistaDAO = new RivistaDAOImpl();
-        Rivista rivista = rivistaDAO.get(nome, data);
+        Rivista rivista = null;
+        try {
+            rivista = new Rivista(rivistaDAO.get(nome, data));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         textDataId.setText(String.valueOf(rivista.getData()));
         textNomeId.setText(rivista.getNome());
         textResponsabileId.setText(rivista.getResponsabile());

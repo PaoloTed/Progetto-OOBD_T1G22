@@ -142,7 +142,11 @@ public class UserInformativaController implements Initializable {
         alert.setContentText("Una volta eliminato non potrai più accedere al tuo account");
         alert.getButtonTypes().setAll(ButtonType.OK, ButtonType.CANCEL);
         if (alert.showAndWait().get() == ButtonType.OK) {
-            utenteDAO.delete(Utente.getUtente());
+            try {
+                utenteDAO.delete(Utente.getUtente().objToArrayList());
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
             support.switchStage("welcomeStage.fxml", event, 500, 500);
             support.messageStage("Account eliminato con successo");
         }

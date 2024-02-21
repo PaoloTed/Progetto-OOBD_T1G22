@@ -63,24 +63,35 @@ public class SerieController implements Initializable {
 
     public void showSerie(int CodS) {
         SerieDAOImpl serieDAO = new SerieDAOImpl();
-        Serie serie = serieDAO.get(CodS);
+        Serie serie = null;
+        try {
+            serie = new Serie(serieDAO.get(CodS));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         codSTxtId.setText("codice serie: " + serie.getCods());
         nomeTxtId.setText("Nome serie: " + serie.getNome());
         numLibTxtId.setText("numero libri: " + serie.getNumlibri());
         if (serie.getCompletata()) {
             completaTxtId.setText("stato serie:Completata");
-        }
-        else {
+        } else {
             completaTxtId.setText("No Terminata");
         }
 
         LibroDAOImpl libroDAO = new LibroDAOImpl();
-        ArrayList<Libro> libri;
+        ArrayList<Libro> libri = new ArrayList<>();
+        ArrayList<ArrayList<String>> libriStrings = new ArrayList<>();
         try {
-            libri = libroDAO.getRicerca("serie", String.valueOf(CodS));
+            libriStrings = libroDAO.getRicerca("serie", String.valueOf(CodS));
         } catch (SQLException e) {
-            support.messageStage("Errore nel caricamento dei libri");
             throw new RuntimeException(e);
+        }
+        for (ArrayList<String> libroString : libriStrings) {
+            try {
+                libri.add(new Libro(libroDAO.get(libroString.get(0))));
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
         libroTableView.getItems().setAll(libri);
     }
