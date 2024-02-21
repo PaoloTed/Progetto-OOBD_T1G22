@@ -69,6 +69,4 @@ public class Presentazione {
         setDatapresentazione(arrayList.get(3));
         setTipo(arrayList.get(4));
     }
-
-
 }
