@@ -15,6 +15,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -77,24 +78,24 @@ public class LibroInformativaController implements Initializable {
         support.switchStage("homeStage.fxml", event, 900, 800);
     }
 
-    public void showInfoLibro(Libro libroPassato)  {
+    public void showInfoLibro(Libro libroPassato) {
         UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
         libroMain = libroPassato;
-        textTitleIId.setText(textTitleIId.getText()+libroPassato.getTitolo());
-        textIsbnId.setText(textIsbnId.getText()+libroPassato.getIsbn());
-        textGenereId.setText(textGenereId.getText()+libroPassato.getGenere());
-        textNumeroPagineId.setText(textNumeroPagineId.getText()+libroPassato.getNumpagine());
-        textTIpoId.setText(textTIpoId.getText()+libroPassato.getTipo());
+        textTitleIId.setText(textTitleIId.getText() + libroPassato.getTitolo());
+        textIsbnId.setText(textIsbnId.getText() + libroPassato.getIsbn());
+        textGenereId.setText(textGenereId.getText() + libroPassato.getGenere());
+        textNumeroPagineId.setText(textNumeroPagineId.getText() + libroPassato.getNumpagine());
+        textTIpoId.setText(textTIpoId.getText() + libroPassato.getTipo());
         prova.setText(libroPassato.getDescrizione());
         prova.setWrapText(true);
 //        textDescrizioneId.setText(textDescrizioneId.getText()+"\n"+libroPassato.getDescrizione());
-        textFruizioneId.setText(textFruizioneId.getText()+libroPassato.getFruizione());
-        textDataUscitaId.setText(textDataUscitaId.getText()+libroPassato.getDatauscita());
-        textLinguianId.setText(textLinguianId.getText()+libroPassato.getLingua());
+        textFruizioneId.setText(textFruizioneId.getText() + libroPassato.getFruizione());
+        textDataUscitaId.setText(textDataUscitaId.getText() + libroPassato.getDatauscita());
+        textLinguianId.setText(textLinguianId.getText() + libroPassato.getLingua());
 
         if (libroPassato.getMateria() != null) {
             textMateriaId.setVisible(true);
-            textMateriaId.setText(textMateriaId.getText()+libroPassato.getMateria());
+            textMateriaId.setText(textMateriaId.getText() + libroPassato.getMateria());
         } else {
             textMateriaId.setVisible(false);
         }
@@ -122,38 +123,43 @@ public class LibroInformativaController implements Initializable {
             textMessagioId.setVisible(false);
             buttonSuccessivoId.disableProperty().setValue(true);
         }
-        textAutoreId.setText(textAutoreId.getText()+libroPassato.getAutore());
-        txtEditoreId.setText(txtEditoreId.getText()+libroPassato.getEditore());
+        textAutoreId.setText(textAutoreId.getText() + libroPassato.getAutore());
+        txtEditoreId.setText(txtEditoreId.getText() + libroPassato.getEditore());
 
         if (libroPassato.getPresentazione() != null) {
             //buttonPresentazioneid.setVisible(true);
             buttonPresentazioneid.disableProperty().setValue(false);
         } else {
-           // buttonPresentazioneid.setVisible(false);
+            // buttonPresentazioneid.setVisible(false);
             buttonPresentazioneid.disableProperty().setValue(true);
         }
+        ArrayList<ArrayList<String>> disponibileLarrayString = new ArrayList<>();
+        ArrayList<DisponibileL> disponibileLarray = new ArrayList<>();
         try {
             DisponibileLDAOImpl disponibileLDAO = new DisponibileLDAOImpl();
-            ArrayList<DisponibileL> disponibileL =  disponibileLDAO.getAcquisti(libroPassato.getIsbn());
-            if(!disponibileL.isEmpty()){
+            disponibileLarrayString = disponibileLDAO.getAcquisti(libroPassato.getIsbn());
+            for (ArrayList<String> strings : disponibileLarrayString) {
+                DisponibileL disponibileL = new DisponibileL(strings);
+                disponibileLarray.add(disponibileL);
+            }
+            if (!disponibileLarray.isEmpty()) {
                 buttonAquistoId.disableProperty().setValue(false);
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
-
         }
     }
 
     public void setPreferito(ActionEvent event) {
         UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
-        utenteDAO.insertPreferiti(Utente.getUtente().getEmail() , libroMain.getSerie());
+        utenteDAO.insertPreferiti(Utente.getUtente().getEmail(), libroMain.getSerie());
         textMessagioId.setText("Serie aggiunto ai preferiti");
         buttonSerieId.disableProperty().setValue(true);
         event.consume();
     }
 
     public void goToPresentazione(ActionEvent event) {
-        if(libroMain.getPresentazione() == null){
+        if (libroMain.getPresentazione() == null) {
             support.messageStage("Il libro non ha una presentazione");
             return;
         }

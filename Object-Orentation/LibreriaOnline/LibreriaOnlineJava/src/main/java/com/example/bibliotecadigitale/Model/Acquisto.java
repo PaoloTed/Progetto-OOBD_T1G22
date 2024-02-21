@@ -52,7 +52,7 @@ public class Acquisto
         return tipoA;
     }
 
-    Acquisto() {}
+    public Acquisto() {}
     public Acquisto(ArrayList<String> strings) {
         codA = Integer.parseInt(strings.get(0));
         if(strings.get(1) == null) {

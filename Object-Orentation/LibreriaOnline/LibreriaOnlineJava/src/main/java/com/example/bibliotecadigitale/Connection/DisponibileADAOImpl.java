@@ -96,4 +96,22 @@ public class DisponibileADAOImpl implements DisponibileADAO {
         rs.close();
         return disponibileA;
     }
+
+    public ArrayList<ArrayList<String>> getAcquisti(String doi) throws SQLException {
+        ArrayList<ArrayList<String>>  disponibileAFinded = new ArrayList<>();
+        ArrayList<String> disponibileA;
+        try {
+            String query = "SELECT * FROM disponibile_a WHERE doi = '" + doi + "';";
+            ResultSet rs = connessione.executeSearch(query);
+            disponibileAFinded = new ArrayList<>();
+            while (rs.next()) {
+                disponibileA = rsToArrayList(rs, 2);
+                disponibileAFinded.add(disponibileA);
+            }
+            rs.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return disponibileAFinded;
+    }
 }

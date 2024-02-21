@@ -43,43 +43,55 @@ public class AcquistoController implements Initializable {
 
     public void showInfoAcquisto(String ISBN) {
         DisponibileLDAOImpl disponibileLDAO = new DisponibileLDAOImpl();
-        ArrayList<DisponibileL> DisponibileLarray;
+        ArrayList<DisponibileL> disponibileLarray = new ArrayList<>();
+        ArrayList<ArrayList<String>> disponibileLarrayString = new ArrayList<>();
+
         try {
-            DisponibileLarray = disponibileLDAO.getAcquisti(ISBN);
+            disponibileLarrayString = disponibileLDAO.getAcquisti(ISBN);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        while (!DisponibileLarray.isEmpty()) {
+        for (ArrayList<String> strings : disponibileLarrayString) {
+            DisponibileL disponibileL = new DisponibileL(strings);
+            disponibileLarray.add(disponibileL);
+        }
+        while (!disponibileLarray.isEmpty()) {
             AcquistoDAOImpl acquistoDAO = new AcquistoDAOImpl();
             Acquisto acquisto;
             try {
-                acquisto = new Acquisto(acquistoDAO.get(DisponibileLarray.get(0).getCoda()));
+                acquisto = new Acquisto(acquistoDAO.get(disponibileLarray.get(0).getCoda()));
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
             tableView.getItems().add(acquisto);
-            DisponibileLarray.remove(0);
+            disponibileLarray.remove(0);
         }
     }
 
     public void showInfoArticolo(String doi) {
         DisponibileADAOImpl disponibileADAO = new DisponibileADAOImpl();
-        ArrayList<DisponibileA> DisponibileLarray;
+        ArrayList<DisponibileA> disponibileAarray = new ArrayList<>();
+        ArrayList<ArrayList<String>> disponibileAarrayString = new ArrayList<>();
+
         try {
-            DisponibileLarray = disponibileADAO.getAcquisti(doi);
+            disponibileAarrayString = disponibileADAO.getAcquisti(doi);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        while (!DisponibileLarray.isEmpty()) {
+        for (ArrayList<String> strings : disponibileAarrayString) {
+            DisponibileA disponibileA = new DisponibileA(strings);
+            disponibileAarray.add(disponibileA);
+        }
+        while (!disponibileAarray.isEmpty()) {
             AcquistoDAOImpl acquistoDAO = new AcquistoDAOImpl();
             Acquisto acquisto;
             try {
-                acquisto = new Acquisto(acquistoDAO.get(DisponibileLarray.get(0).getCoda()));
+                acquisto = new Acquisto(acquistoDAO.get(disponibileAarray.get(0).getCoda()));
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
             tableView.getItems().add(acquisto);
-            DisponibileLarray.remove(0);
+            disponibileAarray.remove(0);
         }
     }
 

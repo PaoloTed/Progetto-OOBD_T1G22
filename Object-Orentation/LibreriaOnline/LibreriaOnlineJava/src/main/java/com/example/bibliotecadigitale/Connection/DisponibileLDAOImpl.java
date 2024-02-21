@@ -85,4 +85,21 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
         rs.close();
         return disponibileL;
     }
+    public ArrayList<ArrayList<String>> getAcquisti(String isbn) throws SQLException {
+        ArrayList<ArrayList<String>>  disponibileLFinded = new ArrayList<>();
+        ArrayList<String> disponibileL;
+        try {
+            String query = "SELECT * FROM disponibile_l WHERE isbn = '" + isbn + "';";
+            ResultSet rs = connessione.executeSearch(query);
+            disponibileLFinded = new ArrayList<>();
+            while (rs.next()) {
+                disponibileL = rsToArrayList(rs, 2);
+                disponibileLFinded.add(disponibileL);
+            }
+            rs.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return disponibileLFinded;
+    }
 }
