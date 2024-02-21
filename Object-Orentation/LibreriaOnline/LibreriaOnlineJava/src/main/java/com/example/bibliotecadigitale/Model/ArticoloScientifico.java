@@ -1,6 +1,7 @@
 package com.example.bibliotecadigitale.Model;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ArticoloScientifico extends Pubblicazioni {
 
@@ -77,7 +78,7 @@ public class ArticoloScientifico extends Pubblicazioni {
         if (arrayList.get(10) == null)
             setConferenza(null);
         else{
-            setConferenza(Integer.parseInt(arrayList.get(10)));
+            setConferenza(Integer.valueOf((arrayList.get(10))));
         }
         if (arrayList.get(11) == null)
             setNomer(null);

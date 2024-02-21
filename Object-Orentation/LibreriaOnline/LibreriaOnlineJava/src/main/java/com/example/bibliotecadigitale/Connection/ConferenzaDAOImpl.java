@@ -14,9 +14,9 @@ public class ConferenzaDAOImpl implements ConferenzaDAO {
     private final Connessione connessione = new Connessione();
     private final java.sql.Connection conn = Connessione.getConnection();
 
-    private ArrayList<String> rsToArrayList(ResultSet rs, int numCampi) throws SQLException {
+    private ArrayList<String> rsToArrayList(ResultSet rs) throws SQLException {
         ArrayList<String> array = new ArrayList<>();
-        for (int i = 1; i <= numCampi; i++) {
+        for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
             array.add(rs.getString(i));
         }
         return array;
@@ -28,7 +28,7 @@ public class ConferenzaDAOImpl implements ConferenzaDAO {
         String query = "SELECT * FROM conferenza WHERE codC = " + codC + ";";
         ResultSet rs = connessione.executeSearch(query);
         if (rs.next()) {
-            conferenzaFinded = rsToArrayList(rs, 3);
+            conferenzaFinded = rsToArrayList(rs);
         }
         rs.close();
         return conferenzaFinded;
@@ -41,7 +41,7 @@ public class ConferenzaDAOImpl implements ConferenzaDAO {
         ResultSet rs = connessione.executeSearch(query);
         ArrayList<String> conferenza;
         while (rs.next()) {
-            conferenza = rsToArrayList(rs, 3);
+            conferenza = rsToArrayList(rs);
             conferenzaFinded.add(conferenza);
         }
         rs.close();
@@ -101,7 +101,7 @@ public class ConferenzaDAOImpl implements ConferenzaDAO {
         ResultSet rs = connessione.executeSearch(query);
         ArrayList<String> conferenza;
         while (rs.next()) {
-            conferenza = rsToArrayList(rs, 7);
+            conferenza = rsToArrayList(rs);
             conferenzaFinded.add(conferenza);
         }
         rs.close();
