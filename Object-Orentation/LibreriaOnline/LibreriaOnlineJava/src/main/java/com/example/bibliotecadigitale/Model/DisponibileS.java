@@ -22,17 +22,17 @@ public class DisponibileS {
         this.codS = codS;
     }
 
-    public ArrayList<String> objToArrayList() {
+    public DisponibileS(){}
+
+    public ArrayList<String> ObjToArrayList() {
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add(String.valueOf(codA));
         arrayList.add(String.valueOf(codS));
         return arrayList;
     }
 
-    public static DisponibileS arrayListToObj(ArrayList<String> arrayList) {
-        DisponibileS disponibileS = new DisponibileS();
-        disponibileS.setCoda(Integer.parseInt(arrayList.get(0)));
-        disponibileS.setCods(Integer.parseInt(arrayList.get(1)));
-        return disponibileS;
+    public DisponibileS (ArrayList<String> arrayList) {
+        setCoda(Integer.parseInt(arrayList.get(0)));
+        setCods(Integer.parseInt(arrayList.get(1)));
     }
 }

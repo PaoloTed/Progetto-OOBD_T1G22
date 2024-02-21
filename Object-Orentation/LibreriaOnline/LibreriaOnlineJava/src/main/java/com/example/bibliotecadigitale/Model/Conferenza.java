@@ -71,7 +71,9 @@ public class Conferenza extends Piattaforma {
         return dataF;
     }
 
-    public ArrayList<String> objToArrayList() {
+    public Conferenza(){}
+
+    public ArrayList<String> ObjToArrayList() {
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add(String.valueOf(codC));
         arrayList.add(nome);
@@ -83,15 +85,13 @@ public class Conferenza extends Piattaforma {
         return arrayList;
     }
 
-    public static Conferenza arrayListToObj(ArrayList<String> arrayList) {
-        Conferenza conferenza = new Conferenza();
-        conferenza.setCodc(Integer.parseInt(arrayList.get(0)));
-        conferenza.setNome(arrayList.get(1));
-        conferenza.setStruttura(arrayList.get(2));
-        conferenza.setIndirizzo(arrayList.get(3));
-        conferenza.setDatai(arrayList.get(4));
-        conferenza.setDataf(arrayList.get(5));
-        conferenza.setResponsabile(arrayList.get(6));
-        return conferenza;
+     public Conferenza (ArrayList<String> arrayList) {
+        setCodc(Integer.parseInt(arrayList.get(0)));
+        setNome(arrayList.get(1));
+        setStruttura(arrayList.get(2));
+        setIndirizzo(arrayList.get(3));
+        setDatai(arrayList.get(4));
+        setDataf(arrayList.get(5));
+        setResponsabile(arrayList.get(6));
     }
 }
