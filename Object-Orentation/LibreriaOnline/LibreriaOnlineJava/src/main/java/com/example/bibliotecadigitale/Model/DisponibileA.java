@@ -21,16 +21,17 @@ public class DisponibileA {
     public void setDoi(String doi) {
         this.doi = doi;
     }
-    public ArrayList<String> objToArrayList() {
+
+    public DisponibileA(){}
+
+    public ArrayList<String> ObjToArrayList() {
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add(String.valueOf(codA));
         arrayList.add(doi);
         return arrayList;
     }
-    public static DisponibileA arrayListToObj(ArrayList<String> arrayList) {
-        DisponibileA disponibileA = new DisponibileA();
-        disponibileA.setCoda(Integer.parseInt(arrayList.get(0)));
-        disponibileA.setDoi(arrayList.get(1));
-        return disponibileA;
+    public DisponibileA (ArrayList<String> arrayList) {
+        setCoda(Integer.parseInt(arrayList.get(0)));
+        setDoi(arrayList.get(1));
     }
 }

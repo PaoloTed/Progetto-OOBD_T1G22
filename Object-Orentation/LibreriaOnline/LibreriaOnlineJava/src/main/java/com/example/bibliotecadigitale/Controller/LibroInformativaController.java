@@ -176,7 +176,7 @@ public class LibroInformativaController implements Initializable {
         txtEditoreId.setText("Editore:");
 
         LibroDAOImpl libroDAO = new LibroDAOImpl();
-        Libro libroSuccessivo = libroDAO.get(libroMain.getSuccessivo());
+        Libro libroSuccessivo = new Libro(libroDAO.get(libroMain.getSuccessivo()));
         showInfoLibro(libroSuccessivo);
         libroMain = libroSuccessivo;
         event.consume();

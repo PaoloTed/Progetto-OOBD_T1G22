@@ -50,6 +50,8 @@ public class Presentazione {
         this.tipo = tipo;
     }
 
+    public Presentazione(){}
+
     public ArrayList<String> objToArrayList() {
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add(String.valueOf(codP));
@@ -60,14 +62,12 @@ public class Presentazione {
         return arrayList;
     }
 
-    public static Presentazione arrayListToObj(ArrayList<String> arrayList) {
-        Presentazione presentazione = new Presentazione();
-        presentazione.setCodp(Integer.parseInt(arrayList.get(0)));
-        presentazione.setNome(arrayList.get(1));
-        presentazione.setIndirizzo(arrayList.get(2));
-        presentazione.setDatapresentazione(arrayList.get(3));
-        presentazione.setTipo(arrayList.get(4));
-        return presentazione;
+    public Presentazione (ArrayList<String> arrayList) {
+        setCodp(Integer.parseInt(arrayList.get(0)));
+        setNome(arrayList.get(1));
+        setIndirizzo(arrayList.get(2));
+        setDatapresentazione(arrayList.get(3));
+        setTipo(arrayList.get(4));
     }
 
 

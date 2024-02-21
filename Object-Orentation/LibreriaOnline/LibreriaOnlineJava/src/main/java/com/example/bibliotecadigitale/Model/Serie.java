@@ -40,8 +40,9 @@ public class Serie {
     public void setCompletata(boolean completata) {
         this.completata = completata;
     }
+    public Serie(){}
 
-    public ArrayList<String> objToArrayList() {
+    public ArrayList<String> ObjToArrayList() {
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add(String.valueOf(codS));
         arrayList.add(nome);
@@ -50,12 +51,18 @@ public class Serie {
         return arrayList;
     }
 
-    public static Serie arrayListToObj(ArrayList<String> arrayList) {
-        Serie serie = new Serie();
-        serie.setCods(Integer.parseInt(arrayList.get(0)));
-        serie.setNome(arrayList.get(1));
-        serie.setNumlibri(Integer.parseInt(arrayList.get(2)));
-        serie.setCompletata(Boolean.parseBoolean(arrayList.get(3)));
-        return serie;
+    public Serie (ArrayList<String> arrayList) {
+        setCods(Integer.parseInt(arrayList.get(0)));
+        setNome(arrayList.get(1));
+        if (arrayList.get(2) == null) {
+            setNumlibri(0);
+        } else {
+            setNumlibri(Integer.parseInt(arrayList.get(2)));
+        }
+        if (arrayList.get(3) == null) {
+            setCompletata(false);
+        } else {
+            setCompletata(Boolean.parseBoolean(arrayList.get(3)));
+        }
     }
 }

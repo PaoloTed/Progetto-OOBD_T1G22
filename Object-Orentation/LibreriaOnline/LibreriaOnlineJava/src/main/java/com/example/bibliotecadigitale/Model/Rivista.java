@@ -1,5 +1,7 @@
 package com.example.bibliotecadigitale.Model;
 
+import java.util.ArrayList;
+
 public class Rivista extends Piattaforma{
 
     private String nome;
@@ -29,5 +31,23 @@ public class Rivista extends Piattaforma{
 
     public void setArgomento(String argomento) {
         this.argomento = argomento;
+    }
+
+    public Rivista(){}
+
+    public Rivista(ArrayList<String> arrayList) {
+        setNome(arrayList.get(0));
+        setData(arrayList.get(1));
+        setArgomento(arrayList.get(2));
+        setResponsabile(arrayList.get(3));
+    }
+
+    public ArrayList<String> ObjToArrayList() {
+        ArrayList<String> arrayList = new ArrayList<>();
+        arrayList.add(nome);
+        arrayList.add(data);
+        arrayList.add(argomento);
+        arrayList.add(getResponsabile());
+        return arrayList;
     }
 }

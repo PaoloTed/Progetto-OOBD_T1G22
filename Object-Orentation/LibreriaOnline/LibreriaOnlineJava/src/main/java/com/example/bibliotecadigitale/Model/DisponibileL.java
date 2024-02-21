@@ -21,18 +21,17 @@ public class DisponibileL {
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
+    public DisponibileL(){}
 
-    public ArrayList<String> objToArrayList() {
+    public ArrayList<String> ObjToArrayList() {
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add(String.valueOf(codA));
         arrayList.add(isbn);
         return arrayList;
     }
 
-    public static DisponibileL arrayListToObj(ArrayList<String> arrayList) {
-        DisponibileL disponibileL = new DisponibileL();
-        disponibileL.setCoda(Integer.parseInt(arrayList.get(0)));
-        disponibileL.setIsbn(arrayList.get(1));
-        return disponibileL;
+     public DisponibileL (ArrayList<String> arrayList) {
+        setCoda(Integer.parseInt(arrayList.get(0)));
+        setIsbn(arrayList.get(1));
     }
 }

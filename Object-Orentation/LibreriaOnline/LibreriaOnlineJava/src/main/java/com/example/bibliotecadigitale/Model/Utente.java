@@ -2,15 +2,13 @@ package com.example.bibliotecadigitale.Model;
 
 import java.util.ArrayList;
 
-public  class Utente {
+public class Utente {
 
     private String email;
     private String password;
     private String data;
 
     private static Utente istanza= null;
-
-    private Utente() {}
 
     public static Utente getUtente() {
         if(istanza==null) {
@@ -51,6 +49,7 @@ public  class Utente {
     public void setData(String data) {
         this.data = data;
     }
+    public Utente(){}
 
     public ArrayList<String> objToArrayList() {
         ArrayList<String> arrayList = new ArrayList<>();
@@ -60,12 +59,10 @@ public  class Utente {
         return arrayList;
     }
 
-    public static Utente arrayListToObj(ArrayList<String> arrayList) {
-        Utente utente = new Utente();
-        utente.setEmail(arrayList.get(0));
-        utente.setPassword(arrayList.get(1));
-        utente.setData(arrayList.get(2));
-        return utente;
+    public Utente(ArrayList<String> arrayList) {
+        setEmail(arrayList.get(0));
+        setPassword(arrayList.get(1));
+        setData(arrayList.get(2));
     }
 
 }

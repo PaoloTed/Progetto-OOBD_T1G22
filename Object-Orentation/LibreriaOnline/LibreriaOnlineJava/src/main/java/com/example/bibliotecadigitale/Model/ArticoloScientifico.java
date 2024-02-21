@@ -45,7 +45,7 @@ public class ArticoloScientifico extends Pubblicazioni {
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add(doi);
         arrayList.add(this.getTitolo());
-        arrayList.add(this.getNumpagine()+"");
+        arrayList.add(String.valueOf(getNumpagine()));
         arrayList.add(this.getDatauscita());
         arrayList.add(this.getDescrizione());
         arrayList.add(this.getFruizione());
@@ -58,20 +58,36 @@ public class ArticoloScientifico extends Pubblicazioni {
         return arrayList;
     }
 
-    public static ArticoloScientifico ArrayListToObj(ArrayList<String> arrayList) {
-        ArticoloScientifico articoloScientifico = new ArticoloScientifico();
-        articoloScientifico.setDoi(arrayList.get(0));
-        articoloScientifico.setTitolo(arrayList.get(1));
-        articoloScientifico.setNumpagine(Integer.parseInt(arrayList.get(2)));
-        articoloScientifico.setDatauscita(arrayList.get(3));
-        articoloScientifico.setDescrizione(arrayList.get(4));
-        articoloScientifico.setFruizione(arrayList.get(5));
-        articoloScientifico.setEditore(arrayList.get(6));
-        articoloScientifico.setAutore(arrayList.get(7));
-        articoloScientifico.setLingua(arrayList.get(8));
-        articoloScientifico.setConferenza(Integer.valueOf(arrayList.get(9)));
-        articoloScientifico.setNomer(arrayList.get(10));
-        articoloScientifico.setDatar(arrayList.get(11));
-        return articoloScientifico;
+    public ArticoloScientifico() {}
+    public ArticoloScientifico(ArrayList<String> arrayList) {
+        setDoi(arrayList.get(0));
+        setTitolo(arrayList.get(1));
+        setGenere(arrayList.get(2));
+        setNumpagine(Integer.parseInt(arrayList.get(3)));
+        if (arrayList.get(4) == null)
+            setDatauscita(null);
+        else{
+            setDatauscita(arrayList.get(4));
+        }
+        setDescrizione(arrayList.get(5));
+        setFruizione(arrayList.get(6));
+        setEditore(arrayList.get(7));
+        setAutore(arrayList.get(8));
+        setLingua(arrayList.get(9));
+        if (arrayList.get(10) == null)
+            setConferenza(null);
+        else{
+            setConferenza(Integer.parseInt(arrayList.get(10)));
+        }
+        if (arrayList.get(11) == null)
+            setNomer(null);
+        else{
+            setNomer(arrayList.get(11));
+        }
+        if (arrayList.get(12) == null)
+            setDatar(null);
+        else{
+            setDatar(arrayList.get(12));
+        }
     }
 }
