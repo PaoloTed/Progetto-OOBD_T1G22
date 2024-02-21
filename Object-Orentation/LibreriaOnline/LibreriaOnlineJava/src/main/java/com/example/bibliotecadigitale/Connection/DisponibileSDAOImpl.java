@@ -67,7 +67,7 @@ public class DisponibileSDAOImpl implements DisponibileSDAO {
     }
 
     @Override
-    public ArrayList<String> get(int coda, int cods) throws SQLException{
+    public ArrayList<String> get(int coda, int cods) throws SQLException {
         //TODO Non deve essere implementato??
         ArrayList<String> disponibileS = new ArrayList<>();
         String query = "SELECT * FROM disponibile_s WHERE coda = " + coda + " AND cods = " + cods + ";";
@@ -77,5 +77,23 @@ public class DisponibileSDAOImpl implements DisponibileSDAO {
         }
         rs.close();
         return disponibileS;
+    }
+
+    public ArrayList<ArrayList<String>> getAcquisti(int coda) throws SQLException {
+        ArrayList<ArrayList<String>> disponibileSFinded = new ArrayList<>();
+        ArrayList<String> disponibileS;
+        try {
+            String query = "SELECT * FROM disponibile_s WHERE isbn = '" + coda + "';";
+            ResultSet rs = connessione.executeSearch(query);
+            disponibileSFinded = new ArrayList<>();
+            while (rs.next()) {
+                disponibileS = rsToArrayList(rs, 2);
+                disponibileSFinded.add(disponibileS);
+            }
+            rs.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return disponibileSFinded;
     }
 }
