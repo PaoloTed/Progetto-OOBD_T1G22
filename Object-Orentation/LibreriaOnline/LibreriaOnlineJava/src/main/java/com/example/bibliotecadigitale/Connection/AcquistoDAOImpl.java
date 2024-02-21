@@ -11,9 +11,9 @@ public class AcquistoDAOImpl implements AcquistoDAO {
     private final Connessione connessione = new Connessione();
     private final Connection conn = Connessione.getConnection();
 
-    private ArrayList<String> rsToArrayList(ResultSet rs, int numCampi) throws SQLException {
+    private ArrayList<String> rsToArrayList(ResultSet rs) throws SQLException {
         ArrayList<String> array = new ArrayList<>();
-        for (int i = 1; i <= numCampi; i++) {
+        for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
             array.add(rs.getString(i));
         }
         return array;
@@ -25,7 +25,7 @@ public class AcquistoDAOImpl implements AcquistoDAO {
         String query = "SELECT * FROM acquisto WHERE coda = " + coda + ";";
         ResultSet rs = connessione.executeSearch(query);
         while (rs.next()) {
-            acquisto = rsToArrayList(rs, 15);
+            acquisto = rsToArrayList(rs);
         }
         rs.close();
         return acquisto;
@@ -38,7 +38,7 @@ public class AcquistoDAOImpl implements AcquistoDAO {
         ResultSet rs = connessione.executeSearch(query);
         ArrayList<String> acquisto;
         while (rs.next()) {
-            acquisto = rsToArrayList(rs, 15);
+            acquisto = rsToArrayList(rs);
             acquistoFinded.add(acquisto);
         }
         rs.close();
@@ -119,7 +119,7 @@ public class AcquistoDAOImpl implements AcquistoDAO {
         ResultSet rs = connessione.executeSearch(query);
         ArrayList<String> acquisto;
         while (rs.next()) {
-            acquisto = rsToArrayList(rs, 15);
+            acquisto = rsToArrayList(rs);
             acquistoFinded.add(acquisto);
         }
         rs.close();

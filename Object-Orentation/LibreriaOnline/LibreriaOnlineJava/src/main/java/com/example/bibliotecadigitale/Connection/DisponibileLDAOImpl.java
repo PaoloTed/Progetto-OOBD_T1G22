@@ -13,9 +13,9 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
     private final Connessione connessione = new Connessione();
     private final java.sql.Connection conn = Connessione.getConnection();
 
-    private ArrayList<String> rsToArrayList(ResultSet rs, int numCampi) throws SQLException {
+    private ArrayList<String> rsToArrayList(ResultSet rs) throws SQLException {
         ArrayList<String> array = new ArrayList<>();
-        for (int i = 1; i <= numCampi; i++) {
+        for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
             array.add(rs.getString(i));
         }
         return array;
@@ -28,7 +28,7 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
         ResultSet rs = connessione.executeSearch(query);
         ArrayList<String> disponibileL;
         while (rs.next()) {
-            disponibileL = rsToArrayList(rs, 2);
+            disponibileL = rsToArrayList(rs);
             disponibileLFinded.add(disponibileL);
         }
         rs.close();
@@ -66,7 +66,7 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
         ResultSet rs = connessione.executeSearch(query);
         ArrayList<String> disponibileL;
         while (rs.next()) {
-            disponibileL = rsToArrayList(rs, 2);
+            disponibileL = rsToArrayList(rs);
             disponibileLFinded.add(disponibileL);
         }
         rs.close();
@@ -80,7 +80,7 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
         String query = "SELECT * FROM disponibile_l WHERE coda = " + coda + " AND isbn = '" + isbn + "';";
         ResultSet rs = connessione.executeSearch(query);
         if (rs.next()) {
-            disponibileL = rsToArrayList(rs, 2);
+            disponibileL = rsToArrayList(rs);
         }
         rs.close();
         return disponibileL;
@@ -93,7 +93,7 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
             ResultSet rs = connessione.executeSearch(query);
             disponibileLFinded = new ArrayList<>();
             while (rs.next()) {
-                disponibileL = rsToArrayList(rs, 2);
+                disponibileL = rsToArrayList(rs);
                 disponibileLFinded.add(disponibileL);
             }
             rs.close();

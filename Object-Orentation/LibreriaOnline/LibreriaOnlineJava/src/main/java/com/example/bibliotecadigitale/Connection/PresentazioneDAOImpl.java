@@ -11,9 +11,9 @@ public class PresentazioneDAOImpl implements PresentazioneDAO {
     private final Connessione connessione = new Connessione();
     private final Connection conn = Connessione.getConnection();
 
-    private ArrayList<String> rsToArrayList(ResultSet rs, int numCampi) throws SQLException {
+    private ArrayList<String> rsToArrayList(ResultSet rs) throws SQLException {
         ArrayList<String> array = new ArrayList<>();
-        for (int i = 1; i <= numCampi; i++) {
+        for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
             array.add(rs.getString(i));
         }
         return array;
@@ -24,7 +24,7 @@ public class PresentazioneDAOImpl implements PresentazioneDAO {
         String query = "SELECT * FROM presentazione WHERE codP = " + strings + ";";
         ResultSet rs = connessione.executeSearch(query);
         while (rs.next()) {
-            presentazione = rsToArrayList(rs, 5);
+            presentazione = rsToArrayList(rs);
         }
         rs.close();
         return presentazione;
@@ -37,7 +37,7 @@ public class PresentazioneDAOImpl implements PresentazioneDAO {
         ResultSet rs = connessione.executeSearch(query);
         ArrayList<String> presentazione;
         while (rs.next()) {
-            presentazione = rsToArrayList(rs, 5);
+            presentazione = rsToArrayList(rs);
             presentazioneFinded.add(presentazione);
         }
         rs.close();
@@ -92,7 +92,7 @@ public class PresentazioneDAOImpl implements PresentazioneDAO {
         ResultSet rs = connessione.executeSearch(query);
         ArrayList<String> presentazione;
         while (rs.next()) {
-            presentazione = rsToArrayList(rs, 5);
+            presentazione = rsToArrayList(rs);
             presentazioneFinded.add(presentazione);
         }
         rs.close();
@@ -105,7 +105,7 @@ public class PresentazioneDAOImpl implements PresentazioneDAO {
         String query = "SELECT * FROM presentazione WHERE codP = " + codP + ";";
         ResultSet rs = connessione.executeSearch(query);
         while (rs.next()) {
-            presentazione = rsToArrayList(rs, 5);
+            presentazione = rsToArrayList(rs);
         }
         rs.close();
         return presentazione;

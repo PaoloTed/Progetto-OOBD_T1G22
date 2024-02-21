@@ -3,6 +3,7 @@ package com.example.bibliotecadigitale.Controller;
 import com.example.bibliotecadigitale.Connection.ArticoloScientificoDAOImpl;
 import com.example.bibliotecadigitale.Connection.Connessione;
 import com.example.bibliotecadigitale.Connection.LibroDAOImpl;
+import com.example.bibliotecadigitale.DAO.ArticoloScientificoDAO;
 import com.example.bibliotecadigitale.Model.ArticoloScientifico;
 import com.example.bibliotecadigitale.Model.Libro;
 import com.example.bibliotecadigitale.Model.Utente;
@@ -137,7 +138,7 @@ public class HomeController implements Initializable {
 
         //Ricerca e visualizzazione risultati articoli
         if (scelta.equals("articolo")) {
-            LibroDAOImpl aricoloDAO = new LibroDAOImpl();
+            ArticoloScientificoDAO aricoloDAO = new ArticoloScientificoDAOImpl();
             ArrayList<ArticoloScientifico> articoli = new ArrayList<>();
             ArrayList<ArrayList<String>> articoloArray;
             try {
