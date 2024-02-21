@@ -47,4 +47,7 @@ public class UtenteDAOImpl implements UtenteDAO {
     public ArrayList<String> get(String emailUser) throws SQLException {
         return null;
     }
+
+    public void updatePassword(String email, String newPassword) {
+    }
 }

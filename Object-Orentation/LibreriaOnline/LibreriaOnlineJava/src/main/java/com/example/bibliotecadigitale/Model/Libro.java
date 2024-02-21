@@ -29,8 +29,6 @@ public class Libro extends Pubblicazioni implements ArrayListObject{
     public void setIsbn(String ISBN) {
         this.ISBN = ISBN;
     }
-
-
     public String getTipo() {
         return tipo;
     }

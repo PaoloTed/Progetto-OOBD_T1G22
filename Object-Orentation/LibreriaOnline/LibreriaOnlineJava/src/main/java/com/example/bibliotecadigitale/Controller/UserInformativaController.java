@@ -15,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -68,7 +69,11 @@ public class UserInformativaController implements Initializable {
         //Mostro le serie preferite dell'utente nella listView
         for (Integer codicePreferito : codPreferiti) {
             //Viene inserito nella listView il codice della serie e il suo nome
-            tableView.getItems().add(serieDAO.get(codicePreferito));
+            try {
+                tableView.getItems().add(new Serie(serieDAO.get(codicePreferito)));
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
