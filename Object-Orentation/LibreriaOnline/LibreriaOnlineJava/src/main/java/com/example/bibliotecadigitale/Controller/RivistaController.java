@@ -22,14 +22,14 @@ public class RivistaController {
 
     public void showInfoRivista(String nome, String data) {
         RivistaDAOImpl rivistaDAO = new RivistaDAOImpl();
-        Rivista rivista = null;
+        Rivista rivista;
         try {
             rivista = new Rivista(rivistaDAO.get(nome, data));
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        textDataId.setText(String.valueOf(rivista.getData()));
         textNomeId.setText(rivista.getNome());
+        textDataId.setText(String.valueOf(rivista.getData()));
         textResponsabileId.setText(rivista.getResponsabile());
         textArgomentoId.setText(rivista.getArgomento());
     }

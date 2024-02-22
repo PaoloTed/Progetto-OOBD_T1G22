@@ -45,7 +45,19 @@ public class UtenteDAOImpl implements UtenteDAO {
 
     @Override
     public ArrayList<String> get(String emailUser) throws SQLException {
-        return null;
+        ArrayList<String> utente = new ArrayList<>();
+        try {
+            String query = "SELECT * FROM utente WHERE email = '" + emailUser + "';";
+            ResultSet rs = connessione.executeSearch(query);
+            while (rs.next()) {
+                utente.add(rs.getString(1));
+                utente.add(rs.getString(2));
+                utente.add(rs.getString(3));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return utente;
     }
 
     public void updatePassword(String emailUser, String passwordUser) {
