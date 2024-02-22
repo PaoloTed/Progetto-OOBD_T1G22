@@ -88,7 +88,7 @@ public class RivistaDAOImpl implements RivistaDAO {
     @Override
     public ArrayList<String> get(String nome, String data) throws SQLException {
         ArrayList<String> rivista = new ArrayList<>();
-        String query = "SELECT * FROM rivista WHERE nome = " + nome + " AND data = " + data + ";";
+        String query = "SELECT * FROM rivista WHERE nome = '" + nome + "' AND data = '" + data + "';";
         ResultSet rs = connessione.executeSearch(query);
         while (rs.next()) {
             rivista = rsToArrayList(rs);

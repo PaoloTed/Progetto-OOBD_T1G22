@@ -78,8 +78,8 @@ public class WelcomeController implements Initializable {
             return;
         }
         //Se l'utente è presente nel database, mostrare la sua home page
-//        Utente utenteNew = getUtente();
-//        utenteNew.setUtente(emailUser, passwordUser, utenteDAO.get(emailUser).getData());
+        Utente utenteNew = getUtente();
+        utenteNew.setUtente(utente.getEmail(), utente.getPassword(), utente.getData());
         support.switchStage("homeStage.fxml", PressLogin, 900, 800);
     }
 

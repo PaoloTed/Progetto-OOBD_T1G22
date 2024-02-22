@@ -34,6 +34,7 @@ public class NotificheController implements Initializable {
         String email = utente.getEmail();
         imageLibriSfondo.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/libri800x900.png"))));
         try {
+            //TODO fare in modo che i preferiti vengano presi da utentedao non direttamente
             Connessione connessione = new Connessione();
             String query = "select * from show_preferiti('" + email + "');";
             ResultSet rs =  connessione.executeSearch(query);
@@ -58,8 +59,8 @@ public class NotificheController implements Initializable {
         Serie serie = getSerieFromListView();
         UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
         utenteDAO.deletePreferiti(Utente.getUtente().getEmail(), serie.getCods());
-        Stage stage = (Stage) listViewSerieAcquisto.getScene().getWindow();
-        stage.close();
+//        Stage stage = (Stage) listViewSerieAcquisto.getScene().getWindow();
+//        stage.close();
         support.switchStage("notificheStage.fxml",event ,800,900);
         //Elimino la serie selezionata dalla listView
         deleteSerieFromListView(serie);
