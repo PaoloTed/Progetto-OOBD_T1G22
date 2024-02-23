@@ -64,7 +64,12 @@ public class UserInformativaController implements Initializable {
         SerieDAOImpl serieDAO = new SerieDAOImpl();
         UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
 
-        ArrayList<Integer> codPreferiti = utenteDAO.searchPreferiti(email);
+        ArrayList<Integer> codPreferiti = null;
+        try {
+            codPreferiti = utenteDAO.searchPreferiti(email);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         //Recupero le serie preferite dell'utente
         //Mostro le serie preferite dell'utente nella listView
         for (Integer codicePreferito : codPreferiti) {
@@ -97,7 +102,11 @@ public class UserInformativaController implements Initializable {
         //Se la vecchia password è corretta, cambio la password dell'utente nel database e nella variabile Utente
         Utente.getUtente().setPassword(newPassword);
         UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
-        utenteDAO.updatePassword(Utente.getUtente().getEmail(), newPassword);
+        try {
+            utenteDAO.updatePassword(Utente.getUtente().getEmail(), newPassword);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         support.messageStage("Password cambiata con successo");
         event.consume();
     }
@@ -110,7 +119,11 @@ public class UserInformativaController implements Initializable {
         if (serie != null) {
             //Elimino la serie selezionata dal database
             UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
-            utenteDAO.deletePreferiti(Utente.getUtente().getEmail(), serie.getCods());
+            try {
+                utenteDAO.deletePreferiti(Utente.getUtente().getEmail(), serie.getCods());
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
 
             //Elimino la serie selezionata dalla listView
             tableView.getItems().remove(serie);

@@ -69,9 +69,9 @@ public class DisponibileADAOImpl implements DisponibileADAO {
     public ArrayList<ArrayList<String>> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
         ArrayList<ArrayList<String>> disponibileAFinded = new ArrayList<>();
         String query = "SELECT * FROM disponibile_a WHERE ";
-        if(tipoRicerca.equals("coda")) {
+        if (tipoRicerca.equals("coda")) {
             query = "SELECT * FROM disponibile_a WHERE coda = " + parolaChiave + ";";
-        } else if(tipoRicerca.equals("doi")) {
+        } else if (tipoRicerca.equals("doi")) {
             query = "SELECT * FROM disponibile_a WHERE doi = '" + parolaChiave + "';";
         }
         ResultSet rs = connessione.executeSearch(query);
@@ -98,20 +98,16 @@ public class DisponibileADAOImpl implements DisponibileADAO {
     }
 
     public ArrayList<ArrayList<String>> getAcquisti(String doi) throws SQLException {
-        ArrayList<ArrayList<String>>  disponibileAFinded = new ArrayList<>();
+        ArrayList<ArrayList<String>> disponibileAFinded = new ArrayList<>();
         ArrayList<String> disponibileA;
-        try {
-            String query = "SELECT * FROM disponibile_a WHERE doi = '" + doi + "';";
-            ResultSet rs = connessione.executeSearch(query);
-            disponibileAFinded = new ArrayList<>();
-            while (rs.next()) {
-                disponibileA = rsToArrayList(rs);
-                disponibileAFinded.add(disponibileA);
-            }
-            rs.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        String query = "SELECT * FROM disponibile_a WHERE doi = '" + doi + "';";
+        ResultSet rs = connessione.executeSearch(query);
+        disponibileAFinded = new ArrayList<>();
+        while (rs.next()) {
+            disponibileA = rsToArrayList(rs);
+            disponibileAFinded.add(disponibileA);
         }
+        rs.close();
         return disponibileAFinded;
     }
 }

@@ -82,18 +82,13 @@ public class DisponibileSDAOImpl implements DisponibileSDAO {
     public ArrayList<ArrayList<String>> getAcquisti(int coda) throws SQLException {
         ArrayList<ArrayList<String>> disponibileSFinded = new ArrayList<>();
         ArrayList<String> disponibileS;
-        try {
-            String query = "SELECT * FROM disponibile_s WHERE isbn = '" + coda + "';";
-            ResultSet rs = connessione.executeSearch(query);
-            disponibileSFinded = new ArrayList<>();
-            while (rs.next()) {
-                disponibileS = rsToArrayList(rs);
-                disponibileSFinded.add(disponibileS);
-            }
-            rs.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        String query = "SELECT * FROM disponibile_s WHERE isbn = '" + coda + "';";
+        ResultSet rs = connessione.executeSearch(query);
+        while (rs.next()) {
+            disponibileS = rsToArrayList(rs);
+            disponibileSFinded.add(disponibileS);
         }
+        rs.close();
         return disponibileSFinded;
     }
 }

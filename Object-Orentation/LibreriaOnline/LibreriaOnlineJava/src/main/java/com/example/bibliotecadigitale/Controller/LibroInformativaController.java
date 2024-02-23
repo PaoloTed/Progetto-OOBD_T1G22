@@ -102,7 +102,12 @@ public class LibroInformativaController implements Initializable {
 
         if (libroPassato.getSerie() != null) {
             buttonSerieId.setVisible(true);
-            ArrayList<Integer> listaPreferiti = utenteDAO.searchPreferiti(Utente.getUtente().getEmail());
+            ArrayList<Integer> listaPreferiti = null;
+            try {
+                listaPreferiti = utenteDAO.searchPreferiti(Utente.getUtente().getEmail());
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
             if (listaPreferiti.contains(libroPassato.getSerie())) {
                 buttonSerieId.disableProperty().setValue(true);
                 textMessagioId.setText("Serie già presente nei preferiti");
@@ -151,7 +156,11 @@ public class LibroInformativaController implements Initializable {
 
     public void setPreferito(ActionEvent event) {
         UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
-        utenteDAO.insertPreferiti(Utente.getUtente().getEmail(), libroMain.getSerie());
+        try {
+            utenteDAO.insertPreferiti(Utente.getUtente().getEmail(), libroMain.getSerie());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         textMessagioId.setText("Serie aggiunto ai preferiti");
         buttonSerieId.disableProperty().setValue(true);
         event.consume();
