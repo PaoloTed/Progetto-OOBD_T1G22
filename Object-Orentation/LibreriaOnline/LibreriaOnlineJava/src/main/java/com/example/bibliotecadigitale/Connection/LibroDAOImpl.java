@@ -56,20 +56,17 @@ public class LibroDAOImpl implements LibroDAO {
     }
 
     @Override
-    public ArrayList<ArrayList<String>> getAll() {
+    public ArrayList<ArrayList<String>> getAll() throws SQLException {
         ArrayList<ArrayList<String>> libroFinded = new ArrayList<>();
-        try {
-            String query = "SELECT * FROM libro;";
-            ResultSet rs = connessione.executeSearch(query);
-            ArrayList<String> libro;
-            while (rs.next()) {
-                libro = rsToArrayList(rs);
-                libroFinded.add(libro);
-            }
-            rs.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+
+        String query = "SELECT * FROM libro;";
+        ResultSet rs = connessione.executeSearch(query);
+        ArrayList<String> libro;
+        while (rs.next()) {
+            libro = rsToArrayList(rs);
+            libroFinded.add(libro);
         }
+        rs.close();
         return libroFinded;
     }
 

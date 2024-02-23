@@ -12,6 +12,8 @@ import javafx.scene.image.ImageView;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.Instant;
+import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -60,7 +62,7 @@ public class SignUpController implements Initializable {
         Utente utente = getUtente();
         utente.setEmail(emailUser);
         utente.setPassword(passwordUser);
-        utente.setData(LocaleDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        utente.setData(Instant.now().atZone(ZoneOffset.UTC).format(DateTimeFormatter.ISO_LOCAL_DATE));
         try {
             utenteDAO.insert(utente.objToArrayList());
         } catch (SQLException e) {
@@ -68,7 +70,6 @@ public class SignUpController implements Initializable {
         }
         support.messageStage("Registrazione effettuata con successo");
         support.switchStage("welcomeStage.fxml", event);
-
     }
 
     @Override

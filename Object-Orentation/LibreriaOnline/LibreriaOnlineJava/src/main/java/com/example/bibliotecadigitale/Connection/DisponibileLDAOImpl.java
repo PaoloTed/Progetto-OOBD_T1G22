@@ -58,9 +58,9 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
     public ArrayList<ArrayList<String>> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
         ArrayList<ArrayList<String>> disponibileLFinded = new ArrayList<>();
         String query = "SELECT * FROM disponibile_l WHERE ";
-        if(tipoRicerca.equals("coda")) {
+        if (tipoRicerca.equals("coda")) {
             query = "SELECT * FROM disponibile_l WHERE coda = " + parolaChiave + ";";
-        } else if(tipoRicerca.equals("isbn")) {
+        } else if (tipoRicerca.equals("isbn")) {
             query = "SELECT * FROM disponibile_l WHERE isbn = '" + parolaChiave + "';";
         }
         ResultSet rs = connessione.executeSearch(query);
@@ -85,21 +85,18 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
         rs.close();
         return disponibileL;
     }
+
     public ArrayList<ArrayList<String>> getAcquisti(String isbn) throws SQLException {
-        ArrayList<ArrayList<String>>  disponibileLFinded = new ArrayList<>();
+        ArrayList<ArrayList<String>> disponibileLFinded = new ArrayList<>();
         ArrayList<String> disponibileL;
-        try {
-            String query = "SELECT * FROM disponibile_l WHERE isbn = '" + isbn + "';";
-            ResultSet rs = connessione.executeSearch(query);
-            disponibileLFinded = new ArrayList<>();
-            while (rs.next()) {
-                disponibileL = rsToArrayList(rs);
-                disponibileLFinded.add(disponibileL);
-            }
-            rs.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        String query = "SELECT * FROM disponibile_l WHERE isbn = '" + isbn + "';";
+        ResultSet rs = connessione.executeSearch(query);
+        disponibileLFinded = new ArrayList<>();
+        while (rs.next()) {
+            disponibileL = rsToArrayList(rs);
+            disponibileLFinded.add(disponibileL);
         }
+        rs.close();
         return disponibileLFinded;
     }
 }
