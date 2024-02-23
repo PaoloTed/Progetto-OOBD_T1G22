@@ -9,8 +9,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -46,28 +48,27 @@ public class SignUpController implements Initializable {
         }
         //Controllare prima che non esista già un utente con la stessa email
         UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
-        Utente utente = null;
         try {
-            utente = new Utente(utenteDAO.get(emailUser));
+            if (utenteDAO.esisteUtente(emailUser)) {
+                support.messageStage("Esiste gia un utente con la stessa email");
+                return;
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         //Se nessun utente ha la stessa email, inserire l'utente nel database
-        if (utente.getEmail() == null){
-            utente = getUtente();
-            utente.setEmail(emailUser);
-            utente.setPassword(passwordUser);
-            try {
-                utenteDAO.insert(utente.objToArrayList());
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-            support.messageStage("Registrazione effettuata con successo");
-            support.switchStage("welcomeStage.fxml", event);
-        } else {
-            //Se esiste già un utente con la stessa email, setto a false la variabile controlloEmail
-            support.messageStage("Esiste gia un utente con la stessa email");
+        Utente utente = getUtente();
+        utente.setEmail(emailUser);
+        utente.setPassword(passwordUser);
+        utente.setData(LocaleDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        try {
+            utenteDAO.insert(utente.objToArrayList());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
+        support.messageStage("Registrazione effettuata con successo");
+        support.switchStage("welcomeStage.fxml", event);
+
     }
 
     @Override

@@ -11,6 +11,7 @@ import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+
 import static com.example.bibliotecadigitale.Model.Utente.getUtente;
 
 public class UtenteDAOImpl implements UtenteDAO {
@@ -99,5 +100,11 @@ public class UtenteDAOImpl implements UtenteDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public boolean esisteUtente(String emailUser) throws SQLException {
+        String query = "SELECT * FROM utente WHERE email = '" + emailUser + "';";
+        ResultSet rs = connessione.executeSearch(query);
+        return rs.next();
     }
 }
