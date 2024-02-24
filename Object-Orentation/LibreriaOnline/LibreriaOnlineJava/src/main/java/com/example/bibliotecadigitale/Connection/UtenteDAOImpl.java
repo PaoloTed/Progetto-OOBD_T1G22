@@ -67,6 +67,23 @@ public class UtenteDAOImpl implements UtenteDAO {
         return utente;
     }
 
+    @Override
+    public ArrayList<ArrayList<String>> getPreferiti(String emailUser) throws SQLException {
+        ArrayList<String> preferito = new ArrayList<>();
+        ArrayList<ArrayList<String>> preferiti = new ArrayList<>();
+        String query = "SELECT * FROM show_preferiti('" + emailUser + "');";
+        ResultSet rs = connessione.executeSearch(query);
+        while (rs.next()) {
+            preferito.add(rs.getString(1));
+            preferito.add(rs.getString(2));
+            preferito.add(rs.getString(3));
+            preferito.add(rs.getString(4));
+            preferito.add(rs.getString(5));
+            preferiti.add(preferito);
+        }
+        return preferiti;
+    }
+
     public void updatePassword(String emailUser, String passwordUser) throws SQLException {
         String query = "UPDATE utente SET password = '" + passwordUser + "' WHERE email = '" + emailUser + "';";
         connessione.executeUpdate(query);

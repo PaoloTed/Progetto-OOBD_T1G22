@@ -14,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import static com.example.bibliotecadigitale.Model.Utente.getUtente;
@@ -67,13 +68,18 @@ public class WelcomeController implements Initializable {
         }
 
         //Se l'email e la password rispettano i requisiti, controllare che l'utente sia presente nel database
-        Utente utente = null;
+        Utente utente;
         try {
-            utente = new Utente(utenteDAO.get(emailUser));
+            ArrayList<String> utenteString = utenteDAO.get(emailUser);
+            if (utenteString.isEmpty()) {
+                support.messageStage("Email e/o password errate");
+                return;
+            }
+            utente = new Utente(utenteString);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        if (utente.getEmail() == null || !utente.getPassword().equals(passwordUser)) {
+        if (!utente.getPassword().equals(passwordUser)) {
             support.messageStage("Email e/o password errate");
             return;
         }

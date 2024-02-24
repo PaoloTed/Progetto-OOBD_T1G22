@@ -6,4 +6,6 @@ import java.util.ArrayList;
 
 public interface UtenteDAO extends DAO {
     ArrayList<String> get(String emailUser) throws SQLException;
+
+    ArrayList<ArrayList<String>> getPreferiti(String emailUser) throws SQLException;
 }
