@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -27,20 +28,18 @@ public class NotificheController implements Initializable {
     @FXML
     private ImageView imageLibriSfondo;
 
+    private final Utente utente = Utente.getUtente();
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Utente utente = Utente.getUtente();
-        String email = utente.getEmail();
         imageLibriSfondo.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/libri800x900.png"))));
         try {
-            Connessione connessione = new Connessione();
-            String query = "select * from show_preferiti('" + email + "');";
-            ResultSet rs =  connessione.executeSearch(query);
-            while (rs.next()) {
-                listViewSerieAcquisto.getItems().add("SERIE: "+rs.getString(1)+" || "+rs.getString(2)+" || DOVE ACQUISTARLA: "+rs.getString(3)+" || "+rs.getString(4)+" || TIPO ACQUISTO: "+rs.getString(5));
+            UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
+            ArrayList<ArrayList<String>> preferiti = utenteDAO.getPreferiti(utente.getEmail());
+            for (ArrayList<String> preferito : preferiti) {
+                listViewSerieAcquisto.getItems().add("SERIE: " + preferito.get(0) + " || " + preferito.get(1) + " || DOVE ACQUISTARLA: " + preferito.get(2) + " || " + preferito.get(3) + " || TIPO ACQUISTO: " + preferito.get(4));
             }
-            rs.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -57,9 +56,13 @@ public class NotificheController implements Initializable {
     public void eliminaPreferito(ActionEvent event) {
         Serie serie = getSerieFromListView();
         UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
-        utenteDAO.deletePreferiti(Utente.getUtente().getEmail(), serie.getCods());
-        Stage stage = (Stage) listViewSerieAcquisto.getScene().getWindow();
-        stage.close();
+        try {
+            utenteDAO.deletePreferiti(Utente.getUtente().getEmail(), serie.getCods());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+//        Stage stage = (Stage) listViewSerieAcquisto.getScene().getWindow();
+//        stage.close();
         support.switchStage("notificheStage.fxml",event ,800,900);
         //Elimino la serie selezionata dalla listView
         deleteSerieFromListView(serie);

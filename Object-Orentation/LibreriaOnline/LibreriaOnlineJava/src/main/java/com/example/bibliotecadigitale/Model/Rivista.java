@@ -38,8 +38,8 @@ public class Rivista extends Piattaforma{
     public Rivista(ArrayList<String> arrayList) {
         setNome(arrayList.get(0));
         setData(arrayList.get(1));
-        setArgomento(arrayList.get(2));
-        setResponsabile(arrayList.get(3));
+        setResponsabile(arrayList.get(2));
+        setArgomento(arrayList.get(3));
     }
 
     public ArrayList<String> ObjToArrayList() {
