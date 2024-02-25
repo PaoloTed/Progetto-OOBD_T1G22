@@ -430,7 +430,6 @@ public class HomeControllerAdminTest implements Initializable {
         codsDisponibileS.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         codsDisponibileS.setEditable(false);
 
-
         //Imposto la ricerca su libro come default e nascondo la tabella articolo
         buttonView.setStyle("-fx-border-color: red;");
         buttonView.setDisable(true);
@@ -582,7 +581,6 @@ public class HomeControllerAdminTest implements Initializable {
     }
 
     private void sceltaSetter(String sceltaMode) {
-
         boolean sceltaBool;
         int dimTable;
         scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
@@ -685,28 +683,11 @@ public class HomeControllerAdminTest implements Initializable {
             support.messageStage("Selezionare prima un tipo di ricerca");
             return;
         }
-
         setVisibleFalseAllTableView();
         tableViewHashMap.get(scelta).setVisible(true);
         comboBoxRicerca.setItems(ricercaHashMap.get(scelta));
         comboBoxRicerca.getSelectionModel().selectFirst();
     }
-
-//    @FXML
-//    private void deleteDaoT() {
-//        try {
-//            String scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
-//            if (scelta == null) {
-//                support.messageStage("Selezionare prima un tipo di ricerca");
-//                return;
-//            }
-//            tableViewHashMap.get(scelta).getItems().remove(tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem());
-//            implDaoHashMap.get(scelta).deleteT();
-//            support.messageStage("Delete effettuato");
-//        } catch (Exception e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
 
     @FXML
     private void deleteDao() {
@@ -764,15 +745,14 @@ public class HomeControllerAdminTest implements Initializable {
             support.messageStage("Update effettuato");
         } catch (SQLException e) {
             support.messageStage("Errore nell'aggiornamento");
-            e.printStackTrace();
         }
     }
 
     @FXML
-    private void onEditChangedString(TableColumn.CellEditEvent conferenzaStringCellEditEvent) {
+    private void onEditChangedString(TableColumn.CellEditEvent stringCellEditEvent) {
         String scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
-        String tipoColumn = conferenzaStringCellEditEvent.getTableColumn().getId();
-        String valoreColumnString = (String) conferenzaStringCellEditEvent.getNewValue();
+        String tipoColumn = stringCellEditEvent.getTableColumn().getId();
+        String valoreColumnString = (String) stringCellEditEvent.getNewValue();
         String nomeMetodo = "set" + tipoColumn.substring(0, 1).toUpperCase() + tipoColumn.substring(1, tipoColumn.indexOf(scelta));
         try {
             Object test = tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem();
@@ -783,10 +763,10 @@ public class HomeControllerAdminTest implements Initializable {
     }
 
     @FXML
-    private void onEditChangedInt(TableColumn.CellEditEvent conferenzaStringCellEditEvent) {
+    private void onEditChangedInt(TableColumn.CellEditEvent intCellEditEvent) {
         String scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
-        String tipoColumn = conferenzaStringCellEditEvent.getTableColumn().getId();
-        int valoreColumnInt = (int) conferenzaStringCellEditEvent.getNewValue();
+        String tipoColumn = intCellEditEvent.getTableColumn().getId();
+        int valoreColumnInt = (int) intCellEditEvent.getNewValue();
         String nomeMetodo = "set" + tipoColumn.substring(0, 1).toUpperCase() + tipoColumn.substring(1, tipoColumn.indexOf(scelta));
         try {
             Object test = tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem();
@@ -797,10 +777,10 @@ public class HomeControllerAdminTest implements Initializable {
     }
 
     @FXML
-    private void onEditChangedBool(TableColumn.CellEditEvent conferenzaStringCellEditEvent) {
+    private void onEditChangedBool(TableColumn.CellEditEvent boolCellEditEvent) {
         String scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
-        String tipoColumn = conferenzaStringCellEditEvent.getTableColumn().getId();
-        Boolean valoreColumnBoolean = (Boolean) conferenzaStringCellEditEvent.getNewValue();
+        String tipoColumn = boolCellEditEvent.getTableColumn().getId();
+        Boolean valoreColumnBoolean = (Boolean) boolCellEditEvent.getNewValue();
         String nomeMetodo = "set" + tipoColumn.substring(0, 1).toUpperCase() + tipoColumn.substring(1, tipoColumn.indexOf(scelta));
         try {
             Object test = tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem();
