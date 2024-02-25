@@ -51,7 +51,11 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
 
     @Override
     public void delete(ArrayList<String> strings) throws SQLException {
-        //TODO non deve essere implementato???
+        PreparedStatement ps = conn.prepareStatement("DELETE FROM disponibile_l WHERE coda = ? AND isbn = ?;");
+        ps.setInt(1, Integer.parseInt(strings.get(0)));//coda
+        ps.setString(2, strings.get(1));//isbn
+        ps.executeUpdate();
+        ps.close();
     }
 
     @Override

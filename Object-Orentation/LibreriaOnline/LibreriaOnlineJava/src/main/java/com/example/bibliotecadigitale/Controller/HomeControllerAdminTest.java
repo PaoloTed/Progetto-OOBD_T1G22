@@ -10,12 +10,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.util.converter.BooleanStringConverter;
+import javafx.util.converter.DefaultStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 
 import java.lang.reflect.InvocationTargetException;
@@ -279,11 +281,21 @@ public class HomeControllerAdminTest implements Initializable {
     private Text txtRicercaInserimento;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //todo combo box in tableview audiolibro solamente da problemi, mettere in tutti gli altri casi
+        ObservableList list = FXCollections.observableArrayList();
+        list.add("Cartaceo");
+        list.add("Digitale");
+        list.add("AudioLibro");
+        list.add("Cartaceo,Digitale");
+        list.add("Cartaceo,AudioLibro");
+        list.add("Digitale,AudioLibro");
+        list.add("Cartaceo,Digitale,AudioLibro");
         imageLibriSfondo.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/libri800x900.png"))));
         //inizializzo le colonne della tabella libro
         isbnLibro.setCellValueFactory(new PropertyValueFactory<>("isbn"));
         isbnLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         titoloLibro.setCellValueFactory(new PropertyValueFactory<>("titolo"));
+//        titoloLibro.setCellFactory(ComboBoxTableCell.forTableColumn(new DefaultStringConverter(), list));
         titoloLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         genereLibro.setCellValueFactory(new PropertyValueFactory<>("genere"));
         genereLibro.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -296,7 +308,8 @@ public class HomeControllerAdminTest implements Initializable {
         descrizioneLibro.setCellValueFactory(new PropertyValueFactory<>("descrizione"));
         descrizioneLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         fruizioneLibro.setCellValueFactory(new PropertyValueFactory<>("fruizione"));
-        fruizioneLibro.setCellFactory(TextFieldTableCell.forTableColumn());
+//        fruizioneLibro.setCellFactory(TextFieldTableCell.forTableColumn());
+        fruizioneLibro.setCellFactory(ComboBoxTableCell.forTableColumn(new DefaultStringConverter(), list));
         editoreLibro.setCellValueFactory(new PropertyValueFactory<>("editore"));
         editoreLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         autoreLibro.setCellValueFactory(new PropertyValueFactory<>("autore"));
