@@ -82,14 +82,12 @@ public class Libro extends Pubblicazioni implements ArrayListObject{
             setSuccessivo(arrayList.get(12));
         if(arrayList.get(13) == null)
             setSerie(null);
-        else{
+        else
             setSerie(Integer.parseInt(arrayList.get(13)));
-        }
         if(arrayList.get(14) == null)
             setPresentazione(null);
-        else {
+        else
             setPresentazione(Integer.parseInt(arrayList.get(14)));
-        }
     }
 
     @Override

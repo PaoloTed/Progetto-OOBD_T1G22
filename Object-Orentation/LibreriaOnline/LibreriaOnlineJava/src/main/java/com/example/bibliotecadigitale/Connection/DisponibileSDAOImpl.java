@@ -49,7 +49,11 @@ public class DisponibileSDAOImpl implements DisponibileSDAO {
 
     @Override
     public void delete(ArrayList<String> strings) throws SQLException {
-        //TODO Non deve essere implementato??
+        PreparedStatement ps = conn.prepareStatement("DELETE FROM disponibile_s WHERE coda = ? AND cods = ?;");
+        ps.setInt(1, Integer.parseInt(strings.get(0)));//coda
+        ps.setInt(2, Integer.parseInt(strings.get(1)));//cods
+        ps.executeUpdate();
+        ps.close();
     }
 
     @Override
