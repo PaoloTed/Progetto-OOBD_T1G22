@@ -24,6 +24,7 @@ public class Connessione {
             try {
                 Class.forName(credenziali.get(1));
             } catch (ClassNotFoundException e) {
+                System.out.println("Errore nel caricamento del driver");
             }
             user = credenziali.get(2);
             password = credenziali.get(3);
