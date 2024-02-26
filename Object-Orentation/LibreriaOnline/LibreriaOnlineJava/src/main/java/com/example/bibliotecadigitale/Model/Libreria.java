@@ -18,7 +18,7 @@ public class Libreria extends Acquisto{
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add(String.valueOf(getCoda()));
         arrayList.add(getNome());
-        arrayList.add(getTipoa());
+        arrayList.add(getTipo());
         arrayList.add(getUrl());
         arrayList.add(indirizzo);
         return arrayList;
@@ -28,7 +28,7 @@ public class Libreria extends Acquisto{
         Libreria libreria = new Libreria();
         libreria.setCoda(Integer.parseInt(arrayList.get(0)));
         libreria.setNome(arrayList.get(1));
-        libreria.setTipoa(arrayList.get(2));
+        libreria.setTipo(arrayList.get(2));
         libreria.setUrl(arrayList.get(3));
         libreria.setIndirizzo(arrayList.get(4));
         return libreria;

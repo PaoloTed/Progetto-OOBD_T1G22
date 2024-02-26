@@ -33,7 +33,7 @@
          <Font name="System Bold" size="12.0" />
       </font>
    </Text>
-   <Text id="tipoA" fx:id="textTIpoId" layoutX="585.0" layoutY="424.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo:" wrappingWidth="222.66665649414074" AnchorPane.topAnchor="411.05078125">
+   <Text id="tipo" fx:id="textTIpoId" layoutX="585.0" layoutY="424.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo:" wrappingWidth="222.66665649414074" AnchorPane.topAnchor="411.05078125">
       <font>
          <Font name="System Bold" size="12.0" />
       </font>

@@ -3,15 +3,15 @@ package com.example.bibliotecadigitale.Model;
 import java.util.ArrayList;
 
 public class DisponibileA {
-    private int codA;
+    private int coda;
     private String doi;
 
     public int getCoda() {
-        return codA;
+        return coda;
     }
 
     public void setCoda(int codA) {
-        this.codA = codA;
+        this.coda = codA;
     }
 
     public String getDoi() {
@@ -26,7 +26,7 @@ public class DisponibileA {
 
     public ArrayList<String> ObjToArrayList() {
         ArrayList<String> arrayList = new ArrayList<>();
-        arrayList.add(String.valueOf(codA));
+        arrayList.add(String.valueOf(coda));
         arrayList.add(doi);
         return arrayList;
     }
