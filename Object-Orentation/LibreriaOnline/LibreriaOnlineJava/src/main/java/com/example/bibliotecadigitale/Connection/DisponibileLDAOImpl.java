@@ -24,7 +24,7 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
     @Override
     public ArrayList<ArrayList<String>> getAll() throws SQLException {
         ArrayList<ArrayList<String>> disponibileLFinded = new ArrayList<>();
-        String query = "SELECT * FROM disponibilel;";
+        String query = "SELECT * FROM disponibile_l;";
         ResultSet rs = connessione.executeSearch(query);
         ArrayList<String> disponibileL;
         while (rs.next()) {

@@ -4,17 +4,17 @@ import java.util.ArrayList;
 
 public class Acquisto
 {
-    private int codA;
+    private int coda;
     private String nome;
-    private String tipoA;
+    private String tipo;
     private String url;
 
     public int getCoda() {
-        return codA;
+        return coda;
     }
 
     public void setCoda(int coda) {
-        this.codA = coda;
+        this.coda = coda;
     }
 
     public String getNome() {
@@ -26,8 +26,8 @@ public class Acquisto
     }
 
 
-    public void setTipoa(String tipoA) {
-        this.tipoA = tipoA;
+    public void setTipo(String tipoA) {
+        this.tipo = tipoA;
     }
 
     public String getUrl() {
@@ -48,19 +48,19 @@ public class Acquisto
 
     private String indirizzo;
 
-    public String getTipoa() {
-        return tipoA;
+    public String getTipo() {
+        return tipo;
     }
 
     public Acquisto() {}
     public Acquisto(ArrayList<String> strings) {
-        codA = Integer.parseInt(strings.get(0));
+        coda = Integer.parseInt(strings.get(0));
         if(strings.get(1) == null) {
             nome = null;
         } else {
             nome = strings.get(1);
         }
-        tipoA = strings.get(2);
+        tipo = strings.get(2);
         if(strings.get(3) == null) {
             url = null;
         } else {

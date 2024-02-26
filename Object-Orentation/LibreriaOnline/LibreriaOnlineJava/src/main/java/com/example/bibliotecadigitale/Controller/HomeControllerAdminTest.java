@@ -1,6 +1,7 @@
 package com.example.bibliotecadigitale.Controller;
 
 import com.example.bibliotecadigitale.Connection.*;
+import com.example.bibliotecadigitale.DAO.AcquistoDAO;
 import com.example.bibliotecadigitale.DAO.DAO;
 import com.example.bibliotecadigitale.Model.*;
 import com.example.bibliotecadigitale.SupportStage;
@@ -281,15 +282,8 @@ public class HomeControllerAdminTest implements Initializable {
     private Text txtRicercaInserimento;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        HashMap<String,ObservableList> lists = getLists();
         //todo combo box in tableview audiolibro solamente da problemi, mettere in tutti gli altri casi
-        ObservableList list = FXCollections.observableArrayList();
-        list.add("Cartaceo");
-        list.add("Digitale");
-        list.add("AudioLibro");
-        list.add("Cartaceo,Digitale");
-        list.add("Cartaceo,AudioLibro");
-        list.add("Digitale,AudioLibro");
-        list.add("Cartaceo,Digitale,AudioLibro");
         imageLibriSfondo.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/libri800x900.png"))));
         //inizializzo le colonne della tabella libro
         isbnLibro.setCellValueFactory(new PropertyValueFactory<>("isbn"));
@@ -302,28 +296,33 @@ public class HomeControllerAdminTest implements Initializable {
         numpagineLibro.setCellValueFactory(new PropertyValueFactory<>("numpagine"));
         numpagineLibro.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         tipoLibro.setCellValueFactory(new PropertyValueFactory<>("tipo"));
-        tipoLibro.setCellFactory(TextFieldTableCell.forTableColumn());
+//        tipoLibro.setCellFactory(TextFieldTableCell.forTableColumn());
+        tipoLibro.setCellFactory(ComboBoxTableCell.forTableColumn(new DefaultStringConverter(), lists.get("LibroTipo")));
         materiaLibro.setCellValueFactory(new PropertyValueFactory<>("materia"));
         materiaLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         descrizioneLibro.setCellValueFactory(new PropertyValueFactory<>("descrizione"));
         descrizioneLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         fruizioneLibro.setCellValueFactory(new PropertyValueFactory<>("fruizione"));
 //        fruizioneLibro.setCellFactory(TextFieldTableCell.forTableColumn());
-        fruizioneLibro.setCellFactory(ComboBoxTableCell.forTableColumn(new DefaultStringConverter(), list));
+        fruizioneLibro.setCellFactory(ComboBoxTableCell.forTableColumn(new DefaultStringConverter(), lists.get("LibroFruizione")));
         editoreLibro.setCellValueFactory(new PropertyValueFactory<>("editore"));
         editoreLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         autoreLibro.setCellValueFactory(new PropertyValueFactory<>("autore"));
         autoreLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         datauscitaLibro.setCellValueFactory(new PropertyValueFactory<>("datauscita"));
         datauscitaLibro.setCellFactory(TextFieldTableCell.forTableColumn());
+//        datauscitaLibro.setCellFactory(DatePicker.forTableColumn());
         linguaLibro.setCellValueFactory(new PropertyValueFactory<>("lingua"));
         linguaLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         successivoLibro.setCellValueFactory(new PropertyValueFactory<>("successivo"));
-        successivoLibro.setCellFactory(TextFieldTableCell.forTableColumn());
+//        successivoLibro.setCellFactory(TextFieldTableCell.forTableColumn());
+        successivoLibro.setCellFactory(ComboBoxTableCell.forTableColumn(new DefaultStringConverter(), lists.get("LibroIsbn")));
         serieLibro.setCellValueFactory(new PropertyValueFactory<>("serie"));
-        serieLibro.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+//        serieLibro.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        serieLibro.setCellFactory(ComboBoxTableCell.forTableColumn(new IntegerStringConverter(), lists.get("LibroSerie")));
         presentazioneLibro.setCellValueFactory(new PropertyValueFactory<>("presentazione"));
-        presentazioneLibro.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+//        presentazioneLibro.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        presentazioneLibro.setCellFactory(ComboBoxTableCell.forTableColumn(new IntegerStringConverter(), lists.get("LibroPresentazione")));
 
         //inizializzo le colonne della tabella articolo
         doiArticolo.setCellValueFactory(new PropertyValueFactory<>("doi"));
@@ -348,7 +347,8 @@ public class HomeControllerAdminTest implements Initializable {
         linguaArticolo.setCellValueFactory(new PropertyValueFactory<>("lingua"));
         linguaArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
         conferenzaArticolo.setCellValueFactory(new PropertyValueFactory<>("conferenza"));
-        conferenzaArticolo.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+//        conferenzaArticolo.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        conferenzaArticolo.setCellFactory(ComboBoxTableCell.forTableColumn(new IntegerStringConverter(), lists.get("ArticoloConferenza")));
         nomerArticolo.setCellValueFactory(new PropertyValueFactory<>("nomer"));
         nomerArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
         nomerArticolo.setEditable(false);
@@ -362,8 +362,9 @@ public class HomeControllerAdminTest implements Initializable {
         codaAcquisto.setEditable(false);
         nomeAcquisto.setCellValueFactory(new PropertyValueFactory<>("nome"));
         nomeAcquisto.setCellFactory(TextFieldTableCell.forTableColumn());
-        tipoAcquisto.setCellValueFactory(new PropertyValueFactory<>("tipoa"));
-        tipoAcquisto.setCellFactory(TextFieldTableCell.forTableColumn());
+        tipoAcquisto.setCellValueFactory(new PropertyValueFactory<>("tipo"));
+//        tipoAcquisto.setCellFactory(TextFieldTableCell.forTableColumn());
+        tipoAcquisto.setCellFactory(ComboBoxTableCell.forTableColumn(new DefaultStringConverter(), lists.get("AcquistoTipo")));
         urlAcquisto.setCellValueFactory(new PropertyValueFactory<>("url"));
         urlAcquisto.setCellFactory(TextFieldTableCell.forTableColumn());
         indirizzoAcquisto.setCellValueFactory(new PropertyValueFactory<>("indirizzo"));
@@ -397,7 +398,8 @@ public class HomeControllerAdminTest implements Initializable {
         dataPresentazione.setCellValueFactory(new PropertyValueFactory<>("datapresentazione"));
         dataPresentazione.setCellFactory(TextFieldTableCell.forTableColumn());
         tipoPresentazione.setCellValueFactory(new PropertyValueFactory<>("tipo"));
-        tipoPresentazione.setCellFactory(TextFieldTableCell.forTableColumn());
+//        tipoPresentazione.setCellFactory(TextFieldTableCell.forTableColumn());
+        tipoPresentazione.setCellFactory(ComboBoxTableCell.forTableColumn(new DefaultStringConverter(), lists.get("PresentazioneTipo")));
 
         //inizializzo le colonne della tabella rivista
         nomeRivista.setCellValueFactory(new PropertyValueFactory<>("nome"));
@@ -417,30 +419,37 @@ public class HomeControllerAdminTest implements Initializable {
         nomeSerie.setCellFactory(TextFieldTableCell.forTableColumn());
         numlibriSerie.setCellValueFactory(new PropertyValueFactory<>("numlibri"));
         completataSerie.setCellValueFactory(new PropertyValueFactory<>("completata"));
-        completataSerie.setCellFactory(TextFieldTableCell.forTableColumn(new BooleanStringConverter()));
+//        completataSerie.setCellFactory(TextFieldTableCell.forTableColumn(new BooleanStringConverter()));
+        completataSerie.setCellFactory(ComboBoxTableCell.forTableColumn(new BooleanStringConverter(), lists.get("SerieCompletata") ));
 
         //inizializzo le colonne della tabella disponibileA
         codaDisponibileA.setCellValueFactory(new PropertyValueFactory<>("coda"));
-        codaDisponibileA.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+//        codaDisponibileA.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        codaDisponibileA.setCellFactory(ComboBoxTableCell.forTableColumn(new IntegerStringConverter(), lists.get("DisponibileACoda")));
         codaDisponibileA.setEditable(false);
         doiDisponibileA.setCellValueFactory(new PropertyValueFactory<>("doi"));
-        doiDisponibileA.setCellFactory(TextFieldTableCell.forTableColumn());
+//        doiDisponibileA.setCellFactory(TextFieldTableCell.forTableColumn());
+        doiDisponibileA.setCellFactory(ComboBoxTableCell.forTableColumn(new DefaultStringConverter(), lists.get("DisponibileADoi")));
         doiDisponibileA.setEditable(false);
 
         //inizializzo le colonne della tabella disponibileL
         codaDisponibileL.setCellValueFactory(new PropertyValueFactory<>("coda"));
-        codaDisponibileL.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+//        codaDisponibileL.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        codaDisponibileL.setCellFactory(ComboBoxTableCell.forTableColumn(new IntegerStringConverter(), lists.get("DisponibileLCoda")));
         codaDisponibileL.setEditable(false);
         isbnDisponibileL.setCellValueFactory(new PropertyValueFactory<>("isbn"));
-        isbnDisponibileL.setCellFactory(TextFieldTableCell.forTableColumn());
+//        isbnDisponibileL.setCellFactory(TextFieldTableCell.forTableColumn());
+        isbnDisponibileL.setCellFactory(ComboBoxTableCell.forTableColumn(new DefaultStringConverter(), lists.get("DisponibileLIsbn")));
         isbnDisponibileL.setEditable(false);
 
         //inizializzo le colonne della tabella disponibileS
         codaDisponibileS.setCellValueFactory(new PropertyValueFactory<>("coda"));
-        codaDisponibileS.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+//        codaDisponibileS.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        codaDisponibileS.setCellFactory(ComboBoxTableCell.forTableColumn(new IntegerStringConverter(), lists.get("DisponibileSCoda")));
         codaDisponibileS.setEditable(false);
         codsDisponibileS.setCellValueFactory(new PropertyValueFactory<>("cods"));
-        codsDisponibileS.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+//        codsDisponibileS.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        codsDisponibileS.setCellFactory(ComboBoxTableCell.forTableColumn(new IntegerStringConverter(), lists.get("DisponibileSCods")));
         codsDisponibileS.setEditable(false);
 
         //Imposto la ricerca su libro come default e nascondo la tabella articolo
@@ -501,6 +510,172 @@ public class HomeControllerAdminTest implements Initializable {
         ricercaHashMap.put("DisponibileS", FXCollections.observableArrayList("Coda", "Cods"));
 
         sceltaSetter("insert");
+    }
+
+    private HashMap <String, ObservableList> getLists() {
+        HashMap<String, ObservableList> lists = new HashMap<>();
+        ObservableList list = FXCollections.observableArrayList();
+        //LIBRO
+        //-Fruizione
+        list = FXCollections.observableArrayList();
+        list.add("Cartaceo");
+        list.add("Digitale");
+        list.add("AudioLibro");
+        list.add("Cartaceo,Digitale");
+        list.add("Cartaceo,AudioLibro");
+        list.add("Digitale,AudioLibro");
+        list.add("Cartaceo,Digitale,AudioLibro");
+        lists.put("LibroFruizione",list);
+        //-Tipo
+        list = FXCollections.observableArrayList();
+        list.add("Romanzo");
+        list.add("Didattico");
+        lists.put("LibroTipo",list);
+        //-Serie
+        list = FXCollections.observableArrayList();
+        try {
+            list.add(null);
+            SerieDAOImpl serieDAO = new SerieDAOImpl();
+            ArrayList<ArrayList<String>> arraySerie = serieDAO.getAll();
+            for (ArrayList<String> strings : arraySerie) {
+                if(strings.get(0) != null)
+                    list.add(Integer.parseInt(strings.get(0)));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            lists.put("LibroSerie",list);
+        }
+        //-Presentazione
+        list = FXCollections.observableArrayList();
+        try{
+            list.add(null);
+            PresentazioneDAOImpl presentazioneDAO = new PresentazioneDAOImpl();
+            ArrayList<ArrayList<String>> arrayPresentazione = presentazioneDAO.getAll();
+            for (ArrayList<String> strings : arrayPresentazione) {
+                if(strings.get(0) != null)
+                    list.add(Integer.parseInt(strings.get(0)));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            lists.put("LibroPresentazione",list);
+        }
+        //-ISBN
+        list = FXCollections.observableArrayList();
+        try {
+            list.add(null);
+            LibroDAOImpl libroDAO = new LibroDAOImpl();
+            ArrayList<ArrayList<String>> arrayLibro = libroDAO.getAll();
+            for (ArrayList<String> strings : arrayLibro) {
+                if(strings.get(0) != null)
+                    list.add(strings.get(0));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            lists.put("LibroIsbn",list);
+        }
+        //Articolo
+        //-Conferenza
+        list = FXCollections.observableArrayList();
+        try {
+            list.add(null);
+            ConferenzaDAOImpl conferenzaDAO = new ConferenzaDAOImpl();
+            ArrayList<ArrayList<String>> arrayConferenza = conferenzaDAO.getAll();
+            for (ArrayList<String> strings : arrayConferenza) {
+                if(strings.get(0) != null)
+                    list.add(Integer.parseInt(strings.get(0)));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            lists.put("ArticoloConferenza",list);
+        }
+        //Acquisto
+        //-Tipo
+        list = FXCollections.observableArrayList();
+        list.add("Libreria");
+        list.add("Sito web");
+        lists.put("AcquistoTipo",list);
+        //Presentazione
+        //-Tipo
+        list = FXCollections.observableArrayList();
+        list.add("Libreria");
+        list.add("Sala");
+        lists.put("PresentazioneTipo",list);
+        //Serie
+        //-Completata
+        list = FXCollections.observableArrayList();
+        list.add(true);
+        list.add(false);
+        lists.put("SerieCompletata",list);
+        //DISPONIBILEA
+        //-Coda
+        list = FXCollections.observableArrayList();
+        try {
+            AcquistoDAOImpl acquistoDAO = new AcquistoDAOImpl();
+            ArrayList<ArrayList<String>> arrayAcquisto = acquistoDAO.getAll();
+            for (ArrayList<String> strings : arrayAcquisto) {
+                if(strings.get(0) != null)
+                    list.add(Integer.parseInt(strings.get(0)));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            lists.put("DisponibileACoda",list);
+            lists.put("DisponibileLCoda",list);
+            lists.put("DisponibileSCoda",list);
+        }
+        //-Doi
+        list = FXCollections.observableArrayList();
+        try {
+            ArticoloScientificoDAOImpl articoloScientificoDAO = new ArticoloScientificoDAOImpl();
+            ArrayList<ArrayList<String>> arrayArticolo = articoloScientificoDAO.getAll();
+            for (ArrayList<String> strings : arrayArticolo) {
+                if(strings.get(0) != null)
+                    list.add(strings.get(0));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            lists.put("DisponibileADoi",list);
+        }
+        //DISPONIBILEL
+        //-Coda
+        //Gia Inserito
+        //-Isbn
+        list = FXCollections.observableArrayList();
+        try {
+            LibroDAOImpl libroDAO = new LibroDAOImpl();
+            ArrayList<ArrayList<String>> arrayLibro = libroDAO.getAll();
+            for (ArrayList<String> strings : arrayLibro) {
+                if(strings.get(0) != null)
+                    list.add(strings.get(0));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            lists.put("DisponibileLIsbn",list);
+        }
+        //DISPONIBILES
+        //-Coda
+        //Gia Inserito
+        //-Cods
+        list = FXCollections.observableArrayList();
+        try {
+            SerieDAOImpl serieDAO = new SerieDAOImpl();
+            ArrayList<ArrayList<String>> arraySerie = serieDAO.getAll();
+            for (ArrayList<String> strings : arraySerie) {
+                if(strings.get(0) != null)
+                    list.add(Integer.parseInt(strings.get(0)));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            lists.put("DisponibileSCods",list);
+        }
+        return lists;
     }
 
     @FXML
@@ -779,11 +954,11 @@ public class HomeControllerAdminTest implements Initializable {
     private void onEditChangedInt(TableColumn.CellEditEvent intCellEditEvent) {
         String scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
         String tipoColumn = intCellEditEvent.getTableColumn().getId();
-        int valoreColumnInt = (int) intCellEditEvent.getNewValue();
+        Integer valoreColumnInt = (Integer) intCellEditEvent.getNewValue();
         String nomeMetodo = "set" + tipoColumn.substring(0, 1).toUpperCase() + tipoColumn.substring(1, tipoColumn.indexOf(scelta));
         try {
             Object test = tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem();
-            test.getClass().getMethod(nomeMetodo, int.class).invoke(test, valoreColumnInt);
+            test.getClass().getMethod(nomeMetodo, Integer.class).invoke(test, valoreColumnInt);
         } catch (Exception e) {
             System.out.println("Errore" + e.getMessage());
         }
