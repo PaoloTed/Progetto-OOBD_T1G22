@@ -46,7 +46,7 @@ public class AcquistoDAOImpl implements AcquistoDAO {
     }
 
     @Override
-    public void insert(ArrayList<String> strings) throws SQLException {
+    public void insert(ArrayList<String> strings) throws SQLException, IllegalArgumentException {
         PreparedStatement ps = conn.prepareStatement("INSERT INTO acquisto VALUES (?,?,?,?,?);");
         //Inserimento valori non nullable
         ps.setInt(1, Integer.parseInt(strings.get(0)));//coda
@@ -73,7 +73,7 @@ public class AcquistoDAOImpl implements AcquistoDAO {
     }
 
     @Override
-    public void update(ArrayList<String> strings) throws SQLException {
+    public void update(ArrayList<String> strings) throws SQLException, IllegalArgumentException {
         PreparedStatement ps = conn.prepareStatement("UPDATE acquisto SET nome = ?, tipo = ?, url = ?, indirizzo = ? WHERE coda = ?;");
         //Inserimento valori non nullable
         ps.setString(2, strings.get(2));//tipo

@@ -36,7 +36,7 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
     }
 
     @Override
-    public void insert(ArrayList<String> strings) throws SQLException {
+    public void insert(ArrayList<String> strings) throws SQLException, IllegalArgumentException{
         PreparedStatement ps = conn.prepareStatement("INSERT INTO disponibile_l VALUES (?,?);");
         ps.setInt(1, Integer.parseInt(strings.get(0)));//coda
         ps.setString(2, strings.get(1));//isbn
@@ -45,7 +45,7 @@ public class DisponibileLDAOImpl implements DisponibileLDAO {
     }
 
     @Override
-    public void update(ArrayList<String> strings) throws SQLException {
+    public void update(ArrayList<String> strings) throws SQLException, IllegalArgumentException{
         //TODO non deve essere implementato???
     }
 

@@ -45,7 +45,7 @@ public class PresentazioneDAOImpl implements PresentazioneDAO {
     }
 
     @Override
-    public void insert(ArrayList<String> strings) throws SQLException {
+    public void insert(ArrayList<String> strings) throws SQLException, IllegalArgumentException{
         PreparedStatement ps = conn.prepareStatement("INSERT INTO presentazione VALUES (?,?,?,?,?);");
         ps.setInt(1, Integer.parseInt(strings.get(0)));//codP
         ps.setString(2, strings.get(1));//nome
@@ -57,7 +57,7 @@ public class PresentazioneDAOImpl implements PresentazioneDAO {
     }
 
     @Override
-    public void update(ArrayList<String> strings) throws SQLException {
+    public void update(ArrayList<String> strings) throws SQLException, IllegalArgumentException{
         PreparedStatement ps = conn.prepareStatement("UPDATE presentazione SET nome = ?, indirizzo = ?, datapresentazione = ?, tipo = ? WHERE codP = ?;");
         ps.setString(1, strings.get(1));//nome
         ps.setString(2, strings.get(2));//indirizzo

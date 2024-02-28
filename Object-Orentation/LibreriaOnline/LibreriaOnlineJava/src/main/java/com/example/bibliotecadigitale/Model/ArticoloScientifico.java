@@ -46,6 +46,7 @@ public class ArticoloScientifico extends Pubblicazioni {
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add(doi);
         arrayList.add(this.getTitolo());
+        arrayList.add(this.getGenere());
         arrayList.add(String.valueOf(getNumpagine()));
         arrayList.add(this.getDatauscita());
         arrayList.add(this.getDescrizione());

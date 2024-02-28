@@ -37,7 +37,7 @@ public class RivistaDAOImpl implements RivistaDAO {
     }
 
     @Override
-    public void insert(ArrayList<String> strings) throws SQLException {
+    public void insert(ArrayList<String> strings) throws SQLException, IllegalArgumentException{
         PreparedStatement ps = conn.prepareStatement("INSERT INTO rivista VALUES (?,?,?,?);");
         ps.setString(1, strings.get(0));//nome
         ps.setDate(2, java.sql.Date.valueOf(strings.get(1)));//data
@@ -48,7 +48,7 @@ public class RivistaDAOImpl implements RivistaDAO {
     }
 
     @Override
-    public void update(ArrayList<String> strings) throws SQLException {
+    public void update(ArrayList<String> strings) throws SQLException, IllegalArgumentException{
         PreparedStatement ps = conn.prepareStatement("UPDATE rivista SET data = ?, responsabile = ?, argomento = ? WHERE nome = ?;");
         ps.setDate(1, java.sql.Date.valueOf(strings.get(1)));//data
         ps.setString(2, strings.get(2));//responsabile
