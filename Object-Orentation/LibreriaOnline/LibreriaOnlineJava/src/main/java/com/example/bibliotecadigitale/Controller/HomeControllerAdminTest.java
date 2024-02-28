@@ -282,7 +282,7 @@ public class HomeControllerAdminTest implements Initializable {
     private Text txtRicercaInserimento;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        HashMap<String,ObservableList> lists = getLists();
+        HashMap<String, ObservableList> lists = getLists();
         //todo combo box in tableview audiolibro solamente da problemi, mettere in tutti gli altri casi
         imageLibriSfondo.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/libri800x900.png"))));
         //inizializzo le colonne della tabella libro
@@ -420,7 +420,7 @@ public class HomeControllerAdminTest implements Initializable {
         numlibriSerie.setCellValueFactory(new PropertyValueFactory<>("numlibri"));
         completataSerie.setCellValueFactory(new PropertyValueFactory<>("completata"));
 //        completataSerie.setCellFactory(TextFieldTableCell.forTableColumn(new BooleanStringConverter()));
-        completataSerie.setCellFactory(ComboBoxTableCell.forTableColumn(new BooleanStringConverter(), lists.get("SerieCompletata") ));
+        completataSerie.setCellFactory(ComboBoxTableCell.forTableColumn(new BooleanStringConverter(), lists.get("SerieCompletata")));
 
         //inizializzo le colonne della tabella disponibileA
         codaDisponibileA.setCellValueFactory(new PropertyValueFactory<>("coda"));
@@ -512,7 +512,7 @@ public class HomeControllerAdminTest implements Initializable {
         sceltaSetter("insert");
     }
 
-    private HashMap <String, ObservableList> getLists() {
+    private HashMap<String, ObservableList> getLists() {
         HashMap<String, ObservableList> lists = new HashMap<>();
         ObservableList list = FXCollections.observableArrayList();
         //LIBRO
@@ -525,12 +525,12 @@ public class HomeControllerAdminTest implements Initializable {
         list.add("Cartaceo,AudioLibro");
         list.add("Digitale,AudioLibro");
         list.add("Cartaceo,Digitale,AudioLibro");
-        lists.put("LibroFruizione",list);
+        lists.put("LibroFruizione", list);
         //-Tipo
         list = FXCollections.observableArrayList();
         list.add("Romanzo");
         list.add("Didattico");
-        lists.put("LibroTipo",list);
+        lists.put("LibroTipo", list);
         //-Serie
         list = FXCollections.observableArrayList();
         try {
@@ -538,28 +538,28 @@ public class HomeControllerAdminTest implements Initializable {
             SerieDAOImpl serieDAO = new SerieDAOImpl();
             ArrayList<ArrayList<String>> arraySerie = serieDAO.getAll();
             for (ArrayList<String> strings : arraySerie) {
-                if(strings.get(0) != null)
+                if (strings.get(0) != null)
                     list.add(Integer.parseInt(strings.get(0)));
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            lists.put("LibroSerie",list);
+        } finally {
+            lists.put("LibroSerie", list);
         }
         //-Presentazione
         list = FXCollections.observableArrayList();
-        try{
+        try {
             list.add(null);
             PresentazioneDAOImpl presentazioneDAO = new PresentazioneDAOImpl();
             ArrayList<ArrayList<String>> arrayPresentazione = presentazioneDAO.getAll();
             for (ArrayList<String> strings : arrayPresentazione) {
-                if(strings.get(0) != null)
+                if (strings.get(0) != null)
                     list.add(Integer.parseInt(strings.get(0)));
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            lists.put("LibroPresentazione",list);
+        } finally {
+            lists.put("LibroPresentazione", list);
         }
         //-ISBN
         list = FXCollections.observableArrayList();
@@ -568,13 +568,13 @@ public class HomeControllerAdminTest implements Initializable {
             LibroDAOImpl libroDAO = new LibroDAOImpl();
             ArrayList<ArrayList<String>> arrayLibro = libroDAO.getAll();
             for (ArrayList<String> strings : arrayLibro) {
-                if(strings.get(0) != null)
+                if (strings.get(0) != null)
                     list.add(strings.get(0));
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            lists.put("LibroIsbn",list);
+        } finally {
+            lists.put("LibroIsbn", list);
         }
         //Articolo
         //-Conferenza
@@ -584,32 +584,32 @@ public class HomeControllerAdminTest implements Initializable {
             ConferenzaDAOImpl conferenzaDAO = new ConferenzaDAOImpl();
             ArrayList<ArrayList<String>> arrayConferenza = conferenzaDAO.getAll();
             for (ArrayList<String> strings : arrayConferenza) {
-                if(strings.get(0) != null)
+                if (strings.get(0) != null)
                     list.add(Integer.parseInt(strings.get(0)));
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            lists.put("ArticoloConferenza",list);
+        } finally {
+            lists.put("ArticoloConferenza", list);
         }
         //Acquisto
         //-Tipo
         list = FXCollections.observableArrayList();
         list.add("Libreria");
         list.add("Sito web");
-        lists.put("AcquistoTipo",list);
+        lists.put("AcquistoTipo", list);
         //Presentazione
         //-Tipo
         list = FXCollections.observableArrayList();
         list.add("Libreria");
         list.add("Sala");
-        lists.put("PresentazioneTipo",list);
+        lists.put("PresentazioneTipo", list);
         //Serie
         //-Completata
         list = FXCollections.observableArrayList();
         list.add(true);
         list.add(false);
-        lists.put("SerieCompletata",list);
+        lists.put("SerieCompletata", list);
         //DISPONIBILEA
         //-Coda
         list = FXCollections.observableArrayList();
@@ -617,15 +617,15 @@ public class HomeControllerAdminTest implements Initializable {
             AcquistoDAOImpl acquistoDAO = new AcquistoDAOImpl();
             ArrayList<ArrayList<String>> arrayAcquisto = acquistoDAO.getAll();
             for (ArrayList<String> strings : arrayAcquisto) {
-                if(strings.get(0) != null)
+                if (strings.get(0) != null)
                     list.add(Integer.parseInt(strings.get(0)));
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            lists.put("DisponibileACoda",list);
-            lists.put("DisponibileLCoda",list);
-            lists.put("DisponibileSCoda",list);
+        } finally {
+            lists.put("DisponibileACoda", list);
+            lists.put("DisponibileLCoda", list);
+            lists.put("DisponibileSCoda", list);
         }
         //-Doi
         list = FXCollections.observableArrayList();
@@ -633,13 +633,13 @@ public class HomeControllerAdminTest implements Initializable {
             ArticoloScientificoDAOImpl articoloScientificoDAO = new ArticoloScientificoDAOImpl();
             ArrayList<ArrayList<String>> arrayArticolo = articoloScientificoDAO.getAll();
             for (ArrayList<String> strings : arrayArticolo) {
-                if(strings.get(0) != null)
+                if (strings.get(0) != null)
                     list.add(strings.get(0));
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            lists.put("DisponibileADoi",list);
+        } finally {
+            lists.put("DisponibileADoi", list);
         }
         //DISPONIBILEL
         //-Coda
@@ -650,13 +650,13 @@ public class HomeControllerAdminTest implements Initializable {
             LibroDAOImpl libroDAO = new LibroDAOImpl();
             ArrayList<ArrayList<String>> arrayLibro = libroDAO.getAll();
             for (ArrayList<String> strings : arrayLibro) {
-                if(strings.get(0) != null)
+                if (strings.get(0) != null)
                     list.add(strings.get(0));
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            lists.put("DisponibileLIsbn",list);
+        } finally {
+            lists.put("DisponibileLIsbn", list);
         }
         //DISPONIBILES
         //-Coda
@@ -667,13 +667,13 @@ public class HomeControllerAdminTest implements Initializable {
             SerieDAOImpl serieDAO = new SerieDAOImpl();
             ArrayList<ArrayList<String>> arraySerie = serieDAO.getAll();
             for (ArrayList<String> strings : arraySerie) {
-                if(strings.get(0) != null)
+                if (strings.get(0) != null)
                     list.add(Integer.parseInt(strings.get(0)));
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            lists.put("DisponibileSCods",list);
+        } finally {
+            lists.put("DisponibileSCods", list);
         }
         return lists;
     }
@@ -890,7 +890,8 @@ public class HomeControllerAdminTest implements Initializable {
         try {
             arrayList = (ArrayList<String>) objDelete.getClass().getMethod("ObjToArrayList").invoke(objDelete);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.out.println("Errore reperimento dati" + e.getMessage());
+            e.printStackTrace();
         }
         try {
             implDaoHashMap.get(scelta).delete(arrayList);
@@ -908,14 +909,16 @@ public class HomeControllerAdminTest implements Initializable {
         try {
             arrayList = (ArrayList<String>) objInsert.getClass().getMethod("ObjToArrayList").invoke(objInsert);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.out.println("Errore reperimento dati" + e.getMessage());
+            e.printStackTrace();
         }
         try {
             implDaoHashMap.get(scelta).insert(arrayList);
             support.messageStage("Insert effettuato");
         } catch (SQLException e) {
-            support.messageStage("Errore nell'inserimento");
-            e.printStackTrace();
+            support.messageStage("Errore nell'inserimento, inserisci tutti campi con ☑");
+        } catch (IllegalArgumentException e) {
+            support.messageStage("Errore nell'inserimento, inserisci tutti campi con ☑");
         }
     }
 
@@ -926,13 +929,16 @@ public class HomeControllerAdminTest implements Initializable {
         try {
             arrayList = (ArrayList<String>) objUpdate.getClass().getMethod("ObjToArrayList").invoke(objUpdate);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.out.println("Errore reperimento dati" + e.getMessage());
+            e.printStackTrace();
         }
         try {
             implDaoHashMap.get(scelta).update(arrayList);
             support.messageStage("Update effettuato");
         } catch (SQLException e) {
-            support.messageStage("Errore nell'aggiornamento");
+            support.messageStage("Errore nell'aggiornamento, inserisci tutti campi con ☑");
+        } catch (IllegalArgumentException e) {
+            support.messageStage("Errore nell'aggiornamento, inserisci tutti campi con ☑");
         }
     }
 
@@ -947,6 +953,7 @@ public class HomeControllerAdminTest implements Initializable {
             test.getClass().getMethod(nomeMetodo, String.class).invoke(test, valoreColumnString);
         } catch (Exception e) {
             System.out.println("Errore" + e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -961,6 +968,7 @@ public class HomeControllerAdminTest implements Initializable {
             test.getClass().getMethod(nomeMetodo, Integer.class).invoke(test, valoreColumnInt);
         } catch (Exception e) {
             System.out.println("Errore" + e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -975,6 +983,7 @@ public class HomeControllerAdminTest implements Initializable {
             test.getClass().getMethod(nomeMetodo, Boolean.class).invoke(test, valoreColumnBoolean);
         } catch (Exception e) {
             System.out.println("Errore" + e.getMessage());
+            e.printStackTrace();
         }
     }
 }

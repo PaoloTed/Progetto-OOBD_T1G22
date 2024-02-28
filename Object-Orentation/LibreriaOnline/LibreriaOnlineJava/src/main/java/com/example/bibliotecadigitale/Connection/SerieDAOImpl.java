@@ -36,7 +36,7 @@ public class SerieDAOImpl implements SerieDAO {
     }
 
     @Override
-    public void insert(ArrayList<String> strings) throws SQLException{
+    public void insert(ArrayList<String> strings) throws SQLException, IllegalArgumentException{
         PreparedStatement ps = conn.prepareStatement("INSERT INTO serie VALUES (?,?,?,?);");
         //Inserimento valori non nullable
         ps.setInt(1, Integer.parseInt(strings.get(0)));//cods
@@ -58,7 +58,7 @@ public class SerieDAOImpl implements SerieDAO {
     }
 
     @Override
-    public void update(ArrayList<String> strings) throws SQLException {
+    public void update(ArrayList<String> strings) throws SQLException, IllegalArgumentException{
         PreparedStatement ps = conn.prepareStatement("UPDATE serie SET nome = ?, numlibri = ?, completata = ? WHERE cods = ?;");
         //Inserimento valori non nullable
         ps.setString(1, strings.get(1));//nome

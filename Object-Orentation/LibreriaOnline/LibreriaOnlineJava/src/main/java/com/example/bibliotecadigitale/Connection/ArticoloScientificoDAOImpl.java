@@ -46,14 +46,16 @@ public class ArticoloScientificoDAOImpl implements ArticoloScientificoDAO {
     }
 
     @Override
-    public void insert(ArrayList<String> strings) throws SQLException {
+    public void insert(ArrayList<String> strings) throws SQLException, IllegalArgumentException{
         PreparedStatement ps = conn.prepareStatement("INSERT INTO articolo_scientifico VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);");
         //Inserimento valori non nullable
         ps.setString(1, strings.get(0));//doi
         ps.setString(2, strings.get(1));//titolo
         ps.setString(3, strings.get(2));//genere
         ps.setInt(4, Integer.parseInt(strings.get(3)));//numeroPagine
-        ps.setString(6, strings.get(5).replace("'","''"));//descrizione
+        if (strings.get(5) != null) {
+            ps.setString(6, strings.get(5).replace("'", "''"));//descrizione
+        }
         ps.setString(7, strings.get(6));//fruizione
         ps.setString(8, strings.get(7));//editore
         ps.setString(9, strings.get(8));//autore
@@ -65,7 +67,7 @@ public class ArticoloScientificoDAOImpl implements ArticoloScientificoDAO {
         } else {
             ps.setDate(5, Date.valueOf(strings.get(4)));//dataUscita
         }
-        if (strings.get(10) == null) {
+        if (strings.get(10) == null || strings.get(10).equals("null")) {
             ps.setNull(11, Types.INTEGER);
         } else {
             ps.setInt(11, Integer.parseInt(strings.get(10)));//conferenza
@@ -85,14 +87,16 @@ public class ArticoloScientificoDAOImpl implements ArticoloScientificoDAO {
     }
 
     @Override
-    public void update(ArrayList<String> strings) throws SQLException {
+    public void update(ArrayList<String> strings) throws SQLException, IllegalArgumentException {
         PreparedStatement ps = conn.prepareStatement("UPDATE articolo_scientifico SET titolo = ?, genere = ?, numpagine = ?, dataUscita = ?, descrizione = ?, fruizione = ?, editore = ?, autore = ?, lingua = ?, conferenza = ?, nomer = ?, datar = ? WHERE doi = ?;");
         //Inserimento valori non nullable
         ps.setString(13, strings.get(0));//doi
         ps.setString(1, strings.get(1));//titolo
         ps.setString(2, strings.get(2));//genere
         ps.setInt(3, Integer.parseInt(strings.get(3)));//numeroPagine
-        ps.setString(5, strings.get(5).replace("'","''"));//descrizione
+        if (strings.get(5) != null) {
+            ps.setString(5, strings.get(5).replace("'", "''"));//descrizione
+        }
         ps.setString(6, strings.get(6));//fruizione
         ps.setString(7, strings.get(7));//editore
         ps.setString(8, strings.get(8));//autore
@@ -135,13 +139,13 @@ public class ArticoloScientificoDAOImpl implements ArticoloScientificoDAO {
     public ArrayList<ArrayList<String>> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
         ArrayList<ArrayList<String>> articoloFinded = new ArrayList<>();
         String query;
-        if(tipoRicerca.equalsIgnoreCase("numpagine") || (tipoRicerca.equalsIgnoreCase("conferenza"))){
-            query = "SELECT * FROM articolo_scientifico WHERE "+tipoRicerca+" = " + parolaChiave + ";";
+        if (tipoRicerca.equalsIgnoreCase("numpagine") || (tipoRicerca.equalsIgnoreCase("conferenza"))) {
+            query = "SELECT * FROM articolo_scientifico WHERE " + tipoRicerca + " = " + parolaChiave + ";";
         } else {
-            if(tipoRicerca.equalsIgnoreCase("dataUscita") || (tipoRicerca.equalsIgnoreCase("datar"))){
-                query = "SELECT * FROM articolo_scientifico WHERE "+tipoRicerca+" = '" + parolaChiave + "';";
+            if (tipoRicerca.equalsIgnoreCase("dataUscita") || (tipoRicerca.equalsIgnoreCase("datar"))) {
+                query = "SELECT * FROM articolo_scientifico WHERE " + tipoRicerca + " = '" + parolaChiave + "';";
             } else {
-                query = "SELECT * FROM articolo_scientifico WHERE "+tipoRicerca+" LIKE '%" + parolaChiave + "%';";
+                query = "SELECT * FROM articolo_scientifico WHERE " + tipoRicerca + " LIKE '%" + parolaChiave + "%';";
             }
         }
         connessione.executeSearch(query);

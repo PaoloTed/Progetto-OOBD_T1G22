@@ -34,7 +34,7 @@ public class DisponibileSDAOImpl implements DisponibileSDAO {
     }
 
     @Override
-    public void insert(ArrayList<String> strings) throws SQLException {
+    public void insert(ArrayList<String> strings) throws SQLException, IllegalArgumentException{
         PreparedStatement ps = conn.prepareStatement("INSERT INTO disponibile_s VALUES (?,?);");
         ps.setInt(1, Integer.parseInt(strings.get(0)));//coda
         ps.setInt(2, Integer.parseInt(strings.get(1)));//cods
@@ -43,7 +43,7 @@ public class DisponibileSDAOImpl implements DisponibileSDAO {
     }
 
     @Override
-    public void update(ArrayList<String> strings) throws SQLException {
+    public void update(ArrayList<String> strings) throws SQLException, IllegalArgumentException{
         //TODO Non deve essere implementato??
     }
 

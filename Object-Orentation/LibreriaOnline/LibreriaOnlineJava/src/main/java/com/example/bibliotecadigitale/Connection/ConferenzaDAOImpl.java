@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ConferenzaDAOImpl implements ConferenzaDAO {
     private final Connessione connessione = new Connessione();
@@ -49,7 +50,7 @@ public class ConferenzaDAOImpl implements ConferenzaDAO {
     }
 
     @Override
-    public void insert(ArrayList<String> strings) throws SQLException {
+    public void insert(ArrayList<String> strings) throws SQLException, IllegalArgumentException {
         PreparedStatement ps = conn.prepareStatement("INSERT INTO conferenza VALUES (?,?,?,?,?,?,?);");
         ps.setInt(1, Integer.parseInt(strings.get(0)));//codC
         ps.setString(2, strings.get(1));//nome
@@ -63,7 +64,7 @@ public class ConferenzaDAOImpl implements ConferenzaDAO {
     }
 
     @Override
-    public void update(ArrayList<String> strings) throws SQLException {
+    public void update(ArrayList<String> strings) throws SQLException, IllegalArgumentException {
         PreparedStatement ps = conn.prepareStatement("UPDATE conferenza SET codC = ?, nome = ?, struttura = ?, indirizzo = ?, dataInizio = ?, dataFine = ?, responsabile = ? WHERE codC = ?;");
         ps.setInt(1, Integer.parseInt(strings.get(0)));//codC
         ps.setString(2, strings.get(1));//nome

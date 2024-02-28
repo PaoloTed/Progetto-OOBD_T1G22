@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class LibroDAOImpl implements LibroDAO {
     private final Connessione connessione = new Connessione();
@@ -71,14 +72,42 @@ public class LibroDAOImpl implements LibroDAO {
     }
 
     @Override
-    public void insert(ArrayList<String> libro) throws SQLException {
+    public void insert(ArrayList<String> libro) throws SQLException, IllegalArgumentException{
+
+        //todo trovar eun modo per gestire quando viene inserito un libro con tutti i dati o olcuni nulli o ""
         PreparedStatement ps = conn.prepareStatement("INSERT INTO libro VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);");
         //Inserimento valori non nullable
+        if(libro.get(0) == null || libro.get(0).isEmpty()){
+            throw new IllegalArgumentException("ISBN non valido");
+        }
+        if(libro.get(1) == null || libro.get(1).isEmpty()){
+            throw new IllegalArgumentException("Titolo non valido");
+        }
+        if(libro.get(3) == null || libro.get(3).isEmpty()){
+            throw new IllegalArgumentException("Numero pagine non valido");
+        }
+        if(libro.get(4) == null || libro.get(4).isEmpty()){
+            throw new IllegalArgumentException("Tipo non valido");
+        }
+        if(libro.get(7) == null || libro.get(7).isEmpty()){
+            throw new IllegalArgumentException("Fruizione non valida");
+        }
+        if(libro.get(8) == null || libro.get(8).isEmpty()){
+            throw new IllegalArgumentException("Editore non valido");
+        }
+        if(libro.get(9) == null || libro.get(9).isEmpty()){
+            throw new IllegalArgumentException("Autore non valido");
+        }
+        if(libro.get(11) == null || libro.get(11).isEmpty()){
+            throw new IllegalArgumentException("Lingua non valida");
+        }
         ps.setString(1, libro.get(0));//isbn
         ps.setString(2, libro.get(1));//titolo
         ps.setInt(4, Integer.parseInt(libro.get(3)));//numpagine
         ps.setString(5, libro.get(4));//tipo
-        ps.setString(7, libro.get(6).replace("'", "''"));//descrizione
+        if (libro.get(6) != null) {
+            ps.setString(7, libro.get(6).replace("'", "''"));//descrizione
+        }
         ps.setString(8, libro.get(7));//fruizione
         ps.setString(9, libro.get(8));//editore
         ps.setString(10, libro.get(9));//autore
@@ -128,7 +157,7 @@ public class LibroDAOImpl implements LibroDAO {
     }
 
     @Override
-    public void update(ArrayList<String> libro) throws SQLException {
+    public void update(ArrayList<String> libro) throws SQLException, IllegalArgumentException{
         PreparedStatement ps = conn.prepareStatement("UPDATE libro SET titolo = ?, genere = ?, numpagine = ?, tipo = ?, materia = ?, descrizione = ?, fruizione = ?, editore = ?, autore = ?, datauscita = ?, lingua = ?, successivo = ?, serie = ?, presentazione = ? WHERE isbn = ?;");
         //Inserimento valori non nullable
         ps.setString(15, libro.get(0));//isbn insert
@@ -136,7 +165,9 @@ public class LibroDAOImpl implements LibroDAO {
         ps.setString(2, libro.get(2));//genere
         ps.setInt(3, Integer.parseInt(libro.get(3)));//numpagine
         ps.setString(4, libro.get(4));//tipo
-        ps.setString(6, libro.get(6).replace("'", "''"));//descrizione
+        if (libro.get(6) != null) {
+            ps.setString(6, libro.get(6).replace("'", "''"));//descrizione
+        }
         ps.setString(7, libro.get(7));//fruizione
         ps.setString(8, libro.get(8));//editore
         ps.setString(9, libro.get(9));//autore

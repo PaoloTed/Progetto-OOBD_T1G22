@@ -72,4 +72,19 @@ public class Acquisto
             indirizzo = strings.get(4);
         }
     }
+
+    public ArrayList<String> ObjToArrayList() {
+        ArrayList<String> arrayList = new ArrayList<>();
+        if(nome == null) {
+            arrayList.add(null);
+        } else {
+            arrayList.add(String.valueOf(coda));
+        }
+        arrayList.add(String.valueOf(coda));
+        arrayList.add(nome);
+        arrayList.add(tipo);
+        arrayList.add(url);
+        arrayList.add(indirizzo);
+        return arrayList;
+    }
 }

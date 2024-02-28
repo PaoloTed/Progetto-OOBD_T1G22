@@ -36,7 +36,7 @@ public class DisponibileADAOImpl implements DisponibileADAO {
     }
 
     @Override
-    public void insert(ArrayList<String> strings) throws SQLException {
+    public void insert(ArrayList<String> strings) throws SQLException, IllegalArgumentException{
         PreparedStatement ps = conn.prepareStatement("INSERT INTO disponibile_a VALUES (?,?);");
         ps.setInt(1, Integer.parseInt(strings.get(0)));//coda
         ps.setString(2, strings.get(1));//doi
@@ -45,7 +45,7 @@ public class DisponibileADAOImpl implements DisponibileADAO {
     }
 
     @Override
-    public void update(ArrayList<String> strings) throws SQLException {
+    public void update(ArrayList<String> strings) throws SQLException, IllegalArgumentException{
         //TODO non deve essere implementato???
         PreparedStatement ps = conn.prepareStatement("UPDATE disponibile_a SET coda = ?, doi = ? WHERE coda = ? AND doi = ?;");
         ps.setInt(1, Integer.parseInt(strings.get(0)));//coda
