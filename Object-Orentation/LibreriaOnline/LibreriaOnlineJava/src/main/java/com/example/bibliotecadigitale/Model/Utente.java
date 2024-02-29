@@ -10,6 +10,8 @@ public class Utente {
 
     private static Utente istanza= null;
 
+    private ArrayList<Serie> serie;
+
     public static Utente getUtente() {
         if(istanza==null) {
             istanza=new Utente();
@@ -49,6 +51,14 @@ public class Utente {
     public void setData(String data) {
         this.data = data;
     }
+
+    public ArrayList<Serie> getSerie() {
+        return serie;
+    }
+
+    public void setSerie(ArrayList<Serie> serie) {
+        this.serie = serie;
+    }
     public Utente(){}
 
     public ArrayList<String> objToArrayList() {
@@ -60,9 +70,9 @@ public class Utente {
     }
 
     public Utente(ArrayList<String> arrayList) {
-        setEmail(arrayList.get(0));
-        setPassword(arrayList.get(1));
-        setData(arrayList.get(2));
+        email = arrayList.get(0);
+        password = arrayList.get(1);
+        data = arrayList.get(2);
     }
 
 }

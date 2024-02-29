@@ -93,7 +93,8 @@ public class SerieController implements Initializable {
                 throw new RuntimeException(e);
             }
         }
-        libroTableView.getItems().setAll(libri);
+        serie.setLibri(libri);
+        libroTableView.getItems().setAll(serie.getLibri());
     }
 
     public void goToPaginaInformativaLibro(ActionEvent event) {

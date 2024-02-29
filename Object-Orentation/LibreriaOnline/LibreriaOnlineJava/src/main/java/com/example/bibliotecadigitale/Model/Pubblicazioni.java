@@ -4,15 +4,15 @@ import java.util.ArrayList;
 
 public class Pubblicazioni
 {
-    private String titolo;
-    private String genere;
-    private int numPagine;
-    private String dataUscita;
-    private String descrizione;
-    private String fruizione;
-    private String editore;
-    private String autore;
-    private String lingua;
+    protected String titolo;
+    protected String genere;
+    protected int numPagine;
+    protected String dataUscita;
+    protected String descrizione;
+    protected String fruizione;
+    protected String editore;
+    protected String autore;
+    protected String lingua;
 
     public String getTitolo() {
         return titolo;

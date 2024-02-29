@@ -9,6 +9,12 @@ public class Acquisto
     private String tipo;
     private String url;
 
+    private ArrayList<DisponibileS> disponibiliS;
+
+    private ArrayList<DisponibileL> disponibiliL;
+
+    private ArrayList<DisponibileA> disponibiliA;
+
     public int getCoda() {
         return coda;
     }
@@ -50,6 +56,30 @@ public class Acquisto
 
     public String getTipo() {
         return tipo;
+    }
+
+    public ArrayList<DisponibileS> getDisponibiliS() {
+        return disponibiliS;
+    }
+
+    public void setDisponibiliS(ArrayList<DisponibileS> disponibiliS) {
+        this.disponibiliS = disponibiliS;
+    }
+
+    public ArrayList<DisponibileL> getDisponibiliL() {
+        return disponibiliL;
+    }
+
+    public void setDisponibiliL(ArrayList<DisponibileL> disponibiliL) {
+        this.disponibiliL = disponibiliL;
+    }
+
+    public ArrayList<DisponibileA> getDisponibiliA() {
+        return disponibiliA;
+    }
+
+    public void setDisponibiliA(ArrayList<DisponibileA> disponibiliA) {
+        this.disponibiliA = disponibiliA;
     }
 
     public Acquisto() {}

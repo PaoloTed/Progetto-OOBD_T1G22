@@ -10,6 +10,10 @@ public class ArticoloScientifico extends Pubblicazioni {
     private String nomer;
     private String datar;
 
+    private Piattaforma piattaforma;
+
+
+
     public String getDoi() {
         return doi;
     }

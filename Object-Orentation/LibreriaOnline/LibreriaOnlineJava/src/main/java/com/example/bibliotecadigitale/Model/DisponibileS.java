@@ -4,7 +4,12 @@ import java.util.ArrayList;
 
 public class DisponibileS {
     private int codA;
+
     private int codS;
+
+    private Acquisto acquisto;
+
+    private Serie serie;
 
     public int getCoda() {
         return codA;
@@ -20,6 +25,22 @@ public class DisponibileS {
 
     public void setCods(int codS) {
         this.codS = codS;
+    }
+
+    public Serie getSerie() {
+        return serie;
+    }
+
+    public void setSerie(Serie serie) {
+        this.serie = serie;
+    }
+
+    public Acquisto getAcquisto() {
+        return acquisto;
+    }
+
+    public void setAcquisto(Acquisto acquisto) {
+        this.acquisto = acquisto;
     }
 
     public DisponibileS(){}

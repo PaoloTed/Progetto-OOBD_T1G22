@@ -1,5 +1,4 @@
 package com.example.bibliotecadigitale.Model;
-
 import java.util.ArrayList;
 
 public class Serie {
@@ -7,12 +6,16 @@ public class Serie {
     private int codS;
     private String nome;
     private int numLibri;
+
     private boolean completata;
 
-    public int getCods() {
-        return codS;
-    }
+    private ArrayList<Libro> libri;
 
+    private ArrayList<Utente> utenti;
+
+    private ArrayList<DisponibileS> disponibili;
+
+    public int getCods() {return codS;}
     public void setCods(int codS) {
         this.codS = codS;
     }
@@ -39,6 +42,30 @@ public class Serie {
 
     public void setCompletata(boolean completata) {
         this.completata = completata;
+    }
+
+    public ArrayList<Libro> getLibri() {
+        return libri;
+    }
+
+    public void setLibri(ArrayList<Libro> libri) {
+        this.libri = libri;
+    }
+
+    public ArrayList<Utente> getUtenti() {
+        return utenti;
+    }
+
+    public void setUtenti(ArrayList<Utente> utenti) {
+        this.utenti = utenti;
+    }
+
+    public ArrayList<DisponibileS> getDisponibili() {
+        return disponibili;
+    }
+
+    public void setDisponibili(ArrayList<DisponibileS> disponibili) {
+        this.disponibili = disponibili;
     }
     public Serie(){}
 
