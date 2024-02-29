@@ -6,6 +6,10 @@ public class DisponibileL {
     private int codA;
     private String isbn;
 
+    private Acquisto acquisto;
+
+    private Libro libro;
+
     public int getCoda() {
         return codA;
     }
@@ -21,6 +25,22 @@ public class DisponibileL {
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
+
+    public Acquisto getAcquisto() {
+        return acquisto;
+    }
+
+    public void setAcquisto(Acquisto acquisto) {
+        this.acquisto = acquisto;
+    }
+
+    public Libro getLibro() {
+        return libro;
+    }
+
+    public void setLibro(Libro libro) {
+        this.libro = libro;
+    }
     public DisponibileL(){}
 
     public ArrayList<String> ObjToArrayList() {
@@ -31,7 +51,7 @@ public class DisponibileL {
     }
 
      public DisponibileL (ArrayList<String> arrayList) {
-        setCoda(Integer.parseInt(arrayList.get(0)));
-        setIsbn(arrayList.get(1));
+        codA = Integer.parseInt(arrayList.get(0));
+        isbn =  arrayList.get(1);
     }
 }

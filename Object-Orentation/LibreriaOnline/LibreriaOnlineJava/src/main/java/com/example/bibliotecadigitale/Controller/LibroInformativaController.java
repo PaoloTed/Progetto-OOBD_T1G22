@@ -88,7 +88,6 @@ public class LibroInformativaController implements Initializable {
         textTIpoId.setText(textTIpoId.getText() + libroPassato.getTipo());
         prova.setText(libroPassato.getDescrizione());
         prova.setWrapText(true);
-//        textDescrizioneId.setText(textDescrizioneId.getText()+"\n"+libroPassato.getDescrizione());
         textFruizioneId.setText(textFruizioneId.getText() + libroPassato.getFruizione());
         textDataUscitaId.setText(textDataUscitaId.getText() + libroPassato.getDatauscita());
         textLinguianId.setText(textLinguianId.getText() + libroPassato.getLingua());
@@ -177,23 +176,22 @@ public class LibroInformativaController implements Initializable {
     }
 
     public void goToNext(ActionEvent event) throws SQLException {
+        LibroDAOImpl libroDAO = new LibroDAOImpl();
+        ArrayList<String> libro = libroDAO.get(libroMain.getSuccessivo());
+        Libro libroSuccessivo = new Libro(libro);
+        libroMain.setLibroSuccessivo(libroSuccessivo);
         textTitleIId.setText("Titolo:");
         textIsbnId.setText("Isbn:");
         textGenereId.setText("Genere:");
         textNumeroPagineId.setText("Numero pagine:");
         textTIpoId.setText("");
         textMateriaId.setText("Materia:");
-//        textDescrizioneId.setText("");
         textFruizioneId.setText("Fruizione:");
         textDataUscitaId.setText("Data Uscita:");
         textLinguianId.setText("Lingua:");
         textAutoreId.setText("Autore:");
         txtEditoreId.setText("Editore:");
-
-        LibroDAOImpl libroDAO = new LibroDAOImpl();
-        Libro libroSuccessivo = new Libro(libroDAO.get(libroMain.getSuccessivo()));
-        showInfoLibro(libroSuccessivo);
-        libroMain = libroSuccessivo;
+        showInfoLibro(libroMain.getLibroSuccessivo());
         event.consume();
     }
 

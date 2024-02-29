@@ -6,6 +6,10 @@ public class DisponibileA {
     private int coda;
     private String doi;
 
+    private ArticoloScientifico articolo;
+
+    private Acquisto acquisto;
+
     public int getCoda() {
         return coda;
     }
@@ -20,6 +24,22 @@ public class DisponibileA {
 
     public void setDoi(String doi) {
         this.doi = doi;
+    }
+
+    public ArticoloScientifico getArticolo() {
+        return articolo;
+    }
+
+    public void setArticolo(ArticoloScientifico articolo) {
+        this.articolo = articolo;
+    }
+
+    public Acquisto getAcquisto() {
+        return acquisto;
+    }
+
+    public void setAcquisto(Acquisto acquisto) {
+        this.acquisto = acquisto;
     }
 
     public DisponibileA(){}

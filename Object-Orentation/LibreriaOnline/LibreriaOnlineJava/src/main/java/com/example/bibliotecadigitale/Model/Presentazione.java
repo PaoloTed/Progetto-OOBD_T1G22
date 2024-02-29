@@ -3,12 +3,13 @@ package com.example.bibliotecadigitale.Model;
 import java.util.ArrayList;
 
 public class Presentazione {
-
     private int codP;
     private String nome;
     private String indirizzo;
     private String dataPresentazione;
     private String tipo;
+
+    private ArrayList<Libro> libri;
 
     public int getCodp() {
         return codP;
@@ -48,6 +49,14 @@ public class Presentazione {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public ArrayList<Libro> getLibri() {
+        return libri;
+    }
+
+    public void setLibri(ArrayList<Libro> libri) {
+        this.libri = libri;
     }
 
     public Presentazione(){}

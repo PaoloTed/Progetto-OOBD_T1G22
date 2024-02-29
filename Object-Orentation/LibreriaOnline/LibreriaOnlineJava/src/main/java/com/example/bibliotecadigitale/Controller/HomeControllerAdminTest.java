@@ -1,7 +1,6 @@
 package com.example.bibliotecadigitale.Controller;
 
 import com.example.bibliotecadigitale.Connection.*;
-import com.example.bibliotecadigitale.DAO.AcquistoDAO;
 import com.example.bibliotecadigitale.DAO.DAO;
 import com.example.bibliotecadigitale.Model.*;
 import com.example.bibliotecadigitale.SupportStage;
@@ -21,7 +20,6 @@ import javafx.util.converter.BooleanStringConverter;
 import javafx.util.converter.DefaultStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 
-import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -916,9 +914,11 @@ public class HomeControllerAdminTest implements Initializable {
             implDaoHashMap.get(scelta).insert(arrayList);
             support.messageStage("Insert effettuato");
         } catch (SQLException e) {
-            support.messageStage("Errore nell'inserimento, inserisci tutti campi con ☑");
+            support.messageStage("Errore nell'inserimento 1 , inserisci tutti campi con ☑");
+            e.printStackTrace();
         } catch (IllegalArgumentException e) {
-            support.messageStage("Errore nell'inserimento, inserisci tutti campi con ☑");
+            support.messageStage("Errore nell'inserimento 2, inserisci tutti campi con ☑");
+            e.printStackTrace();
         }
     }
 
@@ -958,7 +958,7 @@ public class HomeControllerAdminTest implements Initializable {
     }
 
     @FXML
-    private void onEditChangedInt(TableColumn.CellEditEvent intCellEditEvent) {
+    private void onEditChangedInteger(TableColumn.CellEditEvent intCellEditEvent) {
         String scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
         String tipoColumn = intCellEditEvent.getTableColumn().getId();
         Integer valoreColumnInt = (Integer) intCellEditEvent.getNewValue();
@@ -966,6 +966,21 @@ public class HomeControllerAdminTest implements Initializable {
         try {
             Object test = tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem();
             test.getClass().getMethod(nomeMetodo, Integer.class).invoke(test, valoreColumnInt);
+        } catch (Exception e) {
+            System.out.println("Errore" + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void onEditChangedInt(TableColumn.CellEditEvent intCellEditEvent) {
+        String scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
+        String tipoColumn = intCellEditEvent.getTableColumn().getId();
+        int valoreColumnInt = (int) intCellEditEvent.getNewValue();
+        String nomeMetodo = "set" + tipoColumn.substring(0, 1).toUpperCase() + tipoColumn.substring(1, tipoColumn.indexOf(scelta));
+        try {
+            Object test = tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem();
+            test.getClass().getMethod(nomeMetodo, int.class).invoke(test, valoreColumnInt);
         } catch (Exception e) {
             System.out.println("Errore" + e.getMessage());
             e.printStackTrace();
