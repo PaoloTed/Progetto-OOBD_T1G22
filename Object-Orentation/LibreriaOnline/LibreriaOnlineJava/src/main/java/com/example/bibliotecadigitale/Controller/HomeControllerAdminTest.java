@@ -755,14 +755,14 @@ public class HomeControllerAdminTest implements Initializable {
     @FXML
     private void sceltaInsert() {
         sceltaInsertView = "insert";
-        txtRicercaInserimento.setText("Cosa vuori Inserire ?");
+        txtRicercaInserimento.setText("Cosa vuoi Inserire ?");
         sceltaSetter(sceltaInsertView);
     }
 
     @FXML
     private void sceltaView() {
         sceltaInsertView = "view";
-        txtRicercaInserimento.setText("Cosa vuori Visualizzare ?");
+        txtRicercaInserimento.setText("Cosa vuoi Visualizzare ?");
         sceltaSetter(sceltaInsertView);
     }
 
