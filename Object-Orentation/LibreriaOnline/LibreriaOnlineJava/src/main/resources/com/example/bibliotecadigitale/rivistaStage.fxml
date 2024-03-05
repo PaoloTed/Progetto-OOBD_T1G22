@@ -6,7 +6,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0"
             prefWidth="250.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.bibliotecadigitale.Controller.RivistaController">
+            fx:controller="com.example.bibliotecadigitale.Controller.RivistaController" style="-fx-background-color: #fdf3ea; -fx-border-color: #964B00;">
    <Text fx:id="textNomeId" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome" textAlignment="CENTER"
          wrappingWidth="250.0"/>
    <Text fx:id="textDataId" layoutX="4.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data"
@@ -15,5 +15,5 @@
          text="Responsabile" textAlignment="CENTER" wrappingWidth="250.0"/>
    <Text fx:id="textArgomentoId" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Argomento"
          textAlignment="CENTER" wrappingWidth="250.0"/>
-   <Button layoutX="103.0" layoutY="211.0" mnemonicParsing="false" onAction="#close" text="Close"/>
+   <Button layoutX="103.0" layoutY="211.0" mnemonicParsing="false" onAction="#close" text="Close" style="-fx-background-color: #2b2d30;" textFill="WHITE"/>
 </AnchorPane>

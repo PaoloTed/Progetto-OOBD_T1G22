@@ -1,112 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="795.0"
-            prefWidth="900.0" style="-fx-background-color: #fdf3ea; -fx-border-color: #964B00;"
-            xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.bibliotecadigitale.Controller.ArticoloInformativaController">
-   <ImageView fx:id="imageLibriSfondo" fitHeight="795.0" fitWidth="900.0" layoutX="3.0" layoutY="3.0"
-              pickOnBounds="true" preserveRatio="true">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="795.0" prefWidth="900.0" style="-fx-background-color: #fdf3ea; -fx-border-color: #964B00;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.ArticoloInformativaController">
+   <ImageView fx:id="imageLibriSfondo" fitHeight="795.0" fitWidth="900.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
    </ImageView>
-   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdf3ea" height="650.0" layoutX="157.0" layoutY="114.0"
-              stroke="#de5f4f" strokeType="INSIDE" style="-fx-background-color: #fdf3ea;" width="700.0"
-              AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0"
-              AnchorPane.topAnchor="100.0"/>
-   <Button layoutX="423.0" layoutY="722.0" mnemonicParsing="false" onAction="#goToHome"
-           style="-fx-background-color: #2b2d30;" text="Go Back" textFill="WHITE"/>
-   <Text id="Titolo" fx:id="textTitleId" layoutX="103.0" layoutY="116.94921875" strokeType="OUTSIDE" strokeWidth="0.0"
-         text="Titolo:" textAlignment="CENTER" wrappingWidth="700.0" AnchorPane.leftAnchor="102.0"
-         AnchorPane.topAnchor="103.0">
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdf3ea" height="492.0" layoutX="97.0" layoutY="103.0" stroke="#de5f4f" strokeType="INSIDE" style="-fx-background-color: #fdf3ea;" width="706.0" AnchorPane.bottomAnchor="201.0" AnchorPane.leftAnchor="96.0" AnchorPane.rightAnchor="98.0" AnchorPane.topAnchor="102.0" />
+   <Button layoutX="423.0" layoutY="564.0" mnemonicParsing="false" onAction="#goToHome" style="-fx-background-color: #2b2d30;" text="Go Back" textFill="WHITE" />
+   <Text id="Titolo" fx:id="textTitleId" layoutX="103.0" layoutY="116.94921875" strokeType="OUTSIDE" strokeWidth="0.0" text="Titolo:" textAlignment="CENTER" wrappingWidth="700.0" AnchorPane.leftAnchor="102.0" AnchorPane.topAnchor="103.0">
       <font>
-         <Font name="System Bold" size="12.0"/>
+         <Font name="System Bold" size="12.0" />
       </font>
    </Text>
-   <Text id="Doi" fx:id="textDoiId" layoutX="101.0" layoutY="457.94921875" strokeType="OUTSIDE" strokeWidth="0.0"
-         text="Doi:" wrappingWidth="700.0" AnchorPane.topAnchor="444.0">
+   <Text id="Doi" fx:id="textDoiId" layoutX="103.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Doi:" wrappingWidth="700.0" AnchorPane.topAnchor="432.05078125">
       <font>
-         <Font name="System Bold" size="12.0"/>
+         <Font name="System Bold" size="12.0" />
       </font>
    </Text>
-   <Text id="Genere" fx:id="textGenereId" layoutX="103.0" layoutY="494.0" strokeType="OUTSIDE" strokeWidth="0.0"
-         text="Genere:" wrappingWidth="700.0" AnchorPane.topAnchor="481.05078125">
+   <Text id="Genere" fx:id="textGenereId" layoutX="103.0" layoutY="461.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Genere:" wrappingWidth="700.0" AnchorPane.topAnchor="448.05078125">
       <font>
-         <Font name="System Bold" size="12.0"/>
+         <Font name="System Bold" size="12.0" />
       </font>
    </Text>
-   <Text id="Numero pagine" fx:id="textNumeroPagineId" layoutX="100.0" layoutY="494.0" strokeType="OUTSIDE"
-         strokeWidth="0.0" text="Numero pagine:" textAlignment="RIGHT" wrappingWidth="700.0"
-         AnchorPane.topAnchor="481.05078125">
+   <Text id="Numero pagine" fx:id="textNumeroPagineId" layoutX="101.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero pagine:" textAlignment="RIGHT" wrappingWidth="700.0" AnchorPane.topAnchor="432.05078125">
       <font>
-         <Font name="System Bold" size="12.0"/>
+         <Font name="System Bold" size="12.0" />
       </font>
    </Text>
-   <Text id="Descrizione" fx:id="textDescrizioneId" layoutX="103.0" layoutY="167.94921875" strokeType="OUTSIDE"
-         strokeWidth="0.0" text="Descrizione:" textAlignment="JUSTIFY" wrappingWidth="700.0"
-         AnchorPane.topAnchor="154.0">
+   <Text id="Descrizione" fx:id="textDescrizioneId" layoutX="100.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrizione:" textAlignment="JUSTIFY" wrappingWidth="700.0" AnchorPane.topAnchor="153.05078125">
       <font>
-         <Font name="System Bold" size="12.0"/>
+         <Font name="System Bold" size="12.0" />
       </font>
    </Text>
-   <Text id="fruizione" fx:id="textFruizioneId" layoutX="101.0" layoutY="460.94921875" strokeType="OUTSIDE"
-         strokeWidth="0.0" text="Fruizione:" textAlignment="RIGHT" wrappingWidth="700.0" AnchorPane.topAnchor="447.0">
+   <Text id="fruizione" fx:id="textFruizioneId" layoutX="100.0" layoutY="461.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fruizione:" textAlignment="RIGHT" wrappingWidth="700.0" AnchorPane.topAnchor="448.05078125">
       <font>
-         <Font name="System Bold" size="12.0"/>
+         <Font name="System Bold" size="12.0" />
       </font>
    </Text>
-   <Text id="Data uscita" fx:id="textDataUscitaId" layoutX="101.0" layoutY="534.94921875" strokeType="OUTSIDE"
-         strokeWidth="0.0" text="Data Uscita:" wrappingWidth="700.0" AnchorPane.topAnchor="521.0">
+   <Text id="Data uscita" fx:id="textDataUscitaId" layoutX="101.0" layoutY="477.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data Uscita:" wrappingWidth="700.0" AnchorPane.topAnchor="464.05078125">
       <font>
-         <Font name="System Bold" size="12.0"/>
+         <Font name="System Bold" size="12.0" />
       </font>
    </Text>
-   <Text id="Lingua" fx:id="textLinguianId" layoutX="100.0" layoutY="534.94921875" strokeType="OUTSIDE"
-         strokeWidth="0.0" text="Lingua:" textAlignment="RIGHT" wrappingWidth="700.0" AnchorPane.topAnchor="521.0">
+   <Text id="Lingua" fx:id="textLinguianId" layoutX="100.0" layoutY="477.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lingua:" textAlignment="RIGHT" wrappingWidth="700.0" AnchorPane.topAnchor="464.05078125">
       <font>
-         <Font name="System Bold" size="12.0"/>
+         <Font name="System Bold" size="12.0" />
       </font>
    </Text>
 
-   <Button fx:id="buttonRivistaId" defaultButton="true" layoutX="424.0" layoutY="660.0" mnemonicParsing="false"
-           onAction="#goToRivista" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Rivista"
-           textAlignment="JUSTIFY" textFill="#0800f8" underline="true" visible="false">
+   <Button fx:id="buttonRivistaId" defaultButton="true" layoutX="113.0" layoutY="370.0" mnemonicParsing="false" onAction="#goToRivista" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Rivista" textAlignment="JUSTIFY" textFill="#0800f8" underline="true" visible="false">
       <font>
-         <Font size="14.0"/>
+         <Font size="14.0" />
       </font>
    </Button>
-   <Button defaultButton="true" layoutX="734.0" layoutY="721.0" mnemonicParsing="false" onAction="#goToAcquisto"
-           style="-fx-background-color: transparent; -fx-cursor: hand;" text="Acquisto" textFill="#0800f8"
-           underline="true">
+   <Button defaultButton="true" layoutX="720.0" layoutY="562.0" mnemonicParsing="false" onAction="#goToAcquisto" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Acquisto" textFill="#0800f8" underline="true">
       <font>
-         <Font size="14.0"/>
+         <Font size="14.0" />
       </font>
    </Button>
-   <Text id="Frase" fx:id="textMessaggioId" layoutX="203.0" layoutY="656.0" strokeType="OUTSIDE" strokeWidth="0.0"
-         text="Premi qui per andare all'informazione della rivista" textAlignment="CENTER" visible="false"
-         wrappingWidth="500.0"/>
-   <Text id="Editore" fx:id="txtEditoreId" layoutX="101.0" layoutY="585.0" strokeType="OUTSIDE" strokeWidth="0.0"
-         text="Editore:" wrappingWidth="700.0">
+   <Text id="Frase" fx:id="textMessaggioId" layoutX="183.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;--  Premi qui per andare all'informazione della rivista" textAlignment="CENTER" visible="false" wrappingWidth="500.0" />
+   <Text id="Editore" fx:id="txtEditoreId" layoutX="100.0" layoutY="494.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editore:" wrappingWidth="700.0">
       <font>
-         <Font name="System Bold" size="12.0"/>
+         <Font name="System Bold" size="12.0" />
       </font>
    </Text>
-   <Text id="Autore" fx:id="textAutoreId" layoutX="100.0" layoutY="585.0" strokeType="OUTSIDE" strokeWidth="0.0"
-         text="Autore:" textAlignment="RIGHT" wrappingWidth="700.0">
+   <Text id="Autore" fx:id="textAutoreId" layoutX="100.0" layoutY="494.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autore:" textAlignment="RIGHT" wrappingWidth="700.0">
       <font>
-         <Font name="System Bold" size="12.0"/>
+         <Font name="System Bold" size="12.0" />
       </font>
    </Text>
-   <Button id="Conferenza" fx:id="buttonConferenzaId" defaultButton="true" layoutX="103.0" layoutY="721.0"
-           mnemonicParsing="false" onAction="#goToConferenza"
-           style="-fx-background-color: transparent; -fx-cursor: hand;" text="Conferenza" textFill="#0800f8"
-           underline="true" visible="false">
+   <Button id="Conferenza" fx:id="buttonConferenzaId" defaultButton="true" layoutX="103.0" layoutY="562.0" mnemonicParsing="false" onAction="#goToConferenza" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Conferenza" textFill="#0800f8" underline="true" visible="false">
       <font>
-         <Font size="14.0"/>
+         <Font size="14.0" />
       </font>
    </Button>
+   <TextArea fx:id="IdAreaDescrizione" layoutX="101.0" layoutY="171.0" prefHeight="200.0" prefWidth="700.0" AnchorPane.bottomAnchor="426.0" />
 </AnchorPane>

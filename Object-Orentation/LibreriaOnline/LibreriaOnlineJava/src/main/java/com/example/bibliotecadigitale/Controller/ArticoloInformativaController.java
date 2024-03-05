@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
@@ -45,6 +46,8 @@ public class ArticoloInformativaController implements Initializable {
     private Button buttonRivistaId;
     @FXML
     private ImageView imageLibriSfondo;
+    @FXML
+    private TextArea IdAreaDescrizione;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         imageLibriSfondo.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/libri800x900.png"))));
@@ -60,7 +63,7 @@ public class ArticoloInformativaController implements Initializable {
         textDoiId.setText(textDoiId.getText()+articolopassato.getDoi());
         textGenereId.setText(textGenereId.getText()+articolopassato.getGenere());
         textNumeroPagineId.setText(textNumeroPagineId.getText()+(articolopassato.getNumpagine()));
-        textDescrizioneId.setText(textDescrizioneId.getText()+"\n"+articolopassato.getDescrizione());
+        IdAreaDescrizione.setText(articolopassato.getDescrizione());
         textFruizioneId.setText(textFruizioneId.getText()+articolopassato.getFruizione());
         textDataUscitaId.setText(textDataUscitaId.getText()+(articolopassato.getDatauscita()));
         textLinguianId.setText(textLinguianId.getText()+articolopassato.getLingua());
