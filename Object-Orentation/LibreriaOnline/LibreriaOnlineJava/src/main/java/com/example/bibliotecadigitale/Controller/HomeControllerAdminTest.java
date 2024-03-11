@@ -2,6 +2,7 @@ package com.example.bibliotecadigitale.Controller;
 
 import com.example.bibliotecadigitale.Connection.*;
 import com.example.bibliotecadigitale.DAO.DAO;
+import com.example.bibliotecadigitale.DatePickerCellFactory;
 import com.example.bibliotecadigitale.Model.*;
 import com.example.bibliotecadigitale.SupportStage;
 import javafx.collections.FXCollections;
@@ -22,10 +23,8 @@ import javafx.util.converter.IntegerStringConverter;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.time.LocalDate;
+import java.util.*;
 
 public class HomeControllerAdminTest implements Initializable {
     private String scelta = "libro";
@@ -70,7 +69,7 @@ public class HomeControllerAdminTest implements Initializable {
     @FXML
     private TableColumn<Libro, String> autoreLibro;
     @FXML
-    private TableColumn<Libro, String> datauscitaLibro;
+    private TableColumn<Libro, LocalDate> datauscitaLibro;
     @FXML
     private TableColumn<Libro, String> linguaLibro;
     @FXML
@@ -308,7 +307,8 @@ public class HomeControllerAdminTest implements Initializable {
         autoreLibro.setCellValueFactory(new PropertyValueFactory<>("autore"));
         autoreLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         datauscitaLibro.setCellValueFactory(new PropertyValueFactory<>("datauscita"));
-        datauscitaLibro.setCellFactory(TextFieldTableCell.forTableColumn());
+        //datauscitaLibro.setCellFactory(TextFieldTableCell.forTableColumn());
+        datauscitaLibro.setCellFactory(new DatePickerCellFactory());
 //        datauscitaLibro.setCellFactory(DatePicker.forTableColumn());
         linguaLibro.setCellValueFactory(new PropertyValueFactory<>("lingua"));
         linguaLibro.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -903,6 +903,8 @@ public class HomeControllerAdminTest implements Initializable {
     @FXML
     private void insertDao() {
         Object objInsert = tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem();
+        System.out.println(datauscitaLibro.getCellData(0));
+        System.out.println(isbnLibro.getCellData(0));
         ArrayList<String> arrayList = null;
         try {
             arrayList = (ArrayList<String>) objInsert.getClass().getMethod("ObjToArrayList").invoke(objInsert);
@@ -910,12 +912,13 @@ public class HomeControllerAdminTest implements Initializable {
             System.out.println("Errore reperimento dati" + e.getMessage());
             e.printStackTrace();
         }
+
         try {
             implDaoHashMap.get(scelta).insert(arrayList);
             support.messageStage("Insert effettuato");
         } catch (SQLException e) {
-            support.messageStage("Errore nell'inserimento 1 , inserisci tutti campi con ☑");
-            e.printStackTrace();
+            support.messageStageError( e.getMessage());
+
         } catch (IllegalArgumentException e) {
             support.messageStage("Errore nell'inserimento 2, inserisci tutti campi con ☑");
             e.printStackTrace();

@@ -87,32 +87,32 @@ public class LibroDAOImpl implements LibroDAO {
         ps.setString(12, libro.get(11));//lingua
 
         //Inserimento valori nullable
-        if (libro.get(2) == null) {//genere
+        if (libro.get(2) == null || libro.get(2).isEmpty()) {//genere
             ps.setNull(3, java.sql.Types.VARCHAR);
         } else {
             ps.setString(3, libro.get(2));
         }
-        if (libro.get(5) == null) {//materia
+        if (libro.get(5) == null || libro.get(5).isEmpty()) {//materia
             ps.setNull(6, java.sql.Types.VARCHAR);
         } else {
             ps.setString(6, libro.get(5));
         }
-        if (libro.get(10) == null) {//datauscita
+        if (libro.get(10) == null || libro.get(10).isEmpty()) {//datauscita
             ps.setNull(11, Types.DATE);
         } else {
             ps.setString(11, libro.get(10));
         }
-        if (libro.get(12) == null) {//successivo
+        if (libro.get(12) == null || libro.get(12).isEmpty()) {//successivo
             ps.setNull(13, java.sql.Types.VARCHAR);
         } else {
             ps.setString(13, libro.get(12));
         }
-        if (libro.get(13) == null) {//serie
+        if (libro.get(13) == null || libro.get(13).isEmpty()) {//serie
             ps.setNull(14, java.sql.Types.INTEGER);
         } else {
             ps.setInt(14, Integer.parseInt(libro.get(13)));
         }
-        if (libro.get(14) == null) {//presentazione
+        if (libro.get(14) == null || libro.get(14).isEmpty()) {//presentazione
             ps.setNull(15, java.sql.Types.INTEGER);
         } else {
             ps.setInt(15, Integer.parseInt(libro.get(14)));
@@ -176,4 +176,10 @@ public class LibroDAOImpl implements LibroDAO {
         ps.executeUpdate();
         ps.close();
     }
+
+//    private boolean check(ArrayList<String> libro) throws SQLException {
+//        String query = "SELECT * FROM libro WHERE isbn = '" + isbn + "';";
+//        ResultSet rs = connessione.executeSearch(query);
+//        return rs.next();
+//    }
 }

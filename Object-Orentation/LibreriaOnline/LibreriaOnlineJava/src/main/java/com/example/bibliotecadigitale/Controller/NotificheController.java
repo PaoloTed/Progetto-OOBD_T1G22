@@ -61,12 +61,12 @@ public class NotificheController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-//        Stage stage = (Stage) listViewSerieAcquisto.getScene().getWindow();
-//        stage.close();
-        support.switchStage("notificheStage.fxml",event ,800,900);
-        //Elimino la serie selezionata dalla listView
+        Stage stage = (Stage) listViewSerieAcquisto.getScene().getWindow();
+        stage.close();
         deleteSerieFromListView(serie);
+        support.testSwitch("notificheStage.fxml",900,800);
         support.messageStage("Preferito eliminato con successo.");
+        event.consume();
     }
 
     private Serie getSerieFromListView() {

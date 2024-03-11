@@ -2,6 +2,7 @@ package com.example.bibliotecadigitale.Controller;
 
 import com.example.bibliotecadigitale.Connection.*;
 import com.example.bibliotecadigitale.Model.*;
+import com.example.bibliotecadigitale.SupportStage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -31,6 +32,8 @@ public class AcquistoController implements Initializable {
     TableColumn<Acquisto, String> urlColumn;
     @FXML
     TableColumn<Acquisto, String> indirizzoColumn;
+
+    private final SupportStage support = new SupportStage();
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //inizializzo le colonne della tabella libro
@@ -78,20 +81,24 @@ public class AcquistoController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        for (ArrayList<String> strings : disponibileAarrayString) {
-            DisponibileA disponibileA = new DisponibileA(strings);
-            disponibileAarray.add(disponibileA);
-        }
-        while (!disponibileAarray.isEmpty()) {
-            AcquistoDAOImpl acquistoDAO = new AcquistoDAOImpl();
-            Acquisto acquisto;
-            try {
-                acquisto = new Acquisto(acquistoDAO.get(disponibileAarray.get(0).getCoda()));
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
+        if(disponibileAarrayString.isEmpty()){
+            support.messageStage("Nessun acquisto disponibile");
+        }else {
+            for (ArrayList<String> strings : disponibileAarrayString) {
+                DisponibileA disponibileA = new DisponibileA(strings);
+                disponibileAarray.add(disponibileA);
             }
-            tableView.getItems().add(acquisto);
-            disponibileAarray.remove(0);
+            while (!disponibileAarray.isEmpty()) {
+                AcquistoDAOImpl acquistoDAO = new AcquistoDAOImpl();
+                Acquisto acquisto;
+                try {
+                    acquisto = new Acquisto(acquistoDAO.get(disponibileAarray.get(0).getCoda()));
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                tableView.getItems().add(acquisto);
+                disponibileAarray.remove(0);
+            }
         }
     }
 

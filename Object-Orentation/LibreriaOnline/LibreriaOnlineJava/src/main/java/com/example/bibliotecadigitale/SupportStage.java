@@ -16,6 +16,22 @@ import java.util.Objects;
 public class SupportStage {
     private Stage stage;
 
+    public void testSwitch(String scenaNew, int larghezza, int altezza) {
+        try {
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
+            Parent root = loader.load();
+            stage = new Stage();
+            stage.setScene(new Scene(root, larghezza, altezza));
+            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/biblioteca.png"))));
+            stage.setTitle("Libreria digitale");
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
     public void switchStage(String scenaNew, ActionEvent eventClose) {
         stage = (Stage) ((Node) eventClose.getSource()).getScene().getWindow();
         stage.close();
@@ -192,7 +208,6 @@ public class SupportStage {
 
 
     public boolean checkEmailPassword(String email, String password) {
-        //Implementare controllo sql injection
         if (!email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$") || password.isEmpty() || email.isEmpty()) {
             return false;
         }
@@ -207,6 +222,26 @@ public class SupportStage {
             Parent root = loader.load();
             stage = new Stage();
             stage.setScene(new Scene(root, 300, 100));
+            stage.setAlwaysOnTop(true);
+            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/biblioteca.png"))));
+            stage.setTitle("Libreria digitale");
+            stage.setResizable(false);
+            stage.show();
+
+            MessageController controller = loader.getController();
+            controller.setText(tipoErrore);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void messageStageError(String tipoErrore) {
+        String scenaFxml = "messageStage.fxml";
+        try {
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaFxml)));
+            Parent root = loader.load();
+            stage = new Stage();
+            stage.setScene(new Scene(root, 600, 100));
             stage.setAlwaysOnTop(true);
             stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/biblioteca.png"))));
             stage.setTitle("Libreria digitale");

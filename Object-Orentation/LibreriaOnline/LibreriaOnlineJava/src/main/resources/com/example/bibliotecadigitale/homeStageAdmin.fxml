@@ -33,7 +33,7 @@
             <TableColumn fx:id="fruizioneLibro" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688" text="Fruizione ☑" />
             <TableColumn fx:id="editoreLibro" onEditCommit="#onEditChangedString" prefWidth="105.33331298828125" text="Editore ☑" />
             <TableColumn fx:id="autoreLibro" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688" text="Autore ☑" />
-            <TableColumn fx:id="datauscitaLibro" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688" text="DataUscita" />
+            <TableColumn fx:id="datauscitaLibro"  prefWidth="104.66671752929688" text="DataUscita A-M-G" />
             <TableColumn fx:id="linguaLibro" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688" text="Lingua ☑" />
             <TableColumn fx:id="successivoLibro" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688" text="Successivo" />
             <TableColumn fx:id="serieLibro" onEditCommit="#onEditChangedInteger" prefWidth="104.66671752929688" text="Serie" />
@@ -64,7 +64,7 @@
             <TableColumn fx:id="linguaArticolo" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688" text="Lingua ☑" />
             <TableColumn fx:id="conferenzaArticolo" onEditCommit="#onEditChangedInteger" prefWidth="104.66671752929688" text="Conferenza" />
             <TableColumn fx:id="nomerArticolo" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688" text="NomeRivista" />
-            <TableColumn fx:id="datarArticolo" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688" text="DataRivista" />
+            <TableColumn fx:id="datarArticolo" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688" text="DataRivista A-M-G"  />
         </columns>
         <contextMenu>
             <ContextMenu>
@@ -100,8 +100,8 @@
             <TableColumn fx:id="nomeConferenza" onEditCommit="#onEditChangedString" prefWidth="300.6666717529297" text="Nome ☑" />
             <TableColumn fx:id="strutturaConferenza" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688" text="Struttura ☑" />
             <TableColumn fx:id="indirizzoConferenza" onEditCommit="#onEditChangedString" prefWidth="105.33331298828125" text="Indirizzo ☑" />
-            <TableColumn fx:id="dataiConferenza" onEditCommit="#onEditChangedString" prefWidth="105.33331298828125" text="DataInizio ☑" />
-            <TableColumn fx:id="datafConferenza" onEditCommit="#onEditChangedString" prefWidth="105.33331298828125" text="DataFine ☑" />
+            <TableColumn fx:id="dataiConferenza" onEditCommit="#onEditChangedString" prefWidth="105.33331298828125" text="DataInizio ☑ A-M-G" />
+            <TableColumn fx:id="datafConferenza" onEditCommit="#onEditChangedString" prefWidth="105.33331298828125" text="DataFine ☑ A-M-G" />
             <TableColumn fx:id="responsabileConferenza" onEditCommit="#onEditChangedString" prefWidth="105.33331298828125" text="Responsabile ☑" />
         </columns>
         <contextMenu>
@@ -119,7 +119,7 @@
             <TableColumn fx:id="codpPresentazione" onEditCommit="#onEditChangedInt" prefWidth="95.9999771118164" text="CodP ☑" />
             <TableColumn fx:id="nomePresentazione" onEditCommit="#onEditChangedString" prefWidth="300.6666717529297" text="Nome ☑" />
             <TableColumn fx:id="indirizzoPresentazione" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688" text="Indirizzo ☑" />
-            <TableColumn fx:id="dataPresentazione" onEditCommit="#onEditChangedString" prefWidth="105.33331298828125" text="Data ☑" />
+            <TableColumn fx:id="dataPresentazione" onEditCommit="#onEditChangedString" prefWidth="105.33331298828125" text="Data ☑ A-M-G" />
             <TableColumn fx:id="tipoPresentazione" onEditCommit="#onEditChangedString" prefWidth="75.3333740234375" text="Tipo ☑" />
         </columns>
         <contextMenu>
@@ -135,7 +135,7 @@
     <TableView fx:id="rivistaTableView" editable="true" fixedCellSize="0.0" layoutX="97.0" layoutY="182.0" prefHeight="535.0" prefWidth="700.0">
         <columns>
             <TableColumn fx:id="nomeRivista" onEditCommit="#onEditChangedString" prefWidth="95.9999771118164" text="Nome ☑" />
-            <TableColumn fx:id="dataRivista" onEditCommit="#onEditChangedString" prefWidth="300.6666717529297" text="Data ☑" />
+            <TableColumn fx:id="dataRivista" onEditCommit="#onEditChangedString" prefWidth="300.6666717529297" text="Data ☑ A-M-G" />
             <TableColumn fx:id="responsabileRivista" onEditCommit="#onEditChangedString" prefWidth="104.66671752929688" text="Responsabile ☑" />
             <TableColumn fx:id="argomentoRivista" onEditCommit="#onEditChangedString" prefWidth="105.33331298828125" text="Argomento ☑" />
         </columns>
