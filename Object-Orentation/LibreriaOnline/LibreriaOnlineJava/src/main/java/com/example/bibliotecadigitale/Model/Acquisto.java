@@ -91,12 +91,12 @@ public class Acquisto
             nome = strings.get(1);
         }
         tipo = strings.get(2);
-        if(strings.get(3) == null) {
+        if(strings.get(3) == null || strings.get(3).equals("null")) {
             url = null;
         } else {
             url = strings.get(3);
         }
-        if(strings.get(4) == null) {
+        if(strings.get(4) ==  null || strings.get(4).equals("null")) {
             indirizzo = null;
         } else {
             indirizzo = strings.get(4);

@@ -134,11 +134,11 @@ public class Libro extends Pubblicazioni implements ArrayListObject {
         lingua = arrayList.get(11);
 
         successivo = arrayList.get(12);
-        if (arrayList.get(13) == null)
+        if (arrayList.get(13) == null || arrayList.get(13).isEmpty())
             serie = null;
         else
             serie = Integer.parseInt(arrayList.get(13));
-        if (arrayList.get(14) == null)
+        if (arrayList.get(14) == null || arrayList.get(14).isEmpty())
             presentazione = null;
         else
             presentazione = Integer.parseInt(arrayList.get(14));

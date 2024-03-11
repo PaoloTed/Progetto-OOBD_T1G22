@@ -81,12 +81,12 @@ public class Serie {
     public Serie (ArrayList<String> arrayList) {
         setCods(Integer.parseInt(arrayList.get(0)));
         setNome(arrayList.get(1));
-        if (arrayList.get(2) == null) {
+        if (arrayList.get(2) == null || arrayList.get(2).isEmpty() ) {
             setNumlibri(0);
         } else {
             setNumlibri(Integer.parseInt(arrayList.get(2)));
         }
-        if (arrayList.get(3) == null) {
+        if (arrayList.get(3) == null || arrayList.get(3).isEmpty() ) {
             setCompletata(false);
         } else {
             setCompletata(Boolean.parseBoolean(arrayList.get(3)));

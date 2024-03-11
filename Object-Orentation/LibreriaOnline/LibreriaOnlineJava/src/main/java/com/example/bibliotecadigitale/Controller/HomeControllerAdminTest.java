@@ -69,7 +69,7 @@ public class HomeControllerAdminTest implements Initializable {
     @FXML
     private TableColumn<Libro, String> autoreLibro;
     @FXML
-    private TableColumn<Libro, LocalDate> datauscitaLibro;
+    private TableColumn<Libro, String> datauscitaLibro;
     @FXML
     private TableColumn<Libro, String> linguaLibro;
     @FXML
@@ -307,8 +307,8 @@ public class HomeControllerAdminTest implements Initializable {
         autoreLibro.setCellValueFactory(new PropertyValueFactory<>("autore"));
         autoreLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         datauscitaLibro.setCellValueFactory(new PropertyValueFactory<>("datauscita"));
-        //datauscitaLibro.setCellFactory(TextFieldTableCell.forTableColumn());
-        datauscitaLibro.setCellFactory(new DatePickerCellFactory());
+        datauscitaLibro.setCellFactory(TextFieldTableCell.forTableColumn());
+//        datauscitaLibro.setCellFactory(new DatePickerCellFactory());
 //        datauscitaLibro.setCellFactory(DatePicker.forTableColumn());
         linguaLibro.setCellValueFactory(new PropertyValueFactory<>("lingua"));
         linguaLibro.setCellFactory(TextFieldTableCell.forTableColumn());

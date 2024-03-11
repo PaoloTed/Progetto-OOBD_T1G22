@@ -70,7 +70,7 @@ public class ArticoloScientifico extends Pubblicazioni {
         setTitolo(arrayList.get(1));
         setGenere(arrayList.get(2));
         setNumpagine(Integer.parseInt(arrayList.get(3)));
-        if (arrayList.get(4) == null)
+        if (arrayList.get(4) == null || arrayList.get(4).isEmpty())
             setDatauscita(null);
         else{
             setDatauscita(arrayList.get(4));
@@ -80,17 +80,17 @@ public class ArticoloScientifico extends Pubblicazioni {
         setEditore(arrayList.get(7));
         setAutore(arrayList.get(8));
         setLingua(arrayList.get(9));
-        if (arrayList.get(10) == null)
+        if (arrayList.get(10) == null || arrayList.get(10).isEmpty())
             setConferenza(null);
         else{
             setConferenza(Integer.valueOf((arrayList.get(10))));
         }
-        if (arrayList.get(11) == null)
+        if (arrayList.get(11) == null || arrayList.get(11).isEmpty())
             setNomer(null);
         else{
             setNomer(arrayList.get(11));
         }
-        if (arrayList.get(12) == null)
+        if (arrayList.get(12) == null || arrayList.get(12).isEmpty())
             setDatar(null);
         else{
             setDatar(arrayList.get(12));

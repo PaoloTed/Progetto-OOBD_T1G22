@@ -163,12 +163,12 @@ public class LibroDAOImpl implements LibroDAO {
         } else {
             ps.setString(12, libro.get(12));
         }
-        if (libro.get(13).equals("null")) {//serie
+        if (libro.get(13) == null ) {//serie
             ps.setNull(13, java.sql.Types.INTEGER);
         } else {
             ps.setInt(13, Integer.parseInt(libro.get(13)));
         }
-        if (libro.get(14).equals("null")) {//presentazione
+        if (libro.get(14) == null) {//presentazione
             ps.setNull(14, java.sql.Types.INTEGER);
         } else {
             ps.setInt(14, Integer.parseInt(libro.get(14)));

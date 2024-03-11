@@ -28,10 +28,10 @@ public class RivistaController {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        textNomeId.setText(textNomeId.getText()+rivista.getNome());
-        textDataId.setText(textDataId.getText()+String.valueOf(rivista.getData()));
-        textResponsabileId.setText(textResponsabileId.getText()+rivista.getResponsabile());
-        textArgomentoId.setText(textArgomentoId.getText()+rivista.getArgomento());
+        textNomeId.setText(textNomeId.getText()+" "+rivista.getNome());
+        textDataId.setText(textDataId.getText()+" "+rivista.getData());
+        textResponsabileId.setText(textResponsabileId.getText()+" "+rivista.getResponsabile());
+        textArgomentoId.setText(textArgomentoId.getText()+" "+rivista.getArgomento());
     }
     public void close (ActionEvent event) {
         Stage stage = (Stage) textNomeId.getScene().getWindow();

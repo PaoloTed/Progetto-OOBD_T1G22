@@ -9,39 +9,28 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0"
-            prefWidth="900.0" style="-fx-border-color: #de5f4f; -fx-border-width: 7; -fx-background-color: #fdf3ea;"
-            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.bibliotecadigitale.Controller.AcquistoController">
-   <ImageView fx:id="imageLibriSfondo" fitHeight="795.0" fitWidth="900.0" layoutX="3.0" layoutY="3.0"
-              pickOnBounds="true" preserveRatio="true">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="900.0" style="-fx-border-color: #de5f4f; -fx-border-width: 7; -fx-background-color: #fdf3ea;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.AcquistoController">
+   <ImageView fx:id="imageLibriSfondo" fitHeight="795.0" fitWidth="900.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
    </ImageView>
-   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcf3eb" height="535.0" layoutX="97.0" layoutY="202.0"
-              stroke="#de5f4f" strokeWidth="2.0" width="706.0"/>
-   <Button layoutX="424.0" layoutY="691.0" mnemonicParsing="false" onAction="#close"
-           style="-fx-background-color: #2b2d30;" text="Close" textFill="WHITE"/>
-   <TableView fx:id="tableView" fixedCellSize="0.0" layoutX="98.4" layoutY="231.2" prefHeight="438.0" prefWidth="714.0"
-              AnchorPane.bottomAnchor="138.0" AnchorPane.leftAnchor="91.0" AnchorPane.rightAnchor="95.0"
-              AnchorPane.topAnchor="224.0">
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcf3eb" height="535.0" layoutX="97.0" layoutY="202.0" stroke="#de5f4f" strokeWidth="2.0" width="706.0" />
+   <Button layoutX="424.0" layoutY="691.0" mnemonicParsing="false" onAction="#close" style="-fx-background-color: #2b2d30;" text="Close" textFill="WHITE" />
+   <TableView fx:id="tableView" fixedCellSize="0.0" layoutX="98.4" layoutY="231.2" maxHeight="500.0" maxWidth="500.0" prefHeight="438.0" prefWidth="714.0" AnchorPane.bottomAnchor="138.0" AnchorPane.leftAnchor="91.0" AnchorPane.rightAnchor="95.0" AnchorPane.topAnchor="224.0">
       <columns>
-         <TableColumn fx:id="codaColumn" prefWidth="54.0" text="CodA"/>
-         <TableColumn fx:id="nomeColumn" prefWidth="241.0" text="Titolo"/>
-         <TableColumn fx:id="urlColumn" prefWidth="361.0" text="URL"/>
-         <TableColumn fx:id="indirizzoColumn" prefWidth="315.0" text="Indirizzo"/>
+         <TableColumn fx:id="codaColumn" prefWidth="54.0" text="CodA" />
+         <TableColumn fx:id="nomeColumn" prefWidth="202.66669845581055" text="Titolo" />
+         <TableColumn fx:id="urlColumn" prefWidth="201.33331298828125" text="URL" />
+         <TableColumn fx:id="indirizzoColumn" maxWidth="306.6666361490884" prefWidth="239.99996948242188" text="Indirizzo" />
       </columns>
    </TableView>
-   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcf3eb" height="75.0" layoutX="98.0" layoutY="52.0" stroke="#de5f4f"
-              strokeWidth="2.0" width="708.0"/>
-   <Text fill="#2b2d30" layoutX="105.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0"
-         text="Pannello Di Visualizzazione Acquisto" wrappingWidth="435.6032905578613">
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcf3eb" height="75.0" layoutX="98.0" layoutY="52.0" stroke="#de5f4f" strokeWidth="2.0" width="708.0" />
+   <Text fill="#2b2d30" layoutX="105.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pannello Di Visualizzazione Acquisto" wrappingWidth="435.6032905578613">
       <font>
-         <Font name="System Bold" size="24.0"/>
+         <Font name="System Bold" size="24.0" />
       </font>
    </Text>
-   <Text fill="#2b2d30" layoutX="104.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0"
-         text="Qui potrai vedere le dove acquistare la tua scelta">
+   <Text fill="#2b2d30" layoutX="104.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qui potrai vedere le dove acquistare la tua scelta">
       <font>
-         <Font name="Arial" size="17.0"/>
+         <Font name="Arial" size="17.0" />
       </font>
    </Text>
 </AnchorPane>

@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="795.0" prefWidth="900.0" style="-fx-background-color: #fdf3ea; -fx-border-color: #964B00;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.ArticoloInformativaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="795.0" prefWidth="900.0" style="-fx-background-color: #fdf3ea; -fx-border-color: #964B00;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.ArticoloInformativaController">
    <ImageView fx:id="imageLibriSfondo" fitHeight="795.0" fitWidth="900.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
    </ImageView>
    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdf3ea" height="492.0" layoutX="97.0" layoutY="103.0" stroke="#de5f4f" strokeType="INSIDE" style="-fx-background-color: #fdf3ea;" width="706.0" AnchorPane.bottomAnchor="201.0" AnchorPane.leftAnchor="96.0" AnchorPane.rightAnchor="98.0" AnchorPane.topAnchor="102.0" />
@@ -80,5 +80,5 @@
          <Font size="14.0" />
       </font>
    </Button>
-   <TextArea fx:id="IdAreaDescrizione" layoutX="101.0" layoutY="171.0" prefHeight="200.0" prefWidth="700.0" AnchorPane.bottomAnchor="426.0" />
+   <TextArea fx:id="IdAreaDescrizione" editable="false" layoutX="101.0" layoutY="171.0" prefHeight="200.0" prefWidth="700.0" AnchorPane.bottomAnchor="426.0" />
 </AnchorPane>

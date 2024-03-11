@@ -131,10 +131,8 @@ public class LibroInformativaController implements Initializable {
         txtEditoreId.setText(txtEditoreId.getText() + libroPassato.getEditore());
 
         if (libroPassato.getPresentazione() != null) {
-            //buttonPresentazioneid.setVisible(true);
             buttonPresentazioneid.disableProperty().setValue(false);
         } else {
-            // buttonPresentazioneid.setVisible(false);
             buttonPresentazioneid.disableProperty().setValue(true);
         }
         ArrayList<ArrayList<String>> disponibileLarrayString = new ArrayList<>();
