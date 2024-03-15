@@ -82,7 +82,14 @@ public class UserInformativaController implements Initializable {
         }
     }
 
-    //Metodo che cambia la password dell'utente
+    /**
+     * Metodo che permette di cambiare la password dell'utente
+     * Controlla che la vecchia password sia corretta e che la nuova password rispetti i requisiti
+     * Se la vecchia password è corretta, cambia la password dell'utente nel database e nella variabile Utente
+     * Se la vecchia password è errata, mostra un messaggio di errore
+     *
+     * @param event
+     */
     public void changePassword(ActionEvent event) {
         String oldPassword = txtOldPassword.getText();
         String newPassword = txtNewPassword.getText();
@@ -111,7 +118,12 @@ public class UserInformativaController implements Initializable {
         event.consume();
     }
 
-    //Metodo che elimina la serie selezionata dalla listView e dal database
+    /**
+     * Metodo che permette di eliminare una serie preferita
+     * Elimina la serie selezionata dalla listView Preferiti e dal database
+     *
+     * @param event
+     */
     @FXML
     public void eliminaPreferito(ActionEvent event) {
         //Recupero la serie selezionata nella listView
@@ -134,6 +146,12 @@ public class UserInformativaController implements Initializable {
         event.consume();
     }
 
+    /**
+     * Metodo che permette di andare alla pagina informativa di una serie
+     * Mostra la pagina informativa della serie selezionata nella listView
+     *
+     * @param event
+     */
     public void goToPaginaInformativaSerie(ActionEvent event) {
         Serie serie = tableView.getSelectionModel().getSelectedItem();
         if (serie == null) {
@@ -146,6 +164,14 @@ public class UserInformativaController implements Initializable {
         event.consume();
     }
 
+    /**
+     * Metodo che si avvia quando si preme il tasto "Elimina account"
+     * Metodo che permette di eliminare l'account dell'utente
+     * Elimina l'account dell'utente dal database e mostra la pagina di benvenuto
+     * Mostrando un messaggio di conferma
+     *
+     * @param event
+     */
     @FXML
     void eliminareAccount(ActionEvent event) {
         UtenteDAOImpl utenteDAO = new UtenteDAOImpl();

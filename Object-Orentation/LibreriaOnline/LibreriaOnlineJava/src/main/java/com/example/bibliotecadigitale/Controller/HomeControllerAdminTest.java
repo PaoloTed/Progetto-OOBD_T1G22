@@ -510,6 +510,11 @@ public class HomeControllerAdminTest implements Initializable {
         sceltaSetter("insert");
     }
 
+    /**
+     * Questo metodo carica le liste necessarie per i combobox
+     *
+     * @return ritorna una mappa con tutte le liste necessarie per i combobox
+     */
     private HashMap<String, ObservableList> getLists() {
         HashMap<String, ObservableList> lists = new HashMap<>();
         ObservableList list = FXCollections.observableArrayList();
@@ -676,6 +681,14 @@ public class HomeControllerAdminTest implements Initializable {
         return lists;
     }
 
+    /**
+     * Questo metodo permette di selezionare un tipo di ricerca
+     * e di visualizzare i risultati
+     * Rendenendo visibile la tabella corrispondente alla ricerca
+     *
+     * @param event evento del bottone cerca
+     * @throws SQLException
+     */
     @FXML
     private void Select(ActionEvent event) throws SQLException {
         scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
@@ -695,7 +708,7 @@ public class HomeControllerAdminTest implements Initializable {
             return;
         }
 
-        //Ricerca e visualizzazione risultati libri
+        //Ricerca e visualizzazione risultati
         ArrayList<ArrayList<String>> objects = new ArrayList<>();
         objects = implDaoHashMap.get(scelta).getRicerca(modRicerca, titoloRicerche);
         tableViewHashMap.get(scelta).getItems().clear();
@@ -714,6 +727,12 @@ public class HomeControllerAdminTest implements Initializable {
         }
     }
 
+    /**
+     * Questo metodo permette di visualizzare tutti gli elemti di una ricerca
+     * Rendenendo visibile la tabella corrispondente alla ricerca
+     *
+     * @param event evento del bottone visualizza tutto
+     */
     @FXML
     private void viewAll(ActionEvent event) {
         scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
@@ -766,6 +785,13 @@ public class HomeControllerAdminTest implements Initializable {
         sceltaSetter(sceltaInsertView);
     }
 
+    /**
+     * Questo metodo permette di selezionare se si vuole inserire o visualizzare
+     * Rimpicciolendo le tabelle per insert
+     * Ingrandendo le tabelle per view
+     *
+     * @param sceltaMode stringa che indica se si vuole inserire o visualizzare
+     */
     private void sceltaSetter(String sceltaMode) {
         boolean sceltaBool;
         int dimTable;
@@ -862,6 +888,12 @@ public class HomeControllerAdminTest implements Initializable {
         buttonViewAll.setVisible(!sceltaBool);
     }
 
+    /**
+     * Questo metodo permette di selezionare un tipo di ricerca ossia
+     * la tabella da visualizzare
+     *
+     * @param event
+     */
     @FXML
     private void selezioneSceltaTableView(ActionEvent event) {
         scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
@@ -875,6 +907,10 @@ public class HomeControllerAdminTest implements Initializable {
         comboBoxRicerca.getSelectionModel().selectFirst();
     }
 
+    /**
+     * Questo metodo permette di eliminare un oggetto dalla tabella selezionata
+     * e dal database
+     */
     @FXML
     private void deleteDao() {
         String scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
@@ -900,6 +936,10 @@ public class HomeControllerAdminTest implements Initializable {
         }
     }
 
+    /**
+     * Questo metodo permette di inserire un oggetto nella tabella selezionata
+     * e nel database
+     */
     @FXML
     private void insertDao() {
         Object objInsert = tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem();
@@ -917,7 +957,7 @@ public class HomeControllerAdminTest implements Initializable {
             implDaoHashMap.get(scelta).insert(arrayList);
             support.messageStage("Insert effettuato");
         } catch (SQLException e) {
-            support.messageStageError( e.getMessage());
+            support.messageStageError(e.getMessage());
 
         } catch (IllegalArgumentException e) {
             support.messageStage("Errore nell'inserimento 2, inserisci tutti campi con ☑");
@@ -925,6 +965,10 @@ public class HomeControllerAdminTest implements Initializable {
         }
     }
 
+    /**
+     * Questo metodo permette di aggiornare un oggetto nella tabella selezionata
+     * e nel database
+     */
     @FXML
     private void updateDao() {
         Object objUpdate = tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem();
@@ -945,6 +989,12 @@ public class HomeControllerAdminTest implements Initializable {
         }
     }
 
+    /**
+     * Questo metodo viene invocato quando si modifica una cella String
+     * e permette di modificare l'oggetto selezionato
+     *
+     * @param stringCellEditEvent evento di modifica di una cella
+     */
     @FXML
     private void onEditChangedString(TableColumn.CellEditEvent stringCellEditEvent) {
         String scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
@@ -960,6 +1010,12 @@ public class HomeControllerAdminTest implements Initializable {
         }
     }
 
+    /**
+     * Questo metodo viene invocato quando si modifica una cella Integer
+     * e permette di modificare la selezionato
+     *
+     * @param intCellEditEvent evento di modifica di una cella
+     */
     @FXML
     private void onEditChangedInteger(TableColumn.CellEditEvent intCellEditEvent) {
         String scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
@@ -975,6 +1031,12 @@ public class HomeControllerAdminTest implements Initializable {
         }
     }
 
+    /**
+     * Questo metodo viene invocato quando si modifica una cella int
+     * e permette di modificare la selezionato
+     *
+     * @param intCellEditEvent evento di modifica di una cella
+     */
     @FXML
     private void onEditChangedInt(TableColumn.CellEditEvent intCellEditEvent) {
         String scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
@@ -990,6 +1052,12 @@ public class HomeControllerAdminTest implements Initializable {
         }
     }
 
+    /**
+     * Questo metodo viene invocato quando si modifica una cella boolean
+     * e permette di modificare la selezionato
+     *
+     * @param boolCellEditEvent evento di modifica di una cella
+     */
     @FXML
     private void onEditChangedBool(TableColumn.CellEditEvent boolCellEditEvent) {
         String scelta = comboBoxTableView.getSelectionModel().getSelectedItem();

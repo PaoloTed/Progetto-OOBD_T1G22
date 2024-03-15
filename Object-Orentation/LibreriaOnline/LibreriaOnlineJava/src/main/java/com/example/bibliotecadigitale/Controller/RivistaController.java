@@ -20,6 +20,13 @@ public class RivistaController {
     @FXML
     private Text textArgomentoId;
 
+
+    /**
+     * Questo metodo mostra le informazioni della rivista selezionata
+     *
+     * @param nome nome della rivista
+     * @param data data della rivista
+     */
     public void showInfoRivista(String nome, String data) {
         RivistaDAOImpl rivistaDAO = new RivistaDAOImpl();
         Rivista rivista;
@@ -28,12 +35,13 @@ public class RivistaController {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        textNomeId.setText(textNomeId.getText()+" "+rivista.getNome());
-        textDataId.setText(textDataId.getText()+" "+rivista.getData());
-        textResponsabileId.setText(textResponsabileId.getText()+" "+rivista.getResponsabile());
-        textArgomentoId.setText(textArgomentoId.getText()+" "+rivista.getArgomento());
+        textNomeId.setText(textNomeId.getText() + " " + rivista.getNome());
+        textDataId.setText(textDataId.getText() + " " + rivista.getData());
+        textResponsabileId.setText(textResponsabileId.getText() + " " + rivista.getResponsabile());
+        textArgomentoId.setText(textArgomentoId.getText() + " " + rivista.getArgomento());
     }
-    public void close (ActionEvent event) {
+
+    public void close(ActionEvent event) {
         Stage stage = (Stage) textNomeId.getScene().getWindow();
         stage.close();
         event.consume();

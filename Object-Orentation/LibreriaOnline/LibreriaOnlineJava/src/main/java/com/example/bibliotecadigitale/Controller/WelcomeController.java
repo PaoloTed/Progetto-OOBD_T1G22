@@ -45,6 +45,14 @@ public class WelcomeController implements Initializable {
 
     @FXML
     private TextField txtPasswordFieldAdmin;
+
+    /**
+     * Questo metodo inizializza la pagina di benvenuto
+     * Mostra il numero di utenti registrati e il numero di utenti online
+     * Carica le immagini della schermata di benvenuto
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String numeroUtenti = String.valueOf(getUserRegistered());
@@ -55,6 +63,15 @@ public class WelcomeController implements Initializable {
         txtUserOnline.setText(numeroUtentiOnline);
     }
 
+
+    /**
+     * Evento che si verifica quando si preme il tasto "Accedi"
+     * Questo metodo controlla se l'utente è presente nel database e se la password è corretta
+     * Se l'utente è presente, viene mostrata la sua home page
+     * Se l'utente non è presente o la password è errata o la email non è correttamente formattata,
+     * viene mostrato un messaggio di errore
+     * @param PressLogin
+     */
     @FXML
     private void LogIn(ActionEvent PressLogin) {
         UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
@@ -113,6 +130,12 @@ public class WelcomeController implements Initializable {
         support.switchStage("homeStage.fxml", event, 900, 800);
     }
 
+    /**
+     * Evento che si verifica quando si preme il tasto "Accedi come admin"
+     * Questo metodo controlla se la password admin è corretta
+     * Se la password è corretta, viene mostrata la home page dell'admin
+     * @param event
+     */
     @FXML
     private void goToAdmin(ActionEvent event) {
         if (!txtPasswordFieldAdmin.getText().equals("1926")) {

@@ -23,6 +23,10 @@ public class PresentazioneController {
     @FXML
     private Text textTipoId;
 
+    /**
+     * Questo metodo mostra le informazioni della presentazione selezionata
+     * @param codP codice della presentazione
+     */
     public void showInfoPresentazione(int codP) {
         PresentazioneDAOImpl presentazioneDAO = new PresentazioneDAOImpl();
         Presentazione presentazione = null;
@@ -31,11 +35,11 @@ public class PresentazioneController {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        textCodPId.setText(textCodPId.getText()+presentazione.getCodp());
-        textNomeId.setText(textNomeId.getText()+presentazione.getNome());
-        textIndizioId.setText(textIndizioId.getText()+presentazione.getIndirizzo());
-        textDataPresentazioneId.setText(textDataPresentazioneId.getText()+presentazione.getDatapresentazione());
-        textTipoId.setText(textTipoId.getText()+presentazione.getTipo());
+        textCodPId.setText(textCodPId.getText() + presentazione.getCodp());
+        textNomeId.setText(textNomeId.getText() + presentazione.getNome());
+        textIndizioId.setText(textIndizioId.getText() + presentazione.getIndirizzo());
+        textDataPresentazioneId.setText(textDataPresentazioneId.getText() + presentazione.getDatapresentazione());
+        textTipoId.setText(textTipoId.getText() + presentazione.getTipo());
     }
 
     public void close(ActionEvent event) {

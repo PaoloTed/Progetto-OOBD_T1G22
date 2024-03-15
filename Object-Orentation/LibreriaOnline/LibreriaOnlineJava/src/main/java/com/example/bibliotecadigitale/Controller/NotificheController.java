@@ -12,6 +12,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -31,6 +32,14 @@ public class NotificheController implements Initializable {
     private final Utente utente = Utente.getUtente();
 
 
+    /**
+     * Questo metodo inizializza la pagina delle notifiche
+     * Carica le immagini della schermata delle notifiche
+     * Carica le serie preferite dell'utente in una listview
+     *
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         imageLibriSfondo.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/libri800x900.png"))));
@@ -46,13 +55,20 @@ public class NotificheController implements Initializable {
     }
 
     public void goToPaginaInformativaSerie(ActionEvent event) {
-        int cods = Integer.parseInt(listViewSerieAcquisto.getSelectionModel().getSelectedItem().substring(7,listViewSerieAcquisto.getSelectionModel().getSelectedItem().indexOf(" || ")));
+        int cods = Integer.parseInt(listViewSerieAcquisto.getSelectionModel().getSelectedItem().substring(7, listViewSerieAcquisto.getSelectionModel().getSelectedItem().indexOf(" || ")));
         Stage stage = (Stage) listViewSerieAcquisto.getScene().getWindow();
         stage.close();
         support.switchStageSerieStage("serieStage.fxml", cods);
         event.consume();
     }
 
+    /**
+     * Il metodo viene invocato quando si preme il tasto elimina preferito
+     * Questo metodo permette di eliminare una serie preferita
+     * Elimina la serie preferita dal database
+     *
+     * @param event
+     */
     public void eliminaPreferito(ActionEvent event) {
         Serie serie = getSerieFromListView();
         UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
@@ -64,7 +80,7 @@ public class NotificheController implements Initializable {
         Stage stage = (Stage) listViewSerieAcquisto.getScene().getWindow();
         stage.close();
         deleteSerieFromListView(serie);
-        support.testSwitch("notificheStage.fxml",900,800);
+        support.testSwitch("notificheStage.fxml", 900, 800);
         support.messageStage("Preferito eliminato con successo.");
         event.consume();
     }
@@ -72,7 +88,7 @@ public class NotificheController implements Initializable {
     private Serie getSerieFromListView() {
         String serieCodS_Nome = listViewSerieAcquisto.getSelectionModel().getSelectedItem();
         Serie serieAppoggio = new Serie();
-        serieAppoggio.setCods(Integer.parseInt(serieCodS_Nome.substring(serieCodS_Nome.indexOf(" ")+1, serieCodS_Nome.indexOf(" || "))));
+        serieAppoggio.setCods(Integer.parseInt(serieCodS_Nome.substring(serieCodS_Nome.indexOf(" ") + 1, serieCodS_Nome.indexOf(" || "))));
         serieAppoggio.setNome(serieCodS_Nome.substring(serieCodS_Nome.indexOf(" - ") + 3));
         return serieAppoggio;
     }
@@ -83,6 +99,6 @@ public class NotificheController implements Initializable {
     }
 
     public void goBack(ActionEvent event) {
-        support.switchStage("homeStage.fxml",event,900,800);
+        support.switchStage("homeStage.fxml", event, 900, 800);
     }
 }

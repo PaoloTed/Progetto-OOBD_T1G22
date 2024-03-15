@@ -38,6 +38,15 @@ public class SignUpController implements Initializable {
         support.switchStage("welcomeStage.fxml", event);
     }
 
+
+    /**
+     * Questo metodo permette di registrare un nuovo utente
+     * Controlla che l'email e la password siano valide
+     * Controlla che non esista già un utente con la stessa email
+     * Se nessun utente ha la stessa email, inserisce l'utente nel database
+     *
+     * @param event
+     */
     public void signUpTry(ActionEvent event) {
         String emailUser = txtSignUpEmailField.getText();
         String passwordUser = txtSignUpPasswordField.getText();

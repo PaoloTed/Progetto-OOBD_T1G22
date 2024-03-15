@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -51,8 +52,6 @@ public class SerieController implements Initializable {
 
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //inizializzo le colonne della tabella libro
-
         isbnColumn.setCellValueFactory(new PropertyValueFactory<>("isbn"));
         titoloColumn.setCellValueFactory(new PropertyValueFactory<>("titolo"));
         autoreColumn.setCellValueFactory(new PropertyValueFactory<>("autore"));
@@ -61,6 +60,11 @@ public class SerieController implements Initializable {
         imageLibriSfondo.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/libri800x900.png"))));
     }
 
+    /**
+     * Mostra le informazioni della serie selezionata
+     *
+     * @param CodS Codice della serie selezionata da mostrare le info
+     */
     public void showSerie(int CodS) {
         SerieDAOImpl serieDAO = new SerieDAOImpl();
         Serie serie = null;

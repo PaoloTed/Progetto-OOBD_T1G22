@@ -12,6 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -44,6 +45,11 @@ public class AcquistoController implements Initializable {
         imageLibriSfondo.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/libri800x900.png"))));
     }
 
+    /**
+     * Questo metodo mostra dove acqsuiatre il libro selezionato
+     *
+     * @param ISBN codice ISBN del libro di cui si vuole visualizzare gli acquisti
+     */
     public void showInfoAcquisto(String ISBN) {
         DisponibileLDAOImpl disponibileLDAO = new DisponibileLDAOImpl();
         ArrayList<DisponibileL> disponibileLarray = new ArrayList<>();
@@ -71,6 +77,11 @@ public class AcquistoController implements Initializable {
         }
     }
 
+    /**
+     * Questo metodo mostra dove acqsuiatre l'articolo selezionato
+     *
+     * @param doi codice DOI dell'articolo di cui si vuole visualizzare gli acquisti
+     */
     public void showInfoArticolo(String doi) {
         DisponibileADAOImpl disponibileADAO = new DisponibileADAOImpl();
         ArrayList<DisponibileA> disponibileAarray = new ArrayList<>();
@@ -81,9 +92,9 @@ public class AcquistoController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        if(disponibileAarrayString.isEmpty()){
+        if (disponibileAarrayString.isEmpty()) {
             support.messageStage("Nessun acquisto disponibile");
-        }else {
+        } else {
             for (ArrayList<String> strings : disponibileAarrayString) {
                 DisponibileA disponibileA = new DisponibileA(strings);
                 disponibileAarray.add(disponibileA);

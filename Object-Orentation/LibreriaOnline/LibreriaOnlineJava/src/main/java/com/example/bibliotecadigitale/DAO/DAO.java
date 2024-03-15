@@ -9,7 +9,5 @@ public interface DAO {
     void insert(ArrayList<String> strings) throws SQLException;
     void update(ArrayList<String> strings) throws SQLException;
     void delete(ArrayList<String> strings) throws SQLException;
-
-//    boolean check(ArrayList<String> strings) throws SQLException;
     ArrayList<ArrayList<String>> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException;
 }

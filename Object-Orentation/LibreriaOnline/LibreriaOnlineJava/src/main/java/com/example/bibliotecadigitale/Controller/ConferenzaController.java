@@ -26,6 +26,11 @@ public class ConferenzaController {
     @FXML
     private Text textStrutturaId;
 
+    /**
+     * Questo metodo mostra le informazioni della conferenza selezionata
+     *
+     * @param codc codice della conferenza selezionata
+     */
     public void showInfoConferenza(int codc) {
         ConferenzaDAOImpl conferenzaDAO = new ConferenzaDAOImpl();
         Conferenza conferenza = null;
@@ -34,17 +39,17 @@ public class ConferenzaController {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        textCodCId.setText(textCodCId.getText()+conferenza.getCodc());
-        textNomeId.setText(textNomeId.getText()+conferenza.getNome());
-        textDataIId.setText(textDataIId.getText()+conferenza.getDatai());
-        textDataFId.setText(textDataFId.getText()+conferenza.getDataf());
-        textIndizioId.setText(textIndizioId.getText()+conferenza.getIndirizzo());
-        textResponsabileId.setText(textResponsabileId.getText()+conferenza.getResponsabile());
-        textStrutturaId.setText(textStrutturaId.getText()+conferenza.getStruttura());
+        textCodCId.setText(textCodCId.getText() + conferenza.getCodc());
+        textNomeId.setText(textNomeId.getText() + conferenza.getNome());
+        textDataIId.setText(textDataIId.getText() + conferenza.getDatai());
+        textDataFId.setText(textDataFId.getText() + conferenza.getDataf());
+        textIndizioId.setText(textIndizioId.getText() + conferenza.getIndirizzo());
+        textResponsabileId.setText(textResponsabileId.getText() + conferenza.getResponsabile());
+        textStrutturaId.setText(textStrutturaId.getText() + conferenza.getStruttura());
     }
 
     public void close(ActionEvent event) {
-        Stage stage = (Stage)  textCodCId.getScene().getWindow();
+        Stage stage = (Stage) textCodCId.getScene().getWindow();
         stage.close();
         event.consume();
     }

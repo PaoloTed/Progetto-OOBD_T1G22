@@ -43,6 +43,12 @@ public class Connessione {
         return stat.executeQuery(query);
     }
 
+    /**
+     * Legge le credenziali per la connessione al database dal file credenzialiProgetto.txt
+     * e le restituisce in un ArrayList.
+     *
+     * @return ArrayList<String> contenente le credenziali per la connessione al database
+     */
     public static ArrayList<String> leggiCredenziali() {
         try {
             String pathDocumenti = FileSystemView.getFileSystemView().getDefaultDirectory().getPath();
@@ -73,6 +79,11 @@ public class Connessione {
         }
     }
 
+    /**
+     * Questo metodo restituisce il numero di utenti registrati nel database
+     *
+     * @return il numero di utenti registrati nel database
+     */
     public int getNumeroUtenti() {
         int numeroUtenti = 0;
         try {
@@ -88,6 +99,11 @@ public class Connessione {
         return numeroUtenti;
     }
 
+    /**
+     * Questo metodo restituisce il numero di utenti online nel database
+     *
+     * @return il numero di utenti online nel database
+     */
     public int getNumeroOnline() {
         int numeroOnline = 0;
         try {
@@ -103,6 +119,12 @@ public class Connessione {
         return numeroOnline;
     }
 
+    /**
+     * Questo metodo restituisce il numero di notifiche di un utente
+     *
+     * @param email email dell'utente di cui si vuole sapere il numero di notifiche
+     * @return il numero di notifiche dell'utente
+     */
     public int getNumeroNotifiche(String email) {
         int numeroNotifiche = 0;
         try {

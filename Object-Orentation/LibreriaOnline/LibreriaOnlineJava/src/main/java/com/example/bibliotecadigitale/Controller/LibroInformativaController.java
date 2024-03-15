@@ -78,6 +78,12 @@ public class LibroInformativaController implements Initializable {
         support.switchStage("homeStage.fxml", event, 900, 800);
     }
 
+    /**
+     * Questo metodo mostra le informazioni del libro passato come parametro
+     * Disabilitanto o abilitando i bottoni ribista o acquisto in base alle informazioni del libro
+     *
+     * @param libroPassato è il libro che si vuole visualizzare le informazioni
+     */
     public void showInfoLibro(Libro libroPassato) {
         UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
         libroMain = libroPassato;
@@ -152,6 +158,11 @@ public class LibroInformativaController implements Initializable {
         }
     }
 
+    /**
+     * Questo metodo permette di aggiungere la serie ai preferiti
+     *
+     * @param event evento che viene invocato quando si preme il tasto preferito
+     */
     public void setPreferito(ActionEvent event) {
         UtenteDAOImpl utenteDAO = new UtenteDAOImpl();
         try {
@@ -173,6 +184,13 @@ public class LibroInformativaController implements Initializable {
         event.consume();
     }
 
+    /**
+     * Questo metodo permette di andare alla pagina informativa del libro successivo
+     * a quello attuale
+     *
+     * @param event evento che viene invocato quando si preme il tasto successivo
+     * @throws SQLException
+     */
     public void goToNext(ActionEvent event) throws SQLException {
         LibroDAOImpl libroDAO = new LibroDAOImpl();
         ArrayList<String> libro = libroDAO.get(libroMain.getSuccessivo());

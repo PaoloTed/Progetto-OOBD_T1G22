@@ -18,6 +18,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -95,8 +96,14 @@ public class HomeController implements Initializable {
         txtNumeroNotifiche.setText(String.valueOf(connessione.getNumeroNotifiche(utente.getEmail())));
     }
 
+    /**
+     * Questo metodo permette di cercare un libro o un articolo in base alla scelta effettuata
+     * effettuando i relativi controlli sul testo ricercato
+     *
+     * @param event è l'evento che viene generato quando si preme il tasto cerca
+     */
     @FXML
-    void Select(ActionEvent event)  {
+    void Select(ActionEvent event) {
         //Gestione errori per la ricerca
         if (scelta == null) {
             support.messageStage("Selezionare prima un tipo di ricerca");
@@ -226,6 +233,12 @@ public class HomeController implements Initializable {
         event.consume();
     }
 
+    /**
+     * Questo metodo permette di selezionare la ricerca di un libro
+     * cambiando il colore del tasto libro e disabilitandolo
+     *
+     * @param event evento che viene invocato quando si preme il tasto libro
+     */
     public void selezioneLibro(ActionEvent event) {
         idComboBox.setItems(FXCollections.observableArrayList("Isbn", "Titolo", "Autore", "Genere", "Editore"));
         scelta = "libro";
@@ -240,6 +253,12 @@ public class HomeController implements Initializable {
         event.consume();
     }
 
+    /**
+     * Questo metodo permette di selezionare la ricerca di un articolo
+     * cambiando il colore del tasto articolo e disabilitandolo
+     *
+     * @param event evento che viene invocato quando si preme il tasto articolo
+     */
     public void selezioneArticolo(ActionEvent event) {
         idComboBox.setItems(FXCollections.observableArrayList("Doi", "Titolo", "Autore", "Genere", "Editore"));
         scelta = "articolo";

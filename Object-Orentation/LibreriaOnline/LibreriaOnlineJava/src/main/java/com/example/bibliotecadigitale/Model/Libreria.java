@@ -14,7 +14,7 @@ public class Libreria extends Acquisto{
         this.indirizzo = indirizzo;
     }
 
-    public ArrayList<String> toArrayList() {
+    public ArrayList<String> ObjToArrayList() {
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add(String.valueOf(getCoda()));
         arrayList.add(getNome());

@@ -10,6 +10,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -57,18 +58,25 @@ public class ArticoloInformativaController implements Initializable {
         support.switchStage("homeStage.fxml", event, 900, 800);
     }
 
+    /**
+     * Questo metodo permette di visualizzare le informazioni di un articolo scientifico
+     * disattivando o attivando i bottoni per visualizzare le informazioni di una conferenza o di una rivista
+     * a seconda che l'articolo scientifico sia stato presentato in una conferenza o presente in una rivista
+     *
+     * @param articolopassato è l'articolo scientifico di cui si vuole visualizzare le informazioni
+     */
     public void showInfoArticolo(ArticoloScientifico articolopassato) {
         ArticoloMain = articolopassato;
-        textTitleId.setText(textTitleId.getText()+articolopassato.getTitolo());
-        textDoiId.setText(textDoiId.getText()+articolopassato.getDoi());
-        textGenereId.setText(textGenereId.getText()+articolopassato.getGenere());
-        textNumeroPagineId.setText(textNumeroPagineId.getText()+(articolopassato.getNumpagine()));
+        textTitleId.setText(textTitleId.getText() + articolopassato.getTitolo());
+        textDoiId.setText(textDoiId.getText() + articolopassato.getDoi());
+        textGenereId.setText(textGenereId.getText() + articolopassato.getGenere());
+        textNumeroPagineId.setText(textNumeroPagineId.getText() + (articolopassato.getNumpagine()));
         IdAreaDescrizione.setText(articolopassato.getDescrizione());
-        textFruizioneId.setText(textFruizioneId.getText()+articolopassato.getFruizione());
-        textDataUscitaId.setText(textDataUscitaId.getText()+(articolopassato.getDatauscita()));
-        textLinguianId.setText(textLinguianId.getText()+articolopassato.getLingua());
-        textAutoreId.setText(textAutoreId.getText()+articolopassato.getAutore());
-        txtEditoreId.setText(txtEditoreId.getText()+articolopassato.getEditore());
+        textFruizioneId.setText(textFruizioneId.getText() + articolopassato.getFruizione());
+        textDataUscitaId.setText(textDataUscitaId.getText() + (articolopassato.getDatauscita()));
+        textLinguianId.setText(textLinguianId.getText() + articolopassato.getLingua());
+        textAutoreId.setText(textAutoreId.getText() + articolopassato.getAutore());
+        txtEditoreId.setText(txtEditoreId.getText() + articolopassato.getEditore());
         if (articolopassato.getConferenza() != null) {
             buttonConferenzaId.setVisible(true);
         } else {
