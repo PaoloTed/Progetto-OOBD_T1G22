@@ -1,14 +1,12 @@
 package com.example.bibliotecadigitale.Connection;
 
 import com.example.bibliotecadigitale.DAO.SerieDAO;
-import com.example.bibliotecadigitale.Model.Serie;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class SerieDAOImpl implements SerieDAO {
     private final Connessione connessione = new Connessione();
