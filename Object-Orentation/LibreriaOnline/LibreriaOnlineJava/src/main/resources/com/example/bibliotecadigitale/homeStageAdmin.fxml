@@ -212,7 +212,7 @@
         </contextMenu>
     </TableView>
     <Text fx:id="txtRicercaInserimento" layoutX="130.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cosa Vuoi ricercare ?" wrappingWidth="136.91082000732422" />
-    <Text layoutX="199.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Premi Con Il Tasto Destro Del Mouse Per Le Azioni, premi Enter per confermare le modifiche" wrappingWidth="502.37743377685547" />
+    <Text layoutX="102.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Premi Con Il Tasto Destro Del Mouse Per Le Azioni, premi Enter per confermare le modifiche, i campi con ☑ sono obbligatori" wrappingWidth="700.0000000000001" />
     <ComboBox fx:id="comboBoxTableView" layoutX="117.0" layoutY="130.0" onAction="#selezioneSceltaTableView" prefWidth="150.0" />
     <Button fx:id="buttonView" layoutX="450.0" layoutY="80.0" mnemonicParsing="false" onAction="#sceltaView" prefHeight="25.0" prefWidth="54.0" text="View" />
     <Button layoutX="805.0" layoutY="210.0" mnemonicParsing="false" onAction="#insertDao" text="Inserisci" visible="false" />

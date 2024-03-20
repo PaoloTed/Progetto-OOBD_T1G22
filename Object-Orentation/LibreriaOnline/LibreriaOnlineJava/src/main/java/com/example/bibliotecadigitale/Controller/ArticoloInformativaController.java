@@ -28,8 +28,6 @@ public class ArticoloInformativaController implements Initializable {
     @FXML
     private Text textNumeroPagineId;
     @FXML
-    private Text textDescrizioneId;
-    @FXML
     private Text textFruizioneId;
     @FXML
     private Text textDataUscitaId;

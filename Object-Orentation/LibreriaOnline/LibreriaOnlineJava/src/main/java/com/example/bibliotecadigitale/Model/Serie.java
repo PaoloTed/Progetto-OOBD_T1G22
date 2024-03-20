@@ -1,7 +1,7 @@
 package com.example.bibliotecadigitale.Model;
 import java.util.ArrayList;
 
-public class Serie {
+public class Serie implements ArrayListObject{
 
     private int codS;
     private String nome;
@@ -69,6 +69,7 @@ public class Serie {
     }
     public Serie(){}
 
+    @Override
     public ArrayList<String> ObjToArrayList() {
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add(String.valueOf(codS));

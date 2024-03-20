@@ -1,6 +1,5 @@
 package com.example.bibliotecadigitale.Controller;
 
-import com.example.bibliotecadigitale.Connection.Connessione;
 import com.example.bibliotecadigitale.Connection.UtenteDAOImpl;
 import com.example.bibliotecadigitale.Model.Serie;
 import com.example.bibliotecadigitale.Model.Utente;
@@ -14,7 +13,6 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.net.URL;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Objects;

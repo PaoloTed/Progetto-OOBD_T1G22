@@ -2,7 +2,7 @@ package com.example.bibliotecadigitale.Model;
 
 import java.util.ArrayList;
 
-public class Acquisto
+public class Acquisto implements ArrayListObject
 {
     private int coda;
     private String nome;

@@ -2,7 +2,7 @@ package com.example.bibliotecadigitale.Model;
 
 import java.util.ArrayList;
 
-public class Conferenza extends Piattaforma {
+public class Conferenza extends Piattaforma implements ArrayListObject{
 
     private int codC;
     private String nome;
@@ -72,7 +72,7 @@ public class Conferenza extends Piattaforma {
     }
 
     public Conferenza(){}
-
+    @Override
     public ArrayList<String> ObjToArrayList() {
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add(String.valueOf(codC));

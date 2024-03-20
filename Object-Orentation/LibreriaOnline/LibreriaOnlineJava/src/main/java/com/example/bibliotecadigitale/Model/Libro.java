@@ -2,7 +2,7 @@ package com.example.bibliotecadigitale.Model;
 
 import java.util.ArrayList;
 
-public class Libro extends Pubblicazioni implements ArrayListObject {
+public class Libro extends Pubblicazioni implements ArrayListObject{
 
     private String ISBN;
     private String tipo;
@@ -118,6 +118,7 @@ public class Libro extends Pubblicazioni implements ArrayListObject {
         serie = null;
         presentazione = null;
     }
+
 
     public Libro(ArrayList<String> arrayList) {
         ISBN = arrayList.get(0);

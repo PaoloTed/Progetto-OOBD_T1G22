@@ -2,7 +2,7 @@ package com.example.bibliotecadigitale.Model;
 
 import java.util.ArrayList;
 
-public class DisponibileA {
+public class DisponibileA implements ArrayListObject{
     private int coda;
     private String doi;
 
@@ -44,6 +44,7 @@ public class DisponibileA {
 
     public DisponibileA(){}
 
+    @Override
     public ArrayList<String> ObjToArrayList() {
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add(String.valueOf(coda));

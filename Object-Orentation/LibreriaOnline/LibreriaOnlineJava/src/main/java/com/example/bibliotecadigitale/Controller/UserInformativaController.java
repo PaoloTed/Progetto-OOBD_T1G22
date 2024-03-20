@@ -182,7 +182,7 @@ public class UserInformativaController implements Initializable {
         alert.getButtonTypes().setAll(ButtonType.OK, ButtonType.CANCEL);
         if (alert.showAndWait().get() == ButtonType.OK) {
             try {
-                utenteDAO.delete(Utente.getUtente().objToArrayList());
+                utenteDAO.delete(Utente.getUtente().ObjToArrayList());
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }

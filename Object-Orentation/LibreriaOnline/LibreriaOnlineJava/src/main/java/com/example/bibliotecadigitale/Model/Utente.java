@@ -2,7 +2,7 @@ package com.example.bibliotecadigitale.Model;
 
 import java.util.ArrayList;
 
-public class Utente {
+public class Utente implements ArrayListObject{
 
     private String email;
     private String password;
@@ -61,7 +61,8 @@ public class Utente {
     }
     public Utente(){}
 
-    public ArrayList<String> objToArrayList() {
+    @Override
+    public ArrayList<String> ObjToArrayList() {
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add(email);
         arrayList.add(password);

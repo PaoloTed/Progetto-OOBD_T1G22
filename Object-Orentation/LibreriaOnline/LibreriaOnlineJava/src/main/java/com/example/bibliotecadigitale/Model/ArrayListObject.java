@@ -4,5 +4,5 @@ import java.util.ArrayList;
 
 public interface ArrayListObject {
 
-    public ArrayList<String> ObjToArrayList();
+    ArrayList<String> ObjToArrayList();
 }

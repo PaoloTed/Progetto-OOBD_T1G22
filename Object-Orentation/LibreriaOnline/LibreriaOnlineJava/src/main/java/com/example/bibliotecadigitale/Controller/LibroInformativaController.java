@@ -42,8 +42,6 @@ public class LibroInformativaController implements Initializable {
     @FXML
     private Text textMateriaId;
     @FXML
-    private Text textDescrizioneId;
-    @FXML
     private Text textFruizioneId;
     @FXML
     private Text textDataUscitaId;
@@ -119,13 +117,12 @@ public class LibroInformativaController implements Initializable {
             } else {
                 buttonSerieId.disableProperty().setValue(false);
             }
-            buttonSerieId.setText("" + libroPassato.getSerie());
+            buttonSerieId.setText("★");
             textMessagioId.setVisible(true);
             if (libroPassato.getSuccessivo() != null) {
                 buttonSuccessivoId.setVisible(true);
                 buttonSuccessivoId.disableProperty().setValue(false);
             } else {
-//                buttonSuccessivoId.setVisible(false);
                 buttonSuccessivoId.disableProperty().setValue(true);
             }
         } else {
@@ -189,7 +186,7 @@ public class LibroInformativaController implements Initializable {
      * a quello attuale
      *
      * @param event evento che viene invocato quando si preme il tasto successivo
-     * @throws SQLException
+     * @throws SQLException eccezione che viene lanciata quando si verifica un errore nel database
      */
     public void goToNext(ActionEvent event) throws SQLException {
         LibroDAOImpl libroDAO = new LibroDAOImpl();

@@ -73,7 +73,7 @@ public class SignUpController implements Initializable {
         utente.setPassword(passwordUser);
         utente.setData(Instant.now().atZone(ZoneOffset.UTC).format(DateTimeFormatter.ISO_LOCAL_DATE));
         try {
-            utenteDAO.insert(utente.objToArrayList());
+            utenteDAO.insert(utente.ObjToArrayList());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

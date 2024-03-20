@@ -1,6 +1,5 @@
 package com.example.bibliotecadigitale.Model;
 
-import java.util.ArrayList;
 
 public class Pubblicazioni
 {

@@ -2,7 +2,7 @@ package com.example.bibliotecadigitale.Model;
 
 import java.util.ArrayList;
 
-public class Rivista extends Piattaforma{
+public class Rivista extends Piattaforma implements ArrayListObject{
 
     private String nome;
     private String data;
@@ -42,6 +42,7 @@ public class Rivista extends Piattaforma{
         setArgomento(arrayList.get(3));
     }
 
+    @Override
     public ArrayList<String> ObjToArrayList() {
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add(nome);

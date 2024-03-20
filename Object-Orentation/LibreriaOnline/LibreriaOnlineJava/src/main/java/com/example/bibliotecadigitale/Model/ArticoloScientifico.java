@@ -1,9 +1,9 @@
 package com.example.bibliotecadigitale.Model;
 
 import java.util.ArrayList;
-import java.util.Date;
 
-public class ArticoloScientifico extends Pubblicazioni {
+
+public class ArticoloScientifico extends Pubblicazioni implements ArrayListObject{
 
     private String doi;
     private Integer conferenza;
@@ -46,6 +46,7 @@ public class ArticoloScientifico extends Pubblicazioni {
         this.datar = datar;
     }
 
+    @Override
     public ArrayList<String> ObjToArrayList() {
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add(doi);

@@ -2,7 +2,7 @@ package com.example.bibliotecadigitale.Model;
 
 import java.util.ArrayList;
 
-public class Libreria extends Acquisto{
+public class Libreria extends Acquisto implements ArrayListObject{
 
     private String indirizzo;
 
@@ -14,6 +14,7 @@ public class Libreria extends Acquisto{
         this.indirizzo = indirizzo;
     }
 
+    @Override
     public ArrayList<String> ObjToArrayList() {
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add(String.valueOf(getCoda()));
