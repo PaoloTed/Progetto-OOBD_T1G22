@@ -109,7 +109,7 @@ public class SerieController implements Initializable {
         }
         Stage stage = (Stage) libroTableView.getScene().getWindow();
         stage.close();
-        support.switchStage("paginaInformativaLibro.fxml", libro);
+        support.switchStageLibro("paginaInformativaLibro.fxml", libro);
         event.consume();
     }
 

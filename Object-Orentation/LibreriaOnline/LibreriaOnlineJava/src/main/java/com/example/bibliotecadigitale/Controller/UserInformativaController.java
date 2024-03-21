@@ -160,7 +160,7 @@ public class UserInformativaController implements Initializable {
         }
         Stage stage = (Stage) labelEmail.getScene().getWindow();
         stage.close();
-        support.switchStageSerieStage("serieStage.fxml", serie.getCods());
+        support.switchStageSerie("serieStage.fxml", serie.getCods());
         event.consume();
     }
 

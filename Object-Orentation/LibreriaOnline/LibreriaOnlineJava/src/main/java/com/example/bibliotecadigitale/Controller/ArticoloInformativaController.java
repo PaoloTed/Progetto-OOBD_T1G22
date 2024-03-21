@@ -10,6 +10,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.Objects;
@@ -90,17 +91,19 @@ public class ArticoloInformativaController implements Initializable {
     }
 
     public void goToConferenza(ActionEvent event) {
-        support.switchStage("conferenzaStage.fxml", ArticoloMain.getConferenza());
+        support.switchStageConferenza("conferenzaStage.fxml", ArticoloMain.getConferenza());
         event.consume();
     }
 
     public void goToRivista(ActionEvent event) {
-        support.switchStage("rivistaStage.fxml", ArticoloMain.getNomer(), ArticoloMain.getDatar());
+        support.switchStageRivista("rivistaStage.fxml", ArticoloMain.getNomer(), ArticoloMain.getDatar());
         event.consume();
     }
 
     public void goToAcquisto(ActionEvent event) {
-        support.switchStageAquistiArticoli("acquistoStage.fxml", ArticoloMain.getDoi());
+        Stage stage = (Stage) buttonRivistaId.getScene().getWindow();
+        stage.close();
+        support.switchStageAcquistiArticoli("acquistoStage.fxml", ArticoloMain.getDoi());
         event.consume();
     }
 }

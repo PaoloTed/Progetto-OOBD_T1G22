@@ -10,44 +10,32 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.util.Objects;
 
 public class SupportStage {
     private Stage stage;
 
-    public void testSwitch(String scenaNew, int larghezza, int altezza) {
-        try {
-            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
-            Parent root = loader.load();
-            stage = new Stage();
-            stage.setScene(new Scene(root, larghezza, altezza));
-            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/biblioteca.png"))));
-            stage.setTitle("Libreria digitale");
-            stage.setResizable(false);
-            stage.show();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    /**
+     * Questo metodo permette di cambiare la scena
+     * settandone la larghezza e l'altezza
+     * e settando l'icona della finestra e il titolo
+     *
+     * @param root
+     * @param larghezza
+     * @param altezza
+     * @throws IOException
+     */
+    private void cambiaStage(Parent root, int larghezza, int altezza) throws IOException {
+        stage = new Stage();
+        stage.setScene(new Scene(root, larghezza, altezza));
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/biblioteca.png"))));
+        stage.setTitle("Libreria digitale");
+        stage.setResizable(false);
+        stage.show();
     }
 
-
-    public void switchStage(String scenaNew, ActionEvent eventClose) {
-        stage = (Stage) ((Node) eventClose.getSource()).getScene().getWindow();
-        stage.close();
-        try {
-            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
-            Parent root = loader.load();
-            stage = new Stage();
-            stage.setScene(new Scene(root, 500, 500));
-            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/biblioteca.png"))));
-            stage.setTitle("Libreria digitale");
-            stage.setResizable(false);
-            stage.show();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     public void switchStage(String scenaNew, ActionEvent eventClose, int larghezza, int altezza) {
         stage = (Stage) ((Node) eventClose.getSource()).getScene().getWindow();
@@ -55,29 +43,18 @@ public class SupportStage {
         try {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
             Parent root = loader.load();
-            stage = new Stage();
-            stage.setScene(new Scene(root, larghezza, altezza));//giusto
-            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/biblioteca.png"))));
-            stage.setTitle("Libreria digitale");
-            stage.setResizable(false);
-            stage.show();
+            cambiaStage(root,larghezza,altezza);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 
 
-    public void switchStage(String scenaNew, Libro libro) {
+    public void switchStageLibro(String scenaNew, Libro libro) {
         try {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
             Parent root = loader.load();
-            stage = new Stage();
-            stage.setScene(new Scene(root, 900, 800));
-            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/biblioteca.png"))));
-            stage.setTitle("Libreria digitale");
-            stage.setResizable(false);
-            stage.show();
+            cambiaStage(root,900,800);
             LibroInformativaController libroInformativaController = loader.getController();
             libroInformativaController.showInfoLibro(libro);
         } catch (IOException e) {
@@ -89,12 +66,7 @@ public class SupportStage {
         try {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
             Parent root = loader.load();
-            stage = new Stage();
-            stage.setScene(new Scene(root, 250, 250));
-            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/biblioteca.png"))));
-            stage.setTitle("Libreria digitale");
-            stage.setResizable(false);
-            stage.show();
+            cambiaStage(root,300,300);
             PresentazioneController presentazioneController = loader.getController();
             presentazioneController.showInfoPresentazione(presentazione);
         } catch (IOException e) {
@@ -102,16 +74,11 @@ public class SupportStage {
         }
     }
 
-    public void switchStage(String scenaNew, ArticoloScientifico Articolo) {
+    public void switchStageArticolo(String scenaNew, ArticoloScientifico Articolo) {
         try {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
             Parent root = loader.load();
-            stage = new Stage();
-            stage.setScene(new Scene(root, 900, 800));
-            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/biblioteca.png"))));
-            stage.setTitle("Libreria digitale");
-            stage.setResizable(false);
-            stage.show();
+            cambiaStage(root,900,800);
             ArticoloInformativaController articoloInformativaController = loader.getController();
             articoloInformativaController.showInfoArticolo(Articolo);
         } catch (IOException e) {
@@ -120,16 +87,11 @@ public class SupportStage {
     }
 
 
-    public void switchStage(String scenaNew, int CodC) {
+    public void switchStageConferenza(String scenaNew, int CodC) {
         try {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
             Parent root = loader.load();
-            stage = new Stage();
-            stage.setScene(new Scene(root, 250, 250));
-            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/biblioteca.png"))));
-            stage.setTitle("Libreria digitale");
-            stage.setResizable(false);
-            stage.show();
+            cambiaStage(root,300,300);
             ConferenzaController conferenzaController = loader.getController();
             conferenzaController.showInfoConferenza(CodC);
         } catch (IOException e) {
@@ -137,16 +99,11 @@ public class SupportStage {
         }
     }
 
-    public void switchStage(String scenaNew, String Nome, String Data) {
+    public void switchStageRivista(String scenaNew, String Nome, String Data) {
         try {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
             Parent root = loader.load();
-            stage = new Stage();
-            stage.setScene(new Scene(root, 250, 250));
-            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/biblioteca.png"))));
-            stage.setTitle("Libreria digitale");
-            stage.setResizable(false);
-            stage.show();
+            cambiaStage(root,300,300);
             RivistaController rivistaController = loader.getController();
             rivistaController.showInfoRivista(Nome, Data);
         } catch (IOException e) {
@@ -155,50 +112,35 @@ public class SupportStage {
     }
 
 
-    public void switchStageAquistiLibri(String scenaNew, String ISBN) {
+    public void switchStageAcquistiLibri(String scenaNew, String ISBN) {
         try {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
             Parent root = loader.load();
-            stage = new Stage();
-            stage.setScene(new Scene(root, 900, 800));
-            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/biblioteca.png"))));
-            stage.setTitle("Libreria digitale");
-            stage.setResizable(false);
-            stage.show();
-            AcquistoController aquistoController = loader.getController();
-            aquistoController.showInfoAcquisto(ISBN);
+            cambiaStage(root,900,800);
+            AcquistoController acquistoController = loader.getController();
+            acquistoController.showInfoAcquisto(ISBN);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void switchStageAquistiArticoli(String scenaNew, String Doi) {
+    public void switchStageAcquistiArticoli(String scenaNew, String Doi) {
         try {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
             Parent root = loader.load();
-            stage = new Stage();
-            stage.setScene(new Scene(root, 900, 800));
-            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/biblioteca.png"))));
-            stage.setTitle("Libreria digitale");
-            stage.setResizable(false);
-            stage.show();
-            AcquistoController aquistoController = loader.getController();
-            aquistoController.showInfoArticolo(Doi);
+            cambiaStage(root,900,800);
+            AcquistoController acquistoController = loader.getController();
+            acquistoController.showInfoArticolo(Doi);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void switchStageSerieStage(String scenaNew, int CodS) {
+    public void switchStageSerie(String scenaNew, int CodS) {
         try {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
             Parent root = loader.load();
-            stage = new Stage();
-            stage.setScene(new Scene(root, 900, 800));
-            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/biblioteca.png"))));
-            stage.setTitle("Libreria digitale");
-            stage.setResizable(false);
-            stage.show();
+            cambiaStage(root,900,800);
             SerieController serieController = loader.getController();
             serieController.showSerie(CodS);
         } catch (IOException e) {
@@ -215,21 +157,14 @@ public class SupportStage {
     }
 
 
-    public void messageStage(String tipoErrore) {
+    public void messageStage(String tipoMessaggio) {
         String scenaFxml = "messageStage.fxml";
         try {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaFxml)));
             Parent root = loader.load();
-            stage = new Stage();
-            stage.setScene(new Scene(root, 300, 100));
-            stage.setAlwaysOnTop(true);
-            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/biblioteca.png"))));
-            stage.setTitle("Libreria digitale");
-            stage.setResizable(false);
-            stage.show();
-
+            cambiaStage(root,300,100);
             MessageController controller = loader.getController();
-            controller.setText(tipoErrore);
+            controller.setText(tipoMessaggio);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -240,16 +175,19 @@ public class SupportStage {
         try {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaFxml)));
             Parent root = loader.load();
-            stage = new Stage();
-            stage.setScene(new Scene(root, 600, 100));
-            stage.setAlwaysOnTop(true);
-            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/biblioteca.png"))));
-            stage.setTitle("Libreria digitale");
-            stage.setResizable(false);
-            stage.show();
-
+            cambiaStage(root,400,200);
             MessageController controller = loader.getController();
             controller.setText(tipoErrore);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void switchStageNoClose(String scenaNew) {
+        try {
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
+            Parent root = loader.load();
+            cambiaStage(root,800,900);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

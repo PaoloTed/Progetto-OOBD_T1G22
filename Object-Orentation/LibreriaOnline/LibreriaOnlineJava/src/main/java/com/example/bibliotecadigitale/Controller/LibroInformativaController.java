@@ -15,6 +15,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -78,7 +79,7 @@ public class LibroInformativaController implements Initializable {
 
     /**
      * Questo metodo mostra le informazioni del libro passato come parametro
-     * Disabilitanto o abilitando i bottoni ribista o acquisto in base alle informazioni del libro
+     * Disabilitando o abilitando i bottoni rivista o acquisto in base alle informazioni del libro
      *
      * @param libroPassato è il libro che si vuole visualizzare le informazioni
      */
@@ -98,7 +99,7 @@ public class LibroInformativaController implements Initializable {
 
         if (libroPassato.getMateria() != null) {
             textMateriaId.setVisible(true);
-            textMateriaId.setText(textMateriaId.getText() + libroPassato.getMateria());
+            textMateriaId.setText("Materia:" + libroPassato.getMateria());
         } else {
             textMateriaId.setVisible(false);
         }
@@ -177,6 +178,8 @@ public class LibroInformativaController implements Initializable {
             support.messageStage("Il libro non ha una presentazione");
             return;
         }
+        Stage stage = (Stage) buttonPresentazioneid.getScene().getWindow();
+        stage.close();
         support.switchStagePresentazione("presentazioneStage.fxml", libroMain.getPresentazione());
         event.consume();
     }
@@ -209,7 +212,9 @@ public class LibroInformativaController implements Initializable {
     }
 
     public void goToAcquisto(ActionEvent event) {
-        support.switchStageAquistiLibri("acquistoStage.fxml", libroMain.getIsbn());
+        Stage stage = (Stage) buttonAquistoId.getScene().getWindow();
+        stage.close();
+        support.switchStageAcquistiLibri("acquistoStage.fxml", libroMain.getIsbn());
         event.consume();
     }
 }

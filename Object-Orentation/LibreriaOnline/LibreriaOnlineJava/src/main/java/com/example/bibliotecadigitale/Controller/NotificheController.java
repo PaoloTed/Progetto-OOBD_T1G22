@@ -56,7 +56,7 @@ public class NotificheController implements Initializable {
         int cods = Integer.parseInt(listViewSerieAcquisto.getSelectionModel().getSelectedItem().substring(7, listViewSerieAcquisto.getSelectionModel().getSelectedItem().indexOf(" || ")));
         Stage stage = (Stage) listViewSerieAcquisto.getScene().getWindow();
         stage.close();
-        support.switchStageSerieStage("serieStage.fxml", cods);
+        support.switchStageSerie("serieStage.fxml", cods);
         event.consume();
     }
 
@@ -78,7 +78,7 @@ public class NotificheController implements Initializable {
         Stage stage = (Stage) listViewSerieAcquisto.getScene().getWindow();
         stage.close();
         deleteSerieFromListView(serie);
-        support.testSwitch("notificheStage.fxml", 900, 800);
+        support.switchStageNoClose("notificheStage.fxml");
         support.messageStage("Preferito eliminato con successo.");
         event.consume();
     }

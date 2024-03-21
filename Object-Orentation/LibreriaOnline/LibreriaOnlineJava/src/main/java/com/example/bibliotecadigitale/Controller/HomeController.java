@@ -170,7 +170,7 @@ public class HomeController implements Initializable {
 
     @FXML
     public void goToInfoUser(ActionEvent event) {
-        support.switchStage("infoUserStage.fxml", event);
+        support.switchStage("infoUserStage.fxml", event,500, 500);
     }
 
     @FXML
@@ -186,7 +186,7 @@ public class HomeController implements Initializable {
 
     public void logOff(ActionEvent event) {
         Utente.getUtente().exitUtente();
-        support.switchStage("welcomeStage.fxml", event);
+        support.switchStage("welcomeStage.fxml", event, 500, 500);
     }
 
     public void goToNotifiche(ActionEvent event) {
@@ -201,7 +201,7 @@ public class HomeController implements Initializable {
         }
         Stage stage = (Stage) libroTableView.getScene().getWindow();
         stage.close();
-        support.switchStage("paginaInformativaLibro.fxml", libro);
+        support.switchStageLibro("paginaInformativaLibro.fxml", libro);
         event.consume();
     }
 
@@ -217,7 +217,7 @@ public class HomeController implements Initializable {
         }
         Stage stage = (Stage) libroTableView.getScene().getWindow();
         stage.close();
-        support.switchStageSerieStage("serieStage.fxml", libro.getSerie());
+        support.switchStageSerie("serieStage.fxml", libro.getSerie());
         event.consume();
     }
 
@@ -229,7 +229,7 @@ public class HomeController implements Initializable {
         }
         Stage stage = (Stage) articoloTableView.getScene().getWindow();
         stage.close();
-        support.switchStage("paginaInformativaArticolo.fxml", articoloScientifico);
+        support.switchStageArticolo("paginaInformativaArticolo.fxml", articoloScientifico);
         event.consume();
     }
 

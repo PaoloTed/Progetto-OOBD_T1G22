@@ -107,7 +107,7 @@ public class WelcomeController implements Initializable {
     }
 
     public void goToSingUpUtente(ActionEvent PressSingUp) {
-        support.switchStage("signUpStage.fxml", PressSingUp);
+        support.switchStage("signUpStage.fxml", PressSingUp,500,500);
     }
 
 

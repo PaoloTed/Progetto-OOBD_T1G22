@@ -78,7 +78,7 @@ public class AcquistoController implements Initializable {
     }
 
     /**
-     * Questo metodo mostra dove acqsuiatre l'articolo selezionato
+     * Questo metodo mostra dove acquistare l'articolo selezionato
      *
      * @param doi codice DOI dell'articolo di cui si vuole visualizzare gli acquisti
      */

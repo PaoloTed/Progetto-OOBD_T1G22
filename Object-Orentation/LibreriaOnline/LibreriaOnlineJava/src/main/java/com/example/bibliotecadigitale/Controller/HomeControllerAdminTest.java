@@ -279,27 +279,23 @@ public class HomeControllerAdminTest implements Initializable {
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         HashMap<String, ObservableList> lists = getLists();
-        //todo combo box in tableview audiolibro solamente da problemi, mettere in tutti gli altri casi
         imageLibriSfondo.setImage(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/Images/libri800x900.png"))));
         //inizializzo le colonne della tabella libro
         isbnLibro.setCellValueFactory(new PropertyValueFactory<>("isbn"));
         isbnLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         titoloLibro.setCellValueFactory(new PropertyValueFactory<>("titolo"));
-//        titoloLibro.setCellFactory(ComboBoxTableCell.forTableColumn(new DefaultStringConverter(), list));
         titoloLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         genereLibro.setCellValueFactory(new PropertyValueFactory<>("genere"));
         genereLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         numpagineLibro.setCellValueFactory(new PropertyValueFactory<>("numpagine"));
         numpagineLibro.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         tipoLibro.setCellValueFactory(new PropertyValueFactory<>("tipo"));
-//        tipoLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         tipoLibro.setCellFactory(ComboBoxTableCell.forTableColumn(new DefaultStringConverter(), lists.get("LibroTipo")));
         materiaLibro.setCellValueFactory(new PropertyValueFactory<>("materia"));
         materiaLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         descrizioneLibro.setCellValueFactory(new PropertyValueFactory<>("descrizione"));
         descrizioneLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         fruizioneLibro.setCellValueFactory(new PropertyValueFactory<>("fruizione"));
-//        fruizioneLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         fruizioneLibro.setCellFactory(ComboBoxTableCell.forTableColumn(new DefaultStringConverter(), lists.get("LibroFruizione")));
         editoreLibro.setCellValueFactory(new PropertyValueFactory<>("editore"));
         editoreLibro.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -307,18 +303,13 @@ public class HomeControllerAdminTest implements Initializable {
         autoreLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         datauscitaLibro.setCellValueFactory(new PropertyValueFactory<>("datauscita"));
         datauscitaLibro.setCellFactory(TextFieldTableCell.forTableColumn());
-//        datauscitaLibro.setCellFactory(new DatePickerCellFactory());
-//        datauscitaLibro.setCellFactory(DatePicker.forTableColumn());
         linguaLibro.setCellValueFactory(new PropertyValueFactory<>("lingua"));
         linguaLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         successivoLibro.setCellValueFactory(new PropertyValueFactory<>("successivo"));
-//        successivoLibro.setCellFactory(TextFieldTableCell.forTableColumn());
         successivoLibro.setCellFactory(ComboBoxTableCell.forTableColumn(new DefaultStringConverter(), lists.get("LibroIsbn")));
         serieLibro.setCellValueFactory(new PropertyValueFactory<>("serie"));
-//        serieLibro.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         serieLibro.setCellFactory(ComboBoxTableCell.forTableColumn(new IntegerStringConverter(), lists.get("LibroSerie")));
         presentazioneLibro.setCellValueFactory(new PropertyValueFactory<>("presentazione"));
-//        presentazioneLibro.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         presentazioneLibro.setCellFactory(ComboBoxTableCell.forTableColumn(new IntegerStringConverter(), lists.get("LibroPresentazione")));
 
         //inizializzo le colonne della tabella articolo
@@ -336,7 +327,7 @@ public class HomeControllerAdminTest implements Initializable {
         descrizioneArticolo.setCellValueFactory(new PropertyValueFactory<>("descrizione"));
         descrizioneArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
         fruizioneArticolo.setCellValueFactory(new PropertyValueFactory<>("fruizione"));
-        fruizioneArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
+        fruizioneArticolo.setCellFactory(ComboBoxTableCell.forTableColumn(new DefaultStringConverter(), lists.get("LibroFruizione")));
         editoreArticolo.setCellValueFactory(new PropertyValueFactory<>("editore"));
         editoreArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
         autoreArticolo.setCellValueFactory(new PropertyValueFactory<>("autore"));
@@ -344,7 +335,6 @@ public class HomeControllerAdminTest implements Initializable {
         linguaArticolo.setCellValueFactory(new PropertyValueFactory<>("lingua"));
         linguaArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
         conferenzaArticolo.setCellValueFactory(new PropertyValueFactory<>("conferenza"));
-//        conferenzaArticolo.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         conferenzaArticolo.setCellFactory(ComboBoxTableCell.forTableColumn(new IntegerStringConverter(), lists.get("ArticoloConferenza")));
         nomerArticolo.setCellValueFactory(new PropertyValueFactory<>("nomer"));
         nomerArticolo.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -360,7 +350,6 @@ public class HomeControllerAdminTest implements Initializable {
         nomeAcquisto.setCellValueFactory(new PropertyValueFactory<>("nome"));
         nomeAcquisto.setCellFactory(TextFieldTableCell.forTableColumn());
         tipoAcquisto.setCellValueFactory(new PropertyValueFactory<>("tipo"));
-//        tipoAcquisto.setCellFactory(TextFieldTableCell.forTableColumn());
         tipoAcquisto.setCellFactory(ComboBoxTableCell.forTableColumn(new DefaultStringConverter(), lists.get("AcquistoTipo")));
         urlAcquisto.setCellValueFactory(new PropertyValueFactory<>("url"));
         urlAcquisto.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -395,13 +384,11 @@ public class HomeControllerAdminTest implements Initializable {
         dataPresentazione.setCellValueFactory(new PropertyValueFactory<>("datapresentazione"));
         dataPresentazione.setCellFactory(TextFieldTableCell.forTableColumn());
         tipoPresentazione.setCellValueFactory(new PropertyValueFactory<>("tipo"));
-//        tipoPresentazione.setCellFactory(TextFieldTableCell.forTableColumn());
         tipoPresentazione.setCellFactory(ComboBoxTableCell.forTableColumn(new DefaultStringConverter(), lists.get("PresentazioneTipo")));
 
         //inizializzo le colonne della tabella rivista
         nomeRivista.setCellValueFactory(new PropertyValueFactory<>("nome"));
         nomeRivista.setCellFactory(TextFieldTableCell.forTableColumn());
-        nomeRivista.setEditable(false);
         dataRivista.setCellValueFactory(new PropertyValueFactory<>("data"));
         responsabileRivista.setCellValueFactory(new PropertyValueFactory<>("responsabile"));
         responsabileRivista.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -416,36 +403,29 @@ public class HomeControllerAdminTest implements Initializable {
         nomeSerie.setCellFactory(TextFieldTableCell.forTableColumn());
         numlibriSerie.setCellValueFactory(new PropertyValueFactory<>("numlibri"));
         completataSerie.setCellValueFactory(new PropertyValueFactory<>("completata"));
-//        completataSerie.setCellFactory(TextFieldTableCell.forTableColumn(new BooleanStringConverter()));
         completataSerie.setCellFactory(ComboBoxTableCell.forTableColumn(new BooleanStringConverter(), lists.get("SerieCompletata")));
 
         //inizializzo le colonne della tabella disponibileA
         codaDisponibileA.setCellValueFactory(new PropertyValueFactory<>("coda"));
-//        codaDisponibileA.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         codaDisponibileA.setCellFactory(ComboBoxTableCell.forTableColumn(new IntegerStringConverter(), lists.get("DisponibileACoda")));
         codaDisponibileA.setEditable(false);
         doiDisponibileA.setCellValueFactory(new PropertyValueFactory<>("doi"));
-//        doiDisponibileA.setCellFactory(TextFieldTableCell.forTableColumn());
         doiDisponibileA.setCellFactory(ComboBoxTableCell.forTableColumn(new DefaultStringConverter(), lists.get("DisponibileADoi")));
         doiDisponibileA.setEditable(false);
 
         //inizializzo le colonne della tabella disponibileL
         codaDisponibileL.setCellValueFactory(new PropertyValueFactory<>("coda"));
-//        codaDisponibileL.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         codaDisponibileL.setCellFactory(ComboBoxTableCell.forTableColumn(new IntegerStringConverter(), lists.get("DisponibileLCoda")));
         codaDisponibileL.setEditable(false);
         isbnDisponibileL.setCellValueFactory(new PropertyValueFactory<>("isbn"));
-//        isbnDisponibileL.setCellFactory(TextFieldTableCell.forTableColumn());
         isbnDisponibileL.setCellFactory(ComboBoxTableCell.forTableColumn(new DefaultStringConverter(), lists.get("DisponibileLIsbn")));
         isbnDisponibileL.setEditable(false);
 
         //inizializzo le colonne della tabella disponibileS
         codaDisponibileS.setCellValueFactory(new PropertyValueFactory<>("coda"));
-//        codaDisponibileS.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         codaDisponibileS.setCellFactory(ComboBoxTableCell.forTableColumn(new IntegerStringConverter(), lists.get("DisponibileSCoda")));
         codaDisponibileS.setEditable(false);
         codsDisponibileS.setCellValueFactory(new PropertyValueFactory<>("cods"));
-//        codsDisponibileS.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         codsDisponibileS.setCellFactory(ComboBoxTableCell.forTableColumn(new IntegerStringConverter(), lists.get("DisponibileSCods")));
         codsDisponibileS.setEditable(false);
 
@@ -511,7 +491,8 @@ public class HomeControllerAdminTest implements Initializable {
 
     /**
      * Questo metodo carica le liste necessarie per i combobox
-     *
+     * E.g ritorna una lista di tutti i libri presenti nel database
+     * da usare nella combobox successivo
      * @return ritorna una mappa con tutte le liste necessarie per i combobox
      */
     private HashMap<String, ObservableList> getLists() {
@@ -754,7 +735,7 @@ public class HomeControllerAdminTest implements Initializable {
     @FXML
     private void logOff(ActionEvent event) {
         Utente.getUtente().exitUtente();
-        support.switchStage("welcomeStage.fxml", event);
+        support.switchStage("welcomeStage.fxml", event,500,500);
     }
 
     private void setVisibleFalseAllTableView() {
@@ -942,8 +923,6 @@ public class HomeControllerAdminTest implements Initializable {
     @FXML
     private void insertDao() {
         Object objInsert = tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem();
-        System.out.println(datauscitaLibro.getCellData(0));
-        System.out.println(isbnLibro.getCellData(0));
         ArrayList<String> arrayList = null;
         try {
             arrayList = (ArrayList<String>) objInsert.getClass().getMethod("ObjToArrayList").invoke(objInsert);
@@ -982,9 +961,11 @@ public class HomeControllerAdminTest implements Initializable {
             implDaoHashMap.get(scelta).update(arrayList);
             support.messageStage("Update effettuato");
         } catch (SQLException e) {
-            support.messageStage("Errore nell'aggiornamento, inserisci tutti campi con ☑");
+            support.messageStageError("1 Errore nell'aggiornamento, inserisci tutti campi con ☑");
+            e.printStackTrace();
         } catch (IllegalArgumentException e) {
-            support.messageStage("Errore nell'aggiornamento, inserisci tutti campi con ☑");
+            support.messageStageError("2 Errore nell'aggiornamento, inserisci tutti campi con ☑");
+            e.printStackTrace();
         }
     }
 

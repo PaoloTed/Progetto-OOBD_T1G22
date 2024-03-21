@@ -31,11 +31,9 @@ public class SignUpController implements Initializable {
     private ImageView imageLibriSfondo;
 
     private final SupportStage support = new SupportStage();
-    //SupportStage è una classe che contiene metodi che possono essere utilizzati da più controller
-    // per gestire errori e cambiare scena
 
     public void back_goToWelcome(ActionEvent event) {
-        support.switchStage("welcomeStage.fxml", event);
+        support.switchStage("welcomeStage.fxml", event, 500, 500);
     }
 
 
@@ -78,7 +76,7 @@ public class SignUpController implements Initializable {
             throw new RuntimeException(e);
         }
         support.messageStage("Registrazione effettuata con successo");
-        support.switchStage("welcomeStage.fxml", event);
+        support.switchStage("welcomeStage.fxml", event,500,500);
     }
 
     @Override

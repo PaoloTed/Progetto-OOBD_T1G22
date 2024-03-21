@@ -98,7 +98,7 @@ public class LibroDAOImpl implements LibroDAO {
             ps.setString(6, libro.get(5));
         }
         if (libro.get(10) == null || libro.get(10).isEmpty()) {//datauscita
-            ps.setNull(11, Types.DATE);
+            ps.setNull(10, Types.DATE);
         } else {
             ps.setString(11, libro.get(10));
         }
@@ -154,9 +154,9 @@ public class LibroDAOImpl implements LibroDAO {
             ps.setString(5, libro.get(5));
         }
         if (libro.get(10) == null) {//datauscita
-            ps.setNull(10, java.sql.Types.VARCHAR);
+            ps.setNull(10, Types.DATE);
         } else {
-            ps.setDate(10, Date.valueOf(libro.get(10)));
+            ps.setString(10, libro.get(10));
         }
         if (libro.get(12) == null) {//successivo
             ps.setNull(12, java.sql.Types.VARCHAR);

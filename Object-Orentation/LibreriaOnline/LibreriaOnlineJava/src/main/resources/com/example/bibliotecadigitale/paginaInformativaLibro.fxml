@@ -38,11 +38,6 @@
          <Font name="System Bold" size="12.0" />
       </font>
    </Text>
-   <Text id="Materia" fx:id="textMateriaId" layoutX="101.0" layoutY="604.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Materia:" visible="false" wrappingWidth="700.0" AnchorPane.topAnchor="591.0">
-      <font>
-         <Font name="System Bold" size="12.0" />
-      </font>
-   </Text>
    <Text id="Descrizione" fx:id="textDescrizioneId" layoutX="112.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descrizione:" textAlignment="JUSTIFY" wrappingWidth="700.0" AnchorPane.topAnchor="162.05078125">
       <font>
          <Font name="System Bold" size="12.0" />
@@ -100,4 +95,9 @@
       </font>
    </Text>
    <TextArea fx:id="prova" editable="false" layoutX="112.0" layoutY="179.0" prefHeight="159.0" prefWidth="681.0" />
+   <Text id="Editore" fx:id="textMateriaId" layoutX="585.0" layoutY="482.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Materia" wrappingWidth="222.66665649414074">
+      <font>
+         <Font name="System Bold" size="12.0" />
+      </font>
+   </Text>
 </AnchorPane>
