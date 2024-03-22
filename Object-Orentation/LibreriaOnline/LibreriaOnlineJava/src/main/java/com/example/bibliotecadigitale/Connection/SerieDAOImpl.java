@@ -15,10 +15,18 @@ public class SerieDAOImpl implements SerieDAO {
     private ArrayList<String> rsToArrayList(ResultSet rs) throws SQLException {
         ArrayList<String> array = new ArrayList<>();
         for (int i = 1; i <= rs.getMetaData().getColumnCount(); i++) {
-            array.add(rs.getString(i));
+            int type = rs.getMetaData().getColumnType(i);
+            if (type == java.sql.Types.BOOLEAN)
+                if (rs.getBoolean(i))
+                    array.add("true");
+                else
+                    array.add("false");
+            else
+                array.add(rs.getString(i));
         }
         return array;
     }
+
     @Override
     public ArrayList<ArrayList<String>> getAll() throws SQLException {
         ArrayList<ArrayList<String>> serieFinded = new ArrayList<>();
@@ -34,7 +42,7 @@ public class SerieDAOImpl implements SerieDAO {
     }
 
     @Override
-    public void insert(ArrayList<String> strings) throws SQLException, IllegalArgumentException{
+    public void insert(ArrayList<String> strings) throws SQLException, IllegalArgumentException {
         PreparedStatement ps = conn.prepareStatement("INSERT INTO serie VALUES (?,?,?,?);");
         //Inserimento valori non nullable
         ps.setInt(1, Integer.parseInt(strings.get(0)));//cods
@@ -49,28 +57,34 @@ public class SerieDAOImpl implements SerieDAO {
         if (strings.get(3) == null) {
             ps.setNull(4, java.sql.Types.BOOLEAN);
         } else {
-            ps.setBoolean(4, Boolean.parseBoolean(strings.get(3)));//completata
+            if (strings.get(3).equalsIgnoreCase("true"))
+                ps.setBoolean(4, true);//completata
+            else if (strings.get(3).equalsIgnoreCase("false"))
+                ps.setBoolean(4, false);//completata
         }
         ps.executeUpdate();
         ps.close();
     }
 
     @Override
-    public void update(ArrayList<String> strings) throws SQLException, IllegalArgumentException{
+    public void update(ArrayList<String> strings) throws SQLException, IllegalArgumentException {
         PreparedStatement ps = conn.prepareStatement("UPDATE serie SET nome = ?, numlibri = ?, completata = ? WHERE cods = ?;");
         //Inserimento valori non nullable
         ps.setString(1, strings.get(1));//nome
         ps.setInt(4, Integer.parseInt(strings.get(0)));//cods
         //Inserimento valori nullable
         if (strings.get(2) == null) {
-            ps.setNull(3, java.sql.Types.INTEGER);
+            ps.setInt(2, 0);
         } else {
-            ps.setInt(3, Integer.parseInt(strings.get(2)));//numerolibri
+            ps.setInt(2, Integer.parseInt(strings.get(2)));//numerolibri
         }
         if (strings.get(3) == null) {
             ps.setNull(4, java.sql.Types.BOOLEAN);
         } else {
-            ps.setBoolean(4, Boolean.parseBoolean(strings.get(3)));//completata
+            if (strings.get(3).equalsIgnoreCase("true"))
+                ps.setBoolean(3, true);//completata
+            else if (strings.get(3).equalsIgnoreCase("false"))
+                ps.setBoolean(3, false);//completata
         }
 
         ps.executeUpdate();
@@ -89,7 +103,7 @@ public class SerieDAOImpl implements SerieDAO {
     public ArrayList<ArrayList<String>> getRicerca(String tipoRicerca, String parolaChiave) throws SQLException {
         ArrayList<ArrayList<String>> serieFinded = new ArrayList<>();
         String query;
-        if (tipoRicerca.equalsIgnoreCase("completata")||tipoRicerca.equalsIgnoreCase("cods")||tipoRicerca.equalsIgnoreCase("numlibri")) {
+        if (tipoRicerca.equalsIgnoreCase("completata") || tipoRicerca.equalsIgnoreCase("cods") || tipoRicerca.equalsIgnoreCase("numlibri")) {
             query = "SELECT * FROM serie WHERE " + tipoRicerca + " = " + parolaChiave + ";";
         } else {
             query = "SELECT * FROM serie WHERE " + tipoRicerca + " LIKE '%" + parolaChiave + "%';";

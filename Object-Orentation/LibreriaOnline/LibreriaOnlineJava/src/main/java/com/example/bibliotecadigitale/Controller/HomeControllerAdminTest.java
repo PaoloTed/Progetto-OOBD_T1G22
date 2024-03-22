@@ -20,6 +20,7 @@ import javafx.util.converter.BooleanStringConverter;
 import javafx.util.converter.DefaultStringConverter;
 import javafx.util.converter.IntegerStringConverter;
 
+import java.lang.reflect.Method;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -176,7 +177,7 @@ public class HomeControllerAdminTest implements Initializable {
     @FXML
     private TableColumn<Serie, Integer> numlibriSerie;
     @FXML
-    private TableColumn<Serie, Boolean> completataSerie;
+    private TableColumn<Serie, String> completataSerie;
 
     //Table view disponibileA
     @FXML
@@ -381,7 +382,7 @@ public class HomeControllerAdminTest implements Initializable {
         nomePresentazione.setCellFactory(TextFieldTableCell.forTableColumn());
         indirizzoPresentazione.setCellValueFactory(new PropertyValueFactory<>("indirizzo"));
         indirizzoPresentazione.setCellFactory(TextFieldTableCell.forTableColumn());
-        dataPresentazione.setCellValueFactory(new PropertyValueFactory<>("datapresentazione"));
+        dataPresentazione.setCellValueFactory(new PropertyValueFactory<>("data"));
         dataPresentazione.setCellFactory(TextFieldTableCell.forTableColumn());
         tipoPresentazione.setCellValueFactory(new PropertyValueFactory<>("tipo"));
         tipoPresentazione.setCellFactory(ComboBoxTableCell.forTableColumn(new DefaultStringConverter(), lists.get("PresentazioneTipo")));
@@ -390,6 +391,7 @@ public class HomeControllerAdminTest implements Initializable {
         nomeRivista.setCellValueFactory(new PropertyValueFactory<>("nome"));
         nomeRivista.setCellFactory(TextFieldTableCell.forTableColumn());
         dataRivista.setCellValueFactory(new PropertyValueFactory<>("data"));
+        dataRivista.setCellFactory(TextFieldTableCell.forTableColumn());
         responsabileRivista.setCellValueFactory(new PropertyValueFactory<>("responsabile"));
         responsabileRivista.setCellFactory(TextFieldTableCell.forTableColumn());
         argomentoRivista.setCellValueFactory(new PropertyValueFactory<>("argomento"));
@@ -402,8 +404,10 @@ public class HomeControllerAdminTest implements Initializable {
         nomeSerie.setCellValueFactory(new PropertyValueFactory<>("nome"));
         nomeSerie.setCellFactory(TextFieldTableCell.forTableColumn());
         numlibriSerie.setCellValueFactory(new PropertyValueFactory<>("numlibri"));
+        numlibriSerie.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
         completataSerie.setCellValueFactory(new PropertyValueFactory<>("completata"));
-        completataSerie.setCellFactory(ComboBoxTableCell.forTableColumn(new BooleanStringConverter(), lists.get("SerieCompletata")));
+        completataSerie.setCellFactory(ComboBoxTableCell.forTableColumn(new DefaultStringConverter(), lists.get("SerieCompletata")));
+//        completataSerie.setCellFactory(ComboBoxTableCell.forTableColumn(new BooleanStringConverter(), lists.get("SerieCompletata")));
 
         //inizializzo le colonne della tabella disponibileA
         codaDisponibileA.setCellValueFactory(new PropertyValueFactory<>("coda"));
@@ -590,8 +594,8 @@ public class HomeControllerAdminTest implements Initializable {
         //Serie
         //-Completata
         list = FXCollections.observableArrayList();
-        list.add(true);
-        list.add(false);
+        list.add("true");
+        list.add("false");
         lists.put("SerieCompletata", list);
         //DISPONIBILEA
         //-Coda
@@ -922,6 +926,7 @@ public class HomeControllerAdminTest implements Initializable {
      */
     @FXML
     private void insertDao() {
+
         Object objInsert = tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem();
         ArrayList<String> arrayList = null;
         try {
@@ -948,11 +953,13 @@ public class HomeControllerAdminTest implements Initializable {
      * e nel database
      */
     @FXML
-    private void updateDao() {
+    private void updateDao() {;
+
         Object objUpdate = tableViewHashMap.get(scelta).getSelectionModel().getSelectedItem();
         ArrayList<String> arrayList = null;
         try {
-            arrayList = (ArrayList<String>) objUpdate.getClass().getMethod("ObjToArrayList").invoke(objUpdate);
+            Method methodObjtoArray = objUpdate.getClass().getMethod("ObjToArrayList");
+            arrayList = (ArrayList<String>) methodObjtoArray.invoke(objUpdate);
         } catch (Exception e) {
             System.out.println("Errore reperimento dati" + e.getMessage());
             e.printStackTrace();

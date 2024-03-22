@@ -65,7 +65,7 @@ public class ConferenzaDAOImpl implements ConferenzaDAO {
 
     @Override
     public void update(ArrayList<String> strings) throws SQLException, IllegalArgumentException {
-        PreparedStatement ps = conn.prepareStatement("UPDATE conferenza SET codC = ?, nome = ?, struttura = ?, indirizzo = ?, dataInizio = ?, dataFine = ?, responsabile = ? WHERE codC = ?;");
+        PreparedStatement ps = conn.prepareStatement("UPDATE conferenza SET codC = ?, nome = ?, struttura = ?, indirizzo = ?, dataI = ?, dataF = ?, responsabile = ? WHERE codC = ?;");
         ps.setInt(1, Integer.parseInt(strings.get(0)));//codC
         ps.setString(2, strings.get(1));//nome
         ps.setString(3, strings.get(2));//struttura

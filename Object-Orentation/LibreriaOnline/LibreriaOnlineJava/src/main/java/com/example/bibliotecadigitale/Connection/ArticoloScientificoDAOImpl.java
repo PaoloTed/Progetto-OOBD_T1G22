@@ -78,7 +78,7 @@ public class ArticoloScientificoDAOImpl implements ArticoloScientificoDAO {
             ps.setString(12, strings.get(11));//rivista
         }
         if (strings.get(12) == null) {
-            ps.setNull(13, Types.VARCHAR);
+            ps.setNull(13, Types.DATE);
         } else {
             ps.setDate(13, Date.valueOf(strings.get(12)));//datarivista
         }
@@ -108,7 +108,7 @@ public class ArticoloScientificoDAOImpl implements ArticoloScientificoDAO {
         } else {
             ps.setDate(4, Date.valueOf(strings.get(4)));//dataUscita
         }
-        if (strings.get(10) == null) {
+        if (strings.get(10) == null || strings.get(10).equals("null")) {
             ps.setNull(10, Types.INTEGER);
         } else {
             ps.setInt(10, Integer.parseInt(strings.get(10)));//conferenza
@@ -119,7 +119,7 @@ public class ArticoloScientificoDAOImpl implements ArticoloScientificoDAO {
             ps.setString(11, strings.get(11));//rivista
         }
         if (strings.get(12) == null) {
-            ps.setNull(12, Types.VARCHAR);
+            ps.setNull(12, Types.DATE);
         } else {
             ps.setDate(12, Date.valueOf(strings.get(12)));//datarivista
         }

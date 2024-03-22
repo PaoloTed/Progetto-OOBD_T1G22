@@ -33,7 +33,7 @@
             <TableColumn fx:id="fruizioneLibro" onEditCommit="#onEditChangedString" prefWidth="75.0" text="Fruizione ☑" />
             <TableColumn fx:id="editoreLibro" onEditCommit="#onEditChangedString" prefWidth="100.0" text="Editore ☑" />
             <TableColumn fx:id="autoreLibro" onEditCommit="#onEditChangedString" prefWidth="100.0" text="Autore ☑" />
-            <TableColumn fx:id="datauscitaLibro" prefWidth="75.0" text="DataUscita A-M-G" />
+            <TableColumn fx:id="datauscitaLibro" onEditCommit="#onEditChangedString" prefWidth="75.0" text="DataUscita A-M-G" />
             <TableColumn fx:id="linguaLibro" onEditCommit="#onEditChangedString" prefWidth="100.0" text="Lingua ☑" />
             <TableColumn fx:id="successivoLibro" onEditCommit="#onEditChangedString" prefWidth="100.0" text="Successivo" />
             <TableColumn fx:id="serieLibro" onEditCommit="#onEditChangedInteger" prefWidth="50.0" text="Serie" />
@@ -153,8 +153,8 @@
         <columns>
             <TableColumn fx:id="codsSerie" onEditCommit="#onEditChangedInt" prefWidth="95.9999771118164" text="CodS ☑" />
             <TableColumn fx:id="nomeSerie" onEditCommit="#onEditChangedString" prefWidth="300.6666717529297" text="Nome ☑" />
-            <TableColumn fx:id="numlibriSerie" onEditCommit="#onEditChangedInt" prefWidth="155.33328247070312" text="NumeroLibri" />
-            <TableColumn fx:id="completataSerie" onEditCommit="#onEditChangedBool" prefWidth="146.0001220703125" text="Completata" />
+            <TableColumn fx:id="numlibriSerie" editable="false" onEditCommit="#onEditChangedInt" prefWidth="155.33328247070312" text="NumeroLibri" />
+            <TableColumn fx:id="completataSerie" onEditCommit="#onEditChangedString" prefWidth="146.0001220703125" text="Completata" />
         </columns>
         <contextMenu>
             <ContextMenu>

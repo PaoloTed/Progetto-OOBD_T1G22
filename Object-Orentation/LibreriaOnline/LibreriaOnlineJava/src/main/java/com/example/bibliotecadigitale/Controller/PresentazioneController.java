@@ -38,7 +38,7 @@ public class PresentazioneController {
         textCodPId.setText(textCodPId.getText() + presentazione.getCodp());
         textNomeId.setText(textNomeId.getText() + presentazione.getNome());
         textIndizioId.setText(textIndizioId.getText() + presentazione.getIndirizzo());
-        textDataPresentazioneId.setText(textDataPresentazioneId.getText() + presentazione.getDatapresentazione());
+        textDataPresentazioneId.setText(textDataPresentazioneId.getText() + presentazione.getData());
         textTipoId.setText(textTipoId.getText() + presentazione.getTipo());
     }
 

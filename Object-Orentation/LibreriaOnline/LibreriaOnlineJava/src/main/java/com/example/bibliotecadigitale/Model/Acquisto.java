@@ -104,12 +104,8 @@ public class Acquisto implements ArrayListObject
     }
 
     public ArrayList<String> ObjToArrayList() {
+        //todo riveder per controllare i nullable
         ArrayList<String> arrayList = new ArrayList<>();
-        if(nome == null) {
-            arrayList.add(null);
-        } else {
-            arrayList.add(String.valueOf(coda));
-        }
         arrayList.add(String.valueOf(coda));
         arrayList.add(nome);
         arrayList.add(tipo);

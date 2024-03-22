@@ -6,7 +6,7 @@ public class Presentazione implements ArrayListObject{
     private int codP;
     private String nome;
     private String indirizzo;
-    private String dataPresentazione;
+    private String data;
     private String tipo;
 
     private ArrayList<Libro> libri;
@@ -35,12 +35,12 @@ public class Presentazione implements ArrayListObject{
         this.indirizzo = indirizzo;
     }
 
-    public String getDatapresentazione() {
-        return dataPresentazione;
+    public String getData() {
+        return data;
     }
 
-    public void setDatapresentazione(String dataPresentazione) {
-        this.dataPresentazione = dataPresentazione;
+    public void setData(String dataPresentazione) {
+        this.data = dataPresentazione;
     }
 
     public String getTipo() {
@@ -67,7 +67,7 @@ public class Presentazione implements ArrayListObject{
         arrayList.add(String.valueOf(codP));
         arrayList.add(nome);
         arrayList.add(indirizzo);
-        arrayList.add(dataPresentazione);
+        arrayList.add(data);
         arrayList.add(tipo);
         return arrayList;
     }
@@ -76,7 +76,7 @@ public class Presentazione implements ArrayListObject{
         setCodp(Integer.parseInt(arrayList.get(0)));
         setNome(arrayList.get(1));
         setIndirizzo(arrayList.get(2));
-        setDatapresentazione(arrayList.get(3));
+        setData(arrayList.get(3));
         setTipo(arrayList.get(4));
     }
 }

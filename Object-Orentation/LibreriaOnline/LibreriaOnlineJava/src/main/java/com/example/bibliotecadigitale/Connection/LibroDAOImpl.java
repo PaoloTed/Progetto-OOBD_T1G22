@@ -156,7 +156,7 @@ public class LibroDAOImpl implements LibroDAO {
         if (libro.get(10) == null) {//datauscita
             ps.setNull(10, Types.DATE);
         } else {
-            ps.setString(10, libro.get(10));
+            ps.setDate(10, Date.valueOf(libro.get(10)));
         }
         if (libro.get(12) == null) {//successivo
             ps.setNull(12, java.sql.Types.VARCHAR);

@@ -1,13 +1,15 @@
 package com.example.bibliotecadigitale.Model;
-import java.util.ArrayList;
 
-public class Serie implements ArrayListObject{
+import java.util.ArrayList;
+import java.util.Objects;
+
+public class Serie implements ArrayListObject {
 
     private int codS;
     private String nome;
     private int numLibri;
 
-    private boolean completata;
+    private String completata;
 
     private ArrayList<Libro> libri;
 
@@ -15,7 +17,10 @@ public class Serie implements ArrayListObject{
 
     private ArrayList<DisponibileS> disponibili;
 
-    public int getCods() {return codS;}
+    public int getCods() {
+        return codS;
+    }
+
     public void setCods(int codS) {
         this.codS = codS;
     }
@@ -36,11 +41,12 @@ public class Serie implements ArrayListObject{
         this.numLibri = numLibri;
     }
 
-    public boolean getCompletata() {
+    public String getCompletata() {
         return completata;
+
     }
 
-    public void setCompletata(boolean completata) {
+    public void setCompletata(String completata) {
         this.completata = completata;
     }
 
@@ -67,7 +73,9 @@ public class Serie implements ArrayListObject{
     public void setDisponibili(ArrayList<DisponibileS> disponibili) {
         this.disponibili = disponibili;
     }
-    public Serie(){}
+
+    public Serie() {
+    }
 
     @Override
     public ArrayList<String> ObjToArrayList() {
@@ -79,18 +87,14 @@ public class Serie implements ArrayListObject{
         return arrayList;
     }
 
-    public Serie (ArrayList<String> arrayList) {
+    public Serie(ArrayList<String> arrayList) {
         setCods(Integer.parseInt(arrayList.get(0)));
         setNome(arrayList.get(1));
-        if (arrayList.get(2) == null || arrayList.get(2).isEmpty() ) {
+        if (arrayList.get(2) == null || arrayList.get(2).isEmpty()) {
             setNumlibri(0);
         } else {
             setNumlibri(Integer.parseInt(arrayList.get(2)));
         }
-        if (arrayList.get(3) == null || arrayList.get(3).isEmpty() ) {
-            setCompletata(false);
-        } else {
-            setCompletata(Boolean.parseBoolean(arrayList.get(3)));
-        }
+        setCompletata(arrayList.get(3));
     }
 }
