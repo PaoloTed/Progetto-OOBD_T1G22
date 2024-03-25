@@ -114,8 +114,7 @@ public class AcquistoController implements Initializable {
     }
 
     public void close(ActionEvent event) {
-        Stage stage = (Stage) tableView.getScene().getWindow();
-        event.consume();
-        stage.close();
+
+        support.switchStage("HomeStage.fxml",event,900,800);
     }
 }
