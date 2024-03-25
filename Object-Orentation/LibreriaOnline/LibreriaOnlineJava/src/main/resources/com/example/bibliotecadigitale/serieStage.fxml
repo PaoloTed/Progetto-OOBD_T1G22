@@ -1,85 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Point3D?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ContextMenu?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0"
-            prefWidth="900.0" style="-fx-border-color: #de5f4f; -fx-border-width: 7; -fx-background-color: #fdf3ea;"
-            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.bibliotecadigitale.Controller.SerieController">
-    <ImageView fx:id="imageLibriSfondo" fitHeight="795.0" fitWidth="900.0" layoutX="3.0" layoutY="3.0"
-               pickOnBounds="true" preserveRatio="true">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="900.0" style="-fx-border-color: #de5f4f; -fx-border-width: 7; -fx-background-color: #fdf3ea;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.SerieController">
+    <ImageView fx:id="imageLibriSfondo" fitHeight="795.0" fitWidth="900.0" layoutX="3.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
     </ImageView>
-    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcf3eb" height="622.0" layoutX="92.0" layoutY="91.0"
-               stroke="#de5f4f" strokeWidth="2.0" width="708.0"/>
-    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcf3eb" height="61.0" layoutX="91.0" layoutY="23.0"
-               stroke="#de5f4f" strokeWidth="2.0" width="708.0"/>
-    <Button layoutX="428.0" layoutY="661.0" mnemonicParsing="false" onAction="#close"
-            style="-fx-background-color: #2b2d30;" text="Close" textFill="WHITE"/>
-    <TableView fx:id="libroTableView" fixedCellSize="0.0" layoutX="98.4" layoutY="201.6" maxHeight="500.0"
-               maxWidth="710.0" minHeight="448.0" minWidth="700.0" prefHeight="448.0" prefWidth="710.0"
-               AnchorPane.bottomAnchor="158.0" AnchorPane.leftAnchor="91.0" AnchorPane.rightAnchor="99.0"
-               AnchorPane.topAnchor="194.0">
+    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcf3eb" height="622.0" layoutX="92.0" layoutY="91.0" stroke="#de5f4f" strokeWidth="2.0" width="708.0" />
+    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fcf3eb" height="61.0" layoutX="91.0" layoutY="23.0" stroke="#de5f4f" strokeWidth="2.0" width="708.0" />
+    <Button layoutX="428.0" layoutY="661.0" mnemonicParsing="false" onAction="#close" style="-fx-background-color: #2b2d30;" text="Close" textFill="WHITE" />
+    <TableView fx:id="libroTableView" fixedCellSize="0.0" layoutX="98.4" layoutY="201.6" maxHeight="500.0" maxWidth="710.0" minHeight="448.0" minWidth="700.0" prefHeight="448.0" prefWidth="710.0" AnchorPane.bottomAnchor="158.0" AnchorPane.leftAnchor="91.0" AnchorPane.rightAnchor="99.0" AnchorPane.topAnchor="194.0">
         <columns>
-            <TableColumn fx:id="isbnColumn" prefWidth="95.9999771118164" text="ISBN"/>
-            <TableColumn fx:id="titoloColumn" prefWidth="300.6666717529297" text="Titolo"/>
-            <TableColumn fx:id="autoreColumn" prefWidth="104.66671752929688" text="Autore"/>
-            <TableColumn fx:id="editoreColumn" prefWidth="105.33331298828125" text="Editore"/>
-            <TableColumn fx:id="genereColumn" prefWidth="75.3333740234375" text="Genere"/>
+            <TableColumn fx:id="isbnColumn" prefWidth="95.9999771118164" text="ISBN" />
+            <TableColumn fx:id="titoloColumn" prefWidth="300.6666717529297" text="Titolo" />
+            <TableColumn fx:id="autoreColumn" prefWidth="104.66671752929688" text="Autore" />
+            <TableColumn fx:id="editoreColumn" prefWidth="105.33331298828125" text="Editore" />
+            <TableColumn fx:id="genereColumn" prefWidth="75.3333740234375" text="Genere" />
         </columns>
         <contextMenu>
             <ContextMenu>
                 <items>
-                    <MenuItem mnemonicParsing="false" onAction="#goToPaginaInformativaLibro"
-                              text="Vai Alla Pagina Informativa Libro"/>
+                    <MenuItem mnemonicParsing="false" onAction="#goToPaginaInformativaLibro" text="Vai Alla Pagina Informativa Libro" />
                 </items>
             </ContextMenu>
         </contextMenu>
         <rotationAxis>
-        <Point3D/>
+        <Point3D />
         </rotationAxis>
     </TableView>
     <Text fx:id="codSTxtId" layoutX="100.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CodS">
         <font>
-            <Font name="Arial" size="12.0"/>
+            <Font name="Arial" size="12.0" />
         </font>
     </Text>
     <Text fx:id="nomeTxtId" layoutX="231.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome">
         <font>
-            <Font name="Arial" size="12.0"/>
+            <Font name="Arial" size="12.0" />
         </font>
     </Text>
-    <Text fx:id="numLibTxtId" layoutX="88.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero Libri"
-          textAlignment="RIGHT" wrappingWidth="83.79339599609375">
+    <Text fx:id="numLibTxtId" layoutX="99.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero Libri" wrappingWidth="83.79339599609375">
         <font>
-            <Font name="Arial" size="12.0"/>
+            <Font name="Arial" size="12.0" />
         </font>
     </Text>
     <Text fx:id="completaTxtId" layoutX="231.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Completa">
         <font>
-            <Font name="Arial" size="12.0"/>
+            <Font name="Arial" size="12.0" />
         </font>
     </Text>
     <Text layoutX="105.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pannello informativo Serie">
         <font>
-            <Font name="Arial Bold" size="20.0"/>
+            <Font name="Arial Bold" size="20.0" />
         </font>
     </Text>
-    <Text layoutX="105.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0"
-          text="Qui puoi visualizare le informazioni relative alla serie">
+    <Text layoutX="105.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Qui puoi visualizare le informazioni relative alla serie">
         <font>
-            <Font name="Arial" size="17.0"/>
+            <Font name="Arial" size="17.0" />
         </font>
     </Text>
-    <Text layoutX="315.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0"
-          text="Premi Con Il Tasto Destro Del Mouse Per Le Azioni" wrappingWidth="270.37740325927734"/>
+    <Text layoutX="315.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Premi Con Il Tasto Destro Del Mouse Per Le Azioni" wrappingWidth="270.37740325927734" />
 </AnchorPane>
