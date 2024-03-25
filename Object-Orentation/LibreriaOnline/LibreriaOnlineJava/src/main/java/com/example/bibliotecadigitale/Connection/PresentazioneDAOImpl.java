@@ -71,7 +71,7 @@ public class PresentazioneDAOImpl implements PresentazioneDAO {
     @Override
     public void delete(ArrayList<String> strings) throws SQLException {
         PreparedStatement ps = conn.prepareStatement("DELETE FROM presentazione WHERE codP = ?;");
-        ps.setString(1, strings.get(0));//codP
+        ps.setInt(1, Integer.parseInt(strings.get(0)));//codP
         ps.executeUpdate();
         ps.close();
     }

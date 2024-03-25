@@ -121,15 +121,6 @@ public class WelcomeController implements Initializable {
         return connessione.getNumeroOnline();
     }
 
-    @FXML
-    private void skip(ActionEvent event) {
-        Utente utenteNew = getUtente();
-        utenteNew.setEmail("d@d.it");
-        utenteNew.setPassword("d");
-        utenteNew.setData("2024-02-15");
-        support.switchStage("homeStage.fxml", event, 900, 800);
-    }
-
     /**
      * Evento che si verifica quando si preme il tasto "Accedi come admin"
      * Questo metodo controlla se la password admin è corretta

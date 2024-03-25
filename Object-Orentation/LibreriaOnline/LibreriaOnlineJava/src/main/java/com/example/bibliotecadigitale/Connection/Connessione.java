@@ -20,11 +20,9 @@ public class Connessione {
             ArrayList<String> credenziali = leggiCredenziali();
             url = credenziali.get(0);
 
-            //TODO:Da rivedere questa cosa con il try catch non so perche serve e perche se cattura un eccezzione, forse serve il driver da qualche parte ?
             try {
                 Class.forName(credenziali.get(1));
             } catch (ClassNotFoundException e) {
-                System.out.println("Errore nel caricamento del driver");
             }
             user = credenziali.get(2);
             password = credenziali.get(3);

@@ -674,9 +674,9 @@ public class HomeControllerAdmin implements Initializable {
      */
     @FXML
     private void Select(ActionEvent event) throws SQLException {
-        scelta = comboBoxTableView.getSelectionModel().getSelectedItem();
-        TableView tableViewScelta = tableViewHashMap.get(scelta);
-        Class classeScelta = classHashMap.get(scelta);
+        scelta = comboBoxTableView.getSelectionModel().getSelectedItem();// il tipo di ricerca
+        TableView tableViewScelta = tableViewHashMap.get(scelta); // la tabella corrispondente alla ricerca selezionata
+        Class classeScelta = classHashMap.get(scelta);// la classe corrispondente alla ricerca selezionata
 
         if (scelta == null) {
             support.messageStage("Selezionare prima un tipo di ricerca");
@@ -707,6 +707,9 @@ public class HomeControllerAdmin implements Initializable {
             support.messageStage("Nessun match trovato");
             return;
         }
+        //Visualizza i risultati della ricerca nella tabella corrispondente
+        //Richiamando il costruttore della classe corrispondente alla ricerca
+        //E passando come parametro ogni risultato della ricerca
         for (ArrayList<String> risultato : listRisultati) {
             try {
                 tableViewScelta.getItems().add(classeScelta.getConstructor(ArrayList.class).newInstance(risultato));
