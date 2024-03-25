@@ -94,7 +94,11 @@ public class Serie implements ArrayListObject {
             setNumlibri(0);
         } else {
             setNumlibri(Integer.parseInt(arrayList.get(2)));
+            if (arrayList.get(3).equals("t")) {
+                setCompletata("true");
+            }else{
+                setCompletata("false");
+            }
         }
-        setCompletata(arrayList.get(3));
     }
 }

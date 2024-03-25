@@ -171,9 +171,6 @@ public class Libro extends Pubblicazioni implements ArrayListObject{
             arrayList.add(null);
         else
             arrayList.add(String.valueOf(presentazione));
-
-        for (String s : arrayList)
-            System.out.println(s);
         return arrayList;
     }
 }

@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="800.0" maxWidth="900.0" minHeight="800.0" minWidth="900.0" prefHeight="800.0" prefWidth="900.0" style="-fx-border-color: #de5f4f; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.HomeControllerAdminTest">
+<AnchorPane maxHeight="800.0" maxWidth="900.0" minHeight="800.0" minWidth="900.0" prefHeight="800.0" prefWidth="900.0" style="-fx-border-color: #de5f4f; -fx-border-width: 3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bibliotecadigitale.Controller.HomeControllerAdmin">
     <ImageView fx:id="imageLibriSfondo" fitHeight="800.0" fitWidth="895.0" layoutX="2.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
     </ImageView>
     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fdf3ea" height="706.0" layoutX="92.0" layoutY="63.0" stroke="#de5f4f" strokeType="INSIDE" strokeWidth="3.0" width="707.0" />
