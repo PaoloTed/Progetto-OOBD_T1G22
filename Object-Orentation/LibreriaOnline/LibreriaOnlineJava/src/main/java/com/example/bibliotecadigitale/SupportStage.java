@@ -187,7 +187,7 @@ public class SupportStage {
         try {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(scenaNew)));
             Parent root = loader.load();
-            cambiaStage(root,800,900);
+            cambiaStage(root,900,800);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

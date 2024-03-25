@@ -77,7 +77,7 @@ public class SerieController implements Initializable {
         nomeTxtId.setText("Nome serie: " + serie.getNome());
         numLibTxtId.setText("numero libri: " + serie.getNumlibri());
         if (serie.getCompletata().equals("true")) {
-            completaTxtId.setText("stato serie:Completata");
+            completaTxtId.setText("stato serie: Completata");
         } else {
             completaTxtId.setText("No Terminata");
         }

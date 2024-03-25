@@ -74,6 +74,7 @@ public class UtenteDAOImpl implements UtenteDAO {
         String query = "SELECT * FROM show_preferiti('" + emailUser + "');";
         ResultSet rs = connessione.executeSearch(query);
         while (rs.next()) {
+            preferito = new ArrayList<>();
             preferito.add(rs.getString(1));
             preferito.add(rs.getString(2));
             preferito.add(rs.getString(3));

@@ -75,8 +75,8 @@ public class SignUpController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        support.messageStage("Registrazione effettuata con successo");
         support.switchStage("welcomeStage.fxml", event,500,500);
+        support.messageStage("Registrazione effettuata con successo");
     }
 
     @Override

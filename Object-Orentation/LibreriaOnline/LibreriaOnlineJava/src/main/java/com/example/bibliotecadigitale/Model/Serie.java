@@ -83,7 +83,7 @@ public class Serie implements ArrayListObject {
         arrayList.add(String.valueOf(codS));
         arrayList.add(nome);
         arrayList.add(String.valueOf(numLibri));
-        arrayList.add(String.valueOf(completata));
+        arrayList.add(completata);
         return arrayList;
     }
 
